@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectOptions>
+    <Version Value="12"/>
+    <PathDelim Value="\"/>
+    <General>
+      <Flags>
+        <CompatibilityMode Value="True"/>
+      </Flags>
+      <SessionStorage Value="InProjectDir"/>
+      <Title Value="PGuarda"/>
+      <Scaled Value="True"/>
+      <ResourceType Value="res"/>
+      <UseXPManifest Value="True"/>
+      <XPManifest>
+        <DpiAware Value="True"/>
+      </XPManifest>
+      <Icon Value="0"/>
+    </General>
+    <BuildModes Count="1">
+      <Item1 Name="Default" Default="True"/>
+    </BuildModes>
+    <PublishOptions>
+      <Version Value="2"/>
+      <UseFileFilters Value="True"/>
+    </PublishOptions>
+    <RunParams>
+      <FormatVersion Value="2"/>
+    </RunParams>
+    <RequiredPackages Count="3">
+      <Item1>
+        <PackageName Value="FCL"/>
+      </Item1>
+      <Item2>
+        <PackageName Value="virtualtreeview_package"/>
+      </Item2>
+      <Item3>
+        <PackageName Value="LCL"/>
+      </Item3>
+    </RequiredPackages>
+    <Units Count="11">
+      <Unit0>
+        <Filename Value="PGuarda.lpr"/>
+        <IsPartOfProject Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="uentrarusuario.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmEntrarUsuario"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="UEntrarUsuario"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="umenu.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmMenu"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="ucadusuario.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmCadUsuario"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uCadUsuario"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="ucadcontasbancarias.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmCadContasBancarias"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uCadContasBancarias"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="ucadcentrocusto.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmCadCentroCusto"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uCadCentroCusto"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="ucadfornecedores.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmCadFornecedor"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uCadFornecedores"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="ucadlancamento.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmCadLancamento"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uCadLancamento"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="uconsfornecedores.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmConsFornecedores"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="UConsFornecedores"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="uconsbaixa.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmConsBaixa"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="UConsBaixa"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="uconscontas.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmConsContas"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="UConsContas"/>
+      </Unit10>
+    </Units>
+  </ProjectOptions>
+  <CompilerOptions>
+    <Version Value="11"/>
+    <PathDelim Value="\"/>
+    <Target>
+      <Filename Value="PGuarda"/>
+    </Target>
+    <SearchPaths>
+      <IncludeFiles Value="$(ProjOutDir)"/>
+      <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
+    </SearchPaths>
+    <Linking>
+      <Debugging>
+        <DebugInfoType Value="dsDwarf2Set"/>
+      </Debugging>
+      <Options>
+        <Win32>
+          <GraphicApplication Value="True"/>
+        </Win32>
+      </Options>
+    </Linking>
+  </CompilerOptions>
+  <Debugging>
+    <Exceptions Count="3">
+      <Item1>
+        <Name Value="EAbort"/>
+      </Item1>
+      <Item2>
+        <Name Value="ECodetoolError"/>
+      </Item2>
+      <Item3>
+        <Name Value="EFOpenError"/>
+      </Item3>
+    </Exceptions>
+  </Debugging>
+</CONFIG>

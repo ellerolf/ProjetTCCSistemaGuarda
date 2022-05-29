@@ -1,0 +1,181 @@
+unit umenu;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Menus, ExtCtrls, Grids,
+  Buttons, ActnList, StdCtrls, uCadUsuario, uCadContasBancarias,
+  uCadCentroCusto, uCadFornecedores, uCadLancamento, UConsFornecedores,
+  UConsBaixa, UConsContas, VTHeaderPopup;
+
+type
+
+  { TFrmMenu }
+
+  TFrmMenu = class(TForm)
+    Image1: TImage;
+    Image2: TImage;
+    Image3: TImage;
+    Image4: TImage;
+    Image5: TImage;
+    LblUsuario: TLabel;
+    Panel1: TPanel;
+    Panel2: TPanel;
+    PnChama: TPanel;
+    Panel4: TPanel;
+    Panel5: TPanel;
+    Panel6: TPanel;
+    BtnInicial: TSpeedButton;
+    BtnCadUsuarios: TSpeedButton;
+    BtnConsFornecedores: TSpeedButton;
+    BtnConsReceitaDespesas: TSpeedButton;
+    BtnRelaMovi: TSpeedButton;
+    BtnRelaPresta: TSpeedButton;
+    BtnCadBanco: TSpeedButton;
+    BtnCadCentro: TSpeedButton;
+    BtnCadFornecedor: TSpeedButton;
+    BtnCadLancamento: TSpeedButton;
+    BtnConsBanco: TSpeedButton;
+    SpeedButton1: TSpeedButton;
+    procedure BtnCadBancoClick(Sender: TObject);
+    procedure BtnCadCentroClick(Sender: TObject);
+    procedure BtnCadFornecedorClick(Sender: TObject);
+    procedure BtnCadLancamentoClick(Sender: TObject);
+    procedure BtnCadUsuariosClick(Sender: TObject);
+    procedure BtnConsBancoClick(Sender: TObject);
+    procedure BtnConsFornecedoresClick(Sender: TObject);
+    procedure BtnConsReceitaDespesasClick(Sender: TObject);
+    procedure BtnRelaPrestaClick(Sender: TObject);
+    procedure BtnSairClick(Sender: TObject);
+    procedure Image1Click(Sender: TObject);
+    procedure LblUsuarioClick(Sender: TObject);
+    procedure MenuItem11Click(Sender: TObject);
+    procedure MenuItem16Click(Sender: TObject);
+    procedure MenuItem3Click(Sender: TObject);
+    procedure MenuItem8Click(Sender: TObject);
+    procedure BtnRelaMoviClick(Sender: TObject);
+    procedure PnChamaClick(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
+  private
+
+  public
+
+  end;
+
+var
+  FrmMenu: TFrmMenu;
+
+implementation
+
+{$R *.lfm}
+
+{ TFrmMenu }
+
+procedure TFrmMenu.MenuItem3Click(Sender: TObject);
+begin
+
+end;
+
+procedure TFrmMenu.MenuItem11Click(Sender: TObject);
+begin
+
+end;
+
+procedure TFrmMenu.Image1Click(Sender: TObject);
+begin
+
+end;
+
+procedure TFrmMenu.BtnSairClick(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TFrmMenu.BtnCadUsuariosClick(Sender: TObject);
+begin
+  FrmCadUsuario.Parent := PnChama;
+  FrmCadUsuario.Show;
+end;
+
+procedure TFrmMenu.BtnConsBancoClick(Sender: TObject);
+begin
+  FrmConsContas.parent := PnChama;
+  FrmConsContas.show;
+end;
+
+procedure TFrmMenu.BtnConsFornecedoresClick(Sender: TObject);
+begin
+  FrmConsFornecedores.parent := PnChama;
+  FrmConsFornecedores.Show;
+end;
+
+procedure TFrmMenu.BtnConsReceitaDespesasClick(Sender: TObject);
+begin
+  FrmConsBaixa.parent := PnChama;
+  FrmConsBaixa.Show;
+end;
+
+procedure TFrmMenu.BtnRelaPrestaClick(Sender: TObject);
+begin
+
+end;
+
+procedure TFrmMenu.BtnCadBancoClick(Sender: TObject);
+begin
+  FrmCadContasBancarias.Parent := PnChama;
+  FrmCadContasBancarias.Show;
+end;
+
+procedure TFrmMenu.BtnCadCentroClick(Sender: TObject);
+begin
+  FrmCadCentroCusto.Parent := PnChama;
+  FrmCadCentroCusto.Show;
+end;
+
+procedure TFrmMenu.BtnCadFornecedorClick(Sender: TObject);
+begin
+  FrmCadFornecedor.Parent := PnChama;
+  FrmCadFornecedor.Show;
+end;
+
+procedure TFrmMenu.BtnCadLancamentoClick(Sender: TObject);
+begin
+  FrmCadLancamento.Parent := PnChama;
+  FrmCadLancamento.Show;
+end;
+
+procedure TFrmMenu.LblUsuarioClick(Sender: TObject);
+begin
+
+end;
+
+procedure TFrmMenu.MenuItem16Click(Sender: TObject);
+begin
+
+end;
+
+procedure TFrmMenu.MenuItem8Click(Sender: TObject);
+begin
+
+end;
+
+procedure TFrmMenu.BtnRelaMoviClick(Sender: TObject);
+begin
+
+end;
+
+procedure TFrmMenu.PnChamaClick(Sender: TObject);
+begin
+
+end;
+
+procedure TFrmMenu.SpeedButton1Click(Sender: TObject);
+begin
+  Close;
+end;
+
+
+
+end.
