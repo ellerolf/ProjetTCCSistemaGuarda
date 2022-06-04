@@ -1,6 +1,5 @@
 object FrmConsFornecedores: TFrmConsFornecedores
   Left = -8
-<<<<<<< Updated upstream
   Height = 783
   Top = -8
   Width = 1234
@@ -8,71 +7,28 @@ object FrmConsFornecedores: TFrmConsFornecedores
   Caption = 'FrmConsFornecedores'
   ClientHeight = 783
   ClientWidth = 1234
-=======
-  Height = 704
-  Top = -8
-  Width = 1199
-  BorderStyle = bsNone
-  Caption = 'FrmConsFornecedores'
-  ClientHeight = 674
-  ClientWidth = 1191
->>>>>>> Stashed changes
   Color = 16577259
   OnResize = FormResize
   Position = poScreenCenter
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-<<<<<<< Updated upstream
     Height = 783
     Top = 0
     Width = 1234
     Align = alClient
     ClientHeight = 783
     ClientWidth = 1234
-=======
-    Height = 674
-    Top = 0
-    Width = 1191
-    Align = alClient
-    ClientHeight = 674
-    ClientWidth = 1191
->>>>>>> Stashed changes
     TabOrder = 0
     object Panel2: TPanel
       Left = 0
       Height = 607
       Top = 1
-<<<<<<< Updated upstream
       Width = 742
       BevelOuter = bvNone
       Caption = 'Panel2'
       ClientHeight = 607
       ClientWidth = 742
-=======
-      Width = 1189
-      Align = alTop
-      Alignment = taCenter
-      Caption = 'Fornecedores'
-      Font.CharSet = ANSI_CHARSET
-      Font.Color = 10420224
-      Font.Height = -24
-      Font.Name = 'Segoe UI'
-      Font.Pitch = fpVariable
-      Font.Quality = fqDraft
-      Font.Style = [fsBold]
-      ParentColor = False
-      ParentFont = False
-    end
-    object GroupBox1: TGroupBox
-      Left = 216
-      Height = 633
-      Top = 32
-      Width = 750
-      Anchors = [akTop, akLeft, akBottom]
-      ClientHeight = 613
-      ClientWidth = 746
->>>>>>> Stashed changes
       TabOrder = 0
       object Label7: TLabel
         Left = 0

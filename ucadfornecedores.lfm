@@ -1,52 +1,34 @@
 object FrmCadFornecedor: TFrmCadFornecedor
-  Left = 0
-  Height = 666
-  Top = 0
-  Width = 1183
+  Left = -8
+  Height = 783
+  Top = -8
+  Width = 1234
   BorderStyle = bsNone
   Caption = 'Cadastro Fornecedores'
-  ClientHeight = 666
-  ClientWidth = 1183
+  ClientHeight = 783
+  ClientWidth = 1234
   Color = 16577259
   OnResize = FormResize
   Position = poDesktopCenter
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 666
+    Height = 783
     Top = 0
-    Width = 1183
+    Width = 1234
     Align = alClient
-    ClientHeight = 666
-    ClientWidth = 1183
+    ClientHeight = 783
+    ClientWidth = 1234
     TabOrder = 0
-    object Label7: TLabel
-      Left = 1
-      Height = 32
-      Top = 1
-      Width = 1181
-      Align = alTop
-      Alignment = taCenter
-      Caption = 'Cadastro Fornecedores'
-      Font.CharSet = ANSI_CHARSET
-      Font.Color = 10420224
-      Font.Height = -24
-      Font.Name = 'Segoe UI'
-      Font.Pitch = fpVariable
-      Font.Quality = fqDraft
-      Font.Style = [fsBold]
-      ParentColor = False
-      ParentFont = False
-      OnClick = Label7Click
-    end
-    object GroupBox1: TGroupBox
-      Left = 216
-      Height = 625
-      Top = 32
+    object Panel2: TPanel
+      Left = 0
+      Height = 680
+      Top = 0
       Width = 750
-      Anchors = [akTop, akLeft, akBottom]
-      ClientHeight = 605
-      ClientWidth = 746
+      BevelOuter = bvNone
+      Caption = 'Panel2'
+      ClientHeight = 680
+      ClientWidth = 750
       TabOrder = 0
       object Label7: TLabel
         Left = 0
@@ -112,7 +94,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
       object Label4: TLabel
         Left = 40
         Height = 17
-        Top = 72
+        Top = 112
         Width = 64
         Caption = 'CPF/CNPJ:'
         Font.CharSet = ANSI_CHARSET
@@ -503,7 +485,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
       object Label19: TLabel
         Left = 177
         Height = 17
-        Top = 354
+        Top = 394
         Width = 48
         Caption = 'Celular:'
         Font.CharSet = ANSI_CHARSET
@@ -524,7 +506,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
       object Label18: TLabel
         Left = 41
         Height = 17
-        Top = 354
+        Top = 394
         Width = 57
         Caption = 'Telefone:'
         Font.CharSet = ANSI_CHARSET
@@ -538,7 +520,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
       object Label20: TLabel
         Left = 41
         Height = 17
-        Top = 416
+        Top = 456
         Width = 82
         Caption = 'Observações:'
         Font.CharSet = ANSI_CHARSET

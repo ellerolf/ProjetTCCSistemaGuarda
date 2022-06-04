@@ -1,5 +1,4 @@
 object FrmMenu: TFrmMenu
-<<<<<<< Updated upstream
   Left = 0
   Height = 768
   Top = 0
@@ -8,35 +7,17 @@ object FrmMenu: TFrmMenu
   Caption = 'Menu'
   ClientHeight = 768
   ClientWidth = 1366
-=======
-  Left = -8
-  Height = 788
-  Top = -8
-  Width = 1386
-  BorderIcons = []
-  Caption = 'Menu'
-  ClientHeight = 750
-  ClientWidth = 1370
->>>>>>> Stashed changes
   Color = 16510433
   OnResize = FormResize
   LCLVersion = '2.2.2.0'
   WindowState = wsMaximized
   object Panel1: TPanel
     Left = 0
-<<<<<<< Updated upstream
     Height = 728
     Top = 40
     Width = 184
     Align = alLeft
     ClientHeight = 728
-=======
-    Height = 710
-    Top = 40
-    Width = 184
-    Align = alLeft
-    ClientHeight = 710
->>>>>>> Stashed changes
     ClientWidth = 184
     Color = 16242363
     Font.CharSet = ANSI_CHARSET
@@ -9847,17 +9828,10 @@ object FrmMenu: TFrmMenu
     Left = 0
     Height = 40
     Top = 0
-<<<<<<< Updated upstream
     Width = 1366
     Align = alTop
     ClientHeight = 40
     ClientWidth = 1366
-=======
-    Width = 1370
-    Align = alTop
-    ClientHeight = 40
-    ClientWidth = 1370
->>>>>>> Stashed changes
     Color = 13238272
     ParentColor = False
     TabOrder = 1
@@ -10744,11 +10718,7 @@ object FrmMenu: TFrmMenu
       Transparent = False
     end
     object Image2: TImage
-<<<<<<< Updated upstream
       Left = 1244
-=======
-      Left = 1248
->>>>>>> Stashed changes
       Height = 38
       Top = 1
       Width = 37
@@ -11806,11 +11776,7 @@ object FrmMenu: TFrmMenu
       }
     end
     object LblUsuario: TLabel
-<<<<<<< Updated upstream
       Left = 1281
-=======
-      Left = 1285
->>>>>>> Stashed changes
       Height = 38
       Top = 1
       Width = 84
@@ -11831,21 +11797,12 @@ object FrmMenu: TFrmMenu
   end
   object PnChama: TPanel
     Left = 184
-<<<<<<< Updated upstream
     Height = 728
     Top = 40
     Width = 1182
     Align = alClient
     ClientHeight = 728
     ClientWidth = 1182
-=======
-    Height = 710
-    Top = 40
-    Width = 1186
-    Align = alClient
-    ClientHeight = 710
-    ClientWidth = 1186
->>>>>>> Stashed changes
     Color = 16577259
     ParentColor = False
     TabOrder = 2
@@ -11853,15 +11810,9 @@ object FrmMenu: TFrmMenu
     OnClick = PnChamaClick
     object Image1: TImage
       Left = 1
-<<<<<<< Updated upstream
       Height = 726
       Top = 1
       Width = 1180
-=======
-      Height = 708
-      Top = 1
-      Width = 1184
->>>>>>> Stashed changes
       Align = alClient
       Center = True
       Picture.Data = {
