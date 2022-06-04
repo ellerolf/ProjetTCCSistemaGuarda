@@ -1,5 +1,6 @@
 object FrmCadCentroCusto: TFrmCadCentroCusto
   Left = -8
+<<<<<<< Updated upstream
   Height = 783
   Top = -8
   Width = 1234
@@ -7,12 +8,22 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
   Caption = 'FrmCadCentroCusto'
   ClientHeight = 783
   ClientWidth = 1234
+=======
+  Height = 742
+  Top = -8
+  Width = 1215
+  BorderStyle = bsNone
+  Caption = 'FrmCadCentroCusto'
+  ClientHeight = 720
+  ClientWidth = 1215
+>>>>>>> Stashed changes
   Color = 16577259
   OnResize = FormResize
   Position = poScreenCenter
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
+<<<<<<< Updated upstream
     Height = 783
     Top = 0
     Width = 1234
@@ -29,6 +40,42 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
       Caption = 'Panel2'
       ClientHeight = 680
       ClientWidth = 750
+=======
+    Height = 720
+    Top = 0
+    Width = 1215
+    Align = alClient
+    ClientHeight = 720
+    ClientWidth = 1215
+    TabOrder = 0
+    object Label7: TLabel
+      Left = 1
+      Height = 32
+      Top = 1
+      Width = 1213
+      Align = alTop
+      Alignment = taCenter
+      Caption = 'Cadastro/Consulta de Centro de Custos'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = 10420224
+      Font.Height = -24
+      Font.Name = 'Segoe UI'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      OnClick = Label7Click
+    end
+    object GroupBox1: TGroupBox
+      Left = 216
+      Height = 679
+      Top = 32
+      Width = 750
+      Anchors = [akTop, akLeft, akBottom]
+      ClientHeight = 659
+      ClientWidth = 746
+>>>>>>> Stashed changes
       TabOrder = 0
       object Label7: TLabel
         Left = 0

@@ -1,12 +1,12 @@
 object FrmEntrarUsuario: TFrmEntrarUsuario
-  Left = 246
-  Height = 600
-  Top = 133
-  Width = 870
+  Left = -8
+  Height = 638
+  Top = -8
+  Width = 886
   BorderIcons = [biSystemMenu]
   Caption = 'Acesso ao Sistema'
-  ClientHeight = 600
-  ClientWidth = 870
+  ClientHeight = 741
+  ClientWidth = 1124
   Color = 16311249
   WindowState = wsFullScreen
   object Panel1: TPanel

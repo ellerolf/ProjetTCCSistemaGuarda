@@ -1,5 +1,6 @@
 object FrmCadContasBancarias: TFrmCadContasBancarias
   Left = -8
+<<<<<<< Updated upstream
   Height = 783
   Top = -8
   Width = 1234
@@ -8,6 +9,16 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
   Caption = 'Cadastro de Contas Bancarias'
   ClientHeight = 783
   ClientWidth = 1234
+=======
+  Height = 704
+  Top = -8
+  Width = 1199
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsNone
+  Caption = 'Cadastro de Contas Bancarias'
+  ClientHeight = 674
+  ClientWidth = 1191
+>>>>>>> Stashed changes
   Color = 16577259
   Font.CharSet = ANSI_CHARSET
   Font.Height = -13
@@ -19,6 +30,7 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
+<<<<<<< Updated upstream
     Height = 783
     Top = 0
     Width = 1234
@@ -35,6 +47,41 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
       Caption = 'Panel2'
       ClientHeight = 584
       ClientWidth = 736
+=======
+    Height = 674
+    Top = 0
+    Width = 1191
+    Align = alClient
+    ClientHeight = 674
+    ClientWidth = 1191
+    TabOrder = 0
+    object Label7: TLabel
+      Left = 1
+      Height = 32
+      Top = 1
+      Width = 1189
+      Align = alTop
+      Alignment = taCenter
+      Caption = 'Cadastro de Contas Bancárias/Transferência'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = 10420224
+      Font.Height = -24
+      Font.Name = 'Segoe UI'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object GrpContaTrans: TGroupBox
+      Left = 216
+      Height = 633
+      Top = 32
+      Width = 750
+      Anchors = [akTop, akLeft, akBottom]
+      ClientHeight = 611
+      ClientWidth = 746
+>>>>>>> Stashed changes
       TabOrder = 0
       OnClick = Panel2Click
       object Label7: TLabel
@@ -218,7 +265,7 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
           Left = 326
           Height = 17
           Top = 104
-          Width = 198
+          Width = 197
           Caption = 'Codigo da conta para transferir:'
           ParentColor = False
         end
@@ -264,7 +311,7 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
           Left = 422
           Height = 17
           Top = 40
-          Width = 105
+          Width = 106
           Caption = 'Valor a Tranferir:'
           ParentColor = False
         end

@@ -1,5 +1,6 @@
 object FrmCadLancamento: TFrmCadLancamento
   Left = -8
+<<<<<<< Updated upstream
   Height = 783
   Top = -8
   Width = 1234
@@ -7,12 +8,22 @@ object FrmCadLancamento: TFrmCadLancamento
   Caption = 'Lançamento'
   ClientHeight = 783
   ClientWidth = 1234
+=======
+  Height = 704
+  Top = -8
+  Width = 1199
+  BorderStyle = bsNone
+  Caption = 'Lançamento'
+  ClientHeight = 674
+  ClientWidth = 1191
+>>>>>>> Stashed changes
   Color = 16577259
   OnResize = FormResize
   Position = poScreenCenter
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
+<<<<<<< Updated upstream
     Height = 783
     Top = 0
     Width = 1234
@@ -29,6 +40,41 @@ object FrmCadLancamento: TFrmCadLancamento
       Caption = 'Panel2'
       ClientHeight = 424
       ClientWidth = 750
+=======
+    Height = 674
+    Top = 0
+    Width = 1191
+    Align = alClient
+    ClientHeight = 674
+    ClientWidth = 1191
+    TabOrder = 0
+    object Label7: TLabel
+      Left = 1
+      Height = 32
+      Top = 1
+      Width = 1189
+      Align = alTop
+      Alignment = taCenter
+      Caption = 'Lançamento'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = 10420224
+      Font.Height = -24
+      Font.Name = 'Segoe UI'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object GroupBox1: TGroupBox
+      Left = 216
+      Height = 633
+      Top = 32
+      Width = 750
+      Anchors = [akTop, akLeft, akBottom]
+      ClientHeight = 613
+      ClientWidth = 746
+>>>>>>> Stashed changes
       TabOrder = 0
       object Label7: TLabel
         Left = 0
@@ -59,8 +105,13 @@ object FrmCadLancamento: TFrmCadLancamento
       object Label2: TLabel
         Left = 231
         Height = 15
+<<<<<<< Updated upstream
         Top = 72
         Width = 107
+=======
+        Top = 16
+        Width = 108
+>>>>>>> Stashed changes
         Caption = 'Tipo de documento:'
         ParentColor = False
       end
@@ -75,8 +126,13 @@ object FrmCadLancamento: TFrmCadLancamento
       object Label4: TLabel
         Left = 559
         Height = 15
+<<<<<<< Updated upstream
         Top = 72
         Width = 112
+=======
+        Top = 16
+        Width = 113
+>>>>>>> Stashed changes
         Caption = 'Valor do Documento:'
         ParentColor = False
       end
