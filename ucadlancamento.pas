@@ -25,7 +25,6 @@ type
     EdtData: TMaskEdit;
     EdtNDoc: TEdit;
     EdtValor: TEdit;
-    GroupBox1: TGroupBox;
     GrpTipo: TGroupBox;
     Label1: TLabel;
     Label2: TLabel;
@@ -38,8 +37,10 @@ type
     LblMensagem: TLabel;
     MemObservacao: TMemo;
     Panel1: TPanel;
+    Panel2: TPanel;
     procedure BtnSairClick(Sender: TObject);
     procedure EdtDataChange(Sender: TObject);
+    procedure FormResize(Sender: TObject);
   private
 
   public
@@ -60,10 +61,15 @@ begin
 
 end;
 
+procedure TFrmCadLancamento.FormResize(Sender: TObject);
+begin
+  Panel2.Left := (Panel1.ClientWidth div 2) - (Panel2.Width div 2);
+  Panel2.Top := (Panel1.ClientHeight div 2) - (Panel2.Height div 2);
+end;
+
 procedure TFrmCadLancamento.BtnSairClick(Sender: TObject);
 begin
   Close;
 end;
 
 end.
-

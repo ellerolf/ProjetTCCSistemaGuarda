@@ -1,37 +1,57 @@
 object FrmConsContas: TFrmConsContas
-  Left = 0
-  Height = 666
-  Top = 0
-  Width = 1183
+  Left = -8
+  Height = 783
+  Top = -8
+  Width = 1234
   BorderStyle = bsNone
   Caption = 'FrmConsContas'
-  ClientHeight = 666
-  ClientWidth = 1183
+  ClientHeight = 783
+  ClientWidth = 1234
   Color = 16577259
+  OnResize = FormResize
   Position = poScreenCenter
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 634
-    Top = 32
-    Width = 1183
+    Height = 783
+    Top = 0
+    Width = 1234
     Align = alClient
-    ClientHeight = 634
-    ClientWidth = 1183
+    ClientHeight = 783
+    ClientWidth = 1234
     TabOrder = 0
-    object GroupBox1: TGroupBox
-      Left = 216
-      Height = 625
+    object Panel2: TPanel
+      Left = 0
+      Height = 680
       Top = 0
-      Width = 750
-      Anchors = [akTop, akLeft, akBottom]
-      ClientHeight = 605
-      ClientWidth = 746
+      Width = 704
+      BevelOuter = bvNone
+      Caption = 'Panel2'
+      ClientHeight = 680
+      ClientWidth = 704
       TabOrder = 0
+      object Label7: TLabel
+        Left = 0
+        Height = 32
+        Top = 0
+        Width = 704
+        Align = alTop
+        Alignment = taCenter
+        Caption = 'Contas Bancarias'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = 10420224
+        Font.Height = -24
+        Font.Name = 'Segoe UI'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
       object Label1: TLabel
-        Left = 72
+        Left = 48
         Height = 17
-        Top = 24
+        Top = 56
         Width = 86
         Caption = 'Ativo/Inativo:'
         Font.CharSet = ANSI_CHARSET
@@ -43,9 +63,9 @@ object FrmConsContas: TFrmConsContas
         ParentFont = False
       end
       object Label2: TLabel
-        Left = 208
+        Left = 184
         Height = 17
-        Top = 24
+        Top = 56
         Width = 66
         Caption = 'Por Nome:'
         Font.CharSet = ANSI_CHARSET
@@ -57,25 +77,25 @@ object FrmConsContas: TFrmConsContas
         ParentFont = False
       end
       object CboStatus: TComboBox
-        Left = 72
+        Left = 48
         Height = 23
-        Top = 44
+        Top = 76
         Width = 128
         ItemHeight = 15
         TabOrder = 0
         Text = 'Selecione à opção'
       end
       object EdtConsulta: TEdit
-        Left = 208
+        Left = 184
         Height = 23
-        Top = 44
+        Top = 76
         Width = 464
         TabOrder = 1
       end
       object BtnAlterar: TSpeedButton
-        Left = 296
+        Left = 272
         Height = 30
-        Top = 552
+        Top = 584
         Width = 120
         Glyph.Data = {
           76380000424D76380000000000003600000028000000780000001E0000000100
@@ -533,9 +553,9 @@ object FrmConsContas: TFrmConsContas
         }
       end
       object BtnSalvar: TSpeedButton
-        Left = 424
+        Left = 400
         Height = 30
-        Top = 552
+        Top = 584
         Width = 120
         Glyph.Data = {
           76380000424D76380000000000003600000028000000780000001E0000000100
@@ -993,9 +1013,9 @@ object FrmConsContas: TFrmConsContas
         }
       end
       object BtnSair: TSpeedButton
-        Left = 552
+        Left = 528
         Height = 30
-        Top = 552
+        Top = 584
         Width = 120
         Glyph.Data = {
           76380000424D76380000000000003600000028000000780000001E0000000100
@@ -1454,32 +1474,14 @@ object FrmConsContas: TFrmConsContas
         OnClick = BtnSairClick
       end
       object DBGrid1: TDBGrid
-        Left = 72
+        Left = 48
         Height = 456
-        Top = 88
+        Top = 120
         Width = 600
         Color = clWindow
         Columns = <>
         TabOrder = 2
       end
     end
-  end
-  object Label7: TLabel
-    Left = 0
-    Height = 32
-    Top = 0
-    Width = 1183
-    Align = alTop
-    Alignment = taCenter
-    Caption = 'Contas Bancarias'
-    Font.CharSet = ANSI_CHARSET
-    Font.Color = 10420224
-    Font.Height = -24
-    Font.Name = 'Segoe UI'
-    Font.Pitch = fpVariable
-    Font.Quality = fqDraft
-    Font.Style = [fsBold]
-    ParentColor = False
-    ParentFont = False
   end
 end

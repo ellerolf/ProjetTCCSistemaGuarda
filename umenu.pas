@@ -49,6 +49,7 @@ type
     procedure BtnConsReceitaDespesasClick(Sender: TObject);
     procedure BtnRelaPrestaClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
+    procedure FormResize(Sender: TObject);
     procedure Image1Click(Sender: TObject);
     procedure LblUsuarioClick(Sender: TObject);
     procedure MenuItem11Click(Sender: TObject);
@@ -91,6 +92,11 @@ end;
 procedure TFrmMenu.BtnSairClick(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TFrmMenu.FormResize(Sender: TObject);
+begin
+
 end;
 
 procedure TFrmMenu.BtnCadUsuariosClick(Sender: TObject);

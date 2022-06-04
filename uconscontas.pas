@@ -19,12 +19,13 @@ type
     CboStatus: TComboBox;
     DBGrid1: TDBGrid;
     EdtConsulta: TEdit;
-    GroupBox1: TGroupBox;
     Label1: TLabel;
     Label2: TLabel;
     Label7: TLabel;
     Panel1: TPanel;
+    Panel2: TPanel;
     procedure BtnSairClick(Sender: TObject);
+    procedure FormResize(Sender: TObject);
   private
 
   public
@@ -43,6 +44,12 @@ implementation
 procedure TFrmConsContas.BtnSairClick(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TFrmConsContas.FormResize(Sender: TObject);
+begin
+  Panel2.Left := (Panel1.ClientWidth div 2) - (Panel2.Width div 2);
+  Panel2.Top := (Panel1.ClientHeight div 2) - (Panel2.Height div 2);
 end;
 
 end.

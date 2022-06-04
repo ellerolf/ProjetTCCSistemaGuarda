@@ -1,110 +1,112 @@
 object FrmCadLancamento: TFrmCadLancamento
-  Left = 0
-  Height = 666
-  Top = 0
-  Width = 1183
+  Left = -8
+  Height = 783
+  Top = -8
+  Width = 1234
   BorderStyle = bsNone
   Caption = 'Lançamento'
-  ClientHeight = 666
-  ClientWidth = 1183
+  ClientHeight = 783
+  ClientWidth = 1234
   Color = 16577259
+  OnResize = FormResize
   Position = poScreenCenter
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 666
+    Height = 783
     Top = 0
-    Width = 1183
+    Width = 1234
     Align = alClient
-    ClientHeight = 666
-    ClientWidth = 1183
+    ClientHeight = 783
+    ClientWidth = 1234
     TabOrder = 0
-    object Label7: TLabel
-      Left = 1
-      Height = 32
-      Top = 1
-      Width = 1181
-      Align = alTop
-      Alignment = taCenter
-      Caption = 'Lançamento'
-      Font.CharSet = ANSI_CHARSET
-      Font.Color = 10420224
-      Font.Height = -24
-      Font.Name = 'Segoe UI'
-      Font.Pitch = fpVariable
-      Font.Quality = fqDraft
-      Font.Style = [fsBold]
-      ParentColor = False
-      ParentFont = False
-    end
-    object GroupBox1: TGroupBox
-      Left = 216
-      Height = 625
-      Top = 32
+    object Panel2: TPanel
+      Left = 0
+      Height = 424
+      Top = 0
       Width = 750
-      Anchors = [akTop, akLeft, akBottom]
-      ClientHeight = 605
-      ClientWidth = 746
+      BevelOuter = bvNone
+      Caption = 'Panel2'
+      ClientHeight = 424
+      ClientWidth = 750
       TabOrder = 0
+      object Label7: TLabel
+        Left = 0
+        Height = 32
+        Top = 0
+        Width = 750
+        Align = alTop
+        Alignment = taCenter
+        Caption = 'Lançamento'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = 10420224
+        Font.Height = -24
+        Font.Name = 'Segoe UI'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
       object Label1: TLabel
-        Left = 64
+        Left = 63
         Height = 15
-        Top = 16
+        Top = 72
         Width = 109
         Caption = 'Data de lançamento:'
         ParentColor = False
       end
       object Label2: TLabel
-        Left = 232
+        Left = 231
         Height = 15
-        Top = 16
+        Top = 72
         Width = 107
         Caption = 'Tipo de documento:'
         ParentColor = False
       end
       object Label3: TLabel
-        Left = 408
+        Left = 407
         Height = 15
-        Top = 16
+        Top = 72
         Width = 99
         Caption = 'Nº de Documento:'
         ParentColor = False
       end
       object Label4: TLabel
-        Left = 560
+        Left = 559
         Height = 15
-        Top = 16
+        Top = 72
         Width = 112
         Caption = 'Valor do Documento:'
         ParentColor = False
       end
       object EdtValor: TEdit
-        Left = 560
+        Left = 559
         Height = 23
-        Top = 40
+        Top = 95
         Width = 120
         TabOrder = 0
       end
       object EdtNDoc: TEdit
-        Left = 408
+        Left = 407
         Height = 23
-        Top = 40
+        Top = 95
         Width = 120
         TabOrder = 1
       end
       object CboTipoDoc: TComboBox
-        Left = 232
+        Left = 231
         Height = 23
-        Top = 40
+        Top = 95
         Width = 144
         ItemHeight = 15
         TabOrder = 2
         Text = 'Selecione uma opção'
       end
       object EdtData: TMaskEdit
-        Left = 64
+        Left = 63
         Height = 23
-        Top = 40
+        Top = 95
         Width = 136
         MaxLength = 10
         TabOrder = 3
@@ -114,33 +116,33 @@ object FrmCadLancamento: TFrmCadLancamento
         SpaceChar = '_'
       end
       object Label5: TLabel
-        Left = 64
+        Left = 63
         Height = 15
-        Top = 80
+        Top = 134
         Width = 63
         Caption = 'Fornecedor:'
         ParentColor = False
       end
       object Label6: TLabel
-        Left = 288
+        Left = 287
         Height = 15
-        Top = 78
+        Top = 132
         Width = 89
         Caption = 'Centro de Custo:'
         ParentColor = False
       end
       object GrpTipo: TGroupBox
-        Left = 536
-        Height = 49
-        Top = 80
+        Left = 535
+        Height = 48
+        Top = 134
         Width = 144
         Caption = 'Tipo:'
-        ClientHeight = 29
+        ClientHeight = 28
         ClientWidth = 140
         TabOrder = 4
         object BtnReceita: TRadioButton
           Left = 0
-          Height = 29
+          Height = 28
           Top = 0
           Width = 58
           Align = alLeft
@@ -149,7 +151,7 @@ object FrmCadLancamento: TFrmCadLancamento
         end
         object BtnDespesa: TRadioButton
           Left = 77
-          Height = 29
+          Height = 28
           Top = 0
           Width = 63
           Align = alRight
@@ -158,16 +160,16 @@ object FrmCadLancamento: TFrmCadLancamento
         end
       end
       object EdtConsCentro: TEdit
-        Left = 288
+        Left = 287
         Height = 23
-        Top = 104
+        Top = 158
         Width = 145
         TabOrder = 5
       end
       object BtnConsCentro: TSpeedButton
-        Left = 440
-        Height = 23
-        Top = 104
+        Left = 439
+        Height = 22
+        Top = 158
         Width = 45
         Glyph.Data = {
           62100000424D621000000000000036000000280000002D000000170000000100
@@ -305,31 +307,31 @@ object FrmCadLancamento: TFrmCadLancamento
         }
       end
       object EdtConsFornecedor: TEdit
-        Left = 64
+        Left = 63
         Height = 23
-        Top = 104
+        Top = 158
         Width = 145
         TabOrder = 6
       end
       object Label9: TLabel
-        Left = 64
+        Left = 63
         Height = 15
-        Top = 152
+        Top = 205
         Width = 65
         Caption = 'Observação:'
         ParentColor = False
       end
       object MemObservacao: TMemo
-        Left = 64
-        Height = 104
-        Top = 176
+        Left = 63
+        Height = 101
+        Top = 228
         Width = 616
         TabOrder = 7
       end
       object LblMensagem: TLabel
-        Left = 64
+        Left = 63
         Height = 15
-        Top = 288
+        Top = 337
         Width = 118
         Caption = '*Campos Obrigatorios'
         Font.Color = clRed
@@ -337,9 +339,9 @@ object FrmCadLancamento: TFrmCadLancamento
         ParentFont = False
       end
       object BtnSalvar: TSpeedButton
-        Left = 432
-        Height = 30
-        Top = 536
+        Left = 431
+        Height = 29
+        Top = 360
         Width = 120
         Glyph.Data = {
           76380000424D76380000000000003600000028000000780000001E0000000100
@@ -797,9 +799,9 @@ object FrmCadLancamento: TFrmCadLancamento
         }
       end
       object BtnConsCentro1: TSpeedButton
-        Left = 216
-        Height = 23
-        Top = 104
+        Left = 215
+        Height = 22
+        Top = 158
         Width = 45
         Glyph.Data = {
           62100000424D621000000000000036000000280000002D000000170000000100
@@ -937,9 +939,9 @@ object FrmCadLancamento: TFrmCadLancamento
         }
       end
       object BtnSair: TSpeedButton
-        Left = 560
-        Height = 30
-        Top = 536
+        Left = 559
+        Height = 29
+        Top = 360
         Width = 120
         Glyph.Data = {
           76380000424D76380000000000003600000028000000780000001E0000000100

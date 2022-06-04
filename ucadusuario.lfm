@@ -1,57 +1,60 @@
 object FrmCadUsuario: TFrmCadUsuario
-  Left = 0
-  Height = 666
-  Top = 0
-  Width = 1186
+  Left = -8
+  Height = 783
+  Top = -8
+  Width = 1234
   BorderIcons = [biSystemMenu]
   BorderStyle = bsNone
   Caption = 'Cadastro Usuario'
-  ClientHeight = 666
-  ClientWidth = 1186
+  ClientHeight = 749
+  ClientWidth = 1234
   Color = 16577259
+  OnResize = FormResize
   Position = poScreenCenter
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 666
+    Height = 749
     Top = 0
-    Width = 1186
+    Width = 1234
     Align = alClient
-    ClientHeight = 666
-    ClientWidth = 1186
+    ClientHeight = 749
+    ClientWidth = 1234
     TabOrder = 0
-    object Label1: TLabel
-      Left = 1
-      Height = 32
-      Top = 1
-      Width = 1184
-      Align = alTop
-      Alignment = taCenter
-      Caption = 'Cadastro/Consulta de Usuários'
-      Font.CharSet = ANSI_CHARSET
-      Font.Color = 10420224
-      Font.Height = -24
-      Font.Name = 'Segoe UI'
-      Font.Pitch = fpVariable
-      Font.Quality = fqDraft
-      Font.Style = [fsBold]
-      ParentColor = False
-      ParentFont = False
-      OnClick = Label1Click
-    end
-    object GroupBox1: TGroupBox
-      Left = 216
-      Height = 625
-      Top = 32
+    object Panel2: TPanel
+      Left = 0
+      Height = 506
+      Top = 0
       Width = 750
-      Anchors = [akTop, akLeft, akBottom]
-      ClientHeight = 605
-      ClientWidth = 746
+      BevelOuter = bvNone
+      Caption = 'Panel2'
+      ClientHeight = 506
+      ClientWidth = 750
       TabOrder = 0
+      OnClick = Panel2Click
+      object Label1: TLabel
+        Left = 0
+        Height = 32
+        Top = 0
+        Width = 750
+        Align = alTop
+        Alignment = taCenter
+        Caption = 'Cadastro/Consulta de Usuários'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = 10420224
+        Font.Height = -24
+        Font.Name = 'Segoe UI'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+        OnClick = Label1Click
+      end
       object Label3: TLabel
         Left = 72
         Height = 17
-        Top = 24
+        Top = 41
         Width = 41
         Caption = 'Nome:'
         Font.CharSet = ANSI_CHARSET
@@ -67,7 +70,7 @@ object FrmCadUsuario: TFrmCadUsuario
       object Label4: TLabel
         Left = 488
         Height = 17
-        Top = 24
+        Top = 41
         Width = 107
         Caption = 'Nome de Usuário'
         Font.CharSet = ANSI_CHARSET
@@ -83,28 +86,28 @@ object FrmCadUsuario: TFrmCadUsuario
       object EdtNome: TEdit
         Left = 72
         Height = 23
-        Top = 48
+        Top = 65
         Width = 400
         TabOrder = 0
       end
       object EdtNomeUsuario: TEdit
         Left = 480
         Height = 23
-        Top = 48
+        Top = 65
         Width = 192
         TabOrder = 1
       end
       object EdtSenha: TEdit
         Left = 72
         Height = 23
-        Top = 112
+        Top = 129
         Width = 192
         TabOrder = 2
       end
       object Label5: TLabel
         Left = 72
         Height = 17
-        Top = 88
+        Top = 105
         Width = 41
         Caption = 'Senha:'
         Font.CharSet = ANSI_CHARSET
@@ -120,7 +123,7 @@ object FrmCadUsuario: TFrmCadUsuario
       object Label6: TLabel
         Left = 280
         Height = 17
-        Top = 88
+        Top = 105
         Width = 102
         Caption = 'Confirmar senha'
         Font.CharSet = ANSI_CHARSET
@@ -136,14 +139,14 @@ object FrmCadUsuario: TFrmCadUsuario
       object EdtConfSenha: TEdit
         Left = 280
         Height = 23
-        Top = 112
+        Top = 129
         Width = 192
         TabOrder = 3
       end
       object ChkMostrar: TCheckBox
         Left = 72
         Height = 19
-        Top = 136
+        Top = 153
         Width = 96
         Caption = 'Mostrar Senha'
         TabOrder = 4
@@ -151,7 +154,7 @@ object FrmCadUsuario: TFrmCadUsuario
       object GrpNivel: TGroupBox
         Left = 480
         Height = 49
-        Top = 88
+        Top = 105
         Width = 193
         Caption = 'Nivel de acesso:'
         ClientHeight = 29
@@ -179,7 +182,7 @@ object FrmCadUsuario: TFrmCadUsuario
       object Label7: TLabel
         Left = 74
         Height = 17
-        Top = 208
+        Top = 225
         Width = 140
         Caption = 'Consultas de Usuarios:'
         Font.CharSet = ANSI_CHARSET
@@ -195,14 +198,14 @@ object FrmCadUsuario: TFrmCadUsuario
       object EdtConsulta: TEdit
         Left = 232
         Height = 23
-        Top = 264
+        Top = 281
         Width = 386
         TabOrder = 6
       end
       object BtnConsulta: TSpeedButton
         Left = 627
         Height = 23
-        Top = 264
+        Top = 281
         Width = 45
         Glyph.Data = {
           62100000424D621000000000000036000000280000002D000000170000000100
@@ -342,7 +345,7 @@ object FrmCadUsuario: TFrmCadUsuario
       object LblMensagem: TLabel
         Left = 72
         Height = 15
-        Top = 168
+        Top = 185
         Width = 118
         Caption = '*Campos Obrigatorios'
         Font.Color = clRed
@@ -352,7 +355,7 @@ object FrmCadUsuario: TFrmCadUsuario
       object DBGrid1: TDBGrid
         Left = 72
         Height = 120
-        Top = 296
+        Top = 313
         Width = 601
         Color = clWindow
         Columns = <>
@@ -361,7 +364,7 @@ object FrmCadUsuario: TFrmCadUsuario
       object CboStatus: TComboBox
         Left = 72
         Height = 23
-        Top = 264
+        Top = 281
         Width = 136
         ItemHeight = 15
         Items.Strings = (
@@ -375,7 +378,7 @@ object FrmCadUsuario: TFrmCadUsuario
       object Label2: TLabel
         Left = 232
         Height = 17
-        Top = 240
+        Top = 257
         Width = 66
         Caption = 'Por Nome:'
         Font.CharSet = ANSI_CHARSET
@@ -389,7 +392,7 @@ object FrmCadUsuario: TFrmCadUsuario
       object Label8: TLabel
         Left = 72
         Height = 17
-        Top = 240
+        Top = 257
         Width = 86
         Caption = 'Ativo/Inativo:'
         Font.CharSet = ANSI_CHARSET
@@ -403,7 +406,7 @@ object FrmCadUsuario: TFrmCadUsuario
       object BtnAlterar: TSpeedButton
         Left = 296
         Height = 30
-        Top = 432
+        Top = 449
         Width = 120
         Glyph.Data = {
           76380000424D76380000000000003600000028000000780000001E0000000100
@@ -863,7 +866,7 @@ object FrmCadUsuario: TFrmCadUsuario
       object BtnSalvar: TSpeedButton
         Left = 424
         Height = 30
-        Top = 432
+        Top = 449
         Width = 120
         Glyph.Data = {
           76380000424D76380000000000003600000028000000780000001E0000000100
@@ -1324,7 +1327,7 @@ object FrmCadUsuario: TFrmCadUsuario
       object BtnSair: TSpeedButton
         Left = 552
         Height = 30
-        Top = 432
+        Top = 449
         Width = 120
         Glyph.Data = {
           76380000424D76380000000000003600000028000000780000001E0000000100

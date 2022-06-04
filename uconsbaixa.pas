@@ -31,7 +31,6 @@ type
     EdtValorDesconto: TEdit;
     EdtConsulta: TEdit;
     EdtDataBaixa: TMaskEdit;
-    GroupBox1: TGroupBox;
     GrpSituacao: TGroupBox;
     Label1: TLabel;
     Label11: TLabel;
@@ -50,8 +49,10 @@ type
     EdtDataFim: TMaskEdit;
     Label9: TLabel;
     Panel1: TPanel;
+    Panel2: TPanel;
     procedure BtnSairClick(Sender: TObject);
     procedure EdtDataInicioChange(Sender: TObject);
+    procedure FormResize(Sender: TObject);
   private
 
   public
@@ -70,6 +71,12 @@ implementation
 procedure TFrmConsBaixa.EdtDataInicioChange(Sender: TObject);
 begin
 
+end;
+
+procedure TFrmConsBaixa.FormResize(Sender: TObject);
+begin
+  Panel2.Left := (Panel1.ClientWidth div 2) - (Panel2.Width div 2);
+  Panel2.Top := (Panel1.ClientHeight div 2) - (Panel2.Height div 2);
 end;
 
 procedure TFrmConsBaixa.BtnSairClick(Sender: TObject);

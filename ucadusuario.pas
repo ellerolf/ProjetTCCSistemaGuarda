@@ -26,7 +26,6 @@ type
     EdtNome: TEdit;
     EdtNomeUsuario: TEdit;
     EdtSenha: TEdit;
-    GroupBox1: TGroupBox;
     GrpNivel: TGroupBox;
     Label1: TLabel;
     Label2: TLabel;
@@ -39,11 +38,14 @@ type
     LblMensagem: TLabel;
     Panel1: TPanel;
     BtnConsulta: TSpeedButton;
+    Panel2: TPanel;
     procedure Button1Click(Sender: TObject);
+    procedure FormResize(Sender: TObject);
     procedure GrpNivel1Click(Sender: TObject);
     procedure Label1Click(Sender: TObject);
     procedure BtnSalvarClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
+    procedure Panel2Click(Sender: TObject);
   private
 
   public
@@ -71,7 +73,13 @@ end;
 
 procedure TFrmCadUsuario.Button1Click(Sender: TObject);
 begin
-  close;
+  Close;
+end;
+
+procedure TFrmCadUsuario.FormResize(Sender: TObject);
+begin
+  Panel2.Left := (Panel1.ClientWidth div 2) - (Panel2.Width div 2);
+  Panel2.Top := (Panel1.ClientHeight div 2) - (Panel2.Height div 2);
 end;
 
 procedure TFrmCadUsuario.BtnSalvarClick(Sender: TObject);
@@ -84,5 +92,9 @@ begin
   Close;
 end;
 
-end.
+procedure TFrmCadUsuario.Panel2Click(Sender: TObject);
+begin
 
+end;
+
+end.

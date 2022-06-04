@@ -26,7 +26,6 @@ type
     EdtVlrTras: TEdit;
     GrpCadastro: TGroupBox;
     GrpTrasfe: TGroupBox;
-    GrpContaTrans: TGroupBox;
     Label1: TLabel;
     Label10: TLabel;
     Label11: TLabel;
@@ -43,9 +42,12 @@ type
     LstCodConta1: TListView;
     MaskEdit1: TMaskEdit;
     Panel1: TPanel;
+    Panel2: TPanel;
     procedure BtnSairClick(Sender: TObject);
+    procedure FormResize(Sender: TObject);
     procedure Label5Click(Sender: TObject);
     procedure MaskEdit1Change(Sender: TObject);
+    procedure Panel2Click(Sender: TObject);
   private
 
   public
@@ -71,7 +73,18 @@ begin
   Close;
 end;
 
+procedure TFrmCadContasBancarias.FormResize(Sender: TObject);
+begin
+  Panel2.Left := (Panel1.ClientWidth div 2) - (Panel2.Width div 2);
+  Panel2.Top := (Panel1.ClientHeight div 2) - (Panel2.Height div 2);
+end;
+
 procedure TFrmCadContasBancarias.MaskEdit1Change(Sender: TObject);
+begin
+
+end;
+
+procedure TFrmCadContasBancarias.Panel2Click(Sender: TObject);
 begin
 
 end;

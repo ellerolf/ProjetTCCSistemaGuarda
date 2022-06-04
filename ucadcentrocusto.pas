@@ -21,7 +21,6 @@ type
     DBGrid1: TDBGrid;
     EdtNome: TEdit;
     EdtNome1: TEdit;
-    GroupBox1: TGroupBox;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
@@ -31,7 +30,9 @@ type
     Label7: TLabel;
     LblMensagem: TLabel;
     Panel1: TPanel;
+    Panel2: TPanel;
     procedure BtnSairClick(Sender: TObject);
+    procedure FormResize(Sender: TObject);
     procedure Label4Click(Sender: TObject);
     procedure Label7Click(Sender: TObject);
   private
@@ -54,6 +55,12 @@ begin
   Close;
 end;
 
+procedure TFrmCadCentroCusto.FormResize(Sender: TObject);
+begin
+  Panel2.Left := (Panel1.ClientWidth div 2) - (Panel2.Width div 2);
+  Panel2.Top := (Panel1.ClientHeight div 2) - (Panel2.Height div 2);
+end;
+
 procedure TFrmCadCentroCusto.Label4Click(Sender: TObject);
 begin
 
@@ -65,4 +72,3 @@ begin
 end;
 
 end.
-

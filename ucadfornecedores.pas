@@ -37,7 +37,6 @@ type
     EdtNome: TEdit;
     EdtNumero: TEdit;
     EdtTel: TEdit;
-    GroupBox1: TGroupBox;
     GrpCnpjCpf: TGroupBox;
     GrpStatus: TGroupBox;
     Label1: TLabel;
@@ -63,7 +62,9 @@ type
     LblMensagem: TLabel;
     MemObs: TMemo;
     Panel1: TPanel;
+    Panel2: TPanel;
     procedure BtnSairClick(Sender: TObject);
+    procedure FormResize(Sender: TObject);
     procedure Label7Click(Sender: TObject);
   private
 
@@ -88,6 +89,12 @@ end;
 procedure TFrmCadFornecedor.BtnSairClick(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TFrmCadFornecedor.FormResize(Sender: TObject);
+begin
+  Panel2.Left := (Panel1.ClientWidth div 2) - (Panel2.Width div 2);
+  Panel2.Top := (Panel1.ClientHeight div 2) - (Panel2.Height div 2);
 end;
 
 end.
