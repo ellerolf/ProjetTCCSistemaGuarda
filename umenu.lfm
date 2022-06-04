@@ -1,23 +1,23 @@
 object FrmMenu: TFrmMenu
-  Left = -8
-  Height = 788
-  Top = -8
-  Width = 1382
+  Left = 0
+  Height = 768
+  Top = 0
+  Width = 1366
   BorderIcons = []
   Caption = 'Menu'
-  ClientHeight = 788
-  ClientWidth = 1382
+  ClientHeight = 768
+  ClientWidth = 1366
   Color = 16510433
   OnResize = FormResize
   LCLVersion = '2.2.2.0'
   WindowState = wsMaximized
   object Panel1: TPanel
     Left = 0
-    Height = 709
+    Height = 728
     Top = 40
     Width = 184
     Align = alLeft
-    ClientHeight = 709
+    ClientHeight = 728
     ClientWidth = 184
     Color = 16242363
     Font.CharSet = ANSI_CHARSET
@@ -9828,10 +9828,10 @@ object FrmMenu: TFrmMenu
     Left = 0
     Height = 40
     Top = 0
-    Width = 1370
+    Width = 1366
     Align = alTop
     ClientHeight = 40
-    ClientWidth = 1370
+    ClientWidth = 1366
     Color = 13238272
     ParentColor = False
     TabOrder = 1
@@ -10718,7 +10718,7 @@ object FrmMenu: TFrmMenu
       Transparent = False
     end
     object Image2: TImage
-      Left = 1248
+      Left = 1244
       Height = 38
       Top = 1
       Width = 37
@@ -11776,7 +11776,7 @@ object FrmMenu: TFrmMenu
       }
     end
     object LblUsuario: TLabel
-      Left = 1285
+      Left = 1281
       Height = 38
       Top = 1
       Width = 84
@@ -11797,12 +11797,12 @@ object FrmMenu: TFrmMenu
   end
   object PnChama: TPanel
     Left = 184
-    Height = 709
+    Height = 728
     Top = 40
-    Width = 1186
+    Width = 1182
     Align = alClient
-    ClientHeight = 709
-    ClientWidth = 1186
+    ClientHeight = 728
+    ClientWidth = 1182
     Color = 16577259
     ParentColor = False
     TabOrder = 2
@@ -11810,9 +11810,9 @@ object FrmMenu: TFrmMenu
     OnClick = PnChamaClick
     object Image1: TImage
       Left = 1
-      Height = 707
+      Height = 726
       Top = 1
-      Width = 1184
+      Width = 1180
       Align = alClient
       Center = True
       Picture.Data = {

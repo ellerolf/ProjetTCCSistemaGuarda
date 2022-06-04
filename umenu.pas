@@ -179,7 +179,7 @@ end;
 
 procedure TFrmMenu.SpeedButton1Click(Sender: TObject);
 begin
-  Close;
+  Application.Terminate;
 end;
 
 
