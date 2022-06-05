@@ -41,6 +41,13 @@ type
     ZQConsForncedoresPESRAZAO_SOCIAL: TStringField;
     ZQConsForncedoresPESSTATUS: TSmallintField;
     ZQConsForncedoresPESTELEFONE: TStringField;
+    ZQConsBancariasCODIGOTIP: TLongintField;
+    ZQConsBancariasCONAGENCIA: TStringField;
+    ZQConsBancariasCONCODIGO: TLongintField;
+    ZQConsBancariasCONNOME: TStringField;
+    ZQConsBancariasCONNUMERO_CONTA: TStringField;
+    ZQConsBancariasCONSALDO_INICIAL: TFloatField;
+    ZQConsBancariasCONSTATUS: TSmallintField;
     ZQDelBancarias: TZQuery;
     ZQDelCentro: TZQuery;
     ZQDelForncedores: TZQuery;
@@ -66,6 +73,10 @@ type
     ZQAltBancarias: TZQuery;
     ZQDelUsuario: TZQuery;
     procedure DSConsForncedoresDataChange(Sender: TObject; Field: TField);
+    ZQTipoDaContaTIPCODIGO: TLongintField;
+    ZQTipoDaContaTIPNOME: TStringField;
+    procedure DataModuleCreate(Sender: TObject);
+    procedure DSConsBancariasDataChange(Sender: TObject; Field: TField);
   private
 
   public
@@ -82,6 +93,18 @@ implementation
 { TDM }
 
 procedure TDM.DSConsForncedoresDataChange(Sender: TObject; Field: TField);
+begin
+
+end;
+
+{ TDM }
+
+procedure TDM.DataModuleCreate(Sender: TObject);
+begin
+
+end;
+
+procedure TDM.DSConsBancariasDataChange(Sender: TObject; Field: TField);
 begin
 
 end;

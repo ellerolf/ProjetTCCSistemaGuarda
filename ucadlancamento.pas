@@ -15,8 +15,8 @@ type
   TFrmCadLancamento = class(TForm)
     BtnConsCentro: TSpeedButton;
     BtnConsCentro1: TSpeedButton;
-    BtnDespesa: TRadioButton;
-    BtnReceita: TRadioButton;
+    ChkDespesa: TRadioButton;
+    ChkReceita: TRadioButton;
     BtnSair: TSpeedButton;
     BtnSalvar: TSpeedButton;
     CboTipoDoc: TComboBox;
@@ -39,8 +39,11 @@ type
     Panel1: TPanel;
     Panel2: TPanel;
     procedure BtnSairClick(Sender: TObject);
+    procedure BtnSalvarClick(Sender: TObject);
+    procedure CboTipoDocChange(Sender: TObject);
     procedure EdtDataChange(Sender: TObject);
     procedure FormResize(Sender: TObject);
+    procedure Panel2Click(Sender: TObject);
   private
 
   public
@@ -56,6 +59,8 @@ implementation
 
 { TFrmCadLancamento }
 
+uses UModulo;
+
 procedure TFrmCadLancamento.EdtDataChange(Sender: TObject);
 begin
 
@@ -67,9 +72,29 @@ begin
   Panel2.Top := (Panel1.ClientHeight div 2) - (Panel2.Height div 2);
 end;
 
+procedure TFrmCadLancamento.Panel2Click(Sender: TObject);
+begin
+
+end;
+
 procedure TFrmCadLancamento.BtnSairClick(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TFrmCadLancamento.BtnSalvarClick(Sender: TObject);
+begin
+
+
+
+
+end;
+
+
+
+procedure TFrmCadLancamento.CboTipoDocChange(Sender: TObject);
+begin
+
 end;
 
 end.

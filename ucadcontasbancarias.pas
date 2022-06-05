@@ -6,15 +6,15 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, Buttons,
-  StdCtrls, MaskEdit, ComCtrls;
+  StdCtrls, MaskEdit, ComCtrls, UModulo;
 
 type
 
   { TFrmCadContasBancarias }
 
   TFrmCadContasBancarias = class(TForm)
-    BtnCadConta: TRadioButton;
-    BtnCadTrans: TRadioButton;
+    RdbCadConta: TRadioButton;
+    RdbCadTrans: TRadioButton;
     BtnSair: TSpeedButton;
     BtnSalvar: TSpeedButton;
     CboBanco: TComboBox;
@@ -44,6 +44,8 @@ type
     Panel1: TPanel;
     Panel2: TPanel;
     procedure BtnSairClick(Sender: TObject);
+    procedure BtnSalvarClick(Sender: TObject);
+    procedure CboTipoChange(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure Label5Click(Sender: TObject);
     procedure MaskEdit1Change(Sender: TObject);
@@ -63,6 +65,8 @@ implementation
 
 { TFrmCadContasBancarias }
 
+
+
 procedure TFrmCadContasBancarias.Label5Click(Sender: TObject);
 begin
 
@@ -71,6 +75,31 @@ end;
 procedure TFrmCadContasBancarias.BtnSairClick(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TFrmCadContasBancarias.BtnSalvarClick(Sender: TObject);
+begin
+  if (RdbCadConta.Checked=false) and (RdbCadTrans.Checked=false) then
+  begin
+       ShowMessage('Selecione alguma operação');
+  end;
+
+  if (RdbCadConta.Checked=true) then
+  begin
+    dm.ZQCadBancarias.Params.ParamByName('pCONNOME').Value:=CboBanco.Text;
+    dm.ZQCadBancarias.Params.ParamByName('pCODIGOTIP').Value:=CboTipo.ItemIndex;
+    dm.ZQCadBancarias.Params.ParamByName('pCONAGENCIA').Value:=EdtAgencia.Text;
+    dm.ZQCadBancarias.Params.ParamByName('pCONNUMERO_CONTA').Value:=EdtNConta.Text;
+    dm.ZQCadBancarias.Params.ParamByName('pCONSALDO_INICIAL').Value:=EdtSaldoInicial.Text;
+    Dm.ZQCadBancarias.ExecSQL;
+
+  end;
+
+end;
+
+procedure TFrmCadContasBancarias.CboTipoChange(Sender: TObject);
+begin
+
 end;
 
 procedure TFrmCadContasBancarias.FormResize(Sender: TObject);
