@@ -1,24 +1,24 @@
 object FrmConsFornecedores: TFrmConsFornecedores
   Left = -8
-  Height = 783
+  Height = 861
   Top = -8
-  Width = 1234
+  Width = 1266
   BorderStyle = bsNone
   Caption = 'FrmConsFornecedores'
-  ClientHeight = 783
-  ClientWidth = 1234
+  ClientHeight = 838
+  ClientWidth = 1266
   Color = 16577259
   OnResize = FormResize
   Position = poScreenCenter
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 783
+    Height = 838
     Top = 0
-    Width = 1234
+    Width = 1266
     Align = alClient
-    ClientHeight = 783
-    ClientWidth = 1234
+    ClientHeight = 838
+    ClientWidth = 1266
     TabOrder = 0
     object Panel2: TPanel
       Left = 0
@@ -51,10 +51,99 @@ object FrmConsFornecedores: TFrmConsFornecedores
       object DBGrid1: TDBGrid
         Left = 40
         Height = 407
-        Top = 113
+        Top = 104
         Width = 656
         Color = clWindow
-        Columns = <>
+        Columns = <        
+          item
+            Title.Caption = 'PESCODIGO'
+            FieldName = 'PESCODIGO'
+          end        
+          item
+            Title.Caption = 'PESNOME'
+            FieldName = 'PESNOME'
+          end        
+          item
+            Title.Caption = 'CODIGOTIP'
+            FieldName = 'CODIGOTIP'
+          end        
+          item
+            Title.Caption = 'PESCPF'
+            FieldName = 'PESCPF'
+          end        
+          item
+            Title.Caption = 'PESDATA_NASCIMENTO'
+            FieldName = 'PESDATA_NASCIMENTO'
+          end        
+          item
+            Title.Caption = 'PESCNPJ'
+            FieldName = 'PESCNPJ'
+          end        
+          item
+            Title.Caption = 'PESRAZAO_SOCIAL'
+            FieldName = 'PESRAZAO_SOCIAL'
+          end        
+          item
+            Title.Caption = 'PESNOME_FANTASIA'
+            FieldName = 'PESNOME_FANTASIA'
+          end        
+          item
+            Title.Caption = 'PESINSCRICAO_ESTADUAL'
+            FieldName = 'PESINSCRICAO_ESTADUAL'
+          end        
+          item
+            Title.Caption = 'PESINSCRICACAO_MUNICIPAL'
+            FieldName = 'PESINSCRICACAO_MUNICIPAL'
+          end        
+          item
+            Title.Caption = 'PESCEP'
+            FieldName = 'PESCEP'
+          end        
+          item
+            Title.Caption = 'PESENDERECO'
+            FieldName = 'PESENDERECO'
+          end        
+          item
+            Title.Caption = 'PESNUMERO'
+            FieldName = 'PESNUMERO'
+          end        
+          item
+            Title.Caption = 'PESCOMPLEMENTO'
+            FieldName = 'PESCOMPLEMENTO'
+          end        
+          item
+            Title.Caption = 'PESESTADO'
+            FieldName = 'PESESTADO'
+          end        
+          item
+            Title.Caption = 'PESCIDADE'
+            FieldName = 'PESCIDADE'
+          end        
+          item
+            Title.Caption = 'PESBAIRRO'
+            FieldName = 'PESBAIRRO'
+          end        
+          item
+            Title.Caption = 'PESEMAIL'
+            FieldName = 'PESEMAIL'
+          end        
+          item
+            Title.Caption = 'PESTELEFONE'
+            FieldName = 'PESTELEFONE'
+          end        
+          item
+            Title.Caption = 'PESCELULAR'
+            FieldName = 'PESCELULAR'
+          end        
+          item
+            Title.Caption = 'PESOBSERVACAO'
+            FieldName = 'PESOBSERVACAO'
+          end        
+          item
+            Title.Caption = 'PESSTATUS'
+            FieldName = 'PESSTATUS'
+          end>
+        DataSource = DM.DSConsForncedores
         TabOrder = 0
       end
       object EdtConsulta: TEdit

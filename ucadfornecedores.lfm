@@ -1,24 +1,25 @@
 object FrmCadFornecedor: TFrmCadFornecedor
   Left = -8
-  Height = 822
+  Height = 900
   Top = -8
-  Width = 1250
+  Width = 1282
   BorderStyle = bsNone
   Caption = 'Cadastro Fornecedores'
-  ClientHeight = 799
-  ClientWidth = 1250
+  ClientHeight = 877
+  ClientWidth = 1282
   Color = 16577259
+  OnCreate = FormCreate
   OnResize = FormResize
   Position = poDesktopCenter
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 799
+    Height = 877
     Top = 0
-    Width = 1250
+    Width = 1282
     Align = alClient
-    ClientHeight = 799
-    ClientWidth = 1250
+    ClientHeight = 877
+    ClientWidth = 1282
     TabOrder = 0
     object Panel2: TPanel
       Left = 0
@@ -26,7 +27,6 @@ object FrmCadFornecedor: TFrmCadFornecedor
       Top = 0
       Width = 750
       BevelOuter = bvNone
-      Caption = 'Panel2'
       ClientHeight = 680
       ClientWidth = 750
       TabOrder = 0
@@ -64,6 +64,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Font.Style = [fsBold]
         ParentFont = False
         TabOrder = 0
+        OnClick = GrpCnpjCpfClick
         object BtnCnpj: TRadioButton
           Left = 0
           Height = 19
@@ -74,6 +75,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
           Font.CharSet = ANSI_CHARSET
           Font.Pitch = fpVariable
           Font.Quality = fqDraft
+          OnChange = BtnCnpjChange
           ParentFont = False
           TabOrder = 0
         end
@@ -87,11 +89,12 @@ object FrmCadFornecedor: TFrmCadFornecedor
           Font.CharSet = ANSI_CHARSET
           Font.Pitch = fpVariable
           Font.Quality = fqDraft
+          OnChange = BtnCpfChange
           ParentFont = False
           TabOrder = 1
         end
       end
-      object Label4: TLabel
+      object LblCpfCnpj: TLabel
         Left = 40
         Height = 17
         Top = 112
@@ -134,7 +137,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         ParentFont = False
       end
       object CboTipo: TComboBox
-        Left = 552
+        Left = 553
         Height = 23
         Top = 136
         Width = 152
@@ -155,15 +158,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Width = 170
         TabOrder = 2
       end
-      object EdtCpfCnpj: TEdit
-        Left = 40
-        Height = 23
-        Top = 136
-        Width = 312
-        NumbersOnly = True
-        TabOrder = 3
-      end
-      object Label1: TLabel
+      object LblNomeRazao: TLabel
         Left = 40
         Height = 17
         Top = 168
@@ -182,14 +177,14 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Height = 23
         Top = 192
         Width = 312
-        TabOrder = 4
+        TabOrder = 3
       end
       object EdtFantasia: TEdit
         Left = 368
         Height = 23
         Top = 192
         Width = 337
-        TabOrder = 5
+        TabOrder = 4
       end
       object Label3: TLabel
         Left = 368
@@ -225,7 +220,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Top = 248
         Width = 265
         NumbersOnly = True
-        TabOrder = 6
+        TabOrder = 5
       end
       object Label6: TLabel
         Left = 312
@@ -247,7 +242,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Top = 247
         Width = 265
         NumbersOnly = True
-        TabOrder = 7
+        TabOrder = 6
       end
       object EdtDTNasc: TMaskEdit
         Left = 584
@@ -255,7 +250,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Top = 247
         Width = 120
         MaxLength = 10
-        TabOrder = 8
+        TabOrder = 7
         EditMask = '99/99/9999;1;_'
         Text = '  /  /    '
         SpaceChar = '_'
@@ -279,7 +274,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Height = 23
         Top = 304
         Width = 80
-        TabOrder = 9
+        TabOrder = 8
       end
       object Label11: TLabel
         Left = 41
@@ -314,14 +309,14 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Height = 23
         Top = 304
         Width = 104
-        TabOrder = 10
+        TabOrder = 9
       end
       object EdtEndereco: TEdit
         Left = 241
         Height = 23
         Top = 304
         Width = 400
-        TabOrder = 11
+        TabOrder = 10
       end
       object Label9: TLabel
         Left = 241
@@ -343,7 +338,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Top = 304
         Width = 56
         NumbersOnly = True
-        TabOrder = 12
+        TabOrder = 11
       end
       object Label10: TLabel
         Left = 649
@@ -364,7 +359,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Height = 23
         Top = 360
         Width = 112
-        TabOrder = 13
+        TabOrder = 12
       end
       object Label12: TLabel
         Left = 41
@@ -385,7 +380,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Height = 23
         Top = 360
         Width = 128
-        TabOrder = 14
+        TabOrder = 13
       end
       object Label15: TLabel
         Left = 169
@@ -437,7 +432,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
           'SP'
           'TO'
         )
-        TabOrder = 15
+        TabOrder = 14
         Text = 'UF'
       end
       object Label13: TLabel
@@ -459,7 +454,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Height = 23
         Top = 360
         Width = 328
-        TabOrder = 16
+        TabOrder = 15
       end
       object Label16: TLabel
         Left = 377
@@ -480,7 +475,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Height = 23
         Top = 416
         Width = 120
-        TabOrder = 17
+        TabOrder = 16
       end
       object Label19: TLabel
         Left = 177
@@ -501,7 +496,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Height = 23
         Top = 416
         Width = 120
-        TabOrder = 18
+        TabOrder = 17
       end
       object Label18: TLabel
         Left = 41
@@ -539,7 +534,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Lines.Strings = (
           ''
         )
-        TabOrder = 19
+        TabOrder = 18
       end
       object LblMensagem: TLabel
         Left = 41
@@ -552,7 +547,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         ParentFont = False
       end
       object BtnSalvar: TSpeedButton
-        Left = 458
+        Left = 457
         Height = 30
         Top = 584
         Width = 120
@@ -1010,6 +1005,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
           00FFC10000FFC10000FFC10000FFC10000FFC10000FFC10000FFC10000FFC100
           00FFC10000FFC10000FFC10000FFCD3030FFECAFAFFFFFFFFFFF
         }
+        OnClick = BtnSalvarClick
       end
       object BtnSair: TSpeedButton
         Left = 585
@@ -1486,7 +1482,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Font.Quality = fqDraft
         Font.Style = [fsBold]
         ParentFont = False
-        TabOrder = 20
+        TabOrder = 19
         object BtnAtivo: TRadioButton
           Left = 0
           Height = 19
@@ -1497,6 +1493,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
           Font.CharSet = ANSI_CHARSET
           Font.Pitch = fpVariable
           Font.Quality = fqDraft
+          OnChange = BtnAtivoChange
           ParentFont = False
           TabOrder = 0
         end
@@ -1510,9 +1507,19 @@ object FrmCadFornecedor: TFrmCadFornecedor
           Font.CharSet = ANSI_CHARSET
           Font.Pitch = fpVariable
           Font.Quality = fqDraft
+          OnChange = BtnInativoChange
           ParentFont = False
           TabOrder = 1
         end
+      end
+      object EdtCpfCnpj: TMaskEdit
+        Left = 40
+        Height = 23
+        Top = 136
+        Width = 312
+        MaxLength = 0
+        TabOrder = 20
+        SpaceChar = '_'
       end
     end
   end

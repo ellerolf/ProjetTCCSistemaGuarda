@@ -26,9 +26,228 @@ object DM: TDM
     Top = 96
   end
   object ZQCadFornecedores: TZQuery
-    Params = <>
+    SQL.Strings = (
+      'Insert into pessoa '
+      '(pesnome, codigotip, pescpf, pesdata_nascimento, pescnpj, pesrazao_social, pesnome_fantasia, pesinscricao_estadual, pesinscricacao_municipal,  pescep, pesendereco, pesnumero, '
+      'pescomplemento, pesestado, pescidade, pesbairro, pesemail, pestelefone, pescelular, pesobservacao, pesstatus)'
+      'Values'
+      '(:ppesnome, :pcodigotip, :ppescpf, :ppesdata_nascimento, :ppescnpj, :ppesrazao_social, :ppesnome_fantasia, :ppesinscricao_estadual, :ppesinscricacao_municipal, :ppescep, '
+      ':ppesendereco, :ppesnumero, :ppescomplemento, :ppesestado, :ppescidade, :ppesbairro, :ppesemail, :ppestelefone, :ppescelular, :ppesobservacao, :ppesstatus)'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ppesnome'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pcodigotip'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppescpf'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesdata_nascimento'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppescnpj'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesrazao_social'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesnome_fantasia'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesinscricao_estadual'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesinscricacao_municipal'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppescep'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesendereco'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesnumero'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppescomplemento'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesestado'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppescidade'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesbairro'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesemail'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppestelefone'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppescelular'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesobservacao'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesstatus'
+        ParamType = ptUnknown
+      end>
     Left = 136
     Top = 96
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'ppesnome'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pcodigotip'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppescpf'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesdata_nascimento'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppescnpj'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesrazao_social'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesnome_fantasia'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesinscricao_estadual'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesinscricacao_municipal'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppescep'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesendereco'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesnumero'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppescomplemento'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesestado'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppescidade'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesbairro'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesemail'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppestelefone'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppescelular'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesobservacao'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesstatus'
+        ParamType = ptUnknown
+      end>
   end
   object ZQCadLancamentos: TZQuery
     Params = <>
@@ -51,9 +270,235 @@ object DM: TDM
     Top = 168
   end
   object ZQAltForncedores: TZQuery
-    Params = <>
+    SQL.Strings = (
+      'update pessoa set '
+      'pesnome=:ppesnome, codigotip=:pcodigotip, pescpf=:ppescpf, pesdata_nascimento=:ppesdata_nascimento, pescnpj=:ppescnpj, pesrazao_social=:ppesrazao_social, pesnome_fantasia=:ppesnome_fantasia, pesinscricao_estadual=:ppesinscricao_estadual, pesinscricacao_municipal=:ppesinscricacao_municipal, pescep=:ppescep, pesendereco=:ppesendereco, pesnumero=:ppesnumero, pescomplemento=:ppescomplemento, pesestado=:ppesestado, pescidade=:ppescidade, pesbairro=:ppesbairro, pesemail=:ppesemail, pestelefone=:ppestelefone, pescelular=:ppescelular, pesobservacao=:ppesobservacao, pesstatus=:ppesstatus'
+      'where pescodigo=:ppescodigo'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ppesnome'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pcodigotip'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppescpf'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesdata_nascimento'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppescnpj'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesrazao_social'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesnome_fantasia'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesinscricao_estadual'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesinscricacao_municipal'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppescep'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesendereco'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesnumero'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppescomplemento'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesestado'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppescidade'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesbairro'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesemail'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppestelefone'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppescelular'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesobservacao'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesstatus'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppescodigo'
+        ParamType = ptUnknown
+      end>
     Left = 136
     Top = 168
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'ppesnome'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pcodigotip'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppescpf'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesdata_nascimento'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppescnpj'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesrazao_social'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesnome_fantasia'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesinscricao_estadual'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesinscricacao_municipal'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppescep'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesendereco'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesnumero'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppescomplemento'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesestado'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppescidade'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesbairro'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesemail'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppestelefone'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppescelular'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesobservacao'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppesstatus'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppescodigo'
+        ParamType = ptUnknown
+      end>
   end
   object ZQAltLancamentos: TZQuery
     Params = <>
@@ -76,9 +521,227 @@ object DM: TDM
     Top = 304
   end
   object ZQConsForncedores: TZQuery
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'select * from pessoa'
+    )
     Params = <>
+    DataSource = DSConsForncedores
     Left = 136
     Top = 304
+    object ZQConsForncedoresPESCODIGO: TLongintField
+      FieldKind = fkData
+      FieldName = 'PESCODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object ZQConsForncedoresPESNOME: TStringField
+      FieldKind = fkData
+      FieldName = 'PESNOME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsForncedoresCODIGOTIP: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODIGOTIP'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsForncedoresPESCPF: TStringField
+      FieldKind = fkData
+      FieldName = 'PESCPF'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsForncedoresPESDATA_NASCIMENTO: TDateField
+      FieldKind = fkData
+      FieldName = 'PESDATA_NASCIMENTO'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsForncedoresPESCNPJ: TStringField
+      FieldKind = fkData
+      FieldName = 'PESCNPJ'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsForncedoresPESRAZAO_SOCIAL: TStringField
+      FieldKind = fkData
+      FieldName = 'PESRAZAO_SOCIAL'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsForncedoresPESNOME_FANTASIA: TStringField
+      FieldKind = fkData
+      FieldName = 'PESNOME_FANTASIA'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsForncedoresPESINSCRICAO_ESTADUAL: TLongintField
+      FieldKind = fkData
+      FieldName = 'PESINSCRICAO_ESTADUAL'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsForncedoresPESINSCRICACAO_MUNICIPAL: TLongintField
+      FieldKind = fkData
+      FieldName = 'PESINSCRICACAO_MUNICIPAL'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsForncedoresPESCEP: TStringField
+      FieldKind = fkData
+      FieldName = 'PESCEP'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsForncedoresPESENDERECO: TStringField
+      FieldKind = fkData
+      FieldName = 'PESENDERECO'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsForncedoresPESNUMERO: TLongintField
+      FieldKind = fkData
+      FieldName = 'PESNUMERO'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsForncedoresPESCOMPLEMENTO: TStringField
+      FieldKind = fkData
+      FieldName = 'PESCOMPLEMENTO'
+      Index = 13
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsForncedoresPESESTADO: TStringField
+      FieldKind = fkData
+      FieldName = 'PESESTADO'
+      Index = 14
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsForncedoresPESCIDADE: TStringField
+      FieldKind = fkData
+      FieldName = 'PESCIDADE'
+      Index = 15
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsForncedoresPESBAIRRO: TStringField
+      FieldKind = fkData
+      FieldName = 'PESBAIRRO'
+      Index = 16
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsForncedoresPESEMAIL: TStringField
+      FieldKind = fkData
+      FieldName = 'PESEMAIL'
+      Index = 17
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsForncedoresPESTELEFONE: TStringField
+      FieldKind = fkData
+      FieldName = 'PESTELEFONE'
+      Index = 18
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsForncedoresPESCELULAR: TStringField
+      FieldKind = fkData
+      FieldName = 'PESCELULAR'
+      Index = 19
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsForncedoresPESOBSERVACAO: TStringField
+      FieldKind = fkData
+      FieldName = 'PESOBSERVACAO'
+      Index = 20
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 200
+    end
+    object ZQConsForncedoresPESSTATUS: TSmallintField
+      FieldKind = fkData
+      FieldName = 'PESSTATUS'
+      Index = 21
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
   end
   object ZQConsLancamentos: TZQuery
     Params = <>
@@ -116,9 +779,23 @@ object DM: TDM
     Top = 368
   end
   object ZQDelForncedores: TZQuery
-    Params = <>
+    SQL.Strings = (
+      'delete from pessoa where  pescodigo=:ppescodigo'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ppescodigo'
+        ParamType = ptUnknown
+      end>
     Left = 136
     Top = 368
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'ppescodigo'
+        ParamType = ptUnknown
+      end>
   end
   object ZQDelLancamentos: TZQuery
     Params = <>
@@ -147,6 +824,7 @@ object DM: TDM
   end
   object DSConsForncedores: TDataSource
     DataSet = ZQConsForncedores
+    OnDataChange = DSConsForncedoresDataChange
     Left = 136
     Top = 240
   end

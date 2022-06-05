@@ -19,6 +19,28 @@ type
     DSConsBancarias: TDataSource;
     DSConsTransferencia: TDataSource;
     ZFinanceiro: TZConnection;
+    ZQConsForncedoresCODIGOTIP: TLongintField;
+    ZQConsForncedoresPESBAIRRO: TStringField;
+    ZQConsForncedoresPESCELULAR: TStringField;
+    ZQConsForncedoresPESCEP: TStringField;
+    ZQConsForncedoresPESCIDADE: TStringField;
+    ZQConsForncedoresPESCNPJ: TStringField;
+    ZQConsForncedoresPESCODIGO: TLongintField;
+    ZQConsForncedoresPESCOMPLEMENTO: TStringField;
+    ZQConsForncedoresPESCPF: TStringField;
+    ZQConsForncedoresPESDATA_NASCIMENTO: TDateField;
+    ZQConsForncedoresPESEMAIL: TStringField;
+    ZQConsForncedoresPESENDERECO: TStringField;
+    ZQConsForncedoresPESESTADO: TStringField;
+    ZQConsForncedoresPESINSCRICACAO_MUNICIPAL: TLongintField;
+    ZQConsForncedoresPESINSCRICAO_ESTADUAL: TLongintField;
+    ZQConsForncedoresPESNOME: TStringField;
+    ZQConsForncedoresPESNOME_FANTASIA: TStringField;
+    ZQConsForncedoresPESNUMERO: TLongintField;
+    ZQConsForncedoresPESOBSERVACAO: TStringField;
+    ZQConsForncedoresPESRAZAO_SOCIAL: TStringField;
+    ZQConsForncedoresPESSTATUS: TSmallintField;
+    ZQConsForncedoresPESTELEFONE: TStringField;
     ZQDelBancarias: TZQuery;
     ZQDelCentro: TZQuery;
     ZQDelForncedores: TZQuery;
@@ -43,6 +65,7 @@ type
     ZQAltCentro: TZQuery;
     ZQAltBancarias: TZQuery;
     ZQDelUsuario: TZQuery;
+    procedure DSConsForncedoresDataChange(Sender: TObject; Field: TField);
   private
 
   public
@@ -55,6 +78,13 @@ var
 implementation
 
 {$R *.lfm}
+
+{ TDM }
+
+procedure TDM.DSConsForncedoresDataChange(Sender: TObject; Field: TField);
+begin
+
+end;
 
 end.
 

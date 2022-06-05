@@ -129,6 +129,7 @@
         <Filename Value="umodulo.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="DM"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="UModulo"/>
       </Unit11>
