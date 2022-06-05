@@ -7,9 +7,9 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, UEntrarUsuario, umenu, uCadUsuario, uCadContasBancarias,
+  Forms, zcomponent, UEntrarUsuario, umenu, uCadUsuario, uCadContasBancarias,
   uCadCentroCusto, uCadFornecedores, uCadLancamento, UConsFornecedores,
-UConsBaixa, UConsContas;
+UConsBaixa, UConsContas, UModulo;
 
 {$R *.res}
 
@@ -27,6 +27,7 @@ begin
   Application.CreateForm(TFrmConsFornecedores, FrmConsFornecedores);
   Application.CreateForm(TFrmConsBaixa, FrmConsBaixa);
   Application.CreateForm(TFrmConsContas, FrmConsContas);
+  Application.CreateForm(TDM, DM);
   Application.Run;
 end.
 

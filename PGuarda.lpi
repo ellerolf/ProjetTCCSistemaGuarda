@@ -27,18 +27,21 @@
     <RunParams>
       <FormatVersion Value="2"/>
     </RunParams>
-    <RequiredPackages Count="3">
+    <RequiredPackages Count="4">
       <Item1>
-        <PackageName Value="FCL"/>
+        <PackageName Value="zcomponent"/>
       </Item1>
       <Item2>
-        <PackageName Value="virtualtreeview_package"/>
+        <PackageName Value="FCL"/>
       </Item2>
       <Item3>
-        <PackageName Value="LCL"/>
+        <PackageName Value="virtualtreeview_package"/>
       </Item3>
+      <Item4>
+        <PackageName Value="LCL"/>
+      </Item4>
     </RequiredPackages>
-    <Units Count="11">
+    <Units Count="12">
       <Unit0>
         <Filename Value="PGuarda.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -122,6 +125,13 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="UConsContas"/>
       </Unit10>
+      <Unit11>
+        <Filename Value="umodulo.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="DM"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <UnitName Value="UModulo"/>
+      </Unit11>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

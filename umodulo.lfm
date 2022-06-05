@@ -1,0 +1,173 @@
+object DM: TDM
+  OldCreateOrder = False
+  Height = 442
+  HorizontalOffset = 255
+  VerticalOffset = 31
+  Width = 640
+  object ZFinanceiro: TZConnection
+    ControlsCodePage = cCP_UTF8
+    AutoEncodeStrings = True
+    Properties.Strings = (
+      'AutoEncodeStrings=True'
+      'controls_cp=CP_UTF8'
+    )
+    Connected = True
+    HostName = 'localhost'
+    Port = 3306
+    Database = 'financeiro'
+    User = 'root'
+    Protocol = 'mysql-5'
+    Left = 312
+    Top = 24
+  end
+  object ZQCadUsuario: TZQuery
+    Params = <>
+    Left = 40
+    Top = 96
+  end
+  object ZQCadFornecedores: TZQuery
+    Params = <>
+    Left = 136
+    Top = 96
+  end
+  object ZQCadLancamentos: TZQuery
+    Params = <>
+    Left = 256
+    Top = 96
+  end
+  object ZQCadCentro: TZQuery
+    Params = <>
+    Left = 360
+    Top = 96
+  end
+  object ZQCadBancarias: TZQuery
+    Params = <>
+    Left = 448
+    Top = 96
+  end
+  object ZQAltUsuario: TZQuery
+    Params = <>
+    Left = 40
+    Top = 168
+  end
+  object ZQAltForncedores: TZQuery
+    Params = <>
+    Left = 136
+    Top = 168
+  end
+  object ZQAltLancamentos: TZQuery
+    Params = <>
+    Left = 256
+    Top = 168
+  end
+  object ZQAltCentro: TZQuery
+    Params = <>
+    Left = 360
+    Top = 168
+  end
+  object ZQAltBancarias: TZQuery
+    Params = <>
+    Left = 448
+    Top = 168
+  end
+  object ZQConsUsuario: TZQuery
+    Params = <>
+    Left = 40
+    Top = 304
+  end
+  object ZQConsForncedores: TZQuery
+    Params = <>
+    Left = 136
+    Top = 304
+  end
+  object ZQConsLancamentos: TZQuery
+    Params = <>
+    Left = 256
+    Top = 304
+  end
+  object ZQConsCentro: TZQuery
+    Params = <>
+    Left = 360
+    Top = 304
+  end
+  object ZQConsBancarias: TZQuery
+    Params = <>
+    Left = 448
+    Top = 304
+  end
+  object ZQCadTransferencia: TZQuery
+    Params = <>
+    Left = 552
+    Top = 96
+  end
+  object ZQAltTransferencia: TZQuery
+    Params = <>
+    Left = 552
+    Top = 168
+  end
+  object ZQConsTransferencia: TZQuery
+    Params = <>
+    Left = 552
+    Top = 304
+  end
+  object ZQDelUsuario: TZQuery
+    Params = <>
+    Left = 40
+    Top = 368
+  end
+  object ZQDelForncedores: TZQuery
+    Params = <>
+    Left = 136
+    Top = 368
+  end
+  object ZQDelLancamentos: TZQuery
+    Params = <>
+    Left = 256
+    Top = 368
+  end
+  object ZQDelCentro: TZQuery
+    Params = <>
+    Left = 360
+    Top = 368
+  end
+  object ZQDelBancarias: TZQuery
+    Params = <>
+    Left = 448
+    Top = 368
+  end
+  object ZQDelTransferencia: TZQuery
+    Params = <>
+    Left = 552
+    Top = 368
+  end
+  object DSConsUsuario: TDataSource
+    DataSet = ZQConsUsuario
+    Left = 40
+    Top = 240
+  end
+  object DSConsForncedores: TDataSource
+    DataSet = ZQConsForncedores
+    Left = 136
+    Top = 240
+  end
+  object DSConsLancamentos: TDataSource
+    DataSet = ZQConsLancamentos
+    Left = 256
+    Top = 240
+  end
+  object DSConsCentro: TDataSource
+    DataSet = ZQConsCentro
+    Left = 360
+    Top = 240
+  end
+  object DSConsBancarias: TDataSource
+    DataSet = ZQConsBancarias
+    Left = 448
+    Top = 240
+  end
+  object DSConsTransferencia: TDataSource
+    DataSet = ZQConsTransferencia
+    Left = 552
+    Top = 240
+  end
+end

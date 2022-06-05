@@ -1,25 +1,25 @@
 object FrmCadUsuario: TFrmCadUsuario
   Left = -8
-  Height = 783
+  Height = 822
   Top = -8
-  Width = 1234
+  Width = 1250
   BorderIcons = [biSystemMenu]
   BorderStyle = bsNone
   Caption = 'Cadastro Usuario'
-  ClientHeight = 749
-  ClientWidth = 1234
+  ClientHeight = 799
+  ClientWidth = 1250
   Color = 16577259
   OnResize = FormResize
   Position = poScreenCenter
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 749
+    Height = 799
     Top = 0
-    Width = 1234
+    Width = 1250
     Align = alClient
-    ClientHeight = 749
-    ClientWidth = 1234
+    ClientHeight = 799
+    ClientWidth = 1250
     TabOrder = 0
     object Panel2: TPanel
       Left = 0

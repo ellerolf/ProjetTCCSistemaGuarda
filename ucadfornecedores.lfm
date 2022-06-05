@@ -1,24 +1,24 @@
 object FrmCadFornecedor: TFrmCadFornecedor
   Left = -8
-  Height = 783
+  Height = 822
   Top = -8
-  Width = 1234
+  Width = 1250
   BorderStyle = bsNone
   Caption = 'Cadastro Fornecedores'
-  ClientHeight = 783
-  ClientWidth = 1234
+  ClientHeight = 799
+  ClientWidth = 1250
   Color = 16577259
   OnResize = FormResize
   Position = poDesktopCenter
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 783
+    Height = 799
     Top = 0
-    Width = 1234
+    Width = 1250
     Align = alClient
-    ClientHeight = 783
-    ClientWidth = 1234
+    ClientHeight = 799
+    ClientWidth = 1250
     TabOrder = 0
     object Panel2: TPanel
       Left = 0
