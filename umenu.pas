@@ -102,24 +102,28 @@ end;
 procedure TFrmMenu.BtnCadUsuariosClick(Sender: TObject);
 begin
   FrmCadUsuario.Parent := PnChama;
+  FrmCadUsuario.Align := alClient;
   FrmCadUsuario.Show;
 end;
 
 procedure TFrmMenu.BtnConsBancoClick(Sender: TObject);
 begin
   FrmConsContas.parent := PnChama;
+  FrmConsContas.Align := alClient;
   FrmConsContas.show;
 end;
 
 procedure TFrmMenu.BtnConsFornecedoresClick(Sender: TObject);
 begin
   FrmConsFornecedores.parent := PnChama;
+  FrmConsFornecedores.Align := alClient;
   FrmConsFornecedores.Show;
 end;
 
 procedure TFrmMenu.BtnConsReceitaDespesasClick(Sender: TObject);
 begin
   FrmConsBaixa.parent := PnChama;
+  FrmConsBaixa.Align := alClient;
   FrmConsBaixa.Show;
 end;
 
@@ -131,24 +135,28 @@ end;
 procedure TFrmMenu.BtnCadBancoClick(Sender: TObject);
 begin
   FrmCadContasBancarias.Parent := PnChama;
+  FrmCadContasBancarias.Align := alClient;
   FrmCadContasBancarias.Show;
 end;
 
 procedure TFrmMenu.BtnCadCentroClick(Sender: TObject);
 begin
   FrmCadCentroCusto.Parent := PnChama;
+  FrmCadCentroCusto.Align := alClient;
   FrmCadCentroCusto.Show;
 end;
 
 procedure TFrmMenu.BtnCadFornecedorClick(Sender: TObject);
 begin
   FrmCadFornecedor.Parent := PnChama;
+  FrmCadFornecedor.Align := alClient;
   FrmCadFornecedor.Show;
 end;
 
 procedure TFrmMenu.BtnCadLancamentoClick(Sender: TObject);
 begin
   FrmCadLancamento.Parent := PnChama;
+  FrmCadLancamento.Align := alClient;
   FrmCadLancamento.Show;
 end;
 

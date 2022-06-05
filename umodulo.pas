@@ -19,6 +19,13 @@ type
     DSConsBancarias: TDataSource;
     DSConsTransferencia: TDataSource;
     ZFinanceiro: TZConnection;
+    ZQConsBancariasCODIGOTIP: TLongintField;
+    ZQConsBancariasCONAGENCIA: TStringField;
+    ZQConsBancariasCONCODIGO: TLongintField;
+    ZQConsBancariasCONNOME: TStringField;
+    ZQConsBancariasCONNUMERO_CONTA: TStringField;
+    ZQConsBancariasCONSALDO_INICIAL: TFloatField;
+    ZQConsBancariasCONSTATUS: TSmallintField;
     ZQDelBancarias: TZQuery;
     ZQDelCentro: TZQuery;
     ZQDelForncedores: TZQuery;
@@ -43,6 +50,10 @@ type
     ZQAltCentro: TZQuery;
     ZQAltBancarias: TZQuery;
     ZQDelUsuario: TZQuery;
+    ZQTipoDaContaTIPCODIGO: TLongintField;
+    ZQTipoDaContaTIPNOME: TStringField;
+    procedure DataModuleCreate(Sender: TObject);
+    procedure DSConsBancariasDataChange(Sender: TObject; Field: TField);
   private
 
   public
@@ -55,6 +66,18 @@ var
 implementation
 
 {$R *.lfm}
+
+{ TDM }
+
+procedure TDM.DataModuleCreate(Sender: TObject);
+begin
+
+end;
+
+procedure TDM.DSConsBancariasDataChange(Sender: TObject; Field: TField);
+begin
+
+end;
 
 end.
 

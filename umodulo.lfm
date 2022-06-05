@@ -1,6 +1,7 @@
 object DM: TDM
+  OnCreate = DataModuleCreate
   OldCreateOrder = False
-  Height = 442
+  Height = 597
   HorizontalOffset = 255
   VerticalOffset = 31
   Width = 640
@@ -41,9 +42,64 @@ object DM: TDM
     Top = 96
   end
   object ZQCadBancarias: TZQuery
-    Params = <>
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'INSERT INTO contas (CONNOME, CODIGOTIP, CONAGENCIA, CONNUMERO_CONTA, CONSALDO_INICIAL) VALUES (:pCONNOME, :pCODIGOTIP, :pCONAGENCIA, :pCONNUMERO_CONTA, :pCONSALDO_INICIAL)'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'pCONNOME'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pCODIGOTIP'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pCONAGENCIA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pCONNUMERO_CONTA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pCONSALDO_INICIAL'
+        ParamType = ptUnknown
+      end>
     Left = 448
     Top = 96
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'pCONNOME'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pCODIGOTIP'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pCONAGENCIA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pCONNUMERO_CONTA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pCONSALDO_INICIAL'
+        ParamType = ptUnknown
+      end>
   end
   object ZQAltUsuario: TZQuery
     Params = <>
@@ -91,9 +147,81 @@ object DM: TDM
     Top = 304
   end
   object ZQConsBancarias: TZQuery
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'SELECT * FROM CONTAS'
+    )
     Params = <>
+    DataSource = DSConsBancarias
     Left = 448
     Top = 304
+    object ZQConsBancariasCONCODIGO: TLongintField
+      FieldKind = fkData
+      FieldName = 'CONCODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object ZQConsBancariasCONNOME: TStringField
+      FieldKind = fkData
+      FieldName = 'CONNOME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsBancariasCODIGOTIP: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODIGOTIP'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsBancariasCONAGENCIA: TStringField
+      FieldKind = fkData
+      FieldName = 'CONAGENCIA'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsBancariasCONNUMERO_CONTA: TStringField
+      FieldKind = fkData
+      FieldName = 'CONNUMERO_CONTA'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsBancariasCONSALDO_INICIAL: TFloatField
+      FieldKind = fkData
+      FieldName = 'CONSALDO_INICIAL'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 22
+    end
+    object ZQConsBancariasCONSTATUS: TSmallintField
+      FieldKind = fkData
+      FieldName = 'CONSTATUS'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
   end
   object ZQCadTransferencia: TZQuery
     Params = <>
@@ -162,6 +290,7 @@ object DM: TDM
   end
   object DSConsBancarias: TDataSource
     DataSet = ZQConsBancarias
+    OnDataChange = DSConsBancariasDataChange
     Left = 448
     Top = 240
   end

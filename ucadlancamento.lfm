@@ -1,24 +1,24 @@
 object FrmCadLancamento: TFrmCadLancamento
   Left = -8
-  Height = 783
+  Height = 861
   Top = -8
-  Width = 1234
+  Width = 1266
   BorderStyle = bsNone
   Caption = 'Lançamento'
-  ClientHeight = 783
-  ClientWidth = 1234
+  ClientHeight = 838
+  ClientWidth = 1266
   Color = 16577259
   OnResize = FormResize
   Position = poScreenCenter
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 783
+    Height = 838
     Top = 0
-    Width = 1234
+    Width = 1266
     Align = alClient
-    ClientHeight = 783
-    ClientWidth = 1234
+    ClientHeight = 838
+    ClientWidth = 1266
     TabOrder = 0
     object Panel2: TPanel
       Left = 0
@@ -30,6 +30,7 @@ object FrmCadLancamento: TFrmCadLancamento
       ClientHeight = 424
       ClientWidth = 750
       TabOrder = 0
+      OnClick = Panel2Click
       object Label7: TLabel
         Left = 0
         Height = 32
@@ -95,16 +96,17 @@ object FrmCadLancamento: TFrmCadLancamento
         TabOrder = 1
       end
       object CboTipoDoc: TComboBox
-        Left = 231
+        Left = 232
         Height = 23
-        Top = 95
+        Top = 96
         Width = 144
         ItemHeight = 15
+        OnChange = CboTipoDocChange
         TabOrder = 2
         Text = 'Selecione uma opção'
       end
       object EdtData: TMaskEdit
-        Left = 63
+        Left = 64
         Height = 23
         Top = 95
         Width = 136
@@ -140,7 +142,7 @@ object FrmCadLancamento: TFrmCadLancamento
         ClientHeight = 28
         ClientWidth = 140
         TabOrder = 4
-        object BtnReceita: TRadioButton
+        object ChkReceita: TRadioButton
           Left = 0
           Height = 28
           Top = 0
@@ -149,7 +151,7 @@ object FrmCadLancamento: TFrmCadLancamento
           Caption = 'Receita'
           TabOrder = 0
         end
-        object BtnDespesa: TRadioButton
+        object ChkDespesa: TRadioButton
           Left = 77
           Height = 28
           Top = 0
@@ -797,6 +799,7 @@ object FrmCadLancamento: TFrmCadLancamento
           00FFC10000FFC10000FFC10000FFC10000FFC10000FFC10000FFC10000FFC100
           00FFC10000FFC10000FFC10000FFCD3030FFECAFAFFFFFFFFFFF
         }
+        OnClick = BtnSalvarClick
       end
       object BtnConsCentro1: TSpeedButton
         Left = 215
