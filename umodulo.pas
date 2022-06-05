@@ -73,8 +73,8 @@ type
     ZQAltBancarias: TZQuery;
     ZQDelUsuario: TZQuery;
     procedure DSConsForncedoresDataChange(Sender: TObject; Field: TField);
-    ZQTipoDaContaTIPCODIGO: TLongintField;
-    ZQTipoDaContaTIPNOME: TStringField;
+
+
     procedure DataModuleCreate(Sender: TObject);
     procedure DSConsBancariasDataChange(Sender: TObject; Field: TField);
   private
