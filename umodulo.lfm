@@ -18,13 +18,59 @@ object DM: TDM
     Database = 'financeiro'
     User = 'root'
     Protocol = 'mysql-5'
+    LibraryLocation = 'C:\Windows\SysWOW64\libmariadb.dll'
     Left = 312
     Top = 24
   end
   object ZQCadUsuario: TZQuery
-    Params = <>
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'insert into usuario (usunome,usulogin,ususenha,codigoniv) values (:pusunome,:pusulogin,:pususenha,:pcodigoniv)'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'pusunome'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pusulogin'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pususenha'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pcodigoniv'
+        ParamType = ptUnknown
+      end>
     Left = 40
     Top = 96
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'pusunome'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pusulogin'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pususenha'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pcodigoniv'
+        ParamType = ptUnknown
+      end>
   end
   object ZQCadFornecedores: TZQuery
     SQL.Strings = (
@@ -321,9 +367,56 @@ object DM: TDM
       end>
   end
   object ZQAltUsuario: TZQuery
-    Params = <>
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'update usuario set (usunome, usulogin, ususenha) '
+      '      values (:pusunome, :pusulogin, :pususenha) '
+      '      where usucodigo = :pusucodigo'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'pusunome'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pusulogin'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pususenha'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pusucodigo'
+        ParamType = ptUnknown
+      end>
     Left = 40
     Top = 168
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'pusunome'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pusulogin'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pususenha'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pusucodigo'
+        ParamType = ptUnknown
+      end>
   end
   object ZQAltForncedores: TZQuery
     SQL.Strings = (
@@ -572,9 +665,70 @@ object DM: TDM
     Top = 168
   end
   object ZQConsUsuario: TZQuery
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'select * from usuario'
+    )
     Params = <>
     Left = 40
     Top = 304
+    object ZQConsUsuarioUSUCODIGO: TLongintField
+      FieldKind = fkData
+      FieldName = 'USUCODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object ZQConsUsuarioUSUNOME: TStringField
+      FieldKind = fkData
+      FieldName = 'USUNOME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsUsuarioUSULOGIN: TStringField
+      FieldKind = fkData
+      FieldName = 'USULOGIN'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsUsuarioUSUSENHA: TStringField
+      FieldKind = fkData
+      FieldName = 'USUSENHA'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsUsuarioUSUSTATUS: TSmallintField
+      FieldKind = fkData
+      FieldName = 'USUSTATUS'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsUsuarioCODIGONIV: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODIGONIV'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
   end
   object ZQConsForncedores: TZQuery
     Connection = ZFinanceiro

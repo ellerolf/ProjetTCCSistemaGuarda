@@ -48,6 +48,12 @@ type
     ZQConsBancariasCONNUMERO_CONTA: TStringField;
     ZQConsBancariasCONSALDO_INICIAL: TFloatField;
     ZQConsBancariasCONSTATUS: TSmallintField;
+    ZQConsUsuarioCODIGONIV: TLongintField;
+    ZQConsUsuarioUSUCODIGO: TLongintField;
+    ZQConsUsuarioUSULOGIN: TStringField;
+    ZQConsUsuarioUSUNOME: TStringField;
+    ZQConsUsuarioUSUSENHA: TStringField;
+    ZQConsUsuarioUSUSTATUS: TSmallintField;
     ZQDelBancarias: TZQuery;
     ZQDelCentro: TZQuery;
     ZQDelForncedores: TZQuery;
