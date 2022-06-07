@@ -2,12 +2,12 @@ object FrmCadUsuario: TFrmCadUsuario
   Left = -8
   Height = 788
   Top = -8
-  Width = 1314
+  Width = 1330
   BorderIcons = [biSystemMenu]
   BorderStyle = bsNone
   Caption = 'Cadastro Usuario'
   ClientHeight = 750
-  ClientWidth = 1314
+  ClientWidth = 1330
   Color = 16577259
   OnResize = FormResize
   Position = poScreenCenter
@@ -16,10 +16,10 @@ object FrmCadUsuario: TFrmCadUsuario
     Left = 0
     Height = 750
     Top = 0
-    Width = 1314
+    Width = 1330
     Align = alClient
     ClientHeight = 750
-    ClientWidth = 1314
+    ClientWidth = 1330
     TabOrder = 0
     object Panel2: TPanel
       Left = 0
@@ -102,6 +102,8 @@ object FrmCadUsuario: TFrmCadUsuario
         Height = 23
         Top = 129
         Width = 192
+        EchoMode = emPassword
+        PasswordChar = '*'
         TabOrder = 2
       end
       object Label5: TLabel
@@ -141,6 +143,8 @@ object FrmCadUsuario: TFrmCadUsuario
         Height = 23
         Top = 129
         Width = 192
+        EchoMode = emPassword
+        PasswordChar = '*'
         TabOrder = 3
       end
       object ChkMostrar: TCheckBox
@@ -149,6 +153,7 @@ object FrmCadUsuario: TFrmCadUsuario
         Top = 153
         Width = 96
         Caption = 'Mostrar Senha'
+        OnChange = ChkMostrarChange
         TabOrder = 4
       end
       object GrpNivel: TGroupBox
@@ -341,6 +346,7 @@ object FrmCadUsuario: TFrmCadUsuario
           00FFC10000FFC10000FFC10000FFC10000FFC10000FFC10000C0C1000090C100
           0020FFFFFF00
         }
+        OnClick = BtnConsultaClick
       end
       object LblMensagem: TLabel
         Left = 72
@@ -398,8 +404,8 @@ object FrmCadUsuario: TFrmCadUsuario
           'ATIVO'
           'INATIVO'
         )
+        Style = csDropDownList
         TabOrder = 8
-        Text = 'Selecione à opção'
       end
       object Label2: TLabel
         Left = 232

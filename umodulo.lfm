@@ -18,7 +18,6 @@ object DM: TDM
     Database = 'financeiro'
     User = 'root'
     Protocol = 'mysql-5'
-    LibraryLocation = 'C:\Windows\SysWOW64\libmariadb.dll'
     Left = 312
     Top = 24
   end
