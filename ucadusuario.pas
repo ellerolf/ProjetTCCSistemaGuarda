@@ -154,7 +154,7 @@ end;
 
 procedure TFrmCadUsuario.FormShow(Sender: TObject);
 begin
-
+  CboAltStatus.Enabled:=False;
 end;
 
 procedure TFrmCadUsuario.BtnSalvarClick(Sender: TObject);
