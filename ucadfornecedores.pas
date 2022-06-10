@@ -19,7 +19,6 @@ type
     BtnInativo: TRadioButton;
     BtnSair: TSpeedButton;
     BtnSalvar: TSpeedButton;
-    CboTipo: TComboBox;
     CboUf: TComboBox;
     EdtBairro: TEdit;
     EdtCel: TEdit;
@@ -32,7 +31,6 @@ type
     EdtFantasia: TEdit;
     EdtInsEstadual: TEdit;
     EdtInsMunicipal: TEdit;
-    EdtNDoc: TEdit;
     EdtNome: TEdit;
     EdtNumero: TEdit;
     EdtTel: TEdit;
@@ -46,10 +44,8 @@ type
     Label14: TLabel;
     Label15: TLabel;
     Label16: TLabel;
-    Label17: TLabel;
     Label18: TLabel;
     Label19: TLabel;
-    Label2: TLabel;
     Label20: TLabel;
     Label21: TLabel;
     Label3: TLabel;
