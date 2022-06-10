@@ -2,7 +2,7 @@ object FrmCadUsuario: TFrmCadUsuario
   Left = -8
   Height = 788
   Top = -8
-  Width = 1378
+  Width = 1386
   BorderIcons = [biSystemMenu]
   BorderStyle = bsNone
   Caption = 'Cadastro Usuario'
@@ -10,6 +10,7 @@ object FrmCadUsuario: TFrmCadUsuario
   ClientWidth = 1370
   Color = 16577259
   OnResize = FormResize
+  OnShow = FormShow
   Position = poScreenCenter
   WindowState = wsFullScreen
   object Panel1: TPanel
@@ -23,12 +24,11 @@ object FrmCadUsuario: TFrmCadUsuario
     TabOrder = 0
     object Panel2: TPanel
       Left = 0
-      Height = 506
+      Height = 510
       Top = 0
       Width = 750
       BevelOuter = bvNone
-      Caption = 'Panel2'
-      ClientHeight = 506
+      ClientHeight = 510
       ClientWidth = 750
       TabOrder = 0
       OnClick = Panel2Click
@@ -157,7 +157,7 @@ object FrmCadUsuario: TFrmCadUsuario
         TabOrder = 4
       end
       object GrpNivel: TGroupBox
-        Left = 480
+        Left = 488
         Height = 49
         Top = 105
         Width = 193
@@ -187,7 +187,7 @@ object FrmCadUsuario: TFrmCadUsuario
       object Label7: TLabel
         Left = 74
         Height = 17
-        Top = 225
+        Top = 240
         Width = 140
         Caption = 'Consultas de Usuarios:'
         Font.CharSet = ANSI_CHARSET
@@ -203,14 +203,14 @@ object FrmCadUsuario: TFrmCadUsuario
       object EdtConsulta: TEdit
         Left = 232
         Height = 23
-        Top = 281
+        Top = 296
         Width = 386
         TabOrder = 6
       end
       object BtnConsulta: TSpeedButton
         Left = 627
         Height = 23
-        Top = 281
+        Top = 296
         Width = 45
         Glyph.Data = {
           62100000424D621000000000000036000000280000002D000000170000000100
@@ -351,7 +351,7 @@ object FrmCadUsuario: TFrmCadUsuario
       object LblMensagem: TLabel
         Left = 72
         Height = 15
-        Top = 185
+        Top = 216
         Width = 118
         Caption = '*Campos Obrigatorios'
         Font.Color = clRed
@@ -361,7 +361,7 @@ object FrmCadUsuario: TFrmCadUsuario
       object DBGrid1: TDBGrid
         Left = 72
         Height = 120
-        Top = 313
+        Top = 328
         Width = 601
         Color = clWindow
         Columns = <        
@@ -396,11 +396,10 @@ object FrmCadUsuario: TFrmCadUsuario
       object CboStatus: TComboBox
         Left = 72
         Height = 23
-        Top = 281
+        Top = 296
         Width = 136
         ItemHeight = 15
         Items.Strings = (
-          ''
           'ATIVO'
           'INATIVO'
         )
@@ -410,7 +409,7 @@ object FrmCadUsuario: TFrmCadUsuario
       object Label2: TLabel
         Left = 232
         Height = 17
-        Top = 257
+        Top = 272
         Width = 66
         Caption = 'Por Nome:'
         Font.CharSet = ANSI_CHARSET
@@ -424,7 +423,7 @@ object FrmCadUsuario: TFrmCadUsuario
       object Label8: TLabel
         Left = 72
         Height = 17
-        Top = 257
+        Top = 272
         Width = 86
         Caption = 'Ativo/Inativo:'
         Font.CharSet = ANSI_CHARSET
@@ -438,7 +437,7 @@ object FrmCadUsuario: TFrmCadUsuario
       object BtnAlterar: TSpeedButton
         Left = 296
         Height = 30
-        Top = 449
+        Top = 464
         Width = 120
         Glyph.Data = {
           76380000424D76380000000000003600000028000000780000001E0000000100
@@ -899,7 +898,7 @@ object FrmCadUsuario: TFrmCadUsuario
       object BtnSalvar: TSpeedButton
         Left = 424
         Height = 30
-        Top = 449
+        Top = 464
         Width = 120
         Glyph.Data = {
           76380000424D76380000000000003600000028000000780000001E0000000100
@@ -1360,7 +1359,7 @@ object FrmCadUsuario: TFrmCadUsuario
       object BtnSair: TSpeedButton
         Left = 552
         Height = 30
-        Top = 449
+        Top = 464
         Width = 120
         Glyph.Data = {
           76380000424D76380000000000003600000028000000780000001E0000000100
@@ -1817,6 +1816,33 @@ object FrmCadUsuario: TFrmCadUsuario
           FFFF0000FFFF0000FFFF0000FFFF3030FFFFAFAFFFFFFFFFFFFF
         }
         OnClick = BtnSairClick
+      end
+      object CboAltStatus: TComboBox
+        Left = 168
+        Height = 23
+        Top = 184
+        Width = 134
+        ItemHeight = 15
+        Items.Strings = (
+          'ATIVO'
+          'INATIVO'
+        )
+        Style = csDropDownList
+        TabOrder = 9
+      end
+      object Label9: TLabel
+        Left = 72
+        Height = 17
+        Top = 184
+        Width = 86
+        Caption = 'Ativo/Inativo:'
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -13
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
       end
     end
   end

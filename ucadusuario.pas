@@ -20,6 +20,7 @@ type
     BtnSalvar: TSpeedButton;
     ChkMostrar: TCheckBox;
     CboStatus: TComboBox;
+    CboAltStatus: TComboBox;
     DBGrid1: TDBGrid;
     EdtConfSenha: TEdit;
     EdtConsulta: TEdit;
@@ -35,6 +36,7 @@ type
     Label6: TLabel;
     Label7: TLabel;
     Label8: TLabel;
+    Label9: TLabel;
     LblMensagem: TLabel;
     Panel1: TPanel;
     BtnConsulta: TSpeedButton;
@@ -45,6 +47,7 @@ type
     procedure ChkMostrarChange(Sender: TObject);
     procedure DBGrid1CellClick(Column: TColumn);
     procedure FormResize(Sender: TObject);
+    procedure FormShow(Sender: TObject);
     procedure GrpNivel1Click(Sender: TObject);
     procedure Label1Click(Sender: TObject);
     procedure BtnSalvarClick(Sender: TObject);
@@ -124,7 +127,7 @@ end;
 
 procedure TFrmCadUsuario.BtnConsultaClick(Sender: TObject);
 begin
-  if (CboStatus.ItemIndex=1) then
+  if (CboStatus.ItemIndex=0) then
     begin
       DM.ZQConsUsuario.close;
       DM.ZQConsUsuario.SQL.clear;
@@ -133,7 +136,7 @@ begin
       EdtConsulta.clear;
     end
     else
-   if (CboStatus.ItemIndex=2) then
+   if (CboStatus.ItemIndex=1) then
      begin
        DM.ZQConsUsuario.close;
        DM.ZQConsUsuario.SQL.clear;
@@ -147,6 +150,11 @@ procedure TFrmCadUsuario.FormResize(Sender: TObject);
 begin
   Panel2.Left := (Panel1.ClientWidth div 2) - (Panel2.Width div 2);
   Panel2.Top := (Panel1.ClientHeight div 2) - (Panel2.Height div 2);
+end;
+
+procedure TFrmCadUsuario.FormShow(Sender: TObject);
+begin
+
 end;
 
 procedure TFrmCadUsuario.BtnSalvarClick(Sender: TObject);
