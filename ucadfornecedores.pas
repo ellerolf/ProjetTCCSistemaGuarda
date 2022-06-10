@@ -135,28 +135,28 @@ begin
   //CNPJ
   if (BtnCnpj.Enabled=true) then
   begin
-       dm.ZQCadFornecedores.Params.ParamByName('pcodigotip').value:=2;
+       dm.ZQCadFornCNPJ.Params.ParamByName('pcodigotip').value:=2;
        //como coloca data.
-       dm.ZQCadFornecedores.Params.ParamByName('ppesdata_nascimento').Value:=EdtDTNasc.Text;
-       dm.ZQCadFornecedores.Params.ParamByName('ppescnpj').Value:=EdtCpfCnpj.Text;
-       dm.ZQCadFornecedores.Params.ParamByName('ppesrazao_social').Value:=EdtNome.text;
-       dm.ZQCadFornecedores.Params.ParamByName('ppesnome_fantasia').Value:=EdtFantasia.text;
-       dm.ZQCadFornecedores.Params.ParamByName('ppesinscricao_estadual').Value:= StrtoInt(EdtInsEstadual.text);
-       dm.ZQCadFornecedores.Params.ParamByName('ppesinscricacao_municipal').Value:= StrtoInt(EdtInsMunicipal.text);
-       dm.ZQCadFornecedores.Params.ParamByName('ppesendereco').Value:=EdtEndereco.Text;
-       dm.ZQCadFornecedores.Params.ParamByName('ppesnumero').Value:=StrToInt(EdtNumero.Text);
-       dm.ZQCadFornecedores.Params.ParamByName('ppescomplemento').Value:=EdtComplemento.Text;
-       dm.ZQCadFornecedores.Params.ParamByName('ppesestado').Value:=CboUf.ItemIndex;
-       dm.ZQCadFornecedores.Params.ParamByName('ppescidade').Value:=EdtCidade.text;
-       dm.ZQCadFornecedores.Params.ParamByName('ppesbairro').Value:=EdtBairro.text;
-       dm.ZQCadFornecedores.Params.ParamByName('ppesemail').Value:=EdtEmail.text;
-       dm.ZQCadFornecedores.Params.ParamByName('ppestelefone').Value:=EdtTel.text;
-       dm.ZQCadFornecedores.Params.ParamByName('ppescelular').Value:=EdtCel.text;
-       dm.ZQCadFornecedores.Params.ParamByName('ppesobservacao').value:=MemObs.text;
-       dm.ZQCadFornecedores.ExecSQL;
+       dm.ZQCadFornCNPJ.Params.ParamByName('ppesdata_nascimento').Value:=EdtDTNasc.Text;
+       dm.ZQCadFornCNPJ.Params.ParamByName('ppescnpj').Value:=EdtCpfCnpj.Text;
+       dm.ZQCadFornCNPJ.Params.ParamByName('ppesrazao_social').Value:=EdtNome.text;
+       dm.ZQCadFornCNPJ.Params.ParamByName('ppesnome_fantasia').Value:=EdtFantasia.text;
+       dm.ZQCadFornCNPJ.Params.ParamByName('ppesinscricao_estadual').Value:= StrtoInt(EdtInsEstadual.text);
+       dm.ZQCadFornCNPJ.Params.ParamByName('ppesinscricacao_municipal').Value:= StrtoInt(EdtInsMunicipal.text);
+       dm.ZQCadFornCNPJ.Params.ParamByName('ppesendereco').Value:=EdtEndereco.Text;
+       dm.ZQCadFornCNPJ.Params.ParamByName('ppesnumero').Value:=StrToInt(EdtNumero.Text);
+       dm.ZQCadFornCNPJ.Params.ParamByName('ppescomplemento').Value:=EdtComplemento.Text;
+       dm.ZQCadFornCNPJ.Params.ParamByName('ppesestado').Value:=CboUf.ItemIndex;
+       dm.ZQCadFornCNPJ.Params.ParamByName('ppescidade').Value:=EdtCidade.text;
+       dm.ZQCadFornCNPJ.Params.ParamByName('ppesbairro').Value:=EdtBairro.text;
+       dm.ZQCadFornCNPJ.Params.ParamByName('ppesemail').Value:=EdtEmail.text;
+       dm.ZQCadFornCNPJ.Params.ParamByName('ppestelefone').Value:=EdtTel.text;
+       dm.ZQCadFornCNPJ.Params.ParamByName('ppescelular').Value:=EdtCel.text;
+       dm.ZQCadFornCNPJ.Params.ParamByName('ppesobservacao').value:=MemObs.text;
+       dm.ZQCadFornCNPJ.ExecSQL;
 
-       dm.ZQConsForncedores.close;
-       dm.ZQConsForncedores.Open;
+       dm.ZQCadFornCNPJ.close;
+       dm.ZQCadFornCNPJ.Open;
 
        EdtCpfCnpj.Clear;
        EdtNome.Clear;
