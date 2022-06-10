@@ -368,9 +368,8 @@ object DM: TDM
   object ZQAltUsuario: TZQuery
     Connection = ZFinanceiro
     SQL.Strings = (
-      'update usuario set (usunome, usulogin, ususenha) '
-      '      values (:pusunome, :pusulogin, :pususenha) '
-      '      where usucodigo = :pusucodigo'
+      'update usuario set usunome=:pusunome, usulogin= :pusulogin, ususenha= :pususenha'
+      ' where usucodigo = :pusucodigo'
     )
     Params = <    
       item
