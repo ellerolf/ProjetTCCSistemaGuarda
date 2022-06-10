@@ -6,13 +6,12 @@ object FrmCadUsuario: TFrmCadUsuario
   BorderIcons = [biSystemMenu]
   BorderStyle = bsNone
   Caption = 'Cadastro Usuario'
-  ClientHeight = 788
-  ClientWidth = 1386
+  ClientHeight = 750
+  ClientWidth = 1370
   Color = 16577259
   OnResize = FormResize
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.2.2.0'
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0

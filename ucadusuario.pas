@@ -103,6 +103,27 @@ begin
    EdtNomeUsuario.Text:=DM.ZQConsUsuarioUSULOGIN.AsString;
    EdtSenha.Text:=DM.ZQConsUsuarioUSUSENHA.AsString;
    EdtConfSenha.Text:=DM.ZQConsUsuarioUSUSENHA.AsString;
+   if (DM.ZQConsUsuarioCODIGONIV.Value=1)then
+    begin
+      BtnAdm.Checked:=true;
+    end
+   else
+   if(DM.ZQConsUsuarioCODIGONIV.Value=2) then
+    begin
+      BtnOpera.Checked:=true;
+    end;
+
+   CboAltStatus.Enabled:=True;
+
+   if(DM.ZQConsUsuarioUSUSTATUS.Value=1)then
+    begin
+      CboAltStatus.ItemIndex:=0;
+    end
+   else
+   if(DM.ZQConsUsuarioUSUSTATUS.Value=0)then
+    begin
+      CboAltStatus.ItemIndex:=1;
+    end;
 end;
 
 procedure TFrmCadUsuario.BtnAlterarClick(Sender: TObject);
@@ -111,6 +132,25 @@ begin
   DM.ZQAltUsuario.Params.ParamByName('pusulogin').Value:=EdtNomeUsuario.Text;
   DM.ZQAltUsuario.Params.ParamByName('pususenha').Value:=EdtSenha.Text;
   DM.ZQAltUsuario.Params.ParamByName('pususenha').Value:=EdtConfSenha.Text;
+
+   if(BtnAdm.Checked=true)then
+   begin
+     DM.ZQAltUsuario.Params.ParamByName('pcodigoniv').Value:= 1;
+   end
+  else if(BtnOpera.Checked=true)then
+   begin
+     DM.ZQAltUsuario.Params.ParamByName('pcodigoniv').Value:=2;
+   end;
+
+   if ( CboAltStatus.ItemIndex=0) then
+    begin
+       DM.ZQAltUsuario.Params.ParamByName('pusustatus').Value:=1;
+    end
+   else
+    if ( CboAltStatus.ItemIndex=1) then
+    begin
+       DM.ZQAltUsuario.Params.ParamByName('pusustatus').Value:=0;
+    end;
   DM.ZQAltUsuario.Params.ParamByName('pusucodigo').Value:=DM.ZQConsUsuarioUSUCODIGO.AsInteger;
   DM.ZQAltUsuario.ExecSQL;
 
@@ -121,29 +161,31 @@ begin
   EdtNomeUsuario.Clear;
   EdtSenha.clear;
   EdtConfSenha.Clear;
-  BtnAdm.Enabled:= False;
-  BtnOpera.Enabled:= False;
+  BtnAdm.Checked:= False;
+  BtnOpera.Checked:= False;
+  CboAltStatus.ItemIndex:=-1;
+  CboAltStatus.Enabled:=False;
 end;
 
 procedure TFrmCadUsuario.BtnConsultaClick(Sender: TObject);
 begin
-  if (CboStatus.ItemIndex=0) then
-    begin
-      DM.ZQConsUsuario.close;
-      DM.ZQConsUsuario.SQL.clear;
-      DM.ZQConsUsuario.SQL.Add('select * from usuario where usustatus=1 and usunome like'+QuotedStr('%'+EdtConsulta.Text+'%'));
-      DM.ZQConsUsuario.Open;
-      EdtConsulta.clear;
-    end
-    else
-   if (CboStatus.ItemIndex=1) then
-     begin
-       DM.ZQConsUsuario.close;
-       DM.ZQConsUsuario.SQL.clear;
-       DM.ZQConsUsuario.SQL.Add('select * from usuario where usustatus=0 and usunome like'+QuotedStr('%'+EdtConsulta.Text+'%'));
-       DM.ZQConsUsuario.Open;
-       EdtConsulta.clear;
-     end;
+    if (CboStatus.ItemIndex=0) then
+      begin
+        DM.ZQConsUsuario.close;
+        DM.ZQConsUsuario.SQL.clear;
+        DM.ZQConsUsuario.SQL.Add('select * from usuario where usustatus=1 and usunome like'+QuotedStr('%'+EdtConsulta.Text+'%'));
+        DM.ZQConsUsuario.Open;
+        EdtConsulta.clear;
+      end
+      else
+     if (CboStatus.ItemIndex=1) then
+       begin
+         DM.ZQConsUsuario.close;
+         DM.ZQConsUsuario.SQL.clear;
+         DM.ZQConsUsuario.SQL.Add('select * from usuario where usustatus=0 and usunome like'+QuotedStr('%'+EdtConsulta.Text+'%'));
+         DM.ZQConsUsuario.Open;
+         EdtConsulta.clear;
+       end;
 end;
 
 procedure TFrmCadUsuario.FormResize(Sender: TObject);
