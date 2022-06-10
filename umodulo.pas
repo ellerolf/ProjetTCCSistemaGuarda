@@ -12,35 +12,36 @@ type
   { TDM }
 
   TDM = class(TDataModule)
+    DSConsFornCPF: TDataSource;
     DSConsUsuario: TDataSource;
-    DSConsForncedores: TDataSource;
+    DSConsFornCNPJ: TDataSource;
     DSConsLancamentos: TDataSource;
     DSConsCentro: TDataSource;
     DSConsBancarias: TDataSource;
     DSConsTransferencia: TDataSource;
     ZFinanceiro: TZConnection;
-    ZQConsForncedoresCODIGOTIP: TLongintField;
-    ZQConsForncedoresPESBAIRRO: TStringField;
-    ZQConsForncedoresPESCELULAR: TStringField;
-    ZQConsForncedoresPESCEP: TStringField;
-    ZQConsForncedoresPESCIDADE: TStringField;
-    ZQConsForncedoresPESCNPJ: TStringField;
-    ZQConsForncedoresPESCODIGO: TLongintField;
-    ZQConsForncedoresPESCOMPLEMENTO: TStringField;
-    ZQConsForncedoresPESCPF: TStringField;
-    ZQConsForncedoresPESDATA_NASCIMENTO: TDateField;
-    ZQConsForncedoresPESEMAIL: TStringField;
-    ZQConsForncedoresPESENDERECO: TStringField;
-    ZQConsForncedoresPESESTADO: TStringField;
-    ZQConsForncedoresPESINSCRICACAO_MUNICIPAL: TLongintField;
-    ZQConsForncedoresPESINSCRICAO_ESTADUAL: TLongintField;
-    ZQConsForncedoresPESNOME: TStringField;
-    ZQConsForncedoresPESNOME_FANTASIA: TStringField;
-    ZQConsForncedoresPESNUMERO: TLongintField;
-    ZQConsForncedoresPESOBSERVACAO: TStringField;
-    ZQConsForncedoresPESRAZAO_SOCIAL: TStringField;
-    ZQConsForncedoresPESSTATUS: TSmallintField;
-    ZQConsForncedoresPESTELEFONE: TStringField;
+    ZQConsFornCNPJCODIGOTIP: TLongintField;
+    ZQConsFornCNPJPESBAIRRO: TStringField;
+    ZQConsFornCNPJPESCELULAR: TStringField;
+    ZQConsFornCNPJPESCEP: TStringField;
+    ZQConsFornCNPJPESCIDADE: TStringField;
+    ZQConsFornCNPJPESCNPJ: TStringField;
+    ZQConsFornCNPJPESCODIGO: TLongintField;
+    ZQConsFornCNPJPESCOMPLEMENTO: TStringField;
+    ZQConsFornCNPJPESCPF: TStringField;
+    ZQConsFornCNPJPESDATA_NASCIMENTO: TDateField;
+    ZQConsFornCNPJPESEMAIL: TStringField;
+    ZQConsFornCNPJPESENDERECO: TStringField;
+    ZQConsFornCNPJPESESTADO: TStringField;
+    ZQConsFornCNPJPESINSCRICACAO_MUNICIPAL: TLongintField;
+    ZQConsFornCNPJPESINSCRICAO_ESTADUAL: TLongintField;
+    ZQConsFornCNPJPESNOME: TStringField;
+    ZQConsFornCNPJPESNOME_FANTASIA: TStringField;
+    ZQConsFornCNPJPESNUMERO: TLongintField;
+    ZQConsFornCNPJPESOBSERVACAO: TStringField;
+    ZQConsFornCNPJPESRAZAO_SOCIAL: TStringField;
+    ZQConsFornCNPJPESSTATUS: TSmallintField;
+    ZQConsFornCNPJPESTELEFONE: TStringField;
     ZQConsBancariasCODIGOTIP: TLongintField;
     ZQConsBancariasCONAGENCIA: TStringField;
     ZQConsBancariasCONCODIGO: TLongintField;
@@ -56,29 +57,33 @@ type
     ZQConsUsuarioUSUSTATUS: TSmallintField;
     ZQDelBancarias: TZQuery;
     ZQDelCentro: TZQuery;
-    ZQDelForncedores: TZQuery;
+    ZQDelFornCNPJ: TZQuery;
     ZQDelLancamentos: TZQuery;
     ZQConsTransferencia: TZQuery;
     ZQCadTransferencia: TZQuery;
     ZQAltTransferencia: TZQuery;
     ZQConsBancarias: TZQuery;
     ZQConsCentro: TZQuery;
-    ZQConsForncedores: TZQuery;
+    ZQConsFornCNPJ: TZQuery;
     ZQConsLancamentos: TZQuery;
     ZQDelTransferencia: TZQuery;
     ZQConsUsuario: TZQuery;
     ZQCadUsuario: TZQuery;
-    ZQCadFornecedores: TZQuery;
+    ZQCadFornCNPJ: TZQuery;
     ZQCadLancamentos: TZQuery;
     ZQCadCentro: TZQuery;
     ZQCadBancarias: TZQuery;
     ZQAltUsuario: TZQuery;
-    ZQAltForncedores: TZQuery;
+    ZQAltFornCNPJ: TZQuery;
     ZQAltLancamentos: TZQuery;
     ZQAltCentro: TZQuery;
     ZQAltBancarias: TZQuery;
     ZQDelUsuario: TZQuery;
-    procedure DSConsForncedoresDataChange(Sender: TObject; Field: TField);
+    ZQCadFornCPF: TZQuery;
+    ZQAltFornCPF: TZQuery;
+    ZQConsFornCPF: TZQuery;
+    ZQDelFornCPF: TZQuery;
+    procedure DSConsFornCNPJDataChange(Sender: TObject; Field: TField);
 
 
     procedure DataModuleCreate(Sender: TObject);
@@ -98,7 +103,7 @@ implementation
 
 { TDM }
 
-procedure TDM.DSConsForncedoresDataChange(Sender: TObject; Field: TField);
+procedure TDM.DSConsFornCNPJDataChange(Sender: TObject; Field: TField);
 begin
 
 end;
