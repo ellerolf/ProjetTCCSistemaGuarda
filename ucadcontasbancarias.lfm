@@ -122,7 +122,7 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
           TabOrder = 2
         end
         object EdtSaldoInicial: TEdit
-          Left = 438
+          Left = 435
           Height = 23
           Top = 120
           Width = 101

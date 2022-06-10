@@ -106,12 +106,9 @@ begin
 end;
 
 procedure TFrmCadContasBancarias.EdtSaldoInicialChange(Sender: TObject);
-var key:char;
+
 begin
-  if not(key in ['0'..'9',#8,',']) then
-  begin
-    key:=#0;
-  end;
+
 end;
 
 procedure TFrmCadContasBancarias.FormResize(Sender: TObject);
