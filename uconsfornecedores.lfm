@@ -5,11 +5,12 @@ object FrmConsFornecedores: TFrmConsFornecedores
   Width = 1250
   BorderStyle = bsNone
   Caption = 'FrmConsFornecedores'
-  ClientHeight = 799
+  ClientHeight = 822
   ClientWidth = 1250
   Color = 16577259
   OnResize = FormResize
   Position = poScreenCenter
+  LCLVersion = '2.2.2.0'
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
@@ -143,7 +144,7 @@ object FrmConsFornecedores: TFrmConsFornecedores
             Title.Caption = 'PESSTATUS'
             FieldName = 'PESSTATUS'
           end>
-        DataSource = DM.DSConsForncedores
+        DataSource = DM.DSConsFornCNPJ
         TabOrder = 0
       end
       object EdtConsulta: TEdit

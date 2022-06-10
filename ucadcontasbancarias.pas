@@ -46,6 +46,7 @@ type
     procedure BtnSairClick(Sender: TObject);
     procedure BtnSalvarClick(Sender: TObject);
     procedure CboTipoChange(Sender: TObject);
+    procedure EdtSaldoInicialChange(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure Label5Click(Sender: TObject);
     procedure MaskEdit1Change(Sender: TObject);
@@ -93,6 +94,8 @@ begin
     dm.ZQCadBancarias.Params.ParamByName('pCONSALDO_INICIAL').Value:=EdtSaldoInicial.Text;
     Dm.ZQCadBancarias.ExecSQL;
 
+
+
   end;
 
 end;
@@ -100,6 +103,15 @@ end;
 procedure TFrmCadContasBancarias.CboTipoChange(Sender: TObject);
 begin
 
+end;
+
+procedure TFrmCadContasBancarias.EdtSaldoInicialChange(Sender: TObject);
+var key:char;
+begin
+  if not(key in ['0'..'9',#8,',']) then
+  begin
+    key:=#0;
+  end;
 end;
 
 procedure TFrmCadContasBancarias.FormResize(Sender: TObject);
