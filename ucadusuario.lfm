@@ -1,13 +1,13 @@
 object FrmCadUsuario: TFrmCadUsuario
   Left = -8
-  Height = 788
+  Height = 826
   Top = -8
-  Width = 1386
+  Width = 1378
   BorderIcons = [biSystemMenu]
   BorderStyle = bsNone
   Caption = 'Cadastro Usuario'
-  ClientHeight = 750
-  ClientWidth = 1370
+  ClientHeight = 804
+  ClientWidth = 1362
   Color = 16577259
   OnResize = FormResize
   OnShow = FormShow
@@ -15,12 +15,12 @@ object FrmCadUsuario: TFrmCadUsuario
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 750
+    Height = 804
     Top = 0
-    Width = 1370
+    Width = 1362
     Align = alClient
-    ClientHeight = 750
-    ClientWidth = 1370
+    ClientHeight = 804
+    ClientWidth = 1362
     TabOrder = 0
     object Panel2: TPanel
       Left = 0
@@ -1790,35 +1790,8 @@ object FrmCadUsuario: TFrmCadUsuario
         }
         OnClick = BtnSairClick
       end
-      object CboAltStatus: TComboBox
-        Left = 168
-        Height = 23
-        Top = 184
-        Width = 134
-        ItemHeight = 15
-        Items.Strings = (
-          'ATIVO'
-          'INATIVO'
-        )
-        Style = csDropDownList
-        TabOrder = 8
-      end
-      object Label9: TLabel
-        Left = 72
-        Height = 17
-        Top = 184
-        Width = 86
-        Caption = 'Ativo/Inativo:'
-        Font.CharSet = ANSI_CHARSET
-        Font.Height = -13
-        Font.Pitch = fpVariable
-        Font.Quality = fqDraft
-        Font.Style = [fsBold]
-        ParentColor = False
-        ParentFont = False
-      end
       object RgbNivel: TRadioGroup
-        Left = 488
+        Left = 480
         Height = 47
         Top = 105
         Width = 208
@@ -1834,10 +1807,45 @@ object FrmCadUsuario: TFrmCadUsuario
         ClientHeight = 27
         ClientWidth = 204
         Columns = 2
+        Font.CharSet = ANSI_CHARSET
+        Font.Name = 'Segoe UI Semibold'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
         Items.Strings = (
           'Administrador'
           'Operacional'
         )
+        ParentFont = False
+        TabOrder = 8
+      end
+      object RgbAltStatus: TRadioGroup
+        Left = 480
+        Height = 47
+        Top = 160
+        Width = 208
+        AutoFill = True
+        Caption = 'Status:'
+        ChildSizing.LeftRightSpacing = 6
+        ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+        ChildSizing.EnlargeVertical = crsHomogenousChildResize
+        ChildSizing.ShrinkHorizontal = crsScaleChilds
+        ChildSizing.ShrinkVertical = crsScaleChilds
+        ChildSizing.Layout = cclLeftToRightThenTopToBottom
+        ChildSizing.ControlsPerLine = 2
+        ClientHeight = 27
+        ClientWidth = 204
+        Columns = 2
+        Font.CharSet = ANSI_CHARSET
+        Font.Name = 'Segoe UI Semibold'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        Items.Strings = (
+          'Ativo'
+          'Inativo'
+        )
+        ParentFont = False
         TabOrder = 9
       end
     end
