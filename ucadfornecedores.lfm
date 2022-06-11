@@ -2,11 +2,11 @@ object FrmCadFornecedor: TFrmCadFornecedor
   Left = -8
   Height = 788
   Top = -8
-  Width = 1330
+  Width = 1346
   BorderStyle = bsNone
   Caption = 'Cadastro Fornecedores'
   ClientHeight = 749
-  ClientWidth = 1330
+  ClientWidth = 1346
   Color = 16577259
   OnCreate = FormCreate
   OnResize = FormResize
@@ -16,10 +16,10 @@ object FrmCadFornecedor: TFrmCadFornecedor
     Left = 0
     Height = 749
     Top = 0
-    Width = 1330
+    Width = 1346
     Align = alClient
     ClientHeight = 749
-    ClientWidth = 1330
+    ClientWidth = 1346
     TabOrder = 0
     object Panel2: TPanel
       Left = 0
@@ -194,17 +194,6 @@ object FrmCadFornecedor: TFrmCadFornecedor
         NumbersOnly = True
         TabOrder = 4
       end
-      object EdtDTNasc: TMaskEdit
-        Left = 584
-        Height = 23
-        Top = 191
-        Width = 128
-        MaxLength = 10
-        TabOrder = 5
-        EditMask = '99/99/9999;1;_'
-        Text = '  /  /    '
-        SpaceChar = '_'
-      end
       object Label21: TLabel
         Left = 584
         Height = 17
@@ -224,7 +213,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Height = 23
         Top = 304
         Width = 80
-        TabOrder = 6
+        TabOrder = 5
       end
       object Label11: TLabel
         Left = 41
@@ -259,14 +248,14 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Height = 23
         Top = 304
         Width = 104
-        TabOrder = 7
+        TabOrder = 6
       end
       object EdtEndereco: TEdit
         Left = 40
         Height = 23
         Top = 248
         Width = 344
-        TabOrder = 8
+        TabOrder = 7
       end
       object Label9: TLabel
         Left = 40
@@ -288,7 +277,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Top = 248
         Width = 56
         NumbersOnly = True
-        TabOrder = 9
+        TabOrder = 8
       end
       object Label10: TLabel
         Left = 401
@@ -309,7 +298,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Height = 23
         Top = 248
         Width = 112
-        TabOrder = 10
+        TabOrder = 9
       end
       object Label12: TLabel
         Left = 465
@@ -330,7 +319,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Height = 23
         Top = 248
         Width = 128
-        TabOrder = 11
+        TabOrder = 10
       end
       object Label15: TLabel
         Left = 584
@@ -382,7 +371,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
           'SP'
           'TO'
         )
-        TabOrder = 12
+        TabOrder = 11
         Text = 'UF'
       end
       object Label13: TLabel
@@ -404,7 +393,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Height = 23
         Top = 304
         Width = 161
-        TabOrder = 13
+        TabOrder = 12
       end
       object Label16: TLabel
         Left = 552
@@ -425,7 +414,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Height = 23
         Top = 304
         Width = 120
-        TabOrder = 14
+        TabOrder = 13
       end
       object Label19: TLabel
         Left = 424
@@ -446,7 +435,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Height = 23
         Top = 304
         Width = 120
-        TabOrder = 15
+        TabOrder = 14
       end
       object Label18: TLabel
         Left = 296
@@ -484,7 +473,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Lines.Strings = (
           ''
         )
-        TabOrder = 16
+        TabOrder = 15
       end
       object LblMensagem: TLabel
         Left = 41
@@ -1432,7 +1421,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Font.Quality = fqDraft
         Font.Style = [fsBold]
         ParentFont = False
-        TabOrder = 17
+        TabOrder = 16
         object BtnAtivo: TRadioButton
           Left = 0
           Height = 19
@@ -1468,8 +1457,15 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Top = 76
         Width = 344
         MaxLength = 0
-        TabOrder = 18
+        TabOrder = 17
         SpaceChar = '_'
+      end
+      object EdtDTNasc: TEdit
+        Left = 584
+        Height = 23
+        Top = 191
+        Width = 128
+        TabOrder = 18
       end
     end
   end
