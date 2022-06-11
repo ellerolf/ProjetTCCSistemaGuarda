@@ -228,7 +228,6 @@ begin
       EdtConfSenha.Clear;
       BtnAdm.Enabled:= False;
       BtnOpera.Enabled:= False;
-    end;
 end;
 
 procedure TFrmCadUsuario.BtnSairClick(Sender: TObject);
