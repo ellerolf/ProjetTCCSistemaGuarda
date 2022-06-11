@@ -1,7 +1,7 @@
 object DM: TDM
   OnCreate = DataModuleCreate
   OldCreateOrder = False
-  Height = 530
+  Height = 622
   HorizontalOffset = 255
   VerticalOffset = 31
   Width = 748
@@ -1172,5 +1172,19 @@ object DM: TDM
     Params = <>
     Left = 248
     Top = 368
+  end
+  object ZQConsTipoConta: TZQuery
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'SELECT * from tipo_conta'
+    )
+    Params = <>
+    Left = 60
+    Top = 535
+  end
+  object DSConsTipoConta: TDataSource
+    DataSet = ZQConsTipoConta
+    Left = 60
+    Top = 464
   end
 end

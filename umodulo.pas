@@ -12,6 +12,7 @@ type
   { TDM }
 
   TDM = class(TDataModule)
+    DSConsTipoConta: TDataSource;
     DSConsFornCPF: TDataSource;
     DSConsUsuario: TDataSource;
     DSConsFornCNPJ: TDataSource;
@@ -83,6 +84,7 @@ type
     ZQAltFornCPF: TZQuery;
     ZQConsFornCPF: TZQuery;
     ZQDelFornCPF: TZQuery;
+    ZQConsTipoConta: TZQuery;
     procedure DSConsFornCNPJDataChange(Sender: TObject; Field: TField);
 
 

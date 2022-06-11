@@ -6,19 +6,19 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, Buttons,
-  StdCtrls, MaskEdit, ComCtrls, UModulo;
+  StdCtrls, MaskEdit, ComCtrls, DBCtrls, UModulo;
 
 type
 
   { TFrmCadContasBancarias }
 
   TFrmCadContasBancarias = class(TForm)
+    CboTipo: TDBLookupComboBox;
     RdbCadConta: TRadioButton;
     RdbCadTrans: TRadioButton;
     BtnSair: TSpeedButton;
     BtnSalvar: TSpeedButton;
     CboBanco: TComboBox;
-    CboTipo: TComboBox;
     EdtAgencia: TEdit;
     EdtNConta: TEdit;
     EdtNDoc: TEdit;
@@ -47,7 +47,10 @@ type
     procedure BtnSalvarClick(Sender: TObject);
     procedure CboTipoChange(Sender: TObject);
     procedure EdtSaldoInicialChange(Sender: TObject);
+    procedure EdtSaldoInicialKeyPress(Sender: TObject; var Key: char);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormResize(Sender: TObject);
+    procedure FormShow(Sender: TObject);
     procedure Label5Click(Sender: TObject);
     procedure MaskEdit1Change(Sender: TObject);
     procedure Panel2Click(Sender: TObject);
@@ -88,11 +91,20 @@ begin
   if (RdbCadConta.Checked=true) then
   begin
     dm.ZQCadBancarias.Params.ParamByName('pCONNOME').Value:=CboBanco.Text;
-    dm.ZQCadBancarias.Params.ParamByName('pCODIGOTIP').Value:=CboTipo.ItemIndex;
+    dm.ZQCadBancarias.Params.ParamByName('pCODIGOTIP').Value:=CboTipo.KeyValue;
     dm.ZQCadBancarias.Params.ParamByName('pCONAGENCIA').Value:=EdtAgencia.Text;
     dm.ZQCadBancarias.Params.ParamByName('pCONNUMERO_CONTA').Value:=EdtNConta.Text;
+    EdtSaldoInicial.Text:=StringReplace(EdtSaldoInicial.Text,',','.',[rfReplaceAll]);
     dm.ZQCadBancarias.Params.ParamByName('pCONSALDO_INICIAL').Value:=EdtSaldoInicial.Text;
     Dm.ZQCadBancarias.ExecSQL;
+
+    ShowMessage('Conta registrada com sucesso!');
+    CboBanco.Clear;
+    CboTipo.Clear;
+    EdtAgencia.Clear;
+    EdtNConta.Clear;
+    EdtSaldoInicial.Clear;
+    CboTipo.SetFocus;
 
 
 
@@ -111,10 +123,32 @@ begin
 
 end;
 
+procedure TFrmCadContasBancarias.EdtSaldoInicialKeyPress(Sender: TObject;
+  var Key: char);
+begin
+   if not(key in ['0'..'9',#8,','])then
+   begin
+     key:=#0;
+     Beep;
+   end;
+end;
+
+procedure TFrmCadContasBancarias.FormClose(Sender: TObject;
+  var CloseAction: TCloseAction);
+begin
+  dm.ZQConsTipoConta.Active:=false;
+end;
+
 procedure TFrmCadContasBancarias.FormResize(Sender: TObject);
 begin
   Panel2.Left := (Panel1.ClientWidth div 2) - (Panel2.Width div 2);
   Panel2.Top := (Panel1.ClientHeight div 2) - (Panel2.Height div 2);
+end;
+
+procedure TFrmCadContasBancarias.FormShow(Sender: TObject);
+begin
+  dm.ZQConsTipoConta.Active:=true;
+
 end;
 
 procedure TFrmCadContasBancarias.MaskEdit1Change(Sender: TObject);
