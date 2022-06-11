@@ -1,7 +1,7 @@
 object FrmCadContasBancarias: TFrmCadContasBancarias
-  Left = 80
+  Left = 372
   Height = 749
-  Top = 0
+  Top = 121
   Width = 1282
   BorderIcons = [biSystemMenu]
   BorderStyle = bsNone
@@ -14,7 +14,9 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
   Font.Pitch = fpVariable
   Font.Quality = fqDraft
   Font.Style = [fsBold]
+  OnClose = FormClose
   OnResize = FormResize
+  OnShow = FormShow
   Position = poScreenCenter
   LCLVersion = '2.2.2.0'
   WindowState = wsFullScreen
@@ -73,18 +75,19 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
           TabOrder = 0
         end
         object Label6: TLabel
-          Left = 104
+          Left = 344
           Height = 17
-          Top = 40
+          Top = 32
           Width = 37
           Caption = 'Banco'
           ParentColor = False
         end
         object CboBanco: TComboBox
-          Left = 104
+          Left = 344
           Height = 23
           Top = 64
           Width = 200
+          CharCase = ecUppercase
           Font.CharSet = ANSI_CHARSET
           Font.Pitch = fpVariable
           Font.Quality = fqDraft
@@ -130,6 +133,7 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
           Font.Pitch = fpVariable
           Font.Quality = fqDraft
           OnChange = EdtSaldoInicialChange
+          OnKeyPress = EdtSaldoInicialKeyPress
           ParentFont = False
           TabOrder = 3
         end
@@ -142,31 +146,10 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
           ParentColor = False
           OnClick = Label5Click
         end
-        object CboTipo: TComboBox
-          Left = 342
-          Height = 23
-          Top = 64
-          Width = 216
-          Font.CharSet = ANSI_CHARSET
-          Font.Pitch = fpVariable
-          Font.Quality = fqDraft
-          ItemHeight = 15
-          Items.Strings = (
-            ''
-            'Aplicação'
-            'Caixa'
-            'Corrente'
-            'Poupança'
-          )
-          OnChange = CboTipoChange
-          ParentFont = False
-          Style = csDropDownList
-          TabOrder = 4
-        end
         object Label2: TLabel
-          Left = 342
+          Left = 56
           Height = 17
-          Top = 40
+          Top = 32
           Width = 91
           Caption = 'Tipo da Conta:'
           ParentColor = False
@@ -189,6 +172,20 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
           Font.Quality = fqDraft
           NumbersOnly = True
           ParentFont = False
+          TabOrder = 4
+        end
+        object CboTipo: TDBLookupComboBox
+          Left = 56
+          Height = 25
+          Top = 64
+          Width = 232
+          KeyField = 'TIPCODIGO'
+          ListField = 'TIPNOME'
+          ListFieldIndex = 0
+          ListSource = DM.DSConsTipoConta
+          LookupCache = False
+          OnChange = CboTipoChange
+          Style = csDropDownList
           TabOrder = 5
         end
       end
