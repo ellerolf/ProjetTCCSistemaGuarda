@@ -13,9 +13,7 @@ type
   { TFrmCadUsuario }
 
   TFrmCadUsuario = class(TForm)
-    BtnAdm: TRadioButton;
     BtnAlterar: TSpeedButton;
-    BtnOpera: TRadioButton;
     BtnSair: TSpeedButton;
     BtnSalvar: TSpeedButton;
     ChkMostrar: TCheckBox;
@@ -27,7 +25,6 @@ type
     EdtNome: TEdit;
     EdtNomeUsuario: TEdit;
     EdtSenha: TEdit;
-    GrpNivel: TGroupBox;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
@@ -41,6 +38,7 @@ type
     Panel1: TPanel;
     BtnConsulta: TSpeedButton;
     Panel2: TPanel;
+    RgbNivel: TRadioGroup;
     procedure BtnAlterarClick(Sender: TObject);
     procedure BtnConsultaClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -105,12 +103,12 @@ begin
    EdtConfSenha.Text:=DM.ZQConsUsuarioUSUSENHA.AsString;
    if (DM.ZQConsUsuarioCODIGONIV.Value=1)then
     begin
-      BtnAdm.Checked:=true;
+      RgbNivel.ItemIndex:=0;
     end
    else
    if(DM.ZQConsUsuarioCODIGONIV.Value=2) then
     begin
-      BtnOpera.Checked:=true;
+      RgbNivel.ItemIndex:=1;
     end;
 
    CboAltStatus.Enabled:=True;
@@ -133,11 +131,11 @@ begin
   DM.ZQAltUsuario.Params.ParamByName('pususenha').Value:=EdtSenha.Text;
   DM.ZQAltUsuario.Params.ParamByName('pususenha').Value:=EdtConfSenha.Text;
 
-   if(BtnAdm.Checked=true)then
+   if(RgbNivel.ItemIndex=0)then
    begin
      DM.ZQAltUsuario.Params.ParamByName('pcodigoniv').Value:= 1;
    end
-  else if(BtnOpera.Checked=true)then
+  else if(RgbNivel.ItemIndex=1)then
    begin
      DM.ZQAltUsuario.Params.ParamByName('pcodigoniv').Value:=2;
    end;
@@ -161,8 +159,7 @@ begin
   EdtNomeUsuario.Clear;
   EdtSenha.clear;
   EdtConfSenha.Clear;
-  BtnAdm.Checked:= False;
-  BtnOpera.Checked:= False;
+  RgbNivel.ItemIndex:=-1;
   CboAltStatus.ItemIndex:=-1;
   CboAltStatus.Enabled:=False;
 end;
@@ -201,19 +198,26 @@ end;
 
 procedure TFrmCadUsuario.BtnSalvarClick(Sender: TObject);
 begin
-  if (EdtNome.text<>'') and (EdtNomeUsuario.text<>'') and (EdtSenha.Text<>'') and (EdtConfSenha.Text<>'') and (BtnAdm.Checked<>true) and (BtnOpera.Checked<>true) then
+  if (EdtNome.text='') or (EdtNomeUsuario.text='') or (EdtSenha.Text='') or (EdtConfSenha.Text='') or (RgbNivel.ItemIndex=-1) then
     begin
-      LblMensagem.Caption:='Campos Faltando, Favor Conferir!!!';
-    end;
+      LblMensagem.Caption:='CAMPOS FALTANDO, FAVOR CONFERIR';
+    end
+  else
+  if (EdtSenha.Text<>EdtConfSenha.Text)then
+    begin
+      LblMensagem.Caption:='SENHAS NAO CONFEREM, FAVOR CONFERIR NOVAMENTE';
+    end
+  else
+  begin
       DM.ZQCadUsuario.Params.ParamByName('pusunome').Value:=EdtNome.Text;
       DM.ZQCadUsuario.Params.ParamByName('pusulogin').Value:=EdtNomeUsuario.Text;
       DM.ZQCadUsuario.Params.ParamByName('pususenha').Value:=EdtSenha.Text;
       DM.ZQCadUsuario.Params.ParamByName('pususenha').Value:=EdtConfSenha.Text;
-      if(BtnAdm.Checked=true)then
+      if(RgbNivel.ItemIndex=0)then
        begin
          DM.ZQCadUsuario.Params.ParamByName('pcodigoniv').Value:= 1;
        end
-      else if(BtnOpera.Checked=true)then
+      else if(RgbNivel.ItemIndex=1)then
        begin
          DM.ZQCadUsuario.Params.ParamByName('pcodigoniv').Value:=2;
        end;
@@ -226,8 +230,10 @@ begin
       EdtNomeUsuario.Clear;
       EdtSenha.clear;
       EdtConfSenha.Clear;
-      BtnAdm.Enabled:= False;
-      BtnOpera.Enabled:= False;
+      RgbNivel.ItemIndex:=-1;
+      LblMensagem.Caption:='*Campos Obrigatorios';
+    end;
+
 end;
 
 procedure TFrmCadUsuario.BtnSairClick(Sender: TObject);
