@@ -14,6 +14,8 @@ type
 
   TFrmCadContasBancarias = class(TForm)
     CboTipo: TDBLookupComboBox;
+    EdtNomeConta: TEdit;
+    Label8: TLabel;
     RdbCadConta: TRadioButton;
     RdbCadTrans: TRadioButton;
     BtnSair: TSpeedButton;
@@ -53,6 +55,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure Label5Click(Sender: TObject);
     procedure MaskEdit1Change(Sender: TObject);
+    procedure Panel1Click(Sender: TObject);
     procedure Panel2Click(Sender: TObject);
   private
 
@@ -85,11 +88,13 @@ procedure TFrmCadContasBancarias.BtnSalvarClick(Sender: TObject);
 begin
   if (RdbCadConta.Checked=false) and (RdbCadTrans.Checked=false) then
   begin
-       ShowMessage('Selecione alguma operação');
+       ShowMessage('Selecione uma operação');
   end;
 
   if (RdbCadConta.Checked=true) then
   begin
+
+
     dm.ZQCadBancarias.Params.ParamByName('pCONNOME').Value:=CboBanco.Text;
     dm.ZQCadBancarias.Params.ParamByName('pCODIGOTIP').Value:=CboTipo.KeyValue;
     dm.ZQCadBancarias.Params.ParamByName('pCONAGENCIA').Value:=EdtAgencia.Text;
@@ -114,7 +119,29 @@ end;
 
 procedure TFrmCadContasBancarias.CboTipoChange(Sender: TObject);
 begin
-
+  if CboTipo.KeyValue=3  then
+  begin
+    EdtSaldoInicial.Enabled:=true;
+    EdtNomeConta.Enabled:=true;
+    EdtNConta.Enabled:=false;
+    EdtAgencia.Enabled:=false;
+    CboBanco.Enabled:=false;
+    EdtNomeConta.SetFocus;
+    EdtNConta.clear;
+    EdtAgencia.clear;
+    //o clearselection ele apaga apenas o item que está selecionado, e não todos os itens da lista
+    CboBanco.ClearSelection;
+    EdtNConta.clear;
+  end
+  else
+  begin
+    EdtSaldoInicial.Enabled:=true;
+    EdtAgencia.Enabled:=true;
+    EdtNConta.Enabled:=true;
+    CboBanco.Enabled:=true;
+    EdtNomeConta.Enabled:=true;
+    CboBanco.SetFocus;
+  end;
 end;
 
 procedure TFrmCadContasBancarias.EdtSaldoInicialChange(Sender: TObject);
@@ -152,6 +179,11 @@ begin
 end;
 
 procedure TFrmCadContasBancarias.MaskEdit1Change(Sender: TObject);
+begin
+
+end;
+
+procedure TFrmCadContasBancarias.Panel1Click(Sender: TObject);
 begin
 
 end;
