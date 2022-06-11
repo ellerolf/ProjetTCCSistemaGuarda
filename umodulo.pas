@@ -65,7 +65,6 @@ type
     ZQAltTransferencia: TZQuery;
     ZQConsBancarias: TZQuery;
     ZQConsCentro: TZQuery;
-    ZQConsFornCNPJ: TZQuery;
     ZQConsLancamentos: TZQuery;
     ZQDelTransferencia: TZQuery;
     ZQConsUsuario: TZQuery;
@@ -85,6 +84,7 @@ type
     ZQCadFornCNPJ: TZQuery;
     ZQAltFonrCNPJ: TZQuery;
     ZQConsTipoConta: TZQuery;
+    ZQConsFornCNPJ: TZQuery;
     procedure DSConsFornCNPJDataChange(Sender: TObject; Field: TField);
 
 
