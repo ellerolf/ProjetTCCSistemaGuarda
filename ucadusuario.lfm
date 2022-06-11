@@ -366,27 +366,28 @@ object FrmCadUsuario: TFrmCadUsuario
         Color = clWindow
         Columns = <        
           item
-            Title.Caption = 'USUCODIGO'
+            Title.Caption = 'CÓDIGO'
+            Width = 50
             FieldName = 'USUCODIGO'
           end        
           item
-            Title.Caption = 'USUNOME'
+            Title.Caption = 'NOME'
+            Width = 200
             FieldName = 'USUNOME'
           end        
           item
-            Title.Caption = 'USULOGIN'
+            Title.Caption = 'LOGIN'
+            Width = 200
             FieldName = 'USULOGIN'
           end        
           item
-            Title.Caption = 'USUSENHA'
-            FieldName = 'USUSENHA'
-          end        
-          item
-            Title.Caption = 'USUSTATUS'
+            Title.Caption = 'STATUS'
+            Width = 50
             FieldName = 'USUSTATUS'
           end        
           item
-            Title.Caption = 'CODIGONIV'
+            Title.Caption = 'NÍVEL DE ACESSO'
+            Width = 100
             FieldName = 'CODIGONIV'
           end>
         DataSource = DM.DSConsUsuario

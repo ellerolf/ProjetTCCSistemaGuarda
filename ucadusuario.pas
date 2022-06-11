@@ -201,29 +201,34 @@ end;
 
 procedure TFrmCadUsuario.BtnSalvarClick(Sender: TObject);
 begin
-   DM.ZQCadUsuario.Params.ParamByName('pusunome').Value:=EdtNome.Text;
-  DM.ZQCadUsuario.Params.ParamByName('pusulogin').Value:=EdtNomeUsuario.Text;
-  DM.ZQCadUsuario.Params.ParamByName('pususenha').Value:=EdtSenha.Text;
-  DM.ZQCadUsuario.Params.ParamByName('pususenha').Value:=EdtConfSenha.Text;
-  if(BtnAdm.Enabled=true)then
-   begin
-     DM.ZQCadUsuario.Params.ParamByName('pcodigoniv').Value:= 1;
-   end
-  else if(BtnOpera.Enabled=true)then
-   begin
-     DM.ZQCadUsuario.Params.ParamByName('pcodigoniv').Value:=2;
-   end;
-  DM.ZQCadUsuario.ExecSQL;
+  if (EdtNome.text<>'') and (EdtNomeUsuario.text<>'') and (EdtSenha.Text<>'') and (EdtConfSenha.Text<>'') and (BtnAdm.Checked<>true) and (BtnOpera.Checked<>true) then
+    begin
+      LblMensagem.Caption:='Campos Faltando, Favor Conferir!!!';
+    end;
+      DM.ZQCadUsuario.Params.ParamByName('pusunome').Value:=EdtNome.Text;
+      DM.ZQCadUsuario.Params.ParamByName('pusulogin').Value:=EdtNomeUsuario.Text;
+      DM.ZQCadUsuario.Params.ParamByName('pususenha').Value:=EdtSenha.Text;
+      DM.ZQCadUsuario.Params.ParamByName('pususenha').Value:=EdtConfSenha.Text;
+      if(BtnAdm.Checked=true)then
+       begin
+         DM.ZQCadUsuario.Params.ParamByName('pcodigoniv').Value:= 1;
+       end
+      else if(BtnOpera.Checked=true)then
+       begin
+         DM.ZQCadUsuario.Params.ParamByName('pcodigoniv').Value:=2;
+       end;
+      DM.ZQCadUsuario.ExecSQL;
 
-  DM.ZQConsUsuario.Close;
-  DM.ZQConsUsuario.Open;
+      DM.ZQConsUsuario.Close;
+      DM.ZQConsUsuario.Open;
 
-  EdtNome.Clear;
-  EdtNomeUsuario.Clear;
-  EdtSenha.clear;
-  EdtConfSenha.Clear;
-  BtnAdm.Enabled:= False;
-  BtnOpera.Enabled:= False;
+      EdtNome.Clear;
+      EdtNomeUsuario.Clear;
+      EdtSenha.clear;
+      EdtConfSenha.Clear;
+      BtnAdm.Enabled:= False;
+      BtnOpera.Enabled:= False;
+    end;
 end;
 
 procedure TFrmCadUsuario.BtnSairClick(Sender: TObject);
