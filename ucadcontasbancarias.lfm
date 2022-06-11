@@ -29,6 +29,7 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
     ClientHeight = 749
     ClientWidth = 1282
     TabOrder = 0
+    OnClick = Panel1Click
     object Panel2: TPanel
       Left = 0
       Height = 584
@@ -60,10 +61,10 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
       end
       object GrpCadastro: TGroupBox
         Left = 40
-        Height = 190
+        Height = 192
         Top = 48
         Width = 656
-        ClientHeight = 168
+        ClientHeight = 170
         ClientWidth = 652
         TabOrder = 0
         object RdbCadConta: TRadioButton
@@ -85,38 +86,40 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
         object CboBanco: TComboBox
           Left = 344
           Height = 23
-          Top = 64
+          Top = 56
           Width = 200
           CharCase = ecUppercase
+          Enabled = False
           Font.CharSet = ANSI_CHARSET
           Font.Pitch = fpVariable
           Font.Quality = fqDraft
           ItemHeight = 15
           Items.Strings = (
             ''
-            'Brasil'
-            'Bradesco'
-            'Caixa Econômica Federal'
-            'Santander'
-            'Sicoob'
+            'BRASIL'
+            'BRADESCO'
+            'CAIXA ECONÔMICA FEDERAL'
+            'SANTANDER'
+            'SICOOB'
           )
           ParentFont = False
           Style = csDropDownList
           TabOrder = 1
         end
         object Label4: TLabel
-          Left = 214
+          Left = 126
           Height = 17
-          Top = 99
+          Top = 96
           Width = 83
           Caption = 'Nº  da Conta:'
           ParentColor = False
         end
         object EdtNConta: TEdit
-          Left = 214
+          Left = 126
           Height = 23
-          Top = 120
+          Top = 117
           Width = 200
+          Enabled = False
           Font.CharSet = ANSI_CHARSET
           Font.Pitch = fpVariable
           Font.Quality = fqDraft
@@ -125,10 +128,11 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
           TabOrder = 2
         end
         object EdtSaldoInicial: TEdit
-          Left = 435
+          Left = 512
           Height = 23
-          Top = 120
+          Top = 117
           Width = 101
+          Enabled = False
           Font.CharSet = ANSI_CHARSET
           Font.Pitch = fpVariable
           Font.Quality = fqDraft
@@ -138,9 +142,9 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
           TabOrder = 3
         end
         object Label5: TLabel
-          Left = 438
+          Left = 512
           Height = 17
-          Top = 102
+          Top = 96
           Width = 79
           Caption = 'Saldo Inicial:'
           ParentColor = False
@@ -155,18 +159,19 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
           ParentColor = False
         end
         object Label3: TLabel
-          Left = 104
+          Left = 16
           Height = 17
-          Top = 99
+          Top = 96
           Width = 53
           Caption = 'Agência:'
           ParentColor = False
         end
         object EdtAgencia: TEdit
-          Left = 104
+          Left = 16
           Height = 23
-          Top = 120
+          Top = 117
           Width = 80
+          Enabled = False
           Font.CharSet = ANSI_CHARSET
           Font.Pitch = fpVariable
           Font.Quality = fqDraft
@@ -177,7 +182,7 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
         object CboTipo: TDBLookupComboBox
           Left = 56
           Height = 25
-          Top = 64
+          Top = 56
           Width = 232
           KeyField = 'TIPCODIGO'
           ListField = 'TIPNOME'
@@ -187,6 +192,27 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
           OnChange = CboTipoChange
           Style = csDropDownList
           TabOrder = 5
+        end
+        object Label8: TLabel
+          Left = 344
+          Height = 17
+          Top = 96
+          Width = 100
+          Caption = 'Nome da Conta:'
+          ParentColor = False
+          OnClick = Label5Click
+        end
+        object EdtNomeConta: TEdit
+          Left = 344
+          Height = 23
+          Top = 117
+          Width = 152
+          Enabled = False
+          Font.CharSet = ANSI_CHARSET
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          ParentFont = False
+          TabOrder = 6
         end
       end
       object GrpTrasfe: TGroupBox
