@@ -1,13 +1,13 @@
 object FrmCadContasBancarias: TFrmCadContasBancarias
-  Left = 372
-  Height = 749
-  Top = 121
-  Width = 1282
+  Left = -8
+  Height = 788
+  Top = -8
+  Width = 1298
   BorderIcons = [biSystemMenu]
   BorderStyle = bsNone
   Caption = 'Cadastro de Contas Bancarias'
-  ClientHeight = 749
-  ClientWidth = 1282
+  ClientHeight = 878
+  ClientWidth = 1662
   Color = 16577259
   Font.CharSet = ANSI_CHARSET
   Font.Height = -13
@@ -18,16 +18,15 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
   OnResize = FormResize
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.2.2.0'
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 749
+    Height = 878
     Top = 0
-    Width = 1282
+    Width = 1662
     Align = alClient
-    ClientHeight = 749
-    ClientWidth = 1282
+    ClientHeight = 878
+    ClientWidth = 1662
     TabOrder = 0
     OnClick = Panel1Click
     object Panel2: TPanel
@@ -73,6 +72,7 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
           Top = 8
           Width = 139
           Caption = 'Cadastro de Contas'
+          OnChange = RdbCadContaChange
           TabOrder = 0
         end
         object Label6: TLabel
@@ -184,6 +184,7 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
           Height = 25
           Top = 56
           Width = 232
+          Enabled = False
           KeyField = 'TIPCODIGO'
           ListField = 'TIPNOME'
           ListFieldIndex = 0
