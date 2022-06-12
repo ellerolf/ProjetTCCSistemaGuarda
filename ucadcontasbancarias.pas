@@ -57,6 +57,7 @@ type
     procedure MaskEdit1Change(Sender: TObject);
     procedure Panel1Click(Sender: TObject);
     procedure Panel2Click(Sender: TObject);
+    procedure RdbCadContaChange(Sender: TObject);
   private
 
   public
@@ -191,6 +192,19 @@ end;
 procedure TFrmCadContasBancarias.Panel2Click(Sender: TObject);
 begin
 
+end;
+
+procedure TFrmCadContasBancarias.RdbCadContaChange(Sender: TObject);
+begin
+  if RdbCadConta.Checked=true then
+  begin
+    CboTipo.Enabled:=true;
+  end
+  else
+  begin
+    CboTipo.Enabled:=false;
+    CboTipo.ClearSelection;
+  end;
 end;
 
 end.
