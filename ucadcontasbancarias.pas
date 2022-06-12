@@ -58,6 +58,7 @@ type
     procedure Panel1Click(Sender: TObject);
     procedure Panel2Click(Sender: TObject);
     procedure RdbCadContaChange(Sender: TObject);
+    procedure RdbCadTransChange(Sender: TObject);
   private
 
   public
@@ -87,60 +88,97 @@ end;
 
 procedure TFrmCadContasBancarias.BtnSalvarClick(Sender: TObject);
 begin
-  if (RdbCadConta.Checked=false) and (RdbCadTrans.Checked=false) then
+  if (RdbCadConta.Checked = False) and (RdbCadTrans.Checked = False) then
   begin
-       ShowMessage('Selecione uma operação');
+    ShowMessage('Selecione uma operação');
   end;
 
-  if (RdbCadConta.Checked=true) then
+  if (RdbCadConta.Checked = True) and (CboTipo.KeyValue <> 3) then
   begin
+    if (CboTipo.Text = '') then
+    begin
+      ShowMessage('Selecione o tipo da conta para continuar o cadastro!');
+    end
+    else if (CboBanco.Text = '') then
+    begin
+      ShowMessage('Selecione o banco para continuar o cadastro!');
+    end
+    else if (EdtAgencia.Text = '') then
+    begin
+      ShowMessage('O preenchimento do número da agência é obrigatório!');
+    end
+    else if (EdtNConta.Text = '') then
+    begin
+      ShowMessage('O preenchimento do n° da conta é obrigatório!');
+    end
+    else
+    begin
+      dm.ZQCadBancarias.Params.ParamByName('pcodigotip').Value := CboTipo.KeyValue;
+      dm.ZQCadBancarias.Params.ParamByName('pconnome').Value := CboBanco.Text;
+      dm.ZQCadBancarias.Params.ParamByName('pconagencia').Value := EdtAgencia.Text;
+      dm.ZQCadBancarias.Params.ParamByName('pconnumero_conta').Value := EdtNConta.Text;
+      EdtSaldoInicial.Text :=StringReplace(EdtSaldoInicial.Text, ',', '.', [rfReplaceAll]);
+      dm.ZQCadBancarias.Params.ParamByName('pconsaldo_inicial').Value :=EdtSaldoInicial.Text;
+      dm.ZQCadBancarias.ExecSQL;
+      ShowMessage('Conta registrada com sucesso!');
+      CboTipo.ClearSelection;
+      CboBanco.ClearSelection;
+      EdtAgencia.Clear;
+      EdtNConta.Clear;
+      EdtSaldoInicial.Clear;
+      CboTipo.SetFocus;
 
+    end;
 
-    dm.ZQCadBancarias.Params.ParamByName('pCONNOME').Value:=CboBanco.Text;
-    dm.ZQCadBancarias.Params.ParamByName('pCODIGOTIP').Value:=CboTipo.KeyValue;
-    dm.ZQCadBancarias.Params.ParamByName('pCONAGENCIA').Value:=EdtAgencia.Text;
-    dm.ZQCadBancarias.Params.ParamByName('pCONNUMERO_CONTA').Value:=EdtNConta.Text;
-    EdtSaldoInicial.Text:=StringReplace(EdtSaldoInicial.Text,',','.',[rfReplaceAll]);
-    dm.ZQCadBancarias.Params.ParamByName('pCONSALDO_INICIAL').Value:=EdtSaldoInicial.Text;
-    Dm.ZQCadBancarias.ExecSQL;
-
-    ShowMessage('Conta registrada com sucesso!');
-    CboBanco.Clear;
-    CboTipo.Clear;
-    EdtAgencia.Clear;
-    EdtNConta.Clear;
-    EdtSaldoInicial.Clear;
-    CboTipo.SetFocus;
-
-
-
+  end;
+  if (RdbCadConta.Checked = True) and (CboTipo.KeyValue = 3) then
+  begin
+    if (EdtNomeConta.Text = '') then
+    begin
+      ShowMessage('Digite um nome para essa conta caixa!');
+    end
+    else
+    begin
+      dm.ZQCadBancarias.Params.ParamByName('pcodigotip').Value :=CboTipo.KeyValue;
+      dm.ZQCadBancarias.Params.ParamByName('pconnome').Value :=EdtNomeConta.Text;
+      EdtSaldoInicial.Text :=StringReplace(EdtSaldoInicial.Text, ',', '.', [rfReplaceAll]);
+      dm.ZQCadBancarias.Params.ParamByName('pconsaldo_inicial').Value :=EdtSaldoInicial.Text;
+      dm.ZQCadBancarias.ExecSQL;
+      ShowMessage('Conta registrada com sucesso!');
+      CboTipo.ClearSelection;
+      EdtNomeConta.Clear;
+      EdtSaldoInicial.Clear;
+      CboTipo.SetFocus;
+    end;
   end;
 
 end;
 
+
+
 procedure TFrmCadContasBancarias.CboTipoChange(Sender: TObject);
 begin
-  if CboTipo.KeyValue=3  then
+  if CboTipo.KeyValue = 3 then
   begin
-    EdtSaldoInicial.Enabled:=true;
-    EdtNomeConta.Enabled:=true;
-    EdtNConta.Enabled:=false;
-    EdtAgencia.Enabled:=false;
-    CboBanco.Enabled:=false;
+    EdtSaldoInicial.Enabled := True;
+    EdtNomeConta.Enabled := True;
+    EdtNConta.Enabled := False;
+    EdtAgencia.Enabled := False;
+    CboBanco.Enabled := False;
     EdtNomeConta.SetFocus;
-    EdtNConta.clear;
-    EdtAgencia.clear;
+    EdtNConta.Clear;
+    EdtAgencia.Clear;
     //o clearselection ele apaga apenas o item que está selecionado, e não todos os itens da lista
     CboBanco.ClearSelection;
-    EdtNConta.clear;
+    EdtNConta.Clear;
   end
   else
   begin
-    EdtSaldoInicial.Enabled:=true;
-    EdtAgencia.Enabled:=true;
-    EdtNConta.Enabled:=true;
-    CboBanco.Enabled:=true;
-    EdtNomeConta.Enabled:=true;
+    EdtSaldoInicial.Enabled := True;
+    EdtAgencia.Enabled := True;
+    EdtNConta.Enabled := True;
+    CboBanco.Enabled := True;
+    EdtNomeConta.Enabled := True;
     CboBanco.SetFocus;
   end;
 end;
@@ -154,17 +192,17 @@ end;
 procedure TFrmCadContasBancarias.EdtSaldoInicialKeyPress(Sender: TObject;
   var Key: char);
 begin
-   if not(key in ['0'..'9',#8,','])then
-   begin
-     key:=#0;
-     Beep;
-   end;
+  if not (key in ['0'..'9', #8, ',']) then
+  begin
+    key := #0;
+    Beep;
+  end;
 end;
 
 procedure TFrmCadContasBancarias.FormClose(Sender: TObject;
   var CloseAction: TCloseAction);
 begin
-  dm.ZQConsTipoConta.Active:=false;
+  dm.ZQConsTipoConta.Active := False;
 end;
 
 procedure TFrmCadContasBancarias.FormResize(Sender: TObject);
@@ -175,7 +213,7 @@ end;
 
 procedure TFrmCadContasBancarias.FormShow(Sender: TObject);
 begin
-  dm.ZQConsTipoConta.Active:=true;
+  dm.ZQConsTipoConta.Active := True;
 
 end;
 
@@ -196,16 +234,36 @@ end;
 
 procedure TFrmCadContasBancarias.RdbCadContaChange(Sender: TObject);
 begin
-  if RdbCadConta.Checked=true then
+  if RdbCadConta.Checked = True then
   begin
-    CboTipo.Enabled:=true;
+    CboTipo.Enabled := True;
+    RdbCadTrans.Checked := False;
   end
   else
   begin
-    CboTipo.Enabled:=false;
+    CboTipo.Enabled := False;
     CboTipo.ClearSelection;
+    //ajuste
+    CboBanco.ClearSelection;
+    EdtAgencia.Clear;
+    EdtNConta.Clear;
+    EdtNomeConta.Clear;
+    EdtSaldoInicial.Clear;
+    CboBanco.Enabled := False;
+    EdtAgencia.Enabled := False;
+    EdtNConta.Enabled := False;
+    EdtNomeConta.Enabled := False;
+    EdtSaldoInicial.Enabled := False;
+
+  end;
+end;
+
+procedure TFrmCadContasBancarias.RdbCadTransChange(Sender: TObject);
+begin
+  if RdbCadTrans.Checked = True then
+  begin
+    RdbCadConta.Checked := False;
   end;
 end;
 
 end.
-

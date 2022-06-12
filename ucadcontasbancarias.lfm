@@ -1,13 +1,13 @@
 object FrmCadContasBancarias: TFrmCadContasBancarias
   Left = -8
-  Height = 788
+  Height = 905
   Top = -8
-  Width = 1298
+  Width = 1346
   BorderIcons = [biSystemMenu]
   BorderStyle = bsNone
   Caption = 'Cadastro de Contas Bancarias'
-  ClientHeight = 878
-  ClientWidth = 1662
+  ClientHeight = 882
+  ClientWidth = 1346
   Color = 16577259
   Font.CharSet = ANSI_CHARSET
   Font.Height = -13
@@ -21,12 +21,12 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 878
+    Height = 882
     Top = 0
-    Width = 1662
+    Width = 1346
     Align = alClient
-    ClientHeight = 878
-    ClientWidth = 1662
+    ClientHeight = 882
+    ClientWidth = 1346
     TabOrder = 0
     OnClick = Panel1Click
     object Panel2: TPanel
@@ -104,7 +104,7 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
           )
           ParentFont = False
           Style = csDropDownList
-          TabOrder = 1
+          TabOrder = 5
         end
         object Label4: TLabel
           Left = 126
@@ -139,7 +139,7 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
           OnChange = EdtSaldoInicialChange
           OnKeyPress = EdtSaldoInicialKeyPress
           ParentFont = False
-          TabOrder = 3
+          TabOrder = 4
         end
         object Label5: TLabel
           Left = 512
@@ -177,7 +177,7 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
           Font.Quality = fqDraft
           NumbersOnly = True
           ParentFont = False
-          TabOrder = 4
+          TabOrder = 1
         end
         object CboTipo: TDBLookupComboBox
           Left = 56
@@ -192,7 +192,7 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
           LookupCache = False
           OnChange = CboTipoChange
           Style = csDropDownList
-          TabOrder = 5
+          TabOrder = 6
         end
         object Label8: TLabel
           Left = 344
@@ -213,7 +213,7 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
           Font.Pitch = fpVariable
           Font.Quality = fqDraft
           ParentFont = False
-          TabOrder = 6
+          TabOrder = 3
         end
       end
       object GrpTrasfe: TGroupBox
@@ -230,6 +230,7 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
           Top = 8
           Width = 180
           Caption = 'Cadastro de Transferência'
+          OnChange = RdbCadTransChange
           TabOrder = 0
         end
         object Label1: TLabel
