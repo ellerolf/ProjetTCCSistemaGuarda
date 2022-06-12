@@ -12,7 +12,6 @@ object DM: TDM
       'AutoEncodeStrings=True'
       'controls_cp=CP_UTF8'
     )
-    Connected = True
     HostName = 'localhost'
     Port = 3306
     Database = 'financeiro'
@@ -726,14 +725,19 @@ object DM: TDM
     Connection = ZFinanceiro
     SQL.Strings = (
       'insert into pessoa'
-      '(codigotip, pescpf, pesdata_nascimento, pesendereco, pesnumero, pescomplemento, pesbairro, pescep,pescidade, pesestado, pestelefone, pescelular, pesemail, pesobservacao) '
+      '(codigotip, pesnome, pescpf, pesdata_nascimento, pesendereco, pesnumero, pescomplemento, pesbairro, pescep,pescidade, pesestado, pestelefone, pescelular, pesemail, pesobservacao) '
       'values '
-      '(:codigotip, :pescpf, :pesdata_nascimento, :pesendereco, :pesnumero, :pescomplemento, :pesbairro, :pescep, :pescidade, :pesestado, :pestelefone, :pescelular, :pesemail, :pesobservacao)'
+      '(:codigotip, :pesnome, :pescpf, :pesdata_nascimento, :pesendereco, :pesnumero, :pescomplemento, :pesbairro, :pescep, :pescidade, :pesestado, :pestelefone, :pescelular, :pesemail, :pesobservacao)'
     )
     Params = <    
       item
         DataType = ftUnknown
         Name = 'codigotip'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pesnome'
         ParamType = ptUnknown
       end    
       item
@@ -811,6 +815,11 @@ object DM: TDM
       end    
       item
         DataType = ftUnknown
+        Name = 'pesnome'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
         Name = 'pescpf'
         ParamType = ptUnknown
       end    
@@ -879,13 +888,18 @@ object DM: TDM
     Connection = ZFinanceiro
     SQL.Strings = (
       'update pessoa set '
-      'codigotip=:codigotip, pescpf=:pescpf, pesdata_nascimento=:pesdata_nascimento, pesendereco=:pesendereco, pesnumero=:pesnumero, pescomplemento=:pescomplemento, pesbairro=:pesbairro, pescep=:pescep, pescidade=:pescidade, pesestado=:pesestado, pestelefone=:pestelefone, pescelular=:pescelular, pesemail=:pesemail, pesobservacao=:pesobservacao'
+      'codigotip=:codigotip, pesnome=:pesnome, pescpf=:pescpf, pesdata_nascimento=:pesdata_nascimento, pesendereco=:pesendereco, pesnumero=:pesnumero, pescomplemento=:pescomplemento, pesbairro=:pesbairro, pescep=:pescep, pescidade=:pescidade, pesestado=:pesestado, pestelefone=:pestelefone, pescelular=:pescelular, pesemail=:pesemail, pesobservacao=:pesobservacao'
       'where pescodigo=:ppescodigo'
     )
     Params = <    
       item
         DataType = ftUnknown
         Name = 'codigotip'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pesnome'
         ParamType = ptUnknown
       end    
       item
@@ -964,6 +978,11 @@ object DM: TDM
       item
         DataType = ftUnknown
         Name = 'codigotip'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pesnome'
         ParamType = ptUnknown
       end    
       item
