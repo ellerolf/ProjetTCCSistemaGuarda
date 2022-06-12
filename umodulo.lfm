@@ -12,6 +12,7 @@ object DM: TDM
       'AutoEncodeStrings=True'
       'controls_cp=CP_UTF8'
     )
+    Connected = True
     HostName = 'localhost'
     Port = 3306
     Database = 'financeiro'
@@ -484,6 +485,219 @@ object DM: TDM
     Params = <>
     Left = 248
     Top = 304
+    object ZQConsFornCPFPESCODIGO: TLongintField
+      FieldKind = fkData
+      FieldName = 'PESCODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object ZQConsFornCPFPESNOME: TStringField
+      FieldKind = fkData
+      FieldName = 'PESNOME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsFornCPFCODIGOTIP: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODIGOTIP'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsFornCPFPESCPF: TStringField
+      FieldKind = fkData
+      FieldName = 'PESCPF'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsFornCPFPESDATA_NASCIMENTO: TDateField
+      FieldKind = fkData
+      FieldName = 'PESDATA_NASCIMENTO'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsFornCPFPESCNPJ: TStringField
+      FieldKind = fkData
+      FieldName = 'PESCNPJ'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsFornCPFPESRAZAO_SOCIAL: TStringField
+      FieldKind = fkData
+      FieldName = 'PESRAZAO_SOCIAL'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsFornCPFPESNOME_FANTASIA: TStringField
+      FieldKind = fkData
+      FieldName = 'PESNOME_FANTASIA'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsFornCPFPESINSCRICAO_ESTADUAL: TLongintField
+      FieldKind = fkData
+      FieldName = 'PESINSCRICAO_ESTADUAL'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsFornCPFPESINSCRICACAO_MUNICIPAL: TLongintField
+      FieldKind = fkData
+      FieldName = 'PESINSCRICACAO_MUNICIPAL'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsFornCPFPESCEP: TStringField
+      FieldKind = fkData
+      FieldName = 'PESCEP'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsFornCPFPESENDERECO: TStringField
+      FieldKind = fkData
+      FieldName = 'PESENDERECO'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsFornCPFPESNUMERO: TLongintField
+      FieldKind = fkData
+      FieldName = 'PESNUMERO'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsFornCPFPESCOMPLEMENTO: TStringField
+      FieldKind = fkData
+      FieldName = 'PESCOMPLEMENTO'
+      Index = 13
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsFornCPFPESESTADO: TStringField
+      FieldKind = fkData
+      FieldName = 'PESESTADO'
+      Index = 14
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsFornCPFPESCIDADE: TStringField
+      FieldKind = fkData
+      FieldName = 'PESCIDADE'
+      Index = 15
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsFornCPFPESBAIRRO: TStringField
+      FieldKind = fkData
+      FieldName = 'PESBAIRRO'
+      Index = 16
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsFornCPFPESEMAIL: TStringField
+      FieldKind = fkData
+      FieldName = 'PESEMAIL'
+      Index = 17
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsFornCPFPESTELEFONE: TStringField
+      FieldKind = fkData
+      FieldName = 'PESTELEFONE'
+      Index = 18
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsFornCPFPESCELULAR: TStringField
+      FieldKind = fkData
+      FieldName = 'PESCELULAR'
+      Index = 19
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsFornCPFPESOBSERVACAO: TStringField
+      FieldKind = fkData
+      FieldName = 'PESOBSERVACAO'
+      Index = 20
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 200
+    end
+    object ZQConsFornCPFPESSTATUS: TSmallintField
+      FieldKind = fkData
+      FieldName = 'PESSTATUS'
+      Index = 21
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
   end
   object ZQDelFornCPF: TZQuery
     Connection = ZFinanceiro
@@ -720,6 +934,219 @@ object DM: TDM
     Params = <>
     Left = 136
     Top = 304
+    object ZQConsFornCNPJPESCODIGO: TLongintField
+      FieldKind = fkData
+      FieldName = 'PESCODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object ZQConsFornCNPJPESNOME: TStringField
+      FieldKind = fkData
+      FieldName = 'PESNOME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsFornCNPJCODIGOTIP: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODIGOTIP'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsFornCNPJPESCPF: TStringField
+      FieldKind = fkData
+      FieldName = 'PESCPF'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsFornCNPJPESDATA_NASCIMENTO: TDateField
+      FieldKind = fkData
+      FieldName = 'PESDATA_NASCIMENTO'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsFornCNPJPESCNPJ: TStringField
+      FieldKind = fkData
+      FieldName = 'PESCNPJ'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsFornCNPJPESRAZAO_SOCIAL: TStringField
+      FieldKind = fkData
+      FieldName = 'PESRAZAO_SOCIAL'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsFornCNPJPESNOME_FANTASIA: TStringField
+      FieldKind = fkData
+      FieldName = 'PESNOME_FANTASIA'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsFornCNPJPESINSCRICAO_ESTADUAL: TLongintField
+      FieldKind = fkData
+      FieldName = 'PESINSCRICAO_ESTADUAL'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsFornCNPJPESINSCRICACAO_MUNICIPAL: TLongintField
+      FieldKind = fkData
+      FieldName = 'PESINSCRICACAO_MUNICIPAL'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsFornCNPJPESCEP: TStringField
+      FieldKind = fkData
+      FieldName = 'PESCEP'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsFornCNPJPESENDERECO: TStringField
+      FieldKind = fkData
+      FieldName = 'PESENDERECO'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsFornCNPJPESNUMERO: TLongintField
+      FieldKind = fkData
+      FieldName = 'PESNUMERO'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsFornCNPJPESCOMPLEMENTO: TStringField
+      FieldKind = fkData
+      FieldName = 'PESCOMPLEMENTO'
+      Index = 13
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsFornCNPJPESESTADO: TStringField
+      FieldKind = fkData
+      FieldName = 'PESESTADO'
+      Index = 14
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsFornCNPJPESCIDADE: TStringField
+      FieldKind = fkData
+      FieldName = 'PESCIDADE'
+      Index = 15
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsFornCNPJPESBAIRRO: TStringField
+      FieldKind = fkData
+      FieldName = 'PESBAIRRO'
+      Index = 16
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsFornCNPJPESEMAIL: TStringField
+      FieldKind = fkData
+      FieldName = 'PESEMAIL'
+      Index = 17
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsFornCNPJPESTELEFONE: TStringField
+      FieldKind = fkData
+      FieldName = 'PESTELEFONE'
+      Index = 18
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsFornCNPJPESCELULAR: TStringField
+      FieldKind = fkData
+      FieldName = 'PESCELULAR'
+      Index = 19
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsFornCNPJPESOBSERVACAO: TStringField
+      FieldKind = fkData
+      FieldName = 'PESOBSERVACAO'
+      Index = 20
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 200
+    end
+    object ZQConsFornCNPJPESSTATUS: TSmallintField
+      FieldKind = fkData
+      FieldName = 'PESSTATUS'
+      Index = 21
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
   end
   object ZQCadFornCPF: TZQuery
     Connection = ZFinanceiro
