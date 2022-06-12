@@ -139,7 +139,8 @@ begin
       EdtInsEstadual.Text;
     dm.ZQCadFornCNPJ.Params.ParamByName('pesinscricacao_municipal').Value :=
       EdtInsMunicipal.Text;
-    dm.ZQCadFornCNPJ.Params.ParamByName('pesdata_nascimento').Value := FormatDateTime('YYYY-MM-DD', StrToDate(EdtDTNasc.Text));
+    dm.ZQCadFornCNPJ.Params.ParamByName('pesdata_nascimento').Value :=
+      FormatDateTime('YYYY-MM-DD', StrToDate(EdtDTNasc.Text));
     dm.ZQCadFornCNPJ.Params.ParamByName('pesendereco').Value := EdtEndereco.Text;
     dm.ZQCadFornCNPJ.Params.ParamByName('pesnumero').Value := EdtNumero.Text;
     dm.ZQCadFornCNPJ.Params.ParamByName('pescomplemento').Value := EdtComplemento.Text;
@@ -170,15 +171,38 @@ begin
     EdtBairro.Clear;
     EdtCep.Clear;
     EdtCidade.Clear;
-    CboUf.Caption:='UF';
+    CboUf.Caption := 'UF';
     EdtTel.Clear;
     EdtCel.Clear;
     EdtEmail.Clear;
     MemObs.Clear;
   end;
 
-  if (BtnCpf.Enabled = true) then
+  if (btncpf.Enabled = True) then
+  begin
+    dm.ZQCadFornCPF.Params.ParamByName('codigotip').Value := 1;
+    dm.ZQCadFornCPF.Params.ParamByName('pescpf').Value := EdtCpfCnpj.Text;
+    dm.ZQCadFornCPF.Params.ParamByName('pesdata_nascimento').Value :=
+      FormatDateTime('YYYY-MM-DD', StrToDate(EdtDTNasc.Text));
+    dm.ZQCadFornCPF.Params.ParamByName('pesendereco').Value := EdtEndereco.Text;
+    dm.ZQCadFornCPF.Params.ParamByName('pesnumero').Value := EdtNumero.Text;
+    dm.ZQCadFornCPF.Params.ParamByName('pescomplemento').Value := EdtComplemento.Text;
+    dm.ZQCadFornCPF.Params.ParamByName('pesbairro').Value := EdtBairro.Text;
+    dm.ZQCadFornCPF.Params.ParamByName('pescep').Value := EdtCep.Text;
+    dm.ZQCadFornCPF.Params.ParamByName('pescidade').Value := EdtCidade.Text;
+    dm.ZQCadFornCPF.Params.ParamByName('pesestado').Value := CboUf.Text;
+    dm.ZQCadFornCPF.Params.ParamByName('pestelefone').Value := EdtTel.Text;
+    dm.ZQCadFornCPF.Params.ParamByName('pescelular').Value := EdtCel.Text;
+    dm.ZQCadFornCPF.Params.ParamByName('pesemail').Value := EdtEmail.Text;
+    dm.ZQCadFornCPF.Params.ParamByName('pesobservacao').Value := MemObs.Text;
+    dm.ZQCadFornCPF.ExecSQL;
 
+    dm.ZQConsFornCNPJ.Close;
+    dm.ZQConsFornCNPJ.Open;
+
+    LblMensagem.Caption := 'Dados Gravados';
+
+  end;
 
 end;
 
