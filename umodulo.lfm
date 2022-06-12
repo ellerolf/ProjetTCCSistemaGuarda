@@ -401,6 +401,7 @@ object DM: TDM
     Top = 368
   end
   object ZQDelFornCNPJ: TZQuery
+    Connection = ZFinanceiro
     SQL.Strings = (
       'delete from pessoa where  pescodigo=:ppescodigo'
     )
@@ -471,340 +472,6 @@ object DM: TDM
     Left = 664
     Top = 240
   end
-  object ZQCadFornCPF: TZQuery
-    SQL.Strings = (
-      'insert into pessoa '
-      '(codigotip, pescpf, pesnome,  pesdata_nascimento, pesendereco, pesnumero, pescomplemento, pesbairro, pescep, pescidade, pesestado, pestelefone, pescelular, pesemail, pesobservacao) '
-      'values '
-      '(:pcodigotip, :ppescpf, :ppesnome, :ppesdata_nascimento, :ppesendereco, :ppesnumero, :ppescomplemento, :ppesbairro, :ppescep, :ppescidade, :ppesestado, :ppestelefone, :ppescelular, :ppesemail, :ppesobservacao)'
-    )
-    Params = <    
-      item
-        DataType = ftUnknown
-        Name = 'pcodigotip'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppescpf'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppesnome'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppesdata_nascimento'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppesendereco'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppesnumero'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppescomplemento'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppesbairro'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppescep'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppescidade'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppesestado'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppestelefone'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppescelular'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppesemail'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppesobservacao'
-        ParamType = ptUnknown
-      end>
-    Left = 248
-    Top = 96
-    ParamData = <    
-      item
-        DataType = ftUnknown
-        Name = 'pcodigotip'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppescpf'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppesnome'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppesdata_nascimento'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppesendereco'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppesnumero'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppescomplemento'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppesbairro'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppescep'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppescidade'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppesestado'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppestelefone'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppescelular'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppesemail'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppesobservacao'
-        ParamType = ptUnknown
-      end>
-  end
-  object ZQAltFornCPF: TZQuery
-    SQL.Strings = (
-      'update pessoa set'
-      'codigotip=:pcodigotip, pescpf=:ppescpf, pesnome=:ppesnome, pesdata_nascimento=:ppesdata_nascimento, pesendereco=:ppesendereco, pesnumero=:ppesnumero, pescomplemento=:ppescomplemento, pesbairro=:ppesbairro, pescep=:ppescep, pescidade=:ppescidade, pesestado=:ppesestado, pestelefone=:ppestelefone, pescelular=:ppescelular, pesemail=:ppesemail, pesobservacao=:ppesobservacao'
-      'where pescodigo=:ppescodigo'
-      ''
-    )
-    Params = <    
-      item
-        DataType = ftUnknown
-        Name = 'pcodigotip'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppescpf'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppesnome'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppesdata_nascimento'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppesendereco'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppesnumero'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppescomplemento'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppesbairro'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppescep'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppescidade'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppesestado'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppestelefone'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppescelular'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppesemail'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppesobservacao'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppescodigo'
-        ParamType = ptUnknown
-      end>
-    Left = 248
-    Top = 168
-    ParamData = <    
-      item
-        DataType = ftUnknown
-        Name = 'pcodigotip'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppescpf'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppesnome'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppesdata_nascimento'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppesendereco'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppesnumero'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppescomplemento'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppesbairro'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppescep'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppescidade'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppesestado'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppestelefone'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppescelular'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppesemail'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppesobservacao'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppescodigo'
-        ParamType = ptUnknown
-      end>
-  end
   object DSConsFornCPF: TDataSource
     DataSet = ZQConsFornCPF
     Left = 248
@@ -820,6 +487,7 @@ object DM: TDM
     Top = 304
   end
   object ZQDelFornCPF: TZQuery
+    Connection = ZFinanceiro
     SQL.Strings = (
       'delete from pessoa where  pescodigo=:ppescodigo'
     )
@@ -839,101 +507,102 @@ object DM: TDM
       end>
   end
   object ZQCadFornCNPJ: TZQuery
+    Connection = ZFinanceiro
     SQL.Strings = (
-      'insert into pessoa '
-      '(codigotip, pescnpj, pesrazao_social, pesnome_fantasia, pesinscricao_estadual, pesinscricacao_municipal,  pesdata_nascimento, pesendereco, pesnumero, pescomplemento, pesbairro, pescep, pescidade, pesestado, pestelefone, pescelular, pesemail, pesobservacao) '
+      'insert into pessoa'
+      '(codigotip, pescnpj, pesrazao_social, pesnome_fantasia, pesinscricao_estadual, pesinscricacao_municipal, pesdata_nascimento, pesendereco, pesnumero, pescomplemento, pesbairro, pescep, pescidade, pesestado, pestelefone, pescelular, pesemail, pesobservacao) '
       'values '
-      '(:pcodigotip, :ppescnpj, :ppesrazao_social, :ppesnome_fantasia, :ppesinscricao_estadual, :ppesinscricacao_municipal,  :ppesdata_nascimento, :ppesendereco, :ppesnumero, :ppescomplemento, :ppesbairro, :ppescep, :ppescidade, :ppesestado, :ppestelefone, :ppescelular, :ppesemail, :ppesobservacao)'
+      '(:codigotip, :pescnpj, :pesrazao_social, :pesnome_fantasia, :pesinscricao_estadual, :pesinscricacao_municipal, :pesdata_nascimento, :pesendereco, :pesnumero, :pescomplemento, :pesbairro, :pescep, :pescidade, :pesestado, :pestelefone, :pescelular, :pesemail, :pesobservacao)'
     )
     Params = <    
       item
         DataType = ftUnknown
-        Name = 'pcodigotip'
+        Name = 'codigotip'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppescnpj'
+        Name = 'pescnpj'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesrazao_social'
+        Name = 'pesrazao_social'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesnome_fantasia'
+        Name = 'pesnome_fantasia'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesinscricao_estadual'
+        Name = 'pesinscricao_estadual'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesinscricacao_municipal'
+        Name = 'pesinscricacao_municipal'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesdata_nascimento'
+        Name = 'pesdata_nascimento'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesendereco'
+        Name = 'pesendereco'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesnumero'
+        Name = 'pesnumero'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppescomplemento'
+        Name = 'pescomplemento'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesbairro'
+        Name = 'pesbairro'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppescep'
+        Name = 'pescep'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppescidade'
+        Name = 'pescidade'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesestado'
+        Name = 'pesestado'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppestelefone'
+        Name = 'pestelefone'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppescelular'
+        Name = 'pescelular'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesemail'
+        Name = 'pesemail'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesobservacao'
+        Name = 'pesobservacao'
         ParamType = ptUnknown
       end>
     Left = 136
@@ -941,192 +610,529 @@ object DM: TDM
     ParamData = <    
       item
         DataType = ftUnknown
-        Name = 'pcodigotip'
+        Name = 'codigotip'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppescnpj'
+        Name = 'pescnpj'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesrazao_social'
+        Name = 'pesrazao_social'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesnome_fantasia'
+        Name = 'pesnome_fantasia'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesinscricao_estadual'
+        Name = 'pesinscricao_estadual'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesinscricacao_municipal'
+        Name = 'pesinscricacao_municipal'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesdata_nascimento'
+        Name = 'pesdata_nascimento'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesendereco'
+        Name = 'pesendereco'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesnumero'
+        Name = 'pesnumero'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppescomplemento'
+        Name = 'pescomplemento'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesbairro'
+        Name = 'pesbairro'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppescep'
+        Name = 'pescep'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppescidade'
+        Name = 'pescidade'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesestado'
+        Name = 'pesestado'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppestelefone'
+        Name = 'pestelefone'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppescelular'
+        Name = 'pescelular'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesemail'
+        Name = 'pesemail'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesobservacao'
+        Name = 'pesobservacao'
         ParamType = ptUnknown
       end>
   end
-  object ZQAltFonrCNPJ: TZQuery
+  object ZQConsTipoConta: TZQuery
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'SELECT * from tipo_conta'
+    )
+    Params = <>
+    Left = 560
+    Top = 504
+  end
+  object DSConsTipoConta: TDataSource
+    DataSet = ZQConsTipoConta
+    Left = 560
+    Top = 432
+  end
+  object ZQConsFornCNPJ: TZQuery
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'select * from pessoa'
+    )
+    Params = <>
+    Left = 136
+    Top = 304
+  end
+  object ZQCadFornCPF: TZQuery
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'insert into pessoa'
+      '(codigotip, pescpf, pesdata_nascimento, pesendereco, pesnumero, pescomplemento, pesbairro, pescep,pescidade, pesestado, pestelefone, pescelular, pesemail, pesobservacao) '
+      'values '
+      '(:codigotip, :pescpf, :pesdata_nascimento, :pesendereco, :pesnumero, :pescomplemento, :pesbairro, :pescep, :pescidade, :pesestado, :pestelefone, :pescelular, :pesemail, :pesobservacao)'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'codigotip'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pescpf'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pesdata_nascimento'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pesendereco'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pesnumero'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pescomplemento'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pesbairro'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pescep'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pescidade'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pesestado'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pestelefone'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pescelular'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pesemail'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pesobservacao'
+        ParamType = ptUnknown
+      end>
+    Left = 248
+    Top = 96
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'codigotip'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pescpf'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pesdata_nascimento'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pesendereco'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pesnumero'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pescomplemento'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pesbairro'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pescep'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pescidade'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pesestado'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pestelefone'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pescelular'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pesemail'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pesobservacao'
+        ParamType = ptUnknown
+      end>
+  end
+  object ZQAltFornCPF: TZQuery
+    Connection = ZFinanceiro
     SQL.Strings = (
       'update pessoa set '
-      'codigotip=:pcodigotip, pescnpj=:ppescnpj, pesrazao_social=:ppesrazao_social, pesnome_fantasia=:ppesnome_fantasia, pesinscricao_estadual=:ppesinscricao_estadual, pesinscricacao_municipal=:ppesinscricacao_municipal,  '
-      'pesdata_nascimento=:ppesdata_nascimento, pesendereco=:ppesendereco, pesnumero=:ppesnumero, pescomplemento=:ppescomplemento, pesbairro=:ppesbairro, pescep=:ppescep, pescidade=:ppescidade, pesestado=:ppesestado, pestelefone=:ppestelefone, '
-      'pescelular=:ppescelular, pesemail=:ppesemail, pesobservacao=:ppesobservacao'
+      'codigotip=:codigotip, pescpf=:pescpf, pesdata_nascimento=:pesdata_nascimento, pesendereco=:pesendereco, pesnumero=:pesnumero, pescomplemento=:pescomplemento, pesbairro=:pesbairro, pescep=:pescep, pescidade=:pescidade, pesestado=:pesestado, pestelefone=:pestelefone, pescelular=:pescelular, pesemail=:pesemail, pesobservacao=:pesobservacao'
       'where pescodigo=:ppescodigo'
     )
     Params = <    
       item
         DataType = ftUnknown
-        Name = 'pcodigotip'
+        Name = 'codigotip'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppescnpj'
+        Name = 'pescpf'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesrazao_social'
+        Name = 'pesdata_nascimento'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesnome_fantasia'
+        Name = 'pesendereco'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesinscricao_estadual'
+        Name = 'pesnumero'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesinscricacao_municipal'
+        Name = 'pescomplemento'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesdata_nascimento'
+        Name = 'pesbairro'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesendereco'
+        Name = 'pescep'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesnumero'
+        Name = 'pescidade'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppescomplemento'
+        Name = 'pesestado'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesbairro'
+        Name = 'pestelefone'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppescep'
+        Name = 'pescelular'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppescidade'
+        Name = 'pesemail'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesestado'
+        Name = 'pesobservacao'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppestelefone'
+        Name = 'ppescodigo'
+        ParamType = ptUnknown
+      end>
+    Left = 248
+    Top = 168
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'codigotip'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppescelular'
+        Name = 'pescpf'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesemail'
+        Name = 'pesdata_nascimento'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesobservacao'
+        Name = 'pesendereco'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pesnumero'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pescomplemento'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pesbairro'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pescep'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pescidade'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pesestado'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pestelefone'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pescelular'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pesemail'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pesobservacao'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ppescodigo'
+        ParamType = ptUnknown
+      end>
+  end
+  object ZQAltFonrCNPJ: TZQuery
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'update pessoa set '
+      'codigotip=:codigotip, pescpnj=:pescpnj, pesrazao_social=:pesrazao_social, pesnome_fantasia=:pesnome_fantasia, pesinscricao_estadual=:pesinscricao_estadual, pesinscricacao_municipal=:pesinscricacao_municipal, pesdata_nascimento=:pesdata_nascimento, pesendereco=:pesendereco, pesnumero=:pesnumero, pescomplemento=:pescomplemento, pesbairro=:pesbairro, pescep=:pescep, pescidade=:pescidade, pesestado=:pesestado, pestelefone=:pestelefone, pescelular=:pescelular, pesemail=:pesemail, pesobservacao=:pesobservacao'
+      'where pescodigo=:ppescodigo'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'codigotip'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pescpnj'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pesrazao_social'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pesnome_fantasia'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pesinscricao_estadual'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pesinscricacao_municipal'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pesdata_nascimento'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pesendereco'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pesnumero'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pescomplemento'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pesbairro'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pescep'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pescidade'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pesestado'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pestelefone'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pescelular'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pesemail'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pesobservacao'
         ParamType = ptUnknown
       end    
       item
@@ -1139,92 +1145,92 @@ object DM: TDM
     ParamData = <    
       item
         DataType = ftUnknown
-        Name = 'pcodigotip'
+        Name = 'codigotip'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppescnpj'
+        Name = 'pescpnj'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesrazao_social'
+        Name = 'pesrazao_social'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesnome_fantasia'
+        Name = 'pesnome_fantasia'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesinscricao_estadual'
+        Name = 'pesinscricao_estadual'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesinscricacao_municipal'
+        Name = 'pesinscricacao_municipal'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesdata_nascimento'
+        Name = 'pesdata_nascimento'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesendereco'
+        Name = 'pesendereco'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesnumero'
+        Name = 'pesnumero'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppescomplemento'
+        Name = 'pescomplemento'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesbairro'
+        Name = 'pesbairro'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppescep'
+        Name = 'pescep'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppescidade'
+        Name = 'pescidade'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesestado'
+        Name = 'pesestado'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppestelefone'
+        Name = 'pestelefone'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppescelular'
+        Name = 'pescelular'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesemail'
+        Name = 'pesemail'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppesobservacao'
+        Name = 'pesobservacao'
         ParamType = ptUnknown
       end    
       item
@@ -1232,28 +1238,5 @@ object DM: TDM
         Name = 'ppescodigo'
         ParamType = ptUnknown
       end>
-  end
-  object ZQConsTipoConta: TZQuery
-    Connection = ZFinanceiro
-    SQL.Strings = (
-      'SELECT * from tipo_conta'
-    )
-    Params = <>
-    Left = 60
-    Top = 535
-  end
-  object DSConsTipoConta: TDataSource
-    DataSet = ZQConsTipoConta
-    Left = 60
-    Top = 464
-  end
-  object ZQConsFornCNPJ: TZQuery
-    Connection = ZFinanceiro
-    SQL.Strings = (
-      'select * from pessoa'
-    )
-    Params = <>
-    Left = 136
-    Top = 304
   end
 end

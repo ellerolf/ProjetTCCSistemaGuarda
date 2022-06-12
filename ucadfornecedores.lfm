@@ -1,12 +1,12 @@
 object FrmCadFornecedor: TFrmCadFornecedor
   Left = -8
-  Height = 788
+  Height = 827
   Top = -8
-  Width = 1346
+  Width = 1362
   BorderStyle = bsNone
   Caption = 'Cadastro Fornecedores'
-  ClientHeight = 749
-  ClientWidth = 1346
+  ClientHeight = 804
+  ClientWidth = 1362
   Color = 16577259
   OnCreate = FormCreate
   OnResize = FormResize
@@ -14,12 +14,12 @@ object FrmCadFornecedor: TFrmCadFornecedor
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 749
+    Height = 804
     Top = 0
-    Width = 1346
+    Width = 1362
     Align = alClient
-    ClientHeight = 749
-    ClientWidth = 1346
+    ClientHeight = 804
+    ClientWidth = 1362
     TabOrder = 0
     object Panel2: TPanel
       Left = 0
@@ -342,7 +342,6 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Width = 48
         ItemHeight = 15
         Items.Strings = (
-          ''
           'AC'
           'AL'
           'AM'
@@ -1451,20 +1450,18 @@ object FrmCadFornecedor: TFrmCadFornecedor
           TabOrder = 1
         end
       end
-      object EdtCpfCnpj: TMaskEdit
-        Left = 368
-        Height = 23
-        Top = 76
-        Width = 344
-        MaxLength = 0
-        TabOrder = 17
-        SpaceChar = '_'
-      end
       object EdtDTNasc: TEdit
         Left = 584
         Height = 23
         Top = 191
         Width = 128
+        TabOrder = 17
+      end
+      object EdtCpfCnpj: TEdit
+        Left = 368
+        Height = 23
+        Top = 80
+        Width = 344
         TabOrder = 18
       end
     end

@@ -20,6 +20,7 @@ type
     BtnSair: TSpeedButton;
     BtnSalvar: TSpeedButton;
     CboUf: TComboBox;
+    EdtCpfCnpj: TEdit;
     EdtDTNasc: TEdit;
     EdtBairro: TEdit;
     EdtCel: TEdit;
@@ -55,7 +56,6 @@ type
     Label7: TLabel;
     Label9: TLabel;
     LblMensagem: TLabel;
-    EdtCpfCnpj: TMaskEdit;
     MemObs: TMemo;
     Panel1: TPanel;
     Panel2: TPanel;
@@ -97,7 +97,7 @@ end;
 
 procedure TFrmCadFornecedor.BtnCnpjChange(Sender: TObject);
 begin
-  EdtCpfCnpj.EditMask := '00.000.000/0000-00;1;_';
+  //EdtCpfCnpj.EditMask := '00.000.000/0000-00;1;_';
   LblCpfCnpj.Caption := 'CNPJ';
   LblNomeRazao.Caption := 'Razão Social';
   EdtFantasia.Enabled := True;
@@ -113,9 +113,9 @@ end;
 
 procedure TFrmCadFornecedor.BtnCpfChange(Sender: TObject);
 begin
-  EdtCpfCnpj.EditMask := '000.000.000-00;1;_';
+  //EdtCpfCnpj.EditMask := '000.000.000-00;1;_';
   LblCpfCnpj.Caption := 'CPF';
-  LblNomeRazao.Caption := 'Razão Social';
+  LblNomeRazao.Caption := 'Nome';
   EdtFantasia.Enabled := False;
   EdtInsEstadual.Enabled := False;
   EdtInsMunicipal.Enabled := False;
@@ -129,48 +129,55 @@ end;
 procedure TFrmCadFornecedor.BtnSalvarClick(Sender: TObject);
 begin
   //CNPJ
-  if (BtnCnpj.Enabled=true) then
+  if (BtnCnpj.Enabled = True) then
   begin
-       dm.ZQCadFornCNPJ.Params.ParamByName('pcodigotip').value:=2;
-       dm.ZQCadFornCNPJ.Params.ParamByName('ppescnpj').Value:=EdtCpfCnpj.Text;
-       dm.ZQCadFornCNPJ.Params.ParamByName('ppesrazao_social').Value:=EdtNome.text;
-       dm.ZQCadFornCNPJ.Params.ParamByName('ppesnome_fantasia').Value:=EdtFantasia.text;
-       dm.ZQCadFornCNPJ.Params.ParamByName('ppesinscricao_estadual').Value:= EdtInsEstadual.text;
-       dm.ZQCadFornCNPJ.Params.ParamByName('ppesinscricacao_municipal').Value:= EdtInsMunicipal.text;
-       dm.ZQCadFornCNPJ.Params.ParamByName('ppesdata_nascimento').Value:=EdtDTNasc.Text;
-       dm.ZQCadFornCNPJ.Params.ParamByName('ppesendereco').Value:=EdtEndereco.Text;
-       dm.ZQCadFornCNPJ.Params.ParamByName('ppesnumero').Value:=EdtNumero.Text;
-       dm.ZQCadFornCNPJ.Params.ParamByName('ppescomplemento').Value:=EdtComplemento.Text;
-       dm.ZQCadFornCNPJ.Params.ParamByName('ppesbairro').Value:=EdtBairro.text;
-       dm.ZQCadFornCNPJ.Params.ParamByName('ppescep').Value:=EdtCep.text;
-       dm.ZQCadFornCNPJ.Params.ParamByName('ppescidade').Value:=EdtCidade.text;
-       dm.ZQCadFornCNPJ.Params.ParamByName('ppesestado').Value:=CboUf.ItemIndex;
-       dm.ZQCadFornCNPJ.Params.ParamByName('ppestelefone').Value:=EdtTel.text;
-       dm.ZQCadFornCNPJ.Params.ParamByName('ppescelular').Value:=EdtCel.text;
-       dm.ZQCadFornCNPJ.Params.ParamByName('ppesemail').Value:=EdtEmail.text;
-       dm.ZQCadFornCNPJ.Params.ParamByName('ppesobservacao').value:=MemObs.text;
-       dm.ZQCadFornCNPJ.ExecSQL;
+    dm.ZQCadFornCNPJ.Params.ParamByName('codigotip').Value := 2;
+    dm.ZQCadFornCNPJ.Params.ParamByName('pescnpj').Value := EdtCpfCnpj.Text;
+    dm.ZQCadFornCNPJ.Params.ParamByName('pesrazao_social').Value := EdtNome.Text;
+    dm.ZQCadFornCNPJ.Params.ParamByName('pesnome_fantasia').Value := EdtFantasia.Text;
+    dm.ZQCadFornCNPJ.Params.ParamByName('pesinscricao_estadual').Value :=
+      EdtInsEstadual.Text;
+    dm.ZQCadFornCNPJ.Params.ParamByName('pesinscricacao_municipal').Value :=
+      EdtInsMunicipal.Text;
+    dm.ZQCadFornCNPJ.Params.ParamByName('pesdata_nascimento').Value := FormatDateTime('YYYY-MM-DD', StrToDate(EdtDTNasc.Text));
+    dm.ZQCadFornCNPJ.Params.ParamByName('pesendereco').Value := EdtEndereco.Text;
+    dm.ZQCadFornCNPJ.Params.ParamByName('pesnumero').Value := EdtNumero.Text;
+    dm.ZQCadFornCNPJ.Params.ParamByName('pescomplemento').Value := EdtComplemento.Text;
+    dm.ZQCadFornCNPJ.Params.ParamByName('pesbairro').Value := EdtBairro.Text;
+    dm.ZQCadFornCNPJ.Params.ParamByName('pescep').Value := EdtCep.Text;
+    dm.ZQCadFornCNPJ.Params.ParamByName('pescidade').Value := EdtCidade.Text;
+    dm.ZQCadFornCNPJ.Params.ParamByName('pesestado').Value := CboUf.Text;
+    dm.ZQCadFornCNPJ.Params.ParamByName('pestelefone').Value := EdtTel.Text;
+    dm.ZQCadFornCNPJ.Params.ParamByName('pescelular').Value := EdtCel.Text;
+    dm.ZQCadFornCNPJ.Params.ParamByName('pesemail').Value := EdtEmail.Text;
+    dm.ZQCadFornCNPJ.Params.ParamByName('pesobservacao').Value := MemObs.Text;
+    dm.ZQCadFornCNPJ.ExecSQL;
 
-       dm.ZQConsFornCNPJ.close;
-       dm.ZQConsFornCNPJ.Open;
+    dm.ZQConsFornCNPJ.Close;
+    dm.ZQConsFornCNPJ.Open;
 
-       EdtCpfCnpj.Clear;
-       EdtNome.Clear;
-       EdtFantasia.Clear;
-       EdtInsEstadual.Clear;
-       EdtInsMunicipal.Clear;
-       EdtEndereco.Clear;
-       EdtNumero.Clear;
-       EdtComplemento.Clear;
-       EdtCidade.Clear;
-       EdtBairro.Clear;
-       EdtEmail.Clear;
-       EdtTel.Clear;
-       EdtCel.Clear;
-       MemObs.Clear;
-       CboUf.Clear;
-       CboUf.text:='Selecione uma opção';
+    LblMensagem.Caption := 'Dados Gravados';
+
+    EdtCpfCnpj.Clear;
+    EdtNome.Clear;
+    EdtFantasia.Clear;
+    EdtInsEstadual.Clear;
+    EdtInsMunicipal.Clear;
+    EdtDTNasc.Clear;
+    EdtEndereco.Clear;
+    EdtNumero.Clear;
+    EdtComplemento.Clear;
+    EdtBairro.Clear;
+    EdtCep.Clear;
+    EdtCidade.Clear;
+    CboUf.Caption:='UF';
+    EdtTel.Clear;
+    EdtCel.Clear;
+    EdtEmail.Clear;
+    MemObs.Clear;
   end;
+
+  if (BtnCpf.Enabled = true) then
 
 
 end;

@@ -77,14 +77,14 @@ type
     ZQAltCentro: TZQuery;
     ZQAltBancarias: TZQuery;
     ZQDelUsuario: TZQuery;
-    ZQCadFornCPF: TZQuery;
-    ZQAltFornCPF: TZQuery;
     ZQConsFornCPF: TZQuery;
     ZQDelFornCPF: TZQuery;
     ZQCadFornCNPJ: TZQuery;
-    ZQAltFonrCNPJ: TZQuery;
     ZQConsTipoConta: TZQuery;
     ZQConsFornCNPJ: TZQuery;
+    ZQCadFornCPF: TZQuery;
+    ZQAltFornCPF: TZQuery;
+    ZQAltFonrCNPJ: TZQuery;
     procedure DSConsFornCNPJDataChange(Sender: TObject; Field: TField);
 
 
