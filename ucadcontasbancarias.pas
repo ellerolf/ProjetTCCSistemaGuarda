@@ -143,6 +143,8 @@ begin
       dm.ZQCadBancarias.Params.ParamByName('pconnome').Value :=EdtNomeConta.Text;
       EdtSaldoInicial.Text :=StringReplace(EdtSaldoInicial.Text, ',', '.', [rfReplaceAll]);
       dm.ZQCadBancarias.Params.ParamByName('pconsaldo_inicial').Value :=EdtSaldoInicial.Text;
+      dm.ZQCadBancarias.Params.ParamByName('pconagencia').value:=Null;
+      dm.ZQCadBancarias.Params.ParamByName('pconnumero_conta').value:=Null;
       dm.ZQCadBancarias.ExecSQL;
       ShowMessage('Conta registrada com sucesso!');
       CboTipo.ClearSelection;
@@ -178,7 +180,7 @@ begin
     EdtAgencia.Enabled := True;
     EdtNConta.Enabled := True;
     CboBanco.Enabled := True;
-    EdtNomeConta.Enabled := True;
+    EdtNomeConta.Enabled := false;
     CboBanco.SetFocus;
   end;
 end;
