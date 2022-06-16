@@ -5,13 +5,19 @@ unit UBuscaConta;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
+  Buttons, DBGrids;
 
 type
 
-  { TForm1 }
+  { TFrmBuscaConta }
 
-  TForm1 = class(TForm)
+  TFrmBuscaConta = class(TForm)
+    BtnConsulta: TSpeedButton;
+    BtnSelecione: TSpeedButton;
+    BtnSelecione1: TSpeedButton;
+    DBGrid1: TDBGrid;
+    EdtConsulta: TEdit;
     Panel1: TPanel;
   private
 
@@ -20,7 +26,7 @@ type
   end;
 
 var
-  Form1: TForm1;
+  FrmBuscaConta: TFrmBuscaConta;
 
 implementation
 

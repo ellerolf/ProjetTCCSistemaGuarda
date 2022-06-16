@@ -136,7 +136,8 @@
       <Unit12>
         <Filename Value="ubuscaconta.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="Form1"/>
+        <ComponentName Value="FrmBuscaConta"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="UBuscaConta"/>
       </Unit12>

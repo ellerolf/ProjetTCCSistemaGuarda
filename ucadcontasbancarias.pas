@@ -6,13 +6,14 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, Buttons,
-  StdCtrls, MaskEdit, ComCtrls, DBCtrls, EditBtn, UModulo;
+  StdCtrls, MaskEdit, ComCtrls, DBCtrls, EditBtn, UModulo, UBuscaConta;
 
 type
 
   { TFrmCadContasBancarias }
 
   TFrmCadContasBancarias = class(TForm)
+    BtnConsulta: TSpeedButton;
     CboTipo: TDBLookupComboBox;
     DtDataTransf: TDateEdit;
     EdtCodContaO: TEdit;
@@ -45,12 +46,14 @@ type
     LblMensagem: TLabel;
     Panel1: TPanel;
     Panel2: TPanel;
+    procedure BtnConsultaClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
     procedure BtnSalvarClick(Sender: TObject);
     procedure CboTipoChange(Sender: TObject);
     procedure EdtSaldoInicialChange(Sender: TObject);
     procedure EdtSaldoInicialKeyPress(Sender: TObject; var Key: char);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
+    procedure FormCreate(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Label5Click(Sender: TObject);
@@ -84,6 +87,11 @@ end;
 procedure TFrmCadContasBancarias.BtnSairClick(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TFrmCadContasBancarias.BtnConsultaClick(Sender: TObject);
+begin
+  FrmBuscaConta.Show;
 end;
 
 procedure TFrmCadContasBancarias.BtnSalvarClick(Sender: TObject);
@@ -219,6 +227,11 @@ procedure TFrmCadContasBancarias.FormClose(Sender: TObject;
   var CloseAction: TCloseAction);
 begin
   dm.ZQConsTipoConta.Active := False;
+end;
+
+procedure TFrmCadContasBancarias.FormCreate(Sender: TObject);
+begin
+
 end;
 
 procedure TFrmCadContasBancarias.FormResize(Sender: TObject);

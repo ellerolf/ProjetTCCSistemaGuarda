@@ -28,7 +28,7 @@ begin
   Application.CreateForm(TFrmConsBaixa, FrmConsBaixa);
   Application.CreateForm(TFrmConsContas, FrmConsContas);
   Application.CreateForm(TDM, DM);
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TFrmBuscaConta, FrmBuscaConta);
   Application.Run;
 end.
 

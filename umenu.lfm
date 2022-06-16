@@ -1,22 +1,22 @@
 object FrmMenu: TFrmMenu
   Left = -8
-  Height = 788
+  Height = 827
   Top = -8
   Width = 1386
   BorderIcons = []
   Caption = 'Menu'
-  ClientHeight = 749
+  ClientHeight = 804
   ClientWidth = 1370
   Color = 16510433
   OnResize = FormResize
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 709
+    Height = 764
     Top = 40
     Width = 184
     Align = alLeft
-    ClientHeight = 709
+    ClientHeight = 764
     ClientWidth = 184
     Color = 16242363
     Font.CharSet = ANSI_CHARSET
@@ -9230,10 +9230,11 @@ object FrmMenu: TFrmMenu
       }
     end
     object SpeedButton1: TSpeedButton
-      Left = 16
-      Height = 30
+      Left = 13
+      Height = 34
       Top = 544
-      Width = 155
+      Width = 159
+      AutoSize = True
       Glyph.Data = {
         DE480000424DDE4800000000000036000000280000009B0000001E0000000100
         200000000000A848000064000000640000000000000000000000FFFFFFFFF0F0
@@ -11796,11 +11797,11 @@ object FrmMenu: TFrmMenu
   end
   object PnChama: TPanel
     Left = 184
-    Height = 709
+    Height = 764
     Top = 40
     Width = 1186
     Align = alClient
-    ClientHeight = 709
+    ClientHeight = 764
     ClientWidth = 1186
     Color = 16577259
     ParentColor = False
@@ -11809,7 +11810,7 @@ object FrmMenu: TFrmMenu
     OnClick = PnChamaClick
     object Image1: TImage
       Left = 1
-      Height = 707
+      Height = 762
       Top = 1
       Width = 1184
       Align = alClient

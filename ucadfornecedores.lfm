@@ -1,11 +1,11 @@
 object FrmCadFornecedor: TFrmCadFornecedor
   Left = -8
-  Height = 905
+  Height = 944
   Top = -8
   Width = 1386
   BorderStyle = bsNone
   Caption = 'Cadastro Fornecedores'
-  ClientHeight = 882
+  ClientHeight = 921
   ClientWidth = 1370
   Color = 16577259
   OnClose = FormClose
@@ -16,11 +16,11 @@ object FrmCadFornecedor: TFrmCadFornecedor
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 882
+    Height = 921
     Top = 0
     Width = 1370
     Align = alClient
-    ClientHeight = 882
+    ClientHeight = 921
     ClientWidth = 1370
     TabOrder = 0
     object Panel2: TPanel
@@ -487,10 +487,11 @@ object FrmCadFornecedor: TFrmCadFornecedor
         ParentFont = False
       end
       object BtnSalvar: TSpeedButton
-        Left = 464
-        Height = 30
+        Left = 465
+        Height = 34
         Top = 496
-        Width = 120
+        Width = 124
+        AutoSize = True
         Glyph.Data = {
           76380000424D76380000000000003600000028000000780000001E0000000100
           2000000000004038000064000000640000000000000000000000FFFFFFFFECB0
@@ -949,9 +950,10 @@ object FrmCadFornecedor: TFrmCadFornecedor
       end
       object BtnSair: TSpeedButton
         Left = 592
-        Height = 30
+        Height = 34
         Top = 496
-        Width = 120
+        Width = 124
+        AutoSize = True
         Glyph.Data = {
           76380000424D76380000000000003600000028000000780000001E0000000100
           2000000000004038000064000000640000000000000000000000FFFFFFFFB0B0
