@@ -6,14 +6,13 @@ object FrmCadUsuario: TFrmCadUsuario
   BorderIcons = [biSystemMenu]
   BorderStyle = bsNone
   Caption = 'Cadastro Usuario'
-  ClientHeight = 788
-  ClientWidth = 1386
+  ClientHeight = 750
+  ClientWidth = 1370
   Color = 16577259
   OnClose = FormClose
   OnResize = FormResize
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.2.2.0'
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
@@ -90,6 +89,7 @@ object FrmCadUsuario: TFrmCadUsuario
         Height = 23
         Top = 65
         Width = 400
+        CharCase = ecUppercase
         TabOrder = 0
       end
       object EdtNomeUsuario: TEdit
@@ -97,6 +97,7 @@ object FrmCadUsuario: TFrmCadUsuario
         Height = 23
         Top = 65
         Width = 192
+        CharCase = ecUppercase
         TabOrder = 1
       end
       object EdtSenha: TEdit
@@ -179,6 +180,7 @@ object FrmCadUsuario: TFrmCadUsuario
         Height = 23
         Top = 296
         Width = 386
+        CharCase = ecUppercase
         TabOrder = 5
       end
       object BtnConsulta: TSpeedButton
