@@ -9,7 +9,7 @@ uses
   Interfaces, // this includes the LCL widgetset
   Forms, zcomponent, UEntrarUsuario, umenu, uCadUsuario, uCadContasBancarias,
   uCadCentroCusto, uCadFornecedores, uCadLancamento, UConsFornecedores,
-UConsBaixa, UConsContas, UModulo;
+UConsBaixa, UConsContas, UModulo, UBuscaConta;
 
 {$R *.res}
 
@@ -28,6 +28,7 @@ begin
   Application.CreateForm(TFrmConsBaixa, FrmConsBaixa);
   Application.CreateForm(TFrmConsContas, FrmConsContas);
   Application.CreateForm(TDM, DM);
+  Application.CreateForm(TForm1, Form1);
   Application.Run;
 end.
 
