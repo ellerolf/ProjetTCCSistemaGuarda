@@ -1,13 +1,13 @@
 object FrmCadContasBancarias: TFrmCadContasBancarias
   Left = -8
-  Height = 944
+  Height = 788
   Top = -8
-  Width = 1362
+  Width = 1378
   BorderIcons = [biSystemMenu]
   BorderStyle = bsNone
   Caption = 'Cadastro de Contas Bancarias'
-  ClientHeight = 921
-  ClientWidth = 1362
+  ClientHeight = 749
+  ClientWidth = 1370
   Color = 16577259
   Font.CharSet = ANSI_CHARSET
   Font.Height = -13
@@ -21,12 +21,12 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 921
+    Height = 749
     Top = 0
-    Width = 1362
+    Width = 1370
     Align = alClient
-    ClientHeight = 921
-    ClientWidth = 1362
+    ClientHeight = 749
+    ClientWidth = 1370
     TabOrder = 0
     OnClick = Panel1Click
     object Panel2: TPanel
@@ -296,40 +296,34 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
           Caption = 'Valor a Tranferir:'
           ParentColor = False
         end
-        object MaskEdit1: TMaskEdit
-          Left = 105
-          Height = 23
-          Top = 64
-          Width = 135
-          Font.CharSet = ANSI_CHARSET
-          Font.Pitch = fpVariable
-          Font.Quality = fqDraft
-          MaxLength = 10
-          ParentFont = False
+        object DtDataTransf: TDateEdit
+          Left = 104
+          Height = 25
+          Top = 62
+          Width = 136
+          CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
+          DateOrder = doNone
+          ButtonWidth = 23
+          NumGlyphs = 1
+          MaxLength = 0
           TabOrder = 3
-          OnChange = MaskEdit1Change
-          EditMask = '99/99/9999;1;_'
-          Text = '  /  /    '
-          SpaceChar = '_'
         end
-        object LstCodConta: TListView
+        object EdtCodContaO: TEdit
           Left = 104
           Height = 23
           Top = 128
-          Width = 192
-          Columns = <>
+          Width = 144
           Font.CharSet = ANSI_CHARSET
           Font.Pitch = fpVariable
           Font.Quality = fqDraft
           ParentFont = False
           TabOrder = 4
         end
-        object LstCodConta1: TListView
+        object EdtCodContaDes: TEdit
           Left = 326
           Height = 23
           Top = 128
-          Width = 210
-          Columns = <>
+          Width = 170
           Font.CharSet = ANSI_CHARSET
           Font.Pitch = fpVariable
           Font.Quality = fqDraft

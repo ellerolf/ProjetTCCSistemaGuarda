@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, Buttons,
-  StdCtrls, MaskEdit, ComCtrls, DBCtrls, UModulo;
+  StdCtrls, MaskEdit, ComCtrls, DBCtrls, EditBtn, UModulo;
 
 type
 
@@ -14,6 +14,9 @@ type
 
   TFrmCadContasBancarias = class(TForm)
     CboTipo: TDBLookupComboBox;
+    DtDataTransf: TDateEdit;
+    EdtCodContaO: TEdit;
+    EdtCodContaDes: TEdit;
     EdtNomeConta: TEdit;
     Label8: TLabel;
     RdbCadConta: TRadioButton;
@@ -40,9 +43,6 @@ type
     Label7: TLabel;
     Label9: TLabel;
     LblMensagem: TLabel;
-    LstCodConta: TListView;
-    LstCodConta1: TListView;
-    MaskEdit1: TMaskEdit;
     Panel1: TPanel;
     Panel2: TPanel;
     procedure BtnSairClick(Sender: TObject);
@@ -153,6 +153,20 @@ begin
       CboTipo.SetFocus;
     end;
   end;
+
+  // programação da transferência
+   if (RdbCadTrans.Checked=true) then
+   begin
+       dm.ZQCadTransferencia.Params.ParamByName('pTRADATA').Value:='2022-10-10';
+       dm.ZQCadTransferencia.Params.ParamByName('pTRANUMERO_DOCUMENTO').Value:=EdtNDoc.Text;
+       dm.ZQCadTransferencia.Params.ParamByName('pTRAVALOR').Value:=EdtVlrTras.Text;
+       dm.ZQCadTransferencia.Params.ParamByName('pTRACODIGO_CONORI').Value:=EdtCodContaO.Text;
+       dm.ZQCadTransferencia.Params.ParamByName('pTRACODIGO_CONDES').Value:=EdtCodContaDes.Text;
+       dm.ZQCadTransferencia.ExecSQL;
+       ShowMessage('Transferência cadastrada com sucesso!');
+
+   end;
+
 
 end;
 

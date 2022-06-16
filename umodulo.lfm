@@ -12,7 +12,6 @@ object DM: TDM
       'AutoEncodeStrings=True'
       'controls_cp=CP_UTF8'
     )
-    Connected = True
     HostName = 'localhost'
     Port = 3306
     Database = 'financeiro'
@@ -381,9 +380,65 @@ object DM: TDM
     end
   end
   object ZQCadTransferencia: TZQuery
-    Params = <>
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'INSERT into transferencia (TRAVALOR, TRACODIGO_CONORI, TRACODIGO_CONDES, TRADATA, TRANUMERO_DOCUMENTO) values '
+      '(:pTRAVALOR, :pTRACODIGO_CONORI, :pTRACODIGO_CONDES, :pTRADATA, :pTRANUMERO_DOCUMENTO)'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'pTRAVALOR'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pTRACODIGO_CONORI'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pTRACODIGO_CONDES'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pTRADATA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pTRANUMERO_DOCUMENTO'
+        ParamType = ptUnknown
+      end>
     Left = 664
     Top = 96
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'pTRAVALOR'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pTRACODIGO_CONORI'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pTRACODIGO_CONDES'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pTRADATA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pTRANUMERO_DOCUMENTO'
+        ParamType = ptUnknown
+      end>
   end
   object ZQAltTransferencia: TZQuery
     Params = <>
