@@ -1,10 +1,10 @@
 object DM: TDM
   OnCreate = DataModuleCreate
   OldCreateOrder = False
-  Height = 622
+  Height = 609
   HorizontalOffset = 255
   VerticalOffset = 31
-  Width = 748
+  Width = 633
   object ZFinanceiro: TZConnection
     ControlsCodePage = cCP_UTF8
     AutoEncodeStrings = True
@@ -12,12 +12,13 @@ object DM: TDM
       'AutoEncodeStrings=True'
       'controls_cp=CP_UTF8'
     )
+    Connected = True
     HostName = 'localhost'
     Port = 3306
     Database = 'financeiro'
     User = 'root'
     Protocol = 'mysql-5'
-    Left = 312
+    Left = 288
     Top = 24
   end
   object ZQCadUsuario: TZQuery
@@ -72,12 +73,12 @@ object DM: TDM
   end
   object ZQCadLancamentos: TZQuery
     Params = <>
-    Left = 368
+    Left = 240
     Top = 96
   end
   object ZQCadCentro: TZQuery
     Params = <>
-    Left = 472
+    Left = 344
     Top = 96
   end
   object ZQCadBancarias: TZQuery
@@ -111,7 +112,7 @@ object DM: TDM
         Name = 'pCONSALDO_INICIAL'
         ParamType = ptUnknown
       end>
-    Left = 560
+    Left = 432
     Top = 96
     ParamData = <    
       item
@@ -213,17 +214,17 @@ object DM: TDM
   end
   object ZQAltLancamentos: TZQuery
     Params = <>
-    Left = 368
+    Left = 240
     Top = 168
   end
   object ZQAltCentro: TZQuery
     Params = <>
-    Left = 472
+    Left = 344
     Top = 168
   end
   object ZQAltBancarias: TZQuery
     Params = <>
-    Left = 560
+    Left = 432
     Top = 168
   end
   object ZQConsUsuario: TZQuery
@@ -294,12 +295,12 @@ object DM: TDM
   end
   object ZQConsLancamentos: TZQuery
     Params = <>
-    Left = 368
+    Left = 240
     Top = 304
   end
   object ZQConsCentro: TZQuery
     Params = <>
-    Left = 472
+    Left = 344
     Top = 304
   end
   object ZQConsBancarias: TZQuery
@@ -309,7 +310,7 @@ object DM: TDM
     )
     Params = <>
     DataSource = DSConsBancarias
-    Left = 560
+    Left = 432
     Top = 304
     object ZQConsBancariasCONCODIGO: TLongintField
       FieldKind = fkData
@@ -411,7 +412,7 @@ object DM: TDM
         Name = 'pTRANUMERO_DOCUMENTO'
         ParamType = ptUnknown
       end>
-    Left = 664
+    Left = 536
     Top = 96
     ParamData = <    
       item
@@ -442,12 +443,12 @@ object DM: TDM
   end
   object ZQAltTransferencia: TZQuery
     Params = <>
-    Left = 664
+    Left = 536
     Top = 168
   end
   object ZQConsTransferencia: TZQuery
     Params = <>
-    Left = 664
+    Left = 536
     Top = 304
   end
   object ZQDelUsuario: TZQuery
@@ -455,7 +456,7 @@ object DM: TDM
     Left = 40
     Top = 368
   end
-  object ZQDelFornCNPJ: TZQuery
+  object ZQDelPessoas: TZQuery
     Connection = ZFinanceiro
     SQL.Strings = (
       'delete from pessoa where  pescodigo=:ppescodigo'
@@ -477,22 +478,22 @@ object DM: TDM
   end
   object ZQDelLancamentos: TZQuery
     Params = <>
-    Left = 368
+    Left = 240
     Top = 368
   end
   object ZQDelCentro: TZQuery
     Params = <>
-    Left = 472
+    Left = 344
     Top = 368
   end
   object ZQDelBancarias: TZQuery
     Params = <>
-    Left = 560
+    Left = 432
     Top = 368
   end
   object ZQDelTransferencia: TZQuery
     Params = <>
-    Left = 664
+    Left = 536
     Top = 368
   end
   object DSConsUsuario: TDataSource
@@ -500,292 +501,60 @@ object DM: TDM
     Left = 40
     Top = 240
   end
-  object DSConsFornCNPJ: TDataSource
-    DataSet = ZQConsFornCNPJ
-    OnDataChange = DSConsFornCNPJDataChange
+  object DSConsPessoas: TDataSource
+    DataSet = ZQConsPessoas
+    OnDataChange = DSConsPessoasDataChange
     Left = 136
     Top = 240
   end
   object DSConsLancamentos: TDataSource
     DataSet = ZQConsLancamentos
-    Left = 368
+    Left = 240
     Top = 240
   end
   object DSConsCentro: TDataSource
     DataSet = ZQConsCentro
-    Left = 472
+    Left = 344
     Top = 240
   end
   object DSConsBancarias: TDataSource
     DataSet = ZQConsBancarias
     OnDataChange = DSConsBancariasDataChange
-    Left = 560
+    Left = 432
     Top = 240
   end
   object DSConsTransferencia: TDataSource
     DataSet = ZQConsTransferencia
-    Left = 664
+    Left = 536
     Top = 240
   end
-  object DSConsFornCPF: TDataSource
-    DataSet = ZQConsFornCPF
-    Left = 248
-    Top = 240
-  end
-  object ZQConsFornCPF: TZQuery
-    Connection = ZFinanceiro
-    SQL.Strings = (
-      'select * from pessoa'
-    )
-    Params = <>
-    Left = 248
-    Top = 304
-    object ZQConsFornCPFPESCODIGO: TLongintField
-      FieldKind = fkData
-      FieldName = 'PESCODIGO'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-    end
-    object ZQConsFornCPFPESNOME: TStringField
-      FieldKind = fkData
-      FieldName = 'PESNOME'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 50
-    end
-    object ZQConsFornCPFCODIGOTIP: TLongintField
-      FieldKind = fkData
-      FieldName = 'CODIGOTIP'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object ZQConsFornCPFPESCPF: TStringField
-      FieldKind = fkData
-      FieldName = 'PESCPF'
-      Index = 3
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 50
-    end
-    object ZQConsFornCPFPESDATA_NASCIMENTO: TDateField
-      FieldKind = fkData
-      FieldName = 'PESDATA_NASCIMENTO'
-      Index = 4
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object ZQConsFornCPFPESCNPJ: TStringField
-      FieldKind = fkData
-      FieldName = 'PESCNPJ'
-      Index = 5
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 50
-    end
-    object ZQConsFornCPFPESRAZAO_SOCIAL: TStringField
-      FieldKind = fkData
-      FieldName = 'PESRAZAO_SOCIAL'
-      Index = 6
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 50
-    end
-    object ZQConsFornCPFPESNOME_FANTASIA: TStringField
-      FieldKind = fkData
-      FieldName = 'PESNOME_FANTASIA'
-      Index = 7
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 50
-    end
-    object ZQConsFornCPFPESINSCRICAO_ESTADUAL: TLongintField
-      FieldKind = fkData
-      FieldName = 'PESINSCRICAO_ESTADUAL'
-      Index = 8
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object ZQConsFornCPFPESINSCRICACAO_MUNICIPAL: TLongintField
-      FieldKind = fkData
-      FieldName = 'PESINSCRICACAO_MUNICIPAL'
-      Index = 9
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object ZQConsFornCPFPESCEP: TStringField
-      FieldKind = fkData
-      FieldName = 'PESCEP'
-      Index = 10
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 50
-    end
-    object ZQConsFornCPFPESENDERECO: TStringField
-      FieldKind = fkData
-      FieldName = 'PESENDERECO'
-      Index = 11
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 50
-    end
-    object ZQConsFornCPFPESNUMERO: TLongintField
-      FieldKind = fkData
-      FieldName = 'PESNUMERO'
-      Index = 12
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object ZQConsFornCPFPESCOMPLEMENTO: TStringField
-      FieldKind = fkData
-      FieldName = 'PESCOMPLEMENTO'
-      Index = 13
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 50
-    end
-    object ZQConsFornCPFPESESTADO: TStringField
-      FieldKind = fkData
-      FieldName = 'PESESTADO'
-      Index = 14
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 50
-    end
-    object ZQConsFornCPFPESCIDADE: TStringField
-      FieldKind = fkData
-      FieldName = 'PESCIDADE'
-      Index = 15
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 50
-    end
-    object ZQConsFornCPFPESBAIRRO: TStringField
-      FieldKind = fkData
-      FieldName = 'PESBAIRRO'
-      Index = 16
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 50
-    end
-    object ZQConsFornCPFPESEMAIL: TStringField
-      FieldKind = fkData
-      FieldName = 'PESEMAIL'
-      Index = 17
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 50
-    end
-    object ZQConsFornCPFPESTELEFONE: TStringField
-      FieldKind = fkData
-      FieldName = 'PESTELEFONE'
-      Index = 18
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 50
-    end
-    object ZQConsFornCPFPESCELULAR: TStringField
-      FieldKind = fkData
-      FieldName = 'PESCELULAR'
-      Index = 19
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 50
-    end
-    object ZQConsFornCPFPESOBSERVACAO: TStringField
-      FieldKind = fkData
-      FieldName = 'PESOBSERVACAO'
-      Index = 20
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 200
-    end
-    object ZQConsFornCPFPESSTATUS: TSmallintField
-      FieldKind = fkData
-      FieldName = 'PESSTATUS'
-      Index = 21
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-  end
-  object ZQDelFornCPF: TZQuery
-    Connection = ZFinanceiro
-    SQL.Strings = (
-      'delete from pessoa where  pescodigo=:ppescodigo'
-    )
-    Params = <    
-      item
-        DataType = ftUnknown
-        Name = 'ppescodigo'
-        ParamType = ptUnknown
-      end>
-    Left = 248
-    Top = 368
-    ParamData = <    
-      item
-        DataType = ftUnknown
-        Name = 'ppescodigo'
-        ParamType = ptUnknown
-      end>
-  end
-  object ZQCadFornCNPJ: TZQuery
+  object ZQCadPessoas: TZQuery
     Connection = ZFinanceiro
     SQL.Strings = (
       'insert into pessoa'
-      '(codigotip, pescnpj, pesrazao_social, pesnome_fantasia, pesinscricao_estadual, pesinscricacao_municipal, pesdata_nascimento, pesendereco, pesnumero, pescomplemento, pesbairro, pescep, pescidade, pesestado, pestelefone, pescelular, pesemail, pesobservacao) '
-      'values '
-      '(:codigotip, :pescnpj, :pesrazao_social, :pesnome_fantasia, :pesinscricao_estadual, :pesinscricacao_municipal, :pesdata_nascimento, :pesendereco, :pesnumero, :pescomplemento, :pesbairro, :pescep, :pescidade, :pesestado, :pestelefone, :pescelular, :pesemail, :pesobservacao)'
+      '(PESNOME, CODIGOTIP, PESCPF, PESDATA_NASCIMENTO, PESCNPJ, PESRAZAO_SOCIAL, PESNOME_FANTASIA, PESINSCRICAO_ESTADUAL, PESINSCRICACAO_MUNICIPAL, PESCEP, PESENDERECO, PESNUMERO, PESCOMPLEMENTO, PESESTADO, PESCIDADE, PESBAIRRO, PESEMAIL, PESTELEFONE, PESCELULAR, PESOBSERVACAO)'
+      'value'
+      '(:PESNOME, :CODIGOTIP, :PESCPF, :PESDATA_NASCIMENTO, :PESCNPJ, :PESRAZAO_SOCIAL, :PESNOME_FANTASIA, :PESINSCRICAO_ESTADUAL, :PESINSCRICACAO_MUNICIPAL, :PESCEP, :PESENDERECO, :PESNUMERO, :PESCOMPLEMENTO, :PESESTADO, :PESCIDADE, :PESBAIRRO, :PESEMAIL, :PESTELEFONE, :PESCELULAR, :PESOBSERVACAO)'
     )
     Params = <    
       item
         DataType = ftUnknown
+        Name = 'PESNOME'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
         Name = 'codigotip'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'PESCPF'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pesdata_nascimento'
         ParamType = ptUnknown
       end    
       item
@@ -815,7 +584,7 @@ object DM: TDM
       end    
       item
         DataType = ftUnknown
-        Name = 'pesdata_nascimento'
+        Name = 'pescep'
         ParamType = ptUnknown
       end    
       item
@@ -835,12 +604,7 @@ object DM: TDM
       end    
       item
         DataType = ftUnknown
-        Name = 'pesbairro'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pescep'
+        Name = 'pesestado'
         ParamType = ptUnknown
       end    
       item
@@ -850,7 +614,12 @@ object DM: TDM
       end    
       item
         DataType = ftUnknown
-        Name = 'pesestado'
+        Name = 'pesbairro'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pesemail'
         ParamType = ptUnknown
       end    
       item
@@ -861,11 +630,6 @@ object DM: TDM
       item
         DataType = ftUnknown
         Name = 'pescelular'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pesemail'
         ParamType = ptUnknown
       end    
       item
@@ -878,7 +642,22 @@ object DM: TDM
     ParamData = <    
       item
         DataType = ftUnknown
+        Name = 'PESNOME'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
         Name = 'codigotip'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'PESCPF'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pesdata_nascimento'
         ParamType = ptUnknown
       end    
       item
@@ -908,7 +687,7 @@ object DM: TDM
       end    
       item
         DataType = ftUnknown
-        Name = 'pesdata_nascimento'
+        Name = 'pescep'
         ParamType = ptUnknown
       end    
       item
@@ -928,12 +707,7 @@ object DM: TDM
       end    
       item
         DataType = ftUnknown
-        Name = 'pesbairro'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pescep'
+        Name = 'pesestado'
         ParamType = ptUnknown
       end    
       item
@@ -943,7 +717,12 @@ object DM: TDM
       end    
       item
         DataType = ftUnknown
-        Name = 'pesestado'
+        Name = 'pesbairro'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pesemail'
         ParamType = ptUnknown
       end    
       item
@@ -954,11 +733,6 @@ object DM: TDM
       item
         DataType = ftUnknown
         Name = 'pescelular'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pesemail'
         ParamType = ptUnknown
       end    
       item
@@ -973,34 +747,34 @@ object DM: TDM
       'SELECT * from tipo_conta'
     )
     Params = <>
-    Left = 560
+    Left = 432
     Top = 504
   end
   object DSConsTipoConta: TDataSource
     DataSet = ZQConsTipoConta
-    Left = 560
+    Left = 432
     Top = 432
   end
-  object ZQConsFornCNPJ: TZQuery
+  object ZQConsPessoas: TZQuery
     Connection = ZFinanceiro
     SQL.Strings = (
-      'select * from pessoa'
+      'SELECT * FROM  vwpessoas'
     )
     Params = <>
     Left = 136
     Top = 304
-    object ZQConsFornCNPJPESCODIGO: TLongintField
+    object ZQConsPessoasCODIGO: TLongintField
       FieldKind = fkData
-      FieldName = 'PESCODIGO'
+      FieldName = 'CODIGO'
       Index = 0
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = True
     end
-    object ZQConsFornCNPJPESNOME: TStringField
+    object ZQConsPessoasNOME: TStringField
       FieldKind = fkData
-      FieldName = 'PESNOME'
+      FieldName = 'NOME'
       Index = 1
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
@@ -1008,7 +782,7 @@ object DM: TDM
       Required = False
       Size = 50
     end
-    object ZQConsFornCNPJCODIGOTIP: TLongintField
+    object ZQConsPessoasCODIGOTIP: TLongintField
       FieldKind = fkData
       FieldName = 'CODIGOTIP'
       Index = 2
@@ -1017,9 +791,9 @@ object DM: TDM
       ReadOnly = False
       Required = False
     end
-    object ZQConsFornCNPJPESCPF: TStringField
+    object ZQConsPessoasTIPO: TStringField
       FieldKind = fkData
-      FieldName = 'PESCPF'
+      FieldName = 'TIPO'
       Index = 3
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
@@ -1027,28 +801,28 @@ object DM: TDM
       Required = False
       Size = 50
     end
-    object ZQConsFornCNPJPESDATA_NASCIMENTO: TDateField
+    object ZQConsPessoasCPF: TStringField
       FieldKind = fkData
-      FieldName = 'PESDATA_NASCIMENTO'
+      FieldName = 'CPF'
       Index = 4
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object ZQConsFornCNPJPESCNPJ: TStringField
-      FieldKind = fkData
-      FieldName = 'PESCNPJ'
-      Index = 5
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
       Size = 50
     end
-    object ZQConsFornCNPJPESRAZAO_SOCIAL: TStringField
+    object ZQConsPessoasDATANASCIMENTO: TDateField
       FieldKind = fkData
-      FieldName = 'PESRAZAO_SOCIAL'
+      FieldName = 'DATA NASCIMENTO'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsPessoasCNPJ: TStringField
+      FieldKind = fkData
+      FieldName = 'CNPJ'
       Index = 6
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
@@ -1056,9 +830,9 @@ object DM: TDM
       Required = False
       Size = 50
     end
-    object ZQConsFornCNPJPESNOME_FANTASIA: TStringField
+    object ZQConsPessoasRAZOSOCIAL: TStringField
       FieldKind = fkData
-      FieldName = 'PESNOME_FANTASIA'
+      FieldName = 'RAZÃO SOCIAL'
       Index = 7
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
@@ -1066,37 +840,37 @@ object DM: TDM
       Required = False
       Size = 50
     end
-    object ZQConsFornCNPJPESINSCRICAO_ESTADUAL: TLongintField
+    object ZQConsPessoasNOMEFANTASIA: TStringField
       FieldKind = fkData
-      FieldName = 'PESINSCRICAO_ESTADUAL'
+      FieldName = 'NOME FANTASIA'
       Index = 8
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object ZQConsFornCNPJPESINSCRICACAO_MUNICIPAL: TLongintField
-      FieldKind = fkData
-      FieldName = 'PESINSCRICACAO_MUNICIPAL'
-      Index = 9
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object ZQConsFornCNPJPESCEP: TStringField
-      FieldKind = fkData
-      FieldName = 'PESCEP'
-      Index = 10
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
       Size = 50
     end
-    object ZQConsFornCNPJPESENDERECO: TStringField
+    object ZQConsPessoasINSCRIOESTADUAL: TLongintField
       FieldKind = fkData
-      FieldName = 'PESENDERECO'
+      FieldName = 'INSCRIÇÃO ESTADUAL'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsPessoasINSCRICACAO_MUNICIPAL: TLongintField
+      FieldKind = fkData
+      FieldName = 'INSCRICACAO_MUNICIPAL'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsPessoasCEP: TStringField
+      FieldKind = fkData
+      FieldName = 'CEP'
       Index = 11
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
@@ -1104,28 +878,28 @@ object DM: TDM
       Required = False
       Size = 50
     end
-    object ZQConsFornCNPJPESNUMERO: TLongintField
+    object ZQConsPessoasENDEREO: TStringField
       FieldKind = fkData
-      FieldName = 'PESNUMERO'
+      FieldName = 'ENDEREÇO'
       Index = 12
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object ZQConsFornCNPJPESCOMPLEMENTO: TStringField
-      FieldKind = fkData
-      FieldName = 'PESCOMPLEMENTO'
-      Index = 13
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
       Size = 50
     end
-    object ZQConsFornCNPJPESESTADO: TStringField
+    object ZQConsPessoasNMERO: TLongintField
       FieldKind = fkData
-      FieldName = 'PESESTADO'
+      FieldName = 'NÚMERO'
+      Index = 13
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsPessoasCOMPLEMENTO: TStringField
+      FieldKind = fkData
+      FieldName = 'COMPLEMENTO'
       Index = 14
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
@@ -1133,9 +907,9 @@ object DM: TDM
       Required = False
       Size = 50
     end
-    object ZQConsFornCNPJPESCIDADE: TStringField
+    object ZQConsPessoasESTADO: TStringField
       FieldKind = fkData
-      FieldName = 'PESCIDADE'
+      FieldName = 'ESTADO'
       Index = 15
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
@@ -1143,9 +917,9 @@ object DM: TDM
       Required = False
       Size = 50
     end
-    object ZQConsFornCNPJPESBAIRRO: TStringField
+    object ZQConsPessoasCIDADE: TStringField
       FieldKind = fkData
-      FieldName = 'PESBAIRRO'
+      FieldName = 'CIDADE'
       Index = 16
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
@@ -1153,9 +927,9 @@ object DM: TDM
       Required = False
       Size = 50
     end
-    object ZQConsFornCNPJPESEMAIL: TStringField
+    object ZQConsPessoasBAIRRO: TStringField
       FieldKind = fkData
-      FieldName = 'PESEMAIL'
+      FieldName = 'BAIRRO'
       Index = 17
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
@@ -1163,9 +937,9 @@ object DM: TDM
       Required = False
       Size = 50
     end
-    object ZQConsFornCNPJPESTELEFONE: TStringField
+    object ZQConsPessoasEMAIL: TStringField
       FieldKind = fkData
-      FieldName = 'PESTELEFONE'
+      FieldName = 'E-MAIL'
       Index = 18
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
@@ -1173,9 +947,9 @@ object DM: TDM
       Required = False
       Size = 50
     end
-    object ZQConsFornCNPJPESCELULAR: TStringField
+    object ZQConsPessoasTELEFONE: TStringField
       FieldKind = fkData
-      FieldName = 'PESCELULAR'
+      FieldName = 'TELEFONE'
       Index = 19
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
@@ -1183,48 +957,57 @@ object DM: TDM
       Required = False
       Size = 50
     end
-    object ZQConsFornCNPJPESOBSERVACAO: TStringField
+    object ZQConsPessoasCELULAR: TStringField
       FieldKind = fkData
-      FieldName = 'PESOBSERVACAO'
+      FieldName = 'CELULAR'
       Index = 20
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsPessoasOBSERVAO: TStringField
+      FieldKind = fkData
+      FieldName = 'OBSERVAÇÃO'
+      Index = 21
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
       Size = 200
     end
-    object ZQConsFornCNPJPESSTATUS: TSmallintField
+    object ZQConsPessoasATIVO: TSmallintField
       FieldKind = fkData
-      FieldName = 'PESSTATUS'
-      Index = 21
+      FieldName = 'ATIVO'
+      Index = 22
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
     end
   end
-  object ZQCadFornCPF: TZQuery
+  object ZQAltPessoas: TZQuery
     Connection = ZFinanceiro
     SQL.Strings = (
-      'insert into pessoa'
-      '(codigotip, pesnome, pescpf, pesdata_nascimento, pesendereco, pesnumero, pescomplemento, pesbairro, pescep,pescidade, pesestado, pestelefone, pescelular, pesemail, pesobservacao) '
-      'values '
-      '(:codigotip, :pesnome, :pescpf, :pesdata_nascimento, :pesendereco, :pesnumero, :pescomplemento, :pesbairro, :pescep, :pescidade, :pesestado, :pestelefone, :pescelular, :pesemail, :pesobservacao)'
+      'update pessoa set'
+      'PESNOME=:PESNOME, CODIGOTIP=:CODIGOTIP, PESCPF=:PESCPF, PESDATA_NASCIMENTO=:PESDATA_NASCIMENTO, PESCNPJ=:PESCNPJ, PESRAZAO_SOCIAL=:PESRAZAO_SOCIAL, PESNOME_FANTASIA=:PESNOME_FANTASIA, PESINSCRICAO_ESTADUAL=:PESINSCRICAO_ESTADUAL, PESINSCRICACAO_MUNICIPAL=:PESINSCRICACAO_MUNICIPAL, PESCEP=:PESCEP, PESENDERECO=:PESENDERECO, PESNUMERO=:PESNUMERO, PESCOMPLEMENTO=:PESCOMPLEMENTO, PESESTADO=:PESESTADO, PESCIDADE=:PESCIDADE, PESBAIRRO=:PESBAIRRO, PESEMAIL=:PESEMAIL, PESTELEFONE=:PESTELEFONE, PESCELULAR=:PESCELULAR, PESOBSERVACAO=:PESOBSERVACAO, PESSTATUS=:PESSTATUS'
+      'where PESCODIGO=:PESCODIGO'
     )
     Params = <    
       item
         DataType = ftUnknown
+        Name = 'PESNOME'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
         Name = 'codigotip'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'pesnome'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pescpf'
+        Name = 'PESCPF'
         ParamType = ptUnknown
       end    
       item
@@ -1234,326 +1017,7 @@ object DM: TDM
       end    
       item
         DataType = ftUnknown
-        Name = 'pesendereco'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pesnumero'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pescomplemento'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pesbairro'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pescep'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pescidade'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pesestado'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pestelefone'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pescelular'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pesemail'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pesobservacao'
-        ParamType = ptUnknown
-      end>
-    Left = 248
-    Top = 96
-    ParamData = <    
-      item
-        DataType = ftUnknown
-        Name = 'codigotip'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pesnome'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pescpf'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pesdata_nascimento'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pesendereco'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pesnumero'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pescomplemento'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pesbairro'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pescep'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pescidade'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pesestado'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pestelefone'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pescelular'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pesemail'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pesobservacao'
-        ParamType = ptUnknown
-      end>
-  end
-  object ZQAltFornCPF: TZQuery
-    Connection = ZFinanceiro
-    SQL.Strings = (
-      'update pessoa set '
-      'codigotip=:codigotip, pesnome=:pesnome, pescpf=:pescpf, pesdata_nascimento=:pesdata_nascimento, pesendereco=:pesendereco, pesnumero=:pesnumero, pescomplemento=:pescomplemento, pesbairro=:pesbairro, pescep=:pescep, pescidade=:pescidade, pesestado=:pesestado, pestelefone=:pestelefone, pescelular=:pescelular, pesemail=:pesemail, pesobservacao=:pesobservacao'
-      'where pescodigo=:ppescodigo'
-    )
-    Params = <    
-      item
-        DataType = ftUnknown
-        Name = 'codigotip'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pesnome'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pescpf'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pesdata_nascimento'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pesendereco'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pesnumero'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pescomplemento'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pesbairro'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pescep'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pescidade'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pesestado'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pestelefone'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pescelular'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pesemail'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pesobservacao'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppescodigo'
-        ParamType = ptUnknown
-      end>
-    Left = 248
-    Top = 168
-    ParamData = <    
-      item
-        DataType = ftUnknown
-        Name = 'codigotip'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pesnome'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pescpf'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pesdata_nascimento'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pesendereco'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pesnumero'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pescomplemento'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pesbairro'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pescep'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pescidade'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pesestado'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pestelefone'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pescelular'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pesemail'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pesobservacao'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ppescodigo'
-        ParamType = ptUnknown
-      end>
-  end
-  object ZQAltFonrCNPJ: TZQuery
-    Connection = ZFinanceiro
-    SQL.Strings = (
-      'update pessoa set '
-      'codigotip=:codigotip, pescpnj=:pescpnj, pesrazao_social=:pesrazao_social, pesnome_fantasia=:pesnome_fantasia, pesinscricao_estadual=:pesinscricao_estadual, pesinscricacao_municipal=:pesinscricacao_municipal, pesdata_nascimento=:pesdata_nascimento, pesendereco=:pesendereco, pesnumero=:pesnumero, pescomplemento=:pescomplemento, pesbairro=:pesbairro, pescep=:pescep, pescidade=:pescidade, pesestado=:pesestado, pestelefone=:pestelefone, pescelular=:pescelular, pesemail=:pesemail, pesobservacao=:pesobservacao'
-      'where pescodigo=:ppescodigo'
-    )
-    Params = <    
-      item
-        DataType = ftUnknown
-        Name = 'codigotip'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pescpnj'
+        Name = 'PESCNPJ'
         ParamType = ptUnknown
       end    
       item
@@ -1578,7 +1042,7 @@ object DM: TDM
       end    
       item
         DataType = ftUnknown
-        Name = 'pesdata_nascimento'
+        Name = 'pescep'
         ParamType = ptUnknown
       end    
       item
@@ -1598,12 +1062,7 @@ object DM: TDM
       end    
       item
         DataType = ftUnknown
-        Name = 'pesbairro'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pescep'
+        Name = 'pesestado'
         ParamType = ptUnknown
       end    
       item
@@ -1613,7 +1072,12 @@ object DM: TDM
       end    
       item
         DataType = ftUnknown
-        Name = 'pesestado'
+        Name = 'pesbairro'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pesemail'
         ParamType = ptUnknown
       end    
       item
@@ -1628,17 +1092,17 @@ object DM: TDM
       end    
       item
         DataType = ftUnknown
-        Name = 'pesemail'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
         Name = 'pesobservacao'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppescodigo'
+        Name = 'PESSTATUS'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'PESCODIGO'
         ParamType = ptUnknown
       end>
     Left = 136
@@ -1646,12 +1110,27 @@ object DM: TDM
     ParamData = <    
       item
         DataType = ftUnknown
+        Name = 'PESNOME'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
         Name = 'codigotip'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'pescpnj'
+        Name = 'PESCPF'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pesdata_nascimento'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'PESCNPJ'
         ParamType = ptUnknown
       end    
       item
@@ -1676,7 +1155,7 @@ object DM: TDM
       end    
       item
         DataType = ftUnknown
-        Name = 'pesdata_nascimento'
+        Name = 'pescep'
         ParamType = ptUnknown
       end    
       item
@@ -1696,12 +1175,7 @@ object DM: TDM
       end    
       item
         DataType = ftUnknown
-        Name = 'pesbairro'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pescep'
+        Name = 'pesestado'
         ParamType = ptUnknown
       end    
       item
@@ -1711,7 +1185,12 @@ object DM: TDM
       end    
       item
         DataType = ftUnknown
-        Name = 'pesestado'
+        Name = 'pesbairro'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pesemail'
         ParamType = ptUnknown
       end    
       item
@@ -1726,17 +1205,17 @@ object DM: TDM
       end    
       item
         DataType = ftUnknown
-        Name = 'pesemail'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
         Name = 'pesobservacao'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'ppescodigo'
+        Name = 'PESSTATUS'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'PESCODIGO'
         ParamType = ptUnknown
       end>
   end

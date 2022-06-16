@@ -1,29 +1,29 @@
 object FrmConsFornecedores: TFrmConsFornecedores
   Left = -8
-  Height = 866
+  Height = 905
   Top = -8
-  Width = 1314
+  Width = 1330
   BorderStyle = bsNone
   Caption = 'FrmConsFornecedores'
-  ClientHeight = 843
-  ClientWidth = 1314
+  ClientHeight = 882
+  ClientWidth = 1330
   Color = 16577259
   OnResize = FormResize
   Position = poScreenCenter
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 843
+    Height = 882
     Top = 0
-    Width = 1314
+    Width = 1330
     Align = alClient
-    ClientHeight = 843
-    ClientWidth = 1314
+    ClientHeight = 882
+    ClientWidth = 1330
     TabOrder = 0
     object Panel2: TPanel
-      Left = 0
+      Left = 8
       Height = 607
-      Top = 1
+      Top = 0
       Width = 742
       BevelOuter = bvNone
       Caption = 'Panel2'
@@ -48,7 +48,7 @@ object FrmConsFornecedores: TFrmConsFornecedores
         ParentColor = False
         ParentFont = False
       end
-      object DBGrid1: TDBGrid
+      object GrTodos: TDBGrid
         Left = 40
         Height = 407
         Top = 112
@@ -56,117 +56,128 @@ object FrmConsFornecedores: TFrmConsFornecedores
         Color = clWindow
         Columns = <        
           item
-            Title.Caption = 'PESCODIGO'
-            FieldName = 'PESCODIGO'
+            Title.Caption = 'CODIGO'
+            FieldName = 'CODIGO'
           end        
           item
-            Title.Caption = 'PESNOME'
-            FieldName = 'PESNOME'
+            Title.Caption = 'NOME'
+            FieldName = 'NOME'
           end        
           item
             Title.Caption = 'CODIGOTIP'
             FieldName = 'CODIGOTIP'
           end        
           item
-            Title.Caption = 'PESCPF'
-            FieldName = 'PESCPF'
+            Title.Caption = 'TIPO'
+            FieldName = 'TIPO'
           end        
           item
-            Title.Caption = 'PESDATA_NASCIMENTO'
-            FieldName = 'PESDATA_NASCIMENTO'
+            Title.Caption = 'CPF'
+            FieldName = 'CPF'
           end        
           item
-            Title.Caption = 'PESCNPJ'
-            FieldName = 'PESCNPJ'
+            Title.Caption = 'DATA NASCIMENTO'
+            FieldName = 'DATA NASCIMENTO'
           end        
           item
-            Title.Caption = 'PESRAZAO_SOCIAL'
-            FieldName = 'PESRAZAO_SOCIAL'
+            Title.Caption = 'CNPJ'
+            FieldName = 'CNPJ'
           end        
           item
-            Title.Caption = 'PESNOME_FANTASIA'
-            FieldName = 'PESNOME_FANTASIA'
+            Title.Caption = 'RAZÃO SOCIAL'
+            FieldName = 'RAZÃO SOCIAL'
           end        
           item
-            Title.Caption = 'PESINSCRICAO_ESTADUAL'
-            FieldName = 'PESINSCRICAO_ESTADUAL'
+            Title.Caption = 'NOME FANTASIA'
+            FieldName = 'NOME FANTASIA'
           end        
           item
-            Title.Caption = 'PESINSCRICACAO_MUNICIPAL'
-            FieldName = 'PESINSCRICACAO_MUNICIPAL'
+            Title.Caption = 'INSCRIÇÃO ESTADUAL'
+            FieldName = 'INSCRIÇÃO ESTADUAL'
           end        
           item
-            Title.Caption = 'PESCEP'
-            FieldName = 'PESCEP'
+            Title.Caption = 'INSCRICACAO_MUNICIPAL'
+            FieldName = 'INSCRICACAO_MUNICIPAL'
           end        
           item
-            Title.Caption = 'PESENDERECO'
-            FieldName = 'PESENDERECO'
+            Title.Caption = 'CEP'
+            FieldName = 'CEP'
           end        
           item
-            Title.Caption = 'PESNUMERO'
-            FieldName = 'PESNUMERO'
+            Title.Caption = 'ENDEREÇO'
+            FieldName = 'ENDEREÇO'
           end        
           item
-            Title.Caption = 'PESCOMPLEMENTO'
-            FieldName = 'PESCOMPLEMENTO'
+            Title.Caption = 'NÚMERO'
+            FieldName = 'NÚMERO'
           end        
           item
-            Title.Caption = 'PESESTADO'
-            FieldName = 'PESESTADO'
+            Title.Caption = 'COMPLEMENTO'
+            FieldName = 'COMPLEMENTO'
           end        
           item
-            Title.Caption = 'PESCIDADE'
-            FieldName = 'PESCIDADE'
+            Title.Caption = 'ESTADO'
+            FieldName = 'ESTADO'
           end        
           item
-            Title.Caption = 'PESBAIRRO'
-            FieldName = 'PESBAIRRO'
+            Title.Caption = 'CIDADE'
+            FieldName = 'CIDADE'
           end        
           item
-            Title.Caption = 'PESEMAIL'
-            FieldName = 'PESEMAIL'
+            Title.Caption = 'BAIRRO'
+            FieldName = 'BAIRRO'
           end        
           item
-            Title.Caption = 'PESTELEFONE'
-            FieldName = 'PESTELEFONE'
+            Title.Caption = 'E-MAIL'
+            FieldName = 'E-MAIL'
           end        
           item
-            Title.Caption = 'PESCELULAR'
-            FieldName = 'PESCELULAR'
+            Title.Caption = 'TELEFONE'
+            FieldName = 'TELEFONE'
           end        
           item
-            Title.Caption = 'PESOBSERVACAO'
-            FieldName = 'PESOBSERVACAO'
+            Title.Caption = 'CELULAR'
+            FieldName = 'CELULAR'
           end        
           item
-            Title.Caption = 'PESSTATUS'
-            FieldName = 'PESSTATUS'
+            Title.Caption = 'OBSERVAÇÃO'
+            FieldName = 'OBSERVAÇÃO'
+          end        
+          item
+            Title.Caption = 'ATIVO'
+            FieldName = 'ATIVO'
           end>
-        DataSource = DM.DSConsFornCNPJ
+        DataSource = DM.DSConsPessoas
         TabOrder = 0
       end
       object EdtConsulta: TEdit
-        Left = 176
+        Left = 312
         Height = 23
-        Top = 71
-        Width = 464
+        Top = 75
+        Width = 328
         TabOrder = 1
       end
       object CboStatus: TComboBox
         Left = 40
         Height = 23
-        Top = 71
+        Top = 75
         Width = 128
         ItemHeight = 15
+        ItemIndex = 0
+        Items.Strings = (
+          'Selecione à opção'
+          'ATIVO'
+          'INATIVO'
+        )
         TabOrder = 2
         Text = 'Selecione à opção'
       end
       object BtnConsulta: TSpeedButton
-        Left = 651
-        Height = 29
-        Top = 65
-        Width = 45
+        Left = 647
+        Height = 27
+        Top = 72
+        Width = 49
+        AutoSize = True
         Glyph.Data = {
           62100000424D621000000000000036000000280000002D000000170000000100
           2000000000002C10000064000000640000000000000000000000FFFFFF00C100
@@ -1689,7 +1700,7 @@ object FrmConsFornecedores: TFrmConsFornecedores
       object Label1: TLabel
         Left = 40
         Height = 17
-        Top = 45
+        Top = 56
         Width = 86
         Caption = 'Ativo/Inativo:'
         Font.CharSet = ANSI_CHARSET
@@ -1701,11 +1712,245 @@ object FrmConsFornecedores: TFrmConsFornecedores
         ParentFont = False
       end
       object Label2: TLabel
-        Left = 176
+        Left = 312
         Height = 17
-        Top = 45
+        Top = 56
         Width = 66
         Caption = 'Por Nome:'
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -13
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object GrCPF: TDBGrid
+        Left = 40
+        Height = 407
+        Top = 112
+        Width = 656
+        Color = clWindow
+        Columns = <        
+          item
+            Title.Caption = 'CODIGO'
+            FieldName = 'CODIGO'
+          end        
+          item
+            Title.Caption = 'NOME'
+            FieldName = 'NOME'
+          end        
+          item
+            Title.Caption = 'CODIGOTIP'
+            FieldName = 'CODIGOTIP'
+          end        
+          item
+            Title.Caption = 'TIPO'
+            FieldName = 'TIPO'
+          end        
+          item
+            Title.Caption = 'CPF'
+            FieldName = 'CPF'
+          end        
+          item
+            Title.Caption = 'DATA NASCIMENTO'
+            FieldName = 'DATA NASCIMENTO'
+          end        
+          item
+            Title.Caption = 'CNPJ'
+            FieldName = 'CNPJ'
+          end        
+          item
+            Title.Caption = 'RAZÃO SOCIAL'
+            FieldName = 'RAZÃO SOCIAL'
+          end        
+          item
+            Title.Caption = 'NOME FANTASIA'
+            FieldName = 'NOME FANTASIA'
+          end        
+          item
+            Title.Caption = 'INSCRIÇÃO ESTADUAL'
+            FieldName = 'INSCRIÇÃO ESTADUAL'
+          end        
+          item
+            Title.Caption = 'INSCRICACAO_MUNICIPAL'
+            FieldName = 'INSCRICACAO_MUNICIPAL'
+          end        
+          item
+            Title.Caption = 'CEP'
+            FieldName = 'CEP'
+          end        
+          item
+            Title.Caption = 'ENDEREÇO'
+            FieldName = 'ENDEREÇO'
+          end        
+          item
+            Title.Caption = 'NÚMERO'
+            FieldName = 'NÚMERO'
+          end        
+          item
+            Title.Caption = 'COMPLEMENTO'
+            FieldName = 'COMPLEMENTO'
+          end        
+          item
+            Title.Caption = 'ESTADO'
+            FieldName = 'ESTADO'
+          end        
+          item
+            Title.Caption = 'CIDADE'
+            FieldName = 'CIDADE'
+          end        
+          item
+            Title.Caption = 'BAIRRO'
+            FieldName = 'BAIRRO'
+          end        
+          item
+            Title.Caption = 'E-MAIL'
+            FieldName = 'E-MAIL'
+          end        
+          item
+            Title.Caption = 'TELEFONE'
+            FieldName = 'TELEFONE'
+          end        
+          item
+            Title.Caption = 'CELULAR'
+            FieldName = 'CELULAR'
+          end        
+          item
+            Title.Caption = 'OBSERVAÇÃO'
+            FieldName = 'OBSERVAÇÃO'
+          end        
+          item
+            Title.Caption = 'ATIVO'
+            FieldName = 'ATIVO'
+          end>
+        DataSource = DM.DSConsPessoas
+        TabOrder = 3
+      end
+      object GrCNPJ: TDBGrid
+        Left = 40
+        Height = 408
+        Top = 112
+        Width = 656
+        Color = clWindow
+        Columns = <        
+          item
+            Title.Caption = 'CODIGO'
+            FieldName = 'CODIGO'
+          end        
+          item
+            Title.Caption = 'NOME'
+            FieldName = 'NOME'
+          end        
+          item
+            Title.Caption = 'CODIGOTIP'
+            FieldName = 'CODIGOTIP'
+          end        
+          item
+            Title.Caption = 'TIPO'
+            FieldName = 'TIPO'
+          end        
+          item
+            Title.Caption = 'CPF'
+            FieldName = 'CPF'
+          end        
+          item
+            Title.Caption = 'DATA NASCIMENTO'
+            FieldName = 'DATA NASCIMENTO'
+          end        
+          item
+            Title.Caption = 'CNPJ'
+            FieldName = 'CNPJ'
+          end        
+          item
+            Title.Caption = 'RAZÃO SOCIAL'
+            FieldName = 'RAZÃO SOCIAL'
+          end        
+          item
+            Title.Caption = 'NOME FANTASIA'
+            FieldName = 'NOME FANTASIA'
+          end        
+          item
+            Title.Caption = 'INSCRIÇÃO ESTADUAL'
+            FieldName = 'INSCRIÇÃO ESTADUAL'
+          end        
+          item
+            Title.Caption = 'INSCRICACAO_MUNICIPAL'
+            FieldName = 'INSCRICACAO_MUNICIPAL'
+          end        
+          item
+            Title.Caption = 'CEP'
+            FieldName = 'CEP'
+          end        
+          item
+            Title.Caption = 'ENDEREÇO'
+            FieldName = 'ENDEREÇO'
+          end        
+          item
+            Title.Caption = 'NÚMERO'
+            FieldName = 'NÚMERO'
+          end        
+          item
+            Title.Caption = 'COMPLEMENTO'
+            FieldName = 'COMPLEMENTO'
+          end        
+          item
+            Title.Caption = 'ESTADO'
+            FieldName = 'ESTADO'
+          end        
+          item
+            Title.Caption = 'CIDADE'
+            FieldName = 'CIDADE'
+          end        
+          item
+            Title.Caption = 'BAIRRO'
+            FieldName = 'BAIRRO'
+          end        
+          item
+            Title.Caption = 'E-MAIL'
+            FieldName = 'E-MAIL'
+          end        
+          item
+            Title.Caption = 'TELEFONE'
+            FieldName = 'TELEFONE'
+          end        
+          item
+            Title.Caption = 'CELULAR'
+            FieldName = 'CELULAR'
+          end        
+          item
+            Title.Caption = 'OBSERVAÇÃO'
+            FieldName = 'OBSERVAÇÃO'
+          end        
+          item
+            Title.Caption = 'ATIVO'
+            FieldName = 'ATIVO'
+          end>
+        DataSource = DM.DSConsPessoas
+        TabOrder = 4
+      end
+      object CboTipoPessoa: TComboBox
+        Left = 176
+        Height = 23
+        Top = 75
+        Width = 128
+        ItemHeight = 15
+        ItemIndex = 0
+        Items.Strings = (
+          'Selecione à opção'
+          'TODOS'
+          'CPF'
+          'CNPJ'
+        )
+        TabOrder = 5
+        Text = 'Selecione à opção'
+      end
+      object Label3: TLabel
+        Left = 176
+        Height = 17
+        Top = 56
+        Width = 60
+        Caption = 'CPF/CNPJ'
         Font.CharSet = ANSI_CHARSET
         Font.Height = -13
         Font.Pitch = fpVariable

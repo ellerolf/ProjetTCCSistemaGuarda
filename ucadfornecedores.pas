@@ -102,7 +102,7 @@ begin
   //EdtCpfCnpj.EditMask := '00.000.000/0000-00;1;_';
   LblCpfCnpj.Caption := 'CNPJ';
   LblNomeRazao.Caption := 'Razão Social';
-  LblDta.Caption:='Data Emissão';
+  LblDta.Caption := 'Data Emissão';
   EdtFantasia.Enabled := True;
   EdtInsEstadual.Enabled := True;
   EdtInsMunicipal.Enabled := True;
@@ -119,7 +119,7 @@ begin
   //EdtCpfCnpj.EditMask := '000.000.000-00;1;_';
   LblCpfCnpj.Caption := 'CPF';
   LblNomeRazao.Caption := 'Nome';
-  LblDta.Caption:='Data Nascimento';
+  LblDta.Caption := 'Data Nascimento';
   EdtFantasia.Enabled := False;
   EdtInsEstadual.Enabled := False;
   EdtInsMunicipal.Enabled := False;
@@ -135,197 +135,149 @@ begin
   //CNPJ
   if (BtnCnpj.Checked = True) then
   begin
-    if EdtCpfCnpj.text = '' then
-     begin
-       ShowMessage('Campo CNPJ obrigatório!');
-     end
-     else if (EdtNome.text = '') then
-     begin
-       ShowMessage('Campo Rezão Social obrigatório!');
-     end
-     else if (EdtFantasia.text = '') then
-     begin
-       ShowMessage('Campo Nome Fantasia obrigatório!');
-     end
-     else if (EdtInsEstadual.text = '') then
-     begin
-       ShowMessage('Campo Inscrição Estadual obrigatório!');
-     end
-     else if (EdtInsMunicipal.text = '') then
-     begin
-       ShowMessage('Campo Inscrição Municipal obrigatório!');
-     end
-     else if (EdtDTNasc.Text = '') then
-     begin
-       ShowMessage('Campo Data Emissão obrigatório!');
-     end
-     else if (EdtEndereco.text = '') then
-     begin
-       ShowMessage('Campo Endereço obrigatório!');
-     end
-     else if (EdtNumero.text = '') then
-     begin
-       ShowMessage('Campo Numero obrigatório!');
-     end
-     else if (EdtBairro.text = '') then
-     begin
-       ShowMessage('Campo Bairro obrigatório!');
-     end
-     else if (EdtCep.text = '') then
-     begin
-       ShowMessage('Campo CEP obrigatório!');
-     end
-     else if (EdtCidade.text = '') then
-     begin
-       ShowMessage('Campo Cidade obrigatório!');
-     end
-     else if (CboUf.Caption = 'UF') then
-     begin
-       ShowMessage('Campo Estado obrigatório!');
-     end
-     else if (EdtCel.text = '') then
-     begin
-       ShowMessage('Campo Celular obrigatório!');
-     end
-     else
-        begin
-          dm.ZQCadFornCNPJ.Params.ParamByName('codigotip').Value := 2;
-          dm.ZQCadFornCNPJ.Params.ParamByName('pescnpj').Value := EdtCpfCnpj.Text;
-          dm.ZQCadFornCNPJ.Params.ParamByName('pesrazao_social').Value := EdtNome.Text;
-          dm.ZQCadFornCNPJ.Params.ParamByName('pesnome_fantasia').Value := EdtFantasia.Text;
-          dm.ZQCadFornCNPJ.Params.ParamByName('pesinscricao_estadual').Value :=
-            EdtInsEstadual.Text;
-          dm.ZQCadFornCNPJ.Params.ParamByName('pesinscricacao_municipal').Value :=
-            EdtInsMunicipal.Text;
-          dm.ZQCadFornCNPJ.Params.ParamByName('pesdata_nascimento').Value :=
-            FormatDateTime('YYYY-MM-DD', StrToDate(EdtDTNasc.Text));
-          dm.ZQCadFornCNPJ.Params.ParamByName('pesendereco').Value := EdtEndereco.Text;
-          dm.ZQCadFornCNPJ.Params.ParamByName('pesnumero').Value := EdtNumero.Text;
-          dm.ZQCadFornCNPJ.Params.ParamByName('pescomplemento').Value := EdtComplemento.Text;
-          dm.ZQCadFornCNPJ.Params.ParamByName('pesbairro').Value := EdtBairro.Text;
-          dm.ZQCadFornCNPJ.Params.ParamByName('pescep').Value := EdtCep.Text;
-          dm.ZQCadFornCNPJ.Params.ParamByName('pescidade').Value := EdtCidade.Text;
-          dm.ZQCadFornCNPJ.Params.ParamByName('pesestado').Value := CboUf.Text;
-          dm.ZQCadFornCNPJ.Params.ParamByName('pestelefone').Value := EdtTel.Text;
-          dm.ZQCadFornCNPJ.Params.ParamByName('pescelular').Value := EdtCel.Text;
-          dm.ZQCadFornCNPJ.Params.ParamByName('pesemail').Value := EdtEmail.Text;
-          dm.ZQCadFornCNPJ.Params.ParamByName('pesobservacao').Value := MemObs.Text;
-          dm.ZQCadFornCNPJ.ExecSQL;
+    if EdtCpfCnpj.Text = '' then
+    begin
+      ShowMessage('Campo CNPJ obrigatório!');
+    end
+    else if (EdtNome.Text = '') then
+    begin
+      ShowMessage('Campo Rezão Social obrigatório!');
+    end
+    else if (EdtFantasia.Text = '') then
+    begin
+      ShowMessage('Campo Nome Fantasia obrigatório!');
+    end
+    else if (EdtInsEstadual.Text = '') then
+    begin
+      ShowMessage('Campo Inscrição Estadual obrigatório!');
+    end
+    else if (EdtInsMunicipal.Text = '') then
+    begin
+      ShowMessage('Campo Inscrição Municipal obrigatório!');
+    end
+    else if (EdtDTNasc.Text = '') then
+    begin
+      ShowMessage('Campo Data Emissão obrigatório!');
+    end
+    else if (EdtEndereco.Text = '') then
+    begin
+      ShowMessage('Campo Endereço obrigatório!');
+    end
+    else if (EdtNumero.Text = '') then
+    begin
+      ShowMessage('Campo Numero obrigatório!');
+    end
+    else if (EdtBairro.Text = '') then
+    begin
+      ShowMessage('Campo Bairro obrigatório!');
+    end
+    else if (EdtCep.Text = '') then
+    begin
+      ShowMessage('Campo CEP obrigatório!');
+    end
+    else if (EdtCidade.Text = '') then
+    begin
+      ShowMessage('Campo Cidade obrigatório!');
+    end
+    else if (CboUf.Caption = 'UF') then
+    begin
+      ShowMessage('Campo Estado obrigatório!');
+    end
+    else if (EdtCel.Text = '') then
+    begin
+      ShowMessage('Campo Celular obrigatório!');
+    end
+    else
+    begin
 
-          dm.ZQConsFornCNPJ.Close;
-          dm.ZQConsFornCNPJ.Open;
-
-          LblMensagem.Caption := 'Dados Gravados';
-
-          EdtCpfCnpj.Clear;
-          EdtNome.Clear;
-          EdtFantasia.Clear;
-          EdtInsEstadual.Clear;
-          EdtInsMunicipal.Clear;
-          EdtDTNasc.Clear;
-          EdtEndereco.Clear;
-          EdtNumero.Clear;
-          EdtComplemento.Clear;
-          EdtBairro.Clear;
-          EdtCep.Clear;
-          EdtCidade.Clear;
-          CboUf.Caption := 'UF';
-          EdtTel.Clear;
-          EdtCel.Clear;
-          EdtEmail.Clear;
-          MemObs.Clear;
-        end;
+      EdtCpfCnpj.Clear;
+      EdtNome.Clear;
+      EdtFantasia.Clear;
+      EdtInsEstadual.Clear;
+      EdtInsMunicipal.Clear;
+      EdtDTNasc.Clear;
+      EdtEndereco.Clear;
+      EdtNumero.Clear;
+      EdtComplemento.Clear;
+      EdtBairro.Clear;
+      EdtCep.Clear;
+      EdtCidade.Clear;
+      CboUf.Caption := 'UF';
+      EdtTel.Clear;
+      EdtCel.Clear;
+      EdtEmail.Clear;
+      MemObs.Clear;
+    end;
   end;
 
   if (btncpf.Checked = True) then
-     if (EdtCpfCnpj.text = '') then
-     begin
-       ShowMessage('Campo CPF obrigatório!');
-     end
-     else if (EdtNome.text = '') then
-     begin
-       ShowMessage('Campo Nome obrigatório!');
-     end
-     else if (EdtDTNasc.text = '') then
-     begin
-       ShowMessage('Campo Data de Nascimento obrigatório!');
-     end
-     else if (EdtEndereco.text = '') then
-     begin
-       ShowMessage('Campo Endereço obrigatório!');
-     end
-     else if (EdtNumero.text = '') then
-     begin
-       ShowMessage('Campo Numero obrigatório!');
-     end
-     else if (EdtBairro.text = '') then
-     begin
-       ShowMessage('Campo Bairro obrigatório!');
-     end
-     else if (EdtCep.text = '') then
-     begin
-       ShowMessage('Campo CEP obrigatório!');
-     end
-     else if (EdtCidade.text = '') then
-     begin
-       ShowMessage('Campo Cidade obrigatório!');
-     end
-     else if (CboUf.Caption = 'UF') then
-     begin
-       ShowMessage('Campo Estado obrigatório!');
-     end
-     else if (EdtCel.text = '') then
-     begin
-       ShowMessage('Campo Celular obrigatório!');
-     end
-     else
-        begin
-          dm.ZQCadFornCPF.Params.ParamByName('codigotip').Value := 1;
-          dm.ZQCadFornCPF.Params.ParamByName('pescpf').Value := EdtCpfCnpj.Text;
-          dm.ZQCadFornCPF.Params.ParamByName('pesnome').value := EdtNome.text;
-          dm.ZQCadFornCPF.Params.ParamByName('pesdata_nascimento').Value :=
-            FormatDateTime('YYYY-MM-DD', StrToDate(EdtDTNasc.Text));
-          dm.ZQCadFornCPF.Params.ParamByName('pesendereco').Value := EdtEndereco.Text;
-          dm.ZQCadFornCPF.Params.ParamByName('pesnumero').Value := EdtNumero.Text;
-          dm.ZQCadFornCPF.Params.ParamByName('pescomplemento').Value := EdtComplemento.Text;
-          dm.ZQCadFornCPF.Params.ParamByName('pesbairro').Value := EdtBairro.Text;
-          dm.ZQCadFornCPF.Params.ParamByName('pescep').Value := EdtCep.Text;
-          dm.ZQCadFornCPF.Params.ParamByName('pescidade').Value := EdtCidade.Text;
-          dm.ZQCadFornCPF.Params.ParamByName('pesestado').Value := CboUf.Text;
-          dm.ZQCadFornCPF.Params.ParamByName('pestelefone').Value := EdtTel.Text;
-          dm.ZQCadFornCPF.Params.ParamByName('pescelular').Value := EdtCel.Text;
-          dm.ZQCadFornCPF.Params.ParamByName('pesemail').Value := EdtEmail.Text;
-          dm.ZQCadFornCPF.Params.ParamByName('pesobservacao').Value := MemObs.Text;
-          dm.ZQCadFornCPF.ExecSQL;
+    if (EdtCpfCnpj.Text = '') then
+    begin
+      ShowMessage('Campo CPF obrigatório!');
+    end
+    else if (EdtNome.Text = '') then
+    begin
+      ShowMessage('Campo Nome obrigatório!');
+    end
+    else if (EdtDTNasc.Text = '') then
+    begin
+      ShowMessage('Campo Data de Nascimento obrigatório!');
+    end
+    else if (EdtEndereco.Text = '') then
+    begin
+      ShowMessage('Campo Endereço obrigatório!');
+    end
+    else if (EdtNumero.Text = '') then
+    begin
+      ShowMessage('Campo Numero obrigatório!');
+    end
+    else if (EdtBairro.Text = '') then
+    begin
+      ShowMessage('Campo Bairro obrigatório!');
+    end
+    else if (EdtCep.Text = '') then
+    begin
+      ShowMessage('Campo CEP obrigatório!');
+    end
+    else if (EdtCidade.Text = '') then
+    begin
+      ShowMessage('Campo Cidade obrigatório!');
+    end
+    else if (CboUf.Caption = 'UF') then
+    begin
+      ShowMessage('Campo Estado obrigatório!');
+    end
+    else if (EdtCel.Text = '') then
+    begin
+      ShowMessage('Campo Celular obrigatório!');
+    end
+    else
+    begin
 
-          dm.ZQConsFornCPF.Close;
-          dm.ZQConsFornCPF.Open;
+      LblMensagem.Caption := 'Dados Gravados';
 
-          LblMensagem.Caption := 'Dados Gravados';
-
-          EdtCpfCnpj.Clear;
-          EdtNome.Clear;
-          EdtDTNasc.Clear;
-          EdtEndereco.Clear;
-          EdtNumero.Clear;
-          EdtComplemento.Clear;
-          EdtBairro.Clear;
-          EdtCep.Clear;
-          EdtCidade.Clear;
-          CboUf.Caption := 'UF';
-          EdtTel.Clear;
-          EdtCel.Clear;
-          EdtEmail.Clear;
-          MemObs.Clear;
-        end;
+      EdtCpfCnpj.Clear;
+      EdtNome.Clear;
+      EdtDTNasc.Clear;
+      EdtEndereco.Clear;
+      EdtNumero.Clear;
+      EdtComplemento.Clear;
+      EdtBairro.Clear;
+      EdtCep.Clear;
+      EdtCidade.Clear;
+      CboUf.Caption := 'UF';
+      EdtTel.Clear;
+      EdtCel.Clear;
+      EdtEmail.Clear;
+      MemObs.Clear;
+    end;
 
 end;
 
-procedure TFrmCadFornecedor.FormClose(Sender: TObject;
-  var CloseAction: TCloseAction);
+procedure TFrmCadFornecedor.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
-  dm.ZQConsFornCPF.Active:=false;
-  dm.ZQConsFornCNPJ.Active:=false;
+  dm.ZQConsPessoas.Active := False;
+
 end;
 
 procedure TFrmCadFornecedor.FormCreate(Sender: TObject);
@@ -341,8 +293,7 @@ end;
 
 procedure TFrmCadFornecedor.FormShow(Sender: TObject);
 begin
-  dm.ZQConsFornCPF.Active:=true;
-  dm.ZQConsFornCNPJ.Active:=True;
+  dm.ZQConsPessoas.Active := True;
 end;
 
 procedure TFrmCadFornecedor.GrpCnpjCpfClick(Sender: TObject);

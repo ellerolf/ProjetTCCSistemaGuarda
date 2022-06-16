@@ -17,10 +17,14 @@ type
     BtnSair: TSpeedButton;
     BtnSalvar: TSpeedButton;
     CboStatus: TComboBox;
-    DBGrid1: TDBGrid;
+    CboTipoPessoa: TComboBox;
+    GrCNPJ: TDBGrid;
+    GrCPF: TDBGrid;
+    GrTodos: TDBGrid;
     EdtConsulta: TEdit;
     Label1: TLabel;
     Label2: TLabel;
+    Label3: TLabel;
     Label7: TLabel;
     Panel1: TPanel;
     BtnConsulta: TSpeedButton;

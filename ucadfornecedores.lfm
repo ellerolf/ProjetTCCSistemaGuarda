@@ -1,11 +1,11 @@
 object FrmCadFornecedor: TFrmCadFornecedor
   Left = -8
-  Height = 944
+  Height = 983
   Top = -8
   Width = 1386
   BorderStyle = bsNone
   Caption = 'Cadastro Fornecedores'
-  ClientHeight = 921
+  ClientHeight = 960
   ClientWidth = 1370
   Color = 16577259
   OnClose = FormClose
@@ -16,11 +16,11 @@ object FrmCadFornecedor: TFrmCadFornecedor
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 921
+    Height = 960
     Top = 0
     Width = 1370
     Align = alClient
-    ClientHeight = 921
+    ClientHeight = 960
     ClientWidth = 1370
     TabOrder = 0
     object Panel2: TPanel
