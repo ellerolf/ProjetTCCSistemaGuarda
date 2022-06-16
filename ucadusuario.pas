@@ -43,6 +43,7 @@ type
     procedure Button1Click(Sender: TObject);
     procedure ChkMostrarChange(Sender: TObject);
     procedure DBGrid1CellClick(Column: TColumn);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormResize(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure GrpNivel1Click(Sender: TObject);
@@ -123,6 +124,18 @@ begin
     end;
 end;
 
+procedure TFrmCadUsuario.FormClose(Sender: TObject;
+  var CloseAction: TCloseAction);
+begin
+  DM.ZQConsUsuario.Active:=False;
+  EdtNome.Clear;
+  EdtNomeUsuario.Clear;
+  EdtSenha.clear;
+  EdtConfSenha.Clear;
+  RgbNivel.ItemIndex:=-1;
+  LblMensagem.Caption:='*Campos Obrigatorios';
+end;
+
 procedure TFrmCadUsuario.BtnAlterarClick(Sender: TObject);
 var verifica:Integer;
 begin
@@ -137,52 +150,59 @@ begin
       LblMensagem.Caption:='SENHAS NAO CONFEREM, FAVOR CONFERIR NOVAMENTE';
     end
    else
-   {if (EdtNomeUsuario.Text=DM.ZQConsUsuarioUSULOGIN.Value) then
-    begin
-      ShowMessage('NOME DE USUÁRIO JÁ EXISTENTE FAVOR ESCOLHER OUTRO');
-    end}
    if (verifica < 8)then
      begin
          LblMensagem.Caption:='A SENHA DEVE TER 8 CARACTERS NO MINIMO';
      end
    else
-   begin
-    DM.ZQAltUsuario.Params.ParamByName('pusunome').Value:=EdtNome.Text;
-    DM.ZQAltUsuario.Params.ParamByName('pusulogin').Value:=EdtNomeUsuario.Text;
-    DM.ZQAltUsuario.Params.ParamByName('pususenha').Value:=EdtSenha.Text;
-    DM.ZQAltUsuario.Params.ParamByName('pususenha').Value:=EdtConfSenha.Text;
-
-     if(RgbNivel.ItemIndex=0)then
+    begin
+       DM.ZQConsUsuario.Close;
+       DM.ZQConsUsuario.SQL.Clear;
+       DM.ZQConsUsuario.SQL.Add('select * from usuario where usulogin='+QuotedStr(EdtNomeUsuario.Text));
+       DM.ZQConsUsuario.Open;
+       if (DM.ZQConsUsuario.RecordCount=1) then
      begin
-       DM.ZQAltUsuario.Params.ParamByName('pcodigoniv').Value:= 1;
+       ShowMessage('NOME DE USUARIO JÁ EXISTE, FAVOR ESCOLHER OUTRO');
      end
-    else if(RgbNivel.ItemIndex=1)then
-     begin
-       DM.ZQAltUsuario.Params.ParamByName('pcodigoniv').Value:=2;
-     end;
-
-     if ( RgbAltStatus.ItemIndex=0) then
-      begin
-         DM.ZQAltUsuario.Params.ParamByName('pusustatus').Value:=1;
-      end
      else
-      if ( RgbAltStatus.ItemIndex=1) then
-      begin
-         DM.ZQAltUsuario.Params.ParamByName('pusustatus').Value:=0;
+     begin
+      DM.ZQAltUsuario.Params.ParamByName('pusunome').Value:=EdtNome.Text;
+      DM.ZQAltUsuario.Params.ParamByName('pusulogin').Value:=EdtNomeUsuario.Text;
+      DM.ZQAltUsuario.Params.ParamByName('pususenha').Value:=EdtSenha.Text;
+      DM.ZQAltUsuario.Params.ParamByName('pususenha').Value:=EdtConfSenha.Text;
+
+       if(RgbNivel.ItemIndex=0)then
+       begin
+         DM.ZQAltUsuario.Params.ParamByName('pcodigoniv').Value:= 1;
+       end
+      else if(RgbNivel.ItemIndex=1)then
+       begin
+         DM.ZQAltUsuario.Params.ParamByName('pcodigoniv').Value:=2;
+       end;
+
+       if ( RgbAltStatus.ItemIndex=0) then
+        begin
+           DM.ZQAltUsuario.Params.ParamByName('pusustatus').Value:=1;
+        end
+       else
+        if ( RgbAltStatus.ItemIndex=1) then
+        begin
+           DM.ZQAltUsuario.Params.ParamByName('pusustatus').Value:=0;
+        end;
+      DM.ZQAltUsuario.Params.ParamByName('pusucodigo').Value:=DM.ZQConsUsuarioUSUCODIGO.AsInteger;
+      DM.ZQAltUsuario.ExecSQL;
+
+      DM.ZQConsUsuario.Close;
+      DM.ZQConsUsuario.Open;
+
+      EdtNome.Clear;
+      EdtNomeUsuario.Clear;
+      EdtSenha.clear;
+      EdtConfSenha.Clear;
+      RgbNivel.ItemIndex:=-1;
+      RgbAltStatus.ItemIndex:=-1;
+      RgbAltStatus.Enabled:=False;
       end;
-    DM.ZQAltUsuario.Params.ParamByName('pusucodigo').Value:=DM.ZQConsUsuarioUSUCODIGO.AsInteger;
-    DM.ZQAltUsuario.ExecSQL;
-
-    DM.ZQConsUsuario.Close;
-    DM.ZQConsUsuario.Open;
-
-    EdtNome.Clear;
-    EdtNomeUsuario.Clear;
-    EdtSenha.clear;
-    EdtConfSenha.Clear;
-    RgbNivel.ItemIndex:=-1;
-    RgbAltStatus.ItemIndex:=-1;
-    RgbAltStatus.Enabled:=False;
 
    end;
 end;
@@ -217,6 +237,13 @@ end;
 procedure TFrmCadUsuario.FormShow(Sender: TObject);
 begin
   RgbAltStatus.Enabled:=False;
+  DM.ZQConsUsuario.Active:=true;
+  EdtNome.Clear;
+  EdtNomeUsuario.Clear;
+  EdtSenha.clear;
+  EdtConfSenha.Clear;
+  RgbNivel.ItemIndex:=-1;
+  LblMensagem.Caption:='*Campos Obrigatorios';
 end;
 
 procedure TFrmCadUsuario.BtnSalvarClick(Sender: TObject);
@@ -233,41 +260,48 @@ begin
       LblMensagem.Caption:='SENHAS NAO CONFEREM, FAVOR CONFERIR NOVAMENTE';
     end
   else
-  {if (DM.ZQConsUsuarioUSULOGIN.Value=EdtNomeUsuario.Text) then
+  if (verifica < 8)then
     begin
-      ShowMessage('NOME DE USUÁRIO JÁ EXISTENTE FAVOR ESCOLHER OUTRO');
+      LblMensagem.Caption:='A SENHA DEVE TER 8 CARACTERS NO MINIMO';
     end
-    else}
-    if (verifica < 8)then
-     begin
-         LblMensagem.Caption:='A SENHA DEVE TER 8 CARACTERS NO MINIMO';
-     end
    else
-  begin
-      DM.ZQCadUsuario.Params.ParamByName('pusunome').Value:=EdtNome.Text;
-      DM.ZQCadUsuario.Params.ParamByName('pusulogin').Value:=EdtNomeUsuario.Text;
-      DM.ZQCadUsuario.Params.ParamByName('pususenha').Value:=EdtSenha.Text;
-      DM.ZQCadUsuario.Params.ParamByName('pususenha').Value:=EdtConfSenha.Text;
-      if(RgbNivel.ItemIndex=0)then
+   begin
+     DM.ZQConsUsuario.Close;
+     DM.ZQConsUsuario.SQL.Clear;
+     DM.ZQConsUsuario.SQL.Add('select * from usuario where usulogin='+QuotedStr(EdtNomeUsuario.Text));
+     DM.ZQConsUsuario.Open;
+     if (DM.ZQConsUsuario.RecordCount=1) then
        begin
-         DM.ZQCadUsuario.Params.ParamByName('pcodigoniv').Value:= 1;
+         ShowMessage('NOME DE USUARIO JÁ EXISTE, FAVOR ESCOLHER OUTRO');
        end
-      else if(RgbNivel.ItemIndex=1)then
-       begin
-         DM.ZQCadUsuario.Params.ParamByName('pcodigoniv').Value:=2;
-       end;
-      DM.ZQCadUsuario.ExecSQL;
+       else
+      begin
+          DM.ZQCadUsuario.Params.ParamByName('pusunome').Value:=EdtNome.Text;
+          DM.ZQCadUsuario.Params.ParamByName('pusulogin').Value:=EdtNomeUsuario.Text;
+          DM.ZQCadUsuario.Params.ParamByName('pususenha').Value:=EdtSenha.Text;
+          DM.ZQCadUsuario.Params.ParamByName('pususenha').Value:=EdtConfSenha.Text;
+          if(RgbNivel.ItemIndex=0)then
+           begin
+             DM.ZQCadUsuario.Params.ParamByName('pcodigoniv').Value:= 1;
+           end
+          else if(RgbNivel.ItemIndex=1)then
+           begin
+             DM.ZQCadUsuario.Params.ParamByName('pcodigoniv').Value:=2;
+           end;
+          DM.ZQCadUsuario.ExecSQL;
 
-      DM.ZQConsUsuario.Close;
-      DM.ZQConsUsuario.Open;
+          DM.ZQConsUsuario.Close;
+          DM.ZQConsUsuario.Open;
 
-      EdtNome.Clear;
-      EdtNomeUsuario.Clear;
-      EdtSenha.clear;
-      EdtConfSenha.Clear;
-      RgbNivel.ItemIndex:=-1;
-      LblMensagem.Caption:='*Campos Obrigatorios';
-    end;
+          EdtNome.Clear;
+          EdtNomeUsuario.Clear;
+          EdtSenha.clear;
+          EdtConfSenha.Clear;
+          RgbNivel.ItemIndex:=-1;
+          LblMensagem.Caption:='*Campos Obrigatorios';
+        end;
+
+   end;
 
 end;
 
