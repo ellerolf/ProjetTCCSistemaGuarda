@@ -1,13 +1,13 @@
 object FrmCadContasBancarias: TFrmCadContasBancarias
   Left = -8
-  Height = 866
+  Height = 905
   Top = -8
-  Width = 1402
+  Width = 1418
   BorderIcons = [biSystemMenu]
   BorderStyle = bsNone
   Caption = 'Cadastro de Contas Bancarias'
-  ClientHeight = 843
-  ClientWidth = 1402
+  ClientHeight = 882
+  ClientWidth = 1418
   Color = 16577259
   Font.CharSet = ANSI_CHARSET
   Font.Height = -13
@@ -22,12 +22,12 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 843
+    Height = 882
     Top = 0
-    Width = 1402
+    Width = 1418
     Align = alClient
-    ClientHeight = 843
-    ClientWidth = 1402
+    ClientHeight = 882
+    ClientWidth = 1418
     TabOrder = 0
     OnClick = Panel1Click
     object Panel2: TPanel
@@ -263,11 +263,12 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
           Height = 23
           Top = 64
           Width = 136
+          Enabled = False
           Font.CharSet = ANSI_CHARSET
           Font.Pitch = fpVariable
           Font.Quality = fqDraft
           ParentFont = False
-          TabOrder = 1
+          TabOrder = 2
         end
         object Label11: TLabel
           Left = 80
@@ -282,11 +283,13 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
           Height = 23
           Top = 64
           Width = 136
+          Enabled = False
           Font.CharSet = ANSI_CHARSET
           Font.Pitch = fpVariable
           Font.Quality = fqDraft
+          OnKeyPress = EdtVlrTrasKeyPress
           ParentFont = False
-          TabOrder = 2
+          TabOrder = 3
         end
         object Label9: TLabel
           Left = 429
@@ -305,14 +308,16 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
           DateOrder = doNone
           ButtonWidth = 23
           NumGlyphs = 1
+          Enabled = False
           MaxLength = 0
-          TabOrder = 3
+          TabOrder = 1
         end
         object EdtCodContaO: TEdit
           Left = 80
           Height = 23
           Top = 128
           Width = 144
+          Enabled = False
           Font.CharSet = ANSI_CHARSET
           Font.Pitch = fpVariable
           Font.Quality = fqDraft
@@ -324,6 +329,7 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
           Height = 23
           Top = 128
           Width = 198
+          Enabled = False
           Font.CharSet = ANSI_CHARSET
           Font.Pitch = fpVariable
           Font.Quality = fqDraft
@@ -336,6 +342,7 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
           Top = 125
           Width = 49
           AutoSize = True
+          Enabled = False
           Glyph.Data = {
             62100000424D621000000000000036000000280000002D000000170000000100
             2000000000002C10000064000000640000000000000000000000FFFFFF00C100
