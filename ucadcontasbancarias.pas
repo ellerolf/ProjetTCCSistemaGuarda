@@ -165,13 +165,18 @@ begin
   // programação da transferência
    if (RdbCadTrans.Checked=true) then
    begin
-       dm.ZQCadTransferencia.Params.ParamByName('pTRADATA').Value:='2022-10-10';
+       dm.ZQCadTransferencia.Params.ParamByName('pTRADATA').AsString:=FormatDateTime('yyyy-mm-dd',DtDataTransf.Date);
        dm.ZQCadTransferencia.Params.ParamByName('pTRANUMERO_DOCUMENTO').Value:=EdtNDoc.Text;
        dm.ZQCadTransferencia.Params.ParamByName('pTRAVALOR').Value:=EdtVlrTras.Text;
        dm.ZQCadTransferencia.Params.ParamByName('pTRACODIGO_CONORI').Value:=EdtCodContaO.Text;
        dm.ZQCadTransferencia.Params.ParamByName('pTRACODIGO_CONDES').Value:=EdtCodContaDes.Text;
        dm.ZQCadTransferencia.ExecSQL;
        ShowMessage('Transferência cadastrada com sucesso!');
+       DtDataTransf.Clear;
+       EdtNDoc.Clear;
+       EdtVlrTras.Clear;
+       EdtCodContaO.clear;
+       EdtCodContaDes.clear;
 
    end;
 
