@@ -19,6 +19,8 @@ type
     DBGrid1: TDBGrid;
     EdtConsulta: TEdit;
     Panel1: TPanel;
+    procedure BtnSelecione1Click(Sender: TObject);
+    procedure BtnSelecioneClick(Sender: TObject);
   private
 
   public
@@ -31,6 +33,18 @@ var
 implementation
 
 {$R *.lfm}
+
+{ TFrmBuscaConta }
+
+procedure TFrmBuscaConta.BtnSelecione1Click(Sender: TObject);
+begin
+  close;
+end;
+
+procedure TFrmBuscaConta.BtnSelecioneClick(Sender: TObject);
+begin
+
+end;
 
 end.
 

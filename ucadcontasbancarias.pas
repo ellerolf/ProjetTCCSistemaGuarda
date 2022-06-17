@@ -92,7 +92,7 @@ end;
 
 procedure TFrmCadContasBancarias.BtnConsultaClick(Sender: TObject);
 begin
-  FrmBuscaConta.Show;
+  FrmBuscaConta.ShowModal;
 end;
 
 procedure TFrmCadContasBancarias.BtnSalvarClick(Sender: TObject);

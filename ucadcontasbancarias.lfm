@@ -1,13 +1,13 @@
 object FrmCadContasBancarias: TFrmCadContasBancarias
   Left = -8
-  Height = 905
+  Height = 944
   Top = -8
-  Width = 1418
+  Width = 1434
   BorderIcons = [biSystemMenu]
   BorderStyle = bsNone
   Caption = 'Cadastro de Contas Bancarias'
-  ClientHeight = 882
-  ClientWidth = 1418
+  ClientHeight = 921
+  ClientWidth = 1434
   Color = 16577259
   Font.CharSet = ANSI_CHARSET
   Font.Height = -13
@@ -22,12 +22,12 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 882
+    Height = 921
     Top = 0
-    Width = 1418
+    Width = 1434
     Align = alClient
-    ClientHeight = 882
-    ClientWidth = 1418
+    ClientHeight = 921
+    ClientWidth = 1434
     TabOrder = 0
     OnClick = Panel1Click
     object Panel2: TPanel
@@ -238,16 +238,16 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
           Left = 81
           Height = 17
           Top = 104
-          Width = 105
-          Caption = 'Codigo da conta:'
+          Width = 155
+          Caption = 'Codigo da conta Origem:'
           ParentColor = False
         end
         object Label10: TLabel
-          Left = 296
+          Left = 312
           Height = 17
           Top = 104
-          Width = 198
-          Caption = 'Codigo da conta para transferir:'
+          Width = 153
+          Caption = 'Codigo da conta Destino'
           ParentColor = False
         end
         object Label12: TLabel
@@ -316,7 +316,7 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
           Left = 80
           Height = 23
           Top = 128
-          Width = 144
+          Width = 156
           Enabled = False
           Font.CharSet = ANSI_CHARSET
           Font.Pitch = fpVariable
@@ -325,7 +325,7 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
           TabOrder = 4
         end
         object EdtCodContaDes: TEdit
-          Left = 296
+          Left = 312
           Height = 23
           Top = 128
           Width = 198
@@ -337,9 +337,9 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
           TabOrder = 5
         end
         object BtnConsulta: TSpeedButton
-          Left = 232
+          Left = 248
           Height = 27
-          Top = 125
+          Top = 128
           Width = 49
           AutoSize = True
           Enabled = False
