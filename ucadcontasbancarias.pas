@@ -14,6 +14,7 @@ type
 
   TFrmCadContasBancarias = class(TForm)
     BtnConsulta: TSpeedButton;
+    BtnConsulta1: TSpeedButton;
     CboTipo: TDBLookupComboBox;
     DtDataTransf: TDateEdit;
     EdtCodContaO: TEdit;

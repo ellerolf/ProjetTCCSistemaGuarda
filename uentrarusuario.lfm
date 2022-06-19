@@ -1,13 +1,13 @@
 object FrmEntrarUsuario: TFrmEntrarUsuario
   Left = -8
-  Height = 677
+  Height = 716
   Top = -8
-  Width = 902
+  Width = 918
   BorderIcons = [biSystemMenu]
   BorderStyle = bsNone
   Caption = 'Acesso ao Sistema'
-  ClientHeight = 654
-  ClientWidth = 902
+  ClientHeight = 693
+  ClientWidth = 918
   Color = 14927272
   OnCreate = FormCreate
   OnResize = FormResize
@@ -15,12 +15,12 @@ object FrmEntrarUsuario: TFrmEntrarUsuario
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 654
+    Height = 693
     Top = 0
-    Width = 902
+    Width = 918
     Align = alClient
-    ClientHeight = 654
-    ClientWidth = 902
+    ClientHeight = 693
+    ClientWidth = 918
     Color = 16242369
     Font.CharSet = ANSI_CHARSET
     Font.Color = clWhite
