@@ -1,11 +1,11 @@
 object FrmCadFornecedor: TFrmCadFornecedor
   Left = -8
-  Height = 983
+  Height = 1022
   Top = -8
   Width = 1386
   BorderStyle = bsNone
   Caption = 'Cadastro Fornecedores'
-  ClientHeight = 960
+  ClientHeight = 999
   ClientWidth = 1370
   Color = 16577259
   OnClose = FormClose
@@ -16,11 +16,11 @@ object FrmCadFornecedor: TFrmCadFornecedor
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 960
+    Height = 999
     Top = 0
     Width = 1370
     Align = alClient
-    ClientHeight = 960
+    ClientHeight = 999
     ClientWidth = 1370
     TabOrder = 0
     object Panel2: TPanel
@@ -129,16 +129,16 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Height = 23
         Top = 136
         Width = 312
-        TabOrder = 1
+        TabOrder = 3
       end
       object EdtFantasia: TEdit
         Left = 368
         Height = 23
         Top = 136
         Width = 345
-        TabOrder = 2
+        TabOrder = 4
       end
-      object Label3: TLabel
+      object LblFantasia: TLabel
         Left = 368
         Height = 17
         Top = 112
@@ -152,7 +152,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         ParentColor = False
         ParentFont = False
       end
-      object Label5: TLabel
+      object LblEstadual: TLabel
         Left = 40
         Height = 17
         Top = 169
@@ -172,9 +172,9 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Top = 192
         Width = 265
         NumbersOnly = True
-        TabOrder = 3
+        TabOrder = 5
       end
-      object Label6: TLabel
+      object LblMunicipal: TLabel
         Left = 312
         Height = 17
         Top = 169
@@ -194,7 +194,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Top = 191
         Width = 265
         NumbersOnly = True
-        TabOrder = 4
+        TabOrder = 6
       end
       object LblDta: TLabel
         Left = 584
@@ -215,9 +215,10 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Height = 23
         Top = 304
         Width = 80
-        TabOrder = 5
+        NumbersOnly = True
+        TabOrder = 12
       end
-      object Label11: TLabel
+      object LblCep: TLabel
         Left = 41
         Height = 17
         Top = 280
@@ -231,7 +232,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         ParentColor = False
         ParentFont = False
       end
-      object Label14: TLabel
+      object LblCidade: TLabel
         Left = 129
         Height = 17
         Top = 280
@@ -250,16 +251,16 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Height = 23
         Top = 304
         Width = 104
-        TabOrder = 6
+        TabOrder = 13
       end
       object EdtEndereco: TEdit
         Left = 40
         Height = 23
         Top = 248
         Width = 344
-        TabOrder = 7
+        TabOrder = 8
       end
-      object Label9: TLabel
+      object LblEndereco: TLabel
         Left = 40
         Height = 17
         Top = 224
@@ -279,9 +280,9 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Top = 248
         Width = 56
         NumbersOnly = True
-        TabOrder = 8
+        TabOrder = 9
       end
-      object Label10: TLabel
+      object LblNum: TLabel
         Left = 401
         Height = 17
         Top = 224
@@ -300,7 +301,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Height = 23
         Top = 248
         Width = 112
-        TabOrder = 9
+        TabOrder = 10
       end
       object Label12: TLabel
         Left = 465
@@ -321,9 +322,9 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Height = 23
         Top = 248
         Width = 128
-        TabOrder = 10
+        TabOrder = 11
       end
-      object Label15: TLabel
+      object LblBairro: TLabel
         Left = 584
         Height = 17
         Top = 224
@@ -372,10 +373,10 @@ object FrmCadFornecedor: TFrmCadFornecedor
           'SP'
           'TO'
         )
-        TabOrder = 11
+        TabOrder = 14
         Text = 'UF'
       end
-      object Label13: TLabel
+      object LblUf: TLabel
         Left = 240
         Height = 17
         Top = 280
@@ -394,7 +395,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Height = 23
         Top = 304
         Width = 161
-        TabOrder = 12
+        TabOrder = 17
       end
       object Label16: TLabel
         Left = 552
@@ -415,9 +416,10 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Height = 23
         Top = 304
         Width = 120
-        TabOrder = 13
+        NumbersOnly = True
+        TabOrder = 16
       end
-      object Label19: TLabel
+      object lblCel: TLabel
         Left = 424
         Height = 17
         Top = 282
@@ -436,7 +438,8 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Height = 23
         Top = 304
         Width = 120
-        TabOrder = 14
+        NumbersOnly = True
+        TabOrder = 15
       end
       object Label18: TLabel
         Left = 296
@@ -474,7 +477,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Lines.Strings = (
           ''
         )
-        TabOrder = 15
+        TabOrder = 18
       end
       object LblMensagem: TLabel
         Left = 41
@@ -1424,7 +1427,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Font.Quality = fqDraft
         Font.Style = [fsBold]
         ParentFont = False
-        TabOrder = 16
+        TabOrder = 1
         object BtnAtivo: TRadioButton
           Left = 0
           Height = 19
@@ -1454,19 +1457,25 @@ object FrmCadFornecedor: TFrmCadFornecedor
           TabOrder = 1
         end
       end
-      object EdtDTNasc: TEdit
-        Left = 584
-        Height = 23
-        Top = 191
-        Width = 128
-        TabOrder = 17
-      end
       object EdtCpfCnpj: TEdit
         Left = 368
         Height = 23
         Top = 80
         Width = 344
-        TabOrder = 18
+        NumbersOnly = True
+        TabOrder = 2
+      end
+      object DTNasc: TDateEdit
+        Left = 584
+        Height = 23
+        Top = 191
+        Width = 131
+        CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
+        DateOrder = doNone
+        ButtonWidth = 23
+        NumGlyphs = 1
+        MaxLength = 0
+        TabOrder = 7
       end
     end
   end
