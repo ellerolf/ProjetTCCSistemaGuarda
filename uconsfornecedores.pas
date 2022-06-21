@@ -31,7 +31,10 @@ type
     procedure BtnAlterarClick(Sender: TObject);
     procedure BtnConsultaClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
+    procedure EdtConsultaChange(Sender: TObject);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormResize(Sender: TObject);
+    procedure FormShow(Sender: TObject);
     procedure GrCNPJCellClick(Column: TColumn);
     procedure Label8Click(Sender: TObject);
   private
@@ -170,18 +173,37 @@ begin
   else
     //busca por nome (verificar se tenho que fazer em todos
   begin
-    dm.ZQConsPessoas.Close;
-    dm.ZQConsPessoas.Sql.Clear;
-    dm.ZQConsPessoas.sql.Add(
-      'select * from vwpessoas where NOME like' +
-    QuotedStr('%' + EdtConsulta.Text + '%'));
-    dm.ZQConsPessoas.Open;
+
   end;
 end;
 
 procedure TFrmConsFornecedores.BtnSairClick(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TFrmConsFornecedores.EdtConsultaChange(Sender: TObject);
+begin
+  if ((CboStatus.ItemIndex = 0) and (CboTipoPessoa.ItemIndex = 0)) then
+    //todos
+  begin
+    dm.ZQConsPessoas.Close;
+    dm.ZQConsPessoas.Sql.Clear;
+    dm.ZQConsPessoas.sql.Add(
+      'select * from vwpessoas where NOME or CPF or RAZÃO SOCIAL like' +
+      QuotedStr('%' + EdtConsulta.Text + '%'));
+    dm.ZQConsPessoas.Open;
+    GrTodos.Visible := True;
+    GrCNPJ.Visible := False;
+    GrCPF.Visible := False;
+  end;
+
+end;
+
+procedure TFrmConsFornecedores.FormClose(Sender: TObject;
+  var CloseAction: TCloseAction);
+begin
+  dm.ZQConsPessoas.Active := False;
 end;
 
 procedure TFrmConsFornecedores.BtnAlterarClick(Sender: TObject);
@@ -198,6 +220,11 @@ procedure TFrmConsFornecedores.FormResize(Sender: TObject);
 begin
   Panel2.Left := (Panel1.ClientWidth div 2) - (Panel2.Width div 2);
   Panel2.Top := (Panel1.ClientHeight div 2) - (Panel2.Height div 2);
+end;
+
+procedure TFrmConsFornecedores.FormShow(Sender: TObject);
+begin
+  dm.ZQConsPessoas.Active := True;
 end;
 
 procedure TFrmConsFornecedores.GrCNPJCellClick(Column: TColumn);

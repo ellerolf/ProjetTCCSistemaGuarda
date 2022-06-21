@@ -313,7 +313,7 @@ end;
 
 procedure TFrmCadFornecedor.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
-  dm.ZQConsPessoas.Active := False;
+
 
 end;
 
@@ -330,7 +330,7 @@ end;
 
 procedure TFrmCadFornecedor.FormShow(Sender: TObject);
 begin
-  dm.ZQConsPessoas.Active := True;
+
 end;
 
 procedure TFrmCadFornecedor.GrpCnpjCpfClick(Sender: TObject);

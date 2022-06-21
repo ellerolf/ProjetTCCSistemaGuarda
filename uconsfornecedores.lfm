@@ -1,24 +1,26 @@
 object FrmConsFornecedores: TFrmConsFornecedores
   Left = -8
-  Height = 944
+  Height = 788
   Top = -8
-  Width = 1346
+  Width = 1362
   BorderStyle = bsNone
   Caption = 'FrmConsFornecedores'
-  ClientHeight = 921
-  ClientWidth = 1346
+  ClientHeight = 749
+  ClientWidth = 1362
   Color = 16577259
+  OnClose = FormClose
   OnResize = FormResize
+  OnShow = FormShow
   Position = poScreenCenter
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 921
+    Height = 749
     Top = 0
-    Width = 1346
+    Width = 1362
     Align = alClient
-    ClientHeight = 921
-    ClientWidth = 1346
+    ClientHeight = 749
+    ClientWidth = 1362
     TabOrder = 0
     object Panel2: TPanel
       Left = 0
@@ -48,120 +50,12 @@ object FrmConsFornecedores: TFrmConsFornecedores
         ParentColor = False
         ParentFont = False
       end
-      object GrTodos: TDBGrid
-        Left = 40
-        Height = 450
-        Top = 112
-        Width = 830
-        Columns = <        
-          item
-            Title.Caption = 'CODIGO'
-            FieldName = 'CODIGO'
-          end        
-          item
-            Title.Caption = 'NOME'
-            FieldName = 'NOME'
-          end        
-          item
-            Title.Caption = 'CODIGOTIP'
-            FieldName = 'CODIGOTIP'
-          end        
-          item
-            Title.Caption = 'TIPO'
-            FieldName = 'TIPO'
-          end        
-          item
-            Title.Caption = 'CPF'
-            FieldName = 'CPF'
-          end        
-          item
-            Title.Caption = 'DATA NASCIMENTO'
-            FieldName = 'DATA NASCIMENTO'
-          end        
-          item
-            Title.Caption = 'CNPJ'
-            FieldName = 'CNPJ'
-          end        
-          item
-            Title.Caption = 'RAZÃO SOCIAL'
-            FieldName = 'RAZÃO SOCIAL'
-          end        
-          item
-            Title.Caption = 'NOME FANTASIA'
-            FieldName = 'NOME FANTASIA'
-          end        
-          item
-            Title.Caption = 'INSCRIÇÃO ESTADUAL'
-            FieldName = 'INSCRIÇÃO ESTADUAL'
-          end        
-          item
-            Title.Caption = 'INSCRICACAO_MUNICIPAL'
-            FieldName = 'INSCRICACAO_MUNICIPAL'
-          end        
-          item
-            Title.Caption = 'CEP'
-            FieldName = 'CEP'
-          end        
-          item
-            Title.Caption = 'ENDEREÇO'
-            FieldName = 'ENDEREÇO'
-          end        
-          item
-            Title.Caption = 'NÚMERO'
-            FieldName = 'NÚMERO'
-          end        
-          item
-            Title.Caption = 'COMPLEMENTO'
-            FieldName = 'COMPLEMENTO'
-          end        
-          item
-            Title.Caption = 'ESTADO'
-            FieldName = 'ESTADO'
-          end        
-          item
-            Title.Caption = 'CIDADE'
-            FieldName = 'CIDADE'
-          end        
-          item
-            Title.Caption = 'BAIRRO'
-            FieldName = 'BAIRRO'
-          end        
-          item
-            Title.Caption = 'E-MAIL'
-            FieldName = 'E-MAIL'
-          end        
-          item
-            Title.Caption = 'TELEFONE'
-            FieldName = 'TELEFONE'
-          end        
-          item
-            Title.Caption = 'CELULAR'
-            FieldName = 'CELULAR'
-          end        
-          item
-            Title.Caption = 'OBSERVAÇÃO'
-            FieldName = 'OBSERVAÇÃO'
-          end        
-          item
-            Title.Caption = 'ATIVO'
-            FieldName = 'ATIVO'
-          end>
-        DataSource = DM.DSConsPessoas
-        FixedColor = clHighlight
-        ParentColor = True
-        TabOrder = 0
-        TitleFont.CharSet = ANSI_CHARSET
-        TitleFont.Color = clWhite
-        TitleFont.Height = -13
-        TitleFont.Pitch = fpVariable
-        TitleFont.Quality = fqDraft
-        TitleFont.Style = [fsBold]
-      end
       object EdtConsulta: TEdit
         Left = 408
         Height = 23
         Top = 75
         Width = 328
+        OnChange = EdtConsultaChange
         TabOrder = 1
       end
       object CboStatus: TComboBox
@@ -464,13 +358,14 @@ object FrmConsFornecedores: TFrmConsFornecedores
         Top = 75
         Width = 128
         ItemHeight = 15
+        ItemIndex = 0
         Items.Strings = (
           'Selecione à opção'
           'CPF'
           'CNPJ'
         )
         TabOrder = 4
-        Text = 'TODOS'
+        Text = 'Selecione à opção'
       end
       object Label3: TLabel
         Left = 272
@@ -1425,6 +1320,10 @@ object FrmConsFornecedores: TFrmConsFornecedores
             FieldName = 'NOME'
           end        
           item
+            Title.Caption = 'RAZÃO SOCIAL'
+            FieldName = 'RAZÃO SOCIAL'
+          end        
+          item
             Title.Caption = 'CODIGOTIP'
             FieldName = 'CODIGOTIP'
           end        
@@ -1443,10 +1342,6 @@ object FrmConsFornecedores: TFrmConsFornecedores
           item
             Title.Caption = 'CNPJ'
             FieldName = 'CNPJ'
-          end        
-          item
-            Title.Caption = 'RAZÃO SOCIAL'
-            FieldName = 'RAZÃO SOCIAL'
           end        
           item
             Title.Caption = 'NOME FANTASIA'
@@ -1519,6 +1414,53 @@ object FrmConsFornecedores: TFrmConsFornecedores
         TitleFont.Quality = fqDraft
         TitleFont.Style = [fsBold]
         OnCellClick = GrCNPJCellClick
+      end
+      object GrTodos: TDBGrid
+        Left = 40
+        Height = 450
+        Top = 112
+        Width = 830
+        Columns = <        
+          item
+            Title.Caption = 'ATIVO'
+            Width = 90
+            FieldName = 'ATIVO'
+          end        
+          item
+            Title.Caption = 'NOME'
+            Width = 200
+            FieldName = 'NOME'
+          end        
+          item
+            Title.Caption = 'RAZÃO SOCIAL'
+            Width = 200
+            FieldName = 'RAZÃO SOCIAL'
+          end        
+          item
+            Title.Caption = 'TIPO'
+            Width = 100
+            FieldName = 'TIPO'
+          end        
+          item
+            Title.Caption = 'TELEFONE'
+            Width = 90
+            FieldName = 'TELEFONE'
+          end        
+          item
+            Title.Caption = 'CELULAR'
+            Width = 90
+            FieldName = 'CELULAR'
+          end>
+        DataSource = DM.DSConsPessoas
+        FixedColor = clHighlight
+        ParentColor = True
+        TabOrder = 0
+        TitleFont.CharSet = ANSI_CHARSET
+        TitleFont.Color = clWhite
+        TitleFont.Height = -13
+        TitleFont.Pitch = fpVariable
+        TitleFont.Quality = fqDraft
+        TitleFont.Style = [fsBold]
       end
     end
   end
