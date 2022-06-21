@@ -25,11 +25,11 @@ object FrmCadUsuario: TFrmCadUsuario
     TabOrder = 0
     object Panel2: TPanel
       Left = 0
-      Height = 510
+      Height = 550
       Top = 0
       Width = 750
       BevelOuter = bvNone
-      ClientHeight = 510
+      ClientHeight = 550
       ClientWidth = 750
       TabOrder = 0
       OnClick = Panel2Click
@@ -160,9 +160,9 @@ object FrmCadUsuario: TFrmCadUsuario
         TabOrder = 4
       end
       object Label7: TLabel
-        Left = 74
+        Left = 296
         Height = 17
-        Top = 240
+        Top = 224
         Width = 140
         Caption = 'Consultas de Usuarios:'
         Font.CharSet = ANSI_CHARSET
@@ -178,7 +178,7 @@ object FrmCadUsuario: TFrmCadUsuario
       object EdtConsulta: TEdit
         Left = 232
         Height = 23
-        Top = 296
+        Top = 272
         Width = 386
         CharCase = ecUppercase
         TabOrder = 5
@@ -186,7 +186,7 @@ object FrmCadUsuario: TFrmCadUsuario
       object BtnConsulta: TSpeedButton
         Left = 627
         Height = 23
-        Top = 296
+        Top = 272
         Width = 45
         Glyph.Data = {
           62100000424D621000000000000036000000280000002D000000170000000100
@@ -327,7 +327,7 @@ object FrmCadUsuario: TFrmCadUsuario
       object LblMensagem: TLabel
         Left = 72
         Height = 15
-        Top = 216
+        Top = 192
         Width = 118
         Caption = '*Campos Obrigatorios'
         Font.Color = clRed
@@ -336,8 +336,8 @@ object FrmCadUsuario: TFrmCadUsuario
       end
       object DBGrid1: TDBGrid
         Left = 72
-        Height = 120
-        Top = 328
+        Height = 192
+        Top = 304
         Width = 601
         Color = clWindow
         Columns = <        
@@ -373,20 +373,23 @@ object FrmCadUsuario: TFrmCadUsuario
       object CboStatus: TComboBox
         Left = 72
         Height = 23
-        Top = 296
+        Top = 272
         Width = 136
         ItemHeight = 15
+        ItemIndex = 0
         Items.Strings = (
+          'SELECIONE OPÇÃO'
           'ATIVO'
           'INATIVO'
         )
         Style = csDropDownList
         TabOrder = 7
+        Text = 'SELECIONE OPÇÃO'
       end
       object Label2: TLabel
         Left = 232
         Height = 17
-        Top = 272
+        Top = 248
         Width = 66
         Caption = 'Por Nome:'
         Font.CharSet = ANSI_CHARSET
@@ -400,7 +403,7 @@ object FrmCadUsuario: TFrmCadUsuario
       object Label8: TLabel
         Left = 72
         Height = 17
-        Top = 272
+        Top = 248
         Width = 86
         Caption = 'Ativo/Inativo:'
         Font.CharSet = ANSI_CHARSET
@@ -414,7 +417,7 @@ object FrmCadUsuario: TFrmCadUsuario
       object BtnAlterar: TSpeedButton
         Left = 296
         Height = 30
-        Top = 464
+        Top = 512
         Width = 120
         Glyph.Data = {
           76380000424D76380000000000003600000028000000780000001E0000000100
@@ -875,7 +878,7 @@ object FrmCadUsuario: TFrmCadUsuario
       object BtnSalvar: TSpeedButton
         Left = 424
         Height = 30
-        Top = 464
+        Top = 512
         Width = 120
         Glyph.Data = {
           76380000424D76380000000000003600000028000000780000001E0000000100
@@ -1336,7 +1339,7 @@ object FrmCadUsuario: TFrmCadUsuario
       object BtnSair: TSpeedButton
         Left = 552
         Height = 30
-        Top = 464
+        Top = 512
         Width = 120
         Glyph.Data = {
           76380000424D76380000000000003600000028000000780000001E0000000100

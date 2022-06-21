@@ -133,6 +133,7 @@ begin
   EdtSenha.clear;
   EdtConfSenha.Clear;
   RgbNivel.ItemIndex:=-1;
+  CboStatus.ItemIndex:=0;
   LblMensagem.Caption:='*Campos Obrigatorios';
 end;
 
@@ -213,12 +214,21 @@ begin
       begin
         DM.ZQConsUsuario.close;
         DM.ZQConsUsuario.SQL.clear;
+        DM.ZQConsUsuario.SQL.Add('select * from usuario where usunome like'+QuotedStr('%'+EdtConsulta.Text+'%'));
+        DM.ZQConsUsuario.Open;
+        EdtConsulta.clear;
+      end
+      else
+    if (CboStatus.ItemIndex=1) then
+      begin
+        DM.ZQConsUsuario.close;
+        DM.ZQConsUsuario.SQL.clear;
         DM.ZQConsUsuario.SQL.Add('select * from usuario where usustatus=1 and usunome like'+QuotedStr('%'+EdtConsulta.Text+'%'));
         DM.ZQConsUsuario.Open;
         EdtConsulta.clear;
       end
       else
-     if (CboStatus.ItemIndex=1) then
+     if (CboStatus.ItemIndex=2) then
        begin
          DM.ZQConsUsuario.close;
          DM.ZQConsUsuario.SQL.clear;
@@ -243,6 +253,7 @@ begin
   EdtSenha.clear;
   EdtConfSenha.Clear;
   RgbNivel.ItemIndex:=-1;
+  CboStatus.ItemIndex:=0;
   LblMensagem.Caption:='*Campos Obrigatorios';
 end;
 

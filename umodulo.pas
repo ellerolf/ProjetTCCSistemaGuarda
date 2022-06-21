@@ -27,6 +27,10 @@ type
     ZQConsBancariasCONNUMERO_CONTA: TStringField;
     ZQConsBancariasCONSALDO_INICIAL: TFloatField;
     ZQConsBancariasCONSTATUS: TSmallintField;
+    ZQConsCentroCENCODIGO: TLongintField;
+    ZQConsCentroCENNOME: TStringField;
+    ZQConsCentroCENSTATUS: TSmallintField;
+    ZQConsCentroCODIGOTIP: TLongintField;
     ZQConsFornCPFCODIGOTIP: TLongintField;
     ZQConsFornCPFPESBAIRRO: TStringField;
     ZQConsFornCPFPESCELULAR: TStringField;

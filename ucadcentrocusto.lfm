@@ -2,23 +2,24 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
   Left = -8
   Height = 788
   Top = -8
-  Width = 1250
+  Width = 1266
   BorderStyle = bsNone
   Caption = 'FrmCadCentroCusto'
   ClientHeight = 750
-  ClientWidth = 1250
+  ClientWidth = 1266
   Color = 16577259
   OnResize = FormResize
+  OnShow = FormShow
   Position = poScreenCenter
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
     Height = 750
     Top = 0
-    Width = 1250
+    Width = 1266
     Align = alClient
     ClientHeight = 750
-    ClientWidth = 1250
+    ClientWidth = 1266
     TabOrder = 0
     object Panel2: TPanel
       Left = 0
@@ -104,12 +105,15 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
         Top = 112
         Width = 136
         ItemHeight = 15
+        ItemIndex = 0
         Items.Strings = (
-          'Receita'
-          'Despesa'
+          'SELECIONE OPÇÃO'
+          'RECEITA'
+          'DESPESA'
         )
         Style = csDropDownList
         TabOrder = 1
+        Text = 'SELECIONE OPÇÃO'
       end
       object LblMensagem: TLabel
         Left = 64
@@ -142,8 +146,9 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
         Width = 136
         ItemHeight = 15
         Items.Strings = (
-          'Receita'
-          'Despesa'
+          'SELECIONE OPÇÃO'
+          'RECEITA'
+          'DESPESA'
         )
         Style = csDropDownList
         TabOrder = 2
@@ -175,8 +180,26 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
         Top = 264
         Width = 592
         Color = clWindow
-        Columns = <>
+        Columns = <        
+          item
+            Title.Caption = 'CENCODIGO'
+            FieldName = 'CENCODIGO'
+          end        
+          item
+            Title.Caption = 'CENNOME'
+            FieldName = 'CENNOME'
+          end        
+          item
+            Title.Caption = 'CODIGOTIP'
+            FieldName = 'CODIGOTIP'
+          end        
+          item
+            Title.Caption = 'CENSTATUS'
+            FieldName = 'CENSTATUS'
+          end>
+        DataSource = DM.DSConsCentro
         TabOrder = 4
+        OnCellClick = DBGrid1CellClick
       end
       object Label6: TLabel
         Left = 224
@@ -1114,6 +1137,7 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
           00FFC10000FFC10000FFC10000FFC10000FFC10000FFC10000FFC10000FFC100
           00FFC10000FFC10000FFC10000FFCD3030FFECAFAFFFFFFFFFFF
         }
+        OnClick = BtnSalvarClick
       end
       object BtnAlterar: TSpeedButton
         Left = 288
@@ -1575,6 +1599,7 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
           00FFFF3300FFFF3300FFFF3300FFFF3300FFFF3300FFFF3300FFFF3300FFFF33
           00FFFF3300FFFF3300FFFF3300FFFF5930FFFFBFAFFFFFFFFFFF
         }
+        OnClick = BtnAlterarClick
       end
     end
   end

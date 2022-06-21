@@ -77,9 +77,44 @@ object DM: TDM
     Top = 96
   end
   object ZQCadCentro: TZQuery
-    Params = <>
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'insert into centro_custo (cennome, codigotip, censtatus) values (:pcennome, :pcodigotip, :pcenstatus)'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'pcennome'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pcodigotip'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pcenstatus'
+        ParamType = ptUnknown
+      end>
     Left = 344
     Top = 96
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'pcennome'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pcodigotip'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pcenstatus'
+        ParamType = ptUnknown
+      end>
   end
   object ZQCadBancarias: TZQuery
     Connection = ZFinanceiro
@@ -218,9 +253,55 @@ object DM: TDM
     Top = 168
   end
   object ZQAltCentro: TZQuery
-    Params = <>
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'update centro_custo set cennome = :pcennome, codigotip = :pcodigotip, censtatus = :pcenstatus '
+      'where cencodigo = :pcencodigo'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'pcennome'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pcodigotip'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pcenstatus'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pcencodigo'
+        ParamType = ptUnknown
+      end>
     Left = 344
     Top = 168
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'pcennome'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pcodigotip'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pcenstatus'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pcencodigo'
+        ParamType = ptUnknown
+      end>
   end
   object ZQAltBancarias: TZQuery
     Params = <>
@@ -299,9 +380,50 @@ object DM: TDM
     Top = 304
   end
   object ZQConsCentro: TZQuery
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'select * from centro_custo'
+    )
     Params = <>
     Left = 344
     Top = 304
+    object ZQConsCentroCENCODIGO: TLongintField
+      FieldKind = fkData
+      FieldName = 'CENCODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object ZQConsCentroCENNOME: TStringField
+      FieldKind = fkData
+      FieldName = 'CENNOME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsCentroCODIGOTIP: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODIGOTIP'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsCentroCENSTATUS: TSmallintField
+      FieldKind = fkData
+      FieldName = 'CENSTATUS'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
   end
   object ZQConsBancarias: TZQuery
     Connection = ZFinanceiro
