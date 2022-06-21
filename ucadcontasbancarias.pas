@@ -13,8 +13,8 @@ type
   { TFrmCadContasBancarias }
 
   TFrmCadContasBancarias = class(TForm)
-    BtnConsulta: TSpeedButton;
-    BtnConsulta1: TSpeedButton;
+    BtnConsultaO: TSpeedButton;
+    BtnConsultaD: TSpeedButton;
     CboTipo: TDBLookupComboBox;
     DtDataTransf: TDateEdit;
     EdtCodContaO: TEdit;
@@ -47,7 +47,7 @@ type
     LblMensagem: TLabel;
     Panel1: TPanel;
     Panel2: TPanel;
-    procedure BtnConsultaClick(Sender: TObject);
+    procedure BtnConsultaOClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
     procedure BtnSalvarClick(Sender: TObject);
     procedure CboTipoChange(Sender: TObject);
@@ -91,7 +91,7 @@ begin
   Close;
 end;
 
-procedure TFrmCadContasBancarias.BtnConsultaClick(Sender: TObject);
+procedure TFrmCadContasBancarias.BtnConsultaOClick(Sender: TObject);
 begin
   FrmBuscaConta.ShowModal;
 end;
@@ -350,7 +350,8 @@ begin
     EdtVlrTras.Enabled:=true;
     EdtCodContaO.Enabled:=true;
     EdtCodContaDes.Enabled:=true;
-    BtnConsulta.Enabled:=true;
+    BtnConsultaO.Enabled:=true;
+    BtnConsultaD.Enabled:=true;
     //Se cadastro de transf. for true, cad. de conta tem que ser false
     RdbCadConta.Checked := False;
   end
@@ -361,7 +362,8 @@ begin
     EdtVlrTras.Enabled:=false;
     EdtCodContaO.Enabled:=false;
     EdtCodContaDes.Enabled:=false;
-    BtnConsulta.Enabled:=false;
+    BtnConsultaO.Enabled:=false;
+    BtnConsultaD.Enabled:=false;
     //para limpar a tela caso tenha algo digitado e o usuario aperte cad. conta
     DtDataTransf.Clear;
     EdtNDoc.Clear;
