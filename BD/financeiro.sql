@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 5.3.0-dev+20220621.da7c7a84e1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 25-Maio-2022 às 02:32
--- Versão do servidor: 10.1.22-MariaDB
--- PHP Version: 7.1.4
+-- Tempo de geração: 23-Jun-2022 às 00:25
+-- Versão do servidor: 10.4.24-MariaDB
+-- versão do PHP: 8.1.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `financeiro`
+-- Banco de dados: `financeiro`
 --
 
 -- --------------------------------------------------------
@@ -31,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `baixa` (
   `BAICODIGO` int(11) NOT NULL COMMENT 'Geração automática do código',
   `CODIGOLAN` int(11) DEFAULT NULL COMMENT 'Código do lançamento',
-  `BAISTATUS` tinyint(1) DEFAULT '0' COMMENT 'Status de pagamento ou recebimento, sendo pendente 0 e finalizado 1',
+  `BAISTATUS` tinyint(1) DEFAULT 0 COMMENT 'Status de pagamento ou recebimento, sendo pendente 0 e finalizado 1',
   `CODIGOFOR` int(11) DEFAULT NULL COMMENT 'Código da forma de pagamento(Dinheiro, Cheque)',
   `CODIGOCON` int(11) DEFAULT NULL COMMENT 'Código da conta onde irá sair ou entrar o dinheiro',
   `BAIDATA` date DEFAULT NULL COMMENT 'Data do pagamento',
@@ -59,7 +58,7 @@ CREATE TABLE `centro_custo` (
   `CENCODIGO` int(11) NOT NULL COMMENT 'Geração automática do código',
   `CENNOME` varchar(50) DEFAULT NULL COMMENT 'Nome do Centro de Custo',
   `CODIGOTIP` int(11) DEFAULT NULL COMMENT 'Tipo de centro de custo',
-  `CENSTATUS` tinyint(1) DEFAULT '1' COMMENT 'centro de custo, poderá ser ativo ou inativo, sendo ativo 1 e inativo 0'
+  `CENSTATUS` tinyint(1) DEFAULT 1 COMMENT 'centro de custo, poderá ser ativo ou inativo, sendo ativo 1 e inativo 0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -86,7 +85,7 @@ CREATE TABLE `contas` (
   `CONAGENCIA` varchar(50) DEFAULT NULL COMMENT 'N° da agência',
   `CONNUMERO_CONTA` varchar(50) DEFAULT NULL COMMENT 'N° da conta',
   `CONSALDO_INICIAL` double DEFAULT NULL COMMENT 'Quando houver um saldo inicial na conta cadastrada, colocar o valor aqui',
-  `CONSTATUS` tinyint(1) DEFAULT '1' COMMENT 'Poderá estar ser ativo ou inativo, sendo inativo 0 e ativo 1 '
+  `CONSTATUS` tinyint(1) DEFAULT 1 COMMENT 'Poderá estar ser ativo ou inativo, sendo inativo 0 e ativo 1 '
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -98,7 +97,12 @@ INSERT INTO `contas` (`CONCODIGO`, `CONNOME`, `CODIGOTIP`, `CONAGENCIA`, `CONNUM
 (2, 'BANCO DO BRASIL', 1, '77', '11.502-4', 510.04, 0),
 (3, 'CAIXA ZONA AZUL', 3, NULL, NULL, 20.5, 1),
 (4, 'CAIXA ECONOMICA RENDA FIXA', 2, '333', '242-2', 256.854, 1),
-(5, 'BANCO NACIONAL', 1, '0444-5', '1234-X', 748.5, 1);
+(5, 'BANCO NACIONAL', 1, '0444-5', '1234-X', 748.5, 1),
+(6, 'Brasil', 1, '12345', '126566', 45.5, 1),
+(7, '', 3, '', '', 105.85, 1),
+(8, 'BRADESCO', 1, '1233', '67656756', 54.5, 1),
+(9, 'MARIA', 3, NULL, NULL, 1.2, 1),
+(10, 'BRASIL', 1, '22', '33', 33, 1);
 
 -- --------------------------------------------------------
 
@@ -180,10 +184,9 @@ CREATE TABLE `pessoa` (
   `PESCPF` varchar(50) DEFAULT NULL COMMENT 'CPF da pessoa a ser cadastrada',
   `PESDATA_NASCIMENTO` date DEFAULT NULL COMMENT 'Data de nascimento da pessoa a ser cadastrada',
   `PESCNPJ` varchar(50) DEFAULT NULL COMMENT 'CNPJ da empresa a ser cadastrada',
-  `PESRAZAO_SOCIAL` varchar(50) DEFAULT NULL COMMENT 'Razão social da empresa a ser cadastrada',
   `PESNOME_FANTASIA` varchar(50) DEFAULT NULL COMMENT 'Nome fantasia da empresa a ser cadastrada',
   `PESINSCRICAO_ESTADUAL` int(11) DEFAULT NULL COMMENT 'Inscrição estadual da empresa a ser cadastrada',
-  `PESINSCRICACAO_MUNICIPAL` int(11) DEFAULT NULL COMMENT 'Inscrição municipal da empresa a ser cadastrada',
+  `PESINSCRICAO_MUNICIPAL` int(11) DEFAULT NULL COMMENT 'Inscrição municipal da empresa a ser cadastrada',
   `PESCEP` varchar(50) DEFAULT NULL COMMENT 'CEP da pessoa ou empresa a ser cadastrada',
   `PESENDERECO` varchar(50) DEFAULT NULL COMMENT 'Endereço da pessoa ou empresa a ser cadastrada',
   `PESNUMERO` int(11) DEFAULT NULL COMMENT 'Número do imóvel da empresa ou pessoa a ser cadastrada',
@@ -195,18 +198,18 @@ CREATE TABLE `pessoa` (
   `PESTELEFONE` varchar(50) DEFAULT NULL COMMENT 'Telefone da pessoa ou empresa a ser cadastrada',
   `PESCELULAR` varchar(50) DEFAULT NULL COMMENT 'Celular da pessoa ou empresa a ser cadastrada',
   `PESOBSERVACAO` varchar(200) DEFAULT NULL COMMENT 'Observação para empresa ou pessoa a ser cadastrada',
-  `PESSTATUS` tinyint(1) DEFAULT '1' COMMENT 'Status da pessoa quando for 1 ele será ativo, e quando for 0 significa que ele está inativo'
+  `PESSTATUS` tinyint(1) DEFAULT 1 COMMENT 'Status da pessoa quando for 1 ele será ativo, e quando for 0 significa que ele está inativo'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `pessoa`
 --
 
-INSERT INTO `pessoa` (`PESCODIGO`, `PESNOME`, `CODIGOTIP`, `PESCPF`, `PESDATA_NASCIMENTO`, `PESCNPJ`, `PESRAZAO_SOCIAL`, `PESNOME_FANTASIA`, `PESINSCRICAO_ESTADUAL`, `PESINSCRICACAO_MUNICIPAL`, `PESCEP`, `PESENDERECO`, `PESNUMERO`, `PESCOMPLEMENTO`, `PESESTADO`, `PESCIDADE`, `PESBAIRRO`, `PESEMAIL`, `PESTELEFONE`, `PESCELULAR`, `PESOBSERVACAO`, `PESSTATUS`) VALUES
-(1, 'GABRIELLE ROBERTA FERREIRA', 1, '123.456.789-X', '1998-04-29', NULL, NULL, NULL, NULL, NULL, '18800-000', 'RUA DAS FLORES', 2, 'APARTAMENTO', 'SP', 'PIRAJU', 'BAIRRO DAS CAPIVARA', 'GR@GMAIL.COM', '14-3351-0000', '14-99838-9911', 'devedora', 1),
-(2, NULL, 2, NULL, NULL, '14.041.086/0001-05', 'ESCRITORIO CONTABIL PADRAO PIRAJU S/S LTDA\r\n', 'ESCRITORIO CONTABIL PADRAO', NULL, 8547, '18810-009', 'RUA MAJOR MARIANO', 1009, 'DE FRENTE A CASA DOS COLCHÃO', 'SP', 'PIRAJU', 'CENTRO', 'RH@HOTMAIL.COM', '14-3351-3500', '14-99838-1234', NULL, 1),
-(3, 'GABRIEL', 1, '123.456.847-85', '2022-02-25', NULL, NULL, NULL, NULL, NULL, '18800-000', 'RUA ANTONIO BASTIAO NETO', 50, 'AO LADO DA BIQUEIRA', 'SP', 'PIRAJU', 'CENTRO', 'GABRIUEL@HOTMAIL.COM', '14-3351-1256', '14-99785-8596', 'FILHO DO PRESIDENTE DA GUARDA', 1),
-(4, NULL, 2, NULL, NULL, '10.262.602/0001-70', 'CARLOS ALBERTO ANDRADE PROMOCAO DE VENDAS LTDA', 'PORTAL ASSESSORIA E NEGOCIOS', 532568, 8596, '18800-009', 'R NENE FREITAS', 271, 'PERTO DOS BANCOS', 'SP', 'PIRAJU', 'CENTRO', 'CARLOS@HOTMAIL.COM', '3351-6050', '14-98596-5058', 'ÓTIMO FORNECEDOR', 1);
+INSERT INTO `pessoa` (`PESCODIGO`, `PESNOME`, `CODIGOTIP`, `PESCPF`, `PESDATA_NASCIMENTO`, `PESCNPJ`, `PESNOME_FANTASIA`, `PESINSCRICAO_ESTADUAL`, `PESINSCRICAO_MUNICIPAL`, `PESCEP`, `PESENDERECO`, `PESNUMERO`, `PESCOMPLEMENTO`, `PESESTADO`, `PESCIDADE`, `PESBAIRRO`, `PESEMAIL`, `PESTELEFONE`, `PESCELULAR`, `PESOBSERVACAO`, `PESSTATUS`) VALUES
+(1, 'GABRIELLE ROBERTA FERREIRA', 1, '123.456.789-X', '1998-04-29', NULL, NULL, NULL, NULL, '18800-000', 'RUA DAS FLORES', 2, 'APARTAMENTO', 'SP', 'PIRAJU', 'BAIRRO DAS CAPIVARA', 'GR@GMAIL.COM', '14-3351-0000', '14-99838-9911', 'devedora', 1),
+(2, NULL, 2, NULL, NULL, '14.041.086/0001-05', 'ESCRITORIO CONTABIL PADRAO', NULL, 8547, '18810-009', 'RUA MAJOR MARIANO', 1009, 'DE FRENTE A CASA DOS COLCHÃO', 'SP', 'PIRAJU', 'CENTRO', 'RH@HOTMAIL.COM', '14-3351-3500', '14-99838-1234', NULL, 1),
+(3, 'GABRIEL', 1, '123.456.847-85', '2022-02-25', NULL, NULL, NULL, NULL, '18800-000', 'RUA ANTONIO BASTIAO NETO', 50, 'AO LADO DA BIQUEIRA', 'SP', 'PIRAJU', 'CENTRO', 'GABRIUEL@HOTMAIL.COM', '14-3351-1256', '14-99785-8596', 'FILHO DO PRESIDENTE DA GUARDA', 1),
+(4, NULL, 2, NULL, NULL, '10.262.602/0001-70', 'PORTAL ASSESSORIA E NEGOCIOS', 532568, 8596, '18800-009', 'R NENE FREITAS', 271, 'PERTO DOS BANCOS', 'SP', 'PIRAJU', 'CENTRO', 'CARLOS@HOTMAIL.COM', '3351-6050', '14-98596-5058', 'ÓTIMO FORNECEDOR', 1);
 
 -- --------------------------------------------------------
 
@@ -299,18 +302,21 @@ CREATE TABLE `transferencia` (
   `TRACODIGO_CONORI` int(11) DEFAULT NULL COMMENT 'Código da conta de origem',
   `TRACODIGO_CONDES` int(11) DEFAULT NULL COMMENT 'Código da conta de destino',
   `TRADATA` date DEFAULT NULL COMMENT 'Data da transferência',
-  `TRANUMERO_DOCUMENTO` varchar(50) DEFAULT NULL COMMENT 'Número do documento(Quando tem transferência no extrato sempre tem um número)'
+  `TRANUMERO_DOCUMENTO` varchar(50) DEFAULT NULL COMMENT 'Número do documento(Quando tem transferência no extrato sempre tem um número)',
+  `TRASTATUS` tinyint(1) DEFAULT 1 COMMENT 'Se for 0 a transferência está inativa, se estiver 1 a transferência está ativa.'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `transferencia`
 --
 
-INSERT INTO `transferencia` (`TRACODIGO`, `TRAVALOR`, `TRACODIGO_CONORI`, `TRACODIGO_CONDES`, `TRADATA`, `TRANUMERO_DOCUMENTO`) VALUES
-(1, 5, 3, 1, '2022-04-29', '4585'),
-(2, 100, 1, 3, '2022-04-28', '8575'),
-(3, 1000, 4, 1, '2022-04-30', '8500'),
-(4, 458, 4, 1, '2022-10-15', '459');
+INSERT INTO `transferencia` (`TRACODIGO`, `TRAVALOR`, `TRACODIGO_CONORI`, `TRACODIGO_CONDES`, `TRADATA`, `TRANUMERO_DOCUMENTO`, `TRASTATUS`) VALUES
+(1, 5, 3, 1, '2022-04-29', '4585', 1),
+(2, 100, 1, 3, '2022-04-28', '8575', 1),
+(3, 1000, 4, 1, '2022-04-30', '8500', 1),
+(4, 458, 4, 1, '2022-10-15', '459', 1),
+(5, 1, 1, 2, '2022-10-10', '1', 1),
+(6, 1, 2, 2, '2022-06-21', '211', 1);
 
 -- --------------------------------------------------------
 
@@ -323,7 +329,7 @@ CREATE TABLE `usuario` (
   `USUNOME` varchar(50) DEFAULT NULL COMMENT 'Nome do usuário',
   `USULOGIN` varchar(50) DEFAULT NULL COMMENT 'Nome definido pelo usuário para acessar ao sistema. Se houver algum nome de usuário, o usuário terá que criar outro. O usuário está definido no banco como UNIQUE',
   `USUSENHA` varchar(30) DEFAULT NULL COMMENT 'Senha definida pelo usuário',
-  `USUSTATUS` tinyint(1) DEFAULT '1' COMMENT 'Status do usuário quando for 1 ele será ativo, e quando for 0 significa que ele está inativo',
+  `USUSTATUS` tinyint(1) DEFAULT 1 COMMENT 'Status do usuário quando for 1 ele será ativo, e quando for 0 significa que ele está inativo',
   `CODIGONIV` int(11) DEFAULT NULL COMMENT 'Código do nível de acesso'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -333,17 +339,62 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`USUCODIGO`, `USUNOME`, `USULOGIN`, `USUSENHA`, `USUSTATUS`, `CODIGONIV`) VALUES
 (1, 'GABRIELLE', 'GABRIELLE', '123', 1, 1),
-(2, 'RAFAEL', 'RAFAEL', '1234', 1, 2),
+(2, 'RAFAELRR', 'RAFAEL', '12345678', 0, 2),
 (3, 'MARIA', 'MARIA', '12345', 0, 1),
 (4, 'ricardo', 'zemane', '123456', 1, 2),
-(11, 'bastião', 'Sebastião', '123456', 1, 2);
+(11, 'bastião', 'Sebastião', '123456', 1, 2),
+(15, 'RAFEL', 'RAFEL', '1234', 1, 1),
+(16, '', '', '', 1, 1),
+(17, 'rafael', 'TTR', '12345678', 1, 2),
+(19, 'JOAO', 'JOAO', '12345678', 1, 2),
+(20, 'RAFAEL', 'RARA', '12345678', 1, 2);
+
+-- --------------------------------------------------------
 
 --
--- Indexes for dumped tables
+-- Estrutura stand-in para vista `vwpessoas`
+-- (Veja abaixo para a view atual)
+--
+CREATE TABLE `vwpessoas` (
+`CODIGO` int(11)
+,`NOME` varchar(50)
+,`CODIGOTIP` int(11)
+,`TIPO` varchar(50)
+,`CPF` varchar(50)
+,`DATA NASCIMENTO` date
+,`CNPJ` varchar(50)
+,`NOME FANTASIA` varchar(50)
+,`INSCRIÇÃO ESTADUAL` int(11)
+,`INSCRIÇÃO MUNICIPAL` int(11)
+,`CEP` varchar(50)
+,`ENDEREÇO` varchar(50)
+,`NÚMERO` int(11)
+,`COMPLEMENTO` varchar(50)
+,`ESTADO` varchar(50)
+,`CIDADE` varchar(50)
+,`BAIRRO` varchar(50)
+,`E-MAIL` varchar(50)
+,`TELEFONE` varchar(50)
+,`CELULAR` varchar(50)
+,`OBSERVAÇÃO` varchar(200)
+,`ATIVO` tinyint(1)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para vista `vwpessoas`
+--
+DROP TABLE IF EXISTS `vwpessoas`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vwpessoas`  AS SELECT `p`.`PESCODIGO` AS `CODIGO`, `p`.`PESNOME` AS `NOME`, `p`.`CODIGOTIP` AS `CODIGOTIP`, `t`.`TIPNOME` AS `TIPO`, `p`.`PESCPF` AS `CPF`, `p`.`PESDATA_NASCIMENTO` AS `DATA NASCIMENTO`, `p`.`PESCNPJ` AS `CNPJ`, `p`.`PESNOME_FANTASIA` AS `NOME FANTASIA`, `p`.`PESINSCRICAO_ESTADUAL` AS `INSCRIÇÃO ESTADUAL`, `p`.`PESINSCRICAO_MUNICIPAL` AS `INSCRIÇÃO MUNICIPAL`, `p`.`PESCEP` AS `CEP`, `p`.`PESENDERECO` AS `ENDEREÇO`, `p`.`PESNUMERO` AS `NÚMERO`, `p`.`PESCOMPLEMENTO` AS `COMPLEMENTO`, `p`.`PESESTADO` AS `ESTADO`, `p`.`PESCIDADE` AS `CIDADE`, `p`.`PESBAIRRO` AS `BAIRRO`, `p`.`PESEMAIL` AS `E-MAIL`, `p`.`PESTELEFONE` AS `TELEFONE`, `p`.`PESCELULAR` AS `CELULAR`, `p`.`PESOBSERVACAO` AS `OBSERVAÇÃO`, `p`.`PESSTATUS` AS `ATIVO` FROM (`pessoa` `p` join `tipo_pessoa` `t` on(`p`.`CODIGOTIP` = `t`.`TIPCODIGO`))  ;
+
+--
+-- Índices para tabelas despejadas
 --
 
 --
--- Indexes for table `baixa`
+-- Índices para tabela `baixa`
 --
 ALTER TABLE `baixa`
   ADD PRIMARY KEY (`BAICODIGO`),
@@ -353,27 +404,27 @@ ALTER TABLE `baixa`
   ADD KEY `CODIGOUSU` (`CODIGOUSU`);
 
 --
--- Indexes for table `centro_custo`
+-- Índices para tabela `centro_custo`
 --
 ALTER TABLE `centro_custo`
   ADD PRIMARY KEY (`CENCODIGO`),
   ADD KEY `CODIGOTIP` (`CODIGOTIP`);
 
 --
--- Indexes for table `contas`
+-- Índices para tabela `contas`
 --
 ALTER TABLE `contas`
   ADD PRIMARY KEY (`CONCODIGO`),
   ADD KEY `CODTIP` (`CODIGOTIP`);
 
 --
--- Indexes for table `forma_pagamento`
+-- Índices para tabela `forma_pagamento`
 --
 ALTER TABLE `forma_pagamento`
   ADD PRIMARY KEY (`FORCODIGO`);
 
 --
--- Indexes for table `lancamento`
+-- Índices para tabela `lancamento`
 --
 ALTER TABLE `lancamento`
   ADD PRIMARY KEY (`LANCODIGO`),
@@ -383,13 +434,13 @@ ALTER TABLE `lancamento`
   ADD KEY `CODIGOUSU` (`CODIGOUSU`);
 
 --
--- Indexes for table `nivel_acesso`
+-- Índices para tabela `nivel_acesso`
 --
 ALTER TABLE `nivel_acesso`
   ADD PRIMARY KEY (`NIVCODIGO`);
 
 --
--- Indexes for table `pessoa`
+-- Índices para tabela `pessoa`
 --
 ALTER TABLE `pessoa`
   ADD PRIMARY KEY (`PESCODIGO`),
@@ -398,31 +449,31 @@ ALTER TABLE `pessoa`
   ADD KEY `CODIGOTIP` (`CODIGOTIP`);
 
 --
--- Indexes for table `tipo_centro_custo`
+-- Índices para tabela `tipo_centro_custo`
 --
 ALTER TABLE `tipo_centro_custo`
   ADD PRIMARY KEY (`TIPCODIGO`);
 
 --
--- Indexes for table `tipo_conta`
+-- Índices para tabela `tipo_conta`
 --
 ALTER TABLE `tipo_conta`
   ADD PRIMARY KEY (`TIPCODIGO`);
 
 --
--- Indexes for table `tipo_documento`
+-- Índices para tabela `tipo_documento`
 --
 ALTER TABLE `tipo_documento`
   ADD PRIMARY KEY (`DOCCODIGO`);
 
 --
--- Indexes for table `tipo_pessoa`
+-- Índices para tabela `tipo_pessoa`
 --
 ALTER TABLE `tipo_pessoa`
   ADD PRIMARY KEY (`TIPCODIGO`);
 
 --
--- Indexes for table `transferencia`
+-- Índices para tabela `transferencia`
 --
 ALTER TABLE `transferencia`
   ADD PRIMARY KEY (`TRACODIGO`),
@@ -430,7 +481,7 @@ ALTER TABLE `transferencia`
   ADD KEY `TRACODIGO_CONDES` (`TRACODIGO_CONDES`);
 
 --
--- Indexes for table `usuario`
+-- Índices para tabela `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`USUCODIGO`),
@@ -438,76 +489,89 @@ ALTER TABLE `usuario`
   ADD KEY `CODIGONIV` (`CODIGONIV`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
--- AUTO_INCREMENT for table `baixa`
+-- AUTO_INCREMENT de tabela `baixa`
 --
 ALTER TABLE `baixa`
   MODIFY `BAICODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=3;
+
 --
--- AUTO_INCREMENT for table `centro_custo`
+-- AUTO_INCREMENT de tabela `centro_custo`
 --
 ALTER TABLE `centro_custo`
   MODIFY `CENCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=6;
+
 --
--- AUTO_INCREMENT for table `contas`
+-- AUTO_INCREMENT de tabela `contas`
 --
 ALTER TABLE `contas`
-  MODIFY `CONCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=6;
+  MODIFY `CONCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=11;
+
 --
--- AUTO_INCREMENT for table `forma_pagamento`
+-- AUTO_INCREMENT de tabela `forma_pagamento`
 --
 ALTER TABLE `forma_pagamento`
   MODIFY `FORCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=4;
+
 --
--- AUTO_INCREMENT for table `lancamento`
+-- AUTO_INCREMENT de tabela `lancamento`
 --
 ALTER TABLE `lancamento`
   MODIFY `LANCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=4;
+
 --
--- AUTO_INCREMENT for table `nivel_acesso`
+-- AUTO_INCREMENT de tabela `nivel_acesso`
 --
 ALTER TABLE `nivel_acesso`
   MODIFY `NIVCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática de código', AUTO_INCREMENT=3;
+
 --
--- AUTO_INCREMENT for table `pessoa`
+-- AUTO_INCREMENT de tabela `pessoa`
 --
 ALTER TABLE `pessoa`
   MODIFY `PESCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=5;
+
 --
--- AUTO_INCREMENT for table `tipo_centro_custo`
+-- AUTO_INCREMENT de tabela `tipo_centro_custo`
 --
 ALTER TABLE `tipo_centro_custo`
   MODIFY `TIPCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=3;
+
 --
--- AUTO_INCREMENT for table `tipo_conta`
+-- AUTO_INCREMENT de tabela `tipo_conta`
 --
 ALTER TABLE `tipo_conta`
   MODIFY `TIPCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=4;
+
 --
--- AUTO_INCREMENT for table `tipo_documento`
+-- AUTO_INCREMENT de tabela `tipo_documento`
 --
 ALTER TABLE `tipo_documento`
   MODIFY `DOCCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=4;
+
 --
--- AUTO_INCREMENT for table `tipo_pessoa`
+-- AUTO_INCREMENT de tabela `tipo_pessoa`
 --
 ALTER TABLE `tipo_pessoa`
   MODIFY `TIPCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=3;
+
 --
--- AUTO_INCREMENT for table `transferencia`
+-- AUTO_INCREMENT de tabela `transferencia`
 --
 ALTER TABLE `transferencia`
-  MODIFY `TRACODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=5;
+  MODIFY `TRACODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=7;
+
 --
--- AUTO_INCREMENT for table `usuario`
+-- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `USUCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=12;
+  MODIFY `USUCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=22;
+
 --
--- Constraints for dumped tables
+-- Restrições para despejos de tabelas
 --
 
 --
@@ -564,3 +628,6 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
