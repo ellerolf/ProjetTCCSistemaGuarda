@@ -2,20 +2,20 @@ object FrmBuscaConta: TFrmBuscaConta
   Left = 275
   Height = 492
   Top = 31
-  Width = 320
+  Width = 510
   BorderIcons = []
   Caption = 'FrmBuscaConta'
   ClientHeight = 492
-  ClientWidth = 320
+  ClientWidth = 510
   Position = poDesktopCenter
   object Panel1: TPanel
     Left = 0
     Height = 492
     Top = 0
-    Width = 320
+    Width = 510
     Align = alClient
     ClientHeight = 492
-    ClientWidth = 320
+    ClientWidth = 510
     Color = 16577259
     ParentColor = False
     TabOrder = 0
@@ -167,7 +167,7 @@ object FrmBuscaConta: TFrmBuscaConta
         0020FFFFFF00
       }
     end
-    object DBGrid1: TDBGrid
+    object DBGCaixa: TDBGrid
       Left = 16
       Height = 376
       Top = 56
@@ -175,6 +175,7 @@ object FrmBuscaConta: TFrmBuscaConta
       Color = clWindow
       Columns = <>
       TabOrder = 1
+      Visible = False
     end
     object BtnSelecione: TSpeedButton
       Left = 177
@@ -489,6 +490,40 @@ object FrmBuscaConta: TFrmBuscaConta
         02020202020202056A2C
       }
       OnClick = BtnSelecione1Click
+    end
+    object RGBTipoConta: TRadioGroup
+      Left = 312
+      Height = 105
+      Top = 72
+      Width = 185
+      AutoFill = True
+      Caption = 'TIPOS DE CONTA'
+      ChildSizing.LeftRightSpacing = 6
+      ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+      ChildSizing.EnlargeVertical = crsHomogenousChildResize
+      ChildSizing.ShrinkHorizontal = crsScaleChilds
+      ChildSizing.ShrinkVertical = crsScaleChilds
+      ChildSizing.Layout = cclLeftToRightThenTopToBottom
+      ChildSizing.ControlsPerLine = 1
+      ClientHeight = 85
+      ClientWidth = 181
+      Items.Strings = (
+        'CAIXA'
+        'CONTAS BANCÁRIAS'
+      )
+      OnChangeBounds = RGBTipoContaChangeBounds
+      OnClick = RGBTipoContaClick
+      TabOrder = 2
+    end
+    object DBGContasBanc: TDBGrid
+      Left = 304
+      Height = 100
+      Top = 216
+      Width = 200
+      Color = clWindow
+      Columns = <>
+      TabOrder = 3
+      Visible = False
     end
   end
 end

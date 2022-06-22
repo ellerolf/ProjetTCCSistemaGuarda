@@ -16,11 +16,15 @@ type
     BtnConsulta: TSpeedButton;
     BtnSelecione: TSpeedButton;
     BtnSelecione1: TSpeedButton;
-    DBGrid1: TDBGrid;
+    DBGCaixa: TDBGrid;
+    DBGContasBanc: TDBGrid;
     EdtConsulta: TEdit;
     Panel1: TPanel;
+    RGBTipoConta: TRadioGroup;
     procedure BtnSelecione1Click(Sender: TObject);
     procedure BtnSelecioneClick(Sender: TObject);
+    procedure RGBTipoContaChangeBounds(Sender: TObject);
+    procedure RGBTipoContaClick(Sender: TObject);
   private
 
   public
@@ -44,6 +48,26 @@ end;
 procedure TFrmBuscaConta.BtnSelecioneClick(Sender: TObject);
 begin
 
+end;
+
+procedure TFrmBuscaConta.RGBTipoContaChangeBounds(Sender: TObject);
+begin
+
+end;
+
+procedure TFrmBuscaConta.RGBTipoContaClick(Sender: TObject);
+begin
+   if (RGBTipoConta.ItemIndex=0) then
+  begin
+    DBGCaixa.Visible:=true;
+    DBGContasBanc.Visible:=false;
+  end
+  else
+  if(RGBTipoConta.ItemIndex=1) then
+  begin
+    DBGCaixa.Visible:=false;
+    DBGContasBanc.Visible:=true;
+  end;
 end;
 
 end.
