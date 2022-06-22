@@ -2,11 +2,11 @@ object FrmConsFornecedores: TFrmConsFornecedores
   Left = -8
   Height = 788
   Top = -8
-  Width = 1362
+  Width = 1378
   BorderStyle = bsNone
   Caption = 'FrmConsFornecedores'
   ClientHeight = 749
-  ClientWidth = 1362
+  ClientWidth = 1370
   Color = 16577259
   OnClose = FormClose
   OnResize = FormResize
@@ -17,10 +17,10 @@ object FrmConsFornecedores: TFrmConsFornecedores
     Left = 0
     Height = 749
     Top = 0
-    Width = 1362
+    Width = 1370
     Align = alClient
     ClientHeight = 749
-    ClientWidth = 1362
+    ClientWidth = 1370
     TabOrder = 0
     object Panel2: TPanel
       Left = 0
@@ -70,6 +70,7 @@ object FrmConsFornecedores: TFrmConsFornecedores
           'ATIVO'
           'INATIVO'
         )
+        OnChange = CboStatusChange
         TabOrder = 2
         Text = 'Selecione à opção'
       end
@@ -250,16 +251,12 @@ object FrmConsFornecedores: TFrmConsFornecedores
         Width = 830
         Columns = <        
           item
-            Title.Caption = 'CODIGO'
-            FieldName = 'CODIGO'
+            Title.Caption = 'ATIVO'
+            FieldName = 'ATIVO'
           end        
           item
             Title.Caption = 'NOME'
             FieldName = 'NOME'
-          end        
-          item
-            Title.Caption = 'CODIGOTIP'
-            FieldName = 'CODIGOTIP'
           end        
           item
             Title.Caption = 'TIPO'
@@ -270,76 +267,12 @@ object FrmConsFornecedores: TFrmConsFornecedores
             FieldName = 'CPF'
           end        
           item
-            Title.Caption = 'DATA NASCIMENTO'
-            FieldName = 'DATA NASCIMENTO'
-          end        
-          item
-            Title.Caption = 'CNPJ'
-            FieldName = 'CNPJ'
-          end        
-          item
-            Title.Caption = 'RAZÃO SOCIAL'
-            FieldName = 'RAZÃO SOCIAL'
-          end        
-          item
-            Title.Caption = 'NOME FANTASIA'
-            FieldName = 'NOME FANTASIA'
-          end        
-          item
-            Title.Caption = 'INSCRIÇÃO ESTADUAL'
-            FieldName = 'INSCRIÇÃO ESTADUAL'
-          end        
-          item
-            Title.Caption = 'INSCRICACAO_MUNICIPAL'
-            FieldName = 'INSCRICACAO_MUNICIPAL'
-          end        
-          item
-            Title.Caption = 'CEP'
-            FieldName = 'CEP'
-          end        
-          item
-            Title.Caption = 'ENDEREÇO'
-            FieldName = 'ENDEREÇO'
-          end        
-          item
-            Title.Caption = 'NÚMERO'
-            FieldName = 'NÚMERO'
-          end        
-          item
-            Title.Caption = 'COMPLEMENTO'
-            FieldName = 'COMPLEMENTO'
-          end        
-          item
-            Title.Caption = 'ESTADO'
-            FieldName = 'ESTADO'
-          end        
-          item
-            Title.Caption = 'CIDADE'
-            FieldName = 'CIDADE'
-          end        
-          item
-            Title.Caption = 'BAIRRO'
-            FieldName = 'BAIRRO'
-          end        
-          item
-            Title.Caption = 'E-MAIL'
-            FieldName = 'E-MAIL'
-          end        
-          item
             Title.Caption = 'TELEFONE'
             FieldName = 'TELEFONE'
           end        
           item
             Title.Caption = 'CELULAR'
             FieldName = 'CELULAR'
-          end        
-          item
-            Title.Caption = 'OBSERVAÇÃO'
-            FieldName = 'OBSERVAÇÃO'
-          end        
-          item
-            Title.Caption = 'ATIVO'
-            FieldName = 'ATIVO'
           end>
         DataSource = DM.DSConsPessoas
         FixedColor = clHotLight
@@ -364,6 +297,7 @@ object FrmConsFornecedores: TFrmConsFornecedores
           'CPF'
           'CNPJ'
         )
+        OnChange = CboTipoPessoaChange
         TabOrder = 4
         Text = 'Selecione à opção'
       end
@@ -1312,80 +1246,20 @@ object FrmConsFornecedores: TFrmConsFornecedores
         Width = 830
         Columns = <        
           item
-            Title.Caption = 'CODIGO'
-            FieldName = 'CODIGO'
-          end        
-          item
-            Title.Caption = 'NOME'
-            FieldName = 'NOME'
+            Title.Caption = 'ATIVO'
+            FieldName = 'ATIVO'
           end        
           item
             Title.Caption = 'RAZÃO SOCIAL'
             FieldName = 'RAZÃO SOCIAL'
           end        
           item
-            Title.Caption = 'CODIGOTIP'
-            FieldName = 'CODIGOTIP'
-          end        
-          item
             Title.Caption = 'TIPO'
             FieldName = 'TIPO'
           end        
           item
-            Title.Caption = 'CPF'
-            FieldName = 'CPF'
-          end        
-          item
-            Title.Caption = 'DATA NASCIMENTO'
-            FieldName = 'DATA NASCIMENTO'
-          end        
-          item
             Title.Caption = 'CNPJ'
             FieldName = 'CNPJ'
-          end        
-          item
-            Title.Caption = 'NOME FANTASIA'
-            FieldName = 'NOME FANTASIA'
-          end        
-          item
-            Title.Caption = 'INSCRIÇÃO ESTADUAL'
-            FieldName = 'INSCRIÇÃO ESTADUAL'
-          end        
-          item
-            Title.Caption = 'INSCRICACAO_MUNICIPAL'
-            FieldName = 'INSCRICACAO_MUNICIPAL'
-          end        
-          item
-            Title.Caption = 'CEP'
-            FieldName = 'CEP'
-          end        
-          item
-            Title.Caption = 'ENDEREÇO'
-            FieldName = 'ENDEREÇO'
-          end        
-          item
-            Title.Caption = 'NÚMERO'
-            FieldName = 'NÚMERO'
-          end        
-          item
-            Title.Caption = 'COMPLEMENTO'
-            FieldName = 'COMPLEMENTO'
-          end        
-          item
-            Title.Caption = 'ESTADO'
-            FieldName = 'ESTADO'
-          end        
-          item
-            Title.Caption = 'CIDADE'
-            FieldName = 'CIDADE'
-          end        
-          item
-            Title.Caption = 'BAIRRO'
-            FieldName = 'BAIRRO'
-          end        
-          item
-            Title.Caption = 'E-MAIL'
-            FieldName = 'E-MAIL'
           end        
           item
             Title.Caption = 'TELEFONE'
@@ -1394,14 +1268,6 @@ object FrmConsFornecedores: TFrmConsFornecedores
           item
             Title.Caption = 'CELULAR'
             FieldName = 'CELULAR'
-          end        
-          item
-            Title.Caption = 'OBSERVAÇÃO'
-            FieldName = 'OBSERVAÇÃO'
-          end        
-          item
-            Title.Caption = 'ATIVO'
-            FieldName = 'ATIVO'
           end>
         DataSource = DM.DSConsPessoas
         FixedColor = clHotLight
@@ -1433,7 +1299,7 @@ object FrmConsFornecedores: TFrmConsFornecedores
           end        
           item
             Title.Caption = 'RAZÃO SOCIAL'
-            Width = 200
+            Width = 225
             FieldName = 'RAZÃO SOCIAL'
           end        
           item

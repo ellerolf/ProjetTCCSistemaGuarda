@@ -31,6 +31,8 @@ type
     procedure BtnAlterarClick(Sender: TObject);
     procedure BtnConsultaClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
+    procedure CboStatusChange(Sender: TObject);
+    procedure CboTipoPessoaChange(Sender: TObject);
     procedure EdtConsultaChange(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormResize(Sender: TObject);
@@ -102,9 +104,9 @@ begin
     dm.ZQConsPessoas.Sql.Clear;
     dm.ZQConsPessoas.sql.Add('select * from vwpessoas where CODIGOTIP = 1');
     dm.ZQConsPessoas.Open;
-    GrTodos.Visible := True;
+    GrTodos.Visible := false;
     GrCNPJ.Visible := False;
-    GrCPF.Visible := False;
+    GrCPF.Visible := true;
   end
   else if ((CboStatus.ItemIndex = 0) and (CboTipoPessoa.ItemIndex = 2)) then
     //todos dos do CNPJ
@@ -113,8 +115,8 @@ begin
     dm.ZQConsPessoas.Sql.Clear;
     dm.ZQConsPessoas.sql.Add('select * from vwpessoas where CODIGOTIP = 2');
     dm.ZQConsPessoas.Open;
-    GrTodos.Visible := True;
-    GrCNPJ.Visible := False;
+    GrTodos.Visible := false;
+    GrCNPJ.Visible := true;
     GrCPF.Visible := False;
   end
 
@@ -182,16 +184,28 @@ begin
   Close;
 end;
 
+procedure TFrmConsFornecedores.CboStatusChange(Sender: TObject);
+begin
+
+end;
+
+procedure TFrmConsFornecedores.CboTipoPessoaChange(Sender: TObject);
+begin
+
+end;
+
 procedure TFrmConsFornecedores.EdtConsultaChange(Sender: TObject);
 begin
   if ((CboStatus.ItemIndex = 0) and (CboTipoPessoa.ItemIndex = 0)) then
-    //todos
+    //FAZER O IF SANDO CBOTIPO
   begin
     dm.ZQConsPessoas.Close;
     dm.ZQConsPessoas.Sql.Clear;
     dm.ZQConsPessoas.sql.Add(
-      'select * from vwpessoas where NOME or CPF or RAZÃO SOCIAL like' +
+      'select * from vwpessoas where NOME like' +
       QuotedStr('%' + EdtConsulta.Text + '%'));
+
+
     dm.ZQConsPessoas.Open;
     GrTodos.Visible := True;
     GrCNPJ.Visible := False;
