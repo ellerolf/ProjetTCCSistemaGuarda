@@ -339,7 +339,7 @@ object FrmCadUsuario: TFrmCadUsuario
         Height = 192
         Top = 304
         Width = 601
-        Color = clWindow
+        Color = 16577259
         Columns = <        
           item
             Title.Caption = 'CÓDIGO'
@@ -367,7 +367,14 @@ object FrmCadUsuario: TFrmCadUsuario
             FieldName = 'CODIGONIV'
           end>
         DataSource = DM.DSConsUsuario
+        FixedColor = clHighlight
         TabOrder = 6
+        TitleFont.CharSet = ANSI_CHARSET
+        TitleFont.Color = clWhite
+        TitleFont.Height = -13
+        TitleFont.Pitch = fpVariable
+        TitleFont.Quality = fqDraft
+        TitleFont.Style = [fsBold]
         OnCellClick = DBGrid1CellClick
       end
       object CboStatus: TComboBox

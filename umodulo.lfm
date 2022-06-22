@@ -76,46 +76,6 @@ object DM: TDM
     Left = 240
     Top = 96
   end
-  object ZQCadCentro: TZQuery
-    Connection = ZFinanceiro
-    SQL.Strings = (
-      'insert into centro_custo (cennome, codigotip, censtatus) values (:pcennome, :pcodigotip, :pcenstatus)'
-    )
-    Params = <    
-      item
-        DataType = ftUnknown
-        Name = 'pcennome'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pcodigotip'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pcenstatus'
-        ParamType = ptUnknown
-      end>
-    Left = 344
-    Top = 96
-    ParamData = <    
-      item
-        DataType = ftUnknown
-        Name = 'pcennome'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pcodigotip'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'pcenstatus'
-        ParamType = ptUnknown
-      end>
-  end
   object ZQCadBancarias: TZQuery
     Connection = ZFinanceiro
     SQL.Strings = (
@@ -1338,6 +1298,36 @@ object DM: TDM
       item
         DataType = ftUnknown
         Name = 'PESCODIGO'
+        ParamType = ptUnknown
+      end>
+  end
+  object ZQCadCentro: TZQuery
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'insert into centro_custo (cennome, codigotip) values (:pcennome, :pcodigotip)'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'pcennome'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pcodigotip'
+        ParamType = ptUnknown
+      end>
+    Left = 344
+    Top = 104
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'pcennome'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pcodigotip'
         ParamType = ptUnknown
       end>
   end

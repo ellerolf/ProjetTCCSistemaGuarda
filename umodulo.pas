@@ -96,7 +96,6 @@ type
     ZQConsUsuario: TZQuery;
     ZQCadUsuario: TZQuery;
     ZQCadLancamentos: TZQuery;
-    ZQCadCentro: TZQuery;
     ZQCadBancarias: TZQuery;
     ZQAltUsuario: TZQuery;
     ZQAltLancamentos: TZQuery;
@@ -107,6 +106,7 @@ type
     ZQConsTipoConta: TZQuery;
     ZQConsPessoas: TZQuery;
     ZQAltPessoas: TZQuery;
+    ZQCadCentro: TZQuery;
     procedure DSConsPessoasDataChange(Sender: TObject; Field: TField);
 
 
