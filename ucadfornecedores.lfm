@@ -5,14 +5,15 @@ object FrmCadFornecedor: TFrmCadFornecedor
   Width = 1386
   BorderStyle = bsNone
   Caption = 'Cadastro Fornecedores'
-  ClientHeight = 749
-  ClientWidth = 1370
+  ClientHeight = 788
+  ClientWidth = 1386
   Color = 16577259
   OnClose = FormClose
   OnCreate = FormCreate
   OnResize = FormResize
   OnShow = FormShow
   Position = poDesktopCenter
+  LCLVersion = '2.2.2.0'
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
