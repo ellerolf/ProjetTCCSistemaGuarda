@@ -159,16 +159,15 @@ begin
     //insert ao banco
     else
     begin
-      dm.ZQCadPessoas.Params.ParamByName('pesnome').Value := null;
+      dm.ZQCadPessoas.Params.ParamByName('pesnome').Value := EdtNome.Text;
       dm.ZQCadPessoas.Params.ParamByName('codigotip').Value := 2;
       dm.ZQCadPessoas.Params.ParamByName('pescpf').Value := null;
       dm.ZQCadPessoas.Params.ParamByName('pesdata_nascimento').Value := null;
       dm.ZQCadPessoas.Params.ParamByName('pescnpj').Value := EdtCpfCnpj.Text;
-      dm.ZQCadPessoas.Params.ParamByName('pesrazao_social').Value := EdtNome.Text;
       dm.ZQCadPessoas.Params.ParamByName('pesnome_fantasia').Value := EdtFantasia.Text;
       dm.ZQCadPessoas.Params.ParamByName('pesinscricao_estadual').Value :=
         EdtInsEstadual.Text;
-      dm.ZQCadPessoas.params.ParamByName('pesinscricacao_municipal').Value :=
+      dm.ZQCadPessoas.params.ParamByName('pesinscricao_municipal').Value :=
         EdtInsMunicipal.Text;
       dm.ZQCadPessoas.params.ParamByName('pescep').Value := EdtCep.Text;
       dm.ZQCadPessoas.params.ParamByName('pesendereco').Value := EdtEndereco.Text;
@@ -267,10 +266,9 @@ begin
       dm.ZQCadPessoas.Params.ParamByName('pesdata_nascimento').AsString :=
         FormatDateTime('yyyy-mm-dd', DTNasc.Date);
       dm.ZQCadPessoas.Params.ParamByName('pescnpj').Value := null;
-      dm.ZQCadPessoas.Params.ParamByName('pesrazao_social').Value := null;
       dm.ZQCadPessoas.Params.ParamByName('pesnome_fantasia').Value := null;
       dm.ZQCadPessoas.Params.ParamByName('pesinscricao_estadual').Value := null;
-      dm.ZQCadPessoas.params.ParamByName('pesinscricacao_municipal').Value :=
+      dm.ZQCadPessoas.params.ParamByName('pesinscricao_municipal').Value :=
         null;
       dm.ZQCadPessoas.params.ParamByName('pescep').Value := EdtCep.Text;
       dm.ZQCadPessoas.params.ParamByName('pesendereco').Value := EdtEndereco.Text;

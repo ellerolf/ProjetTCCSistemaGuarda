@@ -67,13 +67,12 @@ type
     ZQConsPessoasEMAIL: TStringField;
     ZQConsPessoasENDEREO: TStringField;
     ZQConsPessoasESTADO: TStringField;
-    ZQConsPessoasINSCRICACAO_MUNICIPAL: TLongintField;
     ZQConsPessoasINSCRIOESTADUAL: TLongintField;
+    ZQConsPessoasINSCRIOMUNICIPAL: TLongintField;
     ZQConsPessoasNMERO: TLongintField;
     ZQConsPessoasNOME: TStringField;
     ZQConsPessoasNOMEFANTASIA: TStringField;
     ZQConsPessoasOBSERVAO: TStringField;
-    ZQConsPessoasRAZOSOCIAL: TStringField;
     ZQConsPessoasTELEFONE: TStringField;
     ZQConsPessoasTIPO: TStringField;
     ZQConsUsuarioCODIGONIV: TLongintField;
@@ -102,11 +101,11 @@ type
     ZQAltCentro: TZQuery;
     ZQAltBancarias: TZQuery;
     ZQDelUsuario: TZQuery;
-    ZQCadPessoas: TZQuery;
     ZQConsTipoConta: TZQuery;
     ZQConsPessoas: TZQuery;
-    ZQAltPessoas: TZQuery;
     ZQCadCentro: TZQuery;
+    ZQCadPessoas: TZQuery;
+    ZQAltPessoas: TZQuery;
     procedure DSConsPessoasDataChange(Sender: TObject; Field: TField);
 
 
