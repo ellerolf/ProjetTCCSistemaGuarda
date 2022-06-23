@@ -8,7 +8,7 @@ uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Menus, ExtCtrls, Grids,
   Buttons, ActnList, StdCtrls, uCadUsuario, uCadContasBancarias,
   uCadCentroCusto, uCadFornecedores, uCadLancamento, UConsFornecedores,
-  UConsBaixa, UConsContas, VTHeaderPopup;
+  UConsBaixa, UConsContas, UEntrarUsuario, VTHeaderPopup;
 
 type
 
@@ -49,7 +49,9 @@ type
     procedure BtnConsReceitaDespesasClick(Sender: TObject);
     procedure BtnRelaPrestaClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormResize(Sender: TObject);
+    procedure FormShow(Sender: TObject);
     procedure Image1Click(Sender: TObject);
     procedure LblUsuarioClick(Sender: TObject);
     procedure MenuItem11Click(Sender: TObject);
@@ -94,9 +96,19 @@ begin
   Close;
 end;
 
+procedure TFrmMenu.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+begin
+  Application.Terminate;
+end;
+
 procedure TFrmMenu.FormResize(Sender: TObject);
 begin
 
+end;
+
+procedure TFrmMenu.FormShow(Sender: TObject);
+begin
+  FrmEntrarUsuario.hide;
 end;
 
 procedure TFrmMenu.BtnCadUsuariosClick(Sender: TObject);
@@ -187,7 +199,7 @@ end;
 
 procedure TFrmMenu.SpeedButton1Click(Sender: TObject);
 begin
-  Application.Terminate;
+  Close;
 end;
 
 

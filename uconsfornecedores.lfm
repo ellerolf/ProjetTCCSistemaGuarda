@@ -2,7 +2,7 @@ object FrmConsFornecedores: TFrmConsFornecedores
   Left = -8
   Height = 788
   Top = -8
-  Width = 1378
+  Width = 1386
   BorderStyle = bsNone
   Caption = 'FrmConsFornecedores'
   ClientHeight = 749
@@ -1247,11 +1247,13 @@ object FrmConsFornecedores: TFrmConsFornecedores
         Columns = <        
           item
             Title.Caption = 'ATIVO'
+            Width = 90
             FieldName = 'ATIVO'
           end        
           item
             Title.Caption = 'RAZÃO SOCIAL'
-            FieldName = 'RAZÃO SOCIAL'
+            Width = 200
+            FieldName = 'NOME'
           end        
           item
             Title.Caption = 'TIPO'
@@ -1284,7 +1286,7 @@ object FrmConsFornecedores: TFrmConsFornecedores
       object GrTodos: TDBGrid
         Left = 40
         Height = 450
-        Top = 112
+        Top = 144
         Width = 830
         Columns = <        
           item
@@ -1294,13 +1296,8 @@ object FrmConsFornecedores: TFrmConsFornecedores
           end        
           item
             Title.Caption = 'NOME'
-            Width = 200
+            Width = 350
             FieldName = 'NOME'
-          end        
-          item
-            Title.Caption = 'RAZÃO SOCIAL'
-            Width = 225
-            FieldName = 'RAZÃO SOCIAL'
           end        
           item
             Title.Caption = 'TIPO'
@@ -1309,12 +1306,12 @@ object FrmConsFornecedores: TFrmConsFornecedores
           end        
           item
             Title.Caption = 'TELEFONE'
-            Width = 90
+            Width = 120
             FieldName = 'TELEFONE'
           end        
           item
             Title.Caption = 'CELULAR'
-            Width = 90
+            Width = 120
             FieldName = 'CELULAR'
           end>
         DataSource = DM.DSConsPessoas

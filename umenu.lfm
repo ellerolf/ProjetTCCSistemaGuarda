@@ -5,18 +5,20 @@ object FrmMenu: TFrmMenu
   Width = 1386
   BorderIcons = []
   Caption = 'Menu'
-  ClientHeight = 750
+  ClientHeight = 749
   ClientWidth = 1370
   Color = 16510433
+  OnClose = FormClose
   OnResize = FormResize
+  OnShow = FormShow
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 710
+    Height = 709
     Top = 40
     Width = 184
     Align = alLeft
-    ClientHeight = 710
+    ClientHeight = 709
     ClientWidth = 184
     Color = 16242363
     Font.CharSet = ANSI_CHARSET
@@ -11797,11 +11799,11 @@ object FrmMenu: TFrmMenu
   end
   object PnChama: TPanel
     Left = 184
-    Height = 710
+    Height = 709
     Top = 40
     Width = 1186
     Align = alClient
-    ClientHeight = 710
+    ClientHeight = 709
     ClientWidth = 1186
     Color = 16577259
     ParentColor = False
@@ -11810,7 +11812,7 @@ object FrmMenu: TFrmMenu
     OnClick = PnChamaClick
     object Image1: TImage
       Left = 1
-      Height = 708
+      Height = 707
       Top = 1
       Width = 1184
       Align = alClient

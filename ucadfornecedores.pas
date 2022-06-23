@@ -21,7 +21,6 @@ type
     BtnSalvar: TSpeedButton;
     CboUf: TComboBox;
     DTNasc: TDateEdit;
-    EdtCpfCnpj: TEdit;
     EdtBairro: TEdit;
     EdtCel: TEdit;
     EdtCep: TEdit;
@@ -56,6 +55,7 @@ type
     Label7: TLabel;
     LblEndereco: TLabel;
     LblMensagem: TLabel;
+    EdtCpfCnpj: TMaskEdit;
     MemObs: TMemo;
     Panel1: TPanel;
     Panel2: TPanel;
@@ -99,7 +99,7 @@ end;
 
 procedure TFrmCadFornecedor.BtnCnpjChange(Sender: TObject);
 begin
-  //EdtCpfCnpj.EditMask := '00.000.000/0000-00;1;_';
+  EdtCpfCnpj.EditMask := '00.000.000/0000-00;1;_';
   LblCpfCnpj.Caption := 'CNPJ';
   LblNomeRazao.Caption := 'Razão Social';
   EdtFantasia.Enabled := True;
@@ -112,11 +112,12 @@ procedure TFrmCadFornecedor.BtnAtivoChange(Sender: TObject);
 begin
   BtnAtivo.Enabled := True;
   BtnAtivo.Checked := True;
+  EdtCpfCnpj.SetFocus;
 end;
 
 procedure TFrmCadFornecedor.BtnCpfChange(Sender: TObject);
 begin
-  //EdtCpfCnpj.EditMask := '000.000.000-00;1;_';
+  EdtCpfCnpj.EditMask := '000.000.000-00;1;_';
   LblCpfCnpj.Caption := 'CPF';
   LblNomeRazao.Caption := 'Nome';
   EdtFantasia.Enabled := False;

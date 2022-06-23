@@ -5,15 +5,14 @@ object FrmCadFornecedor: TFrmCadFornecedor
   Width = 1386
   BorderStyle = bsNone
   Caption = 'Cadastro Fornecedores'
-  ClientHeight = 788
-  ClientWidth = 1386
+  ClientHeight = 749
+  ClientWidth = 1370
   Color = 16577259
   OnClose = FormClose
   OnCreate = FormCreate
   OnResize = FormResize
   OnShow = FormShow
   Position = poDesktopCenter
-  LCLVersion = '2.2.2.0'
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
@@ -130,14 +129,14 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Height = 23
         Top = 136
         Width = 312
-        TabOrder = 3
+        TabOrder = 2
       end
       object EdtFantasia: TEdit
         Left = 368
         Height = 23
         Top = 136
         Width = 345
-        TabOrder = 4
+        TabOrder = 3
       end
       object LblFantasia: TLabel
         Left = 368
@@ -173,7 +172,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Top = 192
         Width = 265
         NumbersOnly = True
-        TabOrder = 5
+        TabOrder = 4
       end
       object LblMunicipal: TLabel
         Left = 312
@@ -195,7 +194,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Top = 191
         Width = 265
         NumbersOnly = True
-        TabOrder = 6
+        TabOrder = 5
       end
       object LblDta: TLabel
         Left = 584
@@ -217,7 +216,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Top = 304
         Width = 80
         NumbersOnly = True
-        TabOrder = 12
+        TabOrder = 11
       end
       object LblCep: TLabel
         Left = 41
@@ -252,14 +251,14 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Height = 23
         Top = 304
         Width = 104
-        TabOrder = 13
+        TabOrder = 12
       end
       object EdtEndereco: TEdit
         Left = 40
         Height = 23
         Top = 248
         Width = 344
-        TabOrder = 8
+        TabOrder = 7
       end
       object LblEndereco: TLabel
         Left = 40
@@ -281,7 +280,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Top = 248
         Width = 56
         NumbersOnly = True
-        TabOrder = 9
+        TabOrder = 8
       end
       object LblNum: TLabel
         Left = 401
@@ -302,7 +301,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Height = 23
         Top = 248
         Width = 112
-        TabOrder = 10
+        TabOrder = 9
       end
       object Label12: TLabel
         Left = 465
@@ -323,7 +322,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Height = 23
         Top = 248
         Width = 128
-        TabOrder = 11
+        TabOrder = 10
       end
       object LblBairro: TLabel
         Left = 584
@@ -374,7 +373,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
           'SP'
           'TO'
         )
-        TabOrder = 14
+        TabOrder = 13
         Text = 'UF'
       end
       object LblUf: TLabel
@@ -396,7 +395,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Height = 23
         Top = 304
         Width = 161
-        TabOrder = 17
+        TabOrder = 16
       end
       object Label16: TLabel
         Left = 552
@@ -418,7 +417,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Top = 304
         Width = 120
         NumbersOnly = True
-        TabOrder = 16
+        TabOrder = 15
       end
       object lblCel: TLabel
         Left = 424
@@ -440,7 +439,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Top = 304
         Width = 120
         NumbersOnly = True
-        TabOrder = 15
+        TabOrder = 14
       end
       object Label18: TLabel
         Left = 296
@@ -478,7 +477,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Lines.Strings = (
           ''
         )
-        TabOrder = 18
+        TabOrder = 17
       end
       object LblMensagem: TLabel
         Left = 41
@@ -1458,14 +1457,6 @@ object FrmCadFornecedor: TFrmCadFornecedor
           TabOrder = 1
         end
       end
-      object EdtCpfCnpj: TEdit
-        Left = 368
-        Height = 23
-        Top = 80
-        Width = 344
-        NumbersOnly = True
-        TabOrder = 2
-      end
       object DTNasc: TDateEdit
         Left = 584
         Height = 23
@@ -1476,7 +1467,16 @@ object FrmCadFornecedor: TFrmCadFornecedor
         ButtonWidth = 23
         NumGlyphs = 1
         MaxLength = 0
-        TabOrder = 7
+        TabOrder = 6
+      end
+      object EdtCpfCnpj: TMaskEdit
+        Left = 368
+        Height = 23
+        Top = 76
+        Width = 344
+        MaxLength = 0
+        TabOrder = 18
+        SpaceChar = '_'
       end
     end
   end

@@ -186,12 +186,12 @@ end;
 
 procedure TFrmConsFornecedores.CboStatusChange(Sender: TObject);
 begin
-
+  BuscaDados();
 end;
 
 procedure TFrmConsFornecedores.CboTipoPessoaChange(Sender: TObject);
 begin
-
+  BuscaDados();
 end;
 
 procedure TFrmConsFornecedores.EdtConsultaChange(Sender: TObject);
@@ -204,8 +204,6 @@ begin
     dm.ZQConsPessoas.sql.Add(
       'select * from vwpessoas where NOME like' +
       QuotedStr('%' + EdtConsulta.Text + '%'));
-
-
     dm.ZQConsPessoas.Open;
     GrTodos.Visible := True;
     GrCNPJ.Visible := False;
