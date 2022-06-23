@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 23-Jun-2022 às 00:25
+-- Tempo de geração: 23-Jun-2022 às 03:31
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.5
 
@@ -99,7 +99,7 @@ INSERT INTO `contas` (`CONCODIGO`, `CONNOME`, `CODIGOTIP`, `CONAGENCIA`, `CONNUM
 (4, 'CAIXA ECONOMICA RENDA FIXA', 2, '333', '242-2', 256.854, 1),
 (5, 'BANCO NACIONAL', 1, '0444-5', '1234-X', 748.5, 1),
 (6, 'Brasil', 1, '12345', '126566', 45.5, 1),
-(7, '', 3, '', '', 105.85, 1),
+(7, 'SARARRA', 3, '', '', 105.85, 1),
 (8, 'BRADESCO', 1, '1233', '67656756', 54.5, 1),
 (9, 'MARIA', 3, NULL, NULL, 1.2, 1),
 (10, 'BRASIL', 1, '22', '33', 33, 1);
@@ -352,6 +352,23 @@ INSERT INTO `usuario` (`USUCODIGO`, `USUNOME`, `USULOGIN`, `USUSENHA`, `USUSTATU
 -- --------------------------------------------------------
 
 --
+-- Estrutura stand-in para vista `vwcontas`
+-- (Veja abaixo para a view atual)
+--
+CREATE TABLE `vwcontas` (
+`CONCODIGO` int(11)
+,`CONNOME` varchar(50)
+,`CODIGOTIP` int(11)
+,`TIPNOME` varchar(50)
+,`CONAGENCIA` varchar(50)
+,`CONNUMERO_CONTA` varchar(50)
+,`CONSALDO_INICIAL` double
+,`CONSTATUS` tinyint(1)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura stand-in para vista `vwpessoas`
 -- (Veja abaixo para a view atual)
 --
@@ -379,6 +396,15 @@ CREATE TABLE `vwpessoas` (
 ,`OBSERVAÇÃO` varchar(200)
 ,`ATIVO` tinyint(1)
 );
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para vista `vwcontas`
+--
+DROP TABLE IF EXISTS `vwcontas`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vwcontas`  AS SELECT `c`.`CONCODIGO` AS `CONCODIGO`, `c`.`CONNOME` AS `CONNOME`, `c`.`CODIGOTIP` AS `CODIGOTIP`, `t`.`TIPNOME` AS `TIPNOME`, `c`.`CONAGENCIA` AS `CONAGENCIA`, `c`.`CONNUMERO_CONTA` AS `CONNUMERO_CONTA`, `c`.`CONSALDO_INICIAL` AS `CONSALDO_INICIAL`, `c`.`CONSTATUS` AS `CONSTATUS` FROM (`contas` `c` join `tipo_conta` `t`) WHERE `t`.`TIPCODIGO` = `c`.`CODIGOTIP``CODIGOTIP`  ;
 
 -- --------------------------------------------------------
 

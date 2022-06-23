@@ -28,6 +28,7 @@ type
     ZQBuscaContaCONNUMERO_CONTA: TStringField;
     ZQBuscaContaCONSALDO_INICIAL: TFloatField;
     ZQBuscaContaCONSTATUS: TSmallintField;
+    ZQBuscaContaTIPNOME: TStringField;
     ZQConsBancariasCODIGOTIP: TLongintField;
     ZQConsBancariasCONAGENCIA: TStringField;
     ZQConsBancariasCONCODIGO: TLongintField;

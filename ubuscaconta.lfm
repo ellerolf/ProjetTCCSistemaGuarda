@@ -26,6 +26,7 @@ object FrmBuscaConta: TFrmBuscaConta
       Height = 23
       Top = 16
       Width = 224
+      OnChange = EdtConsultaChange
       TabOrder = 0
     end
     object BtnConsulta: TSpeedButton
@@ -168,6 +169,7 @@ object FrmBuscaConta: TFrmBuscaConta
         00FFC10000FFC10000FFC10000FFC10000FFC10000FFC10000C0C1000090C100
         0020FFFFFF00
       }
+      OnClick = BtnConsultaClick
     end
     object DBGCaixa: TDBGrid
       Left = 16
@@ -548,18 +550,18 @@ object FrmBuscaConta: TFrmBuscaConta
           FieldName = 'CONNOME'
         end      
         item
-          Title.Caption = 'TIPO'
-          Width = 149
-          FieldName = 'CODIGOTIP'
+          Title.Caption = 'TIPO CONTA'
+          Width = 140
+          FieldName = 'TIPNOME'
         end      
         item
           Title.Caption = 'AGÊNCIA'
-          Width = 56
+          Width = 60
           FieldName = 'CONAGENCIA'
         end      
         item
           Title.Caption = 'N° DA CONTA'
-          Width = 82
+          Width = 86
           FieldName = 'CONNUMERO_CONTA'
         end>
       DataSource = DM.DSBuscaConta
