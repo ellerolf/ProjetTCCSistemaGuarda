@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  Buttons, DBGrids;
+  Buttons, DBGrids,UModulo;
 
 type
 
@@ -23,6 +23,8 @@ type
     RGBTipoConta: TRadioGroup;
     procedure BtnSelecione1Click(Sender: TObject);
     procedure BtnSelecioneClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
+    procedure FormShow(Sender: TObject);
     procedure RGBTipoContaChangeBounds(Sender: TObject);
     procedure RGBTipoContaClick(Sender: TObject);
   private
@@ -50,6 +52,17 @@ begin
 
 end;
 
+procedure TFrmBuscaConta.FormClose(Sender: TObject;
+  var CloseAction: TCloseAction);
+begin
+  dm.ZQBuscaConta.Active:=false;
+end;
+
+procedure TFrmBuscaConta.FormShow(Sender: TObject);
+begin
+  dm.ZQBuscaConta.Active:=true;
+end;
+
 procedure TFrmBuscaConta.RGBTipoContaChangeBounds(Sender: TObject);
 begin
 
@@ -61,12 +74,20 @@ begin
   begin
     DBGCaixa.Visible:=true;
     DBGContasBanc.Visible:=false;
+    DM.ZQBuscaConta.Close;
+    DM.ZQBuscaConta.SQL.Clear;
+    DM.ZQBuscaConta.SQL.Add('SELECT * FROM CONTAS WHERE CONSTATUS=1 AND CODIGOTIP=3');
+    DM.ZQBuscaConta.Open;
   end
   else
   if(RGBTipoConta.ItemIndex=1) then
   begin
     DBGCaixa.Visible:=false;
     DBGContasBanc.Visible:=true;
+    DM.ZQBuscaConta.Close;
+    DM.ZQBuscaConta.SQL.Clear;
+    DM.ZQBuscaConta.SQL.Add('SELECT * FROM CONTAS WHERE CONSTATUS=1 AND CODIGOTIP=2 OR CODIGOTIP=1');
+    DM.ZQBuscaConta.Open;
   end;
 end;
 

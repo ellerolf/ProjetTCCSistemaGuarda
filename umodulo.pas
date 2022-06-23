@@ -12,6 +12,7 @@ type
   { TDM }
 
   TDM = class(TDataModule)
+    DSBuscaConta: TDataSource;
     DSConsTipoConta: TDataSource;
     DSConsUsuario: TDataSource;
     DSConsPessoas: TDataSource;
@@ -20,6 +21,13 @@ type
     DSConsBancarias: TDataSource;
     DSConsTransferencia: TDataSource;
     ZFinanceiro: TZConnection;
+    ZQBuscaContaCODIGOTIP: TLongintField;
+    ZQBuscaContaCONAGENCIA: TStringField;
+    ZQBuscaContaCONCODIGO: TLongintField;
+    ZQBuscaContaCONNOME: TStringField;
+    ZQBuscaContaCONNUMERO_CONTA: TStringField;
+    ZQBuscaContaCONSALDO_INICIAL: TFloatField;
+    ZQBuscaContaCONSTATUS: TSmallintField;
     ZQConsBancariasCODIGOTIP: TLongintField;
     ZQConsBancariasCONAGENCIA: TStringField;
     ZQConsBancariasCONCODIGO: TLongintField;
@@ -106,6 +114,7 @@ type
     ZQCadCentro: TZQuery;
     ZQCadPessoas: TZQuery;
     ZQAltPessoas: TZQuery;
+    ZQBuscaConta: TZQuery;
     procedure DSConsPessoasDataChange(Sender: TObject; Field: TField);
 
 

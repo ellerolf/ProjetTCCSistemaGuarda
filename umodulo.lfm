@@ -1,10 +1,10 @@
 object DM: TDM
   OnCreate = DataModuleCreate
   OldCreateOrder = False
-  Height = 609
+  Height = 631
   HorizontalOffset = 255
   VerticalOffset = 31
-  Width = 633
+  Width = 696
   object ZFinanceiro: TZConnection
     ControlsCodePage = cCP_UTF8
     AutoEncodeStrings = True
@@ -1300,5 +1300,86 @@ object DM: TDM
         Name = 'PESCODIGO'
         ParamType = ptUnknown
       end>
+  end
+  object ZQBuscaConta: TZQuery
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'select * from contas WHERE CONSTATUS=1'
+    )
+    Params = <>
+    Left = 286
+    Top = 503
+    object ZQBuscaContaCONCODIGO: TLongintField
+      FieldKind = fkData
+      FieldName = 'CONCODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object ZQBuscaContaCONNOME: TStringField
+      FieldKind = fkData
+      FieldName = 'CONNOME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQBuscaContaCODIGOTIP: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODIGOTIP'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQBuscaContaCONAGENCIA: TStringField
+      FieldKind = fkData
+      FieldName = 'CONAGENCIA'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQBuscaContaCONNUMERO_CONTA: TStringField
+      FieldKind = fkData
+      FieldName = 'CONNUMERO_CONTA'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQBuscaContaCONSALDO_INICIAL: TFloatField
+      FieldKind = fkData
+      FieldName = 'CONSALDO_INICIAL'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 22
+    end
+    object ZQBuscaContaCONSTATUS: TSmallintField
+      FieldKind = fkData
+      FieldName = 'CONSTATUS'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object DSBuscaConta: TDataSource
+    DataSet = ZQBuscaConta
+    Left = 286
+    Top = 448
   end
 end

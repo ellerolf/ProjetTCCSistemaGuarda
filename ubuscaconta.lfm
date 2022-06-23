@@ -2,20 +2,22 @@ object FrmBuscaConta: TFrmBuscaConta
   Left = 275
   Height = 492
   Top = 31
-  Width = 510
+  Width = 598
   BorderIcons = []
   Caption = 'FrmBuscaConta'
   ClientHeight = 492
-  ClientWidth = 510
+  ClientWidth = 598
+  OnClose = FormClose
+  OnShow = FormShow
   Position = poDesktopCenter
   object Panel1: TPanel
     Left = 0
     Height = 492
     Top = 0
-    Width = 510
+    Width = 598
     Align = alClient
     ClientHeight = 492
-    ClientWidth = 510
+    ClientWidth = 598
     Color = 16577259
     ParentColor = False
     TabOrder = 0
@@ -173,7 +175,19 @@ object FrmBuscaConta: TFrmBuscaConta
       Top = 56
       Width = 285
       Color = clWindow
-      Columns = <>
+      Columns = <      
+        item
+          Title.Caption = 'CÓDIGO'
+          Width = 52
+          FieldName = 'CONCODIGO'
+        end      
+        item
+          Title.Caption = 'NOME DA CONTA'
+          Width = 199
+          FieldName = 'CONNOME'
+        end>
+      DataSource = DM.DSBuscaConta
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
       TabOrder = 1
       Visible = False
     end
@@ -493,9 +507,9 @@ object FrmBuscaConta: TFrmBuscaConta
     end
     object RGBTipoConta: TRadioGroup
       Left = 312
-      Height = 105
-      Top = 72
-      Width = 185
+      Height = 49
+      Top = 0
+      Width = 264
       AutoFill = True
       Caption = 'TIPOS DE CONTA'
       ChildSizing.LeftRightSpacing = 6
@@ -504,9 +518,10 @@ object FrmBuscaConta: TFrmBuscaConta
       ChildSizing.ShrinkHorizontal = crsScaleChilds
       ChildSizing.ShrinkVertical = crsScaleChilds
       ChildSizing.Layout = cclLeftToRightThenTopToBottom
-      ChildSizing.ControlsPerLine = 1
-      ClientHeight = 85
-      ClientWidth = 181
+      ChildSizing.ControlsPerLine = 2
+      ClientHeight = 29
+      ClientWidth = 260
+      Columns = 2
       Items.Strings = (
         'CAIXA'
         'CONTAS BANCÁRIAS'
@@ -516,12 +531,39 @@ object FrmBuscaConta: TFrmBuscaConta
       TabOrder = 2
     end
     object DBGContasBanc: TDBGrid
-      Left = 304
-      Height = 100
-      Top = 216
-      Width = 200
+      Left = 16
+      Height = 380
+      Top = 56
+      Width = 560
       Color = clWindow
-      Columns = <>
+      Columns = <      
+        item
+          Title.Caption = 'CÓDIGO'
+          Width = 50
+          FieldName = 'CONCODIGO'
+        end      
+        item
+          Title.Caption = 'NOME DO BANCO'
+          Width = 190
+          FieldName = 'CONNOME'
+        end      
+        item
+          Title.Caption = 'TIPO'
+          Width = 149
+          FieldName = 'CODIGOTIP'
+        end      
+        item
+          Title.Caption = 'AGÊNCIA'
+          Width = 56
+          FieldName = 'CONAGENCIA'
+        end      
+        item
+          Title.Caption = 'N° DA CONTA'
+          Width = 82
+          FieldName = 'CONNUMERO_CONTA'
+        end>
+      DataSource = DM.DSBuscaConta
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
       TabOrder = 3
       Visible = False
     end
