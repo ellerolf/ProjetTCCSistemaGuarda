@@ -1,13 +1,13 @@
 object FrmEntrarUsuario: TFrmEntrarUsuario
   Left = -8
-  Height = 754
+  Height = 788
   Top = -8
-  Width = 934
+  Width = 950
   BorderIcons = [biSystemMenu]
   BorderStyle = bsNone
   Caption = 'Acesso ao Sistema'
-  ClientHeight = 732
-  ClientWidth = 934
+  ClientHeight = 749
+  ClientWidth = 950
   Color = 14927272
   OnCreate = FormCreate
   OnResize = FormResize
@@ -15,12 +15,12 @@ object FrmEntrarUsuario: TFrmEntrarUsuario
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 732
+    Height = 749
     Top = 0
-    Width = 934
+    Width = 950
     Align = alClient
-    ClientHeight = 732
-    ClientWidth = 934
+    ClientHeight = 749
+    ClientWidth = 950
     Color = 16242369
     Font.CharSet = ANSI_CHARSET
     Font.Color = clWhite
@@ -552,6 +552,7 @@ object FrmEntrarUsuario: TFrmEntrarUsuario
           Font.Pitch = fpVariable
           Font.Quality = fqDraft
           Font.Style = [fsBold]
+          OnKeyPress = EdtSenhaKeyPress
           ParentFont = False
           PasswordChar = '*'
           TabOrder = 1
@@ -584,6 +585,7 @@ object FrmEntrarUsuario: TFrmEntrarUsuario
           Font.Quality = fqDraft
           Font.Style = [fsBold]
           OnChange = EdtUsuarioChange
+          OnKeyPress = EdtUsuarioKeyPress
           ParentFont = False
           TabOrder = 0
         end

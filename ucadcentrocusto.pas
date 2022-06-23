@@ -16,8 +16,8 @@ type
     BtnAlterar: TSpeedButton;
     BtnSair: TSpeedButton;
     BtnSalvar: TSpeedButton;
-    CboTipo1: TComboBox;
-    ComboBox1: TComboBox;
+    CboTipo: TComboBox;
+    CboStatus: TComboBox;
     DBGrid1: TDBGrid;
     EdtNome: TEdit;
     EdtNome1: TEdit;
@@ -37,6 +37,7 @@ type
     procedure BtnSairClick(Sender: TObject);
     procedure BtnSalvarClick(Sender: TObject);
     procedure DBGrid1CellClick(Column: TColumn);
+    procedure EdtNome1Change(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Label4Click(Sender: TObject);
@@ -56,7 +57,8 @@ implementation
 {$R *.lfm}
 
 { TFrmCadCentroCusto }
-   uses UModulo;
+uses UModulo;
+
 procedure TFrmCadCentroCusto.BtnSairClick(Sender: TObject);
 begin
   Close;
@@ -64,59 +66,159 @@ end;
 
 procedure TFrmCadCentroCusto.BtnAlterarClick(Sender: TObject);
 begin
-  DM.ZQAltCentro.Params.ParamByName('pcennome').Value:=EdtNome.Text;
-  if (RgbTipo.ItemIndex=0) then
-     begin
-       DM.ZQAltCentro.Params.ParamByName('pcodigotip').Value:=1;
-     end
+  RgbStatus.Visible := True;
+
+  DM.ZQAltCentro.Params.ParamByName('pcennome').Value := EdtNome.Text;
+  if (RgbTipo.ItemIndex = 0) then
+  begin
+    DM.ZQAltCentro.Params.ParamByName('pcodigotip').Value := 1;
+  end
   else
-  if (RgbTipo.ItemIndex=1) then
-     begin
-       DM.ZQAltCentro.Params.ParamByName('pcodigotip').Value:=2;
-     end;
-  DM.ZQAltCentro.Params.ParamByName('pcencodigo').Value:=DM.ZQConsCentroCENCODIGO.AsInteger;
+  if (RgbTipo.ItemIndex = 1) then
+  begin
+    DM.ZQAltCentro.Params.ParamByName('pcodigotip').Value := 2;
+  end;
+
+  if (RgbStatus.ItemIndex=0)then
+  begin
+    DM.ZQAltCentro.Params.ParamByName('pcenstatus').Value:=1;
+  end
+  else
+  if (RgbStatus.ItemIndex=1)then
+  begin
+    DM.ZQAltCentro.Params.ParamByName('pcenstatus').Value:=0;
+  end;
+  DM.ZQAltCentro.Params.ParamByName('pcencodigo').Value := DM.ZQConsCentroCENCODIGO.AsInteger;
   DM.ZQAltCentro.ExecSQL;
 
   DM.ZQConsCentro.Close;
   DM.ZQConsCentro.Open;
 
   EdtNome.Clear;
-  RgbTipo.ItemIndex:=-1;
+  RgbTipo.ItemIndex := -1;
 end;
 
 procedure TFrmCadCentroCusto.BtnSalvarClick(Sender: TObject);
 begin
-  DM.ZQCadCentro.Params.ParamByName('pcennome').Value:=EdtNome.Text;
-  if (RgbTipo.ItemIndex=0) then
-     begin
-       DM.ZQCadCentro.Params.ParamByName('pcodigotip').Value:=1;
-     end
+  DM.ZQCadCentro.Params.ParamByName('pcennome').Value := EdtNome.Text;
+  if (RgbTipo.ItemIndex = 0) then
+  begin
+    DM.ZQCadCentro.Params.ParamByName('pcodigotip').Value := 1;
+  end
   else
-  if (RgbTipo.ItemIndex=0) then
-     begin
-       DM.ZQCadCentro.Params.ParamByName('pcodigotip').Value:=2;
-     end;
+  if (RgbTipo.ItemIndex = 0) then
+  begin
+    DM.ZQCadCentro.Params.ParamByName('pcodigotip').Value := 2;
+  end;
   DM.ZQCadCentro.ExecSQL;
 
   DM.ZQConsCentro.Close;
   DM.ZQConsCentro.Open;
 
   EdtNome.Clear;
-  RgbTipo.ItemIndex:=-1;
+  RgbTipo.ItemIndex := -1;
 end;
 
 procedure TFrmCadCentroCusto.DBGrid1CellClick(Column: TColumn);
 begin
-  EdtNome.Text:=DM.ZQConsCentroCENNOME.AsString;
-  If (DM.ZQConsCentroCODIGOTIP.Value=1) then
-     begin
-       RgbTipo.ItemIndex:=0;
-     end
+  EdtNome.Text := DM.ZQConsCentroCENNOME.AsString;
+  if (DM.ZQConsCentroCODIGOTIP.Value = 1) then
+  begin
+    RgbTipo.ItemIndex := 0;
+  end
   else
-  if (DM.ZQConsCentroCODIGOTIP.Value=2) then
-     begin
-       RgbTipo.ItemIndex:=1;
-     end;
+  if (DM.ZQConsCentroCODIGOTIP.Value = 2) then
+  begin
+    RgbTipo.ItemIndex := 1;
+  end;
+
+  RgbStatus.Visible := True;
+
+  if (DM.ZQConsCentroCENSTATUS.Value = 1) then
+  begin
+    RgbStatus.ItemIndex := 0;
+  end
+  else
+  if (DM.ZQConsCentroCENSTATUS.Value=0) then
+  begin
+    RgbStatus.ItemIndex:=1;
+  end;
+
+end;
+
+procedure TFrmCadCentroCusto.EdtNome1Change(Sender: TObject);
+begin
+  if (CboTipo.ItemIndex = 0) and (CboStatus.ItemIndex = 0) then
+  begin
+    DM.ZQConsCentro.Close;
+    DM.ZQConsCentro.SQL.Clear;
+    DM.ZQConsCentro.SQL.Add('select * from centro_custo where cennome like' +
+      QuotedStr('%' + EdtNome1.Text + '%'));
+    DM.ZQConsCentro.Open;
+  end
+  else
+  if (CboTipo.ItemIndex = 1) and (CboStatus.ItemIndex = 0) then
+  begin
+    DM.ZQConsCentro.Close;
+    DM.ZQConsCentro.SQL.Clear;
+    DM.ZQConsCentro.SQL.Add(
+      'select * from centro_custo where codigotip=1 and cennome like' +
+      QuotedStr('%' + EdtNome1.Text + '%'));
+    DM.ZQConsCentro.Open;
+  end
+  else
+  if (CboTipo.ItemIndex = 2) and (CboStatus.ItemIndex = 0) then
+  begin
+    DM.ZQConsCentro.Close;
+    DM.ZQConsCentro.SQL.Clear;
+    DM.ZQConsCentro.SQL.Add(
+      'select * from centro_custo where codigotip=2 and cennome like' +
+      QuotedStr('%' + EdtNome1.Text + '%'));
+    DM.ZQConsCentro.Open;
+  end
+  else
+  if (CboTipo.ItemIndex = 1) and (CboStatus.ItemIndex = 1) then
+  begin
+    DM.ZQConsCentro.Close;
+    DM.ZQConsCentro.SQL.Clear;
+    DM.ZQConsCentro.SQL.Add(
+      'select * from centro_custo where codigotip=1 and censtatus=1 and cennome like' +
+      QuotedStr(
+      '%' + EdtNome1.Text + '%'));
+    DM.ZQConsCentro.Open;
+  end
+  else
+  if (CboTipo.ItemIndex = 2) and (CboStatus.ItemIndex = 1) then
+  begin
+    DM.ZQConsCentro.Close;
+    DM.ZQConsCentro.SQL.Clear;
+    DM.ZQConsCentro.SQL.Add(
+      'select * from centro_custo where codigotip=2 and censtatus=1 and cennome like' +
+      QuotedStr(
+      '%' + EdtNome1.Text + '%'));
+    DM.ZQConsCentro.Open;
+  end
+  else
+  if (CboTipo.ItemIndex = 0) and (CboStatus.ItemIndex = 1) then
+  begin
+    DM.ZQConsCentro.Close;
+    DM.ZQConsCentro.SQL.Clear;
+    DM.ZQConsCentro.SQL.Add(
+      'select * from centro_custo where censtatus=1 and cennome like' +
+      QuotedStr('%' + EdtNome1.Text + '%'));
+    DM.ZQConsCentro.Open;
+  end
+  else
+  if (CboTipo.ItemIndex = 0) and (CboStatus.ItemIndex = 2) then
+  begin
+    DM.ZQConsCentro.Close;
+    DM.ZQConsCentro.SQL.Clear;
+    DM.ZQConsCentro.SQL.Add(
+      'select * from centro_custo where censtatus=0 and cennome like' +
+      QuotedStr('%' + EdtNome1.Text + '%'));
+    DM.ZQConsCentro.Open;
+  end;
+
 end;
 
 procedure TFrmCadCentroCusto.FormResize(Sender: TObject);
@@ -127,8 +229,8 @@ end;
 
 procedure TFrmCadCentroCusto.FormShow(Sender: TObject);
 begin
-  DM.ZQConsCentro.Active:= true;
-  RgbStatus.Visible:=False;
+  DM.ZQConsCentro.Active := True;
+  RgbStatus.Visible := False;
 end;
 
 procedure TFrmCadCentroCusto.Label4Click(Sender: TObject);

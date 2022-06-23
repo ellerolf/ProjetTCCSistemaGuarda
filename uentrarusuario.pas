@@ -28,7 +28,9 @@ type
     procedure BtnEntrarClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
     procedure ChkMostrarChange(Sender: TObject);
+    procedure EdtSenhaKeyPress(Sender: TObject; var Key: char);
     procedure EdtUsuarioChange(Sender: TObject);
+    procedure EdtUsuarioKeyPress(Sender: TObject; var Key: char);
     procedure FormCreate(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure Image1Click(Sender: TObject);
@@ -103,10 +105,26 @@ begin
   end;
 end;
 
+procedure TFrmEntrarUsuario.EdtSenhaKeyPress(Sender: TObject; var Key: char);
+begin
+  if key=#13 then
+  begin
+       BtnEntrar.Click;
+  end;
+end;
+
 procedure TFrmEntrarUsuario.EdtUsuarioChange(Sender: TObject);
 begin
 
 
+end;
+
+procedure TFrmEntrarUsuario.EdtUsuarioKeyPress(Sender: TObject; var Key: char);
+begin
+  if key=#13 then
+  begin
+    EdtSenha.setfocus;
+  end;
 end;
 
 procedure TFrmEntrarUsuario.FormCreate(Sender: TObject);

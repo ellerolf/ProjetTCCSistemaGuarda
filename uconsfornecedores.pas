@@ -237,6 +237,7 @@ end;
 procedure TFrmConsFornecedores.FormShow(Sender: TObject);
 begin
   dm.ZQConsPessoas.Active := True;
+
 end;
 
 procedure TFrmConsFornecedores.GrCNPJCellClick(Column: TColumn);

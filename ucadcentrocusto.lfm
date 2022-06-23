@@ -2,11 +2,11 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
   Left = -8
   Height = 788
   Top = -8
-  Width = 1330
+  Width = 1346
   BorderStyle = bsNone
   Caption = 'FrmCadCentroCusto'
-  ClientHeight = 750
-  ClientWidth = 1330
+  ClientHeight = 749
+  ClientWidth = 1346
   Color = 16577259
   OnResize = FormResize
   OnShow = FormShow
@@ -14,21 +14,21 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 750
+    Height = 749
     Top = 0
-    Width = 1330
+    Width = 1346
     Align = alClient
-    ClientHeight = 750
-    ClientWidth = 1330
+    ClientHeight = 749
+    ClientWidth = 1346
     TabOrder = 0
     object Panel2: TPanel
       Left = 0
-      Height = 680
+      Height = 672
       Top = 0
       Width = 750
       BevelOuter = bvNone
       Caption = 'Panel2'
-      ClientHeight = 680
+      ClientHeight = 672
       ClientWidth = 750
       TabOrder = 0
       OnClick = Panel2Click
@@ -99,7 +99,7 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
       object Label4: TLabel
         Left = 56
         Height = 17
-        Top = 192
+        Top = 176
         Width = 58
         Caption = 'Consulta:'
         Font.CharSet = ANSI_CHARSET
@@ -110,12 +110,13 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
         ParentColor = False
         ParentFont = False
       end
-      object CboTipo1: TComboBox
+      object CboTipo: TComboBox
         Left = 64
         Height = 23
-        Top = 240
+        Top = 224
         Width = 136
         ItemHeight = 15
+        ItemIndex = 0
         Items.Strings = (
           'SELECIONE OPÇÃO'
           'RECEITA'
@@ -123,11 +124,12 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
         )
         Style = csDropDownList
         TabOrder = 1
+        Text = 'SELECIONE OPÇÃO'
       end
       object Label5: TLabel
         Left = 64
         Height = 17
-        Top = 216
+        Top = 200
         Width = 28
         Caption = 'Tipo'
         Font.CharSet = ANSI_CHARSET
@@ -141,31 +143,36 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
       object EdtNome1: TEdit
         Left = 346
         Height = 23
-        Top = 240
+        Top = 224
         Width = 310
+        OnChange = EdtNome1Change
         TabOrder = 2
       end
       object DBGrid1: TDBGrid
         Left = 64
         Height = 347
-        Top = 277
+        Top = 261
         Width = 592
         Color = 16577259
         Columns = <        
           item
             Title.Caption = 'CODIGO'
+            Width = 60
             FieldName = 'CENCODIGO'
           end        
           item
             Title.Caption = 'NOME'
+            Width = 200
             FieldName = 'CENNOME'
           end        
           item
             Title.Caption = 'TIPO'
+            Width = 100
             FieldName = 'CODIGOTIP'
           end        
           item
             Title.Caption = 'STATUS'
+            Width = 100
             FieldName = 'CENSTATUS'
           end>
         DataSource = DM.DSConsCentro
@@ -182,7 +189,7 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
       object Label6: TLabel
         Left = 346
         Height = 17
-        Top = 216
+        Top = 200
         Width = 66
         Caption = 'Por Nome:'
         Font.CharSet = ANSI_CHARSET
@@ -196,7 +203,7 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
       object BtnSair: TSpeedButton
         Left = 544
         Height = 34
-        Top = 639
+        Top = 623
         Width = 124
         AutoSize = True
         Glyph.Data = {
@@ -658,7 +665,7 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
       object BtnSalvar: TSpeedButton
         Left = 416
         Height = 34
-        Top = 639
+        Top = 623
         Width = 124
         AutoSize = True
         Glyph.Data = {
@@ -1120,7 +1127,7 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
       object BtnAlterar: TSpeedButton
         Left = 288
         Height = 34
-        Top = 639
+        Top = 623
         Width = 124
         AutoSize = True
         Glyph.Data = {
@@ -1602,12 +1609,13 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
         )
         TabOrder = 4
       end
-      object ComboBox1: TComboBox
+      object CboStatus: TComboBox
         Left = 205
         Height = 23
-        Top = 240
+        Top = 224
         Width = 136
         ItemHeight = 15
+        ItemIndex = 0
         Items.Strings = (
           'SELECIONE OPÇÃO'
           'ATIVO'
@@ -1615,11 +1623,12 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
         )
         Style = csDropDownList
         TabOrder = 5
+        Text = 'SELECIONE OPÇÃO'
       end
       object Label8: TLabel
         Left = 208
         Height = 17
-        Top = 216
+        Top = 200
         Width = 38
         Caption = 'Status'
         Font.CharSet = ANSI_CHARSET
