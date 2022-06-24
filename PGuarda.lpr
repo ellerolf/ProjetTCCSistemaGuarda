@@ -17,7 +17,6 @@ begin
   RequireDerivedFormResource:=True;
   Application.Scaled:=True;
   Application.Initialize;
-  Application.CreateForm(TFrmEntrarUsuario, FrmEntrarUsuario);
   Application.CreateForm(TFrmMenu, FrmMenu);
   Application.CreateForm(TFrmCadContasBancarias, FrmCadContasBancarias);
   Application.CreateForm(TFrmCadFornecedor, FrmCadFornecedor);
@@ -29,6 +28,7 @@ begin
   Application.CreateForm(TFrmConsContas, FrmConsContas);
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TFrmBuscaConta, FrmBuscaConta);
+  Application.CreateForm(TFrmEntrarUsuario, FrmEntrarUsuario);
   Application.Run;
 end.
 

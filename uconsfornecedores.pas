@@ -6,15 +6,14 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, Buttons,
-  StdCtrls, ComCtrls, DBGrids, UModulo;
+  StdCtrls, ComCtrls, DBGrids, UModulo, uCadFornecedores;
 
 type
 
   { TFrmConsFornecedores }
 
   TFrmConsFornecedores = class(TForm)
-    BtnAlterar: TSpeedButton;
-    BtnConsulta: TSpeedButton;
+    BtnBuscaFornecedores: TSpeedButton;
     BtnSair: TSpeedButton;
     CboStatus: TComboBox;
     CboTipoPessoa: TComboBox;
@@ -28,7 +27,7 @@ type
     Label7: TLabel;
     Panel1: TPanel;
     Panel2: TPanel;
-    procedure BtnAlterarClick(Sender: TObject);
+    procedure BtnBuscaFornecedoresClick(Sender: TObject);
     procedure BtnConsultaClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
     procedure CboStatusChange(Sender: TObject);
@@ -196,8 +195,34 @@ end;
 
 procedure TFrmConsFornecedores.EdtConsultaChange(Sender: TObject);
 begin
-  if ((CboStatus.ItemIndex = 0) and (CboTipoPessoa.ItemIndex = 0)) then
-    //FAZER O IF SANDO CBOTIPO
+  if (CboTipoPessoa.ItemIndex = 1) then
+    //CPF
+  begin
+    dm.ZQConsPessoas.Close;
+    dm.ZQConsPessoas.Sql.Clear;
+    dm.ZQConsPessoas.sql.Add(
+      'select * from vwpessoas where CPF like' +
+      QuotedStr('%' + EdtConsulta.Text + '%'));
+    dm.ZQConsPessoas.Open;
+    GrTodos.Visible := False;
+    GrCNPJ.Visible := False;
+    GrCPF.Visible := True;
+  end
+  else if (CboTipoPessoa.ItemIndex = 2) then
+    //CNPJ
+  begin
+    dm.ZQConsPessoas.Close;
+    dm.ZQConsPessoas.Sql.Clear;
+    dm.ZQConsPessoas.sql.Add(
+      'select * from vwpessoas where CNPJ like' +
+      QuotedStr('%' + EdtConsulta.Text + '%'));
+    dm.ZQConsPessoas.Open;
+    GrTodos.Visible := False;
+    GrCNPJ.Visible := True;
+    GrCPF.Visible := False;
+  end
+  else
+  //NOME
   begin
     dm.ZQConsPessoas.Close;
     dm.ZQConsPessoas.Sql.Clear;
@@ -210,6 +235,8 @@ begin
     GrCPF.Visible := False;
   end;
 
+
+
 end;
 
 procedure TFrmConsFornecedores.FormClose(Sender: TObject;
@@ -218,9 +245,9 @@ begin
   dm.ZQConsPessoas.Active := False;
 end;
 
-procedure TFrmConsFornecedores.BtnAlterarClick(Sender: TObject);
+procedure TFrmConsFornecedores.BtnBuscaFornecedoresClick(Sender: TObject);
 begin
-
+  FrmCadFornecedor.show;
 end;
 
 procedure TFrmConsFornecedores.BtnConsultaClick(Sender: TObject);

@@ -13,6 +13,7 @@ type
   { TFrmCadFornecedor }
 
   TFrmCadFornecedor = class(TForm)
+    BtnAlterar: TSpeedButton;
     BtnCnpj: TRadioButton;
     BtnAtivo: TRadioButton;
     BtnCpf: TRadioButton;
@@ -22,18 +23,12 @@ type
     CboUf: TComboBox;
     DTNasc: TDateEdit;
     EdtBairro: TEdit;
-    EdtCel: TEdit;
-    EdtCep: TEdit;
     EdtCidade: TEdit;
     EdtComplemento: TEdit;
-    EdtEmail: TEdit;
     EdtEndereco: TEdit;
     EdtFantasia: TEdit;
-    EdtInsEstadual: TEdit;
-    EdtInsMunicipal: TEdit;
     EdtNome: TEdit;
     EdtNumero: TEdit;
-    EdtTel: TEdit;
     GrpCnpjCpf: TGroupBox;
     GrpStatus: TGroupBox;
     LblNomeRazao: TLabel;
@@ -56,23 +51,32 @@ type
     LblEndereco: TLabel;
     LblMensagem: TLabel;
     EdtCpfCnpj: TMaskEdit;
+    EdtCep: TMaskEdit;
+    EdtTel: TMaskEdit;
+    EdtCel: TMaskEdit;
+    EdtEmail: TMaskEdit;
+    EdtInsEstadual: TMaskEdit;
+    EdtInsMunicipal: TMaskEdit;
     MemObs: TMemo;
     Panel1: TPanel;
     Panel2: TPanel;
+    procedure BtnAlterarClick(Sender: TObject);
     procedure BtnAtivoChange(Sender: TObject);
     procedure BtnCnpjChange(Sender: TObject);
     procedure BtnCpfChange(Sender: TObject);
     procedure BtnInativoChange(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
     procedure BtnSalvarClick(Sender: TObject);
+    procedure EdtCpfCnpjChange(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure GrpCnpjCpfClick(Sender: TObject);
     procedure Label7Click(Sender: TObject);
+    procedure EdtCepChange(Sender: TObject);
   private
-
+    procedure mascaras();
   public
 
   end;
@@ -92,6 +96,20 @@ begin
 
 end;
 
+procedure TFrmCadFornecedor.EdtCepChange(Sender: TObject);
+begin
+
+end;
+
+procedure TFrmCadFornecedor.mascaras;
+begin
+  EdtCep.EditMask := '00000-000;1;_';
+  EdtTel.EditMask := '(00) 0000-0000;1;_';
+  EdtCel.EditMask := '(00) 00000-0000;1;_';
+  EdtInsEstadual.EditMask := '000000000;1;_';
+  EdtInsMunicipal.EditMask := '00000000000;1;_';
+end;
+
 procedure TFrmCadFornecedor.BtnSairClick(Sender: TObject);
 begin
   Close;
@@ -106,6 +124,7 @@ begin
   EdtInsEstadual.Enabled := True;
   EdtInsMunicipal.Enabled := True;
   DTNasc.Enabled := False;
+  mascaras();
 end;
 
 procedure TFrmCadFornecedor.BtnAtivoChange(Sender: TObject);
@@ -113,6 +132,11 @@ begin
   BtnAtivo.Enabled := True;
   BtnAtivo.Checked := True;
   EdtCpfCnpj.SetFocus;
+end;
+
+procedure TFrmCadFornecedor.BtnAlterarClick(Sender: TObject);
+begin
+
 end;
 
 procedure TFrmCadFornecedor.BtnCpfChange(Sender: TObject);
@@ -124,6 +148,7 @@ begin
   EdtInsEstadual.Enabled := False;
   EdtInsMunicipal.Enabled := False;
   DTNasc.Enabled := True;
+  mascaras();
 end;
 
 procedure TFrmCadFornecedor.BtnInativoChange(Sender: TObject);
@@ -310,9 +335,13 @@ begin
 
 end;
 
-procedure TFrmCadFornecedor.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+procedure TFrmCadFornecedor.EdtCpfCnpjChange(Sender: TObject);
 begin
 
+end;
+
+procedure TFrmCadFornecedor.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+begin
 
 end;
 
