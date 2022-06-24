@@ -104,6 +104,7 @@ procedure TFrmBuscaConta.RGBTipoContaClick(Sender: TObject);
 begin
    if (RGBTipoConta.ItemIndex=0) then
   begin
+    EdtConsulta.Clear;
     DBGCaixa.Visible:=true;
     DBGContasBanc.Visible:=false;
     DM.ZQBuscaConta.Close;
@@ -114,6 +115,7 @@ begin
   else
   if(RGBTipoConta.ItemIndex=1) then
   begin
+    EdtConsulta.Clear;
     DBGCaixa.Visible:=false;
     DBGContasBanc.Visible:=true;
     DM.ZQBuscaConta.Close;

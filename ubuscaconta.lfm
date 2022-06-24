@@ -10,6 +10,7 @@ object FrmBuscaConta: TFrmBuscaConta
   OnClose = FormClose
   OnShow = FormShow
   Position = poDesktopCenter
+  LCLVersion = '2.2.2.0'
   object Panel1: TPanel
     Left = 0
     Height = 492
