@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 23-Jun-2022 às 03:31
+-- Tempo de geração: 25-Jun-2022 às 00:54
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.5
 
@@ -207,9 +207,9 @@ CREATE TABLE `pessoa` (
 
 INSERT INTO `pessoa` (`PESCODIGO`, `PESNOME`, `CODIGOTIP`, `PESCPF`, `PESDATA_NASCIMENTO`, `PESCNPJ`, `PESNOME_FANTASIA`, `PESINSCRICAO_ESTADUAL`, `PESINSCRICAO_MUNICIPAL`, `PESCEP`, `PESENDERECO`, `PESNUMERO`, `PESCOMPLEMENTO`, `PESESTADO`, `PESCIDADE`, `PESBAIRRO`, `PESEMAIL`, `PESTELEFONE`, `PESCELULAR`, `PESOBSERVACAO`, `PESSTATUS`) VALUES
 (1, 'GABRIELLE ROBERTA FERREIRA', 1, '123.456.789-X', '1998-04-29', NULL, NULL, NULL, NULL, '18800-000', 'RUA DAS FLORES', 2, 'APARTAMENTO', 'SP', 'PIRAJU', 'BAIRRO DAS CAPIVARA', 'GR@GMAIL.COM', '14-3351-0000', '14-99838-9911', 'devedora', 1),
-(2, NULL, 2, NULL, NULL, '14.041.086/0001-05', 'ESCRITORIO CONTABIL PADRAO', NULL, 8547, '18810-009', 'RUA MAJOR MARIANO', 1009, 'DE FRENTE A CASA DOS COLCHÃO', 'SP', 'PIRAJU', 'CENTRO', 'RH@HOTMAIL.COM', '14-3351-3500', '14-99838-1234', NULL, 1),
+(2, 'ESCRITORIO CONTABIL PADRAO', 2, NULL, NULL, '14.041.086/0001-05', 'ESCRITORIO CONTABIL PADRAO', NULL, 8547, '18810-009', 'RUA MAJOR MARIANO', 1009, 'DE FRENTE A CASA DOS COLCHÃO', 'SP', 'PIRAJU', 'CENTRO', 'RH@HOTMAIL.COM', '14-3351-3500', '14-99838-1234', NULL, 1),
 (3, 'GABRIEL', 1, '123.456.847-85', '2022-02-25', NULL, NULL, NULL, NULL, '18800-000', 'RUA ANTONIO BASTIAO NETO', 50, 'AO LADO DA BIQUEIRA', 'SP', 'PIRAJU', 'CENTRO', 'GABRIUEL@HOTMAIL.COM', '14-3351-1256', '14-99785-8596', 'FILHO DO PRESIDENTE DA GUARDA', 1),
-(4, NULL, 2, NULL, NULL, '10.262.602/0001-70', 'PORTAL ASSESSORIA E NEGOCIOS', 532568, 8596, '18800-009', 'R NENE FREITAS', 271, 'PERTO DOS BANCOS', 'SP', 'PIRAJU', 'CENTRO', 'CARLOS@HOTMAIL.COM', '3351-6050', '14-98596-5058', 'ÓTIMO FORNECEDOR', 1);
+(4, 'PORTAL ASSESSORIA E NEGOCIOS', 2, NULL, NULL, '10.262.602/0001-70', 'PORTAL ASSESSORIA E NEGOCIOS', 532568, 8596, '18800-009', 'R NENE FREITAS', 271, 'PERTO DOS BANCOS', 'SP', 'PIRAJU', 'CENTRO', 'CARLOS@HOTMAIL.COM', '3351-6050', '14-98596-5058', 'ÓTIMO FORNECEDOR', 1);
 
 -- --------------------------------------------------------
 
@@ -347,6 +347,16 @@ INSERT INTO `usuario` (`USUCODIGO`, `USUNOME`, `USULOGIN`, `USUSENHA`, `USUSTATU
 (16, '', '', '', 1, 1),
 (17, 'rafael', 'TTR', '12345678', 1, 2),
 (19, 'JOAO', 'JOAO', '12345678', 1, 2),
+(20, 'RAFAEL', 'RARA', '12345678', 1, 2),
+(1, 'GABRIELLE', 'GABRIELLE', '123', 1, 1),
+(2, 'RAFAELRR', 'RAFAEL', '12345678', 0, 2),
+(3, 'MARIA', 'MARIA', '12345', 0, 1),
+(4, 'ricardo', 'zemane', '123456', 1, 2),
+(11, 'bastião', 'Sebastião', '123456', 1, 2),
+(15, 'RAFEL', 'RAFEL', '1234', 1, 1),
+(16, '', '', '', 1, 1),
+(17, 'rafael', 'TTR', '12345678', 1, 2),
+(19, 'JOAO', 'JOAO', '12345678', 1, 2),
 (20, 'RAFAEL', 'RARA', '12345678', 1, 2);
 
 -- --------------------------------------------------------
@@ -404,7 +414,7 @@ CREATE TABLE `vwpessoas` (
 --
 DROP TABLE IF EXISTS `vwcontas`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vwcontas`  AS SELECT `c`.`CONCODIGO` AS `CONCODIGO`, `c`.`CONNOME` AS `CONNOME`, `c`.`CODIGOTIP` AS `CODIGOTIP`, `t`.`TIPNOME` AS `TIPNOME`, `c`.`CONAGENCIA` AS `CONAGENCIA`, `c`.`CONNUMERO_CONTA` AS `CONNUMERO_CONTA`, `c`.`CONSALDO_INICIAL` AS `CONSALDO_INICIAL`, `c`.`CONSTATUS` AS `CONSTATUS` FROM (`contas` `c` join `tipo_conta` `t`) WHERE `t`.`TIPCODIGO` = `c`.`CODIGOTIP``CODIGOTIP`  ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vwcontas`  AS SELECT `c`.`CONCODIGO` AS `CONCODIGO`, `c`.`CONNOME` AS `CONNOME`, `c`.`CODIGOTIP` AS `CODIGOTIP`, `t`.`TIPNOME` AS `TIPNOME`, `c`.`CONAGENCIA` AS `CONAGENCIA`, `c`.`CONNUMERO_CONTA` AS `CONNUMERO_CONTA`, `c`.`CONSALDO_INICIAL` AS `CONSALDO_INICIAL`, `c`.`CONSTATUS` AS `CONSTATUS` FROM (`contas` `c` join `tipo_conta` `t` on(`t`.`TIPCODIGO` = `c`.`CODIGOTIP`))  ;
 
 -- --------------------------------------------------------
 
@@ -505,150 +515,6 @@ ALTER TABLE `transferencia`
   ADD PRIMARY KEY (`TRACODIGO`),
   ADD KEY `TRACODIGO_CONORI` (`TRACODIGO_CONORI`),
   ADD KEY `TRACODIGO_CONDES` (`TRACODIGO_CONDES`);
-
---
--- Índices para tabela `usuario`
---
-ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`USUCODIGO`),
-  ADD UNIQUE KEY `USULOGIN` (`USULOGIN`),
-  ADD KEY `CODIGONIV` (`CODIGONIV`);
-
---
--- AUTO_INCREMENT de tabelas despejadas
---
-
---
--- AUTO_INCREMENT de tabela `baixa`
---
-ALTER TABLE `baixa`
-  MODIFY `BAICODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de tabela `centro_custo`
---
-ALTER TABLE `centro_custo`
-  MODIFY `CENCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT de tabela `contas`
---
-ALTER TABLE `contas`
-  MODIFY `CONCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT de tabela `forma_pagamento`
---
-ALTER TABLE `forma_pagamento`
-  MODIFY `FORCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT de tabela `lancamento`
---
-ALTER TABLE `lancamento`
-  MODIFY `LANCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT de tabela `nivel_acesso`
---
-ALTER TABLE `nivel_acesso`
-  MODIFY `NIVCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática de código', AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de tabela `pessoa`
---
-ALTER TABLE `pessoa`
-  MODIFY `PESCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT de tabela `tipo_centro_custo`
---
-ALTER TABLE `tipo_centro_custo`
-  MODIFY `TIPCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de tabela `tipo_conta`
---
-ALTER TABLE `tipo_conta`
-  MODIFY `TIPCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT de tabela `tipo_documento`
---
-ALTER TABLE `tipo_documento`
-  MODIFY `DOCCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT de tabela `tipo_pessoa`
---
-ALTER TABLE `tipo_pessoa`
-  MODIFY `TIPCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de tabela `transferencia`
---
-ALTER TABLE `transferencia`
-  MODIFY `TRACODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT de tabela `usuario`
---
-ALTER TABLE `usuario`
-  MODIFY `USUCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=22;
-
---
--- Restrições para despejos de tabelas
---
-
---
--- Limitadores para a tabela `baixa`
---
-ALTER TABLE `baixa`
-  ADD CONSTRAINT `baixa_ibfk_1` FOREIGN KEY (`CODIGOLAN`) REFERENCES `lancamento` (`LANCODIGO`),
-  ADD CONSTRAINT `baixa_ibfk_2` FOREIGN KEY (`CODIGOFOR`) REFERENCES `forma_pagamento` (`FORCODIGO`),
-  ADD CONSTRAINT `baixa_ibfk_3` FOREIGN KEY (`CODIGOCON`) REFERENCES `contas` (`CONCODIGO`),
-  ADD CONSTRAINT `baixa_ibfk_4` FOREIGN KEY (`CODIGOUSU`) REFERENCES `usuario` (`USUCODIGO`);
-
---
--- Limitadores para a tabela `centro_custo`
---
-ALTER TABLE `centro_custo`
-  ADD CONSTRAINT `centro_custo_ibfk_1` FOREIGN KEY (`CODIGOTIP`) REFERENCES `tipo_centro_custo` (`TIPCODIGO`);
-
---
--- Limitadores para a tabela `contas`
---
-ALTER TABLE `contas`
-  ADD CONSTRAINT `contas_ibfk_1` FOREIGN KEY (`CODIGOTIP`) REFERENCES `tipo_conta` (`TIPCODIGO`);
-
---
--- Limitadores para a tabela `lancamento`
---
-ALTER TABLE `lancamento`
-  ADD CONSTRAINT `lancamento_ibfk_1` FOREIGN KEY (`CODIGODOC`) REFERENCES `tipo_documento` (`DOCCODIGO`),
-  ADD CONSTRAINT `lancamento_ibfk_2` FOREIGN KEY (`CODIGOPES`) REFERENCES `pessoa` (`PESCODIGO`),
-  ADD CONSTRAINT `lancamento_ibfk_3` FOREIGN KEY (`CODIGOCEN`) REFERENCES `centro_custo` (`CENCODIGO`),
-  ADD CONSTRAINT `lancamento_ibfk_4` FOREIGN KEY (`CODIGOUSU`) REFERENCES `usuario` (`USUCODIGO`),
-  ADD CONSTRAINT `lancamento_ibfk_5` FOREIGN KEY (`CODIGOUSU`) REFERENCES `usuario` (`USUCODIGO`);
-
---
--- Limitadores para a tabela `pessoa`
---
-ALTER TABLE `pessoa`
-  ADD CONSTRAINT `pessoa_ibfk_1` FOREIGN KEY (`CODIGOTIP`) REFERENCES `tipo_pessoa` (`TIPCODIGO`);
-
---
--- Limitadores para a tabela `transferencia`
---
-ALTER TABLE `transferencia`
-  ADD CONSTRAINT `transferencia_ibfk_2` FOREIGN KEY (`TRACODIGO_CONORI`) REFERENCES `contas` (`CONCODIGO`),
-  ADD CONSTRAINT `transferencia_ibfk_3` FOREIGN KEY (`TRACODIGO_CONDES`) REFERENCES `contas` (`CONCODIGO`);
-
---
--- Limitadores para a tabela `usuario`
---
-ALTER TABLE `usuario`
-  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`CODIGONIV`) REFERENCES `nivel_acesso` (`NIVCODIGO`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
