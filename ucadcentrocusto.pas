@@ -38,6 +38,7 @@ type
     procedure BtnSalvarClick(Sender: TObject);
     procedure DBGrid1CellClick(Column: TColumn);
     procedure EdtNome1Change(Sender: TObject);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormResize(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Label4Click(Sender: TObject);
@@ -66,57 +67,74 @@ end;
 
 procedure TFrmCadCentroCusto.BtnAlterarClick(Sender: TObject);
 begin
-  RgbStatus.Visible := True;
-
-  DM.ZQAltCentro.Params.ParamByName('pcennome').Value := EdtNome.Text;
-  if (RgbTipo.ItemIndex = 0) then
+  if (EdtNome.Text='') or (RgbTipo.ItemIndex=-1) or (RgbStatus.ItemIndex=-1) then
   begin
-    DM.ZQAltCentro.Params.ParamByName('pcodigotip').Value := 1;
+     LblMensagem.Caption:='CAMPOS FALTANDO';
   end
   else
-  if (RgbTipo.ItemIndex = 1) then
   begin
-    DM.ZQAltCentro.Params.ParamByName('pcodigotip').Value := 2;
+    RgbStatus.Visible := True;
+
+    DM.ZQAltCentro.Params.ParamByName('pcennome').Value := EdtNome.Text;
+    if (RgbTipo.ItemIndex = 0) then
+    begin
+      DM.ZQAltCentro.Params.ParamByName('pcodigotip').Value := 1;
+    end
+    else
+      if (RgbTipo.ItemIndex = 1) then
+      begin
+        DM.ZQAltCentro.Params.ParamByName('pcodigotip').Value := 2;
+      end;
+
+      if (RgbStatus.ItemIndex=0)then
+      begin
+        DM.ZQAltCentro.Params.ParamByName('pcenstatus').Value:=1;
+      end
+      else
+      if (RgbStatus.ItemIndex=1)then
+      begin
+        DM.ZQAltCentro.Params.ParamByName('pcenstatus').Value:=0;
+      end;
+      DM.ZQAltCentro.Params.ParamByName('pcencodigo').Value := DM.ZQConsCentroCENCODIGO.AsInteger;
+      DM.ZQAltCentro.ExecSQL;
+
+      DM.ZQConsCentro.Close;
+      DM.ZQConsCentro.Open;
+
+      EdtNome.Clear;
+      RgbTipo.ItemIndex := -1;
+      RgbStatus.ItemIndex:=-1;
+      RgbStatus.Visible:=false;
   end;
-
-  if (RgbStatus.ItemIndex=0)then
-  begin
-    DM.ZQAltCentro.Params.ParamByName('pcenstatus').Value:=1;
-  end
-  else
-  if (RgbStatus.ItemIndex=1)then
-  begin
-    DM.ZQAltCentro.Params.ParamByName('pcenstatus').Value:=0;
-  end;
-  DM.ZQAltCentro.Params.ParamByName('pcencodigo').Value := DM.ZQConsCentroCENCODIGO.AsInteger;
-  DM.ZQAltCentro.ExecSQL;
-
-  DM.ZQConsCentro.Close;
-  DM.ZQConsCentro.Open;
-
-  EdtNome.Clear;
-  RgbTipo.ItemIndex := -1;
 end;
 
 procedure TFrmCadCentroCusto.BtnSalvarClick(Sender: TObject);
 begin
-  DM.ZQCadCentro.Params.ParamByName('pcennome').Value := EdtNome.Text;
-  if (RgbTipo.ItemIndex = 0) then
+  if(EdtNome.Text='') or (RgbTipo.ItemIndex=-1) then
   begin
-    DM.ZQCadCentro.Params.ParamByName('pcodigotip').Value := 1;
+    LblMensagem.Caption:='CAMPOS FALTANDO';
   end
   else
-  if (RgbTipo.ItemIndex = 0) then
   begin
-    DM.ZQCadCentro.Params.ParamByName('pcodigotip').Value := 2;
+    DM.ZQCadCentro.Params.ParamByName('pcennome').Value := EdtNome.Text;
+    if (RgbTipo.ItemIndex = 0) then
+    begin
+      DM.ZQCadCentro.Params.ParamByName('pcodigotip').Value := 1;
+    end
+    else
+    if (RgbTipo.ItemIndex = 0) then
+    begin
+      DM.ZQCadCentro.Params.ParamByName('pcodigotip').Value := 2;
+    end;
+    DM.ZQCadCentro.ExecSQL;
+
+    DM.ZQConsCentro.Close;
+    DM.ZQConsCentro.Open;
+
+    EdtNome.Clear;
+    RgbTipo.ItemIndex := -1;
+    LblMensagem.Caption:='*Campos Obrigatorios';
   end;
-  DM.ZQCadCentro.ExecSQL;
-
-  DM.ZQConsCentro.Close;
-  DM.ZQConsCentro.Open;
-
-  EdtNome.Clear;
-  RgbTipo.ItemIndex := -1;
 end;
 
 procedure TFrmCadCentroCusto.DBGrid1CellClick(Column: TColumn);
@@ -193,9 +211,7 @@ begin
     DM.ZQConsCentro.Close;
     DM.ZQConsCentro.SQL.Clear;
     DM.ZQConsCentro.SQL.Add(
-      'select * from centro_custo where codigotip=2 and censtatus=1 and cennome like' +
-      QuotedStr(
-      '%' + EdtNome1.Text + '%'));
+      'select * from centro_custo where codigotip=2 and censtatus=1 and cennome like' +QuotedStr('%' + EdtNome1.Text + '%'));
     DM.ZQConsCentro.Open;
   end
   else
@@ -204,8 +220,7 @@ begin
     DM.ZQConsCentro.Close;
     DM.ZQConsCentro.SQL.Clear;
     DM.ZQConsCentro.SQL.Add(
-      'select * from centro_custo where censtatus=1 and cennome like' +
-      QuotedStr('%' + EdtNome1.Text + '%'));
+      'select * from centro_custo where censtatus=1 and cennome like' +QuotedStr('%' + EdtNome1.Text + '%'));
     DM.ZQConsCentro.Open;
   end
   else
@@ -214,11 +229,21 @@ begin
     DM.ZQConsCentro.Close;
     DM.ZQConsCentro.SQL.Clear;
     DM.ZQConsCentro.SQL.Add(
-      'select * from centro_custo where censtatus=0 and cennome like' +
-      QuotedStr('%' + EdtNome1.Text + '%'));
+      'select * from centro_custo where censtatus=0 and cennome like' +QuotedStr('%' + EdtNome1.Text + '%'));
     DM.ZQConsCentro.Open;
   end;
+end;
 
+procedure TFrmCadCentroCusto.FormClose(Sender: TObject;
+  var CloseAction: TCloseAction);
+begin
+  EdtNome.Text:='';
+  EdtNome1.Text:='';
+  CboTipo.ItemIndex:=-1;
+  CboStatus.ItemIndex:=-1;
+  RgbTipo.ItemIndex:=0;
+  RgbStatus.ItemIndex:=0;
+  LblMensagem.Caption:='*Campos Obrigatorios';
 end;
 
 procedure TFrmCadCentroCusto.FormResize(Sender: TObject);
@@ -231,6 +256,13 @@ procedure TFrmCadCentroCusto.FormShow(Sender: TObject);
 begin
   DM.ZQConsCentro.Active := True;
   RgbStatus.Visible := False;
+  EdtNome.Text:='';
+  EdtNome1.Text:='';
+  CboTipo.ItemIndex:=-1;
+  CboStatus.ItemIndex:=-1;
+  RgbTipo.ItemIndex:=0;
+  RgbStatus.ItemIndex:=0;
+  LblMensagem.Caption:='*Campos Obrigatorios';
 end;
 
 procedure TFrmCadCentroCusto.Label4Click(Sender: TObject);

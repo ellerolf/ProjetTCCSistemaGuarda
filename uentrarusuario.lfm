@@ -6,12 +6,13 @@ object FrmEntrarUsuario: TFrmEntrarUsuario
   BorderIcons = [biSystemMenu]
   BorderStyle = bsNone
   Caption = 'Acesso ao Sistema'
-  ClientHeight = 749
+  ClientHeight = 788
   ClientWidth = 950
   Color = 14927272
   OnCreate = FormCreate
   OnResize = FormResize
   Position = poDesktopCenter
+  LCLVersion = '2.2.2.0'
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0

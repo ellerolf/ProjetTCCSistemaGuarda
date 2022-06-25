@@ -2,33 +2,34 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
   Left = -8
   Height = 788
   Top = -8
-  Width = 1346
+  Width = 1378
   BorderStyle = bsNone
   Caption = 'FrmCadCentroCusto'
-  ClientHeight = 749
-  ClientWidth = 1346
+  ClientHeight = 750
+  ClientWidth = 1370
   Color = 16577259
+  OnClose = FormClose
   OnResize = FormResize
   OnShow = FormShow
   Position = poScreenCenter
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 749
+    Height = 750
     Top = 0
-    Width = 1346
+    Width = 1370
     Align = alClient
-    ClientHeight = 749
-    ClientWidth = 1346
+    ClientHeight = 750
+    ClientWidth = 1370
     TabOrder = 0
     object Panel2: TPanel
       Left = 0
-      Height = 672
+      Height = 640
       Top = 0
       Width = 750
       BevelOuter = bvNone
       Caption = 'Panel2'
-      ClientHeight = 672
+      ClientHeight = 640
       ClientWidth = 750
       TabOrder = 0
       OnClick = Panel2Click
@@ -150,7 +151,7 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
       end
       object DBGrid1: TDBGrid
         Left = 64
-        Height = 347
+        Height = 307
         Top = 261
         Width = 592
         Color = 16577259
@@ -203,7 +204,7 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
       object BtnSair: TSpeedButton
         Left = 544
         Height = 34
-        Top = 623
+        Top = 590
         Width = 124
         AutoSize = True
         Glyph.Data = {
@@ -665,7 +666,7 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
       object BtnSalvar: TSpeedButton
         Left = 416
         Height = 34
-        Top = 623
+        Top = 590
         Width = 124
         AutoSize = True
         Glyph.Data = {
@@ -1127,7 +1128,7 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
       object BtnAlterar: TSpeedButton
         Left = 288
         Height = 34
-        Top = 623
+        Top = 590
         Width = 124
         AutoSize = True
         Glyph.Data = {
