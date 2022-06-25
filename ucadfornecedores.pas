@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, Buttons,
-  StdCtrls, MaskEdit, EditBtn, UModulo;
+  StdCtrls, MaskEdit, EditBtn, UModulo, UConsFornecedores;
 
 type
 
@@ -113,6 +113,7 @@ end;
 procedure TFrmCadFornecedor.BtnSairClick(Sender: TObject);
 begin
   Close;
+  FrmConsFornecedores.PnChama.Visible:=false;
 end;
 
 procedure TFrmCadFornecedor.BtnCnpjChange(Sender: TObject);

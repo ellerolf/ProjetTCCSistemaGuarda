@@ -24,6 +24,7 @@ type
     procedure BtnConsultaClick(Sender: TObject);
     procedure BtnSelecione1Click(Sender: TObject);
     procedure BtnSelecioneClick(Sender: TObject);
+    procedure DBGContasBancCellClick(Column: TColumn);
     procedure EdtConsultaChange(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormShow(Sender: TObject);
@@ -72,9 +73,24 @@ end;
 
 procedure TFrmBuscaConta.BtnSelecioneClick(Sender: TObject);
 begin
-  //If(BtnConsultaOClick) then
-  //FrmCadContasBancarias.EdtCodContaO.Text:=dm.ZQBuscaContaCONCODIGO.AsString;
-  //FrmCadContasBancarias.show;
+  If(FrmCadContasBancarias.AcionaBtnO='o') then
+  begin
+  FrmCadContasBancarias.EdtCodContaO.Text:=dm.ZQBuscaContaCONCODIGO.AsString;
+  FrmBuscaConta.close;
+  FrmCadContasBancarias.AcionaBtnO:='';
+  end;
+
+  If(FrmCadContasBancarias.AcionaBtnD='d') then
+  begin
+  FrmCadContasBancarias.EdtCodContaDes.Text:=dm.ZQBuscaContaCONCODIGO.AsString;
+  FrmBuscaConta.close;
+  FrmCadContasBancarias.AcionaBtnD:='';
+  end;
+end;
+
+procedure TFrmBuscaConta.DBGContasBancCellClick(Column: TColumn);
+begin
+
 end;
 
 procedure TFrmBuscaConta.EdtConsultaChange(Sender: TObject);

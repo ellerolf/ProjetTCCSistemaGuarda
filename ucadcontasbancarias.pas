@@ -14,7 +14,6 @@ type
 
   TFrmCadContasBancarias = class(TForm)
     BtnConsultaO: TSpeedButton;
-    BtnConsultaD: TSpeedButton;
     CboTipo: TDBLookupComboBox;
     DtDataTransf: TDateEdit;
     EdtCodContaO: TEdit;
@@ -47,6 +46,8 @@ type
     LblMensagem: TLabel;
     Panel1: TPanel;
     Panel2: TPanel;
+    BtnConsultaD: TSpeedButton;
+    procedure BtnConsultaDClick(Sender: TObject);
     procedure BtnConsultaOClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
     procedure BtnSalvarClick(Sender: TObject);
@@ -67,7 +68,8 @@ type
   private
 
   public
-
+     AcionaBtnO:string;
+     AcionaBtnD:String;
   end;
 
 var
@@ -93,7 +95,14 @@ end;
 
 procedure TFrmCadContasBancarias.BtnConsultaOClick(Sender: TObject);
 begin
+  AcionaBtnO:='o';
   FrmBuscaConta.ShowModal;
+end;
+
+procedure TFrmCadContasBancarias.BtnConsultaDClick(Sender: TObject);
+begin
+     AcionaBtnD:='d';
+     FrmBuscaConta.ShowModal;
 end;
 
 procedure TFrmCadContasBancarias.BtnSalvarClick(Sender: TObject);

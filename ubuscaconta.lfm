@@ -10,7 +10,6 @@ object FrmBuscaConta: TFrmBuscaConta
   OnClose = FormClose
   OnShow = FormShow
   Position = poDesktopCenter
-  LCLVersion = '2.2.2.0'
   object Panel1: TPanel
     Left = 0
     Height = 492
@@ -569,6 +568,7 @@ object FrmBuscaConta: TFrmBuscaConta
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
       TabOrder = 3
       Visible = False
+      OnCellClick = DBGContasBancCellClick
     end
   end
 end

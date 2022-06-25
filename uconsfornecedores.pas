@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, Buttons,
-  StdCtrls, ComCtrls, DBGrids, UModulo, uCadFornecedores;
+  StdCtrls, ComCtrls, DBGrids, UModulo;
 
 type
 
@@ -27,6 +27,7 @@ type
     Label7: TLabel;
     Panel1: TPanel;
     Panel2: TPanel;
+    PnChama: TPanel;
     procedure BtnBuscaFornecedoresClick(Sender: TObject);
     procedure BtnConsultaClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
@@ -34,10 +35,12 @@ type
     procedure CboTipoPessoaChange(Sender: TObject);
     procedure EdtConsultaChange(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
+    procedure FormCreate(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure GrCNPJCellClick(Column: TColumn);
     procedure Label8Click(Sender: TObject);
+    procedure PnChamaClick(Sender: TObject);
   private
     procedure BuscaDados();
   public
@@ -52,8 +55,13 @@ implementation
 {$R *.lfm}
 
 { TFrmConsFornecedores }
-
+ uses uCadFornecedores;
 procedure TFrmConsFornecedores.Label8Click(Sender: TObject);
+begin
+
+end;
+
+procedure TFrmConsFornecedores.PnChamaClick(Sender: TObject);
 begin
 
 end;
@@ -245,8 +253,16 @@ begin
   dm.ZQConsPessoas.Active := False;
 end;
 
+procedure TFrmConsFornecedores.FormCreate(Sender: TObject);
+begin
+
+end;
+
 procedure TFrmConsFornecedores.BtnBuscaFornecedoresClick(Sender: TObject);
 begin
+  PnChama.Visible:=true;
+  FrmCadFornecedor.Parent := PnChama;
+  FrmCadFornecedor.Align := alClient;
   FrmCadFornecedor.show;
 end;
 
@@ -264,7 +280,7 @@ end;
 procedure TFrmConsFornecedores.FormShow(Sender: TObject);
 begin
   dm.ZQConsPessoas.Active := True;
-
+  PnChama.Visible:= false;
 end;
 
 procedure TFrmConsFornecedores.GrCNPJCellClick(Column: TColumn);
