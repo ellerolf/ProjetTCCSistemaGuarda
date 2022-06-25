@@ -245,6 +245,7 @@ begin
   RgbAltStatus.Visible:=False;
   DM.ZQConsUsuario.Active:=true;
   EdtNome.Clear;
+  EdtNome.SetFocus;
   EdtNomeUsuario.Clear;
   EdtSenha.clear;
   EdtConfSenha.Clear;

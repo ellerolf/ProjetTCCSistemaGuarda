@@ -1,12 +1,12 @@
 object FrmCadCentroCusto: TFrmCadCentroCusto
   Left = -8
-  Height = 788
+  Height = 826
   Top = -8
   Width = 1378
   BorderStyle = bsNone
   Caption = 'FrmCadCentroCusto'
-  ClientHeight = 750
-  ClientWidth = 1370
+  ClientHeight = 804
+  ClientWidth = 1362
   Color = 16577259
   OnClose = FormClose
   OnResize = FormResize
@@ -15,12 +15,12 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 750
+    Height = 804
     Top = 0
-    Width = 1370
+    Width = 1362
     Align = alClient
-    ClientHeight = 750
-    ClientWidth = 1370
+    ClientHeight = 804
+    ClientWidth = 1362
     TabOrder = 0
     object Panel2: TPanel
       Left = 0

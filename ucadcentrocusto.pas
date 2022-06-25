@@ -257,6 +257,7 @@ begin
   DM.ZQConsCentro.Active := True;
   RgbStatus.Visible := False;
   EdtNome.Text:='';
+  EdtNome.SetFocus;
   EdtNome1.Text:='';
   CboTipo.ItemIndex:=-1;
   CboStatus.ItemIndex:=-1;
