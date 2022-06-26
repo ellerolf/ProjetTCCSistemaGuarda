@@ -76,15 +76,15 @@ begin
   If(FrmCadContasBancarias.AcionaBtnO='o') then
   begin
   FrmCadContasBancarias.EdtCodContaO.Text:=dm.ZQBuscaContaCONCODIGO.AsString;
-  FrmBuscaConta.close;
   FrmCadContasBancarias.AcionaBtnO:='';
+  FrmBuscaConta.close;
   end;
 
   If(FrmCadContasBancarias.AcionaBtnD='d') then
   begin
   FrmCadContasBancarias.EdtCodContaDes.Text:=dm.ZQBuscaContaCONCODIGO.AsString;
-  FrmBuscaConta.close;
   FrmCadContasBancarias.AcionaBtnD:='';
+  FrmBuscaConta.close;
   end;
 end;
 
