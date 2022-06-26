@@ -845,6 +845,16 @@ object DM: TDM
       ReadOnly = False
       Required = False
     end
+    object ZQConsPessoasSTATUS: TStringField
+      FieldKind = fkData
+      FieldName = 'STATUS'
+      Index = 22
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 7
+    end
   end
   object ZQCadCentro: TZQuery
     Connection = ZFinanceiro

@@ -82,6 +82,7 @@ type
     ZQConsPessoasNOME: TStringField;
     ZQConsPessoasNOMEFANTASIA: TStringField;
     ZQConsPessoasOBSERVAO: TStringField;
+    ZQConsPessoasSTATUS: TStringField;
     ZQConsPessoasTELEFONE: TStringField;
     ZQConsPessoasTIPO: TStringField;
     ZQConsUsuarioCODIGONIV: TLongintField;
