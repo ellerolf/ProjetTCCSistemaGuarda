@@ -160,6 +160,7 @@ end;
 
 procedure TFrmMenu.BtnCadFornecedorClick(Sender: TObject);
 begin
+  OpForn:='I';
   FrmCadFornecedor.Parent := PnChama;
   FrmCadFornecedor.Align := alClient;
   FrmCadFornecedor.Show;

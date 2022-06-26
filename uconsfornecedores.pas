@@ -13,7 +13,7 @@ type
   { TFrmConsFornecedores }
 
   TFrmConsFornecedores = class(TForm)
-    BtnBuscaFornecedores: TSpeedButton;
+    BtnSelecionar: TSpeedButton;
     BtnSair: TSpeedButton;
     CboStatus: TComboBox;
     CboTipoPessoa: TComboBox;
@@ -28,7 +28,7 @@ type
     Panel1: TPanel;
     Panel2: TPanel;
     PnChama: TPanel;
-    procedure BtnBuscaFornecedoresClick(Sender: TObject);
+    procedure BtnSelecionarClick(Sender: TObject);
     procedure BtnConsultaClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
     procedure CboStatusChange(Sender: TObject);
@@ -43,6 +43,7 @@ type
     procedure PnChamaClick(Sender: TObject);
   private
     procedure BuscaDados();
+
   public
 
   end;
@@ -54,8 +55,8 @@ implementation
 
 {$R *.lfm}
 
-{ TFrmConsFornecedores }
- uses uCadFornecedores;
+uses uCadFornecedores;
+
 procedure TFrmConsFornecedores.Label8Click(Sender: TObject);
 begin
 
@@ -111,9 +112,9 @@ begin
     dm.ZQConsPessoas.Sql.Clear;
     dm.ZQConsPessoas.sql.Add('select * from vwpessoas where CODIGOTIP = 1');
     dm.ZQConsPessoas.Open;
-    GrTodos.Visible := false;
+    GrTodos.Visible := False;
     GrCNPJ.Visible := False;
-    GrCPF.Visible := true;
+    GrCPF.Visible := True;
   end
   else if ((CboStatus.ItemIndex = 0) and (CboTipoPessoa.ItemIndex = 2)) then
     //todos dos do CNPJ
@@ -122,8 +123,8 @@ begin
     dm.ZQConsPessoas.Sql.Clear;
     dm.ZQConsPessoas.sql.Add('select * from vwpessoas where CODIGOTIP = 2');
     dm.ZQConsPessoas.Open;
-    GrTodos.Visible := false;
-    GrCNPJ.Visible := true;
+    GrTodos.Visible := False;
+    GrCNPJ.Visible := True;
     GrCPF.Visible := False;
   end
 
@@ -186,6 +187,7 @@ begin
   end;
 end;
 
+
 procedure TFrmConsFornecedores.BtnSairClick(Sender: TObject);
 begin
   Close;
@@ -209,8 +211,8 @@ begin
     dm.ZQConsPessoas.Close;
     dm.ZQConsPessoas.Sql.Clear;
     dm.ZQConsPessoas.sql.Add(
-      'select * from vwpessoas where CPF like' +
-      QuotedStr('%' + EdtConsulta.Text + '%'));
+      'select * from vwpessoas where CPF like' + QuotedStr('%' +
+      EdtConsulta.Text + '%'));
     dm.ZQConsPessoas.Open;
     GrTodos.Visible := False;
     GrCNPJ.Visible := False;
@@ -230,7 +232,7 @@ begin
     GrCPF.Visible := False;
   end
   else
-  //NOME
+    //NOME
   begin
     dm.ZQConsPessoas.Close;
     dm.ZQConsPessoas.Sql.Clear;
@@ -242,8 +244,6 @@ begin
     GrCNPJ.Visible := False;
     GrCPF.Visible := False;
   end;
-
-
 
 end;
 
@@ -258,12 +258,66 @@ begin
 
 end;
 
-procedure TFrmConsFornecedores.BtnBuscaFornecedoresClick(Sender: TObject);
+procedure TFrmConsFornecedores.BtnSelecionarClick(Sender: TObject);
+
 begin
-  PnChama.Visible:=true;
-  FrmCadFornecedor.Parent := PnChama;
-  FrmCadFornecedor.Align := alClient;
-  FrmCadFornecedor.show;
+  OpForn := 'U';
+  if (dm.ZQConsPessoasTIPO.AsString = 'PESSOA FÍSICA') then
+  begin
+    FrmCadFornecedor.BtnCpf.Checked := True;
+    FrmCadFornecedor.BtnAtivo.Checked:= True;
+    FrmCadFornecedor.EdtCpfCnpj.Text := dm.ZQConsPessoasCPF.AsString;
+    FrmCadFornecedor.EdtNome.Text := dm.ZQConsPessoasNOME.AsString;
+    FrmCadFornecedor.DTNasc.Date := dm.ZQConsPessoasDATANASCIMENTO.AsDateTime;
+    FrmCadFornecedor.EdtEndereco.Text := dm.ZQConsPessoasENDEREO.AsString;
+    FrmCadFornecedor.EdtNumero.Text := dm.ZQConsPessoasNMERO.AsString;
+    FrmCadFornecedor.EdtComplemento.Text := dm.ZQConsPessoasCOMPLEMENTO.AsString;
+    FrmCadFornecedor.EdtBairro.Text := dm.ZQConsPessoasBAIRRO.AsString;
+    FrmCadFornecedor.EdtCep.Text := dm.ZQConsPessoasCEP.AsString;
+    FrmCadFornecedor.EdtCidade.Text := dm.ZQConsPessoasCIDADE.AsString;
+    FrmCadFornecedor.CboUf.Text := dm.ZQConsPessoasESTADO.AsString;
+    FrmCadFornecedor.EdtTel.Text := dm.ZQConsPessoasTELEFONE.AsString;
+    FrmCadFornecedor.EdtCel.Text := dm.ZQConsPessoasCELULAR.AsString;
+    FrmCadFornecedor.EdtEmail.Text := dm.ZQConsPessoasEMAIL.AsString;
+    FrmCadFornecedor.MemObs.Text := dm.ZQConsPessoasOBSERVAO.AsString;
+
+    //ajuste da visão do cad dento dos cons
+    PnChama.Visible := True;
+    FrmCadFornecedor.Parent := PnChama;
+    FrmCadFornecedor.Align := alClient;
+    FrmCadFornecedor.Show;
+    FrmCadFornecedor.DesativaCampoForn();
+  end;
+
+  if (dm.ZQConsPessoasTIPO.AsString = 'PESSOA JURÍDICA') then
+  begin
+    FrmCadFornecedor.BtnCnpj.Checked := True;
+    FrmCadFornecedor.EdtCpfCnpj.Text := dm.ZQConsPessoasCNPJ.AsString;
+    FrmCadFornecedor.EdtNome.Text := dm.ZQConsPessoasNOME.AsString;
+    FrmCadFornecedor.DTNasc.Date := dm.ZQConsPessoasDATANASCIMENTO.AsDateTime;
+    FrmCadFornecedor.EdtEndereco.Text := dm.ZQConsPessoasENDEREO.AsString;
+    FrmCadFornecedor.EdtNumero.Text := dm.ZQConsPessoasNMERO.AsString;
+    FrmCadFornecedor.EdtComplemento.Text := dm.ZQConsPessoasCOMPLEMENTO.AsString;
+    FrmCadFornecedor.EdtBairro.Text := dm.ZQConsPessoasBAIRRO.AsString;
+    FrmCadFornecedor.EdtCep.Text := dm.ZQConsPessoasCEP.AsString;
+    FrmCadFornecedor.EdtCidade.Text := dm.ZQConsPessoasCIDADE.AsString;
+    FrmCadFornecedor.CboUf.Text := dm.ZQConsPessoasESTADO.AsString;
+    FrmCadFornecedor.EdtTel.Text := dm.ZQConsPessoasTELEFONE.AsString;
+    FrmCadFornecedor.EdtCel.Text := dm.ZQConsPessoasCELULAR.AsString;
+    FrmCadFornecedor.EdtEmail.Text := dm.ZQConsPessoasEMAIL.AsString;
+    FrmCadFornecedor.MemObs.Text := dm.ZQConsPessoasOBSERVAO.AsString;
+    FrmCadFornecedor.EdtFantasia.Text := dm.ZQConsPessoasNOMEFANTASIA.AsString;
+    FrmCadFornecedor.EdtInsEstadual.Text := dm.ZQConsPessoasINSCRIOESTADUAL.AsString;
+    FrmCadFornecedor.EdtInsMunicipal.Text := dm.ZQConsPessoasINSCRIOMUNICIPAL.AsString;
+
+    //ajuste da visão do cad dento dos cons
+    PnChama.Visible := True;
+    FrmCadFornecedor.Parent := PnChama;
+    FrmCadFornecedor.Align := alClient;
+    FrmCadFornecedor.Show;
+    FrmCadFornecedor.DesativaCampoForn()
+  end;
+
 end;
 
 procedure TFrmConsFornecedores.BtnConsultaClick(Sender: TObject);
@@ -280,7 +334,7 @@ end;
 procedure TFrmConsFornecedores.FormShow(Sender: TObject);
 begin
   dm.ZQConsPessoas.Active := True;
-  PnChama.Visible:= false;
+  PnChama.Visible := False;
 end;
 
 procedure TFrmConsFornecedores.GrCNPJCellClick(Column: TColumn);
