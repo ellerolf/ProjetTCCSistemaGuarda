@@ -385,83 +385,6 @@ object DM: TDM
       Required = False
     end
   end
-  object ZQConsBancarias: TZQuery
-    Connection = ZFinanceiro
-    SQL.Strings = (
-      'SELECT * FROM CONTAS'
-    )
-    Params = <>
-    DataSource = DSConsBancarias
-    Left = 432
-    Top = 304
-    object ZQConsBancariasCONCODIGO: TLongintField
-      FieldKind = fkData
-      FieldName = 'CONCODIGO'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-    end
-    object ZQConsBancariasCONNOME: TStringField
-      FieldKind = fkData
-      FieldName = 'CONNOME'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 50
-    end
-    object ZQConsBancariasCODIGOTIP: TLongintField
-      FieldKind = fkData
-      FieldName = 'CODIGOTIP'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object ZQConsBancariasCONAGENCIA: TStringField
-      FieldKind = fkData
-      FieldName = 'CONAGENCIA'
-      Index = 3
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 50
-    end
-    object ZQConsBancariasCONNUMERO_CONTA: TStringField
-      FieldKind = fkData
-      FieldName = 'CONNUMERO_CONTA'
-      Index = 4
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 50
-    end
-    object ZQConsBancariasCONSALDO_INICIAL: TFloatField
-      FieldKind = fkData
-      FieldName = 'CONSALDO_INICIAL'
-      Index = 5
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Precision = 22
-    end
-    object ZQConsBancariasCONSTATUS: TSmallintField
-      FieldKind = fkData
-      FieldName = 'CONSTATUS'
-      Index = 6
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-  end
   object ZQCadTransferencia: TZQuery
     Connection = ZFinanceiro
     SQL.Strings = (
@@ -1401,5 +1324,14 @@ object DM: TDM
     DataSet = ZQBuscaConta
     Left = 286
     Top = 448
+  end
+  object ZQConsBancarias: TZQuery
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'SELECT * FROM CONTAS'
+    )
+    Params = <>
+    Left = 432
+    Top = 304
   end
 end

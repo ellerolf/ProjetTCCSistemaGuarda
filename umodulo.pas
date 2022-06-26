@@ -98,7 +98,6 @@ type
     ZQConsTransferencia: TZQuery;
     ZQCadTransferencia: TZQuery;
     ZQAltTransferencia: TZQuery;
-    ZQConsBancarias: TZQuery;
     ZQConsCentro: TZQuery;
     ZQConsLancamentos: TZQuery;
     ZQDelTransferencia: TZQuery;
@@ -117,6 +116,7 @@ type
     ZQCadPessoas: TZQuery;
     ZQAltPessoas: TZQuery;
     ZQBuscaConta: TZQuery;
+    ZQConsBancarias: TZQuery;
     procedure DSConsPessoasDataChange(Sender: TObject; Field: TField);
 
 

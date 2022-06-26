@@ -1,24 +1,26 @@
 object FrmConsContas: TFrmConsContas
   Left = -8
-  Height = 788
+  Height = 866
   Top = -8
-  Width = 1314
+  Width = 1346
   BorderStyle = bsNone
   Caption = 'FrmConsContas'
-  ClientHeight = 749
-  ClientWidth = 1314
+  ClientHeight = 843
+  ClientWidth = 1346
   Color = 16577259
+  OnClose = FormClose
   OnResize = FormResize
+  OnShow = FormShow
   Position = poScreenCenter
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 749
+    Height = 843
     Top = 0
-    Width = 1314
+    Width = 1346
     Align = alClient
-    ClientHeight = 749
-    ClientWidth = 1314
+    ClientHeight = 843
+    ClientWidth = 1346
     TabOrder = 0
     object Panel2: TPanel
       Left = 0
@@ -49,7 +51,7 @@ object FrmConsContas: TFrmConsContas
         ParentFont = False
       end
       object Label1: TLabel
-        Left = 48
+        Left = 264
         Height = 17
         Top = 56
         Width = 86
@@ -63,7 +65,7 @@ object FrmConsContas: TFrmConsContas
         ParentFont = False
       end
       object Label2: TLabel
-        Left = 184
+        Left = 400
         Height = 17
         Top = 56
         Width = 66
@@ -77,19 +79,26 @@ object FrmConsContas: TFrmConsContas
         ParentFont = False
       end
       object CboStatus: TComboBox
-        Left = 48
+        Left = 264
         Height = 23
         Top = 76
         Width = 128
         ItemHeight = 15
+        Items.Strings = (
+          'TODOS'
+          'ATIVO'
+          'INATIVO'
+        )
+        OnChange = CboStatusChange
+        Style = csDropDownList
         TabOrder = 0
-        Text = 'Selecione à opção'
       end
       object EdtConsulta: TEdit
-        Left = 184
+        Left = 400
         Height = 23
         Top = 76
-        Width = 464
+        Width = 248
+        OnChange = EdtConsultaChange
         TabOrder = 1
       end
       object BtnAlterar: TSpeedButton
@@ -1473,14 +1482,101 @@ object FrmConsContas: TFrmConsContas
         }
         OnClick = BtnSairClick
       end
-      object DBGrid1: TDBGrid
+      object DBGConsCaixa: TDBGrid
         Left = 48
-        Height = 456
+        Height = 448
         Top = 120
         Width = 600
         Color = clWindow
-        Columns = <>
+        Columns = <        
+          item
+            Title.Caption = 'CÓDIGO'
+            Width = 52
+            FieldName = 'CONCODIGO'
+          end        
+          item
+            Title.Caption = 'NOME DA CONTA CAIXA'
+            Width = 265
+            FieldName = 'CONNOME'
+          end        
+          item
+            Title.Caption = 'TIPO DE CONTA'
+            Width = 150
+            FieldName = 'CODIGOTIP'
+          end        
+          item
+            Title.Caption = 'STATUS'
+            Width = 100
+            FieldName = 'CONSTATUS'
+          end>
+        DataSource = DM.DSConsBancarias
         TabOrder = 2
+        Visible = False
+      end
+      object RGBConsTipoConta: TRadioGroup
+        Left = 48
+        Height = 49
+        Top = 56
+        Width = 208
+        AutoFill = True
+        Caption = 'Tipo de Conta'
+        ChildSizing.LeftRightSpacing = 6
+        ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+        ChildSizing.EnlargeVertical = crsHomogenousChildResize
+        ChildSizing.ShrinkHorizontal = crsScaleChilds
+        ChildSizing.ShrinkVertical = crsScaleChilds
+        ChildSizing.Layout = cclLeftToRightThenTopToBottom
+        ChildSizing.ControlsPerLine = 2
+        ClientHeight = 29
+        ClientWidth = 204
+        Columns = 2
+        Items.Strings = (
+          'CAIXA'
+          'CONTAS BANCÁRIAS'
+        )
+        OnClick = RGBConsTipoContaClick
+        TabOrder = 3
+      end
+      object DBGConsContasBancarias: TDBGrid
+        Left = 48
+        Height = 448
+        Top = 120
+        Width = 600
+        Color = clWindow
+        Columns = <        
+          item
+            Title.Caption = 'CÓDIGO'
+            Width = 51
+            FieldName = 'CONCODIGO'
+          end        
+          item
+            Title.Caption = 'NOME DO BANCO'
+            Width = 202
+            FieldName = 'CONNOME'
+          end        
+          item
+            Title.Caption = 'TIPO DA CONTA'
+            Width = 120
+            FieldName = 'CODIGOTIP'
+          end        
+          item
+            Title.Caption = 'AGÊNCIA'
+            Width = 64
+            FieldName = 'CONAGENCIA'
+          end        
+          item
+            Title.Caption = 'N° DA CONTA'
+            Width = 82
+            FieldName = 'CONNUMERO_CONTA'
+          end        
+          item
+            Title.Caption = 'STATUS'
+            Width = 48
+            FieldName = 'CONSTATUS'
+          end>
+        DataSource = DM.DSConsBancarias
+        TabOrder = 4
+        Visible = False
       end
     end
   end
