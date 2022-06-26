@@ -205,6 +205,12 @@ begin
              ShowMessage('Você não preencheu o código da conta de destino, este campo é um campo obrigatório');
              EdtCodContaDes.SetFocus;
         end
+        else if (EdtCodContaO.Text=EdtCodContaDes.Text) then
+        begin
+             ShowMessage('Código da conta de origem é a mesma do código da conta de destino, verifique!');
+             EdtCodContaDes.Clear;
+             EdtCodContaDes.SetFocus;
+        end
         else
         begin
           dm.ZQCadTransferencia.Params.ParamByName('pTRADATA').AsString:=FormatDateTime('yyyy-mm-dd',DtDataTransf.Date);
