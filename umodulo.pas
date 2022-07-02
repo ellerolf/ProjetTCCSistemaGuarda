@@ -85,6 +85,8 @@ type
     ZQConsPessoasSTATUS: TStringField;
     ZQConsPessoasTELEFONE: TStringField;
     ZQConsPessoasTIPO: TStringField;
+    ZQConsTipoContaTIPCODIGO: TLongintField;
+    ZQConsTipoContaTIPNOME: TStringField;
     ZQConsUsuarioCODIGONIV: TLongintField;
     ZQConsUsuarioUSUCODIGO: TLongintField;
     ZQConsUsuarioUSULOGIN: TStringField;

@@ -1,13 +1,13 @@
 object FrmCadContasBancarias: TFrmCadContasBancarias
   Left = -8
-  Height = 944
+  Height = 983
   Top = -8
-  Width = 1434
+  Width = 1450
   BorderIcons = [biSystemMenu]
   BorderStyle = bsNone
   Caption = 'Cadastro de Contas Bancarias'
-  ClientHeight = 921
-  ClientWidth = 1434
+  ClientHeight = 960
+  ClientWidth = 1450
   Color = 16577259
   Font.CharSet = ANSI_CHARSET
   Font.Height = -13
@@ -22,12 +22,12 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 921
+    Height = 960
     Top = 0
-    Width = 1434
+    Width = 1450
     Align = alClient
-    ClientHeight = 921
-    ClientWidth = 1434
+    ClientHeight = 960
+    ClientWidth = 1450
     TabOrder = 0
     OnClick = Panel1Click
     object Panel2: TPanel
@@ -215,6 +215,30 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
           Font.Quality = fqDraft
           ParentFont = False
           TabOrder = 3
+        end
+        object RGBStatusConta: TRadioGroup
+          Left = 448
+          Height = 52
+          Top = -3
+          Width = 185
+          AutoFill = True
+          Caption = 'STATUS DA CONTA'
+          ChildSizing.LeftRightSpacing = 6
+          ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+          ChildSizing.EnlargeVertical = crsHomogenousChildResize
+          ChildSizing.ShrinkHorizontal = crsScaleChilds
+          ChildSizing.ShrinkVertical = crsScaleChilds
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 2
+          ClientHeight = 30
+          ClientWidth = 181
+          Columns = 2
+          Items.Strings = (
+            'ATIVO'
+            'INATIVO'
+          )
+          TabOrder = 7
+          Visible = False
         end
       end
       object GrpTrasfe: TGroupBox
@@ -486,6 +510,7 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
           Width = 49
           AutoSize = True
           Color = clNone
+          Enabled = False
           Glyph.Data = {
             62100000424D621000000000000036000000280000002D000000170000000100
             2000000000002C10000064000000640000000000000000000000FFFFFF00C100

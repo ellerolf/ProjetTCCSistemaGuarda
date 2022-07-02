@@ -541,6 +541,25 @@ object DM: TDM
     Params = <>
     Left = 432
     Top = 504
+    object ZQConsTipoContaTIPCODIGO: TLongintField
+      FieldKind = fkData
+      FieldName = 'TIPCODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object ZQConsTipoContaTIPNOME: TStringField
+      FieldKind = fkData
+      FieldName = 'TIPNOME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
   end
   object DSConsTipoConta: TDataSource
     DataSet = ZQConsTipoConta
@@ -1333,5 +1352,72 @@ object DM: TDM
     Params = <>
     Left = 432
     Top = 304
+    object ZQConsBancariasCONCODIGO: TLongintField
+      FieldKind = fkData
+      FieldName = 'CONCODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object ZQConsBancariasCONNOME: TStringField
+      FieldKind = fkData
+      FieldName = 'CONNOME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsBancariasCODIGOTIP: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODIGOTIP'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsBancariasCONAGENCIA: TStringField
+      FieldKind = fkData
+      FieldName = 'CONAGENCIA'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsBancariasCONNUMERO_CONTA: TStringField
+      FieldKind = fkData
+      FieldName = 'CONNUMERO_CONTA'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsBancariasCONSALDO_INICIAL: TFloatField
+      FieldKind = fkData
+      FieldName = 'CONSALDO_INICIAL'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 22
+    end
+    object ZQConsBancariasCONSTATUS: TSmallintField
+      FieldKind = fkData
+      FieldName = 'CONSTATUS'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
   end
 end

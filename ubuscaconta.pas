@@ -49,6 +49,8 @@ uses uCadContasBancarias;
 procedure TFrmBuscaConta.BtnSelecione1Click(Sender: TObject);
 begin
   close;
+  FrmCadContasBancarias.AcionaBtnD:='';
+  FrmCadContasBancarias.AcionaBtnO:='';
 end;
 
 procedure TFrmBuscaConta.BtnConsultaClick(Sender: TObject);

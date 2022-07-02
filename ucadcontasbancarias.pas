@@ -20,6 +20,7 @@ type
     EdtCodContaDes: TEdit;
     EdtNomeConta: TEdit;
     Label8: TLabel;
+    RGBStatusConta: TRadioGroup;
     RdbCadConta: TRadioButton;
     RdbCadTrans: TRadioButton;
     BtnSair: TSpeedButton;
@@ -68,8 +69,15 @@ type
   private
 
   public
+    { Se acionabtnO ou acionabtnD receberem 'u' ou 'i' vai startar o precedimento
+    para que quando usuario selecionar a conta na grid as edit destino ou origem
+    receba o numero da conta}
      AcionaBtnO:string;
      AcionaBtnD:String;
+     {Se 'AcionaConsConta do tipo string receber 'u' vai habilitar a consulta,
+     se AcionaCadConta receber 'i' vai habilitar o cadastro'}
+     AcionaConsConta:string;
+     AcionaCadConta:String;
   end;
 
 var
