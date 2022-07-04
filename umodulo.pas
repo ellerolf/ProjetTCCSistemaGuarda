@@ -12,6 +12,8 @@ type
   { TDM }
 
   TDM = class(TDataModule)
+    DSBuscaUsuario: TDataSource;
+    DSBuscaCentro: TDataSource;
     DSBuscaConta: TDataSource;
     DSConsTipoConta: TDataSource;
     DSConsUsuario: TDataSource;
@@ -21,6 +23,12 @@ type
     DSConsBancarias: TDataSource;
     DSConsTransferencia: TDataSource;
     ZFinanceiro: TZConnection;
+    ZQBuscaCentroCENCODIGO: TLongintField;
+    ZQBuscaCentroCENNOME: TStringField;
+    ZQBuscaCentroCENSTATUS: TSmallintField;
+    ZQBuscaCentroCODIGOTIP: TLongintField;
+    ZQBuscaCentroSTATUS: TStringField;
+    ZQBuscaCentroTIPOCEN: TStringField;
     ZQBuscaContaCODIGOTIP: TLongintField;
     ZQBuscaContaCONAGENCIA: TStringField;
     ZQBuscaContaCONCODIGO: TLongintField;
@@ -29,6 +37,14 @@ type
     ZQBuscaContaCONSALDO_INICIAL: TFloatField;
     ZQBuscaContaCONSTATUS: TSmallintField;
     ZQBuscaContaTIPNOME: TStringField;
+    ZQBuscaUsuarioCODIGONIV: TLongintField;
+    ZQBuscaUsuarioNIVILACESSO: TStringField;
+    ZQBuscaUsuarioSTATUS: TStringField;
+    ZQBuscaUsuarioUSUCODIGO: TLongintField;
+    ZQBuscaUsuarioUSULOGIN: TStringField;
+    ZQBuscaUsuarioUSUNOME: TStringField;
+    ZQBuscaUsuarioUSUSENHA: TStringField;
+    ZQBuscaUsuarioUSUSTATUS: TSmallintField;
     ZQConsBancariasCODIGOTIP: TLongintField;
     ZQConsBancariasCONAGENCIA: TStringField;
     ZQConsBancariasCONCODIGO: TLongintField;
@@ -100,7 +116,6 @@ type
     ZQConsTransferencia: TZQuery;
     ZQCadTransferencia: TZQuery;
     ZQAltTransferencia: TZQuery;
-    ZQConsCentro: TZQuery;
     ZQConsLancamentos: TZQuery;
     ZQDelTransferencia: TZQuery;
     ZQConsUsuario: TZQuery;
@@ -119,6 +134,9 @@ type
     ZQAltPessoas: TZQuery;
     ZQBuscaConta: TZQuery;
     ZQConsBancarias: TZQuery;
+    ZQConsCentro: TZQuery;
+    ZQBuscaUsuario: TZQuery;
+    ZQBuscaCentro: TZQuery;
     procedure DSConsPessoasDataChange(Sender: TObject; Field: TField);
 
 

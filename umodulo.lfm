@@ -339,52 +339,6 @@ object DM: TDM
     Left = 240
     Top = 304
   end
-  object ZQConsCentro: TZQuery
-    Connection = ZFinanceiro
-    SQL.Strings = (
-      'select * from centro_custo'
-    )
-    Params = <>
-    Left = 344
-    Top = 304
-    object ZQConsCentroCENCODIGO: TLongintField
-      FieldKind = fkData
-      FieldName = 'CENCODIGO'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-    end
-    object ZQConsCentroCENNOME: TStringField
-      FieldKind = fkData
-      FieldName = 'CENNOME'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 50
-    end
-    object ZQConsCentroCODIGOTIP: TLongintField
-      FieldKind = fkData
-      FieldName = 'CODIGOTIP'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object ZQConsCentroCENSTATUS: TSmallintField
-      FieldKind = fkData
-      FieldName = 'CENSTATUS'
-      Index = 3
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-  end
   object ZQCadTransferencia: TZQuery
     Connection = ZFinanceiro
     SQL.Strings = (
@@ -539,7 +493,7 @@ object DM: TDM
       'SELECT * from tipo_conta'
     )
     Params = <>
-    Left = 432
+    Left = 440
     Top = 504
     object ZQConsTipoContaTIPCODIGO: TLongintField
       FieldKind = fkData
@@ -563,7 +517,7 @@ object DM: TDM
   end
   object DSConsTipoConta: TDataSource
     DataSet = ZQConsTipoConta
-    Left = 432
+    Left = 440
     Top = 432
   end
   object ZQConsPessoas: TZQuery
@@ -815,7 +769,7 @@ object DM: TDM
         ParamType = ptUnknown
       end>
     Left = 344
-    Top = 104
+    Top = 96
     ParamData = <    
       item
         DataType = ftUnknown
@@ -1259,8 +1213,8 @@ object DM: TDM
       'SELECT * from vwcontas'
     )
     Params = <>
-    Left = 286
-    Top = 503
+    Left = 240
+    Top = 504
     object ZQBuscaContaCONCODIGO: TLongintField
       FieldKind = fkData
       FieldName = 'CONCODIGO'
@@ -1341,8 +1295,8 @@ object DM: TDM
   end
   object DSBuscaConta: TDataSource
     DataSet = ZQBuscaConta
-    Left = 286
-    Top = 448
+    Left = 240
+    Top = 432
   end
   object ZQConsBancarias: TZQuery
     Connection = ZFinanceiro
@@ -1418,6 +1372,214 @@ object DM: TDM
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
+    end
+  end
+  object ZQConsCentro: TZQuery
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'select * from centro_custo'
+    )
+    Params = <>
+    Left = 344
+    Top = 304
+    object ZQConsCentroCENCODIGO: TLongintField
+      FieldKind = fkData
+      FieldName = 'CENCODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object ZQConsCentroCENNOME: TStringField
+      FieldKind = fkData
+      FieldName = 'CENNOME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsCentroCODIGOTIP: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODIGOTIP'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsCentroCENSTATUS: TSmallintField
+      FieldKind = fkData
+      FieldName = 'CENSTATUS'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object DSBuscaUsuario: TDataSource
+    DataSet = ZQBuscaUsuario
+    Left = 40
+    Top = 424
+  end
+  object DSBuscaCentro: TDataSource
+    DataSet = ZQBuscaCentro
+    Left = 344
+    Top = 424
+  end
+  object ZQBuscaUsuario: TZQuery
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'select * from vwmostrausu'
+    )
+    Params = <>
+    Left = 40
+    Top = 480
+    object ZQBuscaUsuarioUSUCODIGO: TLongintField
+      FieldKind = fkData
+      FieldName = 'USUCODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object ZQBuscaUsuarioUSUNOME: TStringField
+      FieldKind = fkData
+      FieldName = 'USUNOME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQBuscaUsuarioUSULOGIN: TStringField
+      FieldKind = fkData
+      FieldName = 'USULOGIN'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQBuscaUsuarioUSUSENHA: TStringField
+      FieldKind = fkData
+      FieldName = 'USUSENHA'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object ZQBuscaUsuarioUSUSTATUS: TSmallintField
+      FieldKind = fkData
+      FieldName = 'USUSTATUS'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQBuscaUsuarioCODIGONIV: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODIGONIV'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQBuscaUsuarioSTATUS: TStringField
+      FieldKind = fkData
+      FieldName = 'STATUS'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 7
+    end
+    object ZQBuscaUsuarioNIVILACESSO: TStringField
+      FieldKind = fkData
+      FieldName = 'NIVILACESSO'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 13
+    end
+  end
+  object ZQBuscaCentro: TZQuery
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'select * from vwmostracentro'
+    )
+    Params = <>
+    Left = 344
+    Top = 488
+    object ZQBuscaCentroCENCODIGO: TLongintField
+      FieldKind = fkData
+      FieldName = 'CENCODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object ZQBuscaCentroCENNOME: TStringField
+      FieldKind = fkData
+      FieldName = 'CENNOME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQBuscaCentroCODIGOTIP: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODIGOTIP'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQBuscaCentroCENSTATUS: TSmallintField
+      FieldKind = fkData
+      FieldName = 'CENSTATUS'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQBuscaCentroSTATUS: TStringField
+      FieldKind = fkData
+      FieldName = 'STATUS'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 7
+    end
+    object ZQBuscaCentroTIPOCEN: TStringField
+      FieldKind = fkData
+      FieldName = 'TIPOCEN'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 7
     end
   end
 end
