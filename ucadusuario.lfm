@@ -1,12 +1,12 @@
 object FrmCadUsuario: TFrmCadUsuario
   Left = -8
-  Height = 864
+  Height = 902
   Top = -8
   Width = 1378
   BorderIcons = [biSystemMenu]
   BorderStyle = bsNone
   Caption = 'Cadastro Usuario'
-  ClientHeight = 842
+  ClientHeight = 880
   ClientWidth = 1362
   Color = 16577259
   OnClose = FormClose
@@ -16,11 +16,11 @@ object FrmCadUsuario: TFrmCadUsuario
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 842
+    Height = 880
     Top = 0
     Width = 1362
     Align = alClient
-    ClientHeight = 842
+    ClientHeight = 880
     ClientWidth = 1362
     TabOrder = 0
     object Panel2: TPanel
@@ -342,8 +342,8 @@ object FrmCadUsuario: TFrmCadUsuario
         Color = 16577259
         Columns = <        
           item
-            Title.Caption = 'CÓDIGO'
-            Width = 50
+            Title.Caption = 'CODIGO'
+            Width = 60
             FieldName = 'USUCODIGO'
           end        
           item
@@ -353,20 +353,20 @@ object FrmCadUsuario: TFrmCadUsuario
           end        
           item
             Title.Caption = 'LOGIN'
-            Width = 200
+            Width = 150
             FieldName = 'USULOGIN'
           end        
           item
             Title.Caption = 'STATUS'
-            Width = 50
-            FieldName = 'USUSTATUS'
+            Width = 55
+            FieldName = 'STATUS'
           end        
           item
-            Title.Caption = 'NÍVEL DE ACESSO'
+            Title.Caption = 'NIVEL ACESSO'
             Width = 100
-            FieldName = 'CODIGONIV'
+            FieldName = 'NIVILACESSO'
           end>
-        DataSource = DM.DSConsUsuario
+        DataSource = DM.DSBuscaUsuario
         FixedColor = clHighlight
         TabOrder = 6
         TitleFont.CharSet = ANSI_CHARSET

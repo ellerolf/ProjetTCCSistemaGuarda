@@ -1,11 +1,11 @@
 object FrmCadCentroCusto: TFrmCadCentroCusto
   Left = -8
-  Height = 864
+  Height = 902
   Top = -8
   Width = 1378
   BorderStyle = bsNone
   Caption = 'FrmCadCentroCusto'
-  ClientHeight = 842
+  ClientHeight = 880
   ClientWidth = 1362
   Color = 16577259
   OnClose = FormClose
@@ -15,11 +15,11 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 842
+    Height = 880
     Top = 0
     Width = 1362
     Align = alClient
-    ClientHeight = 842
+    ClientHeight = 880
     ClientWidth = 1362
     TabOrder = 0
     object Panel2: TPanel
@@ -155,8 +155,28 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
         Top = 261
         Width = 592
         Color = 16577259
-        Columns = <>
-        DataSource = DM.DSConsCentro
+        Columns = <        
+          item
+            Title.Caption = 'CODIGO'
+            Width = 65
+            FieldName = 'CENCODIGO'
+          end        
+          item
+            Title.Caption = 'NOME'
+            Width = 270
+            FieldName = 'CENNOME'
+          end        
+          item
+            Title.Caption = 'STATUS'
+            Width = 65
+            FieldName = 'STATUS'
+          end        
+          item
+            Title.Caption = 'TIPO'
+            Width = 65
+            FieldName = 'TIPOCEN'
+          end>
+        DataSource = DM.DSBuscaCentro
         FixedColor = clHighlight
         TabOrder = 3
         TitleFont.CharSet = ANSI_CHARSET

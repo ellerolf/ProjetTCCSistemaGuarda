@@ -168,69 +168,58 @@ procedure TFrmCadCentroCusto.EdtNome1Change(Sender: TObject);
 begin
   if (CboTipo.ItemIndex = 0) and (CboStatus.ItemIndex = 0) then
   begin
-    DM.ZQConsCentro.Close;
-    DM.ZQConsCentro.SQL.Clear;
-    DM.ZQConsCentro.SQL.Add('select * from centro_custo where cennome like' +
-      QuotedStr('%' + EdtNome1.Text + '%'));
-    DM.ZQConsCentro.Open;
+    DM.ZQBuscaCentro.Close;
+    DM.ZQBuscaCentro.SQL.Clear;
+    DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where cennome like' +QuotedStr('%' + EdtNome1.Text + '%'));
+    DM.ZQBuscaCentro.Open;
   end
   else
   if (CboTipo.ItemIndex = 1) and (CboStatus.ItemIndex = 0) then
   begin
-    DM.ZQConsCentro.Close;
-    DM.ZQConsCentro.SQL.Clear;
-    DM.ZQConsCentro.SQL.Add(
-      'select * from centro_custo where codigotip=1 and cennome like' +
-      QuotedStr('%' + EdtNome1.Text + '%'));
-    DM.ZQConsCentro.Open;
+    DM.ZQBuscaCentro.Close;
+    DM.ZQBuscaCentro.SQL.Clear;
+    DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where codigotip=1 and cennome like' +QuotedStr('%' + EdtNome1.Text + '%'));
+    DM.ZQBuscaCentro.Open;
   end
   else
   if (CboTipo.ItemIndex = 2) and (CboStatus.ItemIndex = 0) then
   begin
-    DM.ZQConsCentro.Close;
-    DM.ZQConsCentro.SQL.Clear;
-    DM.ZQConsCentro.SQL.Add(
-      'select * from centro_custo where codigotip=2 and cennome like' +
-      QuotedStr('%' + EdtNome1.Text + '%'));
-    DM.ZQConsCentro.Open;
+    DM.ZQBuscaCentro.Close;
+    DM.ZQBuscaCentro.SQL.Clear;
+    DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where codigotip=2 and cennome like' +QuotedStr('%' + EdtNome1.Text + '%'));
+    DM.ZQBuscaCentro.Open;
   end
   else
   if (CboTipo.ItemIndex = 1) and (CboStatus.ItemIndex = 1) then
   begin
-    DM.ZQConsCentro.Close;
-    DM.ZQConsCentro.SQL.Clear;
-    DM.ZQConsCentro.SQL.Add(
-      'select * from centro_custo where codigotip=1 and censtatus=1 and cennome like' +
-      QuotedStr(
-      '%' + EdtNome1.Text + '%'));
-    DM.ZQConsCentro.Open;
+    DM.ZQBuscaCentro.Close;
+    DM.ZQBuscaCentro.SQL.Clear;
+    DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where codigotip=1 and censtatus=1 and cennome like' +QuotedStr('%' + EdtNome1.Text + '%'));
+    DM.ZQBuscaCentro.Open;
   end
   else
   if (CboTipo.ItemIndex = 2) and (CboStatus.ItemIndex = 1) then
   begin
-    DM.ZQConsCentro.Close;
-    DM.ZQConsCentro.SQL.Clear;
-    DM.ZQConsCentro.SQL.Add(
-      'select * from centro_custo where codigotip=2 and censtatus=1 and cennome like' +QuotedStr('%' + EdtNome1.Text + '%'));
-    DM.ZQConsCentro.Open;
+    DM.ZQBuscaCentro.Close;
+    DM.ZQBuscaCentro.SQL.Clear;
+    DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where codigotip=2 and censtatus=1 and cennome like' +QuotedStr('%' + EdtNome1.Text + '%'));
+    DM.ZQBuscaCentro.Open;
   end
   else
   if (CboTipo.ItemIndex = 0) and (CboStatus.ItemIndex = 1) then
   begin
-    DM.ZQConsCentro.Close;
-    DM.ZQConsCentro.SQL.Clear;
-    DM.ZQConsCentro.SQL.Add(
-      'select * from centro_custo where censtatus=1 and cennome like' +QuotedStr('%' + EdtNome1.Text + '%'));
-    DM.ZQConsCentro.Open;
+    DM.ZQBuscaCentro.Close;
+    DM.ZQBuscaCentro.SQL.Clear;
+    DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where censtatus=1 and cennome like' +QuotedStr('%' + EdtNome1.Text + '%'));
+    DM.ZQBuscaCentro.Open;
   end
   else
   if (CboTipo.ItemIndex = 0) and (CboStatus.ItemIndex = 2) then
   begin
-    DM.ZQConsCentro.Close;
-    DM.ZQConsCentro.SQL.Clear;
-    DM.ZQConsCentro.SQL.Add(
-      'select * from centro_custo where censtatus=0 and cennome like' +QuotedStr('%' + EdtNome1.Text + '%'));
-    DM.ZQConsCentro.Open;
+    DM.ZQBuscaCentro.Close;
+    DM.ZQBuscaCentro.SQL.Clear;
+    DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where censtatus=0 and cennome like' +QuotedStr('%' + EdtNome1.Text + '%'));
+    DM.ZQBuscaCentro.Open;
   end;
 end;
 
@@ -255,6 +244,7 @@ end;
 procedure TFrmCadCentroCusto.FormShow(Sender: TObject);
 begin
   DM.ZQConsCentro.Active := True;
+  DM.ZQBuscaCentro.Active := True;
   RgbStatus.Visible := False;
   EdtNome.Text:='';
   EdtNome.SetFocus;

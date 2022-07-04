@@ -208,28 +208,28 @@ procedure TFrmCadUsuario.BtnConsultaClick(Sender: TObject);
 begin
     if (CboStatus.ItemIndex=0) then
       begin
-        DM.ZQConsUsuario.close;
-        DM.ZQConsUsuario.SQL.clear;
-        DM.ZQConsUsuario.SQL.Add('select * from usuario where usunome like'+QuotedStr('%'+EdtConsulta.Text+'%'));
-        DM.ZQConsUsuario.Open;
+        DM.ZQBuscaCentro.close;
+        DM.ZQBuscaUsuario.SQL.clear;
+        DM.ZQBuscaUsuario.SQL.Add('select * from vwmostrausu where usunome like'+QuotedStr('%'+EdtConsulta.Text+'%'));
+        DM.ZQBuscaUsuario.Open;
         EdtConsulta.clear;
       end
       else
     if (CboStatus.ItemIndex=1) then
       begin
-        DM.ZQConsUsuario.close;
-        DM.ZQConsUsuario.SQL.clear;
-        DM.ZQConsUsuario.SQL.Add('select * from usuario where usustatus=1 and usunome like'+QuotedStr('%'+EdtConsulta.Text+'%'));
-        DM.ZQConsUsuario.Open;
+        DM.ZQBuscaUsuario.close;
+        DM.ZQBuscaUsuario.SQL.clear;
+        DM.ZQBuscaUsuario.SQL.Add('select * from vwmostrausu where usustatus=1 and usunome like'+QuotedStr('%'+EdtConsulta.Text+'%'));
+        DM.ZQBuscaUsuario.Open;
         EdtConsulta.clear;
       end
       else
      if (CboStatus.ItemIndex=2) then
        begin
-         DM.ZQConsUsuario.close;
-         DM.ZQConsUsuario.SQL.clear;
-         DM.ZQConsUsuario.SQL.Add('select * from usuario where usustatus=0 and usunome like'+QuotedStr('%'+EdtConsulta.Text+'%'));
-         DM.ZQConsUsuario.Open;
+         DM.ZQBuscaUsuario.close;
+         DM.ZQBuscaUsuario.SQL.clear;
+         DM.ZQBuscaUsuario.SQL.Add('select * from vwmostrausu where usustatus=0 and usunome like'+QuotedStr('%'+EdtConsulta.Text+'%'));
+         DM.ZQBuscaUsuario.Open;
          EdtConsulta.clear;
        end;
 end;
