@@ -260,6 +260,7 @@ begin
 
   FrmCadFornecedor.pescodigo := seleciona;
   FrmCadFornecedor.EdtCpfCnpj.Text := dm.ZQConsPessoasCNPJ.AsString;
+  FrmCadFornecedor.EdtCpfCnpj.Text := dm.ZQConsPessoasCPF.AsString;
   FrmCadFornecedor.EdtNome.Text := dm.ZQConsPessoasNOME.AsString;
   FrmCadFornecedor.DTNasc.Date := dm.ZQConsPessoasDATANASCIMENTO.AsDateTime;
   FrmCadFornecedor.EdtEndereco.Text := dm.ZQConsPessoasENDEREO.AsString;

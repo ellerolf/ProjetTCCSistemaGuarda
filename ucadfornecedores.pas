@@ -378,7 +378,7 @@ begin
       dm.ZQAltPessoas.params.ParamByName('pestelefone').Value := EdtTel.Text;
       dm.ZQAltPessoas.params.ParamByName('pescelular').Value := EdtCel.Text;
       dm.ZQAltPessoas.params.ParamByName('pesobservacao').Value := MemObs.Text;
-      dm.ZQAltPessoas.params.ParamByName('pescodigo').Value := pescodigo;
+      dm.ZQAltPessoas.params.ParamByName('pescodigo').Value := dm.ZQConsPessoasCODIGO.AsInteger;
       dm.ZQAltPessoas.ExecSQL;
 
       dm.ZQConsPessoas.Close;
