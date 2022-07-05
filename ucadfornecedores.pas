@@ -67,17 +67,13 @@ type
     procedure BtnInativoChange(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
     procedure BtnSalvarClick(Sender: TObject);
-    procedure EdtCpfCnpjChange(Sender: TObject);
-    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
-    procedure FormCreate(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure GrpCnpjCpfClick(Sender: TObject);
-    procedure Label7Click(Sender: TObject);
-    procedure EdtCepChange(Sender: TObject);
   private
     procedure mascaras();
   public
+    pescodigo: integer;
+    OpForn: string;
     procedure AtivaCampoForn();
     procedure DesativaCampoForn();
 
@@ -85,24 +81,13 @@ type
 
 var
   FrmCadFornecedor: TFrmCadFornecedor;
-  OpForn: string;
+
 
 implementation
 
 {$R *.lfm}
 
 { TFrmCadFornecedor }
-
-
-procedure TFrmCadFornecedor.Label7Click(Sender: TObject);
-begin
-
-end;
-
-procedure TFrmCadFornecedor.EdtCepChange(Sender: TObject);
-begin
-
-end;
 
 procedure TFrmCadFornecedor.mascaras;
 begin
@@ -254,7 +239,7 @@ begin
       EdtCel.Clear;
       EdtEmail.Clear;
       MemObs.Clear;
-      EdtCpfCnpj.SetFocus;
+      //EdtCpfCnpj.SetFocus;
       OpForn := '';
     end
 
@@ -305,19 +290,19 @@ begin
       EdtCel.Clear;
       EdtEmail.Clear;
       MemObs.Clear;
-      EdtCpfCnpj.SetFocus;
+      //EdtCpfCnpj.SetFocus;
       OpForn := '';
     end
     else
     begin
       ShowMessage('Selecione um tipo de pessoal para o registro');
     end;
-  end;
+  end
 
   //Update
-  if OpForn = 'U' then
+  else if OpForn = 'U' then
   begin
-    BtnInativo.Checked:=True;
+    BtnInativo.Checked := True;
     if (BtnCnpj.Checked = True) then
     begin
       dm.ZQAltPessoas.Params.ParamByName('pesnome').Value := EdtNome.Text;
@@ -341,8 +326,7 @@ begin
       dm.ZQAltPessoas.params.ParamByName('pestelefone').Value := EdtTel.Text;
       dm.ZQAltPessoas.params.ParamByName('pescelular').Value := EdtCel.Text;
       dm.ZQAltPessoas.params.ParamByName('pesobservacao').Value := MemObs.Text;
-      dm.ZQAltPessoas.params.ParamByName('pescodigo').Value :=
-        dm.ZQConsPessoasCODIGO.AsInteger;
+      dm.ZQAltPessoas.params.ParamByName('pescodigo').Value := pescodigo;
       dm.ZQAltPessoas.ExecSQL;
 
       dm.ZQConsPessoas.Close;
@@ -366,7 +350,7 @@ begin
       EdtCel.Clear;
       EdtEmail.Clear;
       MemObs.Clear;
-      EdtCpfCnpj.SetFocus;
+      //EdtCpfCnpj.SetFocus;
       OpForn := '';
     end;
 
@@ -394,6 +378,7 @@ begin
       dm.ZQAltPessoas.params.ParamByName('pestelefone').Value := EdtTel.Text;
       dm.ZQAltPessoas.params.ParamByName('pescelular').Value := EdtCel.Text;
       dm.ZQAltPessoas.params.ParamByName('pesobservacao').Value := MemObs.Text;
+      dm.ZQAltPessoas.params.ParamByName('pescodigo').Value := pescodigo;
       dm.ZQAltPessoas.ExecSQL;
 
       dm.ZQConsPessoas.Close;
@@ -417,25 +402,10 @@ begin
       EdtCel.Clear;
       EdtEmail.Clear;
       MemObs.Clear;
-      EdtCpfCnpj.SetFocus;
+      //EdtCpfCnpj.SetFocus;
       OpForn := '';
     end;
   end;
-end;
-
-procedure TFrmCadFornecedor.EdtCpfCnpjChange(Sender: TObject);
-begin
-
-end;
-
-procedure TFrmCadFornecedor.FormClose(Sender: TObject; var CloseAction: TCloseAction);
-begin
-
-end;
-
-procedure TFrmCadFornecedor.FormCreate(Sender: TObject);
-begin
-  BtnInativo.Enabled := False;
 end;
 
 procedure TFrmCadFornecedor.FormResize(Sender: TObject);
@@ -446,12 +416,7 @@ end;
 
 procedure TFrmCadFornecedor.FormShow(Sender: TObject);
 begin
-
-end;
-
-procedure TFrmCadFornecedor.GrpCnpjCpfClick(Sender: TObject);
-begin
-
+  BtnInativo.Enabled := False;
 end;
 
 end.

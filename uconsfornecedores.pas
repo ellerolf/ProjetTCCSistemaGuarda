@@ -35,13 +35,13 @@ type
     procedure CboTipoPessoaChange(Sender: TObject);
     procedure EdtConsultaChange(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
-    procedure FormCreate(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure GrCNPJCellClick(Column: TColumn);
-    procedure Label8Click(Sender: TObject);
-    procedure PnChamaClick(Sender: TObject);
+    procedure GrCPFCellClick(Column: TColumn);
+    procedure GrTodosCellClick(Column: TColumn);
   private
+    seleciona: integer;
     procedure BuscaDados();
 
   public
@@ -56,16 +56,6 @@ implementation
 {$R *.lfm}
 
 uses uCadFornecedores;
-
-procedure TFrmConsFornecedores.Label8Click(Sender: TObject);
-begin
-
-end;
-
-procedure TFrmConsFornecedores.PnChamaClick(Sender: TObject);
-begin
-
-end;
 
 procedure TFrmConsFornecedores.BuscaDados;
 begin
@@ -253,71 +243,46 @@ begin
   dm.ZQConsPessoas.Active := False;
 end;
 
-procedure TFrmConsFornecedores.FormCreate(Sender: TObject);
-begin
-
-end;
-
 procedure TFrmConsFornecedores.BtnSelecionarClick(Sender: TObject);
-
 begin
-  OpForn := 'U';
-  if (dm.ZQConsPessoasTIPO.AsString = 'PESSOA FÍSICA') then
+  FrmCadFornecedor.OpForn := 'U';
+  //PESSOA FÍSICA
+  if (dm.ZQConsPessoasCODIGOTIP.AsInteger = 1) then
   begin
     FrmCadFornecedor.BtnCpf.Checked := True;
-    FrmCadFornecedor.BtnAtivo.Checked:= True;
-    FrmCadFornecedor.EdtCpfCnpj.Text := dm.ZQConsPessoasCPF.AsString;
-    FrmCadFornecedor.EdtNome.Text := dm.ZQConsPessoasNOME.AsString;
-    FrmCadFornecedor.DTNasc.Date := dm.ZQConsPessoasDATANASCIMENTO.AsDateTime;
-    FrmCadFornecedor.EdtEndereco.Text := dm.ZQConsPessoasENDEREO.AsString;
-    FrmCadFornecedor.EdtNumero.Text := dm.ZQConsPessoasNMERO.AsString;
-    FrmCadFornecedor.EdtComplemento.Text := dm.ZQConsPessoasCOMPLEMENTO.AsString;
-    FrmCadFornecedor.EdtBairro.Text := dm.ZQConsPessoasBAIRRO.AsString;
-    FrmCadFornecedor.EdtCep.Text := dm.ZQConsPessoasCEP.AsString;
-    FrmCadFornecedor.EdtCidade.Text := dm.ZQConsPessoasCIDADE.AsString;
-    FrmCadFornecedor.CboUf.Text := dm.ZQConsPessoasESTADO.AsString;
-    FrmCadFornecedor.EdtTel.Text := dm.ZQConsPessoasTELEFONE.AsString;
-    FrmCadFornecedor.EdtCel.Text := dm.ZQConsPessoasCELULAR.AsString;
-    FrmCadFornecedor.EdtEmail.Text := dm.ZQConsPessoasEMAIL.AsString;
-    FrmCadFornecedor.MemObs.Text := dm.ZQConsPessoasOBSERVAO.AsString;
-
-    //ajuste da visão do cad dento dos cons
-    PnChama.Visible := True;
-    FrmCadFornecedor.Parent := PnChama;
-    FrmCadFornecedor.Align := alClient;
-    FrmCadFornecedor.Show;
-    FrmCadFornecedor.DesativaCampoForn();
-  end;
-
-  if (dm.ZQConsPessoasTIPO.AsString = 'PESSOA JURÍDICA') then
+  end
+  //  PESSOA JURÍDICA
+  else if (dm.ZQConsPessoasCODIGOTIP.AsInteger = 2) then
   begin
     FrmCadFornecedor.BtnCnpj.Checked := True;
-    FrmCadFornecedor.EdtCpfCnpj.Text := dm.ZQConsPessoasCNPJ.AsString;
-    FrmCadFornecedor.EdtNome.Text := dm.ZQConsPessoasNOME.AsString;
-    FrmCadFornecedor.DTNasc.Date := dm.ZQConsPessoasDATANASCIMENTO.AsDateTime;
-    FrmCadFornecedor.EdtEndereco.Text := dm.ZQConsPessoasENDEREO.AsString;
-    FrmCadFornecedor.EdtNumero.Text := dm.ZQConsPessoasNMERO.AsString;
-    FrmCadFornecedor.EdtComplemento.Text := dm.ZQConsPessoasCOMPLEMENTO.AsString;
-    FrmCadFornecedor.EdtBairro.Text := dm.ZQConsPessoasBAIRRO.AsString;
-    FrmCadFornecedor.EdtCep.Text := dm.ZQConsPessoasCEP.AsString;
-    FrmCadFornecedor.EdtCidade.Text := dm.ZQConsPessoasCIDADE.AsString;
-    FrmCadFornecedor.CboUf.Text := dm.ZQConsPessoasESTADO.AsString;
-    FrmCadFornecedor.EdtTel.Text := dm.ZQConsPessoasTELEFONE.AsString;
-    FrmCadFornecedor.EdtCel.Text := dm.ZQConsPessoasCELULAR.AsString;
-    FrmCadFornecedor.EdtEmail.Text := dm.ZQConsPessoasEMAIL.AsString;
-    FrmCadFornecedor.MemObs.Text := dm.ZQConsPessoasOBSERVAO.AsString;
-    FrmCadFornecedor.EdtFantasia.Text := dm.ZQConsPessoasNOMEFANTASIA.AsString;
-    FrmCadFornecedor.EdtInsEstadual.Text := dm.ZQConsPessoasINSCRIOESTADUAL.AsString;
-    FrmCadFornecedor.EdtInsMunicipal.Text := dm.ZQConsPessoasINSCRIOMUNICIPAL.AsString;
-
-    //ajuste da visão do cad dento dos cons
-    PnChama.Visible := True;
-    FrmCadFornecedor.Parent := PnChama;
-    FrmCadFornecedor.Align := alClient;
-    FrmCadFornecedor.Show;
-    FrmCadFornecedor.DesativaCampoForn()
   end;
+  //bloco de carga dos valores similares
 
+  FrmCadFornecedor.pescodigo := seleciona;
+  FrmCadFornecedor.EdtCpfCnpj.Text := dm.ZQConsPessoasCNPJ.AsString;
+  FrmCadFornecedor.EdtNome.Text := dm.ZQConsPessoasNOME.AsString;
+  FrmCadFornecedor.DTNasc.Date := dm.ZQConsPessoasDATANASCIMENTO.AsDateTime;
+  FrmCadFornecedor.EdtEndereco.Text := dm.ZQConsPessoasENDEREO.AsString;
+  FrmCadFornecedor.EdtNumero.Text := dm.ZQConsPessoasNMERO.AsString;
+  FrmCadFornecedor.EdtComplemento.Text := dm.ZQConsPessoasCOMPLEMENTO.AsString;
+  FrmCadFornecedor.EdtBairro.Text := dm.ZQConsPessoasBAIRRO.AsString;
+  FrmCadFornecedor.EdtCep.Text := dm.ZQConsPessoasCEP.AsString;
+  FrmCadFornecedor.EdtCidade.Text := dm.ZQConsPessoasCIDADE.AsString;
+  FrmCadFornecedor.CboUf.Text := dm.ZQConsPessoasESTADO.AsString;
+  FrmCadFornecedor.EdtTel.Text := dm.ZQConsPessoasTELEFONE.AsString;
+  FrmCadFornecedor.EdtCel.Text := dm.ZQConsPessoasCELULAR.AsString;
+  FrmCadFornecedor.EdtEmail.Text := dm.ZQConsPessoasEMAIL.AsString;
+  FrmCadFornecedor.MemObs.Text := dm.ZQConsPessoasOBSERVAO.AsString;
+  FrmCadFornecedor.EdtFantasia.Text := dm.ZQConsPessoasNOMEFANTASIA.AsString;
+  FrmCadFornecedor.EdtInsEstadual.Text := dm.ZQConsPessoasINSCRIOESTADUAL.AsString;
+  FrmCadFornecedor.EdtInsMunicipal.Text := dm.ZQConsPessoasINSCRIOMUNICIPAL.AsString;
+
+  //ajuste da visão do cad dento dos cons
+  PnChama.Visible := True;
+  FrmCadFornecedor.Parent := PnChama;
+  FrmCadFornecedor.Align := alClient;
+  FrmCadFornecedor.Show;
+  FrmCadFornecedor.DesativaCampoForn();
 end;
 
 procedure TFrmConsFornecedores.BtnConsultaClick(Sender: TObject);
@@ -339,7 +304,45 @@ end;
 
 procedure TFrmConsFornecedores.GrCNPJCellClick(Column: TColumn);
 begin
+  seleciona := dm.ZQConsPessoasCODIGO.AsInteger;
+end;
 
+procedure TFrmConsFornecedores.GrCPFCellClick(Column: TColumn);
+begin
+  seleciona := dm.ZQConsPessoasCODIGO.AsInteger;
+end;
+
+procedure TFrmConsFornecedores.GrTodosCellClick(Column: TColumn);
+begin
+  seleciona := dm.ZQConsPessoasCODIGO.AsInteger;
 end;
 
 end.
+{FrmCadFornecedor.OpForn := 'U';
+
+  if (dm.ZQConsPessoasCODIGOTIP.AsInteger = 1) then
+  begin
+
+  end;
+  if (dm.ZQConsPessoasCODIGOTIP.AsInteger = 2) then
+  begin
+    FrmCadFornecedor.BtnCnpj.Checked := True;
+    FrmCadFornecedor.pescodigo := seleciona;
+    FrmCadFornecedor.EdtCpfCnpj.Text := dm.ZQConsPessoasCNPJ.AsString;
+    FrmCadFornecedor.EdtNome.Text := dm.ZQConsPessoasNOME.AsString;
+    FrmCadFornecedor.DTNasc.Date := dm.ZQConsPessoasDATANASCIMENTO.AsDateTime;
+    FrmCadFornecedor.EdtEndereco.Text := dm.ZQConsPessoasENDEREO.AsString;
+    FrmCadFornecedor.EdtNumero.Text := dm.ZQConsPessoasNMERO.AsString;
+    FrmCadFornecedor.EdtComplemento.Text := dm.ZQConsPessoasCOMPLEMENTO.AsString;
+    FrmCadFornecedor.EdtBairro.Text := dm.ZQConsPessoasBAIRRO.AsString;
+    FrmCadFornecedor.EdtCep.Text := dm.ZQConsPessoasCEP.AsString;
+    FrmCadFornecedor.EdtCidade.Text := dm.ZQConsPessoasCIDADE.AsString;
+    FrmCadFornecedor.CboUf.Text := dm.ZQConsPessoasESTADO.AsString;
+    FrmCadFornecedor.EdtTel.Text := dm.ZQConsPessoasTELEFONE.AsString;
+    FrmCadFornecedor.EdtCel.Text := dm.ZQConsPessoasCELULAR.AsString;
+    FrmCadFornecedor.EdtEmail.Text := dm.ZQConsPessoasEMAIL.AsString;
+    FrmCadFornecedor.MemObs.Text := dm.ZQConsPessoasOBSERVAO.AsString;
+    FrmCadFornecedor.EdtFantasia.Text := dm.ZQConsPessoasNOMEFANTASIA.AsString;
+    FrmCadFornecedor.EdtInsEstadual.Text := dm.ZQConsPessoasINSCRIOESTADUAL.AsString;
+    FrmCadFornecedor.EdtInsMunicipal.Text := dm.ZQConsPessoasINSCRIOMUNICIPAL.AsString;
+  end;   }
