@@ -269,6 +269,7 @@ begin
     CboBanco.Enabled := True;
     EdtNomeConta.Enabled := false;
     CboBanco.SetFocus;
+    EdtNomeConta.Clear;
   end;
 end;
 
