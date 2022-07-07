@@ -1,12 +1,12 @@
 object FrmConsContas: TFrmConsContas
   Left = -8
-  Height = 944
+  Height = 1022
   Top = -8
-  Width = 1378
+  Width = 1410
   BorderStyle = bsNone
   Caption = 'FrmConsContas'
-  ClientHeight = 921
-  ClientWidth = 1378
+  ClientHeight = 999
+  ClientWidth = 1410
   Color = 16577259
   OnClose = FormClose
   OnResize = FormResize
@@ -15,12 +15,12 @@ object FrmConsContas: TFrmConsContas
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 921
+    Height = 999
     Top = 0
-    Width = 1378
+    Width = 1410
     Align = alClient
-    ClientHeight = 921
-    ClientWidth = 1378
+    ClientHeight = 999
+    ClientWidth = 1410
     TabOrder = 0
     object Panel2: TPanel
       Left = 0

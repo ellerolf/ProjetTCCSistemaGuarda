@@ -76,8 +76,8 @@ type
      AcionaBtnD:String;
      {Se 'AcionaConsConta do tipo string receber 'u' vai habilitar a consulta,
      se AcionaCadConta receber 'i' vai habilitar o cadastro'}
-     AcionaConsConta:string;
-     AcionaCadConta:String;
+     OpeCadOuConsConta:string;
+
   end;
 
 var
@@ -98,6 +98,8 @@ end;
 
 procedure TFrmCadContasBancarias.BtnSairClick(Sender: TObject);
 begin
+  OpeCadOuConsConta:='';
+  RdbCadTrans.Enabled:=True;
   Close;
 end;
 
@@ -115,73 +117,77 @@ end;
 
 procedure TFrmCadContasBancarias.BtnSalvarClick(Sender: TObject);
 begin
-  if (RdbCadConta.Checked = False) and (RdbCadTrans.Checked = False) then
+   if (OpeCadOuConsConta='i') then
   begin
-    ShowMessage('Selecione uma operação');
-  end;
 
-  if (RdbCadConta.Checked = True) and (CboTipo.KeyValue <> 3) then
-  begin
-    if (CboTipo.Text = '') then
+    if (RdbCadConta.Checked = False) and (RdbCadTrans.Checked = False) then
     begin
-      ShowMessage('Selecione o tipo da conta para continuar o cadastro!');
-      CboTipo.SetFocus;
-    end
-    else if (CboBanco.Text = '') then
-    begin
-      ShowMessage('Selecione o banco para continuar o cadastro!');
-      CboBanco.SetFocus;
-    end
-    else if (EdtAgencia.Text = '') then
-    begin
-      ShowMessage('O preenchimento do número da agência é obrigatório!');
-      EdtAgencia.SetFocus;
-    end
-    else if (EdtNConta.Text = '') then
-    begin
-      ShowMessage('O preenchimento do n° da conta é obrigatório!');
-      EdtNConta.SetFocus;
-    end
-    else
-    begin
-      dm.ZQCadBancarias.Params.ParamByName('pcodigotip').Value := CboTipo.KeyValue;
-      dm.ZQCadBancarias.Params.ParamByName('pconnome').Value := CboBanco.Text;
-      dm.ZQCadBancarias.Params.ParamByName('pconagencia').Value := EdtAgencia.Text;
-      dm.ZQCadBancarias.Params.ParamByName('pconnumero_conta').Value := EdtNConta.Text;
-      EdtSaldoInicial.Text :=StringReplace(EdtSaldoInicial.Text, ',', '.', [rfReplaceAll]);
-      dm.ZQCadBancarias.Params.ParamByName('pconsaldo_inicial').Value :=EdtSaldoInicial.Text;
-      dm.ZQCadBancarias.ExecSQL;
-      ShowMessage('Conta registrada com sucesso!');
-      CboTipo.ClearSelection;
-      CboBanco.ClearSelection;
-      EdtAgencia.Clear;
-      EdtNConta.Clear;
-      EdtSaldoInicial.Clear;
-      RdbCadConta.Checked:=false;
-
+      ShowMessage('Selecione uma operação');
     end;
 
-  end;
-  if (RdbCadConta.Checked = True) and (CboTipo.KeyValue = 3) then
-  begin
-    if (EdtNomeConta.Text = '') then
+    if (RdbCadConta.Checked = True) and (CboTipo.KeyValue <> 3) then
     begin
-      ShowMessage('Digite um nome para essa conta caixa!');
-    end
-    else
+      if (CboTipo.Text = '') then
+      begin
+        ShowMessage('Selecione o tipo da conta para continuar o cadastro!');
+        CboTipo.SetFocus;
+      end
+      else if (CboBanco.Text = '') then
+      begin
+        ShowMessage('Selecione o banco para continuar o cadastro!');
+        CboBanco.SetFocus;
+      end
+      else if (EdtAgencia.Text = '') then
+      begin
+        ShowMessage('O preenchimento do número da agência é obrigatório!');
+        EdtAgencia.SetFocus;
+      end
+      else if (EdtNConta.Text = '') then
+      begin
+        ShowMessage('O preenchimento do n° da conta é obrigatório!');
+        EdtNConta.SetFocus;
+      end
+      else
+      begin
+        dm.ZQCadBancarias.Params.ParamByName('pcodigotip').Value := CboTipo.KeyValue;
+        dm.ZQCadBancarias.Params.ParamByName('pconnome').Value := CboBanco.Text;
+        dm.ZQCadBancarias.Params.ParamByName('pconagencia').Value := EdtAgencia.Text;
+        dm.ZQCadBancarias.Params.ParamByName('pconnumero_conta').Value := EdtNConta.Text;
+        EdtSaldoInicial.Text :=StringReplace(EdtSaldoInicial.Text, ',', '.', [rfReplaceAll]);
+        dm.ZQCadBancarias.Params.ParamByName('pconsaldo_inicial').Value :=EdtSaldoInicial.Text;
+        dm.ZQCadBancarias.ExecSQL;
+        ShowMessage('Conta registrada com sucesso!');
+        CboTipo.ClearSelection;
+        CboBanco.ClearSelection;
+        EdtAgencia.Clear;
+        EdtNConta.Clear;
+        EdtSaldoInicial.Clear;
+        RdbCadConta.Checked:=false;
+
+      end;
+
+    end;
+    if (RdbCadConta.Checked = True) and (CboTipo.KeyValue = 3) then
     begin
-      dm.ZQCadBancarias.Params.ParamByName('pcodigotip').Value :=CboTipo.KeyValue;
-      dm.ZQCadBancarias.Params.ParamByName('pconnome').Value :=EdtNomeConta.Text;
-      EdtSaldoInicial.Text :=StringReplace(EdtSaldoInicial.Text, ',', '.', [rfReplaceAll]);
-      dm.ZQCadBancarias.Params.ParamByName('pconsaldo_inicial').Value :=EdtSaldoInicial.Text;
-      dm.ZQCadBancarias.Params.ParamByName('pconagencia').value:=Null;
-      dm.ZQCadBancarias.Params.ParamByName('pconnumero_conta').value:=Null;
-      dm.ZQCadBancarias.ExecSQL;
-      ShowMessage('Conta registrada com sucesso!');
-      CboTipo.ClearSelection;
-      EdtNomeConta.Clear;
-      EdtSaldoInicial.Clear;
-      RdbCadConta.Checked:=false;
+      if (EdtNomeConta.Text = '') then
+      begin
+        ShowMessage('Digite um nome para essa conta caixa!');
+      end
+      else
+      begin
+        dm.ZQCadBancarias.Params.ParamByName('pcodigotip').Value :=CboTipo.KeyValue;
+        dm.ZQCadBancarias.Params.ParamByName('pconnome').Value :=EdtNomeConta.Text;
+        EdtSaldoInicial.Text :=StringReplace(EdtSaldoInicial.Text, ',', '.', [rfReplaceAll]);
+        dm.ZQCadBancarias.Params.ParamByName('pconsaldo_inicial').Value :=EdtSaldoInicial.Text;
+        dm.ZQCadBancarias.Params.ParamByName('pconagencia').value:=Null;
+        dm.ZQCadBancarias.Params.ParamByName('pconnumero_conta').value:=Null;
+        dm.ZQCadBancarias.ExecSQL;
+        ShowMessage('Conta registrada com sucesso!');
+        CboTipo.ClearSelection;
+        EdtNomeConta.Clear;
+        EdtSaldoInicial.Clear;
+        RdbCadConta.Checked:=false;
+      end;
     end;
   end;
 

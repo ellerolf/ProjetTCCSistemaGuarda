@@ -41,7 +41,7 @@ type
     {Professor zanata disse que é importante quando tem duas grids armazenar o valor
      em uma variável durante o clique. Por isso foi criado uma variável chamada
     'ctipo' para receber o codigo de onde o usuário está clicando. }
-    //ctipo: integer;
+    ctipo: integer;
   public
 
   end;
@@ -67,19 +67,123 @@ end;
 
 procedure TFrmConsContas.BtnAlterarClick(Sender: TObject);
 begin
-  FrmCadContasBancarias.AcionaConsConta := 'u';
-
+  FrmCadContasBancarias.OpeCadOuConsConta := 'u';
+   //se for do tipo caixa e status ativo
   if (dm.ZQConsBancariasCODIGOTIP.AsInteger = 3) and (dm.ZQConsBancariasCONSTATUS.value=1) then
   begin
+    FrmCadContasBancarias.RdbCadTrans.Enabled:=False;
     FrmCadContasBancarias.RdbCadConta.Checked:=true;
     FrmCadContasBancarias.RdbCadConta.Caption:='Alteração de Conta';
     FrmCadContasBancarias.RGBStatusConta.Visible:=True;
     FrmCadContasBancarias.RGBStatusConta.ItemIndex:=0;
-    //FrmCadContasBancarias.CboTipo.:='CAIXA';
-    //FrmCadContasBancarias.EdtNomeConta.Text:=dm.ZQConsBancariasCONNOME.AsString;
-    //FrmCadContasBancarias.EdtSaldoInicial.Text:=FloatToStr(dm.ZQConsBancariasCONSALDO_INICIAL.AsFloat);
-    FrmCadContasBancarias.ShowModal;
+    dm.ZQConsTipoConta.Open;
+    FrmCadContasBancarias.CboTipo.KeyValue:=3;
+    FrmCadContasBancarias.EdtNomeConta.Enabled:=True;
+    FrmCadContasBancarias.EdtNomeConta.Text:=dm.ZQConsBancariasCONNOME.AsString;
+    FrmCadContasBancarias.EdtSaldoInicial.Enabled:=True;
+    FrmCadContasBancarias.EdtSaldoInicial.Text:=FormatCurr('0.00',dm.ZQConsBancariasCONSALDO_INICIAL.AsCurrency);
+    FrmCadContasBancarias.show;
   end;
+  //se for do tipo caixa e status inativo
+  if (dm.ZQConsBancariasCODIGOTIP.AsInteger = 3) and (dm.ZQConsBancariasCONSTATUS.value=0) then
+  begin
+    FrmCadContasBancarias.RdbCadTrans.Enabled:=False;
+    FrmCadContasBancarias.RdbCadConta.Checked:=true;
+    FrmCadContasBancarias.RdbCadConta.Caption:='Alteração de Conta';
+    FrmCadContasBancarias.RGBStatusConta.Visible:=True;
+    FrmCadContasBancarias.RGBStatusConta.ItemIndex:=1;
+    dm.ZQConsTipoConta.Open;
+    FrmCadContasBancarias.CboTipo.KeyValue:=3;
+    FrmCadContasBancarias.EdtNomeConta.Enabled:=True;
+    FrmCadContasBancarias.EdtNomeConta.Text:=dm.ZQConsBancariasCONNOME.AsString;
+    FrmCadContasBancarias.EdtSaldoInicial.Enabled:=True;
+    FrmCadContasBancarias.EdtSaldoInicial.Text:=FormatCurr('0.00',dm.ZQConsBancariasCONSALDO_INICIAL.AsCurrency);
+    FrmCadContasBancarias.show;
+  end;
+  //se for do tipo conta corrente e status ativo
+
+  if (dm.ZQConsBancariasCODIGOTIP.AsInteger = 1) and (dm.ZQConsBancariasCONSTATUS.value=1) then
+  begin
+    FrmCadContasBancarias.RdbCadTrans.Enabled:=False;
+    FrmCadContasBancarias.RdbCadConta.Checked:=true;
+    FrmCadContasBancarias.RdbCadConta.Caption:='Alteração de Conta';
+    FrmCadContasBancarias.RGBStatusConta.Visible:=True;
+    FrmCadContasBancarias.RGBStatusConta.ItemIndex:=0;
+    dm.ZQConsTipoConta.Open;
+    FrmCadContasBancarias.CboTipo.KeyValue:=1;
+    FrmCadContasBancarias.CboBanco.Enabled:=True;
+    FrmCadContasBancarias.CboBanco.Text:=DM.ZQConsBancariasCONNOME.AsString;
+    FrmCadContasBancarias.EdtAgencia.Enabled:=True;
+    FrmCadContasBancarias.EdtAgencia.Text:=dm.ZQConsBancariasCONAGENCIA.AsString;
+    FrmCadContasBancarias.EdtNConta.Enabled:=True;
+    FrmCadContasBancarias.EdtNConta.Text:=dm.ZQConsBancariasCONNUMERO_CONTA.AsString;
+    FrmCadContasBancarias.EdtSaldoInicial.Enabled:=True;
+    FrmCadContasBancarias.EdtSaldoInicial.Text:=FormatCurr('0.00',dm.ZQConsBancariasCONSALDO_INICIAL.AsCurrency);
+    FrmCadContasBancarias.show;
+  end;
+  //se for do tipo conta corrente e status inativo
+
+   if (dm.ZQConsBancariasCODIGOTIP.AsInteger = 1) and (dm.ZQConsBancariasCONSTATUS.value=0) then
+  begin
+    FrmCadContasBancarias.RdbCadTrans.Enabled:=False;
+    FrmCadContasBancarias.RdbCadConta.Checked:=true;
+    FrmCadContasBancarias.RdbCadConta.Caption:='Alteração de Conta';
+    FrmCadContasBancarias.RGBStatusConta.Visible:=True;
+    FrmCadContasBancarias.RGBStatusConta.ItemIndex:=1;
+    dm.ZQConsTipoConta.Open;
+    FrmCadContasBancarias.CboTipo.KeyValue:=1;
+    FrmCadContasBancarias.CboBanco.Enabled:=True;
+    FrmCadContasBancarias.CboBanco.Text:=DM.ZQConsBancariasCONNOME.AsString;
+    FrmCadContasBancarias.EdtAgencia.Enabled:=True;
+    FrmCadContasBancarias.EdtAgencia.Text:=dm.ZQConsBancariasCONAGENCIA.AsString;
+    FrmCadContasBancarias.EdtNConta.Enabled:=True;
+    FrmCadContasBancarias.EdtNConta.Text:=dm.ZQConsBancariasCONNUMERO_CONTA.AsString;
+    FrmCadContasBancarias.EdtSaldoInicial.Enabled:=True;
+    FrmCadContasBancarias.EdtSaldoInicial.Text:=FormatCurr('0.00',dm.ZQConsBancariasCONSALDO_INICIAL.AsCurrency);
+    FrmCadContasBancarias.show;
+  end;
+    //se for do tipo conta de aplicação e status ativo
+
+    if (dm.ZQConsBancariasCODIGOTIP.AsInteger = 2) and (dm.ZQConsBancariasCONSTATUS.value=1) then
+  begin
+    FrmCadContasBancarias.RdbCadTrans.Enabled:=False;
+    FrmCadContasBancarias.RdbCadConta.Checked:=true;
+    FrmCadContasBancarias.RdbCadConta.Caption:='Alteração de Conta';
+    FrmCadContasBancarias.RGBStatusConta.Visible:=True;
+    FrmCadContasBancarias.RGBStatusConta.ItemIndex:=0;
+    dm.ZQConsTipoConta.Open;
+    FrmCadContasBancarias.CboTipo.KeyValue:=2;
+    FrmCadContasBancarias.CboBanco.Enabled:=True;
+    FrmCadContasBancarias.CboBanco.Text:=DM.ZQConsBancariasCONNOME.AsString;
+    FrmCadContasBancarias.EdtAgencia.Enabled:=True;
+    FrmCadContasBancarias.EdtAgencia.Text:=dm.ZQConsBancariasCONAGENCIA.AsString;
+    FrmCadContasBancarias.EdtNConta.Enabled:=True;
+    FrmCadContasBancarias.EdtNConta.Text:=dm.ZQConsBancariasCONNUMERO_CONTA.AsString;
+    FrmCadContasBancarias.EdtSaldoInicial.Enabled:=True;
+    FrmCadContasBancarias.EdtSaldoInicial.Text:=FormatCurr('0.00',dm.ZQConsBancariasCONSALDO_INICIAL.AsCurrency);
+    FrmCadContasBancarias.show;
+  end;
+   //se for do tipo conta de aplicação e status inativo
+     if (dm.ZQConsBancariasCODIGOTIP.AsInteger = 2) and (dm.ZQConsBancariasCONSTATUS.value=0) then
+  begin
+    FrmCadContasBancarias.RdbCadTrans.Enabled:=False;
+    FrmCadContasBancarias.RdbCadConta.Checked:=true;
+    FrmCadContasBancarias.RdbCadConta.Caption:='Alteração de Conta';
+    FrmCadContasBancarias.RGBStatusConta.Visible:=True;
+    FrmCadContasBancarias.RGBStatusConta.ItemIndex:=1;
+    dm.ZQConsTipoConta.Open;
+    FrmCadContasBancarias.CboTipo.KeyValue:=2;
+    FrmCadContasBancarias.CboBanco.Enabled:=True;
+    FrmCadContasBancarias.CboBanco.Text:=DM.ZQConsBancariasCONNOME.AsString;
+    FrmCadContasBancarias.EdtAgencia.Enabled:=True;
+    FrmCadContasBancarias.EdtAgencia.Text:=dm.ZQConsBancariasCONAGENCIA.AsString;
+    FrmCadContasBancarias.EdtNConta.Enabled:=True;
+    FrmCadContasBancarias.EdtNConta.Text:=dm.ZQConsBancariasCONNUMERO_CONTA.AsString;
+    FrmCadContasBancarias.EdtSaldoInicial.Enabled:=True;
+    FrmCadContasBancarias.EdtSaldoInicial.Text:=FormatCurr('0.00',dm.ZQConsBancariasCONSALDO_INICIAL.AsCurrency);
+    FrmCadContasBancarias.show;
+  end;
+
 end;
 
 procedure TFrmConsContas.CboStatusChange(Sender: TObject);
@@ -89,12 +193,12 @@ end;
 
 procedure TFrmConsContas.DBGConsCaixaCellClick(Column: TColumn);
 begin
-  //ctipo := dm.ZQConsBancariasCODIGOTIP.AsInteger;
+  ctipo := dm.ZQConsBancariasCODIGOTIP.AsInteger;
 end;
 
 procedure TFrmConsContas.DBGConsContasBancariasCellClick(Column: TColumn);
 begin
-  //ctipo := dm.ZQConsBancariasCODIGOTIP.AsInteger;
+  ctipo := dm.ZQConsBancariasCODIGOTIP.AsInteger;
 end;
 
 procedure TFrmConsContas.EdtConsultaChange(Sender: TObject);
