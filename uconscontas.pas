@@ -67,7 +67,7 @@ end;
 
 procedure TFrmConsContas.BtnAlterarClick(Sender: TObject);
 begin
-  FrmCadContasBancarias.OpeCadOuConsConta := 'u';
+  FrmCadContasBancarias.OpeCadOuAltConta := 'u';
    //se for do tipo caixa e status ativo
   if (dm.ZQConsBancariasCODIGOTIP.AsInteger = 3) and (dm.ZQConsBancariasCONSTATUS.value=1) then
   begin

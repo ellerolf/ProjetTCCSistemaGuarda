@@ -76,7 +76,8 @@ type
      AcionaBtnD:String;
      {Se 'AcionaConsConta do tipo string receber 'u' vai habilitar a consulta,
      se AcionaCadConta receber 'i' vai habilitar o cadastro'}
-     OpeCadOuConsConta:string;
+     OpeCadOuAltConta:string;
+
 
   end;
 
@@ -98,8 +99,10 @@ end;
 
 procedure TFrmCadContasBancarias.BtnSairClick(Sender: TObject);
 begin
-  OpeCadOuConsConta:='';
+  OpeCadOuAltConta:='';
   RdbCadTrans.Enabled:=True;
+  RGBStatusConta.Visible:=false;
+  RdbCadConta.Caption:='Cadastro de Contas';
   Close;
 end;
 
@@ -117,7 +120,8 @@ end;
 
 procedure TFrmCadContasBancarias.BtnSalvarClick(Sender: TObject);
 begin
-   if (OpeCadOuConsConta='i') then
+      //operação para cadastro
+  if (OpeCadOuAltConta='i') then
   begin
 
     if (RdbCadConta.Checked = False) and (RdbCadTrans.Checked = False) then
@@ -190,6 +194,118 @@ begin
       end;
     end;
   end;
+
+    // operação para alteração
+   if (OpeCadOuAltConta='u') then
+  begin
+
+    if (RdbCadConta.Checked = True) and (CboTipo.KeyValue <> 3) then
+    begin
+      if (CboTipo.Text = '') then
+      begin
+        ShowMessage('Selecione o tipo da conta para continuar com a alteração!');
+        CboTipo.SetFocus;
+      end
+      else if (CboBanco.Text = '') then
+      begin
+        ShowMessage('Selecione o banco para continuar com a alteração!');
+        CboBanco.SetFocus;
+      end
+      else if (EdtAgencia.Text = '') then
+      begin
+        ShowMessage('O preenchimento do número da agência é obrigatório!');
+        EdtAgencia.SetFocus;
+      end
+      else if (EdtNConta.Text = '') then
+      begin
+        ShowMessage('O preenchimento do n° da conta é obrigatório!');
+        EdtNConta.SetFocus;
+      end
+      else
+      begin
+        if (RGBStatusConta.ItemIndex=0)then
+        begin
+          dm.ZQAltBancarias.ParamByName('pconstatus').Value:=1;
+        end;
+
+        if (RGBStatusConta.ItemIndex=1)then
+        begin
+          dm.ZQAltBancarias.ParamByName('pconstatus').Value:=0;
+        end;
+
+        dm.ZQAltBancarias.Params.ParamByName('pcodigotip').Value := CboTipo.KeyValue;
+        dm.ZQAltBancarias.Params.ParamByName('pconnome').Value := CboBanco.Text;
+        dm.ZQAltBancarias.Params.ParamByName('pconagencia').Value := EdtAgencia.Text;
+        dm.ZQAltBancarias.Params.ParamByName('pconnumero_conta').Value := EdtNConta.Text;
+        EdtSaldoInicial.Text :=StringReplace(EdtSaldoInicial.Text, ',', '.', [rfReplaceAll]);
+        dm.ZQAltBancarias.Params.ParamByName('pconsaldo_inicial').Value :=EdtSaldoInicial.Text;
+        dm.ZQAltBancarias.ParamByName('pconcodigo').Value:=dm.ZQConsBancariasCONCODIGO.AsInteger;
+        dm.ZQAltBancarias.ExecSQL;
+
+        dm.ZQConsBancarias.Close;
+        dm.ZQConsBancarias.Open;
+
+        ShowMessage('Conta alterada com sucesso!');
+        RGBStatusConta.Visible:=False;
+        RdbCadConta.Caption:='Cadastro de Contas';
+        OpeCadOuAltConta:='';
+        FrmCadContasBancarias.Close;
+
+        {CboTipo.ClearSelection;
+        CboBanco.ClearSelection;
+        EdtAgencia.Clear;
+        EdtNConta.Clear;
+        EdtSaldoInicial.Clear;
+        RdbCadConta.Checked:=false;}
+
+      end;
+
+    end;
+    if (RdbCadConta.Checked = True) and (CboTipo.KeyValue = 3) then
+    begin
+      if (EdtNomeConta.Text = '') then
+      begin
+        ShowMessage('Digite um nome para essa conta caixa!');
+      end
+      else
+      begin
+        if (RGBStatusConta.ItemIndex=0)then
+        begin
+          dm.ZQAltBancarias.ParamByName('pconstatus').Value:=1;
+        end;
+
+        if (RGBStatusConta.ItemIndex=1)then
+        begin
+          dm.ZQAltBancarias.ParamByName('pconstatus').Value:=0;
+        end;
+
+        dm.ZQAltBancarias.Params.ParamByName('pcodigotip').Value :=CboTipo.KeyValue;
+        dm.ZQAltBancarias.Params.ParamByName('pconnome').Value :=EdtNomeConta.Text;
+        EdtSaldoInicial.Text :=StringReplace(EdtSaldoInicial.Text, ',', '.', [rfReplaceAll]);
+        dm.ZQAltBancarias.Params.ParamByName('pconsaldo_inicial').Value :=EdtSaldoInicial.Text;
+        dm.ZQAltBancarias.Params.ParamByName('pconagencia').value:=Null;
+        dm.ZQAltBancarias.Params.ParamByName('pconnumero_conta').value:=Null;
+        dm.ZQAltBancarias.ParamByName('pconcodigo').Value:=dm.ZQConsBancariasCONCODIGO.AsInteger;
+        dm.ZQAltBancarias.ExecSQL;
+
+        dm.ZQConsBancarias.Close;
+        dm.ZQConsBancarias.Open;
+
+        ShowMessage('Conta alterada com sucesso!');
+        RGBStatusConta.Visible:=False;
+        RdbCadConta.Caption:='Cadastro de Contas';
+        OpeCadOuAltConta:='';
+        FrmCadContasBancarias.Close;
+
+        {CboTipo.ClearSelection;
+        EdtNomeConta.Clear;
+        EdtSaldoInicial.Clear;
+        RdbCadConta.Checked:=false;}
+      end;
+    end;
+  end;
+
+
 
   // programação da transferência
    if (RdbCadTrans.Checked=true) then

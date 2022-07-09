@@ -264,9 +264,84 @@ object DM: TDM
       end>
   end
   object ZQAltBancarias: TZQuery
-    Params = <>
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'UPDATE CONTAS SET CONNOME=:pCONNOME, CODIGOTIP=:pCODIGOTIP, CONAGENCIA=:pCONAGENCIA, CONNUMERO_CONTA=:pCONNUMERO_CONTA, CONSALDO_INICIAL=:pCONSALDO_INICIAL, CONSTATUS=:pCONSTATUS WHERE CONCODIGO=:pCONCODIGO'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'pCONNOME'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pCODIGOTIP'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pCONAGENCIA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pCONNUMERO_CONTA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pCONSALDO_INICIAL'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pCONSTATUS'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pCONCODIGO'
+        ParamType = ptUnknown
+      end>
     Left = 432
     Top = 168
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'pCONNOME'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pCODIGOTIP'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pCONAGENCIA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pCONNUMERO_CONTA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pCONSALDO_INICIAL'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pCONSTATUS'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pCONCODIGO'
+        ParamType = ptUnknown
+      end>
   end
   object ZQConsUsuario: TZQuery
     Connection = ZFinanceiro
