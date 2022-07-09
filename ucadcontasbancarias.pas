@@ -247,6 +247,7 @@ begin
 
         ShowMessage('Conta alterada com sucesso!');
         RGBStatusConta.Visible:=False;
+        RdbCadTrans.Enabled:=True;
         RdbCadConta.Caption:='Cadastro de Contas';
         OpeCadOuAltConta:='';
         FrmCadContasBancarias.Close;
@@ -293,6 +294,7 @@ begin
 
         ShowMessage('Conta alterada com sucesso!');
         RGBStatusConta.Visible:=False;
+        RdbCadTrans.Enabled:=True;
         RdbCadConta.Caption:='Cadastro de Contas';
         OpeCadOuAltConta:='';
         FrmCadContasBancarias.Close;
