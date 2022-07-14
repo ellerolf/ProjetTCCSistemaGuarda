@@ -39,6 +39,7 @@ type
     BtnCadLancamento: TSpeedButton;
     BtnConsBanco: TSpeedButton;
     SpeedButton1: TSpeedButton;
+    BtnTrasf: TSpeedButton;
     procedure BtnCadBancoClick(Sender: TObject);
     procedure BtnCadCentroClick(Sender: TObject);
     procedure BtnCadFornecedorClick(Sender: TObject);
