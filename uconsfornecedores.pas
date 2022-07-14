@@ -319,31 +319,3 @@ begin
 end;
 
 end.
-{FrmCadFornecedor.OpForn := 'U';
-
-  if (dm.ZQConsPessoasCODIGOTIP.AsInteger = 1) then
-  begin
-
-  end;
-  if (dm.ZQConsPessoasCODIGOTIP.AsInteger = 2) then
-  begin
-    FrmCadFornecedor.BtnCnpj.Checked := True;
-    FrmCadFornecedor.pescodigo := seleciona;
-    FrmCadFornecedor.EdtCpfCnpj.Text := dm.ZQConsPessoasCNPJ.AsString;
-    FrmCadFornecedor.EdtNome.Text := dm.ZQConsPessoasNOME.AsString;
-    FrmCadFornecedor.DTNasc.Date := dm.ZQConsPessoasDATANASCIMENTO.AsDateTime;
-    FrmCadFornecedor.EdtEndereco.Text := dm.ZQConsPessoasENDEREO.AsString;
-    FrmCadFornecedor.EdtNumero.Text := dm.ZQConsPessoasNMERO.AsString;
-    FrmCadFornecedor.EdtComplemento.Text := dm.ZQConsPessoasCOMPLEMENTO.AsString;
-    FrmCadFornecedor.EdtBairro.Text := dm.ZQConsPessoasBAIRRO.AsString;
-    FrmCadFornecedor.EdtCep.Text := dm.ZQConsPessoasCEP.AsString;
-    FrmCadFornecedor.EdtCidade.Text := dm.ZQConsPessoasCIDADE.AsString;
-    FrmCadFornecedor.CboUf.Text := dm.ZQConsPessoasESTADO.AsString;
-    FrmCadFornecedor.EdtTel.Text := dm.ZQConsPessoasTELEFONE.AsString;
-    FrmCadFornecedor.EdtCel.Text := dm.ZQConsPessoasCELULAR.AsString;
-    FrmCadFornecedor.EdtEmail.Text := dm.ZQConsPessoasEMAIL.AsString;
-    FrmCadFornecedor.MemObs.Text := dm.ZQConsPessoasOBSERVAO.AsString;
-    FrmCadFornecedor.EdtFantasia.Text := dm.ZQConsPessoasNOMEFANTASIA.AsString;
-    FrmCadFornecedor.EdtInsEstadual.Text := dm.ZQConsPessoasINSCRIOESTADUAL.AsString;
-    FrmCadFornecedor.EdtInsMunicipal.Text := dm.ZQConsPessoasINSCRIOMUNICIPAL.AsString;
-  end;   }
