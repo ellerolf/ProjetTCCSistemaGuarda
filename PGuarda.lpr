@@ -7,9 +7,10 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, zcomponent, UEntrarUsuario, umenu, uCadUsuario, uCadContasBancarias,
-  uCadCentroCusto, uCadFornecedores, uCadLancamento, UConsFornecedores,
-UConsBaixa, UConsContas, UModulo, UBuscaConta, UTranfContas;
+  Forms, datetimectrls, zcomponent, UEntrarUsuario, umenu, uCadUsuario,
+  uCadContasBancarias, uCadCentroCusto, uCadFornecedores, uCadLancamento,
+  UConsFornecedores, UConsBaixa, UConsContas, UModulo, UBuscaConta,
+  UTranfContas;
 
 {$R *.res}
 

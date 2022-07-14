@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, Buttons,
-  StdCtrls, MaskEdit, EditBtn, UModulo, UConsFornecedores;
+  StdCtrls, MaskEdit, EditBtn, DateTimePicker, UModulo, UConsFornecedores;
 
 type
 

@@ -2,11 +2,11 @@ object FrmMenu: TFrmMenu
   Left = -8
   Height = 791
   Top = -8
-  Width = 1450
+  Width = 1466
   BorderIcons = []
   Caption = 'Menu'
   ClientHeight = 752
-  ClientWidth = 1450
+  ClientWidth = 1466
   Color = 16510433
   OnClose = FormClose
   OnResize = FormResize
@@ -5450,6 +5450,7 @@ object FrmMenu: TFrmMenu
           00FF9E3800FF9E3800FF9E3800FF9E3800FF9D3700FF902A00F87A1400D66600
           0048
         }
+        OnClick = BtnTrasfClick
       end
     end
     object Panel6: TPanel
@@ -10422,10 +10423,10 @@ object FrmMenu: TFrmMenu
     Left = 0
     Height = 40
     Top = 0
-    Width = 1450
+    Width = 1466
     Align = alTop
     ClientHeight = 40
-    ClientWidth = 1450
+    ClientWidth = 1466
     Color = 13238272
     ParentColor = False
     TabOrder = 1
@@ -11312,7 +11313,7 @@ object FrmMenu: TFrmMenu
       Transparent = False
     end
     object Image2: TImage
-      Left = 1328
+      Left = 1344
       Height = 38
       Top = 1
       Width = 37
@@ -12370,7 +12371,7 @@ object FrmMenu: TFrmMenu
       }
     end
     object LblUsuario: TLabel
-      Left = 1365
+      Left = 1381
       Height = 38
       Top = 1
       Width = 84
@@ -12393,10 +12394,10 @@ object FrmMenu: TFrmMenu
     Left = 184
     Height = 712
     Top = 40
-    Width = 1266
+    Width = 1282
     Align = alClient
     ClientHeight = 712
-    ClientWidth = 1266
+    ClientWidth = 1282
     Color = 16577259
     ParentColor = False
     TabOrder = 2
@@ -12406,7 +12407,7 @@ object FrmMenu: TFrmMenu
       Left = 1
       Height = 710
       Top = 1
-      Width = 1264
+      Width = 1280
       Align = alClient
       Center = True
       Picture.Data = {
