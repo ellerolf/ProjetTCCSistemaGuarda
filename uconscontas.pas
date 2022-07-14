@@ -26,7 +26,9 @@ type
     Panel1: TPanel;
     Panel2: TPanel;
     RGBConsTipoConta: TRadioGroup;
+    BtnPesquisar: TSpeedButton;
     procedure BtnAlterarClick(Sender: TObject);
+    procedure BtnPesquisarClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
     procedure CboStatusChange(Sender: TObject);
     procedure DBGConsCaixaCellClick(Column: TColumn);
@@ -188,6 +190,75 @@ begin
 
 end;
 
+procedure TFrmConsContas.BtnPesquisarClick(Sender: TObject);
+begin
+  // caixa, ativo e inativo
+  if (RGBConsTipoConta.ItemIndex=0) and (CboStatus.ItemIndex=0) then
+  begin
+    dm.ZQConsBancarias.close;
+    dm.ZQConsBancarias.SQL.Clear;
+    dm.ZQConsBancarias.SQL.Add('SELECT * from vwcontas WHERE CODIGOTIP=3 AND CONNOME like'+QuotedStr('%'+EdtConsulta.Text+'%'));
+    dm.ZQConsBancarias.close;
+    dm.ZQConsBancarias.open;
+    EdtConsulta.Clear;
+  end
+  Else
+  // caixa, somente ativo
+  if (RGBConsTipoConta.ItemIndex=0) and (CboStatus.ItemIndex=1) then
+  begin
+    dm.ZQConsBancarias.close;
+    dm.ZQConsBancarias.SQL.Clear;
+    dm.ZQConsBancarias.SQL.Add('SELECT * from vwcontas WHERE CODIGOTIP=3 AND CONSTATUS=1 AND CONNOME like'+QuotedStr('%'+EdtConsulta.Text+'%'));
+    dm.ZQConsBancarias.close;
+    dm.ZQConsBancarias.open;
+    EdtConsulta.Clear;
+  end
+  Else
+  //caixa, somente inativo
+  if (RGBConsTipoConta.ItemIndex=0) and (CboStatus.ItemIndex=2) then
+  begin
+    dm.ZQConsBancarias.close;
+    dm.ZQConsBancarias.SQL.Clear;
+    dm.ZQConsBancarias.SQL.Add('SELECT * from vwcontas WHERE CODIGOTIP=3 AND CONSTATUS=0 AND CONNOME like'+QuotedStr('%'+EdtConsulta.Text+'%'));
+    dm.ZQConsBancarias.close;
+    dm.ZQConsBancarias.open;
+    EdtConsulta.Clear;
+  end
+  Else
+  //Contas bancárias ativo e inativo
+  if (RGBConsTipoConta.ItemIndex=1) and (CboStatus.ItemIndex=0) then
+  begin
+    dm.ZQConsBancarias.close;
+    dm.ZQConsBancarias.SQL.Clear;
+    dm.ZQConsBancarias.SQL.Add('SELECT * from vwcontas WHERE CODIGOTIP<3 AND CONNOME like'+QuotedStr('%'+EdtConsulta.Text+'%'));
+    dm.ZQConsBancarias.close;
+    dm.ZQConsBancarias.open;
+    EdtConsulta.Clear;
+  end
+  Else
+  //Contas bancárias somente ativo
+  if (RGBConsTipoConta.ItemIndex=1) and (CboStatus.ItemIndex=1) then
+  begin
+    dm.ZQConsBancarias.close;
+    dm.ZQConsBancarias.SQL.Clear;
+    dm.ZQConsBancarias.SQL.Add('SELECT * from vwcontas WHERE CODIGOTIP<3 AND CONSTATUS=1 AND CONNOME like'+QuotedStr('%'+EdtConsulta.Text+'%'));
+    dm.ZQConsBancarias.close;
+    dm.ZQConsBancarias.open;
+    EdtConsulta.Clear;
+  end
+  Else
+    //Contas bancárias somente inativa
+  if (RGBConsTipoConta.ItemIndex=1) and (CboStatus.ItemIndex=2) then
+  begin
+    dm.ZQConsBancarias.close;
+    dm.ZQConsBancarias.SQL.Clear;
+    dm.ZQConsBancarias.SQL.Add('SELECT * from vwcontas WHERE CODIGOTIP<3 AND CONSTATUS=0 AND CONNOME like'+QuotedStr('%'+EdtConsulta.Text+'%'));
+    dm.ZQConsBancarias.close;
+    dm.ZQConsBancarias.open;
+    EdtConsulta.Clear;
+  end;
+end;
+
 procedure TFrmConsContas.CboStatusChange(Sender: TObject);
 begin
   ConsContas();
@@ -205,65 +276,7 @@ end;
 
 procedure TFrmConsContas.EdtConsultaChange(Sender: TObject);
 begin
-   // caixa, ativo e inativo
-  if (RGBConsTipoConta.ItemIndex=0) and (CboStatus.ItemIndex=0) then
-  begin
-    dm.ZQConsBancarias.close;
-    dm.ZQConsBancarias.SQL.Clear;
-    dm.ZQConsBancarias.SQL.Add('SELECT * from vwcontas WHERE CODIGOTIP=3 AND CONNOME like'+QuotedStr('%'+EdtConsulta.Text+'%'));
-    dm.ZQConsBancarias.close;
-    dm.ZQConsBancarias.open;
-  end
-  Else
-  // caixa, somente ativo
-  if (RGBConsTipoConta.ItemIndex=0) and (CboStatus.ItemIndex=1) then
-  begin
-    dm.ZQConsBancarias.close;
-    dm.ZQConsBancarias.SQL.Clear;
-    dm.ZQConsBancarias.SQL.Add('SELECT * from vwcontas WHERE CODIGOTIP=3 AND CONSTATUS=1 AND CONNOME like'+QuotedStr('%'+EdtConsulta.Text+'%'));
-    dm.ZQConsBancarias.close;
-    dm.ZQConsBancarias.open;
-  end
-  Else
-  //caixa, somente inativo
-  if (RGBConsTipoConta.ItemIndex=0) and (CboStatus.ItemIndex=2) then
-  begin
-    dm.ZQConsBancarias.close;
-    dm.ZQConsBancarias.SQL.Clear;
-    dm.ZQConsBancarias.SQL.Add('SELECT * from vwcontas WHERE CODIGOTIP=3 AND CONSTATUS=0 AND CONNOME like'+QuotedStr('%'+EdtConsulta.Text+'%'));
-    dm.ZQConsBancarias.close;
-    dm.ZQConsBancarias.open;
-  end
-  Else
-  //Contas bancárias ativo e inativo
-  if (RGBConsTipoConta.ItemIndex=1) and (CboStatus.ItemIndex=0) then
-  begin
-    dm.ZQConsBancarias.close;
-    dm.ZQConsBancarias.SQL.Clear;
-    dm.ZQConsBancarias.SQL.Add('SELECT * from vwcontas WHERE CODIGOTIP<3 AND CONNOME like'+QuotedStr('%'+EdtConsulta.Text+'%'));
-    dm.ZQConsBancarias.close;
-    dm.ZQConsBancarias.open;
-  end
-  Else
-  //Contas bancárias somente ativo
-  if (RGBConsTipoConta.ItemIndex=1) and (CboStatus.ItemIndex=1) then
-  begin
-    dm.ZQConsBancarias.close;
-    dm.ZQConsBancarias.SQL.Clear;
-    dm.ZQConsBancarias.SQL.Add('SELECT * from vwcontas WHERE CODIGOTIP<3 AND CONSTATUS=1 AND CONNOME like'+QuotedStr('%'+EdtConsulta.Text+'%'));
-    dm.ZQConsBancarias.close;
-    dm.ZQConsBancarias.open;
-  end
-  Else
-    //Contas bancárias somente inativa
-  if (RGBConsTipoConta.ItemIndex=1) and (CboStatus.ItemIndex=2) then
-  begin
-    dm.ZQConsBancarias.close;
-    dm.ZQConsBancarias.SQL.Clear;
-    dm.ZQConsBancarias.SQL.Add('SELECT * from vwcontas WHERE CODIGOTIP<3 AND CONSTATUS=0 AND CONNOME like'+QuotedStr('%'+EdtConsulta.Text+'%'));
-    dm.ZQConsBancarias.close;
-    dm.ZQConsBancarias.open;
-  end;
+
 end;
 
 procedure TFrmConsContas.FormClose(Sender: TObject; var CloseAction: TCloseAction);
