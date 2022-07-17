@@ -476,14 +476,158 @@ object DM: TDM
       end>
   end
   object ZQAltTransferencia: TZQuery
-    Params = <>
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'UPDATE transferencia SET TRAVALOR=:pTRAVALOR, TRACODIGO_CONORI=:pTRACODIGO_CONORI, TRACODIGO_CONDES=:pTRACODIGO_CONDES, TRADATA=:pTRADATA, TRANUMERO_DOCUMENTO=:pTRANUMERO_DOCUMENTO, TRASTATUS=:pTRASTATUS WHERE TRACODIGO=:pTRACODIGO'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'pTRAVALOR'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pTRACODIGO_CONORI'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pTRACODIGO_CONDES'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pTRADATA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pTRANUMERO_DOCUMENTO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pTRASTATUS'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pTRACODIGO'
+        ParamType = ptUnknown
+      end>
     Left = 536
     Top = 168
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'pTRAVALOR'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pTRACODIGO_CONORI'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pTRACODIGO_CONDES'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pTRADATA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pTRANUMERO_DOCUMENTO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pTRASTATUS'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pTRACODIGO'
+        ParamType = ptUnknown
+      end>
   end
   object ZQConsTransferencia: TZQuery
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'SELECT * from transferencia'
+    )
     Params = <>
     Left = 536
     Top = 304
+    object ZQConsTransferenciaTRACODIGO: TLongintField
+      FieldKind = fkData
+      FieldName = 'TRACODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object ZQConsTransferenciaTRAVALOR: TFloatField
+      FieldKind = fkData
+      FieldName = 'TRAVALOR'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 22
+    end
+    object ZQConsTransferenciaTRACODIGO_CONORI: TLongintField
+      FieldKind = fkData
+      FieldName = 'TRACODIGO_CONORI'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsTransferenciaTRACODIGO_CONDES: TLongintField
+      FieldKind = fkData
+      FieldName = 'TRACODIGO_CONDES'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsTransferenciaTRADATA: TDateField
+      FieldKind = fkData
+      FieldName = 'TRADATA'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsTransferenciaTRANUMERO_DOCUMENTO: TStringField
+      FieldKind = fkData
+      FieldName = 'TRANUMERO_DOCUMENTO'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsTransferenciaTRASTATUS: TSmallintField
+      FieldKind = fkData
+      FieldName = 'TRASTATUS'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
   end
   object ZQDelUsuario: TZQuery
     Params = <>

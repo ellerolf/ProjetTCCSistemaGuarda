@@ -103,6 +103,13 @@ type
     ZQConsPessoasTIPO: TStringField;
     ZQConsTipoContaTIPCODIGO: TLongintField;
     ZQConsTipoContaTIPNOME: TStringField;
+    ZQConsTransferenciaTRACODIGO: TLongintField;
+    ZQConsTransferenciaTRACODIGO_CONDES: TLongintField;
+    ZQConsTransferenciaTRACODIGO_CONORI: TLongintField;
+    ZQConsTransferenciaTRADATA: TDateField;
+    ZQConsTransferenciaTRANUMERO_DOCUMENTO: TStringField;
+    ZQConsTransferenciaTRASTATUS: TSmallintField;
+    ZQConsTransferenciaTRAVALOR: TFloatField;
     ZQConsUsuarioCODIGONIV: TLongintField;
     ZQConsUsuarioUSUCODIGO: TLongintField;
     ZQConsUsuarioUSULOGIN: TStringField;

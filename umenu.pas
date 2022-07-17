@@ -156,6 +156,7 @@ end;
 procedure TFrmMenu.BtnCadBancoClick(Sender: TObject);
 begin
   FrmCadContasBancarias.OpeCadOuAltConta:='i';
+  FrmCadContasBancarias.OpecadOuAltTransf:='I';
   FrmCadContasBancarias.Parent := PnChama;
   FrmCadContasBancarias.Align := alClient;
   FrmCadContasBancarias.Show;

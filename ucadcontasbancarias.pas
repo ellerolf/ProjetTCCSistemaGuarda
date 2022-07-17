@@ -20,6 +20,7 @@ type
     EdtCodContaDes: TEdit;
     EdtNomeConta: TEdit;
     Label8: TLabel;
+    RGBStatusTransf: TRadioGroup;
     RGBStatusConta: TRadioGroup;
     RdbCadConta: TRadioButton;
     RdbCadTrans: TRadioButton;
@@ -77,7 +78,9 @@ type
      {Se 'AcionaConsConta do tipo string receber 'u' vai habilitar a consulta,
      se AcionaCadConta receber 'i' vai habilitar o cadastro'}
      OpeCadOuAltConta:string;
-
+      {Se 'OpecadOuAltTransf' do tipo string receber 'U' vai habilitar a consulta,
+     se OpecadOuAltTransf receber 'I' vai habilitar o cadastro'}
+     OpecadOuAltTransf: string
 
   end;
 
@@ -100,9 +103,13 @@ end;
 procedure TFrmCadContasBancarias.BtnSairClick(Sender: TObject);
 begin
   OpeCadOuAltConta:='';
+  OpecadOuAltTransf:='';
   RdbCadTrans.Enabled:=True;
-  RGBStatusConta.Visible:=false;
+  RdbCadConta.Enabled:=True;
+  RGBStatusConta.Visible:=False;
+  RGBStatusTransf.Visible:=False;
   RdbCadConta.Caption:='Cadastro de Contas';
+  RdbCadTrans.Caption:='Cadastro de Transferência';
   Close;
 end;
 
@@ -195,7 +202,7 @@ begin
     end;
   end;
 
-    // operação para alteração
+    // operação para alteração de conta
    if (OpeCadOuAltConta='u') then
   begin
 
@@ -309,7 +316,10 @@ begin
 
 
 
-  // programação da transferência
+  // programação para cadastro da transferência
+  if(OpecadOuAltTransf='I') then
+  begin
+
    if (RdbCadTrans.Checked=true) then
    begin
         if (DtDataTransf.Text='') then
@@ -360,9 +370,87 @@ begin
           EdtCodContaDes.clear;
           RdbCadTrans.Checked:=false;
         end;
-
-
    end;
+  end;
+    // operação para alteração da transferência
+
+      if(OpecadOuAltTransf='U') then
+  begin
+
+   if (RdbCadTrans.Checked=true) then
+   begin
+        if (DtDataTransf.Text='') then
+        begin
+          ShowMessage('Você não preencheu a data da transferência, este campo é um campo obrigatório');
+          DtDataTransf.SetFocus;
+        end
+        else if (EdtNDoc.Text='') then
+        begin
+             ShowMessage('Você não preencheu o número do documento, este campo é um campo obrigatório');
+             EdtNDoc.SetFocus;
+        end
+        else if (EdtVlrTras.Text='') then
+        begin
+              ShowMessage('Você não preencheu o valor da transferência, este campo é um campo obrigatório');
+              EdtVlrTras.SetFocus;
+        end
+        else if (EdtCodContaO.Text='') then
+        begin
+              ShowMessage('Você não preencheu o código da conta de origem, este campo é um campo obrigatório');
+              EdtCodContaO.SetFocus;
+        end
+        else if (EdtCodContaDes.Text='') then
+        begin
+             ShowMessage('Você não preencheu o código da conta de destino, este campo é um campo obrigatório');
+             EdtCodContaDes.SetFocus;
+        end
+        else if (EdtCodContaO.Text=EdtCodContaDes.Text) then
+        begin
+             ShowMessage('Código da conta de origem é a mesma do código da conta de destino, verifique!');
+             EdtCodContaDes.Clear;
+             EdtCodContaDes.SetFocus;
+        end
+        else
+        begin
+
+          if (RGBStatusTransf.ItemIndex=0)then
+        begin
+          dm.ZQAltTransferencia.ParamByName('pTRASTATUS').Value:=1;
+        end;
+
+        if (RGBStatusTransf.ItemIndex=1)then
+        begin
+          dm.ZQAltTransferencia.ParamByName('pTRASTATUS').Value:=0;
+        end;
+
+          dm.ZQAltTransferencia.Params.ParamByName('pTRADATA').AsString:=FormatDateTime('yyyy-mm-dd',DtDataTransf.Date);
+          dm.ZQAltTransferencia.Params.ParamByName('pTRANUMERO_DOCUMENTO').Value:=EdtNDoc.Text;
+          EdtVlrTras.Text :=StringReplace(EdtVlrTras.Text, ',', '.', [rfReplaceAll]);
+          dm.ZQAltTransferencia.Params.ParamByName('pTRAVALOR').Value:=EdtVlrTras.Text;
+          dm.ZQAltTransferencia.Params.ParamByName('pTRACODIGO_CONORI').Value:=EdtCodContaO.Text;
+          dm.ZQAltTransferencia.Params.ParamByName('pTRACODIGO_CONDES').Value:=EdtCodContaDes.Text;
+          dm.ZQAltTransferencia.Params.ParamByName('ptracodigo').Value:=DM.ZQConsTransferenciaTRACODIGO.AsInteger;
+          dm.ZQAltTransferencia.ExecSQL;
+          ShowMessage('Transferência alterada com sucesso!');
+
+          dm.ZQConsTransferencia.Close;
+          dm.ZQConsTransferencia.Open;
+
+          RGBStatusTransf.Visible:=False;
+          RdbCadConta.Enabled:=True;
+          RdbCadTrans.Caption:='Cadastro de Transferência';
+          OpecadOuAltTransf:='';
+          FrmCadContasBancarias.Close;
+
+          {EdtNDoc.Clear;
+          DtDataTransf.Clear;
+          EdtVlrTras.Clear;
+          EdtCodContaO.clear;
+          EdtCodContaDes.clear;
+          RdbCadTrans.Checked:=false;}
+        end;
+   end;
+  end;
 
 
 end;
