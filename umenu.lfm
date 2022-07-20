@@ -5,7 +5,7 @@ object FrmMenu: TFrmMenu
   Width = 1482
   BorderIcons = []
   Caption = 'Menu'
-  ClientHeight = 807
+  ClientHeight = 752
   ClientWidth = 1482
   Color = 16510433
   OnClose = FormClose
@@ -12396,7 +12396,7 @@ object FrmMenu: TFrmMenu
     Top = 40
     Width = 1298
     Align = alClient
-    ClientHeight = 767
+    ClientHeight = 712
     ClientWidth = 1298
     Color = 16577259
     ParentColor = False
