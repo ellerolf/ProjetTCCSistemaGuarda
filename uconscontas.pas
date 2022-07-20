@@ -15,7 +15,6 @@ type
   TFrmConsContas = class(TForm)
     BtnAlterar: TSpeedButton;
     BtnSair: TSpeedButton;
-    BtnSalvar: TSpeedButton;
     CboStatus: TComboBox;
     DBGConsCaixa: TDBGrid;
     DBGConsContasBancarias: TDBGrid;
