@@ -558,11 +558,32 @@ object DM: TDM
   object ZQConsTransferencia: TZQuery
     Connection = ZFinanceiro
     SQL.Strings = (
-      'SELECT * from transferencia'
+      'SELECT * FROM transferencia WHERE TRADATA between :dtini and :dtfin'
     )
-    Params = <>
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'dtini'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'dtfin'
+        ParamType = ptUnknown
+      end>
     Left = 536
     Top = 304
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'dtini'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'dtfin'
+        ParamType = ptUnknown
+      end>
     object ZQConsTransferenciaTRACODIGO: TLongintField
       FieldKind = fkData
       FieldName = 'TRACODIGO'

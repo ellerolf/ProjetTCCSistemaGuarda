@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, Buttons,
-  StdCtrls, DBGrids, UModulo,uCadContasBancarias;
+  StdCtrls, DBGrids, DateTimePicker, UModulo,uCadContasBancarias;
 
 type
 
@@ -16,6 +16,8 @@ type
     BtnCancela: TSpeedButton;
     BtnSeleciona: TSpeedButton;
     CboStatus: TComboBox;
+    DTInicial: TDateTimePicker;
+    DTFinal: TDateTimePicker;
     DBGrid1: TDBGrid;
     Label1: TLabel;
     Label7: TLabel;
@@ -118,7 +120,47 @@ end;
 
 procedure TFrmTranfContas.SpeedButton3Click(Sender: TObject);
 begin
-  //todas trasnferência
+  if (CboStatus.ItemIndex=0) then
+  begin
+    with dm.ZQConsTransferencia do
+    begin
+      Close ;
+      sql.Clear;
+      SQL.Add('SELECT * FROM transferencia WHERE TRADATA between :dtini and :dtfin');
+      ParamByName('dtini').Value:=FormatDateTime('yyyy-mm-dd',DTInicial.Date);
+      ParamByName('dtfin').Value:=FormatDateTime('yyyy-mm-dd',DTFinal.Date);
+      Open;
+      end;
+  end;
+
+  if (CboStatus.ItemIndex=1) then
+  begin
+    with dm.ZQConsTransferencia do
+    begin
+      Close ;
+      sql.Clear;
+      SQL.Add('SELECT * FROM transferencia WHERE TRASTATUS=1 and TRADATA between :dtini and :dtfin');
+      ParamByName('dtini').Value:=FormatDateTime('yyyy-mm-dd',DTInicial.Date);
+      ParamByName('dtfin').Value:=FormatDateTime('yyyy-mm-dd',DTFinal.Date);
+      Open;
+      end;
+  end;
+
+    if (CboStatus.ItemIndex=2) then
+  begin
+    with dm.ZQConsTransferencia do
+    begin
+      Close ;
+      sql.Clear;
+      SQL.Add('SELECT * FROM transferencia WHERE TRASTATUS=0 and TRADATA between :dtini and :dtfin');
+      ParamByName('dtini').Value:=FormatDateTime('yyyy-mm-dd',DTInicial.Date);
+      ParamByName('dtfin').Value:=FormatDateTime('yyyy-mm-dd',DTFinal.Date);
+      Open;
+      end;
+  end;
+end;
+
+  {//todas trasnferência
   if (CboStatus.ItemIndex=0) then
   begin
     dm.ZQConsTransferencia.close;
@@ -146,7 +188,7 @@ begin
     dm.ZQConsTransferencia.close;
     dm.ZQConsTransferencia.open;
   end;
-end;
+end; }
 
 end.
 
