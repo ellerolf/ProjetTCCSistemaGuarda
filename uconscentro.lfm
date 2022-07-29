@@ -1,0 +1,170 @@
+object FrmConsCentro: TFrmConsCentro
+  Left = -8
+  Height = 525
+  Top = -8
+  Width = 899
+  BorderStyle = bsNone
+  Caption = 'FrmConsCentro'
+  ClientHeight = 525
+  ClientWidth = 899
+  Color = 16577259
+  OnResize = FormResize
+  WindowState = wsFullScreen
+  object Panel1: TPanel
+    Left = 0
+    Height = 525
+    Top = 0
+    Width = 899
+    Align = alClient
+    Caption = 'Panel1'
+    ClientHeight = 525
+    ClientWidth = 899
+    TabOrder = 0
+    object Panel2: TPanel
+      Left = -8
+      Height = 512
+      Top = -8
+      Width = 690
+      BevelOuter = bvNone
+      ClientHeight = 512
+      ClientWidth = 690
+      TabOrder = 0
+      object Label7: TLabel
+        Left = 0
+        Height = 32
+        Top = 0
+        Width = 690
+        Align = alTop
+        Alignment = taCenter
+        Caption = 'Consulta de Centro de Custos'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = 10420224
+        Font.Height = -24
+        Font.Name = 'Segoe UI'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object Label5: TLabel
+        Left = 96
+        Height = 17
+        Top = 64
+        Width = 28
+        Caption = 'Tipo'
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -13
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object CboTipo: TComboBox
+        Left = 96
+        Height = 23
+        Top = 88
+        Width = 136
+        ItemHeight = 15
+        ItemIndex = 0
+        Items.Strings = (
+          'SELECIONE OPÇÃO'
+          'RECEITA'
+          'DESPESA'
+        )
+        Style = csDropDownList
+        TabOrder = 0
+        Text = 'SELECIONE OPÇÃO'
+      end
+      object CboStatus: TComboBox
+        Left = 240
+        Height = 23
+        Top = 88
+        Width = 136
+        ItemHeight = 15
+        ItemIndex = 0
+        Items.Strings = (
+          'SELECIONE OPÇÃO'
+          'ATIVO'
+          'INATIVO'
+        )
+        Style = csDropDownList
+        TabOrder = 1
+        Text = 'SELECIONE OPÇÃO'
+      end
+      object Label6: TLabel
+        Left = 384
+        Height = 17
+        Top = 64
+        Width = 66
+        Caption = 'Por Nome:'
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -13
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object EdtNome1: TEdit
+        Left = 384
+        Height = 23
+        Top = 88
+        Width = 216
+        TabOrder = 2
+      end
+      object Label8: TLabel
+        Left = 240
+        Height = 17
+        Top = 64
+        Width = 38
+        Caption = 'Status'
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -13
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object DBGrid1: TDBGrid
+        Left = 96
+        Height = 320
+        Top = 128
+        Width = 504
+        Color = 16577259
+        Columns = <        
+          item
+            Title.Caption = 'CODIGO'
+            Width = 65
+            FieldName = 'CENCODIGO'
+          end        
+          item
+            Title.Caption = 'NOME'
+            Width = 270
+            FieldName = 'CENNOME'
+          end        
+          item
+            Title.Caption = 'STATUS'
+            Width = 65
+            FieldName = 'STATUS'
+          end        
+          item
+            Title.Caption = 'TIPO'
+            Width = 65
+            FieldName = 'TIPOCEN'
+          end>
+        DataSource = DM.DSBuscaCentro
+        FixedColor = clHighlight
+        TabOrder = 3
+        TitleFont.CharSet = ANSI_CHARSET
+        TitleFont.Color = clWhite
+        TitleFont.Height = -13
+        TitleFont.Pitch = fpVariable
+        TitleFont.Quality = fqDraft
+        TitleFont.Style = [fsBold]
+      end
+    end
+  end
+end

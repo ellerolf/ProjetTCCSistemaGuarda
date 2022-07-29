@@ -17,24 +17,17 @@ type
     BtnSair: TSpeedButton;
     BtnSalvar: TSpeedButton;
     ChkMostrar: TCheckBox;
-    CboStatus: TComboBox;
-    DBGrid1: TDBGrid;
     EdtConfSenha: TEdit;
-    EdtConsulta: TEdit;
     EdtNome: TEdit;
     EdtNomeUsuario: TEdit;
     EdtSenha: TEdit;
     Label1: TLabel;
-    Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
-    Label7: TLabel;
-    Label8: TLabel;
     LblMensagem: TLabel;
     Panel1: TPanel;
-    BtnConsulta: TSpeedButton;
     Panel2: TPanel;
     RgbAltStatus: TRadioGroup;
     RgbNivel: TRadioGroup;
@@ -132,8 +125,8 @@ begin
   EdtNomeUsuario.Clear;
   EdtSenha.clear;
   EdtConfSenha.Clear;
-  RgbNivel.ItemIndex:=-1;
-  CboStatus.ItemIndex:=0;
+  //RgbNivel.ItemIndex:=-1;
+  //CboStatus.ItemIndex:=0;
   LblMensagem.Caption:='*Campos Obrigatorios';
 end;
 
@@ -206,7 +199,7 @@ end;
 
 procedure TFrmCadUsuario.BtnConsultaClick(Sender: TObject);
 begin
-    if (CboStatus.ItemIndex=0) then
+    {if (CboStatus.ItemIndex=0) then
       begin
         DM.ZQBuscaCentro.close;
         DM.ZQBuscaUsuario.SQL.clear;
@@ -231,7 +224,7 @@ begin
          DM.ZQBuscaUsuario.SQL.Add('select * from vwmostrausu where usustatus=0 and usunome like'+QuotedStr('%'+EdtConsulta.Text+'%'));
          DM.ZQBuscaUsuario.Open;
          EdtConsulta.clear;
-       end;
+       end; }
 end;
 
 procedure TFrmCadUsuario.FormResize(Sender: TObject);
@@ -250,7 +243,7 @@ begin
   EdtSenha.clear;
   EdtConfSenha.Clear;
   RgbNivel.ItemIndex:=-1;
-  CboStatus.ItemIndex:=0;
+  //CboStatus.ItemIndex:=0;
   LblMensagem.Caption:='*Campos Obrigatorios';
 end;
 

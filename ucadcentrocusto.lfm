@@ -1,12 +1,12 @@
 object FrmCadCentroCusto: TFrmCadCentroCusto
   Left = -8
-  Height = 902
+  Height = 791
   Top = -8
-  Width = 1378
+  Width = 1394
   BorderStyle = bsNone
   Caption = 'FrmCadCentroCusto'
-  ClientHeight = 880
-  ClientWidth = 1362
+  ClientHeight = 752
+  ClientWidth = 1394
   Color = 16577259
   OnClose = FormClose
   OnResize = FormResize
@@ -15,32 +15,32 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 880
+    Height = 752
     Top = 0
-    Width = 1362
+    Width = 1394
     Align = alClient
-    ClientHeight = 880
-    ClientWidth = 1362
+    ClientHeight = 752
+    ClientWidth = 1394
     TabOrder = 0
     object Panel2: TPanel
       Left = 0
       Height = 640
       Top = 0
-      Width = 750
+      Width = 638
       BevelOuter = bvNone
       Caption = 'Panel2'
       ClientHeight = 640
-      ClientWidth = 750
+      ClientWidth = 638
       TabOrder = 0
       OnClick = Panel2Click
       object Label7: TLabel
         Left = 0
         Height = 32
         Top = 0
-        Width = 750
+        Width = 638
         Align = alTop
         Alignment = taCenter
-        Caption = 'Cadastro/Consulta de Centro de Custos'
+        Caption = 'Cadastro de Centro de Custos'
         Font.CharSet = ANSI_CHARSET
         Font.Color = 10420224
         Font.Height = -24
@@ -53,9 +53,9 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
         OnClick = Label7Click
       end
       object Label1: TLabel
-        Left = 64
+        Left = 80
         Height = 17
-        Top = 88
+        Top = 136
         Width = 41
         Caption = 'Nome:'
         Font.CharSet = ANSI_CHARSET
@@ -66,94 +66,28 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
         ParentColor = False
         ParentFont = False
       end
-      object Label3: TLabel
-        Left = 56
-        Height = 17
-        Top = 56
-        Width = 58
-        Caption = 'Cadastro:'
-        Font.CharSet = ANSI_CHARSET
-        Font.Height = -13
-        Font.Pitch = fpVariable
-        Font.Quality = fqDraft
-        Font.Style = [fsBold]
-        ParentColor = False
-        ParentFont = False
-      end
       object EdtNome: TEdit
-        Left = 64
+        Left = 80
         Height = 23
-        Top = 112
-        Width = 432
+        Top = 160
+        Width = 497
         TabOrder = 0
       end
       object LblMensagem: TLabel
-        Left = 64
+        Left = 80
         Height = 15
-        Top = 144
+        Top = 192
         Width = 118
         Caption = '*Campos Obrigatorios'
         Font.Color = clRed
         ParentColor = False
         ParentFont = False
       end
-      object Label4: TLabel
-        Left = 56
-        Height = 17
-        Top = 176
-        Width = 58
-        Caption = 'Consulta:'
-        Font.CharSet = ANSI_CHARSET
-        Font.Height = -13
-        Font.Pitch = fpVariable
-        Font.Quality = fqDraft
-        Font.Style = [fsBold]
-        ParentColor = False
-        ParentFont = False
-      end
-      object CboTipo: TComboBox
-        Left = 64
-        Height = 23
-        Top = 224
-        Width = 136
-        ItemHeight = 15
-        ItemIndex = 0
-        Items.Strings = (
-          'SELECIONE OPÇÃO'
-          'RECEITA'
-          'DESPESA'
-        )
-        Style = csDropDownList
-        TabOrder = 1
-        Text = 'SELECIONE OPÇÃO'
-      end
-      object Label5: TLabel
-        Left = 64
-        Height = 17
-        Top = 200
-        Width = 28
-        Caption = 'Tipo'
-        Font.CharSet = ANSI_CHARSET
-        Font.Height = -13
-        Font.Pitch = fpVariable
-        Font.Quality = fqDraft
-        Font.Style = [fsBold]
-        ParentColor = False
-        ParentFont = False
-      end
-      object EdtNome1: TEdit
-        Left = 346
-        Height = 23
-        Top = 224
-        Width = 310
-        OnChange = EdtNome1Change
-        TabOrder = 2
-      end
       object DBGrid1: TDBGrid
-        Left = 64
-        Height = 307
-        Top = 261
-        Width = 592
+        Left = 80
+        Height = 184
+        Top = 224
+        Width = 496
         Color = 16577259
         Columns = <        
           item
@@ -178,7 +112,7 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
           end>
         DataSource = DM.DSBuscaCentro
         FixedColor = clHighlight
-        TabOrder = 3
+        TabOrder = 1
         TitleFont.CharSet = ANSI_CHARSET
         TitleFont.Color = clWhite
         TitleFont.Height = -13
@@ -187,24 +121,10 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
         TitleFont.Style = [fsBold]
         OnCellClick = DBGrid1CellClick
       end
-      object Label6: TLabel
-        Left = 346
-        Height = 17
-        Top = 200
-        Width = 66
-        Caption = 'Por Nome:'
-        Font.CharSet = ANSI_CHARSET
-        Font.Height = -13
-        Font.Pitch = fpVariable
-        Font.Quality = fqDraft
-        Font.Style = [fsBold]
-        ParentColor = False
-        ParentFont = False
-      end
       object BtnSair: TSpeedButton
-        Left = 544
+        Left = 456
         Height = 34
-        Top = 590
+        Top = 430
         Width = 124
         AutoSize = True
         Glyph.Data = {
@@ -664,9 +584,9 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
         OnClick = BtnSairClick
       end
       object BtnSalvar: TSpeedButton
-        Left = 416
+        Left = 328
         Height = 34
-        Top = 590
+        Top = 430
         Width = 124
         AutoSize = True
         Glyph.Data = {
@@ -1126,9 +1046,9 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
         OnClick = BtnSalvarClick
       end
       object BtnAlterar: TSpeedButton
-        Left = 288
+        Left = 200
         Height = 34
-        Top = 590
+        Top = 430
         Width = 124
         AutoSize = True
         Glyph.Data = {
@@ -1588,9 +1508,9 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
         OnClick = BtnAlterarClick
       end
       object RgbTipo: TRadioGroup
-        Left = 520
+        Left = 80
         Height = 47
-        Top = 88
+        Top = 64
         Width = 185
         AutoFill = True
         Caption = 'Tipo'
@@ -1608,42 +1528,12 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
           'RECEITA'
           'DESPESA'
         )
-        TabOrder = 4
-      end
-      object CboStatus: TComboBox
-        Left = 205
-        Height = 23
-        Top = 224
-        Width = 136
-        ItemHeight = 15
-        ItemIndex = 0
-        Items.Strings = (
-          'SELECIONE OPÇÃO'
-          'ATIVO'
-          'INATIVO'
-        )
-        Style = csDropDownList
-        TabOrder = 5
-        Text = 'SELECIONE OPÇÃO'
-      end
-      object Label8: TLabel
-        Left = 208
-        Height = 17
-        Top = 200
-        Width = 38
-        Caption = 'Status'
-        Font.CharSet = ANSI_CHARSET
-        Font.Height = -13
-        Font.Pitch = fpVariable
-        Font.Quality = fqDraft
-        Font.Style = [fsBold]
-        ParentColor = False
-        ParentFont = False
+        TabOrder = 2
       end
       object RgbStatus: TRadioGroup
-        Left = 520
+        Left = 344
         Height = 47
-        Top = 144
+        Top = 72
         Width = 185
         AutoFill = True
         Caption = 'Status'
@@ -1661,7 +1551,7 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
           'ATIVO'
           'INATIVO'
         )
-        TabOrder = 6
+        TabOrder = 3
       end
     end
   end

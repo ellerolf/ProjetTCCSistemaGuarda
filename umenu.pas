@@ -8,7 +8,8 @@ uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Menus, ExtCtrls, Grids,
   Buttons, ActnList, StdCtrls, uCadUsuario, uCadContasBancarias,
   uCadCentroCusto, uCadFornecedores, uCadLancamento, UConsFornecedores,
-  UConsBaixa, UConsContas, UEntrarUsuario, UTranfContas, VTHeaderPopup;
+  UConsBaixa, UConsContas, UEntrarUsuario, UTranfContas, UConsUsuario,
+  uConsCentro, VTHeaderPopup;
 
 type
 
@@ -40,12 +41,15 @@ type
     BtnConsBanco: TSpeedButton;
     SpeedButton1: TSpeedButton;
     BtnTrasf: TSpeedButton;
+    BtnConsUsuario: TSpeedButton;
+    BtnConsCentro: TSpeedButton;
     procedure BtnCadBancoClick(Sender: TObject);
     procedure BtnCadCentroClick(Sender: TObject);
     procedure BtnCadFornecedorClick(Sender: TObject);
     procedure BtnCadLancamentoClick(Sender: TObject);
     procedure BtnCadUsuariosClick(Sender: TObject);
     procedure BtnConsBancoClick(Sender: TObject);
+    procedure BtnConsCentroClick(Sender: TObject);
     procedure BtnConsFornecedoresClick(Sender: TObject);
     procedure BtnConsReceitaDespesasClick(Sender: TObject);
     procedure BtnRelaPrestaClick(Sender: TObject);
@@ -63,6 +67,7 @@ type
     procedure BtnRelaMoviClick(Sender: TObject);
     procedure PnChamaClick(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
+    procedure BtnConsUsuarioClick(Sender: TObject);
   private
 
   public
@@ -132,6 +137,13 @@ begin
   FrmConsContas.parent := PnChama;
   FrmConsContas.Align := alClient;
   FrmConsContas.show;
+end;
+
+procedure TFrmMenu.BtnConsCentroClick(Sender: TObject);
+begin
+  FrmConsCentro.Parent := PnChama;
+  FrmConsCentro.Align := alClient;
+  FrmConsCentro.Show;
 end;
 
 procedure TFrmMenu.BtnConsFornecedoresClick(Sender: TObject);
@@ -212,6 +224,13 @@ end;
 procedure TFrmMenu.SpeedButton1Click(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TFrmMenu.BtnConsUsuarioClick(Sender: TObject);
+begin
+  FrmConsUsuario.Parent := PnChama;
+  FrmConsUsuario.Align := alClient;
+  FrmConsUsuario.Show;
 end;
 
 

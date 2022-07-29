@@ -16,18 +16,10 @@ type
     BtnAlterar: TSpeedButton;
     BtnSair: TSpeedButton;
     BtnSalvar: TSpeedButton;
-    CboTipo: TComboBox;
-    CboStatus: TComboBox;
     DBGrid1: TDBGrid;
     EdtNome: TEdit;
-    EdtNome1: TEdit;
     Label1: TLabel;
-    Label3: TLabel;
-    Label4: TLabel;
-    Label5: TLabel;
-    Label6: TLabel;
     Label7: TLabel;
-    Label8: TLabel;
     LblMensagem: TLabel;
     Panel1: TPanel;
     Panel2: TPanel;
@@ -166,7 +158,7 @@ end;
 
 procedure TFrmCadCentroCusto.EdtNome1Change(Sender: TObject);
 begin
-  if (CboTipo.ItemIndex = 0) and (CboStatus.ItemIndex = 0) then
+  {if (CboTipo.ItemIndex = 0) and (CboStatus.ItemIndex = 0) then
   begin
     DM.ZQBuscaCentro.Close;
     DM.ZQBuscaCentro.SQL.Clear;
@@ -220,16 +212,16 @@ begin
     DM.ZQBuscaCentro.SQL.Clear;
     DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where censtatus=0 and cennome like' +QuotedStr('%' + EdtNome1.Text + '%'));
     DM.ZQBuscaCentro.Open;
-  end;
+  end;}
 end;
 
 procedure TFrmCadCentroCusto.FormClose(Sender: TObject;
   var CloseAction: TCloseAction);
 begin
   EdtNome.Text:='';
-  EdtNome1.Text:='';
-  CboTipo.ItemIndex:=-1;
-  CboStatus.ItemIndex:=-1;
+  //EdtNome1.Text:='';
+  //CboTipo.ItemIndex:=-1;
+  //CboStatus.ItemIndex:=-1;
   RgbTipo.ItemIndex:=0;
   RgbStatus.ItemIndex:=0;
   LblMensagem.Caption:='*Campos Obrigatorios';
@@ -248,9 +240,9 @@ begin
   RgbStatus.Visible := False;
   EdtNome.Text:='';
   EdtNome.SetFocus;
-  EdtNome1.Text:='';
-  CboTipo.ItemIndex:=-1;
-  CboStatus.ItemIndex:=-1;
+  //EdtNome1.Text:='';
+  //CboTipo.ItemIndex:=-1;
+  //CboStatus.ItemIndex:=-1;
   RgbTipo.ItemIndex:=0;
   RgbStatus.ItemIndex:=0;
   LblMensagem.Caption:='*Campos Obrigatorios';
