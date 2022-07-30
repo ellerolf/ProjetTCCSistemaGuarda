@@ -51,7 +51,7 @@ object FrmCadUsuario: TFrmCadUsuario
         ParentFont = False
         OnClick = Label1Click
       end
-      object Label3: TLabel
+      object LblNome: TLabel
         Left = 72
         Height = 17
         Top = 41
@@ -67,7 +67,7 @@ object FrmCadUsuario: TFrmCadUsuario
         ParentColor = False
         ParentFont = False
       end
-      object Label4: TLabel
+      object LblNomUsuario: TLabel
         Left = 72
         Height = 17
         Top = 96

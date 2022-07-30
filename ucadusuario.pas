@@ -21,8 +21,8 @@ type
     EdtNomeUsuario: TEdit;
     EdtSenha: TEdit;
     Label1: TLabel;
-    Label3: TLabel;
-    Label4: TLabel;
+    LblNome: TLabel;
+    LblNomUsuario: TLabel;
     Label5: TLabel;
     Label6: TLabel;
     LblMensagem: TLabel;
@@ -46,6 +46,7 @@ type
   private
 
   public
+    codigo:integer;
    AltOUCad,BAlterar:string;
   end;
 
@@ -92,31 +93,7 @@ end;
 
 procedure TFrmCadUsuario.DBGrid1CellClick(Column: TColumn);
 begin
-   EdtNome.Text:=DM.ZQConsUsuarioUSUNOME.AsString;
-   EdtNomeUsuario.Text:=DM.ZQConsUsuarioUSULOGIN.AsString;
-   EdtSenha.Text:=DM.ZQConsUsuarioUSUSENHA.AsString;
-   EdtConfSenha.Text:=DM.ZQConsUsuarioUSUSENHA.AsString;
-   if (DM.ZQConsUsuarioCODIGONIV.Value=1)then
-    begin
-      RgbNivel.ItemIndex:=0;
-    end
-   else
-   if(DM.ZQConsUsuarioCODIGONIV.Value=2) then
-    begin
-      RgbNivel.ItemIndex:=1;
-    end;
 
-    RgbAltStatus.Visible:=True;
-
-   if(DM.ZQConsUsuarioUSUSTATUS.Value=1)then
-    begin
-      RgbAltStatus.ItemIndex:=0;
-    end
-   else
-   if(DM.ZQConsUsuarioUSUSTATUS.Value=0)then
-    begin
-      RgbAltStatus.ItemIndex:=1;
-    end;
 end;
 
 procedure TFrmCadUsuario.FormClose(Sender: TObject;
@@ -148,15 +125,27 @@ end;
 
 procedure TFrmCadUsuario.FormShow(Sender: TObject);
 begin
-    RgbAltStatus.Visible:=False;
-    DM.ZQConsUsuario.Active:=true;
-    EdtNome.Clear;
-    EdtNome.SetFocus;
-    EdtNomeUsuario.Clear;
-    EdtSenha.clear;
-    EdtConfSenha.Clear;
-    RgbNivel.ItemIndex:=-1;
-    LblMensagem.Caption:='*Campos Obrigatorios';
+  if (AltOUCad='A') then
+   begin
+     EdtSenha.Enabled:=False;
+     EdtConfSenha.Enabled:=False;
+     ChkMostrar.Enabled:=False;
+     Label5.Enabled:=False;
+     Label6.Enabled:=False;
+   end
+   else
+   begin
+      RgbAltStatus.Visible:=False;
+      DM.ZQConsUsuario.Active:=true;
+      EdtNome.Clear;
+      EdtNome.SetFocus;
+      EdtNomeUsuario.Clear;
+      EdtSenha.clear;
+      EdtConfSenha.Clear;
+      RgbNivel.ItemIndex:=-1;
+      LblMensagem.Caption:='*Campos Obrigatorios';
+    end;
+
 end;
 
 procedure TFrmCadUsuario.BtnSalvarClick(Sender: TObject);
@@ -193,6 +182,7 @@ begin
        //validação no cadastr para ver se o nome de usuario ja existe e não trarvar a execução do programa
        if (DM.ZQConsUsuario.RecordCount=1) then
          begin
+           //blNomUsuario.Font.Color:=clred;
            ShowMessage('NOME DE USUARIO JÁ EXISTE, FAVOR ESCOLHER OUTRO');
          end
          else
@@ -275,11 +265,11 @@ begin
             begin
                DM.ZQAltUsuario.Params.ParamByName('pusustatus').Value:=0;
             end;
-          DM.ZQAltUsuario.Params.ParamByName('pusucodigo').Value:=DM.ZQConsUsuarioUSUCODIGO.AsInteger;
+          DM.ZQAltUsuario.Params.ParamByName('pusucodigo').Value:=codigo;
           DM.ZQAltUsuario.ExecSQL;
 
-          DM.ZQConsUsuario.Close;
-          DM.ZQConsUsuario.Open;
+          DM.ZQBuscaUsuario.Close;
+          DM.ZQBuscaUsuario.Open;
 
           ShowMessage('ALTERAÇÃO DE USUARIO FEITO COM SUCESSO!');
           EdtNome.Clear;
@@ -290,6 +280,7 @@ begin
           RgbAltStatus.ItemIndex:=-1;
           RgbAltStatus.Visible:=False;
           LblMensagem.Caption:='*Campos Obrigatorios';
+          close;
           end;
        except
          begin

@@ -35,7 +35,7 @@ type
   private
 
   public
-
+    usualtera:integer;
   end;
 
 var
@@ -62,6 +62,32 @@ procedure TFrmConsUsuario.BtnAlterarClick(Sender: TObject);
 begin
   FrmCadUsuario.AltOUCad:='A';
   FrmCadUsuario.Show;
+  FrmCadUsuario.codigo:=usualtera;
+  FrmCadUsuario.EdtNome.Text:=DM.ZQBuscaUsuarioUSUNOME.AsString;
+  FrmCadUsuario.EdtNomeUsuario.Text:=DM.ZQBuscaUsuarioUSULOGIN.AsString;
+  FrmCadUsuario.EdtSenha.Text:=DM.ZQBuscaUsuarioUSUSENHA.AsString;
+  FrmCadUsuario.EdtConfSenha.Text:=DM.ZQBuscaUsuarioUSUSENHA.AsString;
+  if (DM.ZQBuscaUsuarioCODIGONIV.Value=1)then
+  begin
+    FrmCadUsuario.RgbNivel.ItemIndex:=0;
+  end
+  else
+  if(DM.ZQBuscaUsuarioCODIGONIV.Value=2) then
+  begin
+    FrmCadUsuario.RgbNivel.ItemIndex:=1;
+  end;
+
+  FrmCadUsuario.RgbAltStatus.Visible:=True;
+
+  if(DM.ZQBuscaUsuarioUSUSTATUS.Value=1)then
+  begin
+    FrmCadUsuario.RgbAltStatus.ItemIndex:=0;
+  end
+  else
+  if(DM.ZQBuscaUsuarioUSUSTATUS.Value=0)then
+  begin
+    FrmCadUsuario.RgbAltStatus.ItemIndex:=1;
+  end;
 end;
 
 procedure TFrmConsUsuario.BtnConsultaClick(Sender: TObject);
@@ -106,7 +132,7 @@ end;
 
 procedure TFrmConsUsuario.DBGrid1CellClick(Column: TColumn);
 begin
-
+  usualtera:=DM.ZQBuscaUsuarioUSUCODIGO.AsInteger;;
 end;
 
 procedure TFrmConsUsuario.FormClose(Sender: TObject;

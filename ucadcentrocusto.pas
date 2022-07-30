@@ -13,7 +13,6 @@ type
   { TFrmCadCentroCusto }
 
   TFrmCadCentroCusto = class(TForm)
-    BtnAlterar: TSpeedButton;
     BtnSair: TSpeedButton;
     BtnSalvar: TSpeedButton;
     DBGrid1: TDBGrid;

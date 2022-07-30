@@ -1,12 +1,12 @@
 object FrmConsUsuario: TFrmConsUsuario
   Left = -8
-  Height = 710
+  Height = 748
   Top = -8
-  Width = 762
+  Width = 778
   BorderStyle = bsNone
   Caption = 'FrmConsUsuario'
-  ClientHeight = 688
-  ClientWidth = 762
+  ClientHeight = 726
+  ClientWidth = 778
   Color = 16577259
   OnClose = FormClose
   OnResize = FormResize
@@ -15,12 +15,12 @@ object FrmConsUsuario: TFrmConsUsuario
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 688
+    Height = 726
     Top = 0
-    Width = 762
+    Width = 778
     Align = alClient
-    ClientHeight = 688
-    ClientWidth = 762
+    ClientHeight = 726
+    ClientWidth = 778
     TabOrder = 0
     object Panel2: TPanel
       Left = 0
@@ -111,6 +111,7 @@ object FrmConsUsuario: TFrmConsUsuario
           end>
         DataSource = DM.DSBuscaUsuario
         FixedColor = clHighlight
+        ReadOnly = True
         TabOrder = 0
         TitleFont.CharSet = ANSI_CHARSET
         TitleFont.Color = clWhite
