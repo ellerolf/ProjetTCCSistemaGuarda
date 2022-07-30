@@ -1,24 +1,26 @@
 object FrmConsCentro: TFrmConsCentro
   Left = -8
-  Height = 563
+  Height = 601
   Top = -8
-  Width = 915
+  Width = 931
   BorderStyle = bsNone
   Caption = 'FrmConsCentro'
-  ClientHeight = 541
-  ClientWidth = 915
+  ClientHeight = 579
+  ClientWidth = 931
   Color = 16577259
+  OnClose = FormClose
   OnResize = FormResize
+  OnShow = FormShow
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 541
+    Height = 579
     Top = 0
-    Width = 915
+    Width = 931
     Align = alClient
     Caption = 'Panel1'
-    ClientHeight = 541
-    ClientWidth = 915
+    ClientHeight = 579
+    ClientWidth = 931
     TabOrder = 0
     object Panel2: TPanel
       Left = -8
@@ -112,6 +114,8 @@ object FrmConsCentro: TFrmConsCentro
         Height = 23
         Top = 88
         Width = 216
+        CharCase = ecUppercase
+        OnChange = EdtNome1Change
         TabOrder = 2
       end
       object Label8: TLabel
@@ -157,7 +161,6 @@ object FrmConsCentro: TFrmConsCentro
           end>
         DataSource = DM.DSBuscaCentro
         FixedColor = clHighlight
-        ReadOnly = True
         TabOrder = 3
         TitleFont.CharSet = ANSI_CHARSET
         TitleFont.Color = clWhite
@@ -165,6 +168,7 @@ object FrmConsCentro: TFrmConsCentro
         TitleFont.Pitch = fpVariable
         TitleFont.Quality = fqDraft
         TitleFont.Style = [fsBold]
+        OnCellClick = DBGrid1CellClick
       end
       object BtnConsulta: TSpeedButton
         Left = 600
@@ -305,6 +309,7 @@ object FrmConsCentro: TFrmConsCentro
           00FFC10000FFC10000FFC10000FFC10000FFC10000FFC10000C0C1000090C100
           0020FFFFFF00
         }
+        OnClick = BtnConsultaClick
       end
       object BtnSair: TSpeedButton
         Left = 525
@@ -1226,6 +1231,7 @@ object FrmConsCentro: TFrmConsCentro
           00FFFF3300FFFF3300FFFF3300FFFF3300FFFF3300FFFF3300FFFF3300FFFF33
           00FFFF3300FFFF3300FFFF3300FFFF5930FFFFBFAFFFFFFFFFFF
         }
+        OnClick = BtnAlterarClick
       end
     end
   end

@@ -177,6 +177,7 @@ end;
 
 procedure TFrmMenu.BtnCadCentroClick(Sender: TObject);
 begin
+  FrmCadCentroCusto.CadOUAlt:='C';
   FrmCadCentroCusto.Parent := PnChama;
   FrmCadCentroCusto.Align := alClient;
   FrmCadCentroCusto.Show;
