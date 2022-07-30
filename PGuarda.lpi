@@ -164,6 +164,7 @@
         <Filename Value="uconscentro.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FrmConsCentro"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uConsCentro"/>
       </Unit15>

@@ -127,6 +127,7 @@ end;
 
 procedure TFrmMenu.BtnCadUsuariosClick(Sender: TObject);
 begin
+  FrmCadUsuario.AltOUCad:='C';
   FrmCadUsuario.Parent := PnChama;
   FrmCadUsuario.Align := alClient;
   FrmCadUsuario.Show;
