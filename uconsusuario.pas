@@ -28,6 +28,7 @@ type
     procedure BtnConsultaClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
     procedure CboStatusChange(Sender: TObject);
+    procedure DBGrid1CellClick(Column: TColumn);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormResize(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -60,7 +61,6 @@ end;
 procedure TFrmConsUsuario.BtnAlterarClick(Sender: TObject);
 begin
   FrmCadUsuario.AltOUCad:='A';
-  FrmCadUsuario.BtnAlterar.Visible:=True;
   FrmCadUsuario.Show;
 end;
 
@@ -100,6 +100,11 @@ begin
 end;
 
 procedure TFrmConsUsuario.CboStatusChange(Sender: TObject);
+begin
+
+end;
+
+procedure TFrmConsUsuario.DBGrid1CellClick(Column: TColumn);
 begin
 
 end;

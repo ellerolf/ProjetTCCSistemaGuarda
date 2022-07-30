@@ -13,7 +13,6 @@ type
   { TFrmCadUsuario }
 
   TFrmCadUsuario = class(TForm)
-    BtnAlterar: TSpeedButton;
     BtnSair: TSpeedButton;
     BtnSalvar: TSpeedButton;
     ChkMostrar: TCheckBox;
@@ -76,12 +75,15 @@ end;
 
 procedure TFrmCadUsuario.ChkMostrarChange(Sender: TObject);
 begin
+  //Aqui se o botão mostra senha for ativo mostrar
   if (ChkMostrar.Checked=True)then
    begin
      EdtSenha.PasswordChar:=#0;
      EdtConfSenha.PasswordChar:=#0;
    end
-  else if (ChkMostrar.Checked=False)then
+  else
+  //Aqui se não for ativo esconder
+  if (ChkMostrar.Checked=False)then
    begin
      EdtSenha.PasswordChar:='*';
      EdtConfSenha.PasswordChar:='*';
@@ -126,7 +128,6 @@ begin
   EdtSenha.clear;
   EdtConfSenha.Clear;
   LblMensagem.Caption:='*Campos Obrigatorios';
-  BtnAlterar.Visible:=False;
 end;
 
 procedure TFrmCadUsuario.BtnAlterarClick(Sender: TObject);
@@ -136,32 +137,7 @@ end;
 
 procedure TFrmCadUsuario.BtnConsultaClick(Sender: TObject);
 begin
-    {if (CboStatus.ItemIndex=0) then
-      begin
-        DM.ZQBuscaCentro.close;
-        DM.ZQBuscaUsuario.SQL.clear;
-        DM.ZQBuscaUsuario.SQL.Add('select * from vwmostrausu where usunome like'+QuotedStr('%'+EdtConsulta.Text+'%'));
-        DM.ZQBuscaUsuario.Open;
-        EdtConsulta.clear;
-      end
-      else
-    if (CboStatus.ItemIndex=1) then
-      begin
-        DM.ZQBuscaUsuario.close;
-        DM.ZQBuscaUsuario.SQL.clear;
-        DM.ZQBuscaUsuario.SQL.Add('select * from vwmostrausu where usustatus=1 and usunome like'+QuotedStr('%'+EdtConsulta.Text+'%'));
-        DM.ZQBuscaUsuario.Open;
-        EdtConsulta.clear;
-      end
-      else
-     if (CboStatus.ItemIndex=2) then
-       begin
-         DM.ZQBuscaUsuario.close;
-         DM.ZQBuscaUsuario.SQL.clear;
-         DM.ZQBuscaUsuario.SQL.Add('select * from vwmostrausu where usustatus=0 and usunome like'+QuotedStr('%'+EdtConsulta.Text+'%'));
-         DM.ZQBuscaUsuario.Open;
-         EdtConsulta.clear;
-       end; }
+
 end;
 
 procedure TFrmCadUsuario.FormResize(Sender: TObject);
@@ -181,25 +157,29 @@ begin
     EdtConfSenha.Clear;
     RgbNivel.ItemIndex:=-1;
     LblMensagem.Caption:='*Campos Obrigatorios';
-    BtnAlterar.Visible:=False;
 end;
 
 procedure TFrmCadUsuario.BtnSalvarClick(Sender: TObject);
 var verifica,verifica2:Integer;
 begin
+   // aqui mostrar que esta Cadastrando um usuario
   if (AltOUCad='C') then
   begin
+    //A variavel esta contando quantos caracteres tem no campo
     verifica := Length(EdtSenha.Text);
+    //validação para ver se existe campos faltando
     if (EdtNome.text='') or (EdtNomeUsuario.text='') or (EdtSenha.Text='') or (EdtConfSenha.Text='') or (RgbNivel.ItemIndex=-1) then
       begin
         LblMensagem.Caption:='CAMPOS FALTANDO, FAVOR CONFERIR';
       end
     else
+    //validação para ver se as senhas sao iguais
     if (EdtSenha.Text<>EdtConfSenha.Text)then
       begin
         LblMensagem.Caption:='SENHAS NAO CONFEREM, FAVOR CONFERIR NOVAMENTE';
       end
     else
+    //validação para ver se tem menos de 8 caracters a senha
     if (verifica < 8)then
       begin
         LblMensagem.Caption:='A SENHA DEVE TER 8 CARACTERS NO MINIMO';
@@ -210,12 +190,14 @@ begin
        DM.ZQConsUsuario.SQL.Clear;
        DM.ZQConsUsuario.SQL.Add('select * from usuario where usulogin='+QuotedStr(EdtNomeUsuario.Text));
        DM.ZQConsUsuario.Open;
+       //validação no cadastr para ver se o nome de usuario ja existe e não trarvar a execução do programa
        if (DM.ZQConsUsuario.RecordCount=1) then
          begin
            ShowMessage('NOME DE USUARIO JÁ EXISTE, FAVOR ESCOLHER OUTRO');
          end
          else
         begin
+          //começo do insert na tabela de usuario
           DM.ZQCadUsuario.Params.ParamByName('pusunome').Value:=EdtNome.Text;
           DM.ZQCadUsuario.Params.ParamByName('pusulogin').Value:=EdtNomeUsuario.Text;
           DM.ZQCadUsuario.Params.ParamByName('pususenha').Value:=EdtSenha.Text;
@@ -233,6 +215,8 @@ begin
           DM.ZQConsUsuario.Close;
           DM.ZQConsUsuario.Open;
 
+          //finalização terminar os campos e limpa-los
+          ShowMessage('CADASTRO DE USUARIO FEITO COM SUCESSO!');
           EdtNome.Clear;
           EdtNomeUsuario.Clear;
           EdtSenha.clear;
@@ -243,9 +227,12 @@ begin
      end;
   end
   else
+  //aqui mostra que esta Alterando as informaçoes de usuario
   if (AltOUCad='A') then
   begin
+     //A variavel esta contando quantos caracteres tem no campo
      verifica2 := Length(EdtSenha.Text);
+     // As mesmas validações do cadastrar usuario
     if (EdtNome.text='') or (EdtNomeUsuario.text='') or (EdtSenha.Text='') or (EdtConfSenha.Text='') or (RgbNivel.ItemIndex=-1) then
      begin
        LblMensagem.Caption:='POR FAVOR PREENCHE TODOS OS CAMPOS';
@@ -261,6 +248,8 @@ begin
            LblMensagem.Caption:='A SENHA DEVE TER 8 CARACTERS NO MINIMO';
        end
      else
+     {o try serve para caso o nome de usuario ja for existente,
+     ele não vai consequi para que a execução não trave ele vai mostrar um mensagem que servira como alerta}
        try
          begin
           DM.ZQAltUsuario.Params.ParamByName('pusunome').Value:=EdtNome.Text;
@@ -292,6 +281,7 @@ begin
           DM.ZQConsUsuario.Close;
           DM.ZQConsUsuario.Open;
 
+          ShowMessage('ALTERAÇÃO DE USUARIO FEITO COM SUCESSO!');
           EdtNome.Clear;
           EdtNomeUsuario.Clear;
           EdtSenha.clear;

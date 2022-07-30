@@ -1,12 +1,12 @@
 object FrmConsUsuario: TFrmConsUsuario
   Left = -8
-  Height = 634
+  Height = 710
   Top = -8
-  Width = 730
+  Width = 762
   BorderStyle = bsNone
   Caption = 'FrmConsUsuario'
-  ClientHeight = 612
-  ClientWidth = 730
+  ClientHeight = 688
+  ClientWidth = 762
   Color = 16577259
   OnClose = FormClose
   OnResize = FormResize
@@ -15,12 +15,12 @@ object FrmConsUsuario: TFrmConsUsuario
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 612
+    Height = 688
     Top = 0
-    Width = 730
+    Width = 762
     Align = alClient
-    ClientHeight = 612
-    ClientWidth = 730
+    ClientHeight = 688
+    ClientWidth = 762
     TabOrder = 0
     object Panel2: TPanel
       Left = 0
@@ -118,6 +118,7 @@ object FrmConsUsuario: TFrmConsUsuario
         TitleFont.Pitch = fpVariable
         TitleFont.Quality = fqDraft
         TitleFont.Style = [fsBold]
+        OnCellClick = DBGrid1CellClick
       end
       object CboStatus: TComboBox
         Left = 40
