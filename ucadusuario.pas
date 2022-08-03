@@ -293,6 +293,11 @@ end;
 
 procedure TFrmCadUsuario.BtnSairClick(Sender: TObject);
 begin
+   EdtSenha.Enabled:=True;
+   EdtConfSenha.Enabled:=True;
+   ChkMostrar.Enabled:=True;
+   Label5.Enabled:=True;
+   Label6.Enabled:=True;
   Close;
 end;
 

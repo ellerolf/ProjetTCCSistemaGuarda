@@ -1,12 +1,12 @@
 object FrmConsUsuario: TFrmConsUsuario
   Left = -8
-  Height = 786
+  Height = 788
   Top = -8
-  Width = 794
+  Width = 810
   BorderStyle = bsNone
   Caption = 'FrmConsUsuario'
   ClientHeight = 750
-  ClientWidth = 794
+  ClientWidth = 810
   Color = 16577259
   OnClose = FormClose
   OnResize = FormResize
@@ -17,10 +17,10 @@ object FrmConsUsuario: TFrmConsUsuario
     Left = 0
     Height = 750
     Top = 0
-    Width = 794
+    Width = 810
     Align = alClient
     ClientHeight = 750
-    ClientWidth = 794
+    ClientWidth = 810
     TabOrder = 0
     object Panel2: TPanel
       Left = 0
