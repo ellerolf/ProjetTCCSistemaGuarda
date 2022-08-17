@@ -1,25 +1,24 @@
 object FrmConsUsuario: TFrmConsUsuario
   Left = -8
-  Height = 788
+  Height = 655
   Top = -8
   Width = 842
   BorderStyle = bsNone
   Caption = 'FrmConsUsuario'
-  ClientHeight = 750
+  ClientHeight = 655
   ClientWidth = 842
   Color = 16577259
   OnClose = FormClose
   OnResize = FormResize
   OnShow = FormShow
   Position = poScreenCenter
-  WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 750
+    Height = 655
     Top = 0
     Width = 842
     Align = alClient
-    ClientHeight = 750
+    ClientHeight = 655
     ClientWidth = 842
     TabOrder = 0
     object Panel2: TPanel
@@ -1208,6 +1207,14 @@ object FrmConsUsuario: TFrmConsUsuario
         }
         OnClick = BtnSairClick
       end
+    end
+    object PnAlterausu: TPanel
+      Left = 32
+      Height = 410
+      Top = 80
+      Width = 616
+      Caption = 'PnAlterausu'
+      TabOrder = 1
     end
   end
 end

@@ -20,7 +20,7 @@ type
     EdtNome: TEdit;
     EdtNomeUsuario: TEdit;
     EdtSenha: TEdit;
-    Label1: TLabel;
+    LblNomedeform: TLabel;
     LblNome: TLabel;
     LblNomUsuario: TLabel;
     Label5: TLabel;
@@ -39,7 +39,7 @@ type
     procedure FormResize(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure GrpNivel1Click(Sender: TObject);
-    procedure Label1Click(Sender: TObject);
+    procedure LblNomedeformClick(Sender: TObject);
     procedure BtnSalvarClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
     procedure Panel2Click(Sender: TObject);
@@ -59,13 +59,13 @@ implementation
 {$R *.lfm}
 
 { TFrmCadUsuario }
-  uses UModulo;
+  uses UModulo,UConsUsuario;
 procedure TFrmCadUsuario.GrpNivel1Click(Sender: TObject);
 begin
 
 end;
 
-procedure TFrmCadUsuario.Label1Click(Sender: TObject);
+procedure TFrmCadUsuario.LblNomedeformClick(Sender: TObject);
 begin
 
 end;
@@ -130,6 +130,7 @@ begin
 //isso vem da privacidade do usuario.
   if (AltOUCad='A') then
    begin
+     LblNomedeform.Caption:='Alteração de Usuário';
      EdtSenha.Enabled:=False;
      EdtConfSenha.Enabled:=False;
      ChkMostrar.Enabled:=False;
@@ -139,6 +140,7 @@ begin
    else
    // se não ele mostra para o cadastro de usuario
    begin
+      LblNomedeform.Caption:='Cadastro de Usuário';
       RgbAltStatus.Visible:=False;
       DM.ZQConsUsuario.Active:=true;
       EdtNome.Clear;
@@ -297,6 +299,7 @@ end;
 
 procedure TFrmCadUsuario.BtnSairClick(Sender: TObject);
 begin
+   FrmConsUsuario.PnAlterausu.Visible:=False;
    EdtSenha.Enabled:=True;
    EdtConfSenha.Enabled:=True;
    ChkMostrar.Enabled:=True;

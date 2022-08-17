@@ -24,6 +24,7 @@ type
     Panel1: TPanel;
     Panel2: TPanel;
     BtnConsulta: TSpeedButton;
+    PnAlterausu: TPanel;
     procedure BtnAlterarClick(Sender: TObject);
     procedure BtnConsultaClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
@@ -55,13 +56,18 @@ end;
 
 procedure TFrmConsUsuario.FormShow(Sender: TObject);
 begin
+  PnAlterausu.Visible:=False;
   DM.ZQBuscaUsuario.Open;
 end;
 
 procedure TFrmConsUsuario.BtnAlterarClick(Sender: TObject);
 begin
   FrmCadUsuario.AltOUCad:='A';
+  PnAlterausu.Visible:=True;
+  FrmCadUsuario.Parent := PnAlterausu;
+  FrmCadUsuario.Align := alClient;
   FrmCadUsuario.Show;
+
   FrmCadUsuario.codigo:=usualtera;
   FrmCadUsuario.EdtNome.Text:=DM.ZQBuscaUsuarioUSUNOME.AsString;
   FrmCadUsuario.EdtNomeUsuario.Text:=DM.ZQBuscaUsuarioUSULOGIN.AsString;
@@ -138,6 +144,7 @@ end;
 procedure TFrmConsUsuario.FormClose(Sender: TObject;
   var CloseAction: TCloseAction);
 begin
+   PnAlterausu.Visible:=False;
    DM.ZQBuscaUsuario.Close;
 end;
 
