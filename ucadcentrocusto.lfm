@@ -5,8 +5,8 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
   Width = 708
   BorderStyle = bsNone
   Caption = 'FrmCadCentroCusto'
-  ClientHeight = 537
-  ClientWidth = 692
+  ClientHeight = 575
+  ClientWidth = 708
   Color = 16577259
   OnClose = FormClose
   OnResize = FormResize
@@ -14,12 +14,12 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
   Position = poScreenCenter
   object Panel1: TPanel
     Left = 0
-    Height = 537
+    Height = 575
     Top = 0
-    Width = 692
+    Width = 708
     Align = alClient
-    ClientHeight = 537
-    ClientWidth = 692
+    ClientHeight = 575
+    ClientWidth = 708
     TabOrder = 0
     object Panel2: TPanel
       Left = 0
@@ -112,6 +112,7 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
           end>
         DataSource = DM.DSBuscaCentro
         FixedColor = clHighlight
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
         TabOrder = 1
         TitleFont.CharSet = ANSI_CHARSET
         TitleFont.Color = clWhite

@@ -1,12 +1,12 @@
 object FrmConsCentro: TFrmConsCentro
   Left = -8
-  Height = 601
+  Height = 639
   Top = -8
-  Width = 931
+  Width = 947
   BorderStyle = bsNone
   Caption = 'FrmConsCentro'
-  ClientHeight = 579
-  ClientWidth = 931
+  ClientHeight = 617
+  ClientWidth = 947
   Color = 16577259
   OnClose = FormClose
   OnResize = FormResize
@@ -14,13 +14,13 @@ object FrmConsCentro: TFrmConsCentro
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 579
+    Height = 617
     Top = 0
-    Width = 931
+    Width = 947
     Align = alClient
     Caption = 'Panel1'
-    ClientHeight = 579
-    ClientWidth = 931
+    ClientHeight = 617
+    ClientWidth = 947
     TabOrder = 0
     object Panel2: TPanel
       Left = -8
@@ -161,6 +161,7 @@ object FrmConsCentro: TFrmConsCentro
           end>
         DataSource = DM.DSBuscaCentro
         FixedColor = clHighlight
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
         TabOrder = 3
         TitleFont.CharSet = ANSI_CHARSET
         TitleFont.Color = clWhite
