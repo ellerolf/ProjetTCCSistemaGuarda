@@ -1,24 +1,24 @@
 object FrmCadLancamento: TFrmCadLancamento
   Left = -8
-  Height = 861
+  Height = 788
   Top = -8
-  Width = 1266
+  Width = 1282
   BorderStyle = bsNone
   Caption = 'Lançamento'
-  ClientHeight = 838
-  ClientWidth = 1266
+  ClientHeight = 749
+  ClientWidth = 1282
   Color = 16577259
   OnResize = FormResize
   Position = poScreenCenter
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 838
+    Height = 749
     Top = 0
-    Width = 1266
+    Width = 1282
     Align = alClient
-    ClientHeight = 838
-    ClientWidth = 1266
+    ClientHeight = 749
+    ClientWidth = 1282
     TabOrder = 0
     object Panel2: TPanel
       Left = 0
@@ -50,7 +50,7 @@ object FrmCadLancamento: TFrmCadLancamento
         ParentFont = False
       end
       object Label1: TLabel
-        Left = 63
+        Left = 224
         Height = 15
         Top = 72
         Width = 109
@@ -58,7 +58,7 @@ object FrmCadLancamento: TFrmCadLancamento
         ParentColor = False
       end
       object Label2: TLabel
-        Left = 231
+        Left = 384
         Height = 15
         Top = 72
         Width = 107
@@ -66,7 +66,7 @@ object FrmCadLancamento: TFrmCadLancamento
         ParentColor = False
       end
       object Label3: TLabel
-        Left = 407
+        Left = 576
         Height = 15
         Top = 72
         Width = 99
@@ -74,48 +74,27 @@ object FrmCadLancamento: TFrmCadLancamento
         ParentColor = False
       end
       object Label4: TLabel
-        Left = 559
+        Left = 520
         Height = 15
-        Top = 72
+        Top = 134
         Width = 112
         Caption = 'Valor do Documento:'
         ParentColor = False
       end
       object EdtValor: TEdit
-        Left = 559
+        Left = 520
         Height = 23
-        Top = 95
+        Top = 157
         Width = 120
+        OnKeyPress = EdtValorKeyPress
         TabOrder = 0
       end
       object EdtNDoc: TEdit
-        Left = 407
+        Left = 576
         Height = 23
         Top = 95
         Width = 120
         TabOrder = 1
-      end
-      object CboTipoDoc: TComboBox
-        Left = 232
-        Height = 23
-        Top = 96
-        Width = 144
-        ItemHeight = 15
-        OnChange = CboTipoDocChange
-        TabOrder = 2
-        Text = 'Selecione uma opção'
-      end
-      object EdtData: TMaskEdit
-        Left = 64
-        Height = 23
-        Top = 95
-        Width = 136
-        MaxLength = 10
-        TabOrder = 3
-        OnChange = EdtDataChange
-        EditMask = '99/99/9999;1;_'
-        Text = '  /  /    '
-        SpaceChar = '_'
       end
       object Label5: TLabel
         Left = 63
@@ -134,14 +113,14 @@ object FrmCadLancamento: TFrmCadLancamento
         ParentColor = False
       end
       object GrpTipo: TGroupBox
-        Left = 535
+        Left = 63
         Height = 48
-        Top = 134
+        Top = 72
         Width = 144
         Caption = 'Tipo:'
         ClientHeight = 28
         ClientWidth = 140
-        TabOrder = 4
+        TabOrder = 2
         object ChkReceita: TRadioButton
           Left = 0
           Height = 28
@@ -149,6 +128,7 @@ object FrmCadLancamento: TFrmCadLancamento
           Width = 58
           Align = alLeft
           Caption = 'Receita'
+          OnChange = ChkReceitaChange
           TabOrder = 0
         end
         object ChkDespesa: TRadioButton
@@ -158,6 +138,7 @@ object FrmCadLancamento: TFrmCadLancamento
           Width = 63
           Align = alRight
           Caption = 'Despesa'
+          OnChange = ChkDespesaChange
           TabOrder = 1
         end
       end
@@ -166,7 +147,8 @@ object FrmCadLancamento: TFrmCadLancamento
         Height = 23
         Top = 158
         Width = 145
-        TabOrder = 5
+        NumbersOnly = True
+        TabOrder = 3
       end
       object BtnConsCentro: TSpeedButton
         Left = 439
@@ -313,7 +295,8 @@ object FrmCadLancamento: TFrmCadLancamento
         Height = 23
         Top = 158
         Width = 145
-        TabOrder = 6
+        NumbersOnly = True
+        TabOrder = 4
       end
       object Label9: TLabel
         Left = 63
@@ -328,7 +311,7 @@ object FrmCadLancamento: TFrmCadLancamento
         Height = 101
         Top = 228
         Width = 616
-        TabOrder = 7
+        TabOrder = 5
       end
       object LblMensagem: TLabel
         Left = 63
@@ -1401,6 +1384,33 @@ object FrmCadLancamento: TFrmCadLancamento
           FFFF0000FFFF0000FFFF0000FFFF3030FFFFAFAFFFFFFFFFFFFF
         }
         OnClick = BtnSairClick
+      end
+      object DTLancamento: TDateEdit
+        Left = 224
+        Height = 23
+        Top = 95
+        Width = 145
+        CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
+        DateOrder = doNone
+        ButtonWidth = 23
+        NumGlyphs = 1
+        MaxLength = 0
+        OnChange = DTLancamentoChange
+        TabOrder = 6
+      end
+      object EdtTipoDocumento: TEdit
+        Left = 384
+        Height = 23
+        Top = 95
+        Width = 120
+        NumbersOnly = True
+        TabOrder = 7
+      end
+      object BtnConsTipoConta: TSpeedButton
+        Left = 512
+        Height = 22
+        Top = 95
+        Width = 45
       end
     end
   end
