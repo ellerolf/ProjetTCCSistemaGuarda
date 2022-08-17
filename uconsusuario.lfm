@@ -2,11 +2,11 @@ object FrmConsUsuario: TFrmConsUsuario
   Left = -8
   Height = 788
   Top = -8
-  Width = 810
+  Width = 842
   BorderStyle = bsNone
   Caption = 'FrmConsUsuario'
   ClientHeight = 750
-  ClientWidth = 810
+  ClientWidth = 842
   Color = 16577259
   OnClose = FormClose
   OnResize = FormResize
@@ -17,10 +17,10 @@ object FrmConsUsuario: TFrmConsUsuario
     Left = 0
     Height = 750
     Top = 0
-    Width = 810
+    Width = 842
     Align = alClient
     ClientHeight = 750
-    ClientWidth = 810
+    ClientWidth = 842
     TabOrder = 0
     object Panel2: TPanel
       Left = 0
@@ -111,6 +111,7 @@ object FrmConsUsuario: TFrmConsUsuario
           end>
         DataSource = DM.DSBuscaUsuario
         FixedColor = clHighlight
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
         TabOrder = 0
         TitleFont.CharSet = ANSI_CHARSET
         TitleFont.Color = clWhite
