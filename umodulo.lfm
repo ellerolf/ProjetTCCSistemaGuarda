@@ -1822,4 +1822,47 @@ object DM: TDM
       Size = 7
     end
   end
+  object ZQBuscaTipoDoc: TZQuery
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'SELECT * from tipo_documento'
+    )
+    Params = <>
+    Left = 568
+    Top = 507
+    object ZQBuscaTipoDocDOCCODIGO: TLongintField
+      FieldKind = fkData
+      FieldName = 'DOCCODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object ZQBuscaTipoDocDOCNOME: TStringField
+      FieldKind = fkData
+      FieldName = 'DOCNOME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQBuscaTipoDocDOCTIPO: TSmallintField
+      FieldKind = fkData
+      FieldName = 'DOCTIPO'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object DSBuscaTipoDoc: TDataSource
+    DataSet = ZQBuscaTipoDoc
+    OnDataChange = DSBuscaTipoDocDataChange
+    Left = 560
+    Top = 440
+  end
 end

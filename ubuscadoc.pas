@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  Buttons, DBGrids;
+  Buttons, DBGrids, UModulo;
 
 type
 
@@ -14,12 +14,15 @@ type
 
   TFrmBuscaDoc = class(TForm)
     DBGrid1: TDBGrid;
-    Edit1: TEdit;
+    EdtBuscaTipoDoc: TEdit;
     Panel1: TPanel;
-    SpeedButton1: TSpeedButton;
-    SpeedButton2: TSpeedButton;
-    SpeedButton3: TSpeedButton;
-    procedure SpeedButton2Click(Sender: TObject);
+    BtnBuscaTipoDoc: TSpeedButton;
+    BtnCancelar: TSpeedButton;
+    BtnSelecionar: TSpeedButton;
+    procedure BtnCancelarClick(Sender: TObject);
+    procedure BtnSelecionarClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
+    procedure FormShow(Sender: TObject);
   private
 
   public
@@ -34,10 +37,28 @@ implementation
 {$R *.lfm}
 
 { TFrmBuscaDoc }
+uses uCadLancamento;
 
-procedure TFrmBuscaDoc.SpeedButton2Click(Sender: TObject);
+procedure TFrmBuscaDoc.BtnCancelarClick(Sender: TObject);
 begin
   close;
+end;
+
+procedure TFrmBuscaDoc.BtnSelecionarClick(Sender: TObject);
+begin
+  FrmCadLancamento.EdtTipoDocumento.Text:=DM.ZQBuscaTipoDocDOCCODIGO.AsString;
+  Close;
+end;
+
+procedure TFrmBuscaDoc.FormClose(Sender: TObject; var CloseAction: TCloseAction
+  );
+begin
+    DM.ZQBuscaTipoDoc.Active:=False;
+end;
+
+procedure TFrmBuscaDoc.FormShow(Sender: TObject);
+begin
+  DM.ZQBuscaTipoDoc.Active:=True;
 end;
 
 end.

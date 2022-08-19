@@ -12,6 +12,7 @@ type
   { TDM }
 
   TDM = class(TDataModule)
+    DSBuscaTipoDoc: TDataSource;
     DSBuscaUsuario: TDataSource;
     DSBuscaCentro: TDataSource;
     DSBuscaConta: TDataSource;
@@ -37,6 +38,9 @@ type
     ZQBuscaContaCONSALDO_INICIAL: TFloatField;
     ZQBuscaContaCONSTATUS: TSmallintField;
     ZQBuscaContaTIPNOME: TStringField;
+    ZQBuscaTipoDocDOCCODIGO: TLongintField;
+    ZQBuscaTipoDocDOCNOME: TStringField;
+    ZQBuscaTipoDocDOCTIPO: TSmallintField;
     ZQBuscaUsuarioCODIGONIV: TLongintField;
     ZQBuscaUsuarioNIVILACESSO: TStringField;
     ZQBuscaUsuarioSTATUS: TStringField;
@@ -144,6 +148,8 @@ type
     ZQConsCentro: TZQuery;
     ZQBuscaUsuario: TZQuery;
     ZQBuscaCentro: TZQuery;
+    ZQBuscaTipoDoc: TZQuery;
+    procedure DSBuscaTipoDocDataChange(Sender: TObject; Field: TField);
     procedure DSConsPessoasDataChange(Sender: TObject; Field: TField);
 
 
@@ -165,6 +171,11 @@ implementation
 { TDM }
 
 procedure TDM.DSConsPessoasDataChange(Sender: TObject; Field: TField);
+begin
+
+end;
+
+procedure TDM.DSBuscaTipoDocDataChange(Sender: TObject; Field: TField);
 begin
 
 end;
