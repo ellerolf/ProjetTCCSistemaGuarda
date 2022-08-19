@@ -172,6 +172,7 @@
         <Filename Value="ubuscadoc.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FrmBuscaDoc"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="UBuscaDoc"/>
       </Unit16>
