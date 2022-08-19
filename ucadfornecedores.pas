@@ -78,6 +78,7 @@ type
     OpForn: string;
     procedure AtivaCampoForn();
     procedure DesativaCampoForn();
+    procedure ContaCaracter();
 
   end;
 
@@ -122,6 +123,7 @@ begin
     EdtEmail.Enabled := True;
     MemObs.Enabled := True;
     BtnSalvar.Enabled := True;
+    DTNasc.Clear;
   end;
 
   if (BtnCpf.Checked = True) then
@@ -144,6 +146,9 @@ begin
     EdtEmail.Enabled := True;
     MemObs.Enabled := True;
     BtnSalvar.Enabled := True;
+    EdtFantasia.Clear;
+    EdtInsEstadual.Clear;
+    EdtInsMunicipal.Clear;
   end;
 end;
 
@@ -169,9 +174,42 @@ begin
   BtnSalvar.Enabled := False;
 end;
 
+procedure TFrmCadFornecedor.ContaCaracter;
+begin
+  if BtnCnpj.Checked = True then
+  begin
+    if Length(Trim(EdtCpfCnpj.Text)) < 18 then
+    begin
+      ShowMessage('Esta faltando o numero no CNPJ');
+    end
+    else if Length(Trim(EdtCel.Text)) < 13 then
+    begin
+      ShowMessage('Esta faltando o numero no Celular');
+    end
+    else if Length(Trim(EdtCep.Text)) < 9 then
+    begin
+      ShowMessage('Esta faltando o numero na Cep');
+    end
+    else if Length(Trim(EdtCpfCnpj.Text)) < 18 then
+    begin
+      ShowMessage('Esta faltando o numero no CNPJ');
+    end
+    else if Length(Trim(EdtCel.Text)) < 13 then
+    begin
+      ShowMessage('Esta faltando o numero no Celular');
+    end
+    else if Length(Trim(EdtCep.Text)) < 9 then
+    begin
+      ShowMessage('Esta faltando o numero na Cep');
+    end;
+  end;
+
+
+end;
+
 procedure TFrmCadFornecedor.BtnSairClick(Sender: TObject);
 begin
-  OpForn :='';
+  OpForn := '';
   Close;
   FrmConsFornecedores.PnChama.Visible := False;
 end;
@@ -214,219 +252,83 @@ begin
   //INSERT----------------------------------------------------------------------
   if (OpForn = 'I') then
   begin
-        //CNPJ-----------------------------------------------------------------------
-        if (BtnCnpj.Checked = True) then
-        begin
-          dm.ZQCadPessoas.Params.ParamByName('pesnome').Value := EdtNome.Text;
-          dm.ZQCadPessoas.Params.ParamByName('codigotip').Value := 2;
-          dm.ZQCadPessoas.Params.ParamByName('pescpf').Value := null;
-          dm.ZQCadPessoas.Params.ParamByName('pesdata_nascimento').Value := null;
-          dm.ZQCadPessoas.Params.ParamByName('pescnpj').Value := EdtCpfCnpj.Text;
-          dm.ZQCadPessoas.Params.ParamByName('pesnome_fantasia').Value :=
-            EdtFantasia.Text;
-          dm.ZQCadPessoas.Params.ParamByName('pesinscricao_estadual').Value :=
-            EdtInsEstadual.Text;
-          dm.ZQCadPessoas.params.ParamByName('pesinscricao_municipal').Value :=
-            EdtInsMunicipal.Text;
-          dm.ZQCadPessoas.params.ParamByName('pescep').Value := EdtCep.Text;
-          dm.ZQCadPessoas.params.ParamByName('pesendereco').Value := EdtEndereco.Text;
-          dm.ZQCadPessoas.params.ParamByName('pesnumero').Value := EdtNumero.Text;
-          dm.ZQCadPessoas.params.ParamByName('pescomplemento').Value :=
-            EdtComplemento.Text;
-          dm.ZQCadPessoas.params.ParamByName('pesestado').Value := CboUf.Text;
-          dm.ZQCadPessoas.params.ParamByName('pescidade').Value := EdtCidade.Text;
-          dm.ZQCadPessoas.params.ParamByName('pesbairro').Value := EdtBairro.Text;
-          dm.ZQCadPessoas.params.ParamByName('pesemail').Value := EdtEmail.Text;
-          dm.ZQCadPessoas.params.ParamByName('pestelefone').Value := EdtTel.Text;
-          dm.ZQCadPessoas.params.ParamByName('pescelular').Value := EdtCel.Text;
-          dm.ZQCadPessoas.params.ParamByName('pesobservacao').Value := MemObs.Text;
-          dm.ZQCadPessoas.ExecSQL;
-
-          dm.ZQConsPessoas.Close;
-          dm.ZQConsPessoas.Open;
-
-          ShowMessage('Dados Gravados com sucesso!');
-          EdtCpfCnpj.Clear;
-          EdtNome.Clear;
-          EdtFantasia.Clear;
-          EdtInsEstadual.Clear;
-          EdtInsMunicipal.Clear;
-          DTNasc.Clear;
-          EdtEndereco.Clear;
-          EdtNumero.Clear;
-          EdtComplemento.Clear;
-          EdtBairro.Clear;
-          EdtCep.Clear;
-          EdtCidade.Clear;
-          CboUf.Caption := 'UF';
-          EdtTel.Clear;
-          EdtCel.Clear;
-          EdtEmail.Clear;
-          MemObs.Clear;
-          //EdtCpfCnpj.SetFocus;
-          //OpForn := '';
-        end;
-
-        //CPF-----------------------------------------------------------------------
-        if (btncpf.Checked = True) then
-        begin
-          dm.ZQCadPessoas.Params.ParamByName('pesnome').Value := EdtNome.Text;
-          dm.ZQCadPessoas.Params.ParamByName('codigotip').Value := 1;
-          dm.ZQCadPessoas.Params.ParamByName('pescpf').Value := EdtCpfCnpj.Text;
-          dm.ZQCadPessoas.Params.ParamByName('pesdata_nascimento').AsString :=
-            FormatDateTime('yyyy-mm-dd', DTNasc.Date);
-          dm.ZQCadPessoas.Params.ParamByName('pescnpj').Value := null;
-          dm.ZQCadPessoas.Params.ParamByName('pesnome_fantasia').Value := null;
-          dm.ZQCadPessoas.Params.ParamByName('pesinscricao_estadual').Value := null;
-          dm.ZQCadPessoas.params.ParamByName('pesinscricao_municipal').Value :=
-            null;
-          dm.ZQCadPessoas.params.ParamByName('pescep').Value := EdtCep.Text;
-          dm.ZQCadPessoas.params.ParamByName('pesendereco').Value := EdtEndereco.Text;
-          dm.ZQCadPessoas.params.ParamByName('pesnumero').Value := EdtNumero.Text;
-          dm.ZQCadPessoas.params.ParamByName('pescomplemento').Value :=
-            EdtComplemento.Text;
-          dm.ZQCadPessoas.params.ParamByName('pesestado').Value := CboUf.Text;
-          dm.ZQCadPessoas.params.ParamByName('pescidade').Value := EdtCidade.Text;
-          dm.ZQCadPessoas.params.ParamByName('pesbairro').Value := EdtBairro.Text;
-          dm.ZQCadPessoas.params.ParamByName('pesemail').Value := EdtEmail.Text;
-          dm.ZQCadPessoas.params.ParamByName('pestelefone').Value := EdtTel.Text;
-          dm.ZQCadPessoas.params.ParamByName('pescelular').Value := EdtCel.Text;
-          dm.ZQCadPessoas.params.ParamByName('pesobservacao').Value := MemObs.Text;
-          dm.ZQCadPessoas.ExecSQL;
-
-          dm.ZQConsPessoas.Close;
-          dm.ZQConsPessoas.Open;
-
-          ShowMessage('Dados Gravados com sucesso!');
-          EdtCpfCnpj.Clear;
-          EdtNome.Clear;
-          EdtFantasia.Clear;
-          EdtInsEstadual.Clear;
-          EdtInsMunicipal.Clear;
-          DTNasc.Clear;
-          EdtEndereco.Clear;
-          EdtNumero.Clear;
-          EdtComplemento.Clear;
-          EdtBairro.Clear;
-          EdtCep.Clear;
-          EdtCidade.Clear;
-          CboUf.Caption := 'UF';
-          EdtTel.Clear;
-          EdtCel.Clear;
-          EdtEmail.Clear;
-          MemObs.Clear;
-          //EdtCpfCnpj.SetFocus;
-          //OpForn := '';
-        end;
-  end
-
-  //UPDATE----------------------------------------------------------------------
-  else if (OpForn = 'U') then
-  begin
     //CNPJ-----------------------------------------------------------------------
     if (BtnCnpj.Checked = True) then
     begin
-      dm.ZQAltPessoas.Params.ParamByName('pesnome').Value := EdtNome.Text;
-      dm.ZQAltPessoas.Params.ParamByName('codigotip').Value := 2;
-      dm.ZQAltPessoas.Params.ParamByName('pescpf').Value := null;
-      dm.ZQAltPessoas.Params.ParamByName('pesdata_nascimento').Value := null;
-      dm.ZQAltPessoas.Params.ParamByName('pescnpj').Value := EdtCpfCnpj.Text;
-      dm.ZQAltPessoas.Params.ParamByName('pesnome_fantasia').Value := EdtFantasia.Text;
-      dm.ZQAltPessoas.Params.ParamByName('pesinscricao_estadual').Value :=
-        EdtInsEstadual.Text;
-      dm.ZQAltPessoas.params.ParamByName('pesinscricao_municipal').Value :=
-        EdtInsMunicipal.Text;
-      dm.ZQAltPessoas.params.ParamByName('pescep').Value := EdtCep.Text;
-      dm.ZQAltPessoas.params.ParamByName('pesendereco').Value := EdtEndereco.Text;
-      dm.ZQAltPessoas.params.ParamByName('pesnumero').Value := EdtNumero.Text;
-      dm.ZQAltPessoas.params.ParamByName('pescomplemento').Value := EdtComplemento.Text;
-      dm.ZQAltPessoas.params.ParamByName('pesestado').Value := CboUf.Text;
-      dm.ZQAltPessoas.params.ParamByName('pescidade').Value := EdtCidade.Text;
-      dm.ZQAltPessoas.params.ParamByName('pesbairro').Value := EdtBairro.Text;
-      dm.ZQAltPessoas.params.ParamByName('pesemail').Value := EdtEmail.Text;
-      dm.ZQAltPessoas.params.ParamByName('pestelefone').Value := EdtTel.Text;
-      dm.ZQAltPessoas.params.ParamByName('pescelular').Value := EdtCel.Text;
-      dm.ZQAltPessoas.params.ParamByName('pesobservacao').Value := MemObs.Text;
-      dm.ZQAltPessoas.params.ParamByName('pescodigo').Value := pescodigo;
-      dm.ZQAltPessoas.ExecSQL;
+      if (EdtCpfCnpj.Text = '') or (EdtNome.Text = '') or
+        (EdtFantasia.Text = '') or (EdtInsEstadual.Text = '') or
+        (EdtInsMunicipal.Text = '') or (EdtEndereco.Text = '') or
+        (EdtNumero.Text = '') or (EdtBairro.Text = '') or (EdtCep.Text = '') or
+        (EdtCidade.Text = '') or (CboUf.Caption = 'UF') or (EdtCel.Text = '') then
+      begin
+        ShowMessage('Verifique os campos');
+        LblCpfCnpj.font.color := clred;
+        LblNomeRazao.font.color := clred;
+        LblFantasia.font.color := clred;
+        LblEstadual.font.color := clred;
+        LblMunicipal.font.color := clred;
+        LblEndereco.font.color := clred;
+        LblNum.font.color := clred;
+        LblCep.font.color := clred;
+        LblCidade.font.color := clred;
+        LblUf.font.color := clred;
+        lblCel.font.color := clred;
+        LblBairro.font.color := clred;
+        ContaCaracter();
+      end
 
-      dm.ZQConsPessoas.Close;
-      dm.ZQConsPessoas.Open;
+      else
+      begin
+        dm.ZQCadPessoas.Params.ParamByName('pesnome').Value := EdtNome.Text;
+        dm.ZQCadPessoas.Params.ParamByName('codigotip').Value := 2;
+        dm.ZQCadPessoas.Params.ParamByName('pescpf').Value := null;
+        dm.ZQCadPessoas.Params.ParamByName('pesdata_nascimento').Value := null;
+        dm.ZQCadPessoas.Params.ParamByName('pescnpj').Value := EdtCpfCnpj.Text;
+        dm.ZQCadPessoas.Params.ParamByName('pesnome_fantasia').Value :=
+          EdtFantasia.Text;
+        dm.ZQCadPessoas.Params.ParamByName('pesinscricao_estadual').Value :=
+          EdtInsEstadual.Text;
+        dm.ZQCadPessoas.params.ParamByName('pesinscricao_municipal').Value :=
+          EdtInsMunicipal.Text;
+        dm.ZQCadPessoas.params.ParamByName('pescep').Value := EdtCep.Text;
+        dm.ZQCadPessoas.params.ParamByName('pesendereco').Value := EdtEndereco.Text;
+        dm.ZQCadPessoas.params.ParamByName('pesnumero').Value := EdtNumero.Text;
+        dm.ZQCadPessoas.params.ParamByName('pescomplemento').Value :=
+          EdtComplemento.Text;
+        dm.ZQCadPessoas.params.ParamByName('pesestado').Value := CboUf.Text;
+        dm.ZQCadPessoas.params.ParamByName('pescidade').Value := EdtCidade.Text;
+        dm.ZQCadPessoas.params.ParamByName('pesbairro').Value := EdtBairro.Text;
+        dm.ZQCadPessoas.params.ParamByName('pesemail').Value := EdtEmail.Text;
+        dm.ZQCadPessoas.params.ParamByName('pestelefone').Value := EdtTel.Text;
+        dm.ZQCadPessoas.params.ParamByName('pescelular').Value := EdtCel.Text;
+        dm.ZQCadPessoas.params.ParamByName('pesobservacao').Value := MemObs.Text;
+        dm.ZQCadPessoas.ExecSQL;
 
-      ShowMessage('Alteração Gravada com sucesso!');
-      EdtCpfCnpj.Clear;
-      EdtNome.Clear;
-      EdtFantasia.Clear;
-      EdtInsEstadual.Clear;
-      EdtInsMunicipal.Clear;
-      DTNasc.Clear;
-      EdtEndereco.Clear;
-      EdtNumero.Clear;
-      EdtComplemento.Clear;
-      EdtBairro.Clear;
-      EdtCep.Clear;
-      EdtCidade.Clear;
-      CboUf.Caption := 'UF';
-      EdtTel.Clear;
-      EdtCel.Clear;
-      EdtEmail.Clear;
-      MemObs.Clear;
-      //EdtCpfCnpj.SetFocus;
-      //OpForn := '';
+        dm.ZQConsPessoas.Close;
+        dm.ZQConsPessoas.Open;
+
+        ShowMessage('Dados Gravados com sucesso!');
+        EdtCpfCnpj.Clear;
+        EdtNome.Clear;
+        EdtFantasia.Clear;
+        EdtInsEstadual.Clear;
+        EdtInsMunicipal.Clear;
+        DTNasc.Clear;
+        EdtEndereco.Clear;
+        EdtNumero.Clear;
+        EdtComplemento.Clear;
+        EdtBairro.Clear;
+        EdtCep.Clear;
+        EdtCidade.Clear;
+        CboUf.Caption := 'UF';
+        EdtTel.Clear;
+        EdtCel.Clear;
+        EdtEmail.Clear;
+        MemObs.Clear;
+        //EdtCpfCnpj.SetFocus;
+      end;
     end;
 
-    //CPF-----------------------------------------------------------------------
-    if (btncpf.Checked = True) then
-    begin
-      dm.ZQAltPessoas.Params.ParamByName('pesnome').Value := EdtNome.Text;
-      dm.ZQAltPessoas.Params.ParamByName('codigotip').Value := 1;
-      dm.ZQAltPessoas.Params.ParamByName('pescpf').Value := EdtCpfCnpj.Text;
-      dm.ZQAltPessoas.Params.ParamByName('pesdata_nascimento').AsString :=
-        FormatDateTime('yyyy-mm-dd', DTNasc.Date);
-      dm.ZQAltPessoas.Params.ParamByName('pescnpj').Value := null;
-      dm.ZQCadPessoas.Params.ParamByName('pesnome_fantasia').Value := null;
-      dm.ZQAltPessoas.Params.ParamByName('pesinscricao_estadual').Value := null;
-      dm.ZQAltPessoas.params.ParamByName('pesinscricao_municipal').Value :=
-        null;
-      dm.ZQAltPessoas.params.ParamByName('pescep').Value := EdtCep.Text;
-      dm.ZQAltPessoas.params.ParamByName('pesendereco').Value := EdtEndereco.Text;
-      dm.ZQAltPessoas.params.ParamByName('pesnumero').Value := EdtNumero.Text;
-      dm.ZQAltPessoas.params.ParamByName('pescomplemento').Value := EdtComplemento.Text;
-      dm.ZQAltPessoas.params.ParamByName('pesestado').Value := CboUf.Text;
-      dm.ZQAltPessoas.params.ParamByName('pescidade').Value := EdtCidade.Text;
-      dm.ZQAltPessoas.params.ParamByName('pesbairro').Value := EdtBairro.Text;
-      dm.ZQAltPessoas.params.ParamByName('pesemail').Value := EdtEmail.Text;
-      dm.ZQAltPessoas.params.ParamByName('pestelefone').Value := EdtTel.Text;
-      dm.ZQAltPessoas.params.ParamByName('pescelular').Value := EdtCel.Text;
-      dm.ZQAltPessoas.params.ParamByName('pesobservacao').Value := MemObs.Text;
-      dm.ZQAltPessoas.params.ParamByName('pescodigo').Value :=
-        dm.ZQConsPessoasCODIGO.AsInteger;
-      dm.ZQAltPessoas.ExecSQL;
-
-      dm.ZQConsPessoas.Close;
-      dm.ZQConsPessoas.Open;
-
-      ShowMessage('Alteração Gravada com sucesso!');
-      EdtCpfCnpj.Clear;
-      EdtNome.Clear;
-      EdtFantasia.Clear;
-      EdtInsEstadual.Clear;
-      EdtInsMunicipal.Clear;
-      DTNasc.Clear;
-      EdtEndereco.Clear;
-      EdtNumero.Clear;
-      EdtComplemento.Clear;
-      EdtBairro.Clear;
-      EdtCep.Clear;
-      EdtCidade.Clear;
-      CboUf.Caption := 'UF';
-      EdtTel.Clear;
-      EdtCel.Clear;
-      EdtEmail.Clear;
-      MemObs.Clear;
-      //EdtCpfCnpj.SetFocus;
-      //OpForn := '';
-    end;
   end;
 end;
 
