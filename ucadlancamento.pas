@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, Buttons,
-  StdCtrls, MaskEdit, ComCtrls, EditBtn;
+  StdCtrls, MaskEdit, ComCtrls, EditBtn, UBuscaDoc;
 
 type
 
@@ -39,6 +39,7 @@ type
     Panel1: TPanel;
     Panel2: TPanel;
     BtnConsTipoConta: TSpeedButton;
+    procedure BtnConsTipoContaClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
     procedure BtnSalvarClick(Sender: TObject);
     procedure CboTipoDocChange(Sender: TObject);
@@ -94,6 +95,11 @@ end;
 procedure TFrmCadLancamento.BtnSairClick(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TFrmCadLancamento.BtnConsTipoContaClick(Sender: TObject);
+begin
+  FrmBuscaDoc.ShowModal;
 end;
 
 procedure TFrmCadLancamento.BtnSalvarClick(Sender: TObject);

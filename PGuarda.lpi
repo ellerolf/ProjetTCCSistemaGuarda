@@ -44,7 +44,7 @@
         <PackageName Value="LCL"/>
       </Item5>
     </RequiredPackages>
-    <Units Count="16">
+    <Units Count="17">
       <Unit0>
         <Filename Value="PGuarda.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -168,6 +168,13 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uConsCentro"/>
       </Unit15>
+      <Unit16>
+        <Filename Value="ubuscadoc.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmBuscaDoc"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="UBuscaDoc"/>
+      </Unit16>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
