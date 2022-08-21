@@ -71,9 +71,104 @@ object DM: TDM
       end>
   end
   object ZQCadLancamentos: TZQuery
-    Params = <>
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'INSERT into lancamento (LANDOCUMENTO, CODIGODOC, LANNUMERO_DOCUMENTO, LANVALOR_DOCUMENTO, CODIGOPES, CODIGOCEN, LANOBSERVACAO, LANTIPO, CODIGOUSU) values (:pLANDOCUMENTO, :pCODIGODOC, :pLANNUMERO_DOCUMENTO, :pLANVALOR_DOCUMENTO, :pCODIGOPES, :pCODIGOCEN, :pLANOBSERVACAO, :pLANTIPO, :pCODIGOUSU)'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'pLANDOCUMENTO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pCODIGODOC'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pLANNUMERO_DOCUMENTO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pLANVALOR_DOCUMENTO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pCODIGOPES'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pCODIGOCEN'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pLANOBSERVACAO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pLANTIPO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pCODIGOUSU'
+        ParamType = ptUnknown
+      end>
     Left = 344
     Top = 120
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'pLANDOCUMENTO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pCODIGODOC'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pLANNUMERO_DOCUMENTO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pLANVALOR_DOCUMENTO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pCODIGOPES'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pCODIGOCEN'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pLANOBSERVACAO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pLANTIPO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pCODIGOUSU'
+        ParamType = ptUnknown
+      end>
   end
   object ZQCadBancarias: TZQuery
     Connection = ZFinanceiro

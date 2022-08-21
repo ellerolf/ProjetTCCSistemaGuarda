@@ -142,7 +142,35 @@ begin
   end
   else
   begin
+    if (ChkReceita.Checked=True) then
+    begin
+      dm.ZQCadLancamentos.Params.ParamByName('pLANTIPO').Value:=1;
+    end;
+    if (ChkDespesa.Checked=True) then
+    begin
+      dm.ZQCadLancamentos.Params.ParamByName('pLANTIPO').Value:=0;
+    end;
+    dm.ZQCadLancamentos.Params.ParamByName('pLANDOCUMENTO').AsString:=FormatDateTime('yyyy-mm-dd',DTLancamento.Date);
+    dm.ZQCadLancamentos.Params.ParamByName('pCODIGODOC').Value:=EdtTipoDocumento.Text;
+    dm.ZQCadLancamentos.Params.ParamByName('pLANNUMERO_DOCUMENTO').Value:=EdtNDoc.Text;
+    EdtValor.Text:=StringReplace(EdtValor.Text, ',', '.', [rfReplaceAll]);
+    dm.ZQCadLancamentos.Params.ParamByName('pLANVALOR_DOCUMENTO').Value:=EdtValor.Text;
+    dm.ZQCadLancamentos.Params.ParamByName('pCODIGOPES').Value:=EdtConsFornecedor.Text;
+    dm.ZQCadLancamentos.Params.ParamByName('pCODIGOCEN').Value:=EdtConsCentro.Text;
+    dm.ZQCadLancamentos.Params.ParamByName('pLANOBSERVACAO').Value:=MemObservacao.Text;
+    dm.ZQCadLancamentos.Params.ParamByName('pCODIGOUSU').Value:=1;
+    dm.ZQCadLancamentos.ExecSQL;
     ShowMessage('Cadastro realizado com sucesso');
+
+    DTLancamento.Clear;
+    EdtTipoDocumento.Clear;
+    EdtNDoc.Clear;
+    EdtValor.Clear;
+    EdtConsFornecedor.Clear;
+    EdtConsCentro.Clear;
+    MemObservacao.Clear;
+    ChkDespesa.Checked:=False;
+    ChkReceita.Checked:=False;
   end;
 
 end;
