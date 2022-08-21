@@ -166,6 +166,7 @@ object FrmBuscaDoc: TFrmBuscaDoc
         00FFC10000FFC10000FFC10000FFC10000FFC10000FFC10000C0C1000090C100
         0020FFFFFF00
       }
+      OnClick = BtnBuscaTipoDocClick
     end
     object DBGrid1: TDBGrid
       Left = 16

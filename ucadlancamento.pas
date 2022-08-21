@@ -99,7 +99,27 @@ end;
 
 procedure TFrmCadLancamento.BtnConsTipoContaClick(Sender: TObject);
 begin
-  FrmBuscaDoc.ShowModal;
+  if (ChkReceita.Checked=false) and (ChkDespesa.Checked=False) then
+  begin
+    ShowMessage('Selecione o tipo de lançamento para escolher o tipo de documento');
+  end;
+
+  if (ChkReceita.Checked=True) then
+  begin
+    dm.ZQBuscaTipoDoc.Close;
+    dm.ZQBuscaTipoDoc.SQL.Clear;
+    dm.ZQBuscaTipoDoc.SQL.Add('SELECT * from tipo_documento WHERE DOCTIPO=1');
+    dm.ZQBuscaTipoDoc.Open;
+    FrmBuscaDoc.ShowModal;
+  end;
+   if (ChkDespesa.Checked=True) then
+  begin
+    dm.ZQBuscaTipoDoc.Close;
+    dm.ZQBuscaTipoDoc.SQL.Clear;
+    dm.ZQBuscaTipoDoc.SQL.Add('SELECT * from tipo_documento WHERE DOCTIPO=0');
+    dm.ZQBuscaTipoDoc.Open;
+    FrmBuscaDoc.ShowModal;
+  end;
 end;
 
 procedure TFrmCadLancamento.BtnSalvarClick(Sender: TObject);
