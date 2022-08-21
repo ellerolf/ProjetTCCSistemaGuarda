@@ -55,8 +55,8 @@ type
     EdtTel: TMaskEdit;
     EdtCel: TMaskEdit;
     EdtEmail: TMaskEdit;
+    EdtInsMun: TMaskEdit;
     EdtInsEstadual: TMaskEdit;
-    EdtInsMunicipal: TMaskEdit;
     MemObs: TMemo;
     Panel1: TPanel;
     Panel2: TPanel;
@@ -67,6 +67,7 @@ type
     procedure BtnInativoChange(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
     procedure BtnSalvarClick(Sender: TObject);
+    procedure EdtCpfCnpjChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -78,7 +79,8 @@ type
     OpForn: string;
     procedure AtivaCampoForn();
     procedure DesativaCampoForn();
-    procedure ContaCaracter();
+    procedure trocacor();
+    procedure limpacampo();
 
   end;
 
@@ -97,8 +99,8 @@ begin
   EdtCep.EditMask := '99999-999;1;_';
   EdtTel.EditMask := '(99)9999-9999;1;_';
   EdtCel.EditMask := '(99)99999-9999;1;_';
-  EdtInsEstadual.EditMask := '99999999999999;1;_';
-  EdtInsMunicipal.EditMask := '99999999999;1;_';
+  //EdtInsEstadual.EditMask := '99999999999999;1;_';
+  //EdtInsMun.EditMask := '99999999999;1;_';
 end;
 
 procedure TFrmCadFornecedor.AtivaCampoForn;
@@ -110,7 +112,7 @@ begin
     DTNasc.Enabled := False;
     EdtFantasia.Enabled := True;
     EdtInsEstadual.Enabled := True;
-    EdtInsMunicipal.Enabled := True;
+    EdtInsMun.Enabled := True;
     EdtEndereco.Enabled := True;
     EdtNumero.Enabled := True;
     EdtComplemento.Enabled := True;
@@ -133,7 +135,7 @@ begin
     DTNasc.Enabled := True;
     EdtFantasia.Enabled := False;
     EdtInsEstadual.Enabled := False;
-    EdtInsMunicipal.Enabled := False;
+    EdtInsMun.Enabled := False;
     EdtEndereco.Enabled := True;
     EdtNumero.Enabled := True;
     EdtComplemento.Enabled := True;
@@ -148,7 +150,7 @@ begin
     BtnSalvar.Enabled := True;
     EdtFantasia.Clear;
     EdtInsEstadual.Clear;
-    EdtInsMunicipal.Clear;
+    EdtInsMun.Clear;
   end;
 end;
 
@@ -158,7 +160,7 @@ begin
   EdtNome.Enabled := False;
   EdtFantasia.Enabled := False;
   EdtInsEstadual.Enabled := False;
-  EdtInsMunicipal.Enabled := False;
+  EdtInsMun.Enabled := False;
   DTNasc.Enabled := False;
   EdtEndereco.Enabled := False;
   EdtNumero.Enabled := False;
@@ -174,8 +176,43 @@ begin
   BtnSalvar.Enabled := False;
 end;
 
-procedure TFrmCadFornecedor.ContaCaracter;
+procedure TFrmCadFornecedor.trocacor;
 begin
+  //devolve a cor para as Label do registro
+  LblCpfCnpj.font.color := clblack;
+  LblNomeRazao.font.color := clblack;
+  LblFantasia.font.color := clblack;
+  LblEstadual.font.color := clblack;
+  LblMunicipal.font.color := clblack;
+  LblEndereco.font.color := clblack;
+  LblNum.font.color := clblack;
+  LblCep.font.color := clblack;
+  LblCidade.font.color := clblack;
+  LblUf.font.color := clblack;
+  lblCel.font.color := clblack;
+  LblBairro.font.color := clblack;
+  LblDta.font.color := clblack;
+end;
+
+procedure TFrmCadFornecedor.limpacampo;
+begin
+  EdtCpfCnpj.Clear;
+  EdtNome.Clear;
+  EdtFantasia.Clear;
+  EdtInsEstadual.Clear;
+  EdtInsMun.Clear;
+  DTNasc.Clear;
+  EdtEndereco.Clear;
+  EdtNumero.Clear;
+  EdtComplemento.Clear;
+  EdtBairro.Clear;
+  EdtCep.Clear;
+  EdtCidade.Clear;
+  CboUf.Caption := 'UF';
+  EdtTel.Clear;
+  EdtCel.Clear;
+  EdtEmail.Clear;
+  MemObs.Clear;
 end;
 
 
@@ -186,7 +223,7 @@ begin
   OpForn := '';
   Close;
   FrmConsFornecedores.PnChama.Visible := False;
-  //dar clear nos campos ao sair
+  limpacampo();
 end;
 
 procedure TFrmCadFornecedor.BtnCnpjChange(Sender: TObject);
@@ -196,20 +233,7 @@ begin
   LblNomeRazao.Caption := 'Razão Social';
   AtivaCampoForn();
   mascaras();
-  //criar uma procedore
-  LblCpfCnpj.font.color := clblack;
-  LblNomeRazao.font.color := clblack;
-  LblFantasia.font.color := clblack;
-  LblEstadual.font.color := clblack;
-  LblMunicipal.font.color := clblack;
-  LblEndereco.font.color := clblack;
-  LblNum.font.color := clblack;
-  LblCep.font.color := clblack;
-  LblCidade.font.color := clblack;
-  LblUf.font.color := clblack;
-  lblCel.font.color := clblack;
-  LblBairro.font.color := clblack;
-  LblDta.font.color := clblack;
+  trocacor();
 end;
 
 procedure TFrmCadFornecedor.BtnAtivoChange(Sender: TObject);
@@ -220,6 +244,7 @@ end;
 procedure TFrmCadFornecedor.BtnAlterarClick(Sender: TObject);
 begin
   AtivaCampoForn();
+
 end;
 
 procedure TFrmCadFornecedor.BtnCpfChange(Sender: TObject);
@@ -229,20 +254,7 @@ begin
   LblNomeRazao.Caption := 'Nome';
   AtivaCampoForn();
   mascaras();
-  LblCpfCnpj.font.color := clblack;
-  LblNomeRazao.font.color := clblack;
-  LblFantasia.font.color := clblack;
-  LblEstadual.font.color := clblack;
-  LblMunicipal.font.color := clblack;
-  LblEndereco.font.color := clblack;
-  LblNum.font.color := clblack;
-  LblCep.font.color := clblack;
-  LblCidade.font.color := clblack;
-  LblUf.font.color := clblack;
-  lblCel.font.color := clblack;
-  LblBairro.font.color := clblack;
-  LblDta.font.color := clblack;
-
+  trocacor();
 end;
 
 procedure TFrmCadFornecedor.BtnInativoChange(Sender: TObject);
@@ -260,7 +272,7 @@ begin
     begin
       if (EdtCpfCnpj.Text = '') or (EdtNome.Text = '') or
         (EdtFantasia.Text = '') or (EdtInsEstadual.Text = '') or
-        (EdtInsMunicipal.Text = '') or (EdtEndereco.Text = '') or
+        (EdtInsMun.Text = '') or (EdtEndereco.Text = '') or
         (EdtNumero.Text = '') or (EdtBairro.Text = '') or (EdtCep.Text = '') or
         (EdtCidade.Text = '') or (CboUf.Caption = 'UF') or (EdtCel.Text = '') then
       begin
@@ -282,19 +294,7 @@ begin
       begin
         ShowMessage('Esta faltando o numero no CNPJ');
       end
-      else if Length(Trim(EdtCel.Text)) < 13 then
-      begin
-        ShowMessage('Esta faltando o numero no Celular');
-      end
-      else if Length(Trim(EdtCep.Text)) < 9 then
-      begin
-        ShowMessage('Esta faltando o numero na Cep');
-      end
-      else if Length(Trim(EdtCpfCnpj.Text)) < 18 then
-      begin
-        ShowMessage('Esta faltando o numero no CNPJ');
-      end
-      else if Length(Trim(EdtCel.Text)) < 13 then
+      else if Length(Trim(EdtCel.Text)) < 14 then
       begin
         ShowMessage('Esta faltando o numero no Celular');
       end
@@ -313,9 +313,9 @@ begin
         dm.ZQCadPessoas.Params.ParamByName('pesnome_fantasia').Value :=
           EdtFantasia.Text;
         dm.ZQCadPessoas.Params.ParamByName('pesinscricao_estadual').Value :=
-          EdtInsEstadual.Text;
+          strtoint(EdtInsEstadual.Text);
         dm.ZQCadPessoas.params.ParamByName('pesinscricao_municipal').Value :=
-          EdtInsMunicipal.Text;
+          EdtInsMun.Text;
         dm.ZQCadPessoas.params.ParamByName('pescep').Value := EdtCep.Text;
         dm.ZQCadPessoas.params.ParamByName('pesendereco').Value := EdtEndereco.Text;
         dm.ZQCadPessoas.params.ParamByName('pesnumero').Value := EdtNumero.Text;
@@ -334,34 +334,17 @@ begin
         dm.ZQConsPessoas.Open;
 
         ShowMessage('Dados Gravados com sucesso!');
-        EdtCpfCnpj.Clear;
-        EdtNome.Clear;
-        EdtFantasia.Clear;
-        EdtInsEstadual.Clear;
-        EdtInsMunicipal.Clear;
-        DTNasc.Clear;
-        EdtEndereco.Clear;
-        EdtNumero.Clear;
-        EdtComplemento.Clear;
-        EdtBairro.Clear;
-        EdtCep.Clear;
-        EdtCidade.Clear;
-        CboUf.Caption := 'UF';
-        EdtTel.Clear;
-        EdtCel.Clear;
-        EdtEmail.Clear;
-        MemObs.Clear;
-        //EdtCpfCnpj.SetFocus;
+        limpacampo();
+        EdtCpfCnpj.SetFocus;
       end;
-    end;
-    //cpf
+    end; //fim cnpj
+    //CPF
     if (BtnCpf.Checked = True) then
     begin
       if (EdtCpfCnpj.Text = '') or (EdtNome.Text = '') or
-        (EdtFantasia.Text = '') or (EdtInsEstadual.Text = '') or
-        (EdtInsMunicipal.Text = '') or (EdtEndereco.Text = '') or
-        (EdtNumero.Text = '') or (EdtBairro.Text = '') or (EdtCep.Text = '') or
-        (EdtCidade.Text = '') or (CboUf.Caption = 'UF') or (EdtCel.Text = '') then
+        (EdtEndereco.Text = '') or (EdtNumero.Text = '') or
+        (EdtBairro.Text = '') or (EdtCep.Text = '') or (EdtCidade.Text = '') or
+        (CboUf.Caption = 'UF') or (EdtCel.Text = '') then
       begin
         ShowMessage('Verifique os campos');
         LblCpfCnpj.font.color := clred;
@@ -375,23 +358,11 @@ begin
         lblCel.font.color := clred;
         LblBairro.font.color := clred;
       end
-      else if Length(Trim(EdtCpfCnpj.Text)) < 18 then
+      else if Length(Trim(EdtCpfCnpj.Text)) < 14 then
       begin
         ShowMessage('Esta faltando o numero no CNPJ');
       end
-      else if Length(Trim(EdtCel.Text)) < 13 then
-      begin
-        ShowMessage('Esta faltando o numero no Celular');
-      end
-      else if Length(Trim(EdtCep.Text)) < 9 then
-      begin
-        ShowMessage('Esta faltando o numero na Cep');
-      end
-      else if Length(Trim(EdtCpfCnpj.Text)) < 18 then
-      begin
-        ShowMessage('Esta faltando o numero no CNPJ');
-      end
-      else if Length(Trim(EdtCel.Text)) < 13 then
+      else if Length(Trim(EdtCel.Text)) < 14 then
       begin
         ShowMessage('Esta faltando o numero no Celular');
       end
@@ -430,29 +401,127 @@ begin
         dm.ZQConsPessoas.Open;
 
         ShowMessage('Dados Gravados com sucesso!');
-        EdtCpfCnpj.Clear;
-        EdtNome.Clear;
-        EdtFantasia.Clear;
-        EdtInsEstadual.Clear;
-        EdtInsMunicipal.Clear;
-        DTNasc.Clear;
-        EdtEndereco.Clear;
-        EdtNumero.Clear;
-        EdtComplemento.Clear;
-        EdtBairro.Clear;
-        EdtCep.Clear;
-        EdtCidade.Clear;
-        CboUf.Caption := 'UF';
-        EdtTel.Clear;
-        EdtCel.Clear;
-        EdtEmail.Clear;
-        MemObs.Clear;
-        //EdtCpfCnpj.SetFocus;
+        limpacampo();
+        EdtCpfCnpj.SetFocus;
       end;
+    end;//fim cpf
+  end;//fim insert
 
-    end;//fim
+  //Update
+  if (OpForn = 'U') then
+  begin
+      //CNPJ-----------------------------------------------------------------------
+    if (BtnCnpj.Checked = True) then
+    begin
+      dm.ZQAltPessoas.Params.ParamByName('pesnome').Value := EdtNome.Text;
+      dm.ZQAltPessoas.Params.ParamByName('codigotip').Value := 2;
+      dm.ZQAltPessoas.Params.ParamByName('pescpf').Value := null;
+      dm.ZQAltPessoas.Params.ParamByName('pesdata_nascimento').Value := null;
+      dm.ZQAltPessoas.Params.ParamByName('pescnpj').Value := EdtCpfCnpj.Text;
+      dm.ZQAltPessoas.Params.ParamByName('pesnome_fantasia').Value := EdtFantasia.Text;
+      dm.ZQAltPessoas.Params.ParamByName('pesinscricao_estadual').Value :=
+        EdtInsEstadual.Text;
+      dm.ZQAltPessoas.params.ParamByName('pesinscricao_municipal').Value :=
+        EdtInsMun.Text;
+      dm.ZQAltPessoas.params.ParamByName('pescep').Value := EdtCep.Text;
+      dm.ZQAltPessoas.params.ParamByName('pesendereco').Value := EdtEndereco.Text;
+      dm.ZQAltPessoas.params.ParamByName('pesnumero').Value := EdtNumero.Text;
+      dm.ZQAltPessoas.params.ParamByName('pescomplemento').Value := EdtComplemento.Text;
+      dm.ZQAltPessoas.params.ParamByName('pesestado').Value := CboUf.Text;
+      dm.ZQAltPessoas.params.ParamByName('pescidade').Value := EdtCidade.Text;
+      dm.ZQAltPessoas.params.ParamByName('pesbairro').Value := EdtBairro.Text;
+      dm.ZQAltPessoas.params.ParamByName('pesemail').Value := EdtEmail.Text;
+      dm.ZQAltPessoas.params.ParamByName('pestelefone').Value := EdtTel.Text;
+      dm.ZQAltPessoas.params.ParamByName('pescelular').Value := EdtCel.Text;
+      dm.ZQAltPessoas.params.ParamByName('pesobservacao').Value := MemObs.Text;
+      dm.ZQAltPessoas.params.ParamByName('pescodigo').Value := pescodigo;
+      dm.ZQAltPessoas.ExecSQL;
 
+      dm.ZQConsPessoas.Close;
+      dm.ZQConsPessoas.Open;
+
+      ShowMessage('Alteração Gravada com sucesso!');
+      EdtCpfCnpj.Clear;
+      EdtNome.Clear;
+      EdtFantasia.Clear;
+      EdtInsEstadual.Clear;
+      EdtInsMun.Clear;
+      DTNasc.Clear;
+      EdtEndereco.Clear;
+      EdtNumero.Clear;
+      EdtComplemento.Clear;
+      EdtBairro.Clear;
+      EdtCep.Clear;
+      EdtCidade.Clear;
+      CboUf.Caption := 'UF';
+      EdtTel.Clear;
+      EdtCel.Clear;
+      EdtEmail.Clear;
+      MemObs.Clear;
+      //EdtCpfCnpj.SetFocus;
+      //OpForn := '';
+    end;
+
+    //CPF-----------------------------------------------------------------------
+    if (btncpf.Checked = True) then
+    begin
+      dm.ZQAltPessoas.Params.ParamByName('pesnome').Value := EdtNome.Text;
+      dm.ZQAltPessoas.Params.ParamByName('codigotip').Value := 1;
+      dm.ZQAltPessoas.Params.ParamByName('pescpf').Value := EdtCpfCnpj.Text;
+      dm.ZQAltPessoas.Params.ParamByName('pesdata_nascimento').AsString :=
+        FormatDateTime('yyyy-mm-dd', DTNasc.Date);
+      dm.ZQAltPessoas.Params.ParamByName('pescnpj').Value := null;
+      dm.ZQCadPessoas.Params.ParamByName('pesnome_fantasia').Value := null;
+      dm.ZQAltPessoas.Params.ParamByName('pesinscricao_estadual').Value := null;
+      dm.ZQAltPessoas.params.ParamByName('pesinscricao_municipal').Value :=
+        null;
+      dm.ZQAltPessoas.params.ParamByName('pescep').Value := EdtCep.Text;
+      dm.ZQAltPessoas.params.ParamByName('pesendereco').Value := EdtEndereco.Text;
+      dm.ZQAltPessoas.params.ParamByName('pesnumero').Value := EdtNumero.Text;
+      dm.ZQAltPessoas.params.ParamByName('pescomplemento').Value := EdtComplemento.Text;
+      dm.ZQAltPessoas.params.ParamByName('pesestado').Value := CboUf.Text;
+      dm.ZQAltPessoas.params.ParamByName('pescidade').Value := EdtCidade.Text;
+      dm.ZQAltPessoas.params.ParamByName('pesbairro').Value := EdtBairro.Text;
+      dm.ZQAltPessoas.params.ParamByName('pesemail').Value := EdtEmail.Text;
+      dm.ZQAltPessoas.params.ParamByName('pestelefone').Value := EdtTel.Text;
+      dm.ZQAltPessoas.params.ParamByName('pescelular').Value := EdtCel.Text;
+      dm.ZQAltPessoas.params.ParamByName('pesobservacao').Value := MemObs.Text;
+      dm.ZQAltPessoas.params.ParamByName('pescodigo').Value :=
+        dm.ZQConsPessoasCODIGO.AsInteger;
+      dm.ZQAltPessoas.ExecSQL;
+
+      dm.ZQConsPessoas.Close;
+      dm.ZQConsPessoas.Open;
+
+      ShowMessage('Alteração Gravada com sucesso!');
+      EdtCpfCnpj.Clear;
+      EdtNome.Clear;
+      EdtFantasia.Clear;
+      EdtInsEstadual.Clear;
+      EdtInsMun.Clear;
+      DTNasc.Clear;
+      EdtEndereco.Clear;
+      EdtNumero.Clear;
+      EdtComplemento.Clear;
+      EdtBairro.Clear;
+      EdtCep.Clear;
+      EdtCidade.Clear;
+      CboUf.Caption := 'UF';
+      EdtTel.Clear;
+      EdtCel.Clear;
+      EdtEmail.Clear;
+      MemObs.Clear;
+      //EdtCpfCnpj.SetFocus;
+      //OpForn := '';
+    end;
   end;
+  end;//fim procedure
+
+
+
+procedure TFrmCadFornecedor.EdtCpfCnpjChange(Sender: TObject);
+begin
+
 end;
 
 procedure TFrmCadFornecedor.FormCreate(Sender: TObject);

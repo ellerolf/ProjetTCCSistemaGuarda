@@ -1,12 +1,12 @@
 object FrmCadFornecedor: TFrmCadFornecedor
   Left = -8
-  Height = 788
+  Height = 791
   Top = -8
-  Width = 1386
+  Width = 1450
   BorderStyle = bsNone
   Caption = 'Cadastro Fornecedores'
-  ClientHeight = 749
-  ClientWidth = 1370
+  ClientHeight = 752
+  ClientWidth = 1450
   Color = 16577259
   OnCreate = FormCreate
   OnResize = FormResize
@@ -15,12 +15,12 @@ object FrmCadFornecedor: TFrmCadFornecedor
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 749
+    Height = 752
     Top = 0
-    Width = 1370
+    Width = 1450
     Align = alClient
-    ClientHeight = 749
-    ClientWidth = 1370
+    ClientHeight = 752
+    ClientWidth = 1450
     TabOrder = 0
     object Panel2: TPanel
       Left = 0
@@ -230,7 +230,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Width = 104
         CharCase = ecUppercase
         MaxLength = 50
-        TabOrder = 13
+        TabOrder = 11
       end
       object EdtEndereco: TEdit
         Left = 40
@@ -239,7 +239,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Width = 344
         CharCase = ecUppercase
         MaxLength = 50
-        TabOrder = 8
+        TabOrder = 6
       end
       object LblEndereco: TLabel
         Left = 40
@@ -263,7 +263,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         CharCase = ecUppercase
         MaxLength = 50
         NumbersOnly = True
-        TabOrder = 9
+        TabOrder = 7
       end
       object LblNum: TLabel
         Left = 401
@@ -286,7 +286,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Width = 112
         CharCase = ecUppercase
         MaxLength = 50
-        TabOrder = 10
+        TabOrder = 8
       end
       object Label12: TLabel
         Left = 465
@@ -309,7 +309,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Width = 128
         CharCase = ecUppercase
         MaxLength = 50
-        TabOrder = 11
+        TabOrder = 9
       end
       object LblBairro: TLabel
         Left = 584
@@ -362,7 +362,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
           'TO'
         )
         Style = csDropDownList
-        TabOrder = 14
+        TabOrder = 12
       end
       object LblUf: TLabel
         Left = 240
@@ -444,7 +444,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
           ''
         )
         MaxLength = 200
-        TabOrder = 17
+        TabOrder = 15
       end
       object LblMensagem: TLabel
         Left = 41
@@ -1437,7 +1437,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         CharCase = ecUppercase
         NumGlyphs = 1
         MaxLength = 0
-        TabOrder = 7
+        TabOrder = 5
       end
       object EdtCpfCnpj: TMaskEdit
         Left = 368
@@ -1447,6 +1447,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         CharCase = ecUppercase
         MaxLength = 50
         TabOrder = 2
+        OnChange = EdtCpfCnpjChange
         SpaceChar = '_'
       end
       object BtnAlterar: TSpeedButton
@@ -1918,7 +1919,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Width = 80
         CharCase = ecUppercase
         MaxLength = 50
-        TabOrder = 12
+        TabOrder = 10
         SpaceChar = '_'
       end
       object EdtTel: TMaskEdit
@@ -1928,7 +1929,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Width = 120
         CharCase = ecUppercase
         MaxLength = 50
-        TabOrder = 15
+        TabOrder = 13
         SpaceChar = '_'
       end
       object EdtCel: TMaskEdit
@@ -1938,7 +1939,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Width = 120
         CharCase = ecUppercase
         MaxLength = 50
-        TabOrder = 16
+        TabOrder = 14
         SpaceChar = '_'
       end
       object EdtEmail: TMaskEdit
@@ -1948,27 +1949,25 @@ object FrmCadFornecedor: TFrmCadFornecedor
         Width = 160
         CharCase = ecUppercase
         MaxLength = 50
-        TabOrder = 18
+        TabOrder = 16
+        SpaceChar = '_'
+      end
+      object EdtInsMun: TMaskEdit
+        Left = 312
+        Height = 23
+        Top = 191
+        Width = 264
+        MaxLength = 20
+        TabOrder = 17
         SpaceChar = '_'
       end
       object EdtInsEstadual: TMaskEdit
         Left = 40
         Height = 23
         Top = 191
-        Width = 264
-        CharCase = ecUppercase
-        MaxLength = 50
-        TabOrder = 5
-        SpaceChar = '_'
-      end
-      object EdtInsMunicipal: TMaskEdit
-        Left = 312
-        Height = 23
-        Top = 191
-        Width = 264
-        CharCase = ecUppercase
-        MaxLength = 50
-        TabOrder = 6
+        Width = 256
+        MaxLength = 20
+        TabOrder = 18
         SpaceChar = '_'
       end
     end
