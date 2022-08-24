@@ -18,7 +18,7 @@ type
     DBGrid1: TDBGrid;
     EdtNome: TEdit;
     Label1: TLabel;
-    Label7: TLabel;
+    LblFormNome: TLabel;
     LblMensagem: TLabel;
     Panel1: TPanel;
     Panel2: TPanel;
@@ -33,7 +33,7 @@ type
     procedure FormResize(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Label4Click(Sender: TObject);
-    procedure Label7Click(Sender: TObject);
+    procedure LblFormNomeClick(Sender: TObject);
     procedure Panel2Click(Sender: TObject);
   private
 
@@ -169,13 +169,23 @@ end;
 
 procedure TFrmCadCentroCusto.FormShow(Sender: TObject);
 begin
-  DM.ZQConsCentro.Active:=true;
-  RgbStatus.Visible := False;
-  EdtNome.Text:='';
-  EdtNome.SetFocus;
-  RgbTipo.ItemIndex:=0;
-  RgbStatus.ItemIndex:=0;
-  LblMensagem.Caption:='*Campos Obrigatorios';
+  if (CadOUAlt='A')then
+  begin
+   LblFormNome.Caption:='Alteração de Centro de Custo';
+   DM.ZQConsCentro.Active:=true;
+   LblMensagem.Caption:='*Campos Obrigatorios';
+   EdtNome.SetFocus;
+  end
+  else
+  begin
+    DM.ZQConsCentro.Active:=true;
+    RgbStatus.Visible := False;
+    EdtNome.Text:='';
+    EdtNome.SetFocus;
+    RgbTipo.ItemIndex:=0;
+    RgbStatus.ItemIndex:=0;
+    LblMensagem.Caption:='*Campos Obrigatorios';
+  end;
 end;
 
 procedure TFrmCadCentroCusto.Label4Click(Sender: TObject);
@@ -183,7 +193,7 @@ begin
 
 end;
 
-procedure TFrmCadCentroCusto.Label7Click(Sender: TObject);
+procedure TFrmCadCentroCusto.LblFormNomeClick(Sender: TObject);
 begin
 
 end;

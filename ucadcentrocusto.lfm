@@ -32,7 +32,7 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
       ClientWidth = 638
       TabOrder = 0
       OnClick = Panel2Click
-      object Label7: TLabel
+      object LblFormNome: TLabel
         Left = 0
         Height = 32
         Top = 0
@@ -49,7 +49,7 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
         Font.Style = [fsBold]
         ParentColor = False
         ParentFont = False
-        OnClick = Label7Click
+        OnClick = LblFormNomeClick
       end
       object Label1: TLabel
         Left = 80

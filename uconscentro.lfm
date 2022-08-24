@@ -1,12 +1,12 @@
 object FrmConsCentro: TFrmConsCentro
   Left = -8
-  Height = 639
+  Height = 677
   Top = -8
-  Width = 947
+  Width = 963
   BorderStyle = bsNone
   Caption = 'FrmConsCentro'
-  ClientHeight = 617
-  ClientWidth = 947
+  ClientHeight = 655
+  ClientWidth = 963
   Color = 16577259
   OnClose = FormClose
   OnResize = FormResize
@@ -14,13 +14,13 @@ object FrmConsCentro: TFrmConsCentro
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 617
+    Height = 655
     Top = 0
-    Width = 947
+    Width = 963
     Align = alClient
     Caption = 'Panel1'
-    ClientHeight = 617
-    ClientWidth = 947
+    ClientHeight = 655
+    ClientWidth = 963
     TabOrder = 0
     object Panel2: TPanel
       Left = -8
