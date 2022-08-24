@@ -123,6 +123,7 @@ end;
 procedure TFrmMenu.FormShow(Sender: TObject);
 begin
   FrmEntrarUsuario.hide;
+  LblUsuario.Caption:=FrmEntrarUsuario.usuarios;
 end;
 
 procedure TFrmMenu.BtnCadUsuariosClick(Sender: TObject);

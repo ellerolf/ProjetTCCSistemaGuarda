@@ -29,11 +29,11 @@ begin
   Application.CreateForm(TFrmConsContas, FrmConsContas);
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TFrmBuscaConta, FrmBuscaConta);
-  Application.CreateForm(TFrmEntrarUsuario, FrmEntrarUsuario);
   Application.CreateForm(TFrmTranfContas, FrmTranfContas);
   Application.CreateForm(TFrmConsUsuario, FrmConsUsuario);
   Application.CreateForm(TFrmConsCentro, FrmConsCentro);
   Application.CreateForm(TFrmBuscaDoc, FrmBuscaDoc);
+  Application.CreateForm(TFrmEntrarUsuario, FrmEntrarUsuario);
   Application.Run;
 end.
 

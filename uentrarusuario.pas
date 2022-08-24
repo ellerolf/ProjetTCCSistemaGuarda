@@ -40,6 +40,7 @@ type
 
   public
     usuarios: string;
+    indentidade: integer;
   end;
 
 var
@@ -77,7 +78,10 @@ begin
     if (DM.ZQConsUsuario.RecordCount = 1) then
     begin
       LblMensagem.Caption := '*Campos Obrigatorios!';
+      //aqui ao logar o nome do usuari aparecera no menu de entrada
       usuarios := DM.ZQConsUsuarioUSUNOME.AsString;
+      //aqui esta atribuindo o codigo do usuario para como "indentidade" para uso de outros frorms
+      indentidade:= DM.ZQConsUsuarioUSUCODIGO.AsInteger;
       FrmMenu.Show;
     end
     else
