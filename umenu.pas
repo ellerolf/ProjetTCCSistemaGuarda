@@ -189,6 +189,7 @@ begin
   FrmCadFornecedor.OpForn:='I';
   FrmCadFornecedor.Parent := PnChama;
   FrmCadFornecedor.Align := alClient;
+  FrmCadFornecedor.BtnAlterar.Visible:=false;
   FrmCadFornecedor.Show;
 end;
 

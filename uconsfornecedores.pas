@@ -265,6 +265,9 @@ begin
     FrmCadFornecedor.EdtCel.Text := dm.ZQConsPessoasCELULAR.AsString;
     FrmCadFornecedor.EdtEmail.Text := dm.ZQConsPessoasEMAIL.AsString;
     FrmCadFornecedor.MemObs.Text := dm.ZQConsPessoasOBSERVAO.AsString;
+    FrmCadFornecedor.BtnAlterar.Visible:=true;
+    FrmCadFornecedor.GrpCnpjCpf.Enabled:=false;
+    FrmCadFornecedor.GrpStatus.Enabled:=false;
   end
   //  PESSOA JURÍDICA
   else if (dm.ZQConsPessoasCODIGOTIP.AsInteger = 2) then
@@ -288,6 +291,9 @@ begin
     FrmCadFornecedor.EdtFantasia.Text := dm.ZQConsPessoasNOMEFANTASIA.AsString;
     FrmCadFornecedor.EdtInsEstadual.Text := dm.ZQConsPessoasINSCRIOESTADUAL.AsString;
     FrmCadFornecedor.EdtInsMun.Text := dm.ZQConsPessoasINSCRIOMUNICIPAL.AsString;
+    FrmCadFornecedor.BtnAlterar.Visible:=true;
+    FrmCadFornecedor.GrpCnpjCpf.Enabled:=false;
+    FrmCadFornecedor.GrpStatus.Enabled:=false;
   end;
 
 

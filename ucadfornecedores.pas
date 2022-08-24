@@ -126,6 +126,7 @@ begin
     MemObs.Enabled := True;
     BtnSalvar.Enabled := True;
     DTNasc.Clear;
+
   end;
 
   if (BtnCpf.Checked = True) then
@@ -151,6 +152,7 @@ begin
     EdtFantasia.Clear;
     EdtInsEstadual.Clear;
     EdtInsMun.Clear;
+
   end;
 end;
 
@@ -244,6 +246,15 @@ end;
 procedure TFrmCadFornecedor.BtnAlterarClick(Sender: TObject);
 begin
   AtivaCampoForn();
+
+  if (OpForn='U') then
+  begin
+       BtnAlterar.Visible:=false;
+       GrpCnpjCpf.Enabled:=true;
+       GrpStatus.Enabled:=True;
+       BtnInativo.Enabled:=true;
+  end;
+
 
 end;
 
@@ -458,8 +469,8 @@ begin
       EdtCel.Clear;
       EdtEmail.Clear;
       MemObs.Clear;
-      //EdtCpfCnpj.SetFocus;
-      //OpForn := '';
+      EdtCpfCnpj.SetFocus;
+
     end;
 
     //CPF-----------------------------------------------------------------------
@@ -511,8 +522,8 @@ begin
       EdtCel.Clear;
       EdtEmail.Clear;
       MemObs.Clear;
-      //EdtCpfCnpj.SetFocus;
-      //OpForn := '';
+      EdtCpfCnpj.SetFocus;
+
     end;
   end;
   end;//fim procedure
