@@ -310,7 +310,7 @@ begin
   begin
     dm.ZQConsBancarias.Close;
     dm.ZQConsBancarias.SQL.Clear;
-    dm.ZQConsBancarias.SQL.Add('select *from contas WHERE CODIGOTIP=3');
+    dm.ZQConsBancarias.SQL.Add('select *from vwcontas WHERE CODIGOTIP=3');
     dm.ZQConsBancarias.Open;
     DBGConsCaixa.Visible := True;
     DBGConsContasBancarias.Visible := False;
@@ -320,7 +320,7 @@ begin
     dm.ZQConsBancarias.Close;
     dm.ZQConsBancarias.SQL.Clear;
     dm.ZQConsBancarias.SQL.Add(
-      'select *from contas WHERE CODIGOTIP=3 and CONSTATUS=1');
+      'select *from vwcontas WHERE CODIGOTIP=3 and CONSTATUS=1');
     dm.ZQConsBancarias.Open;
     DBGConsCaixa.Visible := True;
     DBGConsContasBancarias.Visible := False;
@@ -330,7 +330,7 @@ begin
     dm.ZQConsBancarias.Close;
     dm.ZQConsBancarias.SQL.Clear;
     dm.ZQConsBancarias.SQL.Add(
-      'select *from contas WHERE CODIGOTIP=3 and CONSTATUS=0');
+      'select *from vwcontas WHERE CODIGOTIP=3 and CONSTATUS=0');
     dm.ZQConsBancarias.Open;
     DBGConsCaixa.Visible := True;
     DBGConsContasBancarias.Visible := False;
@@ -340,7 +340,7 @@ begin
   begin
     dm.ZQConsBancarias.Close;
     dm.ZQConsBancarias.SQL.Clear;
-    dm.ZQConsBancarias.SQL.Add('select * from contas WHERE CODIGOTIP<3');
+    dm.ZQConsBancarias.SQL.Add('select * from vwcontas WHERE CODIGOTIP<3');
     dm.ZQConsBancarias.Open;
     DBGConsCaixa.Visible := False;
     DBGConsContasBancarias.Visible := True;
@@ -350,7 +350,7 @@ begin
     dm.ZQConsBancarias.Close;
     dm.ZQConsBancarias.SQL.Clear;
     dm.ZQConsBancarias.SQL.Add(
-      'select * from contas WHERE CODIGOTIP<3 and CONSTATUS=1');
+      'select * from vwcontas WHERE CODIGOTIP<3 and CONSTATUS=1');
     dm.ZQConsBancarias.Open;
     DBGConsCaixa.Visible := False;
     DBGConsContasBancarias.Visible := True;
@@ -360,7 +360,7 @@ begin
     dm.ZQConsBancarias.Close;
     dm.ZQConsBancarias.SQL.Clear;
     dm.ZQConsBancarias.SQL.Add(
-      'select * from contas WHERE CODIGOTIP<3 and CONSTATUS=0');
+      'select * from vwcontas WHERE CODIGOTIP<3 and CONSTATUS=0');
     dm.ZQConsBancarias.Open;
     DBGConsCaixa.Visible := False;
     DBGConsContasBancarias.Visible := True;

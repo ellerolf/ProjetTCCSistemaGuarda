@@ -541,27 +541,27 @@ object FrmBuscaConta: TFrmBuscaConta
       Columns = <      
         item
           Title.Caption = 'CÓDIGO'
-          Width = 50
+          Width = 55
           FieldName = 'CONCODIGO'
         end      
         item
           Title.Caption = 'NOME DO BANCO'
-          Width = 190
+          Width = 150
           FieldName = 'CONNOME'
         end      
         item
-          Title.Caption = 'TIPO CONTA'
-          Width = 140
+          Title.Caption = 'TIPO DA CONTA'
+          Width = 120
           FieldName = 'TIPNOME'
         end      
         item
           Title.Caption = 'AGÊNCIA'
-          Width = 60
+          Width = 90
           FieldName = 'CONAGENCIA'
         end      
         item
           Title.Caption = 'N° DA CONTA'
-          Width = 86
+          Width = 110
           FieldName = 'CONNUMERO_CONTA'
         end>
       DataSource = DM.DSBuscaConta

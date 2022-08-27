@@ -37,6 +37,7 @@ type
     ZQBuscaContaCONNUMERO_CONTA: TStringField;
     ZQBuscaContaCONSALDO_INICIAL: TFloatField;
     ZQBuscaContaCONSTATUS: TSmallintField;
+    ZQBuscaContaSTATUS: TStringField;
     ZQBuscaContaTIPNOME: TStringField;
     ZQBuscaTipoDocDOCCODIGO: TLongintField;
     ZQBuscaTipoDocDOCNOME: TStringField;
@@ -56,6 +57,8 @@ type
     ZQConsBancariasCONNUMERO_CONTA: TStringField;
     ZQConsBancariasCONSALDO_INICIAL: TFloatField;
     ZQConsBancariasCONSTATUS: TSmallintField;
+    ZQConsBancariasSTATUS: TStringField;
+    ZQConsBancariasTIPNOME: TStringField;
     ZQConsCentroCENCODIGO: TLongintField;
     ZQConsCentroCENNOME: TStringField;
     ZQConsCentroCENSTATUS: TSmallintField;

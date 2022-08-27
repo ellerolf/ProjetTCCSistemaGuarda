@@ -1,12 +1,12 @@
 object FrmConsContas: TFrmConsContas
   Left = -8
-  Height = 791
+  Height = 788
   Top = -8
-  Width = 752
+  Width = 784
   BorderStyle = bsNone
   Caption = 'FrmConsContas'
-  ClientHeight = 752
-  ClientWidth = 752
+  ClientHeight = 749
+  ClientWidth = 784
   Color = 16577259
   OnClose = FormClose
   OnResize = FormResize
@@ -15,12 +15,12 @@ object FrmConsContas: TFrmConsContas
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 752
+    Height = 749
     Top = 0
-    Width = 752
+    Width = 784
     Align = alClient
-    ClientHeight = 752
-    ClientWidth = 752
+    ClientHeight = 749
+    ClientWidth = 784
     TabOrder = 0
     object Panel2: TPanel
       Left = 0
@@ -1032,23 +1032,22 @@ object FrmConsContas: TFrmConsContas
         Columns = <        
           item
             Title.Caption = 'CÓDIGO'
-            Width = 52
             FieldName = 'CONCODIGO'
           end        
           item
             Title.Caption = 'NOME DA CONTA CAIXA'
-            Width = 265
+            Width = 250
             FieldName = 'CONNOME'
           end        
           item
-            Title.Caption = 'TIPO DE CONTA'
-            Width = 150
-            FieldName = 'CODIGOTIP'
+            Title.Caption = 'TIPO DA CONTA'
+            Width = 173
+            FieldName = 'TIPNOME'
           end        
           item
             Title.Caption = 'STATUS'
-            Width = 100
-            FieldName = 'CONSTATUS'
+            Width = 80
+            FieldName = 'STATUS'
           end>
         DataSource = DM.DSConsBancarias
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
@@ -1089,33 +1088,33 @@ object FrmConsContas: TFrmConsContas
         Columns = <        
           item
             Title.Caption = 'CÓDIGO'
-            Width = 51
+            Width = 50
             FieldName = 'CONCODIGO'
           end        
           item
             Title.Caption = 'NOME DO BANCO'
-            Width = 202
+            Width = 170
             FieldName = 'CONNOME'
           end        
           item
             Title.Caption = 'TIPO DA CONTA'
-            Width = 120
-            FieldName = 'CODIGOTIP'
+            Width = 117
+            FieldName = 'TIPNOME'
           end        
           item
             Title.Caption = 'AGÊNCIA'
-            Width = 64
+            Width = 70
             FieldName = 'CONAGENCIA'
           end        
           item
             Title.Caption = 'N° DA CONTA'
-            Width = 82
+            Width = 85
             FieldName = 'CONNUMERO_CONTA'
           end        
           item
             Title.Caption = 'STATUS'
-            Width = 48
-            FieldName = 'CONSTATUS'
+            Width = 75
+            FieldName = 'STATUS'
           end>
         DataSource = DM.DSConsBancarias
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]

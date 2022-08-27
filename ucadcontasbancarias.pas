@@ -555,6 +555,8 @@ procedure TFrmCadContasBancarias.RdbCadContaChange(Sender: TObject);
 begin
   if RdbCadConta.Checked = True then
   begin
+    //tive que ativar a query pq no cadastro de transferencia, quando eu fecho o busca conta ele desativa a querry zqconstipoconta
+    dm.ZQConsTipoConta.Active:=True;
     CboTipo.Enabled := True;
     RdbCadTrans.Checked := False;
   end

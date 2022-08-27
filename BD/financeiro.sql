@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 25/06/2022 às 21:34
+-- Tempo de geração: 27/08/2022 às 02:25
 -- Versão do servidor: 10.1.35-MariaDB
 -- Versão do PHP: 7.2.9
 
@@ -317,7 +317,7 @@ INSERT INTO `transferencia` (`TRACODIGO`, `TRAVALOR`, `TRACODIGO_CONORI`, `TRACO
 (3, 1000, 4, 1, '2022-04-30', '8500', 1),
 (4, 458, 4, 1, '2022-10-15', '459', 1),
 (5, 1, 1, 2, '2022-10-10', '1', 1),
-(6, 1, 2, 2, '2022-06-21', '211', 1);
+(6, 1, 2, 9, '2022-06-21', '211', 1);
 
 -- --------------------------------------------------------
 
@@ -365,6 +365,7 @@ CREATE TABLE `vwcontas` (
 ,`CONNUMERO_CONTA` varchar(50)
 ,`CONSALDO_INICIAL` double
 ,`CONSTATUS` tinyint(1)
+,`STATUS` varchar(7)
 );
 
 -- --------------------------------------------------------
@@ -438,7 +439,7 @@ CREATE TABLE `vwpessoas` (
 --
 DROP TABLE IF EXISTS `vwcontas`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vwcontas`  AS  select `contas`.`CONCODIGO` AS `CONCODIGO`,`contas`.`CONNOME` AS `CONNOME`,`contas`.`CODIGOTIP` AS `CODIGOTIP`,`tipo_conta`.`TIPNOME` AS `TIPNOME`,`contas`.`CONAGENCIA` AS `CONAGENCIA`,`contas`.`CONNUMERO_CONTA` AS `CONNUMERO_CONTA`,`contas`.`CONSALDO_INICIAL` AS `CONSALDO_INICIAL`,`contas`.`CONSTATUS` AS `CONSTATUS` from (`contas` join `tipo_conta`) where (`tipo_conta`.`TIPCODIGO` = `contas`.`CODIGOTIP`) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vwcontas`  AS  select `contas`.`CONCODIGO` AS `CONCODIGO`,`contas`.`CONNOME` AS `CONNOME`,`contas`.`CODIGOTIP` AS `CODIGOTIP`,`tipo_conta`.`TIPNOME` AS `TIPNOME`,`contas`.`CONAGENCIA` AS `CONAGENCIA`,`contas`.`CONNUMERO_CONTA` AS `CONNUMERO_CONTA`,`contas`.`CONSALDO_INICIAL` AS `CONSALDO_INICIAL`,`contas`.`CONSTATUS` AS `CONSTATUS`,(case when (`contas`.`CONSTATUS` = 1) then 'ATIVO' else 'INATIVO' end) AS `STATUS` from (`contas` join `tipo_conta`) where (`tipo_conta`.`TIPCODIGO` = `contas`.`CODIGOTIP`) ;
 
 -- --------------------------------------------------------
 
@@ -646,7 +647,7 @@ ALTER TABLE `transferencia`
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `USUCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=22;
+  MODIFY `USUCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=21;
 
 --
 -- Restrições para dumps de tabelas
