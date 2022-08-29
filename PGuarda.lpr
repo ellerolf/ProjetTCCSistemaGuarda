@@ -10,7 +10,7 @@ uses
   Forms, datetimectrls, zcomponent, UEntrarUsuario, umenu, uCadUsuario,
   uCadContasBancarias, uCadCentroCusto, uCadFornecedores, uCadLancamento,
   UConsFornecedores, UConsBaixa, UConsContas, UModulo, UBuscaConta,
-  UTranfContas, UConsUsuario, uConsCentro, UBuscaDoc;
+  UTranfContas, UConsUsuario, uConsCentro, UBuscaDoc, UCadPagamento;
 
 {$R *.res}
 
@@ -34,6 +34,7 @@ begin
   Application.CreateForm(TFrmConsUsuario, FrmConsUsuario);
   Application.CreateForm(TFrmConsCentro, FrmConsCentro);
   Application.CreateForm(TFrmBuscaDoc, FrmBuscaDoc);
+  Application.CreateForm(TForm1, Form1);
   Application.Run;
 end.
 
