@@ -2,24 +2,23 @@ object FrmCadLancamento: TFrmCadLancamento
   Left = -8
   Height = 788
   Top = -8
-  Width = 1362
+  Width = 1378
   BorderStyle = bsNone
   Caption = 'Lançamento'
-  ClientHeight = 788
-  ClientWidth = 1362
+  ClientHeight = 749
+  ClientWidth = 1370
   Color = 16577259
   OnResize = FormResize
   Position = poScreenCenter
-  LCLVersion = '2.2.2.0'
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
     Height = 749
     Top = 0
-    Width = 1362
+    Width = 1370
     Align = alClient
     ClientHeight = 749
-    ClientWidth = 1362
+    ClientWidth = 1370
     TabOrder = 0
     object Panel2: TPanel
       Left = 0
@@ -88,14 +87,14 @@ object FrmCadLancamento: TFrmCadLancamento
         Top = 157
         Width = 120
         OnKeyPress = EdtValorKeyPress
-        TabOrder = 0
+        TabOrder = 6
       end
       object EdtNDoc: TEdit
         Left = 576
         Height = 23
         Top = 95
         Width = 120
-        TabOrder = 1
+        TabOrder = 3
       end
       object Label5: TLabel
         Left = 63
@@ -130,7 +129,7 @@ object FrmCadLancamento: TFrmCadLancamento
           Align = alLeft
           Caption = 'Receita'
           OnChange = ChkReceitaChange
-          TabOrder = 0
+          TabOrder = 1
         end
         object ChkDespesa: TRadioButton
           Left = 77
@@ -140,7 +139,7 @@ object FrmCadLancamento: TFrmCadLancamento
           Align = alRight
           Caption = 'Despesa'
           OnChange = ChkDespesaChange
-          TabOrder = 1
+          TabOrder = 0
         end
       end
       object EdtConsCentro: TEdit
@@ -149,7 +148,7 @@ object FrmCadLancamento: TFrmCadLancamento
         Top = 158
         Width = 145
         NumbersOnly = True
-        TabOrder = 3
+        TabOrder = 5
       end
       object BtnConsCentro: TSpeedButton
         Left = 439
@@ -312,7 +311,7 @@ object FrmCadLancamento: TFrmCadLancamento
         Height = 101
         Top = 228
         Width = 616
-        TabOrder = 5
+        TabOrder = 7
       end
       object LblMensagem: TLabel
         Left = 63
@@ -1397,7 +1396,7 @@ object FrmCadLancamento: TFrmCadLancamento
         NumGlyphs = 1
         MaxLength = 0
         OnChange = DTLancamentoChange
-        TabOrder = 6
+        TabOrder = 0
       end
       object EdtTipoDocumento: TEdit
         Left = 384
@@ -1405,7 +1404,7 @@ object FrmCadLancamento: TFrmCadLancamento
         Top = 95
         Width = 120
         NumbersOnly = True
-        TabOrder = 7
+        TabOrder = 1
       end
       object BtnConsTipoConta: TSpeedButton
         Left = 512

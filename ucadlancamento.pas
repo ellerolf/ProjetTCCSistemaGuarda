@@ -65,7 +65,7 @@ implementation
 
 { TFrmCadLancamento }
 
-uses UModulo;
+uses UModulo, UCadPagamento;
 
 procedure TFrmCadLancamento.EdtDataChange(Sender: TObject);
 begin
@@ -163,6 +163,7 @@ begin
   else
   begin
        ShowMessage('Agora efetue o cadastro das parcelas');
+       FrmCadParcela.ShowModal;
 
   {if (ChkReceita.Checked=True) then
     begin
