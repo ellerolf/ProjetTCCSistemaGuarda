@@ -162,7 +162,9 @@ begin
   end
   else
   begin
-    if (ChkReceita.Checked=True) then
+       ShowMessage('Agora efetue o cadastro das parcelas');
+
+  {if (ChkReceita.Checked=True) then
     begin
       dm.ZQCadLancamentos.Params.ParamByName('pLANTIPO').Value:=1;
     end;
@@ -190,7 +192,8 @@ begin
     EdtConsCentro.Clear;
     MemObservacao.Clear;
     ChkDespesa.Checked:=False;
-    ChkReceita.Checked:=False;
+    ChkReceita.Checked:=False;  }
+
   end;
 
 end;
