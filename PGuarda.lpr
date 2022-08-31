@@ -34,7 +34,7 @@ begin
   Application.CreateForm(TFrmConsUsuario, FrmConsUsuario);
   Application.CreateForm(TFrmConsCentro, FrmConsCentro);
   Application.CreateForm(TFrmBuscaDoc, FrmBuscaDoc);
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TFrmCadParcela, FrmCadParcela);
   Application.Run;
 end.
 

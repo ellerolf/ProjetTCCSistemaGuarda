@@ -10,9 +10,9 @@ uses
 
 type
 
-  { TForm1 }
+  { TFrmCadParcela }
 
-  TForm1 = class(TForm)
+  TFrmCadParcela = class(TForm)
     DTDataLancamento: TDBDateEdit;
     DBGrid1: TDBGrid;
     EdtValor: TEdit;
@@ -37,7 +37,7 @@ type
   end;
 
 var
-  Form1: TForm1;
+  FrmCadParcela: TFrmCadParcela;
 
 implementation
 

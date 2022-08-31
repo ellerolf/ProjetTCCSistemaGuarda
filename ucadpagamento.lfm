@@ -1,9 +1,9 @@
-object Form1: TForm1
+object FrmCadParcela: TFrmCadParcela
   Left = 265
   Height = 527
   Top = 31
   Width = 680
-  Caption = 'Form1'
+  Caption = 'FrmCadParcela'
   ClientHeight = 527
   ClientWidth = 680
   object Panel1: TPanel
@@ -24,7 +24,7 @@ object Form1: TForm1
       Width = 678
       Align = alTop
       Alignment = taCenter
-      Caption = 'Pagamento'
+      Caption = 'Parcelas'
       Font.CharSet = ANSI_CHARSET
       Font.Color = 10420224
       Font.Height = -24
