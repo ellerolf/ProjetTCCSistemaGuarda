@@ -13575,6 +13575,15 @@ object FrmMenu: TFrmMenu
       ParentFont = False
       OnClick = LblUsuarioClick
     end
+    object BtnLogoff: TSpeedButton
+      Left = 1088
+      Height = 28
+      Top = 7
+      Width = 96
+      Align = alCustom
+      Caption = 'logoff'
+      OnClick = BtnLogoffClick
+    end
   end
   object PnChama: TPanel
     Left = 184

@@ -43,6 +43,7 @@ type
     BtnTrasf: TSpeedButton;
     BtnConsUsuario: TSpeedButton;
     BtnConsCentro: TSpeedButton;
+    BtnLogoff: TSpeedButton;
     procedure BtnCadBancoClick(Sender: TObject);
     procedure BtnCadCentroClick(Sender: TObject);
     procedure BtnCadFornecedorClick(Sender: TObject);
@@ -52,6 +53,7 @@ type
     procedure BtnConsCentroClick(Sender: TObject);
     procedure BtnConsFornecedoresClick(Sender: TObject);
     procedure BtnConsReceitaDespesasClick(Sender: TObject);
+    procedure BtnLogoffClick(Sender: TObject);
     procedure BtnRelaPrestaClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
     procedure BtnTrasfClick(Sender: TObject);
@@ -162,6 +164,26 @@ begin
   FrmConsBaixa.Show;
 end;
 
+procedure TFrmMenu.BtnLogoffClick(Sender: TObject);
+begin
+  FrmCadUsuario.BtnSair.Click;
+  FrmCadFornecedor.BtnSair.Click;
+  FrmCadLancamento.BtnSair.Click;
+  FrmCadCentroCusto.BtnSair.Click;
+  FrmCadContasBancarias.BtnSair.Click;
+  FrmConsUsuario.BtnSair.Click;
+  FrmConsFornecedores.BtnSair.Click;
+  FrmConsBaixa.BtnSair.Click;
+  FrmConsCentro.BtnSair.Click;
+  FrmTranfContas.BtnCancela.Click;
+  FrmConsContas.BtnSair.Click;
+  FrmMenu.hide;
+  FrmEntrarUsuario.EdtUsuario.Text:='';
+  FrmEntrarUsuario.EdtSenha.Text:='';
+  FrmEntrarUsuario.Show;
+
+end;
+
 procedure TFrmMenu.BtnRelaPrestaClick(Sender: TObject);
 begin
 
@@ -227,7 +249,7 @@ end;
 
 procedure TFrmMenu.SpeedButton1Click(Sender: TObject);
 begin
-  Close;
+  Application.Terminate;
 end;
 
 procedure TFrmMenu.BtnConsUsuarioClick(Sender: TObject);
