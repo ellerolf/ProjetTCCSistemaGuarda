@@ -13,7 +13,6 @@ type
   { TFrmEntrarUsuario }
 
   TFrmEntrarUsuario = class(TForm)
-    BtnSair: TButton;
     ChkMostrar: TCheckBox;
     EdtUsuario: TEdit;
     EdtSenha: TEdit;
@@ -25,6 +24,7 @@ type
     BtnEntrar: TSpeedButton;
     Panel2: TPanel;
     Panel1: TPanel;
+    SpeedButton1: TSpeedButton;
     procedure BtnEntrarClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
     procedure ChkMostrarChange(Sender: TObject);
@@ -36,6 +36,7 @@ type
     procedure Image1Click(Sender: TObject);
     procedure LblMensagemClick(Sender: TObject);
     procedure pncentroClick(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
   private
 
   public
@@ -61,6 +62,11 @@ end;
 procedure TFrmEntrarUsuario.pncentroClick(Sender: TObject);
 begin
 
+end;
+
+procedure TFrmEntrarUsuario.SpeedButton1Click(Sender: TObject);
+begin
+  close;
 end;
 
 procedure TFrmEntrarUsuario.BtnEntrarClick(Sender: TObject);

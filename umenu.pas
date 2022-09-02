@@ -39,7 +39,6 @@ type
     BtnCadFornecedor: TSpeedButton;
     BtnCadLancamento: TSpeedButton;
     BtnConsBanco: TSpeedButton;
-    SpeedButton1: TSpeedButton;
     BtnTrasf: TSpeedButton;
     BtnConsUsuario: TSpeedButton;
     BtnConsCentro: TSpeedButton;
