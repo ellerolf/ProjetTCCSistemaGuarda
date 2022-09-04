@@ -54,7 +54,8 @@ type
   private
 
   public
-
+    {Variável criada para facilitar a programação do limpar dados ao sair do conscentro}
+   var AcionaBtnPesqCen: String;
   end;
 
 var
@@ -140,35 +141,40 @@ begin
     ShowMessage('Selecione o tipo de lançamento para escolher o centro de custo');
      end;
 
-   if (ChkReceita.Checked=True) then
-   BEGIN
-      DM.ZQBuscaCentro.Close;
-      DM.ZQBuscaCentro.SQL.Clear;
-      DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where codigotip=1 and censtatus=1');
-      DM.ZQBuscaCentro.Open;
+    AcionaBtnPesqCen:='ativa';
 
-     FrmConsCentro.BtnSelecione.Visible:=True;
-     FrmConsCentro.CboTipo.Enabled:=False;
-     FrmConsCentro.CboTipo.ItemIndex:=1;
-     FrmConsCentro.CboStatus.Enabled:=False;
-     FrmConsCentro.CboStatus.ItemIndex:=1;
-     FrmConsCentro.Show;
-   end;
+    if(AcionaBtnPesqCen='ativa') then
+    begin
+     if (ChkReceita.Checked=True) then
+     BEGIN
+        DM.ZQBuscaCentro.Close;
+        DM.ZQBuscaCentro.SQL.Clear;
+        DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where codigotip=1 and censtatus=1');
+        DM.ZQBuscaCentro.Open;
 
-      if (ChkDespesa.Checked=True) then
-   BEGIN
-      DM.ZQBuscaCentro.Close;
-      DM.ZQBuscaCentro.SQL.Clear;
-      DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where codigotip=2 and censtatus=1');
-      DM.ZQBuscaCentro.Open;
+       FrmConsCentro.BtnSelecione.Visible:=True;
+       FrmConsCentro.CboTipo.Enabled:=False;
+       FrmConsCentro.CboTipo.ItemIndex:=1;
+       FrmConsCentro.CboStatus.Enabled:=False;
+       FrmConsCentro.CboStatus.ItemIndex:=1;
+       FrmConsCentro.Show;
+     end;
 
-     FrmConsCentro.BtnSelecione.Visible:=True;
-     FrmConsCentro.CboTipo.Enabled:=False;
-     FrmConsCentro.CboTipo.ItemIndex:=2;
-     FrmConsCentro.CboStatus.Enabled:=False;
-     FrmConsCentro.CboStatus.ItemIndex:=1;
-     FrmConsCentro.Show;
-   end;
+        if (ChkDespesa.Checked=True) then
+     BEGIN
+        DM.ZQBuscaCentro.Close;
+        DM.ZQBuscaCentro.SQL.Clear;
+        DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where codigotip=2 and censtatus=1');
+        DM.ZQBuscaCentro.Open;
+
+       FrmConsCentro.BtnSelecione.Visible:=True;
+       FrmConsCentro.CboTipo.Enabled:=False;
+       FrmConsCentro.CboTipo.ItemIndex:=2;
+       FrmConsCentro.CboStatus.Enabled:=False;
+       FrmConsCentro.CboStatus.ItemIndex:=1;
+       FrmConsCentro.Show;
+     end;
+    end;
 end;
 
 procedure TFrmCadLancamento.BtnSalvarClick(Sender: TObject);
