@@ -55,7 +55,7 @@ implementation
 
 {$R *.lfm}
 
-uses uCadFornecedores;
+uses uCadFornecedores,uCadLancamento;
 
 procedure TFrmConsFornecedores.BuscaDados;
 begin
@@ -180,6 +180,26 @@ end;
 
 procedure TFrmConsFornecedores.BtnSairClick(Sender: TObject);
 begin
+  // validação abaixo é do Rafael, foi feito, para limpar os campos caso o cliente não selecione o fornecedor e clique em sair.
+   if (FrmCadLancamento.AcionaBtnPesqForn='liga') then
+   begin
+    CboStatus.Enabled:=True;
+    CboStatus.ItemIndex:=0;
+    CboTipoPessoa.ItemIndex:=0;
+    EdtConsulta.Clear;
+    FrmCadLancamento.AcionaBtnPesqForn:='';
+    // Foi necessário colocar o código abaixo, pq quando a pessoa entrava em lançamento e saia, e depois abria consfornecedor
+    //Os campos aparecia habilitado mas a dbgrid estava com os dados da tela de lançamento. Com o ajuste abaixo isso foi resolvido
+    dm.ZQConsPessoas.Close;
+    dm.ZQConsPessoas.Sql.Clear;
+    dm.ZQConsPessoas.sql.Add('select * from vwpessoas');
+    dm.ZQConsPessoas.Open;
+    GrTodos.Visible := True;
+    dm.ZQConsPessoas.Close;
+    FrmConsFornecedores.Close;
+   end;
+   //Gabi tive que deixar abaixo do meu código, pq se deixar em cima, ele vai executar o close primeiro e não vai pegar minha condição.
+   //Se o usuario estiver direto na tela de consfornecedor e clicar em sair, minha condição será false, e ele vai fechar o consforn.
   Close;
 end;
 
@@ -245,6 +265,30 @@ end;
 
 procedure TFrmConsFornecedores.BtnSelecionarClick(Sender: TObject);
 begin
+    // validação abaixo é do Rafael, foi feito, para levar o código do cliente para o lançamento
+    //tive que colocar por primeiro, pq essa minha condição estava sendo executada por ultimo, ai se o usuário sair da tela de lançamento
+    // e ir cadastrar um fornecedor ele aparece os dados de fornecedor que foi selecionado na tela de lancamento.
+   if (FrmCadLancamento.AcionaBtnPesqForn='liga') then
+   begin
+     FrmCadLancamento.EdtConsFornecedor.Text:=dm.ZQConsPessoasCODIGO.AsString;
+    CboStatus.Enabled:=True;
+    CboStatus.ItemIndex:=0;
+    CboTipoPessoa.ItemIndex:=0;
+    EdtConsulta.Clear;
+    FrmCadLancamento.AcionaBtnPesqForn:='';
+    // Foi necessário colocar o código abaixo, pq quando a pessoa entrava em lançamento e saia, e depois abria consfornecedor
+    //Os campos aparecia habilitado mas a dbgrid estava com os dados da tela de lançamento. Com o ajuste abaixo isso foi resolvido
+    dm.ZQConsPessoas.Close;
+    dm.ZQConsPessoas.Sql.Clear;
+    dm.ZQConsPessoas.sql.Add('select * from vwpessoas');
+    dm.ZQConsPessoas.Open;
+    GrTodos.Visible := True;
+    dm.ZQConsPessoas.Close;
+    FrmConsFornecedores.Close;
+   end;
+
+   //Validação a partir deste comentário é da gabi.
+
   FrmCadFornecedor.OpForn := 'U';
   //PESSOA FÍSICA
   if (dm.ZQConsPessoasCODIGOTIP.AsInteger = 1) then
@@ -303,6 +347,9 @@ begin
   FrmCadFornecedor.Align := alClient;
   FrmCadFornecedor.Show;
   FrmCadFornecedor.DesativaCampoForn();
+
+
+
 end;
 
 procedure TFrmConsFornecedores.BtnConsultaClick(Sender: TObject);

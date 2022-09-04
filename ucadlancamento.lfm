@@ -1,24 +1,24 @@
 object FrmCadLancamento: TFrmCadLancamento
   Left = -8
-  Height = 866
+  Height = 905
   Top = -8
-  Width = 1418
+  Width = 1434
   BorderStyle = bsNone
   Caption = 'Lançamento'
-  ClientHeight = 843
-  ClientWidth = 1418
+  ClientHeight = 882
+  ClientWidth = 1434
   Color = 16577259
   OnResize = FormResize
   Position = poScreenCenter
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 843
+    Height = 882
     Top = 0
-    Width = 1418
+    Width = 1434
     Align = alClient
-    ClientHeight = 843
-    ClientWidth = 1418
+    ClientHeight = 882
+    ClientWidth = 1434
     TabOrder = 0
     object Panel2: TPanel
       Left = 0
@@ -786,9 +786,9 @@ object FrmCadLancamento: TFrmCadLancamento
         OnClick = BtnSalvarClick
       end
       object BtnConsCentro1: TSpeedButton
-        Left = 215
+        Left = 216
         Height = 22
-        Top = 158
+        Top = 160
         Width = 49
         Glyph.Data = {
           62100000424D621000000000000036000000280000002D000000170000000100
@@ -924,6 +924,7 @@ object FrmCadLancamento: TFrmCadLancamento
           00FFC10000FFC10000FFC10000FFC10000FFC10000FFC10000C0C1000090C100
           0020FFFFFF00
         }
+        OnClick = BtnConsCentro1Click
       end
       object BtnSair: TSpeedButton
         Left = 559

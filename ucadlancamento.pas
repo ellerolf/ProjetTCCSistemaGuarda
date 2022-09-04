@@ -39,6 +39,7 @@ type
     Panel1: TPanel;
     Panel2: TPanel;
     BtnConsTipoConta: TSpeedButton;
+    procedure BtnConsCentro1Click(Sender: TObject);
     procedure BtnConsCentroClick(Sender: TObject);
     procedure BtnConsTipoContaClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
@@ -56,6 +57,8 @@ type
   public
     {Variável criada para facilitar a programação do limpar dados ao sair do conscentro}
    var AcionaBtnPesqCen: String;
+   {Variável criada para facilitar a programação do limpar dados ao sair do consfornecedores}
+   var AcionaBtnPesqForn: String;
   end;
 
 var
@@ -67,7 +70,7 @@ implementation
 
 { TFrmCadLancamento }
 
-uses UModulo, UCadPagamento,uConsCentro;
+uses UModulo, UCadPagamento,uConsCentro, UConsFornecedores;
 
 procedure TFrmCadLancamento.EdtDataChange(Sender: TObject);
 begin
@@ -175,6 +178,27 @@ begin
        FrmConsCentro.Show;
      end;
     end;
+end;
+
+procedure TFrmCadLancamento.BtnConsCentro1Click(Sender: TObject);
+begin
+  AcionaBtnPesqForn:='liga';
+
+  if(AcionaBtnPesqForn='liga') then
+  begin
+    if (ChkReceita.Checked=True) or (ChkDespesa.Checked=True) then
+    begin
+    dm.ZQConsPessoas.Close;
+    dm.ZQConsPessoas.Sql.Clear;
+    dm.ZQConsPessoas.sql.Add('select * from vwpessoas where ativo=1');
+    dm.ZQConsPessoas.Open;
+    FrmConsFornecedores.CboStatus.Enabled:=false;
+    FrmConsFornecedores.CboStatus.ItemIndex:=1;
+    FrmConsFornecedores.Show;
+    end;
+
+  end;
+
 end;
 
 procedure TFrmCadLancamento.BtnSalvarClick(Sender: TObject);
