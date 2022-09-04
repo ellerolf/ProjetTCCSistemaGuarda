@@ -1,12 +1,12 @@
 object FrmConsCentro: TFrmConsCentro
   Left = -8
-  Height = 677
+  Height = 755
   Top = -8
-  Width = 963
+  Width = 995
   BorderStyle = bsNone
   Caption = 'FrmConsCentro'
-  ClientHeight = 655
-  ClientWidth = 963
+  ClientHeight = 732
+  ClientWidth = 995
   Color = 16577259
   OnClose = FormClose
   OnResize = FormResize
@@ -14,13 +14,13 @@ object FrmConsCentro: TFrmConsCentro
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 655
+    Height = 732
     Top = 0
-    Width = 963
+    Width = 995
     Align = alClient
     Caption = 'Panel1'
-    ClientHeight = 655
-    ClientWidth = 963
+    ClientHeight = 732
+    ClientWidth = 995
     TabOrder = 0
     object Panel2: TPanel
       Left = -8
@@ -1233,6 +1233,15 @@ object FrmConsCentro: TFrmConsCentro
           00FFFF3300FFFF3300FFFF3300FFFF5930FFFFBFAFFFFFFFFFFF
         }
         OnClick = BtnAlterarClick
+      end
+      object BtnSelecione: TSpeedButton
+        Left = 296
+        Height = 22
+        Top = 472
+        Width = 74
+        Caption = 'SELECIONE'
+        Visible = False
+        OnClick = BtnSelecioneClick
       end
     end
   end

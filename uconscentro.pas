@@ -26,9 +26,11 @@ type
     Label8: TLabel;
     Panel1: TPanel;
     Panel2: TPanel;
+    BtnSelecione: TSpeedButton;
     procedure BtnAlterarClick(Sender: TObject);
     procedure BtnConsultaClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
+    procedure BtnSelecioneClick(Sender: TObject);
     procedure DBGrid1CellClick(Column: TColumn);
     procedure EdtNome1Change(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -48,7 +50,7 @@ implementation
 {$R *.lfm}
 
 { TFrmConsCentro }
-  uses uCadCentroCusto,UModulo;
+  uses uCadCentroCusto,UModulo,uCadLancamento;
 procedure TFrmConsCentro.FormResize(Sender: TObject);
 begin
   Panel2.Left := (Panel1.ClientWidth div 2) - (Panel2.Width div 2);
@@ -63,6 +65,20 @@ end;
 procedure TFrmConsCentro.BtnSairClick(Sender: TObject);
 begin
   close;
+end;
+
+procedure TFrmConsCentro.BtnSelecioneClick(Sender: TObject);
+begin
+  FrmCadLancamento.EdtConsCentro.Caption:=DM.ZQBuscaCentroCENCODIGO.AsString;
+  //após pegar o valor do centro de custo, oss códigos abaixo foi feito para limpar essa tela, e o último para fechar o form
+  BtnSelecione.Visible:=False;
+  CboTipo.ItemIndex:=0;
+  CboStatus.ItemIndex:=0;
+  CboTipo.Enabled:=True;
+  CboStatus.Enabled:=True;
+  dm.ZQBuscaCentro.Close;
+
+  FrmConsCentro.Close;
 end;
 
 procedure TFrmConsCentro.DBGrid1CellClick(Column: TColumn);

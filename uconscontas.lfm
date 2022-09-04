@@ -2,11 +2,11 @@ object FrmConsContas: TFrmConsContas
   Left = -8
   Height = 788
   Top = -8
-  Width = 784
+  Width = 800
   BorderStyle = bsNone
   Caption = 'FrmConsContas'
   ClientHeight = 749
-  ClientWidth = 784
+  ClientWidth = 800
   Color = 16577259
   OnClose = FormClose
   OnResize = FormResize
@@ -17,10 +17,10 @@ object FrmConsContas: TFrmConsContas
     Left = 0
     Height = 749
     Top = 0
-    Width = 784
+    Width = 800
     Align = alClient
     ClientHeight = 749
-    ClientWidth = 784
+    ClientWidth = 800
     TabOrder = 0
     object Panel2: TPanel
       Left = 0

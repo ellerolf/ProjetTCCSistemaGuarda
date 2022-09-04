@@ -2,7 +2,7 @@ object FrmCadLancamento: TFrmCadLancamento
   Left = -8
   Height = 788
   Top = -8
-  Width = 1378
+  Width = 1386
   BorderStyle = bsNone
   Caption = 'Lançamento'
   ClientHeight = 749
@@ -289,6 +289,7 @@ object FrmCadLancamento: TFrmCadLancamento
           00FFC10000FFC10000FFC10000FFC10000FFC10000FFC10000C0C1000090C100
           0020FFFFFF00
         }
+        OnClick = BtnConsCentroClick
       end
       object EdtConsFornecedor: TEdit
         Left = 63

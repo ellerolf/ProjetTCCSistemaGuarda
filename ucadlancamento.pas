@@ -39,6 +39,7 @@ type
     Panel1: TPanel;
     Panel2: TPanel;
     BtnConsTipoConta: TSpeedButton;
+    procedure BtnConsCentroClick(Sender: TObject);
     procedure BtnConsTipoContaClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
     procedure BtnSalvarClick(Sender: TObject);
@@ -65,7 +66,7 @@ implementation
 
 { TFrmCadLancamento }
 
-uses UModulo, UCadPagamento;
+uses UModulo, UCadPagamento,uConsCentro;
 
 procedure TFrmCadLancamento.EdtDataChange(Sender: TObject);
 begin
@@ -120,6 +121,44 @@ begin
     dm.ZQBuscaTipoDoc.Open;
     FrmBuscaDoc.ShowModal;
   end;
+end;
+
+procedure TFrmCadLancamento.BtnConsCentroClick(Sender: TObject);
+begin
+    if (ChkReceita.Checked=false) and (ChkDespesa.Checked=False) then
+    begin
+    ShowMessage('Selecione o tipo de lançamento para escolher o centro de custo');
+     end;
+
+   if (ChkReceita.Checked=True) then
+   BEGIN
+      DM.ZQBuscaCentro.Close;
+      DM.ZQBuscaCentro.SQL.Clear;
+      DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where codigotip=1 and censtatus=1');
+      DM.ZQBuscaCentro.Open;
+
+     FrmConsCentro.BtnSelecione.Visible:=True;
+     FrmConsCentro.CboTipo.Enabled:=False;
+     FrmConsCentro.CboTipo.ItemIndex:=1;
+     FrmConsCentro.CboStatus.Enabled:=False;
+     FrmConsCentro.CboStatus.ItemIndex:=1;
+     FrmConsCentro.Show;
+   end;
+
+      if (ChkDespesa.Checked=True) then
+   BEGIN
+      DM.ZQBuscaCentro.Close;
+      DM.ZQBuscaCentro.SQL.Clear;
+      DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where codigotip=2 and censtatus=1');
+      DM.ZQBuscaCentro.Open;
+
+     FrmConsCentro.BtnSelecione.Visible:=True;
+     FrmConsCentro.CboTipo.Enabled:=False;
+     FrmConsCentro.CboTipo.ItemIndex:=2;
+     FrmConsCentro.CboStatus.Enabled:=False;
+     FrmConsCentro.CboStatus.ItemIndex:=1;
+     FrmConsCentro.Show;
+   end;
 end;
 
 procedure TFrmCadLancamento.BtnSalvarClick(Sender: TObject);
