@@ -70,14 +70,18 @@ end;
 procedure TFrmConsCentro.BtnSelecioneClick(Sender: TObject);
 begin
   FrmCadLancamento.EdtConsCentro.Caption:=DM.ZQBuscaCentroCENCODIGO.AsString;
-  //após pegar o valor do centro de custo, oss códigos abaixo foi feito para limpar essa tela, e o último para fechar o form
+  //após pegar o valor do centro de custo, os códigos abaixo foi feito para limpar essa tela, e o último para fechar o form
   BtnSelecione.Visible:=False;
   CboTipo.ItemIndex:=0;
   CboStatus.ItemIndex:=0;
   CboTipo.Enabled:=True;
   CboStatus.Enabled:=True;
+  //Foi necessário colocar o código abaixo, pq quando a pessoa entrava em lançamento e saia, e depois abria conscentro,
+  //Os campos aparecia habilitado mas a dbgrid estava com os dados da tela de lançamento. Com o ajuste abaixo isso foi resolvido
+  DM.ZQBuscaCentro.SQL.Clear;
+  DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where cennome like' +QuotedStr('%' + EdtNome1.Text + '%'));
+  DM.ZQBuscaCentro.Open;
   dm.ZQBuscaCentro.Close;
-
   FrmConsCentro.Close;
 end;
 

@@ -95,6 +95,16 @@ end;
 
 procedure TFrmCadLancamento.BtnSairClick(Sender: TObject);
 begin
+  //Ao sair da tela o código abaixo faz a limpeza dos campos.
+  DTLancamento.Clear;
+  EdtTipoDocumento.Clear;
+  EdtNDoc.Clear;
+  EdtValor.Clear;
+  EdtConsFornecedor.Clear;
+  EdtConsCentro.Clear;
+  MemObservacao.Clear;
+  ChkDespesa.Checked:=False;
+  ChkReceita.Checked:=False;
   Close;
 end;
 
