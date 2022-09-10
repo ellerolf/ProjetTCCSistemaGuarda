@@ -1,13 +1,13 @@
 object FrmCadContasBancarias: TFrmCadContasBancarias
   Left = -8
-  Height = 827
+  Height = 788
   Top = -8
-  Width = 1402
+  Width = 1386
   BorderIcons = [biSystemMenu]
   BorderStyle = bsNone
   Caption = 'Cadastro de Contas Bancarias'
-  ClientHeight = 804
-  ClientWidth = 1402
+  ClientHeight = 749
+  ClientWidth = 1370
   Color = 16577259
   Font.CharSet = ANSI_CHARSET
   Font.Height = -13
@@ -22,12 +22,12 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 804
+    Height = 749
     Top = 0
-    Width = 1402
+    Width = 1370
     Align = alClient
-    ClientHeight = 804
-    ClientWidth = 1402
+    ClientHeight = 749
+    ClientWidth = 1370
     TabOrder = 0
     OnClick = Panel1Click
     object Panel2: TPanel

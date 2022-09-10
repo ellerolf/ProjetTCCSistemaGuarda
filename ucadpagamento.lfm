@@ -135,24 +135,13 @@ object FrmCadParcela: TFrmCadParcela
         ParentFont = False
       end
     end
-    object DTDataLancamento: TDBDateEdit
-      Left = 40
-      Height = 23
-      Top = 200
-      Width = 151
-      CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
-      DateOrder = doNone
-      ButtonWidth = 23
-      NumGlyphs = 1
-      MaxLength = 0
-      TabOrder = 2
-    end
     object EdtValor: TEdit
       Left = 240
       Height = 23
       Top = 200
       Width = 112
-      TabOrder = 3
+      OnChange = EdtValorChange
+      TabOrder = 2
       Text = 'R$ 0,00'
     end
     object SpeedButton1: TSpeedButton
@@ -614,15 +603,35 @@ object FrmCadParcela: TFrmCadParcela
         00FFC10000FFC10000FFC10000FFC10000FFC10000FFC10000FFC10000FFC100
         00FFC10000FFC10000FFC10000FFCD3030FFECAFAFFFFFFFFFFF
       }
+      OnClick = SpeedButton1Click
     end
     object DBGrid1: TDBGrid
-      Left = 40
+      Left = 8
       Height = 200
       Top = 248
-      Width = 312
+      Width = 344
       Color = clWindow
-      Columns = <>
-      TabOrder = 4
+      Columns = <      
+        item
+          Title.Caption = 'CÓDIGO LANÇ'
+          Width = 85
+          FieldName = 'CODIGOLAN'
+        end      
+        item
+          Title.Caption = 'DATA DE VENCIMENTO'
+          Width = 128
+          FieldName = 'BAIDATA'
+        end      
+        item
+          Title.Caption = 'VALOR'
+          FieldName = 'BAIVALOR'
+        end      
+        item
+          Title.Caption = 'USUÁRIO'
+          FieldName = 'CODIGOUSU'
+        end>
+      DataSource = DM.DSConsLanData
+      TabOrder = 3
     end
     object SpeedButton5: TSpeedButton
       Left = 376
@@ -2004,5 +2013,17 @@ object FrmCadParcela: TFrmCadParcela
         FFFF0000FFFF0000FFFF0000FFFF3030FFFFAFAFFFFFFFFFFFFF
       }
     end
+  end
+  object DtDataParcela: TDateEdit
+    Left = 40
+    Height = 23
+    Top = 200
+    Width = 167
+    CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
+    DateOrder = doNone
+    ButtonWidth = 23
+    NumGlyphs = 1
+    MaxLength = 0
+    TabOrder = 1
   end
 end

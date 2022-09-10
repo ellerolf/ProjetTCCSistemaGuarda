@@ -1954,7 +1954,7 @@ object DM: TDM
     )
     Params = <>
     Left = 960
-    Top = 312
+    Top = 392
     object ZQBuscaTipoDocDOCCODIGO: TLongintField
       FieldKind = fkData
       FieldName = 'DOCCODIGO'
@@ -1988,6 +1988,163 @@ object DM: TDM
     DataSet = ZQBuscaTipoDoc
     OnDataChange = DSBuscaTipoDocDataChange
     Left = 960
+    Top = 352
+  end
+  object ZQConsLanData: TZQuery
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'select * from baixa where codigolan is null'
+    )
+    Params = <>
+    Left = 960
     Top = 248
+    object ZQConsLanDataBAICODIGO: TLongintField
+      FieldKind = fkData
+      FieldName = 'BAICODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object ZQConsLanDataCODIGOLAN: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODIGOLAN'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsLanDataBAISTATUS: TSmallintField
+      FieldKind = fkData
+      FieldName = 'BAISTATUS'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsLanDataCODIGOFOR: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODIGOFOR'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsLanDataCODIGOCON: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODIGOCON'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsLanDataBAIDATA: TDateField
+      FieldKind = fkData
+      FieldName = 'BAIDATA'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsLanDataBAIVALOR: TFloatField
+      FieldKind = fkData
+      FieldName = 'BAIVALOR'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 22
+    end
+    object ZQConsLanDataBAIMULTA_JUROS: TFloatField
+      FieldKind = fkData
+      FieldName = 'BAIMULTA_JUROS'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 22
+    end
+    object ZQConsLanDataBAIDESCONTO: TFloatField
+      FieldKind = fkData
+      FieldName = 'BAIDESCONTO'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 22
+    end
+    object ZQConsLanDataCODIGOUSU: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODIGOUSU'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object DSConsLanData: TDataSource
+    DataSet = ZQConsLanData
+    Left = 960
+    Top = 296
+  end
+  object ZQCadLanData: TZQuery
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'insert into baixa (CODIGOLAN, BAIDATA, BAIVALOR,CODIGOUSU) VALUES (:PCODIGOLAN, :pBAIDATA, :pBAIVALOR, :pCODIGOUSU)'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'PCODIGOLAN'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pBAIDATA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pBAIVALOR'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pCODIGOUSU'
+        ParamType = ptUnknown
+      end>
+    Left = 961
+    Top = 120
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'PCODIGOLAN'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pBAIDATA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pBAIVALOR'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pCODIGOUSU'
+        ParamType = ptUnknown
+      end>
   end
 end

@@ -59,6 +59,8 @@ type
    var AcionaBtnPesqCen: String;
    {Variável criada para facilitar a programação do limpar dados ao sair do consfornecedores}
    var AcionaBtnPesqForn: String;
+     valorDoDocumento:Double;
+
   end;
 
 var
@@ -242,6 +244,10 @@ begin
   else
   begin
        ShowMessage('Agora efetue o cadastro das parcelas');
+        valorDoDocumento:=StrToFloat(EdtValor.Text);
+        FrmCadParcela.LblValor.Caption:=FormatFloat('R$ 0.00',valorDoDocumento);
+        FrmCadParcela.restante:=valorDoDocumento;
+        FrmCadParcela.LblValorRestante.Caption:=FormatFloat('R$ 0.00',valorDoDocumento);
        FrmCadParcela.ShowModal;
 
   {if (ChkReceita.Checked=True) then

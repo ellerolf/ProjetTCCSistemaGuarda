@@ -12,6 +12,7 @@ type
   { TDM }
 
   TDM = class(TDataModule)
+    DSConsLanData: TDataSource;
     DSBuscaTipoDoc: TDataSource;
     DSBuscaUsuario: TDataSource;
     DSBuscaCentro: TDataSource;
@@ -85,6 +86,16 @@ type
     ZQConsFornCPFPESRAZAO_SOCIAL: TStringField;
     ZQConsFornCPFPESSTATUS: TSmallintField;
     ZQConsFornCPFPESTELEFONE: TStringField;
+    ZQConsLanDataBAICODIGO: TLongintField;
+    ZQConsLanDataBAIDATA: TDateField;
+    ZQConsLanDataBAIDESCONTO: TFloatField;
+    ZQConsLanDataBAIMULTA_JUROS: TFloatField;
+    ZQConsLanDataBAISTATUS: TSmallintField;
+    ZQConsLanDataBAIVALOR: TFloatField;
+    ZQConsLanDataCODIGOCON: TLongintField;
+    ZQConsLanDataCODIGOFOR: TLongintField;
+    ZQConsLanDataCODIGOLAN: TLongintField;
+    ZQConsLanDataCODIGOUSU: TLongintField;
     ZQConsPessoasATIVO: TSmallintField;
     ZQConsPessoasBAIRRO: TStringField;
     ZQConsPessoasCELULAR: TStringField;
@@ -152,6 +163,8 @@ type
     ZQBuscaUsuario: TZQuery;
     ZQBuscaCentro: TZQuery;
     ZQBuscaTipoDoc: TZQuery;
+    ZQConsLanData: TZQuery;
+    ZQCadLanData: TZQuery;
     procedure DSBuscaTipoDocDataChange(Sender: TObject; Field: TField);
     procedure DSConsPessoasDataChange(Sender: TObject; Field: TField);
 
