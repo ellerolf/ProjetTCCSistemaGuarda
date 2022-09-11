@@ -86,6 +86,16 @@ type
     ZQConsFornCPFPESRAZAO_SOCIAL: TStringField;
     ZQConsFornCPFPESSTATUS: TSmallintField;
     ZQConsFornCPFPESTELEFONE: TStringField;
+    ZQConsLancamentosCODIGOCEN: TLongintField;
+    ZQConsLancamentosCODIGODOC: TLongintField;
+    ZQConsLancamentosCODIGOPES: TLongintField;
+    ZQConsLancamentosCODIGOUSU: TLongintField;
+    ZQConsLancamentosLANCODIGO: TLongintField;
+    ZQConsLancamentosLANDOCUMENTO: TDateField;
+    ZQConsLancamentosLANNUMERO_DOCUMENTO: TStringField;
+    ZQConsLancamentosLANOBSERVACAO: TStringField;
+    ZQConsLancamentosLANTIPO: TSmallintField;
+    ZQConsLancamentosLANVALOR_DOCUMENTO: TFloatField;
     ZQConsLanDataBAICODIGO: TLongintField;
     ZQConsLanDataBAIDATA: TDateField;
     ZQConsLanDataBAIDESCONTO: TFloatField;
@@ -165,6 +175,7 @@ type
     ZQBuscaTipoDoc: TZQuery;
     ZQConsLanData: TZQuery;
     ZQCadLanData: TZQuery;
+    ZQAltCodLanNaBaixa: TZQuery;
     procedure DSBuscaTipoDocDataChange(Sender: TObject; Field: TField);
     procedure DSConsPessoasDataChange(Sender: TObject; Field: TField);
 

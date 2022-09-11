@@ -33,11 +33,13 @@ type
     procedure DTDataLancamentoChange(Sender: TObject);
     procedure EdtValorChange(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
   private
 
   public
     valor:Real;
     restante:Real;
+    codigoDoLanc:Integer;
 
 
   end;
@@ -62,7 +64,7 @@ begin
   else
       if (valor>restante) then
           begin
-               ShowMessage('VALOR INCORRETO, FALTA LANÇAR O VALOR RESTANTE APENAS.');
+               ShowMessage('VALOR INCORRETO, verifique se existe algum valor restante.');
           END
           ELSE
           begin
@@ -85,6 +87,52 @@ begin
 
 
      end;
+
+procedure TFrmCadParcela.SpeedButton2Click(Sender: TObject);
+begin
+ if(restante>0) then
+     begin
+          ShowMessage('Ainda está faltando lançamentos, verifique o valor restante');
+     end
+     Else
+     begin
+
+  //Ao clicar em salvar ele fará o insert na tabela de lançamento
+  if (FrmCadLancamento.ChkReceita.Checked=True) then
+    begin
+      dm.ZQCadLancamentos.Params.ParamByName('pLANTIPO').Value:=1;
+    end;
+    if (FrmCadLancamento.ChkDespesa.Checked=True) then
+    begin
+      dm.ZQCadLancamentos.Params.ParamByName('pLANTIPO').Value:=0;
+    end;
+    dm.ZQCadLancamentos.Params.ParamByName('pLANDOCUMENTO').AsString:=FormatDateTime('yyyy-mm-dd',FrmCadLancamento.DTLancamento.Date);
+    dm.ZQCadLancamentos.Params.ParamByName('pCODIGODOC').Value:=FrmCadLancamento.EdtTipoDocumento.Text;
+    dm.ZQCadLancamentos.Params.ParamByName('pLANNUMERO_DOCUMENTO').Value:=FrmCadLancamento.EdtNDoc.Text;
+    FrmCadLancamento.EdtValor.Text:=StringReplace(FrmCadLancamento.EdtValor.Text, ',', '.', [rfReplaceAll]);
+    dm.ZQCadLancamentos.Params.ParamByName('pLANVALOR_DOCUMENTO').Value:=FrmCadLancamento.EdtValor.Text;
+    dm.ZQCadLancamentos.Params.ParamByName('pCODIGOPES').Value:=FrmCadLancamento.EdtConsFornecedor.Text;
+    dm.ZQCadLancamentos.Params.ParamByName('pCODIGOCEN').Value:=FrmCadLancamento.EdtConsCentro.Text;
+    dm.ZQCadLancamentos.Params.ParamByName('pLANOBSERVACAO').Value:=FrmCadLancamento.MemObservacao.Text;
+    dm.ZQCadLancamentos.Params.ParamByName('pCODIGOUSU').Value:=FrmEntrarUsuario.indentidade;
+    dm.ZQCadLancamentos.ExecSQL;
+
+  //Quando o usuário fez o insert da data e valor foi sem o código do lançamento.
+  //O código abaixo é para atualizar o codigolan da baixa para o código do lançamento na qual essa data e valor pertence.
+
+  dm.ZQConsLancamentos.close;
+  dm.ZQConsLancamentos.Open;
+  dm.ZQConsLancamentos.Last;
+
+  codigoDoLanc:=DM.ZQConsLancamentosLANCODIGO.AsInteger;
+  dm.ZQAltCodLanNaBaixa.Params.ParamByName('pCODIGOLAN').Value:=codigoDoLanc;
+  dm.ZQAltCodLanNaBaixa.ExecSQL;
+
+  ShowMessage('deu certo essa merda');
+
+ end;
+
+end;
 
 procedure TFrmCadParcela.EdtValorChange(Sender: TObject);
 begin

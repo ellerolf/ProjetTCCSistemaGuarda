@@ -1552,6 +1552,7 @@ object FrmCadParcela: TFrmCadParcela
         00FFC10000FFC10000FFC10000FFC10000FFC10000FFC10000FFC10000FFC100
         00FFC10000FFC10000FFC10000FFCD3030FFECAFAFFFFFFFFFFF
       }
+      OnClick = SpeedButton2Click
     end
     object SpeedButton3: TSpeedButton
       Left = 376

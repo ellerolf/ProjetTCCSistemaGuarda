@@ -505,9 +505,106 @@ object DM: TDM
     end
   end
   object ZQConsLancamentos: TZQuery
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'SELECT * from lancamento '
+    )
     Params = <>
     Left = 344
     Top = 312
+    object ZQConsLancamentosLANCODIGO: TLongintField
+      FieldKind = fkData
+      FieldName = 'LANCODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object ZQConsLancamentosLANDOCUMENTO: TDateField
+      FieldKind = fkData
+      FieldName = 'LANDOCUMENTO'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsLancamentosCODIGODOC: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODIGODOC'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsLancamentosLANNUMERO_DOCUMENTO: TStringField
+      FieldKind = fkData
+      FieldName = 'LANNUMERO_DOCUMENTO'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsLancamentosLANVALOR_DOCUMENTO: TFloatField
+      FieldKind = fkData
+      FieldName = 'LANVALOR_DOCUMENTO'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 22
+    end
+    object ZQConsLancamentosCODIGOPES: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODIGOPES'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsLancamentosCODIGOCEN: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODIGOCEN'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsLancamentosLANOBSERVACAO: TStringField
+      FieldKind = fkData
+      FieldName = 'LANOBSERVACAO'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 200
+    end
+    object ZQConsLancamentosLANTIPO: TSmallintField
+      FieldKind = fkData
+      FieldName = 'LANTIPO'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsLancamentosCODIGOUSU: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODIGOUSU'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
   end
   object ZQCadTransferencia: TZQuery
     Connection = ZFinanceiro
@@ -2144,6 +2241,26 @@ object DM: TDM
       item
         DataType = ftUnknown
         Name = 'pCODIGOUSU'
+        ParamType = ptUnknown
+      end>
+  end
+  object ZQAltCodLanNaBaixa: TZQuery
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'UPDATE baixa set CODIGOLAN=:pCODIGOLAN  WHERE CODIGOLAN IS NULL'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'pCODIGOLAN'
+        ParamType = ptUnknown
+      end>
+    Left = 344
+    Top = 656
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'pCODIGOLAN'
         ParamType = ptUnknown
       end>
   end
