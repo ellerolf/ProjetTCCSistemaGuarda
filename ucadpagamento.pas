@@ -18,6 +18,8 @@ type
     EdtValor: TEdit;
     Label1: TLabel;
     Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
     LblValor: TLabel;
     Label7: TLabel;
     LblValorRestante: TLabel;
@@ -32,6 +34,7 @@ type
     SpeedButton5: TSpeedButton;
     procedure DTDataLancamentoChange(Sender: TObject);
     procedure EdtValorChange(Sender: TObject);
+    procedure EdtValorKeyPress(Sender: TObject; var Key: char);
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
   private
@@ -68,7 +71,6 @@ begin
           END
           ELSE
           begin
-
                 valor:=StrToFloat(EdtValor.Text);
                 restante:=restante-valor;
                 LblValorRestante.Caption:=FormatFloat('R$ 0.00',restante);
@@ -82,10 +84,10 @@ begin
                 dm.ZQConsLanData.Close;
                 dm.ZQConsLanData.Open;
 
+                //após o lançamento da data e valor, o código abaixo faz a limpeza dos campos.
+                EdtValor.Clear;
+                DtDataParcela.Clear;
           end;
-
-
-
      end;
 
 procedure TFrmCadParcela.SpeedButton2Click(Sender: TObject);
@@ -137,6 +139,15 @@ end;
 procedure TFrmCadParcela.EdtValorChange(Sender: TObject);
 begin
 
+end;
+
+procedure TFrmCadParcela.EdtValorKeyPress(Sender: TObject; var Key: char);
+begin
+ if not (key in ['0'..'9', #8, ',']) then
+ begin
+    key := #0;
+    Beep;
+ end;
 end;
 
 procedure TFrmCadParcela.DTDataLancamentoChange(Sender: TObject);

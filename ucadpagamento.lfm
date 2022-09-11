@@ -141,8 +141,8 @@ object FrmCadParcela: TFrmCadParcela
       Top = 200
       Width = 112
       OnChange = EdtValorChange
+      OnKeyPress = EdtValorKeyPress
       TabOrder = 2
-      Text = 'R$ 0,00'
     end
     object SpeedButton1: TSpeedButton
       Left = 376
@@ -2013,6 +2013,22 @@ object FrmCadParcela: TFrmCadParcela
         FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000
         FFFF0000FFFF0000FFFF0000FFFF3030FFFFAFAFFFFFFFFFFFFF
       }
+    end
+    object Label3: TLabel
+      Left = 40
+      Height = 15
+      Top = 176
+      Width = 106
+      Caption = 'Data de Vencimento'
+      ParentColor = False
+    end
+    object Label4: TLabel
+      Left = 240
+      Height = 15
+      Top = 176
+      Width = 29
+      Caption = 'Valor '
+      ParentColor = False
     end
   end
   object DtDataParcela: TDateEdit
