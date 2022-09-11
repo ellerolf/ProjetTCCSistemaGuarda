@@ -1,10 +1,10 @@
 object DM: TDM
   OnCreate = DataModuleCreate
   OldCreateOrder = False
-  Height = 629
+  Height = 720
   HorizontalOffset = 255
   VerticalOffset = 31
-  Width = 1036
+  Width = 1065
   object ZFinanceiro: TZConnection
     ControlsCodePage = cCP_UTF8
     AutoEncodeStrings = True
@@ -202,7 +202,7 @@ object DM: TDM
         Name = 'pCONSALDO_INICIAL'
         ParamType = ptUnknown
       end>
-    Left = 640
+    Left = 760
     Top = 120
     ParamData = <    
       item
@@ -334,7 +334,7 @@ object DM: TDM
         Name = 'pcencodigo'
         ParamType = ptUnknown
       end>
-    Left = 448
+    Left = 568
     Top = 184
     ParamData = <    
       item
@@ -399,7 +399,7 @@ object DM: TDM
         Name = 'pCONCODIGO'
         ParamType = ptUnknown
       end>
-    Left = 640
+    Left = 760
     Top = 184
     ParamData = <    
       item
@@ -541,7 +541,7 @@ object DM: TDM
         Name = 'pTRANUMERO_DOCUMENTO'
         ParamType = ptUnknown
       end>
-    Left = 848
+    Left = 968
     Top = 120
     ParamData = <    
       item
@@ -611,7 +611,7 @@ object DM: TDM
         Name = 'pTRACODIGO'
         ParamType = ptUnknown
       end>
-    Left = 848
+    Left = 968
     Top = 184
     ParamData = <    
       item
@@ -666,7 +666,7 @@ object DM: TDM
         Name = 'dtfin'
         ParamType = ptUnknown
       end>
-    Left = 848
+    Left = 968
     Top = 312
     ParamData = <    
       item
@@ -777,17 +777,17 @@ object DM: TDM
   end
   object ZQDelCentro: TZQuery
     Params = <>
-    Left = 448
+    Left = 568
     Top = 376
   end
   object ZQDelBancarias: TZQuery
     Params = <>
-    Left = 640
+    Left = 760
     Top = 376
   end
   object ZQDelTransferencia: TZQuery
     Params = <>
-    Left = 848
+    Left = 968
     Top = 376
   end
   object DSConsUsuario: TDataSource
@@ -808,18 +808,18 @@ object DM: TDM
   end
   object DSConsCentro: TDataSource
     DataSet = ZQConsCentro
-    Left = 448
+    Left = 568
     Top = 248
   end
   object DSConsBancarias: TDataSource
     DataSet = ZQConsBancarias
     OnDataChange = DSConsBancariasDataChange
-    Left = 640
+    Left = 760
     Top = 248
   end
   object DSConsTransferencia: TDataSource
     DataSet = ZQConsTransferencia
-    Left = 848
+    Left = 968
     Top = 248
   end
   object ZQConsTipoConta: TZQuery
@@ -828,7 +828,7 @@ object DM: TDM
       'SELECT * from tipo_conta'
     )
     Params = <>
-    Left = 640
+    Left = 760
     Top = 496
     object ZQConsTipoContaTIPCODIGO: TLongintField
       FieldKind = fkData
@@ -852,7 +852,7 @@ object DM: TDM
   end
   object DSConsTipoConta: TDataSource
     DataSet = ZQConsTipoConta
-    Left = 640
+    Left = 760
     Top = 432
   end
   object ZQConsPessoas: TZQuery
@@ -1103,7 +1103,7 @@ object DM: TDM
         Name = 'pcodigotip'
         ParamType = ptUnknown
       end>
-    Left = 448
+    Left = 568
     Top = 120
     ParamData = <    
       item
@@ -1548,7 +1548,7 @@ object DM: TDM
       'SELECT * from vwcontas'
     )
     Params = <>
-    Left = 744
+    Left = 864
     Top = 312
     object ZQBuscaContaCONCODIGO: TLongintField
       FieldKind = fkData
@@ -1640,7 +1640,7 @@ object DM: TDM
   end
   object DSBuscaConta: TDataSource
     DataSet = ZQBuscaConta
-    Left = 744
+    Left = 864
     Top = 248
   end
   object ZQConsBancarias: TZQuery
@@ -1649,7 +1649,7 @@ object DM: TDM
       'SELECT * FROM VWCONTAS'
     )
     Params = <>
-    Left = 640
+    Left = 760
     Top = 312
     object ZQConsBancariasCONCODIGO: TLongintField
       FieldKind = fkData
@@ -1745,7 +1745,7 @@ object DM: TDM
       'select * from centro_custo'
     )
     Params = <>
-    Left = 448
+    Left = 568
     Top = 312
     object ZQConsCentroCENCODIGO: TLongintField
       FieldKind = fkData
@@ -1792,7 +1792,7 @@ object DM: TDM
   end
   object DSBuscaCentro: TDataSource
     DataSet = ZQBuscaCentro
-    Left = 544
+    Left = 664
     Top = 248
   end
   object ZQBuscaUsuario: TZQuery
@@ -1887,7 +1887,7 @@ object DM: TDM
       'select * from vwmostracentro'
     )
     Params = <>
-    Left = 544
+    Left = 664
     Top = 312
     object ZQBuscaCentroCENCODIGO: TLongintField
       FieldKind = fkData
@@ -1953,8 +1953,8 @@ object DM: TDM
       'SELECT * from tipo_documento'
     )
     Params = <>
-    Left = 960
-    Top = 392
+    Left = 456
+    Top = 312
     object ZQBuscaTipoDocDOCCODIGO: TLongintField
       FieldKind = fkData
       FieldName = 'DOCCODIGO'
@@ -1987,8 +1987,8 @@ object DM: TDM
   object DSBuscaTipoDoc: TDataSource
     DataSet = ZQBuscaTipoDoc
     OnDataChange = DSBuscaTipoDocDataChange
-    Left = 960
-    Top = 352
+    Left = 456
+    Top = 248
   end
   object ZQConsLanData: TZQuery
     Connection = ZFinanceiro
@@ -1996,8 +1996,8 @@ object DM: TDM
       'select * from baixa where codigolan is null'
     )
     Params = <>
-    Left = 960
-    Top = 248
+    Left = 344
+    Top = 576
     object ZQConsLanDataBAICODIGO: TLongintField
       FieldKind = fkData
       FieldName = 'BAICODIGO'
@@ -2094,8 +2094,8 @@ object DM: TDM
   end
   object DSConsLanData: TDataSource
     DataSet = ZQConsLanData
-    Left = 960
-    Top = 296
+    Left = 344
+    Top = 520
   end
   object ZQCadLanData: TZQuery
     Connection = ZFinanceiro
@@ -2123,8 +2123,8 @@ object DM: TDM
         Name = 'pCODIGOUSU'
         ParamType = ptUnknown
       end>
-    Left = 961
-    Top = 120
+    Left = 344
+    Top = 472
     ParamData = <    
       item
         DataType = ftUnknown
