@@ -5,11 +5,11 @@ unit umenu;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Menus, ExtCtrls, Grids,
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Menus, ExtCtrls,
   Buttons, ActnList, StdCtrls, uCadUsuario, uCadContasBancarias,
   uCadCentroCusto, uCadFornecedores, uCadLancamento, UConsFornecedores,
   UConsBaixa, UConsContas, UEntrarUsuario, UTranfContas, UConsUsuario,
-  uConsCentro, VTHeaderPopup;
+  uConsCentro, Ferramentas;
 
 type
 
@@ -56,7 +56,9 @@ type
     procedure BtnRelaPrestaClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
     procedure BtnTrasfClick(Sender: TObject);
-    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
+    procedure FormClose(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Image1Click(Sender: TObject);
@@ -78,11 +80,19 @@ type
 var
   FrmMenu: TFrmMenu;
 
-implementation
+implementation {$R *.lfm}
 
-{$R *.lfm}
+//================================ FORM CREATE ===============================\\
+procedure TFrmMenu.FormCreate(Sender: TObject);
+begin
+  Simpl := TSimpl.Create;
+end;
 
-{ TFrmMenu }
+//=============================== FORM DESTROY ===============================\\
+procedure TFrmMenu.FormDestroy(Sender: TObject);
+begin
+  FreeAndNil(Simpl);
+end;
 
 procedure TFrmMenu.MenuItem3Click(Sender: TObject);
 begin
@@ -111,7 +121,7 @@ begin
   FrmTranfContas.Show;
 end;
 
-procedure TFrmMenu.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+procedure TFrmMenu.FormClose(Sender: TObject);
 begin
   Application.Terminate;
 end;
@@ -257,7 +267,5 @@ begin
   FrmConsUsuario.Align := alClient;
   FrmConsUsuario.Show;
 end;
-
-
 
 end.

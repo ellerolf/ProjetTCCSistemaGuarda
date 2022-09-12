@@ -10,7 +10,8 @@ uses
   Forms, datetimectrls, zcomponent, UEntrarUsuario, umenu, uCadUsuario,
   uCadContasBancarias, uCadCentroCusto, uCadFornecedores, uCadLancamento,
   UConsFornecedores, UConsBaixa, UConsContas, UModulo, UBuscaConta,
-  UTranfContas, UConsUsuario, uConsCentro, UBuscaDoc, UCadPagamento;
+  UTranfContas, UConsUsuario, uConsCentro, UBuscaDoc, UCadPagamento, 
+Ferramentas;
 
 {$R *.res}
 

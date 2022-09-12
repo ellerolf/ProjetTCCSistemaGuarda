@@ -6,6 +6,7 @@ object FrmCadParcela: TFrmCadParcela
   Caption = 'FrmCadParcela'
   ClientHeight = 527
   ClientWidth = 680
+  OnKeyPress = FormKeyPress
   object Panel1: TPanel
     Left = 0
     Height = 527
@@ -141,6 +142,7 @@ object FrmCadParcela: TFrmCadParcela
       Top = 200
       Width = 112
       OnChange = EdtValorChange
+      OnExit = EdtValorExit
       OnKeyPress = EdtValorKeyPress
       TabOrder = 2
     end

@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  DBExtCtrls, Buttons, DBGrids, EditBtn;
+  DBExtCtrls, Buttons, DBGrids, EditBtn, Ferramentas;
 
 type
 
@@ -34,7 +34,9 @@ type
     SpeedButton5: TSpeedButton;
     procedure DTDataLancamentoChange(Sender: TObject);
     procedure EdtValorChange(Sender: TObject);
+    procedure EdtValorExit(Sender: TObject);
     procedure EdtValorKeyPress(Sender: TObject; var Key: char);
+    procedure FormKeyPress(Sender: TObject; var Key: char);
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
   private
@@ -65,13 +67,14 @@ begin
        ShowMessage('Está faltando lançar algum dos campos');
   end
   else
+      valor:=StrToFloat(EdtValor.Text);
+
       if (valor>restante) then
           begin
                ShowMessage('VALOR INCORRETO, verifique se existe algum valor restante.');
           END
           ELSE
           begin
-                valor:=StrToFloat(EdtValor.Text);
                 restante:=restante-valor;
                 LblValorRestante.Caption:=FormatFloat('R$ 0.00',restante);
 
@@ -141,13 +144,19 @@ begin
 
 end;
 
+procedure TFrmCadParcela.EdtValorExit(Sender: TObject);
+begin
+   (Sender as TEdit).Text := Simpl.FormataValor((Sender as TEdit).Text,2);
+end;
+
 procedure TFrmCadParcela.EdtValorKeyPress(Sender: TObject; var Key: char);
 begin
- if not (key in ['0'..'9', #8, ',']) then
- begin
-    key := #0;
-    Beep;
- end;
+ Key := Simpl.SoValor(Key);
+end;
+
+procedure TFrmCadParcela.FormKeyPress(Sender: TObject; var Key: char);
+begin
+
 end;
 
 procedure TFrmCadParcela.DTDataLancamentoChange(Sender: TObject);

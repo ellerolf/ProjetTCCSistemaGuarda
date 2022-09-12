@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, Buttons,
-  StdCtrls, MaskEdit, ComCtrls, EditBtn, UBuscaDoc;
+  StdCtrls, MaskEdit, ComCtrls, EditBtn, UBuscaDoc,Ferramentas;
 
 type
 
@@ -49,6 +49,7 @@ type
     procedure ChkReceitaChange(Sender: TObject);
     procedure DTLancamentoChange(Sender: TObject);
     procedure EdtDataChange(Sender: TObject);
+    procedure EdtValorExit(Sender: TObject);
     procedure EdtValorKeyPress(Sender: TObject; var Key: char);
     procedure FormResize(Sender: TObject);
     procedure Panel2Click(Sender: TObject);
@@ -79,13 +80,19 @@ begin
 
 end;
 
+procedure TFrmCadLancamento.EdtValorExit(Sender: TObject);
+begin
+  //com o código abaixo ele formata e valida os campos.
+  //mas é necessário colocar no onleypress e no onexit.
+  //O codigo abaixo posso colocar em qualquer form desde que eu esteja usando a ferramenta no uses.
+  (Sender as TEdit).Text := Simpl.FormataValor((Sender as TEdit).Text,2);
+end;
+
 procedure TFrmCadLancamento.EdtValorKeyPress(Sender: TObject; var Key: char);
 begin
-   if not (key in ['0'..'9', #8, ',']) then
-  begin
-    key := #0;
-    Beep;
-  end;
+ //com o código abaixo ele formata e valida os campos.
+ //mas é necessário colocar no onleypress e no onexit.
+  Key := Simpl.SoValor(Key);
 end;
 
 procedure TFrmCadLancamento.FormResize(Sender: TObject);
@@ -236,7 +243,7 @@ begin
     ShowMessage('O centro de custo é um campo obrigatório');
     EdtConsCentro.SetFocus;
   end
-  else if (EdtValor.Text='') then
+  else if (EdtValor.Text='') or (EdtValor.Text= '0,00') then
   begin
     ShowMessage('Valor do documento é um campo obrigatório');
     EdtValor.SetFocus;
