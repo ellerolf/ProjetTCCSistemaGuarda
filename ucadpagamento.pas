@@ -62,16 +62,17 @@ uses UModulo,UEntrarUsuario,uCadLancamento;
 
 procedure TFrmCadParcela.SpeedButton1Click(Sender: TObject);
 begin
-  IF (DtDataParcela.Text='') OR (EdtValor.Text='') THEN
+  IF (DtDataParcela.Text='') OR (EdtValor.Text='') OR (EdtValor.Text='0,00') THEN
   BEGIN
        ShowMessage('Está faltando lançar algum dos campos');
   end
   else
+  begin
       valor:=StrToFloat(EdtValor.Text);
 
       if (valor>restante) then
           begin
-               ShowMessage('VALOR INCORRETO, verifique se existe algum valor restante.');
+               ShowMessage('VALOR INCORRETO, verifique se o valor da parcela está correto.');
           END
           ELSE
           begin
@@ -91,7 +92,8 @@ begin
                 EdtValor.Clear;
                 DtDataParcela.Clear;
           end;
-     end;
+  end;
+end;
 
 procedure TFrmCadParcela.SpeedButton2Click(Sender: TObject);
 begin
