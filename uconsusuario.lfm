@@ -1211,7 +1211,7 @@ object FrmConsUsuario: TFrmConsUsuario
     object PnAlterausu: TPanel
       Left = 32
       Height = 410
-      Top = 80
+      Top = 72
       Width = 616
       Caption = 'PnAlterausu'
       TabOrder = 1

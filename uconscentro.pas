@@ -153,6 +153,7 @@ end;
 
 procedure TFrmConsCentro.BtnConsultaClick(Sender: TObject);
 begin
+  //Quando não tiver valor especifico
   if (CboTipo.ItemIndex = 0) and (CboStatus.ItemIndex = 0) then
   begin
     DM.ZQBuscaCentro.Close;
@@ -161,38 +162,7 @@ begin
     DM.ZQBuscaCentro.Open;
   end
   else
-  if (CboTipo.ItemIndex = 1) and (CboStatus.ItemIndex = 0) then
-  begin
-    DM.ZQBuscaCentro.Close;
-    DM.ZQBuscaCentro.SQL.Clear;
-    DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where codigotip=1 and cennome like' +QuotedStr('%' + EdtNome1.Text + '%'));
-    DM.ZQBuscaCentro.Open;
-  end
-  else
-  if (CboTipo.ItemIndex = 2) and (CboStatus.ItemIndex = 0) then
-  begin
-    DM.ZQBuscaCentro.Close;
-    DM.ZQBuscaCentro.SQL.Clear;
-    DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where codigotip=2 and cennome like' +QuotedStr('%' + EdtNome1.Text + '%'));
-    DM.ZQBuscaCentro.Open;
-  end
-  else
-  if (CboTipo.ItemIndex = 1) and (CboStatus.ItemIndex = 1) then
-  begin
-    DM.ZQBuscaCentro.Close;
-    DM.ZQBuscaCentro.SQL.Clear;
-    DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where codigotip=1 and censtatus=1 and cennome like' +QuotedStr('%' + EdtNome1.Text + '%'));
-    DM.ZQBuscaCentro.Open;
-  end
-  else
-  if (CboTipo.ItemIndex = 2) and (CboStatus.ItemIndex = 1) then
-  begin
-    DM.ZQBuscaCentro.Close;
-    DM.ZQBuscaCentro.SQL.Clear;
-    DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where codigotip=2 and censtatus=1 and cennome like' +QuotedStr('%' + EdtNome1.Text + '%'));
-    DM.ZQBuscaCentro.Open;
-  end
-  else
+  //quando tipo for nada e status for ativo(1)
   if (CboTipo.ItemIndex = 0) and (CboStatus.ItemIndex = 1) then
   begin
     DM.ZQBuscaCentro.Close;
@@ -201,13 +171,70 @@ begin
     DM.ZQBuscaCentro.Open;
   end
   else
+  //Quando tipo for nada e status for inativo(2)
   if (CboTipo.ItemIndex = 0) and (CboStatus.ItemIndex = 2) then
   begin
     DM.ZQBuscaCentro.Close;
     DM.ZQBuscaCentro.SQL.Clear;
     DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where censtatus=0 and cennome like' +QuotedStr('%' + EdtNome1.Text + '%'));
     DM.ZQBuscaCentro.Open;
+  end
+  else
+  // quando for tipo receita(1) e qualquer status
+  if (CboTipo.ItemIndex = 1) and (CboStatus.ItemIndex = 0) then
+  begin
+    DM.ZQBuscaCentro.Close;
+    DM.ZQBuscaCentro.SQL.Clear;
+    DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where codigotip=1 and cennome like' +QuotedStr('%' + EdtNome1.Text + '%'));
+    DM.ZQBuscaCentro.Open;
+  end
+  else
+  // quando for tipo receita(1) e status ativo(1)
+  if (CboTipo.ItemIndex = 1) and (CboStatus.ItemIndex = 1) then
+  begin
+    DM.ZQBuscaCentro.Close;
+    DM.ZQBuscaCentro.SQL.Clear;
+    DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where codigotip=1 and censtatus=1 and cennome like' +QuotedStr('%' + EdtNome1.Text + '%'));
+    DM.ZQBuscaCentro.Open;
+  end
+  else
+  // quando for tipo receita(1) e status inativo(2)
+  if (CboTipo.ItemIndex = 1) and (CboStatus.ItemIndex = 2) then
+  begin
+    DM.ZQBuscaCentro.Close;
+    DM.ZQBuscaCentro.SQL.Clear;
+    DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where codigotip=1 and censtatus=0 and cennome like' +QuotedStr('%' + EdtNome1.Text + '%'));
+    DM.ZQBuscaCentro.Open;
+  end
+  else
+  // quando for tipo despeza(2) e qualquer status
+  if (CboTipo.ItemIndex = 2) and (CboStatus.ItemIndex = 0) then
+  begin
+    DM.ZQBuscaCentro.Close;
+    DM.ZQBuscaCentro.SQL.Clear;
+    DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where codigotip=2 and cennome like' +QuotedStr('%' + EdtNome1.Text + '%'));
+    DM.ZQBuscaCentro.Open;
+  end
+  else
+
+  // quando for tipo despeza(2) e status ativo(1)
+  if (CboTipo.ItemIndex = 2) and (CboStatus.ItemIndex = 1) then
+  begin
+    DM.ZQBuscaCentro.Close;
+    DM.ZQBuscaCentro.SQL.Clear;
+    DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where codigotip=2 and censtatus=1 and cennome like' +QuotedStr('%' + EdtNome1.Text + '%'));
+    DM.ZQBuscaCentro.Open;
+  end
+  else
+  // quando for tipo despeza(2) e status inativo(2)
+  if (CboTipo.ItemIndex = 2) and (CboStatus.ItemIndex = 2) then
+  begin
+    DM.ZQBuscaCentro.Close;
+    DM.ZQBuscaCentro.SQL.Clear;
+    DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where codigotip=2 and censtatus=0 and cennome like' +QuotedStr('%' + EdtNome1.Text + '%'));
+    DM.ZQBuscaCentro.Open;
   end;
+
 end;
 
 end.
