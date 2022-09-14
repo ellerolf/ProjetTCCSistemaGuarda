@@ -633,6 +633,7 @@ object FrmCadParcela: TFrmCadParcela
           FieldName = 'CODIGOUSU'
         end>
       DataSource = DM.DSConsLanData
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
       TabOrder = 3
     end
     object SpeedButton5: TSpeedButton
