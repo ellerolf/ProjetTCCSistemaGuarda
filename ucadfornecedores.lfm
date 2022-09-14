@@ -1,12 +1,12 @@
 object FrmCadFornecedor: TFrmCadFornecedor
   Left = -8
-  Height = 827
+  Height = 788
   Top = -8
-  Width = 1402
+  Width = 1386
   BorderStyle = bsNone
   Caption = 'Cadastro Fornecedores'
-  ClientHeight = 804
-  ClientWidth = 1402
+  ClientHeight = 749
+  ClientWidth = 1370
   Color = 16577259
   OnCreate = FormCreate
   OnResize = FormResize
@@ -15,12 +15,12 @@ object FrmCadFornecedor: TFrmCadFornecedor
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 804
+    Height = 749
     Top = 0
-    Width = 1402
+    Width = 1370
     Align = alClient
-    ClientHeight = 804
-    ClientWidth = 1402
+    ClientHeight = 749
+    ClientWidth = 1370
     TabOrder = 0
     object Panel2: TPanel
       Left = 0
@@ -1418,6 +1418,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
           Width = 56
           Align = alRight
           Caption = 'Inativo'
+          Enabled = False
           Font.CharSet = ANSI_CHARSET
           Font.Pitch = fpVariable
           Font.Quality = fqDraft

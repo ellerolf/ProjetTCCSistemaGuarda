@@ -99,8 +99,6 @@ begin
   EdtCep.EditMask := '99999-999;1;_';
   EdtTel.EditMask := '(99)9999-9999;1;_';
   EdtCel.EditMask := '(99)99999-9999;1;_';
-  //EdtInsEstadual.EditMask := '99999999999999;1;_';
-  //EdtInsMun.EditMask := '99999999999;1;_';
 end;
 
 procedure TFrmCadFornecedor.AtivaCampoForn;
@@ -245,17 +243,14 @@ end;
 
 procedure TFrmCadFornecedor.BtnAlterarClick(Sender: TObject);
 begin
-  AtivaCampoForn();
-
-  if (OpForn='U') then
+  if (OpForn = 'U') then
   begin
-       BtnAlterar.Visible:=false;
-       GrpCnpjCpf.Enabled:=true;
-       GrpStatus.Enabled:=True;
-       BtnInativo.Enabled:=true;
+    AtivaCampoForn();
+    BtnAlterar.Visible := False;
+    GrpCnpjCpf.Enabled := True;
+    GrpStatus.Enabled := True;
+    BtnInativo.Enabled := True;
   end;
-
-
 end;
 
 procedure TFrmCadFornecedor.BtnCpfChange(Sender: TObject);
@@ -270,7 +265,6 @@ end;
 
 procedure TFrmCadFornecedor.BtnInativoChange(Sender: TObject);
 begin
-  BtnInativo.Enabled := False;
 end;
 
 procedure TFrmCadFornecedor.BtnSalvarClick(Sender: TObject);
@@ -324,7 +318,7 @@ begin
         dm.ZQCadPessoas.Params.ParamByName('pesnome_fantasia').Value :=
           EdtFantasia.Text;
         dm.ZQCadPessoas.Params.ParamByName('pesinscricao_estadual').Value :=
-          strtoint(EdtInsEstadual.Text);
+          StrToInt(EdtInsEstadual.Text);
         dm.ZQCadPessoas.params.ParamByName('pesinscricao_municipal').Value :=
           EdtInsMun.Text;
         dm.ZQCadPessoas.params.ParamByName('pescep').Value := EdtCep.Text;
@@ -421,7 +415,7 @@ begin
   //Update
   if (OpForn = 'U') then
   begin
-      //CNPJ-----------------------------------------------------------------------
+    //CNPJ-----------------------------------------------------------------------
     if (BtnCnpj.Checked = True) then
     begin
       dm.ZQAltPessoas.Params.ParamByName('pesnome').Value := EdtNome.Text;
@@ -445,6 +439,15 @@ begin
       dm.ZQAltPessoas.params.ParamByName('pestelefone').Value := EdtTel.Text;
       dm.ZQAltPessoas.params.ParamByName('pescelular').Value := EdtCel.Text;
       dm.ZQAltPessoas.params.ParamByName('pesobservacao').Value := MemObs.Text;
+      //como faço para fazer subir no banco esta subindo nulo e quando entra na tela novamente ele não troca mais o status
+      if (BtnAtivo.Checked = True) then
+      begin
+        dm.ZQAltPessoas.params.ParamByName('pesstatus').Value := 1;
+      end;
+      if (BtnInativo.Checked = True) then
+      begin
+        dm.ZQAltPessoas.params.ParamByName('pesstatus').Value := 0;
+      end;
       dm.ZQAltPessoas.params.ParamByName('pescodigo').Value := pescodigo;
       dm.ZQAltPessoas.ExecSQL;
 
@@ -470,7 +473,6 @@ begin
       EdtEmail.Clear;
       MemObs.Clear;
       EdtCpfCnpj.SetFocus;
-
     end;
 
     //CPF-----------------------------------------------------------------------
@@ -499,12 +501,33 @@ begin
       dm.ZQAltPessoas.params.ParamByName('pesobservacao').Value := MemObs.Text;
       dm.ZQAltPessoas.params.ParamByName('pescodigo').Value :=
         dm.ZQConsPessoasCODIGO.AsInteger;
-      dm.ZQAltPessoas.ExecSQL;
+      if (BtnAtivo.Checked = True) then
+      begin
+        dm.ZQAltPessoas.params.ParamByName('pesstatus').Value := 1;
+      end;
+      if (BtnInativo.Checked = True) then
+      begin
+        dm.ZQAltPessoas.params.ParamByName('pesstatus').Value := 0;
+      end;
+      //mensagem
+      if (BtnAtivo.Checked = True) then
+      begin
+        if MessageDlg('O Status ativo esta selecionado deseja continuar?',mtConfirmation,[mbYes, mbNo], 0) = mrYes then
+        begin
+          dm.ZQAltPessoas.ExecSQL;
+          dm.ZQConsPessoas.Close;
+          dm.ZQConsPessoas.Open;
+        end
+        else
+        begin
 
-      dm.ZQConsPessoas.Close;
-      dm.ZQConsPessoas.Open;
+        end;
 
-      ShowMessage('Alteração Gravada com sucesso!');
+      end;
+      if (BtnInativo.Checked = True) then
+      begin
+        ShowMessage('!');
+      end;
       EdtCpfCnpj.Clear;
       EdtNome.Clear;
       EdtFantasia.Clear;
@@ -523,10 +546,12 @@ begin
       EdtEmail.Clear;
       MemObs.Clear;
       EdtCpfCnpj.SetFocus;
-
+      BtnAtivo.Checked:=True;
     end;
+    FrmCadFornecedor.Hide;
+    FrmConsFornecedores.PnChama.Visible:=false;
   end;
-  end;//fim procedure
+end;//fim procedure
 
 
 
