@@ -39,13 +39,12 @@ type
     procedure FormKeyPress(Sender: TObject; var Key: char);
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
   private
 
   public
     valor:Real;
     restante:Real;
-    codigoDoLanc:Integer;
-
 
   end;
 
@@ -79,13 +78,17 @@ begin
                 restante:=restante-valor;
                 LblValorRestante.Caption:=FormatFloat('R$ 0.00',restante);
 
-                dm.ZQCadLanData.Params.ParamByName('pCODIGOLAN').Value:=Null;
+
+                dm.ZQCadLanData.Params.ParamByName('pCODIGOLAN').Value:=FrmCadLancamento.codigoDoLanc;
                 dm.ZQCadLanData.Params.ParamByName('pBAIDATA').AsString:=FormatDateTime('yyyy-mm-dd',DtDataParcela.Date);
                 EdtValor.Text :=StringReplace(EdtValor.Text, ',', '.', [rfReplaceAll]);
                 dm.ZQCadLanData.Params.ParamByName('pBAIVALOR').Value:=EdtValor.Text;
                 dm.ZQCadLanData.Params.ParamByName('pCODIGOUSU').Value:=FrmEntrarUsuario.indentidade;
                 dm.ZQCadLanData.ExecSQL;
+
                 dm.ZQConsLanData.Close;
+                dm.ZQConsLanData.SQL.Clear;
+                dm.ZQConsLanData.SQL.add('select * from baixa where codigolan='+IntToStr(FrmCadLancamento.codigoDoLanc));
                 dm.ZQConsLanData.Open;
 
                 //após o lançamento da data e valor, o código abaixo faz a limpeza dos campos.
@@ -103,42 +106,34 @@ begin
      end
      Else
      begin
-
-  //Ao clicar em salvar ele fará o insert na tabela de lançamento
-  if (FrmCadLancamento.ChkReceita.Checked=True) then
-    begin
-      dm.ZQCadLancamentos.Params.ParamByName('pLANTIPO').Value:=1;
-    end;
-    if (FrmCadLancamento.ChkDespesa.Checked=True) then
-    begin
-      dm.ZQCadLancamentos.Params.ParamByName('pLANTIPO').Value:=0;
-    end;
-    dm.ZQCadLancamentos.Params.ParamByName('pLANDOCUMENTO').AsString:=FormatDateTime('yyyy-mm-dd',FrmCadLancamento.DTLancamento.Date);
-    dm.ZQCadLancamentos.Params.ParamByName('pCODIGODOC').Value:=FrmCadLancamento.EdtTipoDocumento.Text;
-    dm.ZQCadLancamentos.Params.ParamByName('pLANNUMERO_DOCUMENTO').Value:=FrmCadLancamento.EdtNDoc.Text;
-    FrmCadLancamento.EdtValor.Text:=StringReplace(FrmCadLancamento.EdtValor.Text, ',', '.', [rfReplaceAll]);
-    dm.ZQCadLancamentos.Params.ParamByName('pLANVALOR_DOCUMENTO').Value:=FrmCadLancamento.EdtValor.Text;
-    dm.ZQCadLancamentos.Params.ParamByName('pCODIGOPES').Value:=FrmCadLancamento.EdtConsFornecedor.Text;
-    dm.ZQCadLancamentos.Params.ParamByName('pCODIGOCEN').Value:=FrmCadLancamento.EdtConsCentro.Text;
-    dm.ZQCadLancamentos.Params.ParamByName('pLANOBSERVACAO').Value:=FrmCadLancamento.MemObservacao.Text;
-    dm.ZQCadLancamentos.Params.ParamByName('pCODIGOUSU').Value:=FrmEntrarUsuario.indentidade;
-    dm.ZQCadLancamentos.ExecSQL;
-
-  //Quando o usuário fez o insert da data e valor foi sem o código do lançamento.
-  //O código abaixo é para atualizar o codigolan da baixa para o código do lançamento na qual essa data e valor pertence.
-
-  dm.ZQConsLancamentos.close;
-  dm.ZQConsLancamentos.Open;
-  dm.ZQConsLancamentos.Last;
-
-  codigoDoLanc:=DM.ZQConsLancamentosLANCODIGO.AsInteger;
-  dm.ZQAltCodLanNaBaixa.Params.ParamByName('pCODIGOLAN').Value:=codigoDoLanc;
-  dm.ZQAltCodLanNaBaixa.ExecSQL;
-
-  ShowMessage('deu certo essa merda');
+          ShowMessage('cadastro efetuado com sucesso');
 
  end;
 
+end;
+
+procedure TFrmCadParcela.SpeedButton3Click(Sender: TObject);
+begin
+
+  if (restante>=0)  then
+      begin
+             if MessageDlg('ATENÇÃO DESEJA CANCELAR ESTA OPERAÇÃO','Você perderá todos os dados do lançamento e parcelas lançadas',mtInformation,[mbOk,mbCancel],0)=mrOk then
+                 BEGIN
+                DM.ZQDelDataLan.Params.ParamByName('PCODIGOLAN').Value:=FrmCadLancamento.codigoDoLanc;
+                dm.ZQDelDataLan.ExecSQL;
+
+                dm.ZQDelLancamentos.Params.ParamByName('PLANCODIGO').Value:=FrmCadLancamento.codigoDoLanc;
+                DM.ZQDelLancamentos.ExecSQL;
+
+                dm.ZQConsLanData.Open;
+                dm.ZQConsLanData.Close;
+                Close;
+             end
+           ELSE
+           BEGIN
+               Abort;
+           end;
+      end;
 end;
 
 procedure TFrmCadParcela.EdtValorChange(Sender: TObject);

@@ -175,7 +175,7 @@ type
     ZQBuscaTipoDoc: TZQuery;
     ZQConsLanData: TZQuery;
     ZQCadLanData: TZQuery;
-    ZQAltCodLanNaBaixa: TZQuery;
+    ZQDelDataLan: TZQuery;
     procedure DSBuscaTipoDocDataChange(Sender: TObject; Field: TField);
     procedure DSConsPessoasDataChange(Sender: TObject; Field: TField);
 

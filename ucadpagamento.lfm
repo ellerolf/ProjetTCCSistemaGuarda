@@ -2016,6 +2016,7 @@ object FrmCadParcela: TFrmCadParcela
         FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000
         FFFF0000FFFF0000FFFF0000FFFF3030FFFFAFAFFFFFFFFFFFFF
       }
+      OnClick = SpeedButton3Click
     end
     object Label3: TLabel
       Left = 40

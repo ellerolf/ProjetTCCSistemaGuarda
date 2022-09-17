@@ -1,9 +1,9 @@
 object DM: TDM
   OnCreate = DataModuleCreate
   OldCreateOrder = False
-  Height = 720
-  HorizontalOffset = 255
-  VerticalOffset = 31
+  Height = 718
+  HorizontalOffset = 251
+  VerticalOffset = 0
   Width = 1065
   object ZFinanceiro: TZConnection
     ControlsCodePage = cCP_UTF8
@@ -868,9 +868,24 @@ object DM: TDM
       end>
   end
   object ZQDelLancamentos: TZQuery
-    Params = <>
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'DELETE FROM LANCAMENTO WHERE LANCODIGO=:PLANCODIGO'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'PLANCODIGO'
+        ParamType = ptUnknown
+      end>
     Left = 344
     Top = 376
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'PLANCODIGO'
+        ParamType = ptUnknown
+      end>
   end
   object ZQDelCentro: TZQuery
     Params = <>
@@ -2090,7 +2105,7 @@ object DM: TDM
   object ZQConsLanData: TZQuery
     Connection = ZFinanceiro
     SQL.Strings = (
-      'select * from baixa where codigolan is null'
+      'select * from baixa '
     )
     Params = <>
     Left = 344
@@ -2244,10 +2259,10 @@ object DM: TDM
         ParamType = ptUnknown
       end>
   end
-  object ZQAltCodLanNaBaixa: TZQuery
+  object ZQDelDataLan: TZQuery
     Connection = ZFinanceiro
     SQL.Strings = (
-      'UPDATE baixa set CODIGOLAN=:pCODIGOLAN  WHERE CODIGOLAN IS NULL'
+      'DELETE FROM BAIXA WHERE CODIGOLAN=:PCODIGOLAN'
     )
     Params = <    
       item

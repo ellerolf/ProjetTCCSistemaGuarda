@@ -49,6 +49,7 @@ type
     procedure ChkReceitaChange(Sender: TObject);
     procedure DTLancamentoChange(Sender: TObject);
     procedure EdtDataChange(Sender: TObject);
+    procedure EdtValorChange(Sender: TObject);
     procedure EdtValorExit(Sender: TObject);
     procedure EdtValorKeyPress(Sender: TObject; var Key: char);
     procedure FormResize(Sender: TObject);
@@ -62,6 +63,8 @@ type
    var AcionaBtnPesqForn: String;
      valorDoDocumento:Double;
 
+     codigoDoLanc:Integer;
+
   end;
 
 var
@@ -73,9 +76,14 @@ implementation
 
 { TFrmCadLancamento }
 
-uses UModulo, UCadPagamento,uConsCentro, UConsFornecedores;
+uses UModulo, UCadPagamento,uConsCentro, UConsFornecedores,UEntrarUsuario;
 
 procedure TFrmCadLancamento.EdtDataChange(Sender: TObject);
+begin
+
+end;
+
+procedure TFrmCadLancamento.EdtValorChange(Sender: TObject);
 begin
 
 end;
@@ -250,14 +258,12 @@ begin
   end
   else
   begin
-       ShowMessage('Agora efetue o cadastro das parcelas');
-        valorDoDocumento:=StrToFloat(EdtValor.Text);
-        FrmCadParcela.LblValor.Caption:=FormatFloat('R$ 0.00',valorDoDocumento);
-        FrmCadParcela.restante:=valorDoDocumento;
-        FrmCadParcela.LblValorRestante.Caption:=FormatFloat('R$ 0.00',valorDoDocumento);
-       FrmCadParcela.ShowModal;
+    valorDoDocumento:=StrToFloat(EdtValor.Text);
+    FrmCadParcela.LblValor.Caption:=FormatFloat('R$ 0.00',valorDoDocumento);
+    FrmCadParcela.restante:=valorDoDocumento;
+    FrmCadParcela.LblValorRestante.Caption:=FormatFloat('R$ 0.00',valorDoDocumento);
 
-  {if (ChkReceita.Checked=True) then
+      if (ChkReceita.Checked=True) then
     begin
       dm.ZQCadLancamentos.Params.ParamByName('pLANTIPO').Value:=1;
     end;
@@ -265,6 +271,7 @@ begin
     begin
       dm.ZQCadLancamentos.Params.ParamByName('pLANTIPO').Value:=0;
     end;
+
     dm.ZQCadLancamentos.Params.ParamByName('pLANDOCUMENTO').AsString:=FormatDateTime('yyyy-mm-dd',DTLancamento.Date);
     dm.ZQCadLancamentos.Params.ParamByName('pCODIGODOC').Value:=EdtTipoDocumento.Text;
     dm.ZQCadLancamentos.Params.ParamByName('pLANNUMERO_DOCUMENTO').Value:=EdtNDoc.Text;
@@ -273,10 +280,19 @@ begin
     dm.ZQCadLancamentos.Params.ParamByName('pCODIGOPES').Value:=EdtConsFornecedor.Text;
     dm.ZQCadLancamentos.Params.ParamByName('pCODIGOCEN').Value:=EdtConsCentro.Text;
     dm.ZQCadLancamentos.Params.ParamByName('pLANOBSERVACAO').Value:=MemObservacao.Text;
-    dm.ZQCadLancamentos.Params.ParamByName('pCODIGOUSU').Value:=1;
+    dm.ZQCadLancamentos.Params.ParamByName('pCODIGOUSU').Value:=FrmEntrarUsuario.indentidade;
     dm.ZQCadLancamentos.ExecSQL;
-    ShowMessage('Cadastro realizado com sucesso');
 
+    dm.ZQConsLancamentos.close;
+    dm.ZQConsLancamentos.Open;
+    dm.ZQConsLancamentos.Last;
+    codigoDoLanc:=DM.ZQConsLancamentosLANCODIGO.AsInteger;
+
+
+
+    ShowMessage('Agora efetue o cadastro das parcelas');
+    FrmCadParcela.ShowModal;
+    //Código abaixo é para limpar as edt.
     DTLancamento.Clear;
     EdtTipoDocumento.Clear;
     EdtNDoc.Clear;
@@ -285,7 +301,7 @@ begin
     EdtConsCentro.Clear;
     MemObservacao.Clear;
     ChkDespesa.Checked:=False;
-    ChkReceita.Checked:=False;  }
+    ChkReceita.Checked:=False;
 
   end;
 
