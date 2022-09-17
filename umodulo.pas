@@ -176,6 +176,7 @@ type
     ZQConsLanData: TZQuery;
     ZQCadLanData: TZQuery;
     ZQDelDataLan: TZQuery;
+    ZQDelParcEspecif: TZQuery;
     procedure DSBuscaTipoDocDataChange(Sender: TObject; Field: TField);
     procedure DSConsPessoasDataChange(Sender: TObject; Field: TField);
 

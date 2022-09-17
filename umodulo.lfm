@@ -2109,7 +2109,7 @@ object DM: TDM
     )
     Params = <>
     Left = 344
-    Top = 576
+    Top = 552
     object ZQConsLanDataBAICODIGO: TLongintField
       FieldKind = fkData
       FieldName = 'BAICODIGO'
@@ -2207,7 +2207,7 @@ object DM: TDM
   object DSConsLanData: TDataSource
     DataSet = ZQConsLanData
     Left = 344
-    Top = 520
+    Top = 496
   end
   object ZQCadLanData: TZQuery
     Connection = ZFinanceiro
@@ -2236,7 +2236,7 @@ object DM: TDM
         ParamType = ptUnknown
       end>
     Left = 344
-    Top = 472
+    Top = 448
     ParamData = <    
       item
         DataType = ftUnknown
@@ -2271,11 +2271,31 @@ object DM: TDM
         ParamType = ptUnknown
       end>
     Left = 344
-    Top = 656
+    Top = 608
     ParamData = <    
       item
         DataType = ftUnknown
         Name = 'pCODIGOLAN'
+        ParamType = ptUnknown
+      end>
+  end
+  object ZQDelParcEspecif: TZQuery
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'DELETE FROM BAIXA WHERE BAICODIGO=:PBAICODIGO'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'PBAICODIGO'
+        ParamType = ptUnknown
+      end>
+    Left = 344
+    Top = 664
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'PBAICODIGO'
         ParamType = ptUnknown
       end>
   end

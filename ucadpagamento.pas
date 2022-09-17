@@ -32,6 +32,7 @@ type
     SpeedButton2: TSpeedButton;
     SpeedButton3: TSpeedButton;
     SpeedButton5: TSpeedButton;
+    procedure DBGrid1CellClick(Column: TColumn);
     procedure DTDataLancamentoChange(Sender: TObject);
     procedure EdtValorChange(Sender: TObject);
     procedure EdtValorExit(Sender: TObject);
@@ -40,8 +41,14 @@ type
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
+    procedure SpeedButton5Click(Sender: TObject);
   private
-
+    //variável abaixo recebe o código da baixa(baicodigo), vou usar essa variável
+    //para validar o exluir parcela
+    delparcela:Integer;
+    //Variável abaixo recebe o valor da parcela que será deletada, que será usado
+    //para adicionar no restante.
+    valParcelaDel:Real;
   public
     valor:Real;
     restante:Real;
@@ -64,6 +71,10 @@ begin
   IF (DtDataParcela.Text='') OR (EdtValor.Text='') OR (EdtValor.Text='0,00') THEN
   BEGIN
        ShowMessage('Está faltando lançar algum dos campos');
+  end
+  else if (EdtValor.Text='0') then
+  begin
+       ShowMessage('Não lançar parcela de valor zero');
   end
   else
   begin
@@ -136,6 +147,29 @@ begin
       end;
 end;
 
+procedure TFrmCadParcela.SpeedButton5Click(Sender: TObject);
+begin
+  if (restante<>FrmCadLancamento.valorDoDocumento) then
+      begin
+             restante:=restante+valParcelaDel;
+             LblValorRestante.Caption:=FormatFloat('R$ 0.00',restante);
+             dm.ZQDelParcEspecif.Params.ParamByName('PBAICODIGO').Value:=delparcela;
+             dm.ZQDelParcEspecif.ExecSQL;
+             //LIMPANDO AS VARIÁVEIS
+             valParcelaDel:=0;
+             delparcela:=0;
+             delparcela:=0;
+
+             dm.ZQConsLanData.Close;
+             dm.ZQConsLanData.Open;
+      end
+      else
+      begin
+          ShowMessage('Não existe valor a ser deletado');
+      end;
+
+end;
+
 procedure TFrmCadParcela.EdtValorChange(Sender: TObject);
 begin
 
@@ -159,6 +193,12 @@ end;
 procedure TFrmCadParcela.DTDataLancamentoChange(Sender: TObject);
 begin
 
+end;
+
+procedure TFrmCadParcela.DBGrid1CellClick(Column: TColumn);
+begin
+  delparcela:=DM.ZQConsLanDataBAICODIGO.AsInteger;
+  valParcelaDel:=DM.ZQConsLanDataBAIVALOR.AsFloat;
 end;
 
 end.

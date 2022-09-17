@@ -635,6 +635,7 @@ object FrmCadParcela: TFrmCadParcela
       DataSource = DM.DSConsLanData
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
       TabOrder = 3
+      OnCellClick = DBGrid1CellClick
     end
     object SpeedButton5: TSpeedButton
       Left = 376
@@ -1095,6 +1096,7 @@ object FrmCadParcela: TFrmCadParcela
         C6FF0000C6FF0000C6FF0000C6FF0000C6FF0000C6FF0000C6FF0000C6FF0000
         C6FF0000C6FF0000C6FF0000C6FF3030D1FFAFAFEDFFFFFFFFFF
       }
+      OnClick = SpeedButton5Click
     end
     object SpeedButton2: TSpeedButton
       Left = 508
