@@ -89,6 +89,8 @@ object FrmCadUsuario: TFrmCadUsuario
         Top = 64
         Width = 304
         CharCase = ecUppercase
+        OnChange = EdtNomeChange
+        OnKeyPress = EdtNomeKeyPress
         TabOrder = 0
       end
       object EdtNomeUsuario: TEdit
@@ -97,6 +99,7 @@ object FrmCadUsuario: TFrmCadUsuario
         Top = 120
         Width = 304
         CharCase = ecUppercase
+        OnKeyPress = EdtNomeUsuarioKeyPress
         TabOrder = 1
       end
       object EdtSenha: TEdit
@@ -105,6 +108,7 @@ object FrmCadUsuario: TFrmCadUsuario
         Top = 208
         Width = 192
         EchoMode = emPassword
+        OnKeyPress = EdtSenhaKeyPress
         PasswordChar = '*'
         TabOrder = 2
       end
@@ -146,6 +150,7 @@ object FrmCadUsuario: TFrmCadUsuario
         Top = 208
         Width = 192
         EchoMode = emPassword
+        OnKeyPress = EdtConfSenhaKeyPress
         PasswordChar = '*'
         TabOrder = 3
       end
