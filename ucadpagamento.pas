@@ -91,7 +91,7 @@ begin
 
 
                 dm.ZQCadLanData.Params.ParamByName('pCODIGOLAN').Value:=FrmCadLancamento.codigoDoLanc;
-                dm.ZQCadLanData.Params.ParamByName('pBAIDATA').AsString:=FormatDateTime('yyyy-mm-dd',DtDataParcela.Date);
+                dm.ZQCadLanData.Params.ParamByName('pBAIDATAVEN').AsString:=FormatDateTime('yyyy-mm-dd',DtDataParcela.Date);
                 EdtValor.Text :=StringReplace(EdtValor.Text, ',', '.', [rfReplaceAll]);
                 dm.ZQCadLanData.Params.ParamByName('pBAIVALOR').Value:=EdtValor.Text;
                 dm.ZQCadLanData.Params.ParamByName('pCODIGOUSU').Value:=FrmEntrarUsuario.indentidade;
@@ -118,6 +118,7 @@ begin
      Else
      begin
           ShowMessage('cadastro efetuado com sucesso');
+          Close;
 
  end;
 

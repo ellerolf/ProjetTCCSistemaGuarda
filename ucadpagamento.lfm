@@ -621,8 +621,8 @@ object FrmCadParcela: TFrmCadParcela
         end      
         item
           Title.Caption = 'DATA DE VENCIMENTO'
-          Width = 128
-          FieldName = 'BAIDATA'
+          Width = 129
+          FieldName = 'BAIDATAVEN'
         end      
         item
           Title.Caption = 'VALOR'

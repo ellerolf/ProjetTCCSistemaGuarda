@@ -2155,9 +2155,9 @@ object DM: TDM
       ReadOnly = False
       Required = False
     end
-    object ZQConsLanDataBAIDATA: TDateField
+    object ZQConsLanDataBAIDATAVEN: TDateField
       FieldKind = fkData
-      FieldName = 'BAIDATA'
+      FieldName = 'BAIDATAVEN'
       Index = 5
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
@@ -2212,7 +2212,7 @@ object DM: TDM
   object ZQCadLanData: TZQuery
     Connection = ZFinanceiro
     SQL.Strings = (
-      'insert into baixa (CODIGOLAN, BAIDATA, BAIVALOR,CODIGOUSU) VALUES (:PCODIGOLAN, :pBAIDATA, :pBAIVALOR, :pCODIGOUSU)'
+      'insert into baixa (CODIGOLAN, BAIDATAVEN, BAIVALOR,CODIGOUSU) VALUES (:PCODIGOLAN, :pBAIDATAVEN, :pBAIVALOR, :pCODIGOUSU)'
     )
     Params = <    
       item
@@ -2222,7 +2222,7 @@ object DM: TDM
       end    
       item
         DataType = ftUnknown
-        Name = 'pBAIDATA'
+        Name = 'pBAIDATAVEN'
         ParamType = ptUnknown
       end    
       item
@@ -2245,7 +2245,7 @@ object DM: TDM
       end    
       item
         DataType = ftUnknown
-        Name = 'pBAIDATA'
+        Name = 'pBAIDATAVEN'
         ParamType = ptUnknown
       end    
       item

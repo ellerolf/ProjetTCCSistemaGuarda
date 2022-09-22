@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 27/08/2022 às 02:25
+-- Generation Time: 22-Set-2022 às 02:59
 -- Versão do servidor: 10.1.35-MariaDB
--- Versão do PHP: 7.2.9
+-- versão do PHP: 7.2.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `financeiro`
+-- Database: `financeiro`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `baixa`
+-- Estrutura da tabela `baixa`
 --
 
 CREATE TABLE `baixa` (
@@ -34,25 +34,25 @@ CREATE TABLE `baixa` (
   `BAISTATUS` tinyint(1) DEFAULT '0' COMMENT 'Status de pagamento ou recebimento, sendo pendente 0 e finalizado 1',
   `CODIGOFOR` int(11) DEFAULT NULL COMMENT 'Código da forma de pagamento(Dinheiro, Cheque)',
   `CODIGOCON` int(11) DEFAULT NULL COMMENT 'Código da conta onde irá sair ou entrar o dinheiro',
-  `BAIDATA` date DEFAULT NULL COMMENT 'Data do pagamento',
-  `BAIVALOR` double DEFAULT NULL COMMENT 'Valor pago a ser baixado',
+  `BAIDATAVEN` date DEFAULT NULL COMMENT 'Data de vencimento da parcela',
+  `BAIVALOR` double DEFAULT NULL COMMENT 'Valor da parcela a ser paga',
   `BAIMULTA_JUROS` double DEFAULT NULL COMMENT 'Valor da multa ou juros da respectiva baixa',
   `BAIDESCONTO` double DEFAULT NULL COMMENT 'Valor de desconto da respectiva baixa',
   `CODIGOUSU` int(11) DEFAULT NULL COMMENT 'Código do usuário que efetuou o lançamento'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Fazendo dump de dados para tabela `baixa`
+-- Extraindo dados da tabela `baixa`
 --
 
-INSERT INTO `baixa` (`BAICODIGO`, `CODIGOLAN`, `BAISTATUS`, `CODIGOFOR`, `CODIGOCON`, `BAIDATA`, `BAIVALOR`, `BAIMULTA_JUROS`, `BAIDESCONTO`, `CODIGOUSU`) VALUES
-(1, 1, 0, 2, NULL, '2022-05-31', 10, NULL, NULL, 1),
-(2, 2, 0, 2, NULL, '2022-01-30', 777.85, NULL, NULL, 2);
+INSERT INTO `baixa` (`BAICODIGO`, `CODIGOLAN`, `BAISTATUS`, `CODIGOFOR`, `CODIGOCON`, `BAIDATAVEN`, `BAIVALOR`, `BAIMULTA_JUROS`, `BAIDESCONTO`, `CODIGOUSU`) VALUES
+(1, 1, 0, 2, 5, '2022-05-31', 10, NULL, NULL, 1),
+(2, 2, 0, 2, 2, '2022-01-30', 777.85, NULL, NULL, 2);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `centro_custo`
+-- Estrutura da tabela `centro_custo`
 --
 
 CREATE TABLE `centro_custo` (
@@ -63,7 +63,7 @@ CREATE TABLE `centro_custo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Fazendo dump de dados para tabela `centro_custo`
+-- Extraindo dados da tabela `centro_custo`
 --
 
 INSERT INTO `centro_custo` (`CENCODIGO`, `CENNOME`, `CODIGOTIP`, `CENSTATUS`) VALUES
@@ -76,7 +76,7 @@ INSERT INTO `centro_custo` (`CENCODIGO`, `CENNOME`, `CODIGOTIP`, `CENSTATUS`) VA
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `contas`
+-- Estrutura da tabela `contas`
 --
 
 CREATE TABLE `contas` (
@@ -90,7 +90,7 @@ CREATE TABLE `contas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Fazendo dump de dados para tabela `contas`
+-- Extraindo dados da tabela `contas`
 --
 
 INSERT INTO `contas` (`CONCODIGO`, `CONNOME`, `CODIGOTIP`, `CONAGENCIA`, `CONNUMERO_CONTA`, `CONSALDO_INICIAL`, `CONSTATUS`) VALUES
@@ -108,7 +108,7 @@ INSERT INTO `contas` (`CONCODIGO`, `CONNOME`, `CODIGOTIP`, `CONAGENCIA`, `CONNUM
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `forma_pagamento`
+-- Estrutura da tabela `forma_pagamento`
 --
 
 CREATE TABLE `forma_pagamento` (
@@ -117,7 +117,7 @@ CREATE TABLE `forma_pagamento` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Fazendo dump de dados para tabela `forma_pagamento`
+-- Extraindo dados da tabela `forma_pagamento`
 --
 
 INSERT INTO `forma_pagamento` (`FORCODIGO`, `FORNOME`) VALUES
@@ -128,7 +128,7 @@ INSERT INTO `forma_pagamento` (`FORCODIGO`, `FORNOME`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `lancamento`
+-- Estrutura da tabela `lancamento`
 --
 
 CREATE TABLE `lancamento` (
@@ -145,18 +145,17 @@ CREATE TABLE `lancamento` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Fazendo dump de dados para tabela `lancamento`
+-- Extraindo dados da tabela `lancamento`
 --
 
 INSERT INTO `lancamento` (`LANCODIGO`, `LANDOCUMENTO`, `CODIGODOC`, `LANNUMERO_DOCUMENTO`, `LANVALOR_DOCUMENTO`, `CODIGOPES`, `CODIGOCEN`, `LANOBSERVACAO`, `LANTIPO`, `CODIGOUSU`) VALUES
 (1, '2022-04-10', 1, '1005', 30.3, 2, 2, 'DARF DE IR QUE ELES PAGARAM PARA NÓS', 0, 1),
-(2, '2022-10-05', 1, '858', 150.55, 2, 2, 'a fulana pediu', 0, 1),
-(3, '2022-10-15', 1, '859', 1505, 1, 2, 'VENDA DE SUCATA', 1, 2);
+(2, '2022-10-05', 1, '858', 150.55, 2, 2, 'a fulana pediu', 0, 1);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `nivel_acesso`
+-- Estrutura da tabela `nivel_acesso`
 --
 
 CREATE TABLE `nivel_acesso` (
@@ -165,7 +164,7 @@ CREATE TABLE `nivel_acesso` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Fazendo dump de dados para tabela `nivel_acesso`
+-- Extraindo dados da tabela `nivel_acesso`
 --
 
 INSERT INTO `nivel_acesso` (`NIVCODIGO`, `NIVNOME`) VALUES
@@ -175,7 +174,7 @@ INSERT INTO `nivel_acesso` (`NIVCODIGO`, `NIVNOME`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `pessoa`
+-- Estrutura da tabela `pessoa`
 --
 
 CREATE TABLE `pessoa` (
@@ -203,19 +202,18 @@ CREATE TABLE `pessoa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Fazendo dump de dados para tabela `pessoa`
+-- Extraindo dados da tabela `pessoa`
 --
 
 INSERT INTO `pessoa` (`PESCODIGO`, `PESNOME`, `CODIGOTIP`, `PESCPF`, `PESDATA_NASCIMENTO`, `PESCNPJ`, `PESNOME_FANTASIA`, `PESINSCRICAO_ESTADUAL`, `PESINSCRICAO_MUNICIPAL`, `PESCEP`, `PESENDERECO`, `PESNUMERO`, `PESCOMPLEMENTO`, `PESESTADO`, `PESCIDADE`, `PESBAIRRO`, `PESEMAIL`, `PESTELEFONE`, `PESCELULAR`, `PESOBSERVACAO`, `PESSTATUS`) VALUES
 (1, 'GABRIELLE ROBERTA FERREIRA', 1, '123.456.789-X', '1998-04-29', NULL, NULL, NULL, NULL, '18800-000', 'RUA DAS FLORES', 2, 'APARTAMENTO', 'SP', 'PIRAJU', 'BAIRRO DAS CAPIVARA', 'GR@GMAIL.COM', '14-3351-0000', '14-99838-9911', 'devedora', 1),
 (2, NULL, 2, NULL, NULL, '14.041.086/0001-05', 'ESCRITORIO CONTABIL PADRAO', NULL, 8547, '18810-009', 'RUA MAJOR MARIANO', 1009, 'DE FRENTE A CASA DOS COLCHÃO', 'SP', 'PIRAJU', 'CENTRO', 'RH@HOTMAIL.COM', '14-3351-3500', '14-99838-1234', NULL, 1),
-(3, 'GABRIEL', 1, '123.456.847-85', '2022-02-25', NULL, NULL, NULL, NULL, '18800-000', 'RUA ANTONIO BASTIAO NETO', 50, 'AO LADO DA BIQUEIRA', 'SP', 'PIRAJU', 'CENTRO', 'GABRIUEL@HOTMAIL.COM', '14-3351-1256', '14-99785-8596', 'FILHO DO PRESIDENTE DA GUARDA', 1),
-(4, NULL, 2, NULL, NULL, '10.262.602/0001-70', 'PORTAL ASSESSORIA E NEGOCIOS', 532568, 8596, '18800-009', 'R NENE FREITAS', 271, 'PERTO DOS BANCOS', 'SP', 'PIRAJU', 'CENTRO', 'CARLOS@HOTMAIL.COM', '3351-6050', '14-98596-5058', 'ÓTIMO FORNECEDOR', 1);
+(3, 'GABRIEL', 1, '123.456.847-85', '2022-02-25', NULL, NULL, NULL, NULL, '18800-000', 'RUA ANTONIO BASTIAO NETO', 50, 'AO LADO DA BIQUEIRA', 'SP', 'PIRAJU', 'CENTRO', 'GABRIUEL@HOTMAIL.COM', '14-3351-1256', '14-99785-8596', 'FILHO DO PRESIDENTE DA GUARDA', 1);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tipo_centro_custo`
+-- Estrutura da tabela `tipo_centro_custo`
 --
 
 CREATE TABLE `tipo_centro_custo` (
@@ -224,7 +222,7 @@ CREATE TABLE `tipo_centro_custo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Fazendo dump de dados para tabela `tipo_centro_custo`
+-- Extraindo dados da tabela `tipo_centro_custo`
 --
 
 INSERT INTO `tipo_centro_custo` (`TIPCODIGO`, `TIPNOME`) VALUES
@@ -234,7 +232,7 @@ INSERT INTO `tipo_centro_custo` (`TIPCODIGO`, `TIPNOME`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tipo_conta`
+-- Estrutura da tabela `tipo_conta`
 --
 
 CREATE TABLE `tipo_conta` (
@@ -243,7 +241,7 @@ CREATE TABLE `tipo_conta` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Fazendo dump de dados para tabela `tipo_conta`
+-- Extraindo dados da tabela `tipo_conta`
 --
 
 INSERT INTO `tipo_conta` (`TIPCODIGO`, `TIPNOME`) VALUES
@@ -254,7 +252,7 @@ INSERT INTO `tipo_conta` (`TIPCODIGO`, `TIPNOME`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tipo_documento`
+-- Estrutura da tabela `tipo_documento`
 --
 
 CREATE TABLE `tipo_documento` (
@@ -264,7 +262,7 @@ CREATE TABLE `tipo_documento` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Fazendo dump de dados para tabela `tipo_documento`
+-- Extraindo dados da tabela `tipo_documento`
 --
 
 INSERT INTO `tipo_documento` (`DOCCODIGO`, `DOCNOME`, `DOCTIPO`) VALUES
@@ -275,7 +273,7 @@ INSERT INTO `tipo_documento` (`DOCCODIGO`, `DOCNOME`, `DOCTIPO`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tipo_pessoa`
+-- Estrutura da tabela `tipo_pessoa`
 --
 
 CREATE TABLE `tipo_pessoa` (
@@ -284,7 +282,7 @@ CREATE TABLE `tipo_pessoa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Fazendo dump de dados para tabela `tipo_pessoa`
+-- Extraindo dados da tabela `tipo_pessoa`
 --
 
 INSERT INTO `tipo_pessoa` (`TIPCODIGO`, `TIPNOME`) VALUES
@@ -294,7 +292,7 @@ INSERT INTO `tipo_pessoa` (`TIPCODIGO`, `TIPNOME`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `transferencia`
+-- Estrutura da tabela `transferencia`
 --
 
 CREATE TABLE `transferencia` (
@@ -308,7 +306,7 @@ CREATE TABLE `transferencia` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Fazendo dump de dados para tabela `transferencia`
+-- Extraindo dados da tabela `transferencia`
 --
 
 INSERT INTO `transferencia` (`TRACODIGO`, `TRAVALOR`, `TRACODIGO_CONORI`, `TRACODIGO_CONDES`, `TRADATA`, `TRANUMERO_DOCUMENTO`, `TRASTATUS`) VALUES
@@ -322,7 +320,7 @@ INSERT INTO `transferencia` (`TRACODIGO`, `TRAVALOR`, `TRACODIGO_CONORI`, `TRACO
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `usuario`
+-- Estrutura da tabela `usuario`
 --
 
 CREATE TABLE `usuario` (
@@ -335,7 +333,7 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Fazendo dump de dados para tabela `usuario`
+-- Extraindo dados da tabela `usuario`
 --
 
 INSERT INTO `usuario` (`USUCODIGO`, `USUNOME`, `USULOGIN`, `USUSENHA`, `USUSTATUS`, `CODIGONIV`) VALUES
@@ -353,8 +351,8 @@ INSERT INTO `usuario` (`USUCODIGO`, `USUNOME`, `USULOGIN`, `USUSENHA`, `USUSTATU
 -- --------------------------------------------------------
 
 --
--- Estrutura stand-in para view `vwcontas`
--- (Veja abaixo para a visão atual)
+-- Stand-in structure for view `vwcontas`
+-- (See below for the actual view)
 --
 CREATE TABLE `vwcontas` (
 `CONCODIGO` int(11)
@@ -371,8 +369,8 @@ CREATE TABLE `vwcontas` (
 -- --------------------------------------------------------
 
 --
--- Estrutura stand-in para view `vwmostracentro`
--- (Veja abaixo para a visão atual)
+-- Stand-in structure for view `vwmostracentro`
+-- (See below for the actual view)
 --
 CREATE TABLE `vwmostracentro` (
 `CENCODIGO` int(11)
@@ -386,8 +384,8 @@ CREATE TABLE `vwmostracentro` (
 -- --------------------------------------------------------
 
 --
--- Estrutura stand-in para view `vwmostrausu`
--- (Veja abaixo para a visão atual)
+-- Stand-in structure for view `vwmostrausu`
+-- (See below for the actual view)
 --
 CREATE TABLE `vwmostrausu` (
 `USUCODIGO` int(11)
@@ -403,8 +401,8 @@ CREATE TABLE `vwmostrausu` (
 -- --------------------------------------------------------
 
 --
--- Estrutura stand-in para view `vwpessoas`
--- (Veja abaixo para a visão atual)
+-- Stand-in structure for view `vwpessoas`
+-- (See below for the actual view)
 --
 CREATE TABLE `vwpessoas` (
 `CODIGO` int(11)
@@ -435,7 +433,7 @@ CREATE TABLE `vwpessoas` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para view `vwcontas`
+-- Structure for view `vwcontas`
 --
 DROP TABLE IF EXISTS `vwcontas`;
 
@@ -444,7 +442,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
--- Estrutura para view `vwmostracentro`
+-- Structure for view `vwmostracentro`
 --
 DROP TABLE IF EXISTS `vwmostracentro`;
 
@@ -453,7 +451,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
--- Estrutura para view `vwmostrausu`
+-- Structure for view `vwmostrausu`
 --
 DROP TABLE IF EXISTS `vwmostrausu`;
 
@@ -462,18 +460,18 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
--- Estrutura para view `vwpessoas`
+-- Structure for view `vwpessoas`
 --
 DROP TABLE IF EXISTS `vwpessoas`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vwpessoas`  AS  select `p`.`PESCODIGO` AS `CODIGO`,`p`.`PESNOME` AS `NOME`,`p`.`CODIGOTIP` AS `CODIGOTIP`,`t`.`TIPNOME` AS `TIPO`,`p`.`PESCPF` AS `CPF`,`p`.`PESDATA_NASCIMENTO` AS `DATA NASCIMENTO`,`p`.`PESCNPJ` AS `CNPJ`,`p`.`PESNOME_FANTASIA` AS `NOME FANTASIA`,`p`.`PESINSCRICAO_ESTADUAL` AS `INSCRIÇÃO ESTADUAL`,`p`.`PESINSCRICAO_MUNICIPAL` AS `INSCRIÇÃO MUNICIPAL`,`p`.`PESCEP` AS `CEP`,`p`.`PESENDERECO` AS `ENDEREÇO`,`p`.`PESNUMERO` AS `NÚMERO`,`p`.`PESCOMPLEMENTO` AS `COMPLEMENTO`,`p`.`PESESTADO` AS `ESTADO`,`p`.`PESCIDADE` AS `CIDADE`,`p`.`PESBAIRRO` AS `BAIRRO`,`p`.`PESEMAIL` AS `E-MAIL`,`p`.`PESTELEFONE` AS `TELEFONE`,`p`.`PESCELULAR` AS `CELULAR`,`p`.`PESOBSERVACAO` AS `OBSERVAÇÃO`,`p`.`PESSTATUS` AS `ATIVO`,(case when (`p`.`PESSTATUS` = 1) then 'ATIVO' else 'INATIVO' end) AS `STATUS` from (`pessoa` `p` join `tipo_pessoa` `t` on((`p`.`CODIGOTIP` = `t`.`TIPCODIGO`))) ;
 
 --
--- Índices de tabelas apagadas
+-- Indexes for dumped tables
 --
 
 --
--- Índices de tabela `baixa`
+-- Indexes for table `baixa`
 --
 ALTER TABLE `baixa`
   ADD PRIMARY KEY (`BAICODIGO`),
@@ -483,27 +481,27 @@ ALTER TABLE `baixa`
   ADD KEY `CODIGOUSU` (`CODIGOUSU`);
 
 --
--- Índices de tabela `centro_custo`
+-- Indexes for table `centro_custo`
 --
 ALTER TABLE `centro_custo`
   ADD PRIMARY KEY (`CENCODIGO`),
   ADD KEY `CODIGOTIP` (`CODIGOTIP`);
 
 --
--- Índices de tabela `contas`
+-- Indexes for table `contas`
 --
 ALTER TABLE `contas`
   ADD PRIMARY KEY (`CONCODIGO`),
   ADD KEY `CODTIP` (`CODIGOTIP`);
 
 --
--- Índices de tabela `forma_pagamento`
+-- Indexes for table `forma_pagamento`
 --
 ALTER TABLE `forma_pagamento`
   ADD PRIMARY KEY (`FORCODIGO`);
 
 --
--- Índices de tabela `lancamento`
+-- Indexes for table `lancamento`
 --
 ALTER TABLE `lancamento`
   ADD PRIMARY KEY (`LANCODIGO`),
@@ -513,13 +511,13 @@ ALTER TABLE `lancamento`
   ADD KEY `CODIGOUSU` (`CODIGOUSU`);
 
 --
--- Índices de tabela `nivel_acesso`
+-- Indexes for table `nivel_acesso`
 --
 ALTER TABLE `nivel_acesso`
   ADD PRIMARY KEY (`NIVCODIGO`);
 
 --
--- Índices de tabela `pessoa`
+-- Indexes for table `pessoa`
 --
 ALTER TABLE `pessoa`
   ADD PRIMARY KEY (`PESCODIGO`),
@@ -528,31 +526,31 @@ ALTER TABLE `pessoa`
   ADD KEY `CODIGOTIP` (`CODIGOTIP`);
 
 --
--- Índices de tabela `tipo_centro_custo`
+-- Indexes for table `tipo_centro_custo`
 --
 ALTER TABLE `tipo_centro_custo`
   ADD PRIMARY KEY (`TIPCODIGO`);
 
 --
--- Índices de tabela `tipo_conta`
+-- Indexes for table `tipo_conta`
 --
 ALTER TABLE `tipo_conta`
   ADD PRIMARY KEY (`TIPCODIGO`);
 
 --
--- Índices de tabela `tipo_documento`
+-- Indexes for table `tipo_documento`
 --
 ALTER TABLE `tipo_documento`
   ADD PRIMARY KEY (`DOCCODIGO`);
 
 --
--- Índices de tabela `tipo_pessoa`
+-- Indexes for table `tipo_pessoa`
 --
 ALTER TABLE `tipo_pessoa`
   ADD PRIMARY KEY (`TIPCODIGO`);
 
 --
--- Índices de tabela `transferencia`
+-- Indexes for table `transferencia`
 --
 ALTER TABLE `transferencia`
   ADD PRIMARY KEY (`TRACODIGO`),
@@ -560,7 +558,7 @@ ALTER TABLE `transferencia`
   ADD KEY `TRACODIGO_CONDES` (`TRACODIGO_CONDES`);
 
 --
--- Índices de tabela `usuario`
+-- Indexes for table `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`USUCODIGO`),
@@ -568,93 +566,93 @@ ALTER TABLE `usuario`
   ADD KEY `CODIGONIV` (`CODIGONIV`);
 
 --
--- AUTO_INCREMENT de tabelas apagadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de tabela `baixa`
+-- AUTO_INCREMENT for table `baixa`
 --
 ALTER TABLE `baixa`
-  MODIFY `BAICODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=3;
+  MODIFY `BAICODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT de tabela `centro_custo`
+-- AUTO_INCREMENT for table `centro_custo`
 --
 ALTER TABLE `centro_custo`
   MODIFY `CENCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT de tabela `contas`
+-- AUTO_INCREMENT for table `contas`
 --
 ALTER TABLE `contas`
   MODIFY `CONCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT de tabela `forma_pagamento`
+-- AUTO_INCREMENT for table `forma_pagamento`
 --
 ALTER TABLE `forma_pagamento`
   MODIFY `FORCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT de tabela `lancamento`
+-- AUTO_INCREMENT for table `lancamento`
 --
 ALTER TABLE `lancamento`
-  MODIFY `LANCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=4;
+  MODIFY `LANCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT de tabela `nivel_acesso`
+-- AUTO_INCREMENT for table `nivel_acesso`
 --
 ALTER TABLE `nivel_acesso`
   MODIFY `NIVCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática de código', AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de tabela `pessoa`
+-- AUTO_INCREMENT for table `pessoa`
 --
 ALTER TABLE `pessoa`
-  MODIFY `PESCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=5;
+  MODIFY `PESCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT de tabela `tipo_centro_custo`
+-- AUTO_INCREMENT for table `tipo_centro_custo`
 --
 ALTER TABLE `tipo_centro_custo`
   MODIFY `TIPCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de tabela `tipo_conta`
+-- AUTO_INCREMENT for table `tipo_conta`
 --
 ALTER TABLE `tipo_conta`
   MODIFY `TIPCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT de tabela `tipo_documento`
+-- AUTO_INCREMENT for table `tipo_documento`
 --
 ALTER TABLE `tipo_documento`
   MODIFY `DOCCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT de tabela `tipo_pessoa`
+-- AUTO_INCREMENT for table `tipo_pessoa`
 --
 ALTER TABLE `tipo_pessoa`
   MODIFY `TIPCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de tabela `transferencia`
+-- AUTO_INCREMENT for table `transferencia`
 --
 ALTER TABLE `transferencia`
   MODIFY `TRACODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT de tabela `usuario`
+-- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
   MODIFY `USUCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=21;
 
 --
--- Restrições para dumps de tabelas
+-- Constraints for dumped tables
 --
 
 --
--- Restrições para tabelas `baixa`
+-- Limitadores para a tabela `baixa`
 --
 ALTER TABLE `baixa`
   ADD CONSTRAINT `baixa_ibfk_1` FOREIGN KEY (`CODIGOLAN`) REFERENCES `lancamento` (`LANCODIGO`),
@@ -663,19 +661,19 @@ ALTER TABLE `baixa`
   ADD CONSTRAINT `baixa_ibfk_4` FOREIGN KEY (`CODIGOUSU`) REFERENCES `usuario` (`USUCODIGO`);
 
 --
--- Restrições para tabelas `centro_custo`
+-- Limitadores para a tabela `centro_custo`
 --
 ALTER TABLE `centro_custo`
   ADD CONSTRAINT `centro_custo_ibfk_1` FOREIGN KEY (`CODIGOTIP`) REFERENCES `tipo_centro_custo` (`TIPCODIGO`);
 
 --
--- Restrições para tabelas `contas`
+-- Limitadores para a tabela `contas`
 --
 ALTER TABLE `contas`
   ADD CONSTRAINT `contas_ibfk_1` FOREIGN KEY (`CODIGOTIP`) REFERENCES `tipo_conta` (`TIPCODIGO`);
 
 --
--- Restrições para tabelas `lancamento`
+-- Limitadores para a tabela `lancamento`
 --
 ALTER TABLE `lancamento`
   ADD CONSTRAINT `lancamento_ibfk_1` FOREIGN KEY (`CODIGODOC`) REFERENCES `tipo_documento` (`DOCCODIGO`),
@@ -685,20 +683,20 @@ ALTER TABLE `lancamento`
   ADD CONSTRAINT `lancamento_ibfk_5` FOREIGN KEY (`CODIGOUSU`) REFERENCES `usuario` (`USUCODIGO`);
 
 --
--- Restrições para tabelas `pessoa`
+-- Limitadores para a tabela `pessoa`
 --
 ALTER TABLE `pessoa`
   ADD CONSTRAINT `pessoa_ibfk_1` FOREIGN KEY (`CODIGOTIP`) REFERENCES `tipo_pessoa` (`TIPCODIGO`);
 
 --
--- Restrições para tabelas `transferencia`
+-- Limitadores para a tabela `transferencia`
 --
 ALTER TABLE `transferencia`
   ADD CONSTRAINT `transferencia_ibfk_2` FOREIGN KEY (`TRACODIGO_CONORI`) REFERENCES `contas` (`CONCODIGO`),
   ADD CONSTRAINT `transferencia_ibfk_3` FOREIGN KEY (`TRACODIGO_CONDES`) REFERENCES `contas` (`CONCODIGO`);
 
 --
--- Restrições para tabelas `usuario`
+-- Limitadores para a tabela `usuario`
 --
 ALTER TABLE `usuario`
   ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`CODIGONIV`) REFERENCES `nivel_acesso` (`NIVCODIGO`);

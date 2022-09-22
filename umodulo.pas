@@ -97,7 +97,7 @@ type
     ZQConsLancamentosLANTIPO: TSmallintField;
     ZQConsLancamentosLANVALOR_DOCUMENTO: TFloatField;
     ZQConsLanDataBAICODIGO: TLongintField;
-    ZQConsLanDataBAIDATA: TDateField;
+    ZQConsLanDataBAIDATAVEN: TDateField;
     ZQConsLanDataBAIDESCONTO: TFloatField;
     ZQConsLanDataBAIMULTA_JUROS: TFloatField;
     ZQConsLanDataBAISTATUS: TSmallintField;
