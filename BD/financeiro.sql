@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 22-Set-2022 às 02:59
+-- Generation Time: 24-Set-2022 às 21:50
 -- Versão do servidor: 10.1.35-MariaDB
 -- versão do PHP: 7.2.9
 
@@ -38,16 +38,19 @@ CREATE TABLE `baixa` (
   `BAIVALOR` double DEFAULT NULL COMMENT 'Valor da parcela a ser paga',
   `BAIMULTA_JUROS` double DEFAULT NULL COMMENT 'Valor da multa ou juros da respectiva baixa',
   `BAIDESCONTO` double DEFAULT NULL COMMENT 'Valor de desconto da respectiva baixa',
-  `CODIGOUSU` int(11) DEFAULT NULL COMMENT 'Código do usuário que efetuou o lançamento'
+  `CODIGOUSU` int(11) DEFAULT NULL COMMENT 'Código do usuário que efetuou o lançamento',
+  `BAIDATAPGTO` date DEFAULT NULL COMMENT 'Data que a parcela foi paga',
+  `BAIVALORPAGO` double DEFAULT NULL COMMENT 'Valor que foi pago'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `baixa`
 --
 
-INSERT INTO `baixa` (`BAICODIGO`, `CODIGOLAN`, `BAISTATUS`, `CODIGOFOR`, `CODIGOCON`, `BAIDATAVEN`, `BAIVALOR`, `BAIMULTA_JUROS`, `BAIDESCONTO`, `CODIGOUSU`) VALUES
-(1, 1, 0, 2, 5, '2022-05-31', 10, NULL, NULL, 1),
-(2, 2, 0, 2, 2, '2022-01-30', 777.85, NULL, NULL, 2);
+INSERT INTO `baixa` (`BAICODIGO`, `CODIGOLAN`, `BAISTATUS`, `CODIGOFOR`, `CODIGOCON`, `BAIDATAVEN`, `BAIVALOR`, `BAIMULTA_JUROS`, `BAIDESCONTO`, `CODIGOUSU`, `BAIDATAPGTO`, `BAIVALORPAGO`) VALUES
+(1, 1, 0, 2, 5, '2022-05-31', 10, NULL, NULL, 1, NULL, NULL),
+(2, 2, 0, 2, 2, '2022-01-30', 777.85, NULL, NULL, 2, NULL, NULL),
+(10, 7, 0, NULL, NULL, '2022-09-23', 112, NULL, NULL, 15, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -150,7 +153,8 @@ CREATE TABLE `lancamento` (
 
 INSERT INTO `lancamento` (`LANCODIGO`, `LANDOCUMENTO`, `CODIGODOC`, `LANNUMERO_DOCUMENTO`, `LANVALOR_DOCUMENTO`, `CODIGOPES`, `CODIGOCEN`, `LANOBSERVACAO`, `LANTIPO`, `CODIGOUSU`) VALUES
 (1, '2022-04-10', 1, '1005', 30.3, 2, 2, 'DARF DE IR QUE ELES PAGARAM PARA NÓS', 0, 1),
-(2, '2022-10-05', 1, '858', 150.55, 2, 2, 'a fulana pediu', 0, 1);
+(2, '2022-10-05', 1, '858', 150.55, 2, 2, 'a fulana pediu', 0, 1),
+(7, '2022-09-21', 2, '1', 112, 3, 3, '', 1, 15);
 
 -- --------------------------------------------------------
 
@@ -573,7 +577,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT for table `baixa`
 --
 ALTER TABLE `baixa`
-  MODIFY `BAICODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=7;
+  MODIFY `BAICODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `centro_custo`
@@ -597,7 +601,7 @@ ALTER TABLE `forma_pagamento`
 -- AUTO_INCREMENT for table `lancamento`
 --
 ALTER TABLE `lancamento`
-  MODIFY `LANCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=7;
+  MODIFY `LANCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `nivel_acesso`
@@ -609,7 +613,7 @@ ALTER TABLE `nivel_acesso`
 -- AUTO_INCREMENT for table `pessoa`
 --
 ALTER TABLE `pessoa`
-  MODIFY `PESCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=7;
+  MODIFY `PESCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tipo_centro_custo`
