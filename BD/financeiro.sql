@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 24-Set-2022 às 21:50
+-- Generation Time: 25-Set-2022 às 22:11
 -- Versão do servidor: 10.1.35-MariaDB
 -- versão do PHP: 7.2.9
 
@@ -48,9 +48,11 @@ CREATE TABLE `baixa` (
 --
 
 INSERT INTO `baixa` (`BAICODIGO`, `CODIGOLAN`, `BAISTATUS`, `CODIGOFOR`, `CODIGOCON`, `BAIDATAVEN`, `BAIVALOR`, `BAIMULTA_JUROS`, `BAIDESCONTO`, `CODIGOUSU`, `BAIDATAPGTO`, `BAIVALORPAGO`) VALUES
-(1, 1, 0, 2, 5, '2022-05-31', 10, NULL, NULL, 1, NULL, NULL),
-(2, 2, 0, 2, 2, '2022-01-30', 777.85, NULL, NULL, 2, NULL, NULL),
-(10, 7, 0, NULL, NULL, '2022-09-23', 112, NULL, NULL, 15, NULL, NULL);
+(11, 8, 1, 2, 5, '2022-09-24', 11, NULL, NULL, 15, '2022-09-30', 11),
+(12, 9, 1, 2, 8, '2022-09-26', 111, NULL, NULL, 15, '2022-09-30', 111),
+(14, 10, 0, NULL, NULL, '2022-09-17', 33, NULL, NULL, 15, NULL, NULL),
+(15, 11, 0, NULL, NULL, '2022-09-24', 122, NULL, NULL, 15, NULL, NULL),
+(16, 12, 0, NULL, NULL, '2022-09-25', 11, NULL, NULL, 15, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -152,9 +154,11 @@ CREATE TABLE `lancamento` (
 --
 
 INSERT INTO `lancamento` (`LANCODIGO`, `LANDOCUMENTO`, `CODIGODOC`, `LANNUMERO_DOCUMENTO`, `LANVALOR_DOCUMENTO`, `CODIGOPES`, `CODIGOCEN`, `LANOBSERVACAO`, `LANTIPO`, `CODIGOUSU`) VALUES
-(1, '2022-04-10', 1, '1005', 30.3, 2, 2, 'DARF DE IR QUE ELES PAGARAM PARA NÓS', 0, 1),
-(2, '2022-10-05', 1, '858', 150.55, 2, 2, 'a fulana pediu', 0, 1),
-(7, '2022-09-21', 2, '1', 112, 3, 3, '', 1, 15);
+(8, '2022-09-23', 2, '1', 11, 1, 3, '', 1, 15),
+(9, '2022-09-24', 1, '11', 111, 3, 5, '', 0, 15),
+(10, '2022-09-02', 2, '11', 33, 1, 3, '', 1, 15),
+(11, '2022-09-14', 1, '1', 122, 3, 1, '', 0, 15),
+(12, '2022-09-25', 2, '1', 11, 3, 3, '', 1, 15);
 
 -- --------------------------------------------------------
 
@@ -212,7 +216,7 @@ CREATE TABLE `pessoa` (
 INSERT INTO `pessoa` (`PESCODIGO`, `PESNOME`, `CODIGOTIP`, `PESCPF`, `PESDATA_NASCIMENTO`, `PESCNPJ`, `PESNOME_FANTASIA`, `PESINSCRICAO_ESTADUAL`, `PESINSCRICAO_MUNICIPAL`, `PESCEP`, `PESENDERECO`, `PESNUMERO`, `PESCOMPLEMENTO`, `PESESTADO`, `PESCIDADE`, `PESBAIRRO`, `PESEMAIL`, `PESTELEFONE`, `PESCELULAR`, `PESOBSERVACAO`, `PESSTATUS`) VALUES
 (1, 'GABRIELLE ROBERTA FERREIRA', 1, '123.456.789-X', '1998-04-29', NULL, NULL, NULL, NULL, '18800-000', 'RUA DAS FLORES', 2, 'APARTAMENTO', 'SP', 'PIRAJU', 'BAIRRO DAS CAPIVARA', 'GR@GMAIL.COM', '14-3351-0000', '14-99838-9911', 'devedora', 1),
 (2, NULL, 2, NULL, NULL, '14.041.086/0001-05', 'ESCRITORIO CONTABIL PADRAO', NULL, 8547, '18810-009', 'RUA MAJOR MARIANO', 1009, 'DE FRENTE A CASA DOS COLCHÃO', 'SP', 'PIRAJU', 'CENTRO', 'RH@HOTMAIL.COM', '14-3351-3500', '14-99838-1234', NULL, 1),
-(3, 'GABRIEL', 1, '123.456.847-85', '2022-02-25', NULL, NULL, NULL, NULL, '18800-000', 'RUA ANTONIO BASTIAO NETO', 50, 'AO LADO DA BIQUEIRA', 'SP', 'PIRAJU', 'CENTRO', 'GABRIUEL@HOTMAIL.COM', '14-3351-1256', '14-99785-8596', 'FILHO DO PRESIDENTE DA GUARDA', 1);
+(3, 'JOAO', 1, '123.456.847.-  ', '2022-02-25', NULL, NULL, NULL, NULL, '18800-000', 'RUA ANTONIO BASTIAO NETO', 50, 'AO LADO DA BIQUEIRA', 'SP', 'PIRAJU', 'CENTRO', 'GABRIUEL@HOTMAIL.COM', '(  )    -    ', '(  )     -    ', 'FILHO DO PRESIDENTE DA GUARDA', 1);
 
 -- --------------------------------------------------------
 
@@ -373,6 +377,66 @@ CREATE TABLE `vwcontas` (
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `vwmostrabaixaefet`
+-- (See below for the actual view)
+--
+CREATE TABLE `vwmostrabaixaefet` (
+`BAICODIGO` int(11)
+,`CODIGOLAN` int(11)
+,`CODIGOPES` int(11)
+,`PESNOME` varchar(50)
+,`CODIGODOC` int(11)
+,`DOCNOME` varchar(50)
+,`LANNUMERO_DOCUMENTO` varchar(50)
+,`LANTIPO` tinyint(1)
+,`TIPO` varchar(7)
+,`BAISTATUS` tinyint(1)
+,`STATUS` varchar(9)
+,`CODIGOFOR` int(11)
+,`FORNOME` varchar(50)
+,`CODIGOCON` int(11)
+,`CONNOME` varchar(50)
+,`CONAGENCIA` varchar(50)
+,`CONNUMERO_CONTA` varchar(50)
+,`CODIGOTIP` int(11)
+,`TIPNOME` varchar(50)
+,`BAIDATAVEN` date
+,`BAIVALOR` double
+,`BAIDATAPGTO` date
+,`BAIVALORPAGO` double
+,`BAIMULTA_JUROS` double
+,`BAIDESCONTO` double
+,`CODIGOUSU` int(11)
+,`USUNOME` varchar(50)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `vwmostrabaixapen`
+-- (See below for the actual view)
+--
+CREATE TABLE `vwmostrabaixapen` (
+`BAICODIGO` int(11)
+,`CODIGOLAN` int(11)
+,`CODIGOPES` int(11)
+,`PESNOME` varchar(50)
+,`CODIGODOC` int(11)
+,`DOCNOME` varchar(50)
+,`LANNUMERO_DOCUMENTO` varchar(50)
+,`LANTIPO` tinyint(1)
+,`TIPO` varchar(7)
+,`BAISTATUS` tinyint(1)
+,`STATUS` varchar(9)
+,`BAIDATAVEN` date
+,`BAIVALOR` double
+,`CODIGOUSU` int(11)
+,`USUNOME` varchar(50)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Stand-in structure for view `vwmostracentro`
 -- (See below for the actual view)
 --
@@ -442,6 +506,24 @@ CREATE TABLE `vwpessoas` (
 DROP TABLE IF EXISTS `vwcontas`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vwcontas`  AS  select `contas`.`CONCODIGO` AS `CONCODIGO`,`contas`.`CONNOME` AS `CONNOME`,`contas`.`CODIGOTIP` AS `CODIGOTIP`,`tipo_conta`.`TIPNOME` AS `TIPNOME`,`contas`.`CONAGENCIA` AS `CONAGENCIA`,`contas`.`CONNUMERO_CONTA` AS `CONNUMERO_CONTA`,`contas`.`CONSALDO_INICIAL` AS `CONSALDO_INICIAL`,`contas`.`CONSTATUS` AS `CONSTATUS`,(case when (`contas`.`CONSTATUS` = 1) then 'ATIVO' else 'INATIVO' end) AS `STATUS` from (`contas` join `tipo_conta`) where (`tipo_conta`.`TIPCODIGO` = `contas`.`CODIGOTIP`) ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `vwmostrabaixaefet`
+--
+DROP TABLE IF EXISTS `vwmostrabaixaefet`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vwmostrabaixaefet`  AS  select `baixa`.`BAICODIGO` AS `BAICODIGO`,`baixa`.`CODIGOLAN` AS `CODIGOLAN`,`lancamento`.`CODIGOPES` AS `CODIGOPES`,`pessoa`.`PESNOME` AS `PESNOME`,`lancamento`.`CODIGODOC` AS `CODIGODOC`,`tipo_documento`.`DOCNOME` AS `DOCNOME`,`lancamento`.`LANNUMERO_DOCUMENTO` AS `LANNUMERO_DOCUMENTO`,`lancamento`.`LANTIPO` AS `LANTIPO`,(case when (`lancamento`.`LANTIPO` = 0) then 'DESPESA' else 'RECEITA' end) AS `TIPO`,`baixa`.`BAISTATUS` AS `BAISTATUS`,(case when (`baixa`.`BAISTATUS` = 0) then 'PENDENTE' else 'EFETIVADO' end) AS `STATUS`,`baixa`.`CODIGOFOR` AS `CODIGOFOR`,`forma_pagamento`.`FORNOME` AS `FORNOME`,`baixa`.`CODIGOCON` AS `CODIGOCON`,`contas`.`CONNOME` AS `CONNOME`,`contas`.`CONAGENCIA` AS `CONAGENCIA`,`contas`.`CONNUMERO_CONTA` AS `CONNUMERO_CONTA`,`contas`.`CODIGOTIP` AS `CODIGOTIP`,`tipo_conta`.`TIPNOME` AS `TIPNOME`,`baixa`.`BAIDATAVEN` AS `BAIDATAVEN`,`baixa`.`BAIVALOR` AS `BAIVALOR`,`baixa`.`BAIDATAPGTO` AS `BAIDATAPGTO`,`baixa`.`BAIVALORPAGO` AS `BAIVALORPAGO`,`baixa`.`BAIMULTA_JUROS` AS `BAIMULTA_JUROS`,`baixa`.`BAIDESCONTO` AS `BAIDESCONTO`,`baixa`.`CODIGOUSU` AS `CODIGOUSU`,`usuario`.`USUNOME` AS `USUNOME` from (((((((`baixa` join `forma_pagamento` on((`baixa`.`CODIGOFOR` = `forma_pagamento`.`FORCODIGO`))) join `contas` on((`baixa`.`CODIGOCON` = `contas`.`CONCODIGO`))) join `tipo_conta` on((`contas`.`CODIGOTIP` = `tipo_conta`.`TIPCODIGO`))) join `lancamento` on((`baixa`.`CODIGOLAN` = `lancamento`.`LANCODIGO`))) join `pessoa` on((`lancamento`.`CODIGOPES` = `pessoa`.`PESCODIGO`))) join `tipo_documento` on((`lancamento`.`CODIGODOC` = `tipo_documento`.`DOCCODIGO`))) join `usuario` on((`baixa`.`CODIGOUSU` = `usuario`.`USUCODIGO`))) ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `vwmostrabaixapen`
+--
+DROP TABLE IF EXISTS `vwmostrabaixapen`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vwmostrabaixapen`  AS  select `baixa`.`BAICODIGO` AS `BAICODIGO`,`baixa`.`CODIGOLAN` AS `CODIGOLAN`,`lancamento`.`CODIGOPES` AS `CODIGOPES`,`pessoa`.`PESNOME` AS `PESNOME`,`lancamento`.`CODIGODOC` AS `CODIGODOC`,`tipo_documento`.`DOCNOME` AS `DOCNOME`,`lancamento`.`LANNUMERO_DOCUMENTO` AS `LANNUMERO_DOCUMENTO`,`lancamento`.`LANTIPO` AS `LANTIPO`,(case when (`lancamento`.`LANTIPO` = 0) then 'DESPESA' else 'RECEITA' end) AS `TIPO`,`baixa`.`BAISTATUS` AS `BAISTATUS`,(case when (`baixa`.`BAISTATUS` = 0) then 'PENDENTE' else 'EFETIVADO' end) AS `STATUS`,`baixa`.`BAIDATAVEN` AS `BAIDATAVEN`,`baixa`.`BAIVALOR` AS `BAIVALOR`,`baixa`.`CODIGOUSU` AS `CODIGOUSU`,`usuario`.`USUNOME` AS `USUNOME` from ((((`baixa` join `lancamento` on((`baixa`.`CODIGOLAN` = `lancamento`.`LANCODIGO`))) join `pessoa` on((`lancamento`.`CODIGOPES` = `pessoa`.`PESCODIGO`))) join `tipo_documento` on((`lancamento`.`CODIGODOC` = `tipo_documento`.`DOCCODIGO`))) join `usuario` on((`baixa`.`CODIGOUSU` = `usuario`.`USUCODIGO`))) ;
 
 -- --------------------------------------------------------
 
@@ -577,7 +659,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT for table `baixa`
 --
 ALTER TABLE `baixa`
-  MODIFY `BAICODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=11;
+  MODIFY `BAICODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `centro_custo`
@@ -601,7 +683,7 @@ ALTER TABLE `forma_pagamento`
 -- AUTO_INCREMENT for table `lancamento`
 --
 ALTER TABLE `lancamento`
-  MODIFY `LANCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=8;
+  MODIFY `LANCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `nivel_acesso`

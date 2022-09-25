@@ -12,6 +12,8 @@ type
   { TDM }
 
   TDM = class(TDataModule)
+    DSConsBaixaEfet: TDataSource;
+    DSConsBaixaPen: TDataSource;
     DSConsLanData: TDataSource;
     DSBuscaTipoDoc: TDataSource;
     DSBuscaUsuario: TDataSource;
@@ -51,6 +53,48 @@ type
     ZQBuscaUsuarioUSUNOME: TStringField;
     ZQBuscaUsuarioUSUSENHA: TStringField;
     ZQBuscaUsuarioUSUSTATUS: TSmallintField;
+    ZQConsBaixaEfetBAICODIGO: TLongintField;
+    ZQConsBaixaEfetBAIDATAPGTO: TDateField;
+    ZQConsBaixaEfetBAIDATAVEN: TDateField;
+    ZQConsBaixaEfetBAIDESCONTO: TFloatField;
+    ZQConsBaixaEfetBAIMULTA_JUROS: TFloatField;
+    ZQConsBaixaEfetBAISTATUS: TSmallintField;
+    ZQConsBaixaEfetBAIVALOR: TFloatField;
+    ZQConsBaixaEfetBAIVALORPAGO: TFloatField;
+    ZQConsBaixaEfetCODIGOCON: TLongintField;
+    ZQConsBaixaEfetCODIGODOC: TLongintField;
+    ZQConsBaixaEfetCODIGOFOR: TLongintField;
+    ZQConsBaixaEfetCODIGOLAN: TLongintField;
+    ZQConsBaixaEfetCODIGOPES: TLongintField;
+    ZQConsBaixaEfetCODIGOTIP: TLongintField;
+    ZQConsBaixaEfetCODIGOUSU: TLongintField;
+    ZQConsBaixaEfetCONAGENCIA: TStringField;
+    ZQConsBaixaEfetCONNOME: TStringField;
+    ZQConsBaixaEfetCONNUMERO_CONTA: TStringField;
+    ZQConsBaixaEfetDOCNOME: TStringField;
+    ZQConsBaixaEfetFORNOME: TStringField;
+    ZQConsBaixaEfetLANNUMERO_DOCUMENTO: TStringField;
+    ZQConsBaixaEfetLANTIPO: TSmallintField;
+    ZQConsBaixaEfetPESNOME: TStringField;
+    ZQConsBaixaEfetSTATUS: TStringField;
+    ZQConsBaixaEfetTIPNOME: TStringField;
+    ZQConsBaixaEfetTIPO: TStringField;
+    ZQConsBaixaEfetUSUNOME: TStringField;
+    ZQConsBaixaPenBAICODIGO: TLongintField;
+    ZQConsBaixaPenBAIDATAVEN: TDateField;
+    ZQConsBaixaPenBAISTATUS: TSmallintField;
+    ZQConsBaixaPenBAIVALOR: TFloatField;
+    ZQConsBaixaPenCODIGODOC: TLongintField;
+    ZQConsBaixaPenCODIGOLAN: TLongintField;
+    ZQConsBaixaPenCODIGOPES: TLongintField;
+    ZQConsBaixaPenCODIGOUSU: TLongintField;
+    ZQConsBaixaPenDOCNOME: TStringField;
+    ZQConsBaixaPenLANNUMERO_DOCUMENTO: TStringField;
+    ZQConsBaixaPenLANTIPO: TSmallintField;
+    ZQConsBaixaPenPESNOME: TStringField;
+    ZQConsBaixaPenSTATUS: TStringField;
+    ZQConsBaixaPenTIPO: TStringField;
+    ZQConsBaixaPenUSUNOME: TStringField;
     ZQConsBancariasCODIGOTIP: TLongintField;
     ZQConsBancariasCONAGENCIA: TStringField;
     ZQConsBancariasCONCODIGO: TLongintField;
@@ -177,6 +221,8 @@ type
     ZQCadLanData: TZQuery;
     ZQDelDataLan: TZQuery;
     ZQDelParcEspecif: TZQuery;
+    ZQConsBaixaPen: TZQuery;
+    ZQConsBaixaEfet: TZQuery;
     procedure DSBuscaTipoDocDataChange(Sender: TObject; Field: TField);
     procedure DSConsPessoasDataChange(Sender: TObject; Field: TField);
 

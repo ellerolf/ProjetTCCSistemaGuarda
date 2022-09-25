@@ -1,24 +1,26 @@
 object FrmConsBaixa: TFrmConsBaixa
   Left = -8
-  Height = 822
+  Height = 900
   Top = -8
-  Width = 1250
+  Width = 1282
   BorderStyle = bsNone
   Caption = 'FrmConsBaixa'
-  ClientHeight = 799
-  ClientWidth = 1250
+  ClientHeight = 877
+  ClientWidth = 1282
   Color = 16577259
+  OnClose = FormClose
   OnResize = FormResize
+  OnShow = FormShow
   Position = poScreenCenter
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 799
+    Height = 877
     Top = 0
-    Width = 1250
+    Width = 1282
     Align = alClient
-    ClientHeight = 799
-    ClientWidth = 1250
+    ClientHeight = 877
+    ClientWidth = 1282
     TabOrder = 0
     object Panel2: TPanel
       Left = 0
@@ -49,20 +51,25 @@ object FrmConsBaixa: TFrmConsBaixa
         ParentFont = False
       end
       object EdtConsulta: TEdit
-        Left = 512
+        Left = 576
         Height = 23
         Top = 104
-        Width = 192
+        Width = 120
         TabOrder = 0
       end
       object CboStatus: TComboBox
-        Left = 376
+        Left = 408
         Height = 23
-        Top = 104
+        Top = 103
         Width = 128
         ItemHeight = 15
+        ItemIndex = 0
+        Items.Strings = (
+          'PENDENTE'
+          'EFETIVADO'
+        )
         TabOrder = 1
-        Text = 'Selecione à opção'
+        Text = 'PENDENTE'
       end
       object BtnSalvar: TSpeedButton
         Left = 456
@@ -986,7 +993,7 @@ object FrmConsBaixa: TFrmConsBaixa
         OnClick = BtnSairClick
       end
       object Label8: TLabel
-        Left = 48
+        Left = 24
         Height = 17
         Top = 56
         Width = 39
@@ -1002,11 +1009,11 @@ object FrmConsBaixa: TFrmConsBaixa
         ParentFont = False
       end
       object Label1: TLabel
-        Left = 376
+        Left = 408
         Height = 17
         Top = 80
-        Width = 86
-        Caption = 'Ativo/Inativo:'
+        Width = 126
+        Caption = 'Efetivado/Pendente:'
         Font.CharSet = ANSI_CHARSET
         Font.Height = -13
         Font.Pitch = fpVariable
@@ -1016,7 +1023,7 @@ object FrmConsBaixa: TFrmConsBaixa
         ParentFont = False
       end
       object Label2: TLabel
-        Left = 512
+        Left = 576
         Height = 17
         Top = 80
         Width = 66
@@ -1029,20 +1036,8 @@ object FrmConsBaixa: TFrmConsBaixa
         ParentColor = False
         ParentFont = False
       end
-      object EdtDataInicio: TMaskEdit
-        Left = 48
-        Height = 23
-        Top = 104
-        Width = 80
-        MaxLength = 10
-        TabOrder = 2
-        OnChange = EdtDataInicioChange
-        EditMask = '99/99/9999;1;_'
-        Text = '  /  /    '
-        SpaceChar = '_'
-      end
       object Label3: TLabel
-        Left = 48
+        Left = 24
         Height = 17
         Top = 80
         Width = 52
@@ -1054,17 +1049,6 @@ object FrmConsBaixa: TFrmConsBaixa
         Font.Style = [fsBold]
         ParentColor = False
         ParentFont = False
-      end
-      object EdtDataFim: TMaskEdit
-        Left = 152
-        Height = 23
-        Top = 104
-        Width = 80
-        MaxLength = 10
-        TabOrder = 3
-        EditMask = '99/99/9999;1;_'
-        Text = '  /  /    '
-        SpaceChar = '_'
       end
       object Label4: TLabel
         Left = 136
@@ -1080,7 +1064,7 @@ object FrmConsBaixa: TFrmConsBaixa
         ParentFont = False
       end
       object Label5: TLabel
-        Left = 240
+        Left = 272
         Height = 17
         Top = 80
         Width = 32
@@ -1093,14 +1077,19 @@ object FrmConsBaixa: TFrmConsBaixa
         ParentColor = False
         ParentFont = False
       end
-      object CboStatus1: TComboBox
-        Left = 240
+      object CboRecOuDes: TComboBox
+        Left = 272
         Height = 23
-        Top = 104
+        Top = 103
         Width = 128
         ItemHeight = 15
-        TabOrder = 4
-        Text = 'Selecione à opção'
+        ItemIndex = 0
+        Items.Strings = (
+          'RECEITA'
+          'DESPESA'
+        )
+        TabOrder = 2
+        Text = 'RECEITA'
       end
       object BtnSalvar1: TSpeedButton
         Left = 584
@@ -1615,35 +1604,35 @@ object FrmConsBaixa: TFrmConsBaixa
         Height = 23
         Top = 416
         Width = 136
-        TabOrder = 5
+        TabOrder = 3
       end
       object EdtCodFor: TEdit
         Left = 336
         Height = 23
         Top = 417
         Width = 136
-        TabOrder = 6
+        TabOrder = 4
       end
       object EdtValorOriginal: TEdit
         Left = 48
         Height = 23
         Top = 480
         Width = 112
-        TabOrder = 7
+        TabOrder = 5
       end
       object EdtValorJuros: TEdit
         Left = 192
         Height = 23
         Top = 480
         Width = 112
-        TabOrder = 8
+        TabOrder = 6
       end
       object EdtValorDesconto: TEdit
         Left = 338
         Height = 23
         Top = 480
         Width = 120
-        TabOrder = 9
+        TabOrder = 7
       end
       object EdtDataBaixa: TMaskEdit
         Left = 48
@@ -1651,7 +1640,7 @@ object FrmConsBaixa: TFrmConsBaixa
         Top = 417
         Width = 80
         MaxLength = 10
-        TabOrder = 10
+        TabOrder = 8
         EditMask = '99/99/9999;1;_'
         Text = '  /  /    '
         SpaceChar = '_'
@@ -1670,7 +1659,7 @@ object FrmConsBaixa: TFrmConsBaixa
         Font.Quality = fqDraft
         Font.Style = [fsBold]
         ParentFont = False
-        TabOrder = 11
+        TabOrder = 9
         object BtnAlterar: TRadioButton
           Left = 0
           Height = 19
@@ -2158,14 +2147,65 @@ object FrmConsBaixa: TFrmConsBaixa
           00FFFF3300FFFF3300FFFF3300FFFF5930FFFFBFAFFFFFFFFFFF
         }
       end
-      object DBGrid1: TDBGrid
-        Left = 48
+      object DBGPendente: TDBGrid
+        Left = 24
         Height = 136
         Top = 144
-        Width = 656
+        Width = 704
         Color = clWindow
-        Columns = <>
-        TabOrder = 12
+        Columns = <        
+          item
+            Title.Caption = 'CÓD'
+            Width = 31
+            FieldName = 'BAICODIGO'
+          end        
+          item
+            Title.Caption = 'CÓD FOR/CLI'
+            Width = 78
+            FieldName = 'CODIGOPES'
+          end        
+          item
+            Title.Caption = 'NOME DO FORNECEDOR/CLIENTE'
+            Width = 200
+            FieldName = 'PESNOME'
+          end        
+          item
+            Title.Caption = 'DOCUMENTO'
+            Width = 100
+            FieldName = 'DOCNOME'
+          end        
+          item
+            Title.Caption = 'N° DOCUMENTO'
+            Width = 95
+            FieldName = 'LANNUMERO_DOCUMENTO'
+          end        
+          item
+            Title.Caption = 'TIPO'
+            FieldName = 'TIPO'
+          end        
+          item
+            Title.Caption = 'STATUS'
+            FieldName = 'STATUS'
+          end        
+          item
+            Title.Caption = ' VENCIMENTO'
+            Width = 82
+            FieldName = 'BAIDATAVEN'
+          end        
+          item
+            Title.Caption = 'VALOR '
+            Width = 60
+            FieldName = 'BAIVALOR'
+          end        
+          item
+            Title.Caption = 'USUÁRIO'
+            Width = 75
+            FieldName = 'USUNOME'
+          end>
+        DataSource = DM.DSConsBaixaPen
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+        TabOrder = 10
+        Visible = False
       end
       object Label15: TLabel
         Left = 504
@@ -2181,8 +2221,155 @@ object FrmConsBaixa: TFrmConsBaixa
         Top = 416
         Width = 200
         ItemHeight = 15
-        TabOrder = 13
+        TabOrder = 11
         Text = 'Selecione a Conta Bancaria'
+      end
+      object DTDataInicial: TDateEdit
+        Left = 24
+        Height = 23
+        Top = 104
+        Width = 103
+        CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
+        DateOrder = doNone
+        ButtonWidth = 23
+        NumGlyphs = 1
+        MaxLength = 0
+        TabOrder = 12
+      end
+      object DTDataFinal: TDateEdit
+        Left = 160
+        Height = 23
+        Top = 104
+        Width = 103
+        CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
+        DateOrder = doNone
+        ButtonWidth = 23
+        NumGlyphs = 1
+        MaxLength = 0
+        TabOrder = 13
+      end
+      object SpeedButton1: TSpeedButton
+        Left = 544
+        Height = 22
+        Top = 103
+        Width = 23
+        OnClick = SpeedButton1Click
+      end
+      object DBGEfetivado: TDBGrid
+        Left = 24
+        Height = 140
+        Top = 144
+        Width = 704
+        Color = clWindow
+        Columns = <        
+          item
+            Title.Caption = 'CÓD'
+            Width = 31
+            FieldName = 'BAICODIGO'
+          end        
+          item
+            Title.Caption = 'CÓD FOR/CLI'
+            Width = 78
+            FieldName = 'CODIGOPES'
+          end        
+          item
+            Title.Caption = 'NOME DO FORNECEDOR/CLIENTE'
+            Width = 200
+            FieldName = 'PESNOME'
+          end        
+          item
+            Title.Caption = 'DOCUMENTO'
+            Width = 100
+            FieldName = 'DOCNOME'
+          end        
+          item
+            Title.Caption = 'N° DOCUMENTO'
+            Width = 95
+            FieldName = 'LANNUMERO_DOCUMENTO'
+          end        
+          item
+            Title.Caption = 'TIPO'
+            FieldName = 'TIPO'
+          end        
+          item
+            Title.Caption = 'STATUS'
+            FieldName = 'STATUS'
+          end        
+          item
+            Title.Caption = 'FORMA PGTO'
+            Width = 90
+            FieldName = 'FORNOME'
+          end        
+          item
+            Title.Caption = 'CÓD CONTA'
+            Width = 75
+            FieldName = 'CODIGOCON'
+          end        
+          item
+            Title.Caption = 'NOME DA CONTA'
+            Width = 110
+            FieldName = 'CONNOME'
+          end        
+          item
+            Title.Caption = 'AGÊNCIA'
+            Width = 57
+            FieldName = 'CONAGENCIA'
+          end        
+          item
+            Title.Caption = 'N° DA C/C '
+            Width = 67
+            FieldName = 'CONNUMERO_CONTA'
+          end        
+          item
+            Title.Caption = 'TIPO CONTA'
+            Width = 80
+            FieldName = 'TIPNOME'
+          end        
+          item
+            Title.Caption = 'DATA VENCIMENTO'
+            Width = 110
+            FieldName = 'BAIDATAVEN'
+          end        
+          item
+            Title.Caption = 'VALOR'
+            FieldName = 'BAIVALOR'
+          end        
+          item
+            Title.Caption = 'DATA DO PGTO'
+            Width = 85
+            FieldName = 'BAIDATAPGTO'
+          end        
+          item
+            Title.Caption = 'VALOR PAGO'
+            Width = 75
+            FieldName = 'BAIVALORPAGO'
+          end        
+          item
+            Title.Caption = 'MULTA E JUROS'
+            Width = 90
+            FieldName = 'BAIMULTA_JUROS'
+          end        
+          item
+            Title.Caption = 'DESCONTO'
+            Width = 70
+            FieldName = 'BAIDESCONTO'
+          end        
+          item
+            Title.Caption = 'USUÁRIO'
+            Width = 75
+            FieldName = 'USUNOME'
+          end>
+        DataSource = DM.DSConsBaixaEfet
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+        TabOrder = 14
+        Visible = False
+      end
+      object SpeedButton2: TSpeedButton
+        Left = 704
+        Height = 22
+        Top = 103
+        Width = 23
+        OnClick = SpeedButton2Click
       end
     end
   end

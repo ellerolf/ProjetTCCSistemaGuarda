@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, MaskEdit,
-  StdCtrls, Buttons, DBGrids;
+  StdCtrls, Buttons, DBGrids, EditBtn,UModulo;
 
 type
 
@@ -21,8 +21,11 @@ type
     BtnSalvar1: TSpeedButton;
     CboConta: TComboBox;
     CboStatus: TComboBox;
-    CboStatus1: TComboBox;
-    DBGrid1: TDBGrid;
+    CboRecOuDes: TComboBox;
+    DBGEfetivado: TDBGrid;
+    DTDataInicial: TDateEdit;
+    DTDataFinal: TDateEdit;
+    DBGPendente: TDBGrid;
 
     EdtCodLanca: TEdit;
     EdtCodFor: TEdit;
@@ -45,14 +48,18 @@ type
     Label6: TLabel;
     Label7: TLabel;
     Label8: TLabel;
-    EdtDataInicio: TMaskEdit;
-    EdtDataFim: TMaskEdit;
     Label9: TLabel;
     Panel1: TPanel;
     Panel2: TPanel;
+    SpeedButton1: TSpeedButton;
+    SpeedButton2: TSpeedButton;
     procedure BtnSairClick(Sender: TObject);
     procedure EdtDataInicioChange(Sender: TObject);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormResize(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
   private
 
   public
@@ -73,10 +80,173 @@ begin
 
 end;
 
+procedure TFrmConsBaixa.FormClose(Sender: TObject; var CloseAction: TCloseAction
+  );
+begin
+   dm.ZQConsBaixaPen.Active:=False;
+   dm.ZQConsBaixaEfet.Active:=False;
+end;
+
 procedure TFrmConsBaixa.FormResize(Sender: TObject);
 begin
   Panel2.Left := (Panel1.ClientWidth div 2) - (Panel2.Width div 2);
   Panel2.Top := (Panel1.ClientHeight div 2) - (Panel2.Height div 2);
+end;
+
+procedure TFrmConsBaixa.FormShow(Sender: TObject);
+begin
+  dm.ZQConsBaixaPen.Active:=True;
+  dm.ZQConsBaixaEfet.Active:=True;
+end;
+
+
+
+procedure TFrmConsBaixa.SpeedButton1Click(Sender: TObject);
+begin
+  //CÓDIGO ABAIXO É PARA PESQUISAR APENAS POR DATA, TIPO DE RECEITA E STATUS
+  if (DTDataInicial.Date=NullDate) or (DTDataFinal.Date=NullDate) then
+  begin
+    ShowMessage('É necessário preencher o período no qual deseja pesquisar');
+  end
+  else
+  begin
+      //receita + pendente
+    if (CboRecOuDes.ItemIndex=0) and (CboStatus.ItemIndex=0) then
+    begin
+    with dm.ZQConsBaixaPen do
+      begin
+        Close ;
+        sql.Clear;
+        SQL.Add('SELECT * FROM vwmostrabaixapen where LANTIPO=1 AND BAISTATUS=0 AND BAIDATAVEN BETWEEN :dtinicial and :dtfinal');
+        ParamByName('dtinicial').Value:=FormatDateTime('yyyy-mm-dd',DTDataInicial.Date);
+        ParamByName('dtfinal').Value:=FormatDateTime('yyyy-mm-dd',DTDataFinal.Date);
+        Open;
+        DBGPendente.Visible:=True;
+        DBGEfetivado.Visible:=False;
+        end;
+    End;
+      //despesa + pendente
+    if (CboRecOuDes.ItemIndex=1) and (CboStatus.ItemIndex=0) then
+    begin
+    with dm.ZQConsBaixaPen do
+      begin
+        Close ;
+        sql.Clear;
+        SQL.Add('SELECT * FROM vwmostrabaixapen where LANTIPO=0 AND BAISTATUS=0 AND BAIDATAVEN BETWEEN :dtinicial and :dtfinal');
+        ParamByName('dtinicial').Value:=FormatDateTime('yyyy-mm-dd',DTDataInicial.Date);
+        ParamByName('dtfinal').Value:=FormatDateTime('yyyy-mm-dd',DTDataFinal.Date);
+        Open;
+        DBGPendente.Visible:=True;
+        DBGEfetivado.Visible:=False;
+        end;
+    End;
+       //Receita + efetivado
+    if (CboRecOuDes.ItemIndex=0) and (CboStatus.ItemIndex=1) then
+    begin
+    with dm.ZQConsBaixaEfet do
+      begin
+        Close ;
+        sql.Clear;
+        SQL.Add('SELECT * FROM vwmostrabaixaefet where LANTIPO=1 AND BAISTATUS=1 AND BAIDATAVEN BETWEEN :dtinicial and :dtfinal');
+        ParamByName('dtinicial').Value:=FormatDateTime('yyyy-mm-dd',DTDataInicial.Date);
+        ParamByName('dtfinal').Value:=FormatDateTime('yyyy-mm-dd',DTDataFinal.Date);
+        Open;
+        DBGEfetivado.Visible:=True;
+        DBGPendente.Visible:=False;
+      end;
+    End;
+       //Despesa + efetivado
+    if (CboRecOuDes.ItemIndex=1) and (CboStatus.ItemIndex=1) then
+    Begin
+     with dm.ZQConsBaixaEfet do
+       begin
+        Close ;
+        sql.Clear;
+        SQL.Add('SELECT * FROM vwmostrabaixaefet where LANTIPO=0 AND BAISTATUS=1 AND BAIDATAVEN BETWEEN :dtinicial and :dtfinal');
+        ParamByName('dtinicial').Value:=FormatDateTime('yyyy-mm-dd',DTDataInicial.Date);
+        ParamByName('dtfinal').Value:=FormatDateTime('yyyy-mm-dd',DTDataFinal.Date);
+        Open;
+        DBGEfetivado.Visible:=True;
+        DBGPendente.Visible:=False;
+       end;
+     End;
+  End;
+end;
+
+procedure TFrmConsBaixa.SpeedButton2Click(Sender: TObject);
+begin
+   //CÓDIGO ABAIXO É PARA PESQUISAR POR NOME
+   if (DTDataInicial.Date=NullDate) or (DTDataFinal.Date=NullDate) then
+  begin
+    ShowMessage('É necessário preencher o período no qual deseja pesquisar');
+  end
+  else
+  begin
+      //receita + pendente
+    if (CboRecOuDes.ItemIndex=0) and (CboStatus.ItemIndex=0) then
+    begin
+    with dm.ZQConsBaixaPen do
+      begin
+        Close ;
+        sql.Clear;
+        SQL.Add('SELECT * FROM vwmostrabaixapen where LANTIPO=1 AND BAISTATUS=0 AND BAIDATAVEN BETWEEN :dtinicial and :dtfinal AND PESNOME LIKE'+QuotedStr('%'+EdtConsulta.Text+'%'));
+        ParamByName('dtinicial').Value:=FormatDateTime('yyyy-mm-dd',DTDataInicial.Date);
+        ParamByName('dtfinal').Value:=FormatDateTime('yyyy-mm-dd',DTDataFinal.Date);
+        Open;
+        DBGPendente.Visible:=True;
+        DBGEfetivado.Visible:=False;
+        EdtConsulta.Clear;
+        end;
+    End;
+      //despesa + pendente
+    if (CboRecOuDes.ItemIndex=1) and (CboStatus.ItemIndex=0) then
+    begin
+    with dm.ZQConsBaixaPen do
+      begin
+        Close ;
+        sql.Clear;
+        SQL.Add('SELECT * FROM vwmostrabaixapen where LANTIPO=0 AND BAISTATUS=0 AND BAIDATAVEN BETWEEN :dtinicial and :dtfinal AND PESNOME LIKE'+QuotedStr('%'+EdtConsulta.Text+'%'));
+        ParamByName('dtinicial').Value:=FormatDateTime('yyyy-mm-dd',DTDataInicial.Date);
+        ParamByName('dtfinal').Value:=FormatDateTime('yyyy-mm-dd',DTDataFinal.Date);
+        Open;
+        DBGPendente.Visible:=True;
+        DBGEfetivado.Visible:=False;
+        EdtConsulta.Clear;
+        end;
+    End;
+       //Receita + efetivado
+    if (CboRecOuDes.ItemIndex=0) and (CboStatus.ItemIndex=1) then
+    begin
+    with dm.ZQConsBaixaEfet do
+      begin
+        Close ;
+        sql.Clear;
+        SQL.Add('SELECT * FROM vwmostrabaixaefet where LANTIPO=1 AND BAISTATUS=1 AND BAIDATAVEN BETWEEN :dtinicial and :dtfinal AND PESNOME LIKE'+QuotedStr('%'+EdtConsulta.Text+'%'));
+        ParamByName('dtinicial').Value:=FormatDateTime('yyyy-mm-dd',DTDataInicial.Date);
+        ParamByName('dtfinal').Value:=FormatDateTime('yyyy-mm-dd',DTDataFinal.Date);
+        Open;
+        DBGEfetivado.Visible:=True;
+        DBGPendente.Visible:=False;
+        EdtConsulta.Clear;
+      end;
+    End;
+       //Despesa + efetivado
+    if (CboRecOuDes.ItemIndex=1) and (CboStatus.ItemIndex=1) then
+    Begin
+     with dm.ZQConsBaixaEfet do
+       begin
+        Close ;
+        sql.Clear;
+        SQL.Add('SELECT * FROM vwmostrabaixaefet where LANTIPO=0 AND BAISTATUS=1 AND BAIDATAVEN BETWEEN :dtinicial and :dtfinal AND PESNOME LIKE'+QuotedStr('%'+EdtConsulta.Text+'%'));
+        ParamByName('dtinicial').Value:=FormatDateTime('yyyy-mm-dd',DTDataInicial.Date);
+        ParamByName('dtfinal').Value:=FormatDateTime('yyyy-mm-dd',DTDataFinal.Date);
+        Open;
+        DBGEfetivado.Visible:=True;
+        DBGPendente.Visible:=False;
+        EdtConsulta.Clear;
+       end;
+     End;
+  End;
 end;
 
 procedure TFrmConsBaixa.BtnSairClick(Sender: TObject);
