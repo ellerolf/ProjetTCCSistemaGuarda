@@ -117,7 +117,13 @@ begin
   begin
     ShowMessage('É necessário preencher o período no qual deseja pesquisar');
   end
-  else
+  else if (DTDataFinal.Date<DTDataInicial.Date) then
+  begin
+    ShowMessage('Período pesquisado não é vadido, digite novamente');
+    DTDataFinal.Clear;
+    DTDataInicial.Clear;
+  end
+  Else
   begin
       //receita + pendente
     if (CboRecOuDes.ItemIndex=0) and (CboStatus.ItemIndex=0) then
@@ -189,7 +195,13 @@ begin
   begin
     ShowMessage('É necessário preencher o período no qual deseja pesquisar');
   end
-  else
+  else if (DTDataFinal.Date<DTDataInicial.Date) then
+  begin
+    ShowMessage('Período pesquisado não é vadido, digite novamente');
+    DTDataFinal.Clear;
+    DTDataInicial.Clear;
+  end
+  Else
   begin
       //receita + pendente
     if (CboRecOuDes.ItemIndex=0) and (CboStatus.ItemIndex=0) then
@@ -260,6 +272,11 @@ end;
 
 procedure TFrmConsBaixa.BtnSairClick(Sender: TObject);
 begin
+  //Validação para limpar os campos ao sair da tela.
+  DTDataInicial.Clear;
+  DTDataFinal.Clear;
+  DBGEfetivado.Visible:=False;
+  DBGPendente.Visible:=False;
   Close;
 end;
 
@@ -288,6 +305,7 @@ begin
     FrmCadLancamento.CadOuAltLanDatValor:='u';
     FrmCadParcela.LblValor.Caption:=FormatFloat('R$ 0.00',valorDoLancamento);
     FrmCadParcela.recebValorLan:=valorDoLancamento;
+    //código abaixo é p/ quando abrir tela de parcelas, só aparece as parcelas refente o lançamento.
     dm.ZQConsLanData.Close;
     dm.ZQConsLanData.SQL.Clear;
     dm.ZQConsLanData.SQL.add('select * from baixa where codigolan='+IntToStr(codigoDoLancamento));

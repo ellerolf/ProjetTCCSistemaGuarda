@@ -293,7 +293,13 @@ begin
       dm.ZQConsLancamentos.Last;
       codigoDoLanc:=DM.ZQConsLancamentosLANCODIGO.AsInteger;
 
-
+       //Foi necessário esse código abaixo pq quando eu abri consulta de pagto, e depois ia fazer um lançamento
+       //a dbgrid iniciava com os dados da consulta feita anteriormente, isso acontece pq uso a mesma querry.
+       //o código abaixo faz ela começar em branco
+       dm.ZQConsLanData.Close;
+       dm.ZQConsLanData.SQL.Clear;
+       dm.ZQConsLanData.SQL.add('select * from baixa where codigolan='+IntToStr(FrmCadLancamento.codigoDoLanc));
+       dm.ZQConsLanData.Open;
 
       ShowMessage('Agora efetue o cadastro das parcelas');
       FrmCadParcela.ShowModal;

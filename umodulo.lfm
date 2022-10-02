@@ -1,10 +1,10 @@
 object DM: TDM
   OnCreate = DataModuleCreate
   OldCreateOrder = False
-  Height = 613
+  Height = 659
   HorizontalOffset = 78
   VerticalOffset = 0
-  Width = 1238
+  Width = 1131
   object ZFinanceiro: TZConnection
     ControlsCodePage = cCP_UTF8
     AutoEncodeStrings = True

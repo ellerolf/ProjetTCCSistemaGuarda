@@ -198,6 +198,7 @@ end;
 
 procedure TFrmCadParcela.SpeedButton3Click(Sender: TObject);
 begin
+  //sair para quando o usuário está efetuando o cadastro das parcelas, a partir da tela de lançamento
   if (FrmCadLancamento.CadOuAltLanDatValor='i') then
      begin
     if (restante>=0)  then
@@ -221,6 +222,19 @@ begin
         end;
 
      end;
+  //código abaixo é quando o usuário já efetuou o cadastro e quer fazer alguma alteração nas parcelas
+    if (FrmCadLancamento.CadOuAltLanDatValor='u') then
+     begin
+      if (restante>0)  then
+        begin
+             ShowMessage('Ainda existe um valor a ser apropriado em alguma parcela, verefique o valor restante e faça o lançamento');
+        end
+      else
+      begin
+          FrmCadParcela.Close;
+      end;
+     end;
+
 end;
 
 procedure TFrmCadParcela.SpeedButton5Click(Sender: TObject);
@@ -251,6 +265,24 @@ begin
   //delete quando usuário quer fazer alteração após ter feito lançamento
   if (FrmCadLancamento.CadOuAltLanDatValor='u')then
    begin
+    //código abaixo é para validar se a parcela já foi baixada, se for não pode excluir.
+    dm.ZQConsLanData.close;
+    dm.ZQConsLanData.SQL.Clear;
+    dm.ZQConsLanData.SQL.Add('select * from baixa where baistatus=1 and baicodigo='+IntToStr(delparcela));
+    dm.ZQConsLanData.Open;
+
+    if(dm.ZQConsLanData.RecordCount=1) then
+    begin
+         //código abaixo é pq a consulta de cima altera a dbgrid, a consulta de baixo volta ao normal
+         dm.ZQConsLanData.Close;
+         dm.ZQConsLanData.SQL.Clear;
+         dm.ZQConsLanData.SQL.add('select * from baixa where codigolan='+IntToStr(FrmConsBaixa.codigoDoLancamento));
+         dm.ZQConsLanData.Open;
+
+         ShowMessage('Está parcela já foi efetivada, altere ela para pendente, para depois fazer a alteração');
+    end
+    else
+    begin
     if (restante<>recebValorLan) then
         begin
                restante:=restante+valParcelaDel;
@@ -269,6 +301,8 @@ begin
         begin
             ShowMessage('Não existe valor a ser deletado');
         end;
+   end;
+
    end;
 end;
 
