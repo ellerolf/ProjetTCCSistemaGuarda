@@ -37,6 +37,7 @@ type
     procedure EdtValorChange(Sender: TObject);
     procedure EdtValorExit(Sender: TObject);
     procedure EdtValorKeyPress(Sender: TObject; var Key: char);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormKeyPress(Sender: TObject; var Key: char);
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
@@ -49,9 +50,14 @@ type
     //Variável abaixo recebe o valor da parcela que será deletada, que será usado
     //para adicionar no restante.
     valParcelaDel:Real;
+
   public
+
     valor:Real;
     restante:Real;
+        //Essa variável recebe o valor do lançamento, será usada para quando for UPDATE,
+    //no lugar da variável (valorDoDocumento)do form cadlancamento.
+    recebValorLan:real;
 
   end;
 
@@ -64,111 +70,206 @@ implementation
 
 { TFrmCadParcela }
 
-uses UModulo,UEntrarUsuario,uCadLancamento;
+uses UModulo,UEntrarUsuario,uCadLancamento,UConsBaixa;
 
 procedure TFrmCadParcela.SpeedButton1Click(Sender: TObject);
 begin
-  IF (DtDataParcela.Text='') OR (EdtValor.Text='') OR (EdtValor.Text='0,00') THEN
-  BEGIN
-       ShowMessage('Está faltando lançar algum dos campos');
-  end
-  else if (EdtValor.Text='0') then
+  //Insert quando está cadastrando lançamento
+
+  if (FrmCadLancamento.CadOuAltLanDatValor='i') then
   begin
-       ShowMessage('Não lançar parcela de valor zero');
-  end
-  else
-  begin
-      valor:=StrToFloat(EdtValor.Text);
+    IF (DtDataParcela.Text='') OR (EdtValor.Text='') OR (EdtValor.Text='0,00') THEN
+    BEGIN
+         ShowMessage('Está faltando lançar algum dos campos');
+    end
+    else if (EdtValor.Text='0') then
+    begin
+         ShowMessage('Não lançar parcela de valor zero');
+    end
+    else
+    begin
+        valor:=StrToFloat(EdtValor.Text);
 
-      if (valor>restante) then
-          begin
-               ShowMessage('VALOR INCORRETO, verifique se o valor da parcela está correto.');
-          END
-          ELSE
-          begin
-                restante:=restante-valor;
-                LblValorRestante.Caption:=FormatFloat('R$ 0.00',restante);
+        if (valor>restante) then
+            begin
+                 ShowMessage('VALOR INCORRETO, verifique se o valor da parcela está correto.');
+            END
+            ELSE
+            begin
+                  restante:=restante-valor;
+                  LblValorRestante.Caption:=FormatFloat('R$ 0.00',restante);
 
 
-                dm.ZQCadLanData.Params.ParamByName('pCODIGOLAN').Value:=FrmCadLancamento.codigoDoLanc;
-                dm.ZQCadLanData.Params.ParamByName('pBAIDATAVEN').AsString:=FormatDateTime('yyyy-mm-dd',DtDataParcela.Date);
-                EdtValor.Text :=StringReplace(EdtValor.Text, ',', '.', [rfReplaceAll]);
-                dm.ZQCadLanData.Params.ParamByName('pBAIVALOR').Value:=EdtValor.Text;
-                dm.ZQCadLanData.Params.ParamByName('pCODIGOUSU').Value:=FrmEntrarUsuario.indentidade;
-                dm.ZQCadLanData.ExecSQL;
+                  dm.ZQCadLanData.Params.ParamByName('pCODIGOLAN').Value:=FrmCadLancamento.codigoDoLanc;
+                  dm.ZQCadLanData.Params.ParamByName('pBAIDATAVEN').AsString:=FormatDateTime('yyyy-mm-dd',DtDataParcela.Date);
+                  EdtValor.Text :=StringReplace(EdtValor.Text, ',', '.', [rfReplaceAll]);
+                  dm.ZQCadLanData.Params.ParamByName('pBAIVALOR').Value:=EdtValor.Text;
+                  dm.ZQCadLanData.Params.ParamByName('pCODIGOUSU').Value:=FrmEntrarUsuario.indentidade;
+                  dm.ZQCadLanData.ExecSQL;
 
-                dm.ZQConsLanData.Close;
-                dm.ZQConsLanData.SQL.Clear;
-                dm.ZQConsLanData.SQL.add('select * from baixa where codigolan='+IntToStr(FrmCadLancamento.codigoDoLanc));
-                dm.ZQConsLanData.Open;
+                  dm.ZQConsLanData.Close;
+                  dm.ZQConsLanData.SQL.Clear;
+                  dm.ZQConsLanData.SQL.add('select * from baixa where codigolan='+IntToStr(FrmCadLancamento.codigoDoLanc));
+                  dm.ZQConsLanData.Open;
 
-                //após o lançamento da data e valor, o código abaixo faz a limpeza dos campos.
-                EdtValor.Clear;
-                DtDataParcela.Clear;
-          end;
+                  //após o lançamento da data e valor, o código abaixo faz a limpeza dos campos.
+                  EdtValor.Clear;
+                  DtDataParcela.Clear;
+            end;
+    end;
   end;
+  //insert quando usuário quer fazer alteração após ter feito lançamento
+    if (FrmCadLancamento.CadOuAltLanDatValor='u') then
+  begin
+    IF (DtDataParcela.Text='') OR (EdtValor.Text='') OR (EdtValor.Text='0,00') THEN
+    BEGIN
+         ShowMessage('Está faltando lançar algum dos campos');
+    end
+    else if (EdtValor.Text='0') then
+    begin
+         ShowMessage('Não lançar parcela de valor zero');
+    end
+    else
+    begin
+        valor:=StrToFloat(EdtValor.Text);
+
+        if (valor>restante) then
+            begin
+                 ShowMessage('VALOR INCORRETO, verifique se o valor da parcela está correto.');
+            END
+            ELSE
+            begin
+                  restante:=restante-valor;
+                  LblValorRestante.Caption:=FormatFloat('R$ 0.00',restante);
+
+
+                  dm.ZQCadLanData.Params.ParamByName('pCODIGOLAN').Value:=FrmConsBaixa.codigoDoLancamento;
+                  dm.ZQCadLanData.Params.ParamByName('pBAIDATAVEN').AsString:=FormatDateTime('yyyy-mm-dd',DtDataParcela.Date);
+                  EdtValor.Text :=StringReplace(EdtValor.Text, ',', '.', [rfReplaceAll]);
+                  dm.ZQCadLanData.Params.ParamByName('pBAIVALOR').Value:=EdtValor.Text;
+                  dm.ZQCadLanData.Params.ParamByName('pCODIGOUSU').Value:=FrmEntrarUsuario.indentidade;
+                  dm.ZQCadLanData.ExecSQL;
+
+                  dm.ZQConsLanData.Close;
+                  dm.ZQConsLanData.SQL.Clear;
+                  dm.ZQConsLanData.SQL.add('select * from baixa where codigolan='+IntToStr(FrmConsBaixa.codigoDoLancamento));
+                  dm.ZQConsLanData.Open;
+
+                  //após o lançamento da data e valor, o código abaixo faz a limpeza dos campos.
+                  EdtValor.Clear;
+                  DtDataParcela.Clear;
+            end;
+    end;
+  end;
+
 end;
 
 procedure TFrmCadParcela.SpeedButton2Click(Sender: TObject);
 begin
- if(restante>0) then
-     begin
-          ShowMessage('Ainda está faltando lançamentos, verifique o valor restante');
-     end
-     Else
-     begin
-          ShowMessage('cadastro efetuado com sucesso');
-          Close;
+    ////sair quando usuário quer sair após ter feito lançamento
+  if (FrmCadLancamento.CadOuAltLanDatValor='i') then
+  begin
+    if(restante>0) then
+    begin
+      ShowMessage('Ainda está faltando lançamentos, verifique o valor restante');
+    end
+    Else
+    begin
+      ShowMessage('cadastro efetuado com sucesso');
+      Close;
+    end;
+  end;
 
- end;
+  //sair quando usuário quer sair após ter feito alteração nas parcelas
+  if (FrmCadLancamento.CadOuAltLanDatValor='u') then
+  begin
+    if(restante>0) then
+    begin
+      ShowMessage('Ainda está faltando parcelas, verifique o valor restante');
+    end
+    Else
+    begin
+      ShowMessage('Alteração efetuada com sucesso');
+      Close;
+    end;
+  end;
 
 end;
 
 procedure TFrmCadParcela.SpeedButton3Click(Sender: TObject);
 begin
+  if (FrmCadLancamento.CadOuAltLanDatValor='i') then
+     begin
+    if (restante>=0)  then
+        begin
+            if MessageDlg('ATENÇÃO DESEJA CANCELAR ESTA OPERAÇÃO','Você perderá todos os dados do lançamento e parcelas lançadas',mtInformation,[mbOk,mbCancel],0)=mrOk then
+            BEGIN
+              DM.ZQDelDataLan.Params.ParamByName('PCODIGOLAN').Value:=FrmCadLancamento.codigoDoLanc;
+              dm.ZQDelDataLan.ExecSQL;
 
-  if (restante>=0)  then
-      begin
-             if MessageDlg('ATENÇÃO DESEJA CANCELAR ESTA OPERAÇÃO','Você perderá todos os dados do lançamento e parcelas lançadas',mtInformation,[mbOk,mbCancel],0)=mrOk then
-                 BEGIN
-                DM.ZQDelDataLan.Params.ParamByName('PCODIGOLAN').Value:=FrmCadLancamento.codigoDoLanc;
-                dm.ZQDelDataLan.ExecSQL;
+              dm.ZQDelLancamentos.Params.ParamByName('PLANCODIGO').Value:=FrmCadLancamento.codigoDoLanc;
+              DM.ZQDelLancamentos.ExecSQL;
 
-                dm.ZQDelLancamentos.Params.ParamByName('PLANCODIGO').Value:=FrmCadLancamento.codigoDoLanc;
-                DM.ZQDelLancamentos.ExecSQL;
+              dm.ZQConsLanData.Open;
+              dm.ZQConsLanData.Close;
+              Close;
+            end
+            ELSE
+            BEGIN
+                  Abort;
+            end;
+        end;
 
-                dm.ZQConsLanData.Open;
-                dm.ZQConsLanData.Close;
-                Close;
-             end
-           ELSE
-           BEGIN
-               Abort;
-           end;
-      end;
+     end;
 end;
 
 procedure TFrmCadParcela.SpeedButton5Click(Sender: TObject);
 begin
-  if (restante<>FrmCadLancamento.valorDoDocumento) then
-      begin
-             restante:=restante+valParcelaDel;
-             LblValorRestante.Caption:=FormatFloat('R$ 0.00',restante);
-             dm.ZQDelParcEspecif.Params.ParamByName('PBAICODIGO').Value:=delparcela;
-             dm.ZQDelParcEspecif.ExecSQL;
-             //LIMPANDO AS VARIÁVEIS
-             valParcelaDel:=0;
-             delparcela:=0;
-             delparcela:=0;
+  //delete quando está cadastrando lançamento
+  if (FrmCadLancamento.CadOuAltLanDatValor='i')then
+   begin
+    if (restante<>FrmCadLancamento.valorDoDocumento) then
+        begin
+               restante:=restante+valParcelaDel;
+               LblValorRestante.Caption:=FormatFloat('R$ 0.00',restante);
+               dm.ZQDelParcEspecif.Params.ParamByName('PBAICODIGO').Value:=delparcela;
+               dm.ZQDelParcEspecif.ExecSQL;
+               //LIMPANDO AS VARIÁVEIS
+               valParcelaDel:=0;
+               delparcela:=0;
+               delparcela:=0;
 
-             dm.ZQConsLanData.Close;
-             dm.ZQConsLanData.Open;
-      end
-      else
-      begin
-          ShowMessage('Não existe valor a ser deletado');
-      end;
+               dm.ZQConsLanData.Close;
+               dm.ZQConsLanData.Open;
+        end
+        else
+        begin
+            ShowMessage('Não existe valor a ser deletado');
+        end;
+   end;
 
+  //delete quando usuário quer fazer alteração após ter feito lançamento
+  if (FrmCadLancamento.CadOuAltLanDatValor='u')then
+   begin
+    if (restante<>recebValorLan) then
+        begin
+               restante:=restante+valParcelaDel;
+               LblValorRestante.Caption:=FormatFloat('R$ 0.00',restante);
+               dm.ZQDelParcEspecif.Params.ParamByName('PBAICODIGO').Value:=delparcela;
+               dm.ZQDelParcEspecif.ExecSQL;
+               //LIMPANDO AS VARIÁVEIS
+               valParcelaDel:=0;
+               delparcela:=0;
+               delparcela:=0;
+
+               dm.ZQConsLanData.Close;
+               dm.ZQConsLanData.Open;
+        end
+        else
+        begin
+            ShowMessage('Não existe valor a ser deletado');
+        end;
+   end;
 end;
 
 procedure TFrmCadParcela.EdtValorChange(Sender: TObject);
@@ -184,6 +285,74 @@ end;
 procedure TFrmCadParcela.EdtValorKeyPress(Sender: TObject; var Key: char);
 begin
  Key := Simpl.SoValor(Key);
+end;
+
+procedure TFrmCadParcela.FormClose(Sender: TObject;
+  var CloseAction: TCloseAction);
+begin
+    if (FrmCadLancamento.CadOuAltLanDatValor='u') then
+    begin
+       //receita + pendente
+      if (FrmConsBaixa.CboRecOuDes.ItemIndex=0) and (FrmConsBaixa.CboStatus.ItemIndex=0) then
+      begin
+      with dm.ZQConsBaixaPen do
+        begin
+          Close ;
+          sql.Clear;
+          SQL.Add('SELECT * FROM vwmostrabaixapen where LANTIPO=1 AND BAISTATUS=0 AND BAIDATAVEN BETWEEN :dtinicial and :dtfinal');
+          ParamByName('dtinicial').Value:=FormatDateTime('yyyy-mm-dd',FrmConsBaixa.DTDataInicial.Date);
+          ParamByName('dtfinal').Value:=FormatDateTime('yyyy-mm-dd',FrmConsBaixa.DTDataFinal.Date);
+          Open;
+          FrmConsBaixa.DBGPendente.Visible:=True;
+          FrmConsBaixa.DBGEfetivado.Visible:=False;
+          end;
+      End;
+        //despesa + pendente
+      if (FrmConsBaixa.CboRecOuDes.ItemIndex=1) and (FrmConsBaixa.CboStatus.ItemIndex=0) then
+      begin
+      with dm.ZQConsBaixaPen do
+        begin
+          Close ;
+          sql.Clear;
+          SQL.Add('SELECT * FROM vwmostrabaixapen where LANTIPO=0 AND BAISTATUS=0 AND BAIDATAVEN BETWEEN :dtinicial and :dtfinal');
+          ParamByName('dtinicial').Value:=FormatDateTime('yyyy-mm-dd',FrmConsBaixa.DTDataInicial.Date);
+          ParamByName('dtfinal').Value:=FormatDateTime('yyyy-mm-dd',FrmConsBaixa.DTDataFinal.Date);
+          Open;
+          FrmConsBaixa.DBGPendente.Visible:=True;
+          FrmConsBaixa.DBGEfetivado.Visible:=False;
+          end;
+      End;
+         //Receita + efetivado
+      if (FrmConsBaixa.CboRecOuDes.ItemIndex=0) and (FrmConsBaixa.CboStatus.ItemIndex=1) then
+      begin
+      with dm.ZQConsBaixaEfet do
+        begin
+          Close ;
+          sql.Clear;
+          SQL.Add('SELECT * FROM vwmostrabaixaefet where LANTIPO=1 AND BAISTATUS=1 AND BAIDATAVEN BETWEEN :dtinicial and :dtfinal');
+          ParamByName('dtinicial').Value:=FormatDateTime('yyyy-mm-dd',FrmConsBaixa.DTDataInicial.Date);
+          ParamByName('dtfinal').Value:=FormatDateTime('yyyy-mm-dd',FrmConsBaixa.DTDataFinal.Date);
+          Open;
+          FrmConsBaixa.DBGEfetivado.Visible:=True;
+          FrmConsBaixa.DBGPendente.Visible:=False;
+        end;
+      End;
+         //Despesa + efetivado
+      if (FrmConsBaixa.CboRecOuDes.ItemIndex=1) and (FrmConsBaixa.CboStatus.ItemIndex=1) then
+      Begin
+       with dm.ZQConsBaixaEfet do
+         begin
+          Close ;
+          sql.Clear;
+          SQL.Add('SELECT * FROM vwmostrabaixaefet where LANTIPO=0 AND BAISTATUS=1 AND BAIDATAVEN BETWEEN :dtinicial and :dtfinal');
+          ParamByName('dtinicial').Value:=FormatDateTime('yyyy-mm-dd',FrmConsBaixa.DTDataInicial.Date);
+          ParamByName('dtfinal').Value:=FormatDateTime('yyyy-mm-dd',FrmConsBaixa.DTDataFinal.Date);
+          Open;
+          FrmConsBaixa.DBGEfetivado.Visible:=True;
+          FrmConsBaixa.DBGPendente.Visible:=False;
+         end;
+       End;
+    end;
 end;
 
 procedure TFrmCadParcela.FormKeyPress(Sender: TObject; var Key: char);

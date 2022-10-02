@@ -1,12 +1,12 @@
 object FrmMenu: TFrmMenu
   Left = -8
-  Height = 905
+  Height = 788
   Top = -8
-  Width = 1434
+  Width = 1386
   BorderIcons = []
   Caption = 'Menu'
-  ClientHeight = 882
-  ClientWidth = 1434
+  ClientHeight = 749
+  ClientWidth = 1370
   Color = 16510433
   OnClose = FormClose
   OnCreate = FormCreate
@@ -16,11 +16,11 @@ object FrmMenu: TFrmMenu
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 842
+    Height = 709
     Top = 40
     Width = 184
     Align = alLeft
-    ClientHeight = 842
+    ClientHeight = 709
     ClientWidth = 184
     Color = 16242363
     Font.CharSet = ANSI_CHARSET
@@ -11017,10 +11017,10 @@ object FrmMenu: TFrmMenu
     Left = 0
     Height = 40
     Top = 0
-    Width = 1434
+    Width = 1370
     Align = alTop
     ClientHeight = 40
-    ClientWidth = 1434
+    ClientWidth = 1370
     Color = 13238272
     ParentColor = False
     TabOrder = 1
@@ -13174,12 +13174,12 @@ object FrmMenu: TFrmMenu
   end
   object PnChama: TPanel
     Left = 184
-    Height = 842
+    Height = 709
     Top = 40
-    Width = 1250
+    Width = 1186
     Align = alClient
-    ClientHeight = 842
-    ClientWidth = 1250
+    ClientHeight = 709
+    ClientWidth = 1186
     Color = 16577259
     ParentColor = False
     TabOrder = 2
@@ -13187,9 +13187,9 @@ object FrmMenu: TFrmMenu
     OnClick = PnChamaClick
     object Image1: TImage
       Left = 1
-      Height = 840
+      Height = 707
       Top = 1
-      Width = 1248
+      Width = 1184
       Align = alClient
       Center = True
       Picture.Data = {

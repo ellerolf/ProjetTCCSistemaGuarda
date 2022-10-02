@@ -6,14 +6,14 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, MaskEdit,
-  StdCtrls, Buttons, DBGrids, EditBtn,UModulo;
+  StdCtrls, Buttons, DBGrids, EditBtn,UModulo,uCadLancamento,UCadPagamento;
 
 type
 
   { TFrmConsBaixa }
 
   TFrmConsBaixa = class(TForm)
-    BtnAlterar: TRadioButton;
+    BtnAlterarstat: TRadioButton;
     BtnAlterar1: TSpeedButton;
     BtnPagar: TRadioButton;
     BtnSair: TSpeedButton;
@@ -53,7 +53,11 @@ type
     Panel2: TPanel;
     SpeedButton1: TSpeedButton;
     SpeedButton2: TSpeedButton;
+    BtnAlterar: TSpeedButton;
+    procedure BtnAlterarClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
+    procedure DBGEfetivadoCellClick(Column: TColumn);
+    procedure DBGPendenteCellClick(Column: TColumn);
     procedure EdtDataInicioChange(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormResize(Sender: TObject);
@@ -63,7 +67,12 @@ type
   private
 
   public
-
+    //Essa variável recebe o id da parcela (baicodigo)
+    codigoDaParcela:Integer;
+    //Essa variável recebe o número do lançamento que se refere determinada parcela
+    codigoDoLancamento:Integer;
+    //essa variável recebe o valor do da parcela
+    valorDoLancamento:real;
   end;
 
 var
@@ -252,6 +261,40 @@ end;
 procedure TFrmConsBaixa.BtnSairClick(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TFrmConsBaixa.DBGEfetivadoCellClick(Column: TColumn);
+begin
+  codigoDaParcela:=DM.ZQConsBaixaEfetBAICODIGO.AsInteger;
+  codigoDoLancamento:=DM.ZQConsBaixaEfetCODIGOLAN.AsInteger;
+  valorDoLancamento:=dm.ZQConsBaixaEfetLANVALOR_DOCUMENTO.AsFloat;
+end;
+
+procedure TFrmConsBaixa.DBGPendenteCellClick(Column: TColumn);
+begin
+  codigoDaParcela:=dm.ZQConsBaixaPenBAICODIGO.AsInteger;
+  codigoDoLancamento:=dm.ZQConsBaixaPenCODIGOLAN.AsInteger;
+  valorDoLancamento:=dm.ZQConsBaixaPenLANVALOR_DOCUMENTO.AsFloat;
+end;
+
+procedure TFrmConsBaixa.BtnAlterarClick(Sender: TObject);
+begin
+  if (codigoDaParcela=0) then
+  begin
+       ShowMessage('Não tem parcela a ser alterada');
+  end
+  else
+  begin
+    FrmCadLancamento.CadOuAltLanDatValor:='u';
+    FrmCadParcela.LblValor.Caption:=FormatFloat('R$ 0.00',valorDoLancamento);
+    FrmCadParcela.recebValorLan:=valorDoLancamento;
+    dm.ZQConsLanData.Close;
+    dm.ZQConsLanData.SQL.Clear;
+    dm.ZQConsLanData.SQL.add('select * from baixa where codigolan='+IntToStr(codigoDoLancamento));
+    dm.ZQConsLanData.Open;
+    FrmCadParcela.ShowModal;
+  end;
+
 end;
 
 end.

@@ -1,12 +1,12 @@
 object FrmConsBaixa: TFrmConsBaixa
   Left = -8
-  Height = 900
+  Height = 788
   Top = -8
-  Width = 1282
+  Width = 1298
   BorderStyle = bsNone
   Caption = 'FrmConsBaixa'
-  ClientHeight = 877
-  ClientWidth = 1282
+  ClientHeight = 749
+  ClientWidth = 1298
   Color = 16577259
   OnClose = FormClose
   OnResize = FormResize
@@ -15,12 +15,12 @@ object FrmConsBaixa: TFrmConsBaixa
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 877
+    Height = 749
     Top = 0
-    Width = 1282
+    Width = 1298
     Align = alClient
-    ClientHeight = 877
-    ClientWidth = 1282
+    ClientHeight = 749
+    ClientWidth = 1298
     TabOrder = 0
     object Panel2: TPanel
       Left = 0
@@ -1660,7 +1660,7 @@ object FrmConsBaixa: TFrmConsBaixa
         Font.Style = [fsBold]
         ParentFont = False
         TabOrder = 9
-        object BtnAlterar: TRadioButton
+        object BtnAlterarstat: TRadioButton
           Left = 0
           Height = 19
           Top = 0
@@ -2206,6 +2206,7 @@ object FrmConsBaixa: TFrmConsBaixa
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
         TabOrder = 10
         Visible = False
+        OnCellClick = DBGPendenteCellClick
       end
       object Label15: TLabel
         Left = 504
@@ -2256,7 +2257,7 @@ object FrmConsBaixa: TFrmConsBaixa
         OnClick = SpeedButton1Click
       end
       object DBGEfetivado: TDBGrid
-        Left = 24
+        Left = 23
         Height = 140
         Top = 144
         Width = 704
@@ -2363,6 +2364,7 @@ object FrmConsBaixa: TFrmConsBaixa
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
         TabOrder = 14
         Visible = False
+        OnCellClick = DBGEfetivadoCellClick
       end
       object SpeedButton2: TSpeedButton
         Left = 704
@@ -2370,6 +2372,14 @@ object FrmConsBaixa: TFrmConsBaixa
         Top = 103
         Width = 23
         OnClick = SpeedButton2Click
+      end
+      object BtnAlterar: TSpeedButton
+        Left = 496
+        Height = 22
+        Top = 296
+        Width = 63
+        Caption = 'ALTERAR'
+        OnClick = BtnAlterarClick
       end
     end
   end

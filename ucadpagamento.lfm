@@ -6,6 +6,7 @@ object FrmCadParcela: TFrmCadParcela
   Caption = 'FrmCadParcela'
   ClientHeight = 527
   ClientWidth = 680
+  OnClose = FormClose
   OnKeyPress = FormKeyPress
   object Panel1: TPanel
     Left = 0

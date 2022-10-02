@@ -64,6 +64,7 @@ type
      valorDoDocumento:Double;
 
      codigoDoLanc:Integer;
+   CadOuAltLanDatValor:String;
 
   end;
 
@@ -126,6 +127,8 @@ begin
   MemObservacao.Clear;
   ChkDespesa.Checked:=False;
   ChkReceita.Checked:=False;
+  //ao sair da tela de cad de lançamento zera a variável que identifica se é alteração ou insert
+  CadOuAltLanDatValor:='';
   Close;
 end;
 
@@ -220,89 +223,92 @@ end;
 
 procedure TFrmCadLancamento.BtnSalvarClick(Sender: TObject);
 begin
-   //validação para ver se os campos estão preenchidos
+  if (CadOuAltLanDatValor='i') then
+  begin
+    //validação para ver se os campos estão preenchidos
 
-   if(ChkReceita.Checked=False) and (ChkDespesa.Checked=False) then
-  begin
-    ShowMessage('Selecione o tipo do lançamento');
-  end
-  else if (DTLancamento.Text='') then
-  begin
-    ShowMessage('Digite a data do lançamento');
-    DTLancamento.SetFocus;
-  end
-  else if (EdtTipoDocumento.Text='') then
-  begin
-    ShowMessage('Selecione o tipo de documento');
-    EdtTipoDocumento.SetFocus;
-  end
-  else if (EdtNDoc.Text='') then
-  begin
-    ShowMessage('Número do documento é obrigatório');
-    EdtNDoc.SetFocus;
-  end
-  else if (EdtConsFornecedor.Text='') then
-  begin
-    ShowMessage('O campo fornecedor é obrigatório');
-    EdtConsFornecedor.SetFocus;
-  end
-  else if (EdtConsCentro.Text='') then
-  begin
-    ShowMessage('O centro de custo é um campo obrigatório');
-    EdtConsCentro.SetFocus;
-  end
-  else if (EdtValor.Text='') or (EdtValor.Text= '0,00') then
-  begin
-    ShowMessage('Valor do documento é um campo obrigatório');
-    EdtValor.SetFocus;
-  end
-  else
-  begin
-    valorDoDocumento:=StrToFloat(EdtValor.Text);
-    FrmCadParcela.LblValor.Caption:=FormatFloat('R$ 0.00',valorDoDocumento);
-    FrmCadParcela.restante:=valorDoDocumento;
-    FrmCadParcela.LblValorRestante.Caption:=FormatFloat('R$ 0.00',valorDoDocumento);
-
-      if (ChkReceita.Checked=True) then
+     if(ChkReceita.Checked=False) and (ChkDespesa.Checked=False) then
     begin
-      dm.ZQCadLancamentos.Params.ParamByName('pLANTIPO').Value:=1;
-    end;
-    if (ChkDespesa.Checked=True) then
+      ShowMessage('Selecione o tipo do lançamento');
+    end
+    else if (DTLancamento.Text='') then
     begin
-      dm.ZQCadLancamentos.Params.ParamByName('pLANTIPO').Value:=0;
+      ShowMessage('Digite a data do lançamento');
+      DTLancamento.SetFocus;
+    end
+    else if (EdtTipoDocumento.Text='') then
+    begin
+      ShowMessage('Selecione o tipo de documento');
+      EdtTipoDocumento.SetFocus;
+    end
+    else if (EdtNDoc.Text='') then
+    begin
+      ShowMessage('Número do documento é obrigatório');
+      EdtNDoc.SetFocus;
+    end
+    else if (EdtConsFornecedor.Text='') then
+    begin
+      ShowMessage('O campo fornecedor é obrigatório');
+      EdtConsFornecedor.SetFocus;
+    end
+    else if (EdtConsCentro.Text='') then
+    begin
+      ShowMessage('O centro de custo é um campo obrigatório');
+      EdtConsCentro.SetFocus;
+    end
+    else if (EdtValor.Text='') or (EdtValor.Text= '0,00') then
+    begin
+      ShowMessage('Valor do documento é um campo obrigatório');
+      EdtValor.SetFocus;
+    end
+    else
+    begin
+      valorDoDocumento:=StrToFloat(EdtValor.Text);
+      FrmCadParcela.LblValor.Caption:=FormatFloat('R$ 0.00',valorDoDocumento);
+      FrmCadParcela.restante:=valorDoDocumento;
+      FrmCadParcela.LblValorRestante.Caption:=FormatFloat('R$ 0.00',valorDoDocumento);
+
+        if (ChkReceita.Checked=True) then
+      begin
+        dm.ZQCadLancamentos.Params.ParamByName('pLANTIPO').Value:=1;
+      end;
+      if (ChkDespesa.Checked=True) then
+      begin
+        dm.ZQCadLancamentos.Params.ParamByName('pLANTIPO').Value:=0;
+      end;
+
+      dm.ZQCadLancamentos.Params.ParamByName('pLANDOCUMENTO').AsString:=FormatDateTime('yyyy-mm-dd',DTLancamento.Date);
+      dm.ZQCadLancamentos.Params.ParamByName('pCODIGODOC').Value:=EdtTipoDocumento.Text;
+      dm.ZQCadLancamentos.Params.ParamByName('pLANNUMERO_DOCUMENTO').Value:=EdtNDoc.Text;
+      EdtValor.Text:=StringReplace(EdtValor.Text, ',', '.', [rfReplaceAll]);
+      dm.ZQCadLancamentos.Params.ParamByName('pLANVALOR_DOCUMENTO').Value:=EdtValor.Text;
+      dm.ZQCadLancamentos.Params.ParamByName('pCODIGOPES').Value:=EdtConsFornecedor.Text;
+      dm.ZQCadLancamentos.Params.ParamByName('pCODIGOCEN').Value:=EdtConsCentro.Text;
+      dm.ZQCadLancamentos.Params.ParamByName('pLANOBSERVACAO').Value:=MemObservacao.Text;
+      dm.ZQCadLancamentos.Params.ParamByName('pCODIGOUSU').Value:=FrmEntrarUsuario.indentidade;
+      dm.ZQCadLancamentos.ExecSQL;
+
+      dm.ZQConsLancamentos.close;
+      dm.ZQConsLancamentos.Open;
+      dm.ZQConsLancamentos.Last;
+      codigoDoLanc:=DM.ZQConsLancamentosLANCODIGO.AsInteger;
+
+
+
+      ShowMessage('Agora efetue o cadastro das parcelas');
+      FrmCadParcela.ShowModal;
+      //Código abaixo é para limpar as edt.
+      DTLancamento.Clear;
+      EdtTipoDocumento.Clear;
+      EdtNDoc.Clear;
+      EdtValor.Clear;
+      EdtConsFornecedor.Clear;
+      EdtConsCentro.Clear;
+      MemObservacao.Clear;
+      ChkDespesa.Checked:=False;
+      ChkReceita.Checked:=False;
+
     end;
-
-    dm.ZQCadLancamentos.Params.ParamByName('pLANDOCUMENTO').AsString:=FormatDateTime('yyyy-mm-dd',DTLancamento.Date);
-    dm.ZQCadLancamentos.Params.ParamByName('pCODIGODOC').Value:=EdtTipoDocumento.Text;
-    dm.ZQCadLancamentos.Params.ParamByName('pLANNUMERO_DOCUMENTO').Value:=EdtNDoc.Text;
-    EdtValor.Text:=StringReplace(EdtValor.Text, ',', '.', [rfReplaceAll]);
-    dm.ZQCadLancamentos.Params.ParamByName('pLANVALOR_DOCUMENTO').Value:=EdtValor.Text;
-    dm.ZQCadLancamentos.Params.ParamByName('pCODIGOPES').Value:=EdtConsFornecedor.Text;
-    dm.ZQCadLancamentos.Params.ParamByName('pCODIGOCEN').Value:=EdtConsCentro.Text;
-    dm.ZQCadLancamentos.Params.ParamByName('pLANOBSERVACAO').Value:=MemObservacao.Text;
-    dm.ZQCadLancamentos.Params.ParamByName('pCODIGOUSU').Value:=FrmEntrarUsuario.indentidade;
-    dm.ZQCadLancamentos.ExecSQL;
-
-    dm.ZQConsLancamentos.close;
-    dm.ZQConsLancamentos.Open;
-    dm.ZQConsLancamentos.Last;
-    codigoDoLanc:=DM.ZQConsLancamentosLANCODIGO.AsInteger;
-
-
-
-    ShowMessage('Agora efetue o cadastro das parcelas');
-    FrmCadParcela.ShowModal;
-    //Código abaixo é para limpar as edt.
-    DTLancamento.Clear;
-    EdtTipoDocumento.Clear;
-    EdtNDoc.Clear;
-    EdtValor.Clear;
-    EdtConsFornecedor.Clear;
-    EdtConsCentro.Clear;
-    MemObservacao.Clear;
-    ChkDespesa.Checked:=False;
-    ChkReceita.Checked:=False;
-
   end;
 
 end;

@@ -75,6 +75,7 @@ type
     ZQConsBaixaEfetFORNOME: TStringField;
     ZQConsBaixaEfetLANNUMERO_DOCUMENTO: TStringField;
     ZQConsBaixaEfetLANTIPO: TSmallintField;
+    ZQConsBaixaEfetLANVALOR_DOCUMENTO: TFloatField;
     ZQConsBaixaEfetPESNOME: TStringField;
     ZQConsBaixaEfetSTATUS: TStringField;
     ZQConsBaixaEfetTIPNOME: TStringField;
@@ -91,6 +92,7 @@ type
     ZQConsBaixaPenDOCNOME: TStringField;
     ZQConsBaixaPenLANNUMERO_DOCUMENTO: TStringField;
     ZQConsBaixaPenLANTIPO: TSmallintField;
+    ZQConsBaixaPenLANVALOR_DOCUMENTO: TFloatField;
     ZQConsBaixaPenPESNOME: TStringField;
     ZQConsBaixaPenSTATUS: TStringField;
     ZQConsBaixaPenTIPO: TStringField;

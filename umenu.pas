@@ -226,6 +226,7 @@ end;
 
 procedure TFrmMenu.BtnCadLancamentoClick(Sender: TObject);
 begin
+  FrmCadLancamento.CadOuAltLanDatValor:='i';
   FrmCadLancamento.Parent := PnChama;
   FrmCadLancamento.Align := alClient;
   FrmCadLancamento.Show;
