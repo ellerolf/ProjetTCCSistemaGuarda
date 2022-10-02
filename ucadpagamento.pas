@@ -210,7 +210,8 @@ begin
 
               dm.ZQDelLancamentos.Params.ParamByName('PLANCODIGO').Value:=FrmCadLancamento.codigoDoLanc;
               DM.ZQDelLancamentos.ExecSQL;
-
+              restante:=0;
+              LblValorRestante.Caption:=FormatFloat('R$ 0.00',restante);
               dm.ZQConsLanData.Open;
               dm.ZQConsLanData.Close;
               Close;
