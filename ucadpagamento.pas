@@ -293,8 +293,11 @@ begin
                valParcelaDel:=0;
                delparcela:=0;
                delparcela:=0;
-
+               //código abaixo é pq a consulta de onde verifica se a parcela foi baixada altera a dbgrid,
+               //a consulta de baixo faz ela voltar ao normal
                dm.ZQConsLanData.Close;
+               dm.ZQConsLanData.SQL.Clear;
+               dm.ZQConsLanData.SQL.add('select * from baixa where codigolan='+IntToStr(FrmConsBaixa.codigoDoLancamento));
                dm.ZQConsLanData.Open;
         end
         else
