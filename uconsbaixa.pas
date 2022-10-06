@@ -305,6 +305,7 @@ begin
     FrmCadLancamento.CadOuAltLanDatValor:='u';
     FrmCadParcela.LblValor.Caption:=FormatFloat('R$ 0.00',valorDoLancamento);
     FrmCadParcela.recebValorLan:=valorDoLancamento;
+    FrmCadParcela.EdtValorLanc.Text:=formatFloat('0.00',valorDoLancamento);
     //código abaixo é p/ quando abrir tela de parcelas, só aparece as parcelas refente o lançamento.
     dm.ZQConsLanData.Close;
     dm.ZQConsLanData.SQL.Clear;

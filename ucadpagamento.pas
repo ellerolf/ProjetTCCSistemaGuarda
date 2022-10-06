@@ -251,6 +251,11 @@ begin
         end
       else
       begin
+          BtnSalvar.Enabled:=False;
+          BtnCancelar.Enabled:=False;
+          BtnAlterar.Enabled:=True;
+          EdtValorLanc.Enabled:=False;
+
           FrmCadParcela.Close;
       end;
      end;
@@ -447,13 +452,23 @@ begin
     BtnCancelar.Enabled:=True;
     EdtValorLanc.Enabled:=True;
   end;
+
+  //Alteração do valor do lançamento quando está alterando as parcelas
+  if (FrmCadLancamento.CadOuAltLanDatValor='u')then
+  begin
+    BtnSalvar.Enabled:=True;
+    BtnAlterar.Enabled:=False;
+    BtnCancelar.Enabled:=True;
+    EdtValorLanc.Enabled:=True;
+  end;
 end;
 
 procedure TFrmCadParcela.BtnCancelarClick(Sender: TObject);
 begin
+  {FOI NECESSÁRIO CRIAR A ZQConsLancamento2 pq quando estava usando a ZQConsLancamento dava erro, quando eu alterava
+  o valor do lancamento, e clicava em sair, e depois cadastrava outro lançamento ele dava erro.}
+
   //Alteração do valor do lançamento quando está cadastrando lançamento
-  // FOI NECESSÁRIO CRIAR A ZQConsLancamento2 pq quando estava usando a ZQConsLancamento dava erro, quando eu alterava
-  //o valor do lancamento, e clicava em sair, e depois cadastrava outro lançamento ele dava erro.
   if (FrmCadLancamento.CadOuAltLanDatValor='i')then
   begin
        dm.ZQConsLancamento2.Close;
@@ -466,6 +481,22 @@ begin
        BtnAlterar.Enabled:=True;
        EdtValorLanc.Enabled:=False;
   end;
+
+    //Alteração do valor do lançamento quando está alterando as parcelas
+     if (FrmCadLancamento.CadOuAltLanDatValor='u')then
+  begin
+       dm.ZQConsLancamento2.Close;
+       dm.ZQConsLancamento2.SQL.Clear;
+       dm.ZQConsLancamento2.SQL.add('select * from lancamento where lancodigo='+IntToStr(FrmConsBaixa.codigoDoLancamento));
+       dm.ZQConsLancamento2.Open;
+       EdtValorLanc.Text:=FormatCurr('0.00',dm.ZQConsLancamento2LANVALOR_DOCUMENTO.AsFloat);
+       BtnCancelar.Enabled:=False;
+       BtnSalvar.Enabled:=False;
+       BtnAlterar.Enabled:=True;
+       EdtValorLanc.Enabled:=False;
+  end;
+
+
 end;
 
 procedure TFrmCadParcela.BtnSalvarClick(Sender: TObject);
@@ -493,12 +524,10 @@ begin
     begin
          AlteraValorLancamento:=StrToFloat(EdtValorLanc.Text);
 
-         //teste
          dm.ZQConsLancamento2.Close;
          dm.ZQConsLancamento2.SQL.Clear;
          dm.ZQConsLancamento2.SQL.add('select * from lancamento where lancodigo='+IntToStr(FrmCadLancamento.codigoDoLanc));
          dm.ZQConsLancamento2.Open;
-
 
          if (AlteraValorLancamento=0) then
             begin
@@ -536,6 +565,92 @@ begin
                     end
                     Else
                     begin
+                         dm.ZQConsLancamento2.Close;
+                         dm.ZQConsLancamento2.SQL.Clear;
+                         dm.ZQConsLancamento2.SQL.add('select * from lancamento where lancodigo='+IntToStr(FrmCadLancamento.codigoDoLanc));
+                         dm.ZQConsLancamento2.Open;
+                         EdtValorLanc.Text:=FormatCurr('0.00',dm.ZQConsLancamento2LANVALOR_DOCUMENTO.AsFloat);
+
+                         BtnSalvar.Enabled:=False;
+                         BtnCancelar.Enabled:=False;
+                         BtnAlterar.Enabled:=True;
+                         EdtValorLanc.Enabled:=False;
+                         Abort;
+                    end;
+            end;
+    end;
+  end;
+
+   //Alteração do valor do lançamento quando está alterando as parcelas
+  if (FrmCadLancamento.CadOuAltLanDatValor='u')then
+  Begin
+     IF (EdtValorLanc.Text='') OR (EdtValorLanc.Text='0,00') THEN
+    BEGIN
+         ShowMessage('Você não digitou corretamente, tente novamente');
+         BtnSalvar.Enabled:=True;
+         BtnCancelar.Enabled:=True;
+         BtnAlterar.Enabled:=False;
+         EdtValorLanc.Enabled:=True;
+    end
+    else if (EdtValorLanc.Text='0') then
+    begin
+         ShowMessage('Não é possível alterar o valor do lançamento para zero');
+         BtnSalvar.Enabled:=True;
+         BtnCancelar.Enabled:=True;
+         BtnAlterar.Enabled:=False;
+         EdtValorLanc.Enabled:=True;
+    end
+    Else
+    begin
+         AlteraValorLancamento:=StrToFloat(EdtValorLanc.Text);
+
+         dm.ZQConsLancamento2.Close;
+         dm.ZQConsLancamento2.SQL.Clear;
+         dm.ZQConsLancamento2.SQL.add('select * from lancamento where lancodigo='+IntToStr(FrmConsBaixa.codigoDoLancamento));
+         dm.ZQConsLancamento2.Open;
+
+         if (AlteraValorLancamento=0) then
+            begin
+                 ShowMessage('VALOR INCORRETO, verifique se o valor está correto.');
+            END
+         Else if(AlteraValorLancamento=dm.ZQConsLancamento2LANVALOR_DOCUMENTO.AsFloat) then
+            begin
+                 ShowMessage('Valor digitado é igual o valor atual do lançamento');
+            end
+            ELSE
+            begin
+                 if MessageDlg('DESEJA ALTERAR VALOR DO LANÇAMENTO?','Ao confirmar essa operação faça o cadastro das parcelas novamente',mtInformation,[mbOk,mbCancel],0)=mrOk then
+                    begin
+                         restante:=AlteraValorLancamento;
+                         LblValorRestante.Caption:=FormatFloat('R$ 0.00',restante);
+                         LblValor.Caption:=FormatFloat('R$ 0.00',AlteraValorLancamento);
+                         DM.ZQDelDataLan.Params.ParamByName('PCODIGOLAN').Value:=FrmConsBaixa.codigoDoLancamento;
+                         dm.ZQDelDataLan.ExecSQL;
+
+                         dm.ZQConsLanData.Open;
+                         dm.ZQConsLanData.Close;
+
+                         EdtValorLanc.Text:=StringReplace(EdtValorLanc.Text, ',', '.', [rfReplaceAll]);
+                         dm.ZQAltValorLanc.Params.ParamByName('planvalor_documento').Value:=EdtValorLanc.Text;
+                         dm.ZQAltValorLanc.Params.ParamByName('plancodigo').Value:=FrmConsBaixa.codigoDoLancamento;
+                         dm.ZQAltValorLanc.ExecSQL;
+
+
+                         EdtValorLanc.Text:=FloatToStr(AlteraValorLancamento);
+                         BtnSalvar.Enabled:=False;
+                         BtnCancelar.Enabled:=False;
+                         BtnAlterar.Enabled:=True;
+                         EdtValorLanc.Enabled:=False;
+                         ShowMessage('Alteração efetuada com sucesso');
+                    end
+                    Else
+                    begin
+                         dm.ZQConsLancamento2.Close;
+                         dm.ZQConsLancamento2.SQL.Clear;
+                         dm.ZQConsLancamento2.SQL.add('select * from lancamento where lancodigo='+IntToStr(FrmConsBaixa.codigoDoLancamento));
+                         dm.ZQConsLancamento2.Open;
+                         EdtValorLanc.Text:=FormatCurr('0.00',dm.ZQConsLancamento2LANVALOR_DOCUMENTO.AsFloat);
+
                          BtnSalvar.Enabled:=False;
                          BtnCancelar.Enabled:=False;
                          BtnAlterar.Enabled:=True;
