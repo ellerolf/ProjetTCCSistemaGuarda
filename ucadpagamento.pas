@@ -15,11 +15,13 @@ type
   TFrmCadParcela = class(TForm)
     DtDataParcela: TDateEdit;
     DBGrid1: TDBGrid;
+    EdtValorLanc: TEdit;
     EdtValor: TEdit;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
+    Label5: TLabel;
     LblValor: TLabel;
     Label7: TLabel;
     LblValorRestante: TLabel;
@@ -31,12 +33,19 @@ type
     SpeedButton1: TSpeedButton;
     SpeedButton2: TSpeedButton;
     SpeedButton3: TSpeedButton;
+    BtnSalvar: TSpeedButton;
+    BtnCancelar: TSpeedButton;
+    BtnAlterar: TSpeedButton;
     SpeedButton5: TSpeedButton;
+    procedure BtnAlterarClick(Sender: TObject);
+    procedure BtnCancelarClick(Sender: TObject);
+    procedure BtnSalvarClick(Sender: TObject);
     procedure DBGrid1CellClick(Column: TColumn);
     procedure DTDataLancamentoChange(Sender: TObject);
-    procedure EdtValorChange(Sender: TObject);
     procedure EdtValorExit(Sender: TObject);
     procedure EdtValorKeyPress(Sender: TObject; var Key: char);
+    procedure EdtValorLancExit(Sender: TObject);
+    procedure EdtValorLancKeyPress(Sender: TObject; var Key: char);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormKeyPress(Sender: TObject; var Key: char);
     procedure SpeedButton1Click(Sender: TObject);
@@ -55,9 +64,11 @@ type
 
     valor:Real;
     restante:Real;
-        //Essa variável recebe o valor do lançamento, será usada para quando for UPDATE,
+    //Essa variável recebe o valor do lançamento, será usada para quando for UPDATE,
     //no lugar da variável (valorDoDocumento)do form cadlancamento.
     recebValorLan:real;
+    //Essa variável será usada para quando o usuário quiser alterar o valor do lançamento
+    AlteraValorLancamento:Real;
 
   end;
 
@@ -212,8 +223,16 @@ begin
               DM.ZQDelLancamentos.ExecSQL;
               restante:=0;
               LblValorRestante.Caption:=FormatFloat('R$ 0.00',restante);
+              FrmCadLancamento.codigoDoLanc:=0;
               dm.ZQConsLanData.Open;
               dm.ZQConsLanData.Close;
+              //caso ele deixa o salvar ativo e clique em sair o codigo abaixo acerta os botoes
+              EdtValorLanc.Clear;
+              BtnSalvar.Enabled:=False;
+              BtnCancelar.Enabled:=False;
+              BtnAlterar.Enabled:=True;
+              EdtValorLanc.Enabled:=False;
+
               Close;
             end
             ELSE
@@ -310,11 +329,6 @@ begin
    end;
 end;
 
-procedure TFrmCadParcela.EdtValorChange(Sender: TObject);
-begin
-
-end;
-
 procedure TFrmCadParcela.EdtValorExit(Sender: TObject);
 begin
    (Sender as TEdit).Text := Simpl.FormataValor((Sender as TEdit).Text,2);
@@ -325,10 +339,24 @@ begin
  Key := Simpl.SoValor(Key);
 end;
 
+procedure TFrmCadParcela.EdtValorLancExit(Sender: TObject);
+begin
+    (Sender as TEdit).Text := Simpl.FormataValor((Sender as TEdit).Text,2);
+end;
+
+procedure TFrmCadParcela.EdtValorLancKeyPress(Sender: TObject; var Key: char);
+begin
+  Key := Simpl.SoValor(Key);
+end;
+
+
+
+
 procedure TFrmCadParcela.FormClose(Sender: TObject;
   var CloseAction: TCloseAction);
 begin
-    if (FrmCadLancamento.CadOuAltLanDatValor='u') then
+
+         if (FrmCadLancamento.CadOuAltLanDatValor='u') then
     begin
        //receita + pendente
       if (FrmConsBaixa.CboRecOuDes.ItemIndex=0) and (FrmConsBaixa.CboStatus.ItemIndex=0) then
@@ -407,6 +435,116 @@ procedure TFrmCadParcela.DBGrid1CellClick(Column: TColumn);
 begin
   delparcela:=DM.ZQConsLanDataBAICODIGO.AsInteger;
   valParcelaDel:=DM.ZQConsLanDataBAIVALOR.AsFloat;
+end;
+
+procedure TFrmCadParcela.BtnAlterarClick(Sender: TObject);
+begin
+  //Alteração do valor do lançamento quando está cadastrando lançamento
+  if (FrmCadLancamento.CadOuAltLanDatValor='i')then
+  begin
+    BtnSalvar.Enabled:=True;
+    BtnAlterar.Enabled:=False;
+    BtnCancelar.Enabled:=True;
+    EdtValorLanc.Enabled:=True;
+  end;
+end;
+
+procedure TFrmCadParcela.BtnCancelarClick(Sender: TObject);
+begin
+  //Alteração do valor do lançamento quando está cadastrando lançamento
+  // FOI NECESSÁRIO CRIAR A ZQConsLancamento2 pq quando estava usando a ZQConsLancamento dava erro, quando eu alterava
+  //o valor do lancamento, e clicava em sair, e depois cadastrava outro lançamento ele dava erro.
+  if (FrmCadLancamento.CadOuAltLanDatValor='i')then
+  begin
+       dm.ZQConsLancamento2.Close;
+       dm.ZQConsLancamento2.SQL.Clear;
+       dm.ZQConsLancamento2.SQL.add('select * from lancamento where lancodigo='+IntToStr(FrmCadLancamento.codigoDoLanc));
+       dm.ZQConsLancamento2.Open;
+       EdtValorLanc.Text:=FormatCurr('0.00',dm.ZQConsLancamento2LANVALOR_DOCUMENTO.AsFloat);
+       BtnCancelar.Enabled:=False;
+       BtnSalvar.Enabled:=False;
+       BtnAlterar.Enabled:=True;
+       EdtValorLanc.Enabled:=False;
+  end;
+end;
+
+procedure TFrmCadParcela.BtnSalvarClick(Sender: TObject);
+begin
+  //Alteração do valor do lançamento quando está cadastrando lançamento
+  if (FrmCadLancamento.CadOuAltLanDatValor='i')then
+  Begin
+     IF (EdtValorLanc.Text='') OR (EdtValorLanc.Text='0,00') THEN
+    BEGIN
+         ShowMessage('Você não digitou corretamente, tente novamente');
+         BtnSalvar.Enabled:=True;
+         BtnCancelar.Enabled:=True;
+         BtnAlterar.Enabled:=False;
+         EdtValorLanc.Enabled:=True;
+    end
+    else if (EdtValorLanc.Text='0') then
+    begin
+         ShowMessage('Não é possível alterar o valor do lançamento para zero');
+         BtnSalvar.Enabled:=True;
+         BtnCancelar.Enabled:=True;
+         BtnAlterar.Enabled:=False;
+         EdtValorLanc.Enabled:=True;
+    end
+    Else
+    begin
+         AlteraValorLancamento:=StrToFloat(EdtValorLanc.Text);
+
+         //teste
+         dm.ZQConsLancamento2.Close;
+         dm.ZQConsLancamento2.SQL.Clear;
+         dm.ZQConsLancamento2.SQL.add('select * from lancamento where lancodigo='+IntToStr(FrmCadLancamento.codigoDoLanc));
+         dm.ZQConsLancamento2.Open;
+
+
+         if (AlteraValorLancamento=0) then
+            begin
+                 ShowMessage('VALOR INCORRETO, verifique se o valor da parcela se está correto.');
+            END
+         Else if(AlteraValorLancamento=dm.ZQConsLancamento2LANVALOR_DOCUMENTO.AsFloat) then
+            begin
+                 ShowMessage('Valor digitado é igual o valor atual do lançamento');
+            end
+            ELSE
+            begin
+                 if MessageDlg('DESEJA ALTERAR VALOR DO LANÇAMENTO?','Ao confirmar essa operação faça o cadastro das parcelas novamente',mtInformation,[mbOk,mbCancel],0)=mrOk then
+                    begin
+                         restante:=AlteraValorLancamento;
+                         LblValorRestante.Caption:=FormatFloat('R$ 0.00',restante);
+                         LblValor.Caption:=FormatFloat('R$ 0.00',AlteraValorLancamento);
+                         DM.ZQDelDataLan.Params.ParamByName('PCODIGOLAN').Value:=FrmCadLancamento.codigoDoLanc;
+                         dm.ZQDelDataLan.ExecSQL;
+
+                         dm.ZQConsLanData.Open;
+                         dm.ZQConsLanData.Close;
+
+                         EdtValorLanc.Text:=StringReplace(EdtValorLanc.Text, ',', '.', [rfReplaceAll]);
+                         dm.ZQAltValorLanc.Params.ParamByName('planvalor_documento').Value:=EdtValorLanc.Text;
+                         dm.ZQAltValorLanc.Params.ParamByName('plancodigo').Value:=FrmCadLancamento.codigoDoLanc;
+                         dm.ZQAltValorLanc.ExecSQL;
+
+
+                         EdtValorLanc.Text:=FloatToStr(AlteraValorLancamento);
+                         BtnSalvar.Enabled:=False;
+                         BtnCancelar.Enabled:=False;
+                         BtnAlterar.Enabled:=True;
+                         EdtValorLanc.Enabled:=False;
+                         ShowMessage('Alteração efetuada com sucesso');
+                    end
+                    Else
+                    begin
+                         BtnSalvar.Enabled:=False;
+                         BtnCancelar.Enabled:=False;
+                         BtnAlterar.Enabled:=True;
+                         EdtValorLanc.Enabled:=False;
+                         Abort;
+                    end;
+            end;
+    end;
+  end;
 end;
 
 end.

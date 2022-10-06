@@ -12,6 +12,7 @@ type
   { TDM }
 
   TDM = class(TDataModule)
+    DSConsLancamento2: TDataSource;
     DSConsBaixaEfet: TDataSource;
     DSConsBaixaPen: TDataSource;
     DSConsLanData: TDataSource;
@@ -132,6 +133,16 @@ type
     ZQConsFornCPFPESRAZAO_SOCIAL: TStringField;
     ZQConsFornCPFPESSTATUS: TSmallintField;
     ZQConsFornCPFPESTELEFONE: TStringField;
+    ZQConsLancamento2CODIGOCEN: TLongintField;
+    ZQConsLancamento2CODIGODOC: TLongintField;
+    ZQConsLancamento2CODIGOPES: TLongintField;
+    ZQConsLancamento2CODIGOUSU: TLongintField;
+    ZQConsLancamento2LANCODIGO: TLongintField;
+    ZQConsLancamento2LANDOCUMENTO: TDateField;
+    ZQConsLancamento2LANNUMERO_DOCUMENTO: TStringField;
+    ZQConsLancamento2LANOBSERVACAO: TStringField;
+    ZQConsLancamento2LANTIPO: TSmallintField;
+    ZQConsLancamento2LANVALOR_DOCUMENTO: TFloatField;
     ZQConsLancamentosCODIGOCEN: TLongintField;
     ZQConsLancamentosCODIGODOC: TLongintField;
     ZQConsLancamentosCODIGOPES: TLongintField;
@@ -225,6 +236,8 @@ type
     ZQDelParcEspecif: TZQuery;
     ZQConsBaixaPen: TZQuery;
     ZQConsBaixaEfet: TZQuery;
+    ZQAltValorLanc: TZQuery;
+    ZQConsLancamento2: TZQuery;
     procedure DSBuscaTipoDocDataChange(Sender: TObject; Field: TField);
     procedure DSConsPessoasDataChange(Sender: TObject; Field: TField);
 

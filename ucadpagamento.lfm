@@ -142,7 +142,6 @@ object FrmCadParcela: TFrmCadParcela
       Height = 23
       Top = 200
       Width = 112
-      OnChange = EdtValorChange
       OnExit = EdtValorExit
       OnKeyPress = EdtValorKeyPress
       TabOrder = 2
@@ -2035,6 +2034,50 @@ object FrmCadParcela: TFrmCadParcela
       Top = 176
       Width = 29
       Caption = 'Valor '
+      ParentColor = False
+    end
+    object EdtValorLanc: TEdit
+      Left = 384
+      Height = 23
+      Top = 312
+      Width = 80
+      Enabled = False
+      OnExit = EdtValorLancExit
+      OnKeyPress = EdtValorLancKeyPress
+      TabOrder = 4
+    end
+    object BtnSalvar: TSpeedButton
+      Left = 384
+      Height = 22
+      Top = 344
+      Width = 39
+      Caption = 'Salvar'
+      Enabled = False
+      OnClick = BtnSalvarClick
+    end
+    object BtnCancelar: TSpeedButton
+      Left = 480
+      Height = 22
+      Top = 344
+      Width = 48
+      Caption = 'Cancelar'
+      Enabled = False
+      OnClick = BtnCancelarClick
+    end
+    object BtnAlterar: TSpeedButton
+      Left = 424
+      Height = 22
+      Top = 344
+      Width = 48
+      Caption = 'Alterar'
+      OnClick = BtnAlterarClick
+    end
+    object Label5: TLabel
+      Left = 384
+      Height = 15
+      Top = 296
+      Width = 150
+      Caption = 'Alterar valor do Lançamento'
       ParentColor = False
     end
   end

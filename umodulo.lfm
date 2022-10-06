@@ -1,7 +1,7 @@
 object DM: TDM
   OnCreate = DataModuleCreate
   OldCreateOrder = False
-  Height = 659
+  Height = 775
   HorizontalOffset = 78
   VerticalOffset = 0
   Width = 1131
@@ -2746,5 +2746,142 @@ object DM: TDM
     DataSet = ZQConsBaixaEfet
     Left = 1176
     Top = 256
+  end
+  object ZQAltValorLanc: TZQuery
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'update lancamento set lanvalor_documento=:planvalor_documento where lancodigo=:plancodigo'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'planvalor_documento'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'plancodigo'
+        ParamType = ptUnknown
+      end>
+    Left = 344
+    Top = 720
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'planvalor_documento'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'plancodigo'
+        ParamType = ptUnknown
+      end>
+  end
+  object ZQConsLancamento2: TZQuery
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'SELECT * from lancamento '
+    )
+    Params = <>
+    Left = 215
+    Top = 573
+    object ZQConsLancamento2LANCODIGO: TLongintField
+      FieldKind = fkData
+      FieldName = 'LANCODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object ZQConsLancamento2LANDOCUMENTO: TDateField
+      FieldKind = fkData
+      FieldName = 'LANDOCUMENTO'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsLancamento2CODIGODOC: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODIGODOC'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsLancamento2LANNUMERO_DOCUMENTO: TStringField
+      FieldKind = fkData
+      FieldName = 'LANNUMERO_DOCUMENTO'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsLancamento2LANVALOR_DOCUMENTO: TFloatField
+      FieldKind = fkData
+      FieldName = 'LANVALOR_DOCUMENTO'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 22
+    end
+    object ZQConsLancamento2CODIGOPES: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODIGOPES'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsLancamento2CODIGOCEN: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODIGOCEN'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsLancamento2LANOBSERVACAO: TStringField
+      FieldKind = fkData
+      FieldName = 'LANOBSERVACAO'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 200
+    end
+    object ZQConsLancamento2LANTIPO: TSmallintField
+      FieldKind = fkData
+      FieldName = 'LANTIPO'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsLancamento2CODIGOUSU: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODIGOUSU'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object DSConsLancamento2: TDataSource
+    DataSet = ZQConsLancamento2
+    Left = 216
+    Top = 528
   end
 end
