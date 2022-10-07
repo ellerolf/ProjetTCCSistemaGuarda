@@ -1,7 +1,7 @@
 object DM: TDM
   OnCreate = DataModuleCreate
   OldCreateOrder = False
-  Height = 775
+  Height = 795
   HorizontalOffset = 78
   VerticalOffset = 0
   Width = 1131
@@ -2783,8 +2783,8 @@ object DM: TDM
       'SELECT * from lancamento '
     )
     Params = <>
-    Left = 215
-    Top = 573
+    Left = 216
+    Top = 533
     object ZQConsLancamento2LANCODIGO: TLongintField
       FieldKind = fkData
       FieldName = 'LANCODIGO'
@@ -2881,7 +2881,62 @@ object DM: TDM
   end
   object DSConsLancamento2: TDataSource
     DataSet = ZQConsLancamento2
+    Left = 217
+    Top = 488
+  end
+  object ZQConsSomaParcBaixada: TZQuery
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'SELECT sum(BAIVALOR) from baixa where codigolan=:PCODIGOLAN and BAISTATUS=1'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'PCODIGOLAN'
+        ParamType = ptUnknown
+      end>
+    Left = 217
+    Top = 648
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'PCODIGOLAN'
+        ParamType = ptUnknown
+      end>
+    object ZQConsSomaParcBaixadasumBAIVALOR: TFloatField
+      FieldKind = fkData
+      FieldName = 'sum(BAIVALOR)'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = True
+      Required = False
+      Precision = 23
+    end
+  end
+  object DSConsSomaParcBaixada: TDataSource
+    DataSet = ZQConsSomaParcBaixada
     Left = 216
-    Top = 528
+    Top = 600
+  end
+  object ZQDelParcPen: TZQuery
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'DELETE FROM BAIXA WHERE CODIGOLAN=:PCODIGOLAN AND BAISTATUS=0'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'PCODIGOLAN'
+        ParamType = ptUnknown
+      end>
+    Left = 216
+    Top = 712
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'PCODIGOLAN'
+        ParamType = ptUnknown
+      end>
   end
 end

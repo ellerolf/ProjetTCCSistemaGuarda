@@ -12,6 +12,7 @@ type
   { TDM }
 
   TDM = class(TDataModule)
+    DSConsSomaParcBaixada: TDataSource;
     DSConsLancamento2: TDataSource;
     DSConsBaixaEfet: TDataSource;
     DSConsBaixaPen: TDataSource;
@@ -186,6 +187,7 @@ type
     ZQConsPessoasSTATUS: TStringField;
     ZQConsPessoasTELEFONE: TStringField;
     ZQConsPessoasTIPO: TStringField;
+    ZQConsSomaParcBaixadasumBAIVALOR: TFloatField;
     ZQConsTipoContaTIPCODIGO: TLongintField;
     ZQConsTipoContaTIPNOME: TStringField;
     ZQConsTransferenciaTRACODIGO: TLongintField;
@@ -238,6 +240,8 @@ type
     ZQConsBaixaEfet: TZQuery;
     ZQAltValorLanc: TZQuery;
     ZQConsLancamento2: TZQuery;
+    ZQConsSomaParcBaixada: TZQuery;
+    ZQDelParcPen: TZQuery;
     procedure DSBuscaTipoDocDataChange(Sender: TObject; Field: TField);
     procedure DSConsPessoasDataChange(Sender: TObject; Field: TField);
 

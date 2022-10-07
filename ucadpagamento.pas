@@ -69,6 +69,10 @@ type
     recebValorLan:real;
     //Essa variável será usada para quando o usuário quiser alterar o valor do lançamento
     AlteraValorLancamento:Real;
+    //Depois fe feito o lançamento e cadastrado parcelas, caso o usuário queira alterar o vlr do
+    //lançamento, criei a variável abaixo para receber o valor das parcelas baixada,
+    //pois o usuário não pode alterar o vlr do lançamento para menor do que o valor de parcelas já baixada.
+    ValorParcBaixada:real;
 
   end;
 
@@ -604,6 +608,13 @@ begin
     begin
          AlteraValorLancamento:=StrToFloat(EdtValorLanc.Text);
 
+         DM.ZQConsSomaParcBaixada.Close;
+         DM.ZQConsSomaParcBaixada.SQL.Clear;
+         DM.ZQConsSomaParcBaixada.SQL.Add('SELECT sum(BAIVALOR) from baixa where codigolan='+IntToStr(FrmConsBaixa.codigoDoLancamento)+' and BAISTATUS=1');
+         DM.ZQConsSomaParcBaixada.Open;
+
+         ValorParcBaixada:=DM.ZQConsSomaParcBaixadasumBAIVALOR.AsFloat;
+
          dm.ZQConsLancamento2.Close;
          dm.ZQConsLancamento2.SQL.Clear;
          dm.ZQConsLancamento2.SQL.add('select * from lancamento where lancodigo='+IntToStr(FrmConsBaixa.codigoDoLancamento));
@@ -617,18 +628,29 @@ begin
             begin
                  ShowMessage('Valor digitado é igual o valor atual do lançamento');
             end
+         Else if(AlteraValorLancamento<=ValorParcBaixada) then
+            begin
+                 ShowMessage('Não é possível alterar o lançamento para o valor desejado, pois já existe parcelas baixadas no valor de '+FormatFloat('R$ 0.00',ValorParcBaixada));
+            end
             ELSE
             begin
                  if MessageDlg('DESEJA ALTERAR VALOR DO LANÇAMENTO?','Ao confirmar essa operação faça o cadastro das parcelas novamente',mtInformation,[mbOk,mbCancel],0)=mrOk then
                     begin
                          restante:=AlteraValorLancamento;
+                         //TESTE LINHA DE BAIXO
+                         restante:=restante-ValorParcBaixada;
                          LblValorRestante.Caption:=FormatFloat('R$ 0.00',restante);
                          LblValor.Caption:=FormatFloat('R$ 0.00',AlteraValorLancamento);
-                         DM.ZQDelDataLan.Params.ParamByName('PCODIGOLAN').Value:=FrmConsBaixa.codigoDoLancamento;
-                         dm.ZQDelDataLan.ExecSQL;
+                         DM.ZQDelParcPen.Params.ParamByName('PCODIGOLAN').Value:=FrmConsBaixa.codigoDoLancamento;
+                         dm.ZQDelParcPen.ExecSQL;
 
-                         dm.ZQConsLanData.Open;
+                         //dm.ZQConsLanData.Open;
+                         //dm.ZQConsLanData.Close;
+                         //código abaixo é para atualizar a dbgrid após a exclusão das parcelas pendente
                          dm.ZQConsLanData.Close;
+                         dm.ZQConsLanData.SQL.Clear;
+                         dm.ZQConsLanData.SQL.add('select * from baixa where codigolan='+IntToStr(FrmConsBaixa.codigoDoLancamento));
+                         dm.ZQConsLanData.Open;
 
                          EdtValorLanc.Text:=StringReplace(EdtValorLanc.Text, ',', '.', [rfReplaceAll]);
                          dm.ZQAltValorLanc.Params.ParamByName('planvalor_documento').Value:=EdtValorLanc.Text;

@@ -1,12 +1,12 @@
 object FrmConsBaixa: TFrmConsBaixa
   Left = -8
-  Height = 983
+  Height = 1022
   Top = -8
-  Width = 1378
+  Width = 1394
   BorderStyle = bsNone
   Caption = 'FrmConsBaixa'
-  ClientHeight = 960
-  ClientWidth = 1378
+  ClientHeight = 999
+  ClientWidth = 1394
   Color = 16577259
   OnClose = FormClose
   OnResize = FormResize
@@ -15,12 +15,12 @@ object FrmConsBaixa: TFrmConsBaixa
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 960
+    Height = 999
     Top = 0
-    Width = 1378
+    Width = 1394
     Align = alClient
-    ClientHeight = 960
-    ClientWidth = 1378
+    ClientHeight = 999
+    ClientWidth = 1394
     TabOrder = 0
     object Panel2: TPanel
       Left = 0
