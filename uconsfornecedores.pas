@@ -40,6 +40,7 @@ type
     procedure GrCNPJCellClick(Column: TColumn);
     procedure GrCPFCellClick(Column: TColumn);
     procedure GrTodosCellClick(Column: TColumn);
+    procedure PnChamaClick(Sender: TObject);
   private
     seleciona: integer;
     procedure BuscaDados();
@@ -382,6 +383,11 @@ end;
 procedure TFrmConsFornecedores.GrTodosCellClick(Column: TColumn);
 begin
   seleciona := dm.ZQConsPessoasCODIGO.AsInteger;
+end;
+
+procedure TFrmConsFornecedores.PnChamaClick(Sender: TObject);
+begin
+
 end;
 
 end.

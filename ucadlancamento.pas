@@ -52,6 +52,7 @@ type
     procedure EdtValorChange(Sender: TObject);
     procedure EdtValorExit(Sender: TObject);
     procedure EdtValorKeyPress(Sender: TObject; var Key: char);
+    procedure FormCreate(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure Panel2Click(Sender: TObject);
   private
@@ -102,6 +103,11 @@ begin
  //com o código abaixo ele formata e valida os campos.
  //mas é necessário colocar no onleypress e no onexit.
   Key := Simpl.SoValor(Key);
+end;
+
+procedure TFrmCadLancamento.FormCreate(Sender: TObject);
+begin
+
 end;
 
 procedure TFrmCadLancamento.FormResize(Sender: TObject);

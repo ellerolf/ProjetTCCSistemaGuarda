@@ -2,11 +2,11 @@ object FrmCadFornecedor: TFrmCadFornecedor
   Left = -8
   Height = 788
   Top = -8
-  Width = 1386
+  Width = 1402
   BorderStyle = bsNone
   Caption = 'Cadastro Fornecedores'
   ClientHeight = 749
-  ClientWidth = 1370
+  ClientWidth = 1402
   Color = 16577259
   OnCreate = FormCreate
   OnResize = FormResize
@@ -17,10 +17,10 @@ object FrmCadFornecedor: TFrmCadFornecedor
     Left = 0
     Height = 749
     Top = 0
-    Width = 1370
+    Width = 1402
     Align = alClient
     ClientHeight = 749
-    ClientWidth = 1370
+    ClientWidth = 1402
     TabOrder = 0
     object Panel2: TPanel
       Left = 0

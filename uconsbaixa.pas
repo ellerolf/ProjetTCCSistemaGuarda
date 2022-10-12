@@ -6,41 +6,42 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, MaskEdit,
-  StdCtrls, Buttons, DBGrids, EditBtn,UModulo,uCadLancamento,UCadPagamento;
+  StdCtrls, Buttons, DBGrids, EditBtn, UModulo, uCadLancamento, UCadPagamento,
+  UConsParcelas;
 
 type
 
   { TFrmConsBaixa }
 
   TFrmConsBaixa = class(TForm)
-    BtnAlterarstat: TRadioButton;
-    BtnAlterar1: TSpeedButton;
-    BtnPagar: TRadioButton;
+    BtnConsCentro: TSpeedButton;
+    BtnConsCentro1: TSpeedButton;
+    BtnConsTipoConta: TSpeedButton;
     BtnSair: TSpeedButton;
+    BtnSair1: TSpeedButton;
     BtnSalvar: TSpeedButton;
-    BtnSalvar1: TSpeedButton;
-    CboConta: TComboBox;
     CboStatus: TComboBox;
     CboRecOuDes: TComboBox;
+    ChkDespesa: TRadioButton;
+    ChkReceita: TRadioButton;
     DBGEfetivado: TDBGrid;
     DTDataInicial: TDateEdit;
     DTDataFinal: TDateEdit;
     DBGPendente: TDBGrid;
+    DTLancamento: TDateEdit;
+    EdtConsCentro: TEdit;
+    EdtConsFornecedor: TEdit;
 
-    EdtCodLanca: TEdit;
-    EdtCodFor: TEdit;
-    EdtValorOriginal: TEdit;
-    EdtValorJuros: TEdit;
-    EdtValorDesconto: TEdit;
     EdtConsulta: TEdit;
-    EdtDataBaixa: TMaskEdit;
-    GrpSituacao: TGroupBox;
+    EdtNDoc: TEdit;
+    EdtTipoDocumento: TEdit;
+    GrpTipo: TGroupBox;
     Label1: TLabel;
     Label11: TLabel;
     Label12: TLabel;
-    Label13: TLabel;
     Label14: TLabel;
     Label15: TLabel;
+    Label16: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
@@ -49,19 +50,30 @@ type
     Label7: TLabel;
     Label8: TLabel;
     Label9: TLabel;
+    MemObservacao: TMemo;
     Panel1: TPanel;
     Panel2: TPanel;
+    Panel4: TPanel;
+    PnChamaLanca: TPanel;
     SpeedButton1: TSpeedButton;
     SpeedButton2: TSpeedButton;
     BtnAlterar: TSpeedButton;
+    BtnVerParcelas: TSpeedButton;
+    BtnAlterarDados: TSpeedButton;
+    procedure BtnAlterar1Click(Sender: TObject);
     procedure BtnAlterarClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
+    procedure BtnSalvarClick(Sender: TObject);
+    procedure BtnVerParcelasClick(Sender: TObject);
     procedure DBGEfetivadoCellClick(Column: TColumn);
     procedure DBGPendenteCellClick(Column: TColumn);
     procedure EdtDataInicioChange(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
+    procedure FormCreate(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure Panel2Click(Sender: TObject);
+    procedure PnChamaLancaClick(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
   private
@@ -96,6 +108,11 @@ begin
    dm.ZQConsBaixaEfet.Active:=False;
 end;
 
+procedure TFrmConsBaixa.FormCreate(Sender: TObject);
+begin
+
+end;
+
 procedure TFrmConsBaixa.FormResize(Sender: TObject);
 begin
   Panel2.Left := (Panel1.ClientWidth div 2) - (Panel2.Width div 2);
@@ -106,6 +123,16 @@ procedure TFrmConsBaixa.FormShow(Sender: TObject);
 begin
   dm.ZQConsBaixaPen.Active:=True;
   dm.ZQConsBaixaEfet.Active:=True;
+end;
+
+procedure TFrmConsBaixa.Panel2Click(Sender: TObject);
+begin
+
+end;
+
+procedure TFrmConsBaixa.PnChamaLancaClick(Sender: TObject);
+begin
+
 end;
 
 
@@ -280,6 +307,16 @@ begin
   Close;
 end;
 
+procedure TFrmConsBaixa.BtnSalvarClick(Sender: TObject);
+begin
+
+end;
+
+procedure TFrmConsBaixa.BtnVerParcelasClick(Sender: TObject);
+begin
+  FrmConsParcelas.show;
+end;
+
 procedure TFrmConsBaixa.DBGEfetivadoCellClick(Column: TColumn);
 begin
   codigoDaParcela:=DM.ZQConsBaixaEfetBAICODIGO.AsInteger;
@@ -313,6 +350,11 @@ begin
     dm.ZQConsLanData.Open;
     FrmCadParcela.ShowModal;
   end;
+
+end;
+
+procedure TFrmConsBaixa.BtnAlterar1Click(Sender: TObject);
+begin
 
 end;
 
