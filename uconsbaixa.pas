@@ -421,6 +421,7 @@ begin
        EdtNDoc.Text:=dm.ZQConsBaixaefetLANNUMERO_DOCUMENTO.AsString;
        EdtConsFornecedor.Text:=dm.ZQConsBaixaefetCODIGOPES.AsString;
        EdtConsCentro.Text:=dm.ZQConsBaixaefetCENCODIGO.AsString;
+       MemObservacao.Text:=dm.ZQConsBaixaEfetLANOBSERVACAO.AsString;
   end;
   //despesa efetivado
     IF (dm.ZQConsBaixaefetLANTIPO.AsInteger=0) and (CboStatus.ItemIndex=1) then
@@ -431,6 +432,7 @@ begin
        EdtNDoc.Text:=dm.ZQConsBaixaefetLANNUMERO_DOCUMENTO.AsString;
        EdtConsFornecedor.Text:=dm.ZQConsBaixaefetCODIGOPES.AsString;
        EdtConsCentro.Text:=dm.ZQConsBaixaefetCENCODIGO.AsString;
+       MemObservacao.Text:=dm.ZQConsBaixaEfetLANOBSERVACAO.AsString;
   end;
    end;
 end;
@@ -457,6 +459,7 @@ begin
        EdtNDoc.Text:=dm.ZQConsBaixaPenLANNUMERO_DOCUMENTO.AsString;
        EdtConsFornecedor.Text:=dm.ZQConsBaixaPenCODIGOPES.AsString;
        EdtConsCentro.Text:=dm.ZQConsBaixaPenCENCODIGO.AsString;
+       MemObservacao.Text:=dm.ZQConsBaixaPenLANOBSERVACAO.AsString;
   end;
   //despesa pendente
     IF (dm.ZQConsBaixaPenLANTIPO.AsInteger=0) and (CboStatus.ItemIndex=0) then
@@ -467,6 +470,7 @@ begin
        EdtNDoc.Text:=dm.ZQConsBaixaPenLANNUMERO_DOCUMENTO.AsString;
        EdtConsFornecedor.Text:=dm.ZQConsBaixaPenCODIGOPES.AsString;
        EdtConsCentro.Text:=dm.ZQConsBaixaPenCENCODIGO.AsString;
+       MemObservacao.Text:=dm.ZQConsBaixaPenLANOBSERVACAO.AsString;
   end;
   end;
 
