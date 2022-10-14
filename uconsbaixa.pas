@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, MaskEdit,
   StdCtrls, Buttons, DBGrids, EditBtn, UModulo, uCadLancamento, UCadPagamento,
-  UConsParcelas;
+  UConsParcelas,UBuscaDoc;
 
 type
 
@@ -63,6 +63,7 @@ type
     procedure BtnAlterar1Click(Sender: TObject);
     procedure BtnAlterarClick(Sender: TObject);
     procedure BtnAlterarDadosClick(Sender: TObject);
+    procedure BtnConsTipoContaClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
     procedure BtnSalvarClick(Sender: TObject);
     procedure BtnVerParcelasClick(Sender: TObject);
@@ -373,6 +374,7 @@ end;
 procedure TFrmConsBaixa.BtnSairClick(Sender: TObject);
 begin
   //Validação para limpar os campos ao sair da tela.
+  codigoDaParcela:=0;
   DTDataInicial.Clear;
   DTDataFinal.Clear;
   DBGEfetivado.Visible:=False;
@@ -513,6 +515,27 @@ begin
          BtnConsCentro.Enabled:=True;
          MemObservacao.Enabled:=True;
      end;
+end;
+
+procedure TFrmConsBaixa.BtnConsTipoContaClick(Sender: TObject);
+begin
+  FrmBuscaDoc.BuscaDocTela:='consbaix';
+  if (ChkReceita.Checked=True) then
+  begin
+    dm.ZQBuscaTipoDoc.Close;
+    dm.ZQBuscaTipoDoc.SQL.Clear;
+    dm.ZQBuscaTipoDoc.SQL.Add('SELECT * from tipo_documento WHERE DOCTIPO=1');
+    dm.ZQBuscaTipoDoc.Open;
+    FrmBuscaDoc.ShowModal;
+  end;
+   if (ChkDespesa.Checked=True) then
+  begin
+    dm.ZQBuscaTipoDoc.Close;
+    dm.ZQBuscaTipoDoc.SQL.Clear;
+    dm.ZQBuscaTipoDoc.SQL.Add('SELECT * from tipo_documento WHERE DOCTIPO=0');
+    dm.ZQBuscaTipoDoc.Open;
+    FrmBuscaDoc.ShowModal;
+  end;
 end;
 
 procedure TFrmConsBaixa.BtnAlterar1Click(Sender: TObject);

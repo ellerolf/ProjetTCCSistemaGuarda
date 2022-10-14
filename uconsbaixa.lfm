@@ -1521,6 +1521,7 @@ object FrmConsBaixa: TFrmConsBaixa
             00FFC10000FFC10000FFC10000FFC10000FFC10000FFC10000C0C1000090C100
             0020FFFFFF00
           }
+          OnClick = BtnConsTipoContaClick
         end
         object BtnAlterarDados: TSpeedButton
           Left = 624

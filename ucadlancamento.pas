@@ -140,6 +140,7 @@ end;
 
 procedure TFrmCadLancamento.BtnConsTipoContaClick(Sender: TObject);
 begin
+ FrmBuscaDoc.BuscaDocTela:='lanc';
   if (ChkReceita.Checked=false) and (ChkDespesa.Checked=False) then
   begin
     ShowMessage('Selecione o tipo de lançamento para escolher o tipo de documento');

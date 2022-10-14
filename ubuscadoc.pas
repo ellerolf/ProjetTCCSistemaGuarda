@@ -27,7 +27,9 @@ type
   private
 
   public
-
+        //variavel abaixo é responsável por identificar de onde está sendo solicitado
+        //para alterar o tipo de documento.
+        BuscaDocTela:String;
   end;
 
 var
@@ -38,15 +40,18 @@ implementation
 {$R *.lfm}
 
 { TFrmBuscaDoc }
-uses uCadLancamento;
+uses uCadLancamento,UConsBaixa;
 
 procedure TFrmBuscaDoc.BtnCancelarClick(Sender: TObject);
 begin
+  BuscaDocTela:='';
   close;
 end;
 
 procedure TFrmBuscaDoc.BtnBuscaTipoDocClick(Sender: TObject);
 begin
+  if (BuscaDocTela='lanc') then
+  begin
   if (FrmCadLancamento.ChkReceita.Checked=True) then
       begin
           dm.ZQBuscaTipoDoc.Close;
@@ -63,13 +68,41 @@ begin
           DM.ZQBuscaTipoDoc.Open;
           EdtBuscaTipoDoc.Clear;
       end;
+  end;
 
+    if (BuscaDocTela='consbaix') then
+  begin
+  if (FrmConsBaixa.ChkReceita.Checked=True) then
+      begin
+          dm.ZQBuscaTipoDoc.Close;
+          dm.ZQBuscaTipoDoc.SQL.Clear;
+          dm.ZQBuscaTipoDoc.SQL.Add('select * from tipo_documento where DOCTIPO=1 AND DOCNOME LIKE'+QuotedStr('%'+EdtBuscaTipoDoc.Text+'%'));
+          DM.ZQBuscaTipoDoc.Open;
+          EdtBuscaTipoDoc.Clear;
+      end;
+    if (FrmConsBaixa.ChkDespesa.Checked=True) then
+      begin
+          dm.ZQBuscaTipoDoc.Close;
+          dm.ZQBuscaTipoDoc.SQL.Clear;
+          dm.ZQBuscaTipoDoc.SQL.Add('select * from tipo_documento where DOCTIPO=0 AND DOCNOME LIKE'+QuotedStr('%'+EdtBuscaTipoDoc.Text+'%'));
+          DM.ZQBuscaTipoDoc.Open;
+          EdtBuscaTipoDoc.Clear;
+      end;
+  end;
 end;
 
 procedure TFrmBuscaDoc.BtnSelecionarClick(Sender: TObject);
 begin
-  FrmCadLancamento.EdtTipoDocumento.Text:=DM.ZQBuscaTipoDocDOCCODIGO.AsString;
-  Close;
+  if (BuscaDocTela='lanc') then
+    begin
+        FrmCadLancamento.EdtTipoDocumento.Text:=DM.ZQBuscaTipoDocDOCCODIGO.AsString;
+        Close;
+    end;
+  if (BuscaDocTela='consbaix') then
+    begin
+        FrmConsBaixa.EdtTipoDocumento.Text:=DM.ZQBuscaTipoDocDOCCODIGO.AsString;
+        Close;
+    end;
 end;
 
 procedure TFrmBuscaDoc.FormClose(Sender: TObject; var CloseAction: TCloseAction
