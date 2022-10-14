@@ -15,7 +15,7 @@ type
 
   TFrmConsBaixa = class(TForm)
     BtnConsCentro: TSpeedButton;
-    BtnConsCentro1: TSpeedButton;
+    BtnConsFor: TSpeedButton;
     BtnConsTipoConta: TSpeedButton;
     BtnSair: TSpeedButton;
     BtnSair1: TSpeedButton;
@@ -62,6 +62,7 @@ type
     BtnAlterarDados: TSpeedButton;
     procedure BtnAlterar1Click(Sender: TObject);
     procedure BtnAlterarClick(Sender: TObject);
+    procedure BtnAlterarDadosClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
     procedure BtnSalvarClick(Sender: TObject);
     procedure BtnVerParcelasClick(Sender: TObject);
@@ -165,6 +166,15 @@ begin
         Open;
         DBGPendente.Visible:=True;
         DBGEfetivado.Visible:=False;
+        //codigo abaixo limpa o form de alteracao de dados de lançamento.
+        ChkDespesa.Checked:=False;
+        ChkReceita.Checked:=False;
+        DTLancamento.Clear;
+        EdtTipoDocumento.Clear;
+        EdtNDoc.Clear;
+        EdtConsFornecedor.Clear;
+        EdtConsCentro.Clear;
+        MemObservacao.Clear;
         end;
     End;
       //despesa + pendente
@@ -180,6 +190,15 @@ begin
         Open;
         DBGPendente.Visible:=True;
         DBGEfetivado.Visible:=False;
+        //codigo abaixo limpa o form de alteracao de dados de lançamento.
+        ChkDespesa.Checked:=False;
+        ChkReceita.Checked:=False;
+        DTLancamento.Clear;
+        EdtTipoDocumento.Clear;
+        EdtNDoc.Clear;
+        EdtConsFornecedor.Clear;
+        EdtConsCentro.Clear;
+        MemObservacao.Clear;
         end;
     End;
        //Receita + efetivado
@@ -195,6 +214,15 @@ begin
         Open;
         DBGEfetivado.Visible:=True;
         DBGPendente.Visible:=False;
+        //codigo abaixo limpa o form de alteracao de dados de lançamento.
+        ChkDespesa.Checked:=False;
+        ChkReceita.Checked:=False;
+        DTLancamento.Clear;
+        EdtTipoDocumento.Clear;
+        EdtNDoc.Clear;
+        EdtConsFornecedor.Clear;
+        EdtConsCentro.Clear;
+        MemObservacao.Clear;
       end;
     End;
        //Despesa + efetivado
@@ -210,6 +238,15 @@ begin
         Open;
         DBGEfetivado.Visible:=True;
         DBGPendente.Visible:=False;
+        //codigo abaixo limpa o form de alteracao de dados de lançamento.
+        ChkDespesa.Checked:=False;
+        ChkReceita.Checked:=False;
+        DTLancamento.Clear;
+        EdtTipoDocumento.Clear;
+        EdtNDoc.Clear;
+        EdtConsFornecedor.Clear;
+        EdtConsCentro.Clear;
+        MemObservacao.Clear;
        end;
      End;
   End;
@@ -244,6 +281,15 @@ begin
         DBGPendente.Visible:=True;
         DBGEfetivado.Visible:=False;
         EdtConsulta.Clear;
+        //codigo abaixo limpa o form de alteracao de dados de lançamento.
+        ChkDespesa.Checked:=False;
+        ChkReceita.Checked:=False;
+        DTLancamento.Clear;
+        EdtTipoDocumento.Clear;
+        EdtNDoc.Clear;
+        EdtConsFornecedor.Clear;
+        EdtConsCentro.Clear;
+        MemObservacao.Clear;
         end;
     End;
       //despesa + pendente
@@ -260,6 +306,15 @@ begin
         DBGPendente.Visible:=True;
         DBGEfetivado.Visible:=False;
         EdtConsulta.Clear;
+        //codigo abaixo limpa o form de alteracao de dados de lançamento.
+        ChkDespesa.Checked:=False;
+        ChkReceita.Checked:=False;
+        DTLancamento.Clear;
+        EdtTipoDocumento.Clear;
+        EdtNDoc.Clear;
+        EdtConsFornecedor.Clear;
+        EdtConsCentro.Clear;
+        MemObservacao.Clear;
         end;
     End;
        //Receita + efetivado
@@ -276,6 +331,15 @@ begin
         DBGEfetivado.Visible:=True;
         DBGPendente.Visible:=False;
         EdtConsulta.Clear;
+        //codigo abaixo limpa o form de alteracao de dados de lançamento.
+        ChkDespesa.Checked:=False;
+        ChkReceita.Checked:=False;
+        DTLancamento.Clear;
+        EdtTipoDocumento.Clear;
+        EdtNDoc.Clear;
+        EdtConsFornecedor.Clear;
+        EdtConsCentro.Clear;
+        MemObservacao.Clear;
       end;
     End;
        //Despesa + efetivado
@@ -292,6 +356,15 @@ begin
         DBGEfetivado.Visible:=True;
         DBGPendente.Visible:=False;
         EdtConsulta.Clear;
+        //codigo abaixo limpa o form de alteracao de dados de lançamento.
+        ChkDespesa.Checked:=False;
+        ChkReceita.Checked:=False;
+        DTLancamento.Clear;
+        EdtTipoDocumento.Clear;
+        EdtNDoc.Clear;
+        EdtConsFornecedor.Clear;
+        EdtConsCentro.Clear;
+        MemObservacao.Clear;
        end;
      End;
   End;
@@ -304,6 +377,15 @@ begin
   DTDataFinal.Clear;
   DBGEfetivado.Visible:=False;
   DBGPendente.Visible:=False;
+  //codigo abaixo limpa o form de alteracao de dados de lançamento.
+  ChkDespesa.Checked:=False;
+  ChkReceita.Checked:=False;
+  DTLancamento.Clear;
+  EdtTipoDocumento.Clear;
+  EdtNDoc.Clear;
+  EdtConsFornecedor.Clear;
+  EdtConsCentro.Clear;
+  MemObservacao.Clear;
   Close;
 end;
 
@@ -322,6 +404,35 @@ begin
   codigoDaParcela:=DM.ZQConsBaixaEfetBAICODIGO.AsInteger;
   codigoDoLancamento:=DM.ZQConsBaixaEfetCODIGOLAN.AsInteger;
   valorDoLancamento:=dm.ZQConsBaixaEfetLANVALOR_DOCUMENTO.AsFloat;
+
+   {CÓDIGO ABAIXO CARREGA OS DADOS NO PANEL ABAIXO PARA CASO O USUÁRIO QUEIRA ALTERAR
+  ALGUM DADO RELACIONADO AO LANÇAMENTO.}
+  IF (DM.ZQConsBaixaEfetBAICODIGO.AsInteger<1) THEN
+  BEGIN
+  end
+  ELSE
+  begin
+  //receita efetivado
+  IF (dm.ZQConsBaixaefetLANTIPO.AsInteger=1) and (CboStatus.ItemIndex=1) then
+  begin
+       ChkReceita.Checked:=True;
+       DTLancamento.Date:=DM.ZQConsBaixaefetLANDOCUMENTO.AsDateTime;
+       EdtTipoDocumento.Text:=dm.ZQConsBaixaefetCODIGODOC.AsString;
+       EdtNDoc.Text:=dm.ZQConsBaixaefetLANNUMERO_DOCUMENTO.AsString;
+       EdtConsFornecedor.Text:=dm.ZQConsBaixaefetCODIGOPES.AsString;
+       EdtConsCentro.Text:=dm.ZQConsBaixaefetCENCODIGO.AsString;
+  end;
+  //despesa efetivado
+    IF (dm.ZQConsBaixaefetLANTIPO.AsInteger=0) and (CboStatus.ItemIndex=1) then
+  begin
+       ChkDespesa.Checked:=True;
+       DTLancamento.Date:=DM.ZQConsBaixaefetLANDOCUMENTO.AsDateTime;
+       EdtTipoDocumento.Text:=DM.ZQConsBaixaefetCODIGODOC.AsString;
+       EdtNDoc.Text:=dm.ZQConsBaixaefetLANNUMERO_DOCUMENTO.AsString;
+       EdtConsFornecedor.Text:=dm.ZQConsBaixaefetCODIGOPES.AsString;
+       EdtConsCentro.Text:=dm.ZQConsBaixaefetCENCODIGO.AsString;
+  end;
+   end;
 end;
 
 procedure TFrmConsBaixa.DBGPendenteCellClick(Column: TColumn);
@@ -329,6 +440,36 @@ begin
   codigoDaParcela:=dm.ZQConsBaixaPenBAICODIGO.AsInteger;
   codigoDoLancamento:=dm.ZQConsBaixaPenCODIGOLAN.AsInteger;
   valorDoLancamento:=dm.ZQConsBaixaPenLANVALOR_DOCUMENTO.AsFloat;
+
+  {CÓDIGO ABAIXO CARREGA OS DADOS NO PANEL ABAIXO PARA CASO O USUÁRIO QUEIRA ALTERAR
+  ALGUM DADO RELACIONADO AO LANÇAMENTO.}
+   IF (DM.ZQConsBaixaPenBAICODIGO.AsInteger<1) THEN
+  BEGIN
+  end
+  ELSE
+  begin
+  //receita pendente
+  IF (dm.ZQConsBaixaPenLANTIPO.AsInteger=1) and (CboStatus.ItemIndex=0) then
+  begin
+       ChkReceita.Checked:=True;
+       DTLancamento.Date:=DM.ZQConsBaixaPenLANDOCUMENTO.AsDateTime;
+       EdtTipoDocumento.Text:=dm.ZQConsBaixaPenCODIGODOC.AsString;
+       EdtNDoc.Text:=dm.ZQConsBaixaPenLANNUMERO_DOCUMENTO.AsString;
+       EdtConsFornecedor.Text:=dm.ZQConsBaixaPenCODIGOPES.AsString;
+       EdtConsCentro.Text:=dm.ZQConsBaixaPenCENCODIGO.AsString;
+  end;
+  //despesa pendente
+    IF (dm.ZQConsBaixaPenLANTIPO.AsInteger=0) and (CboStatus.ItemIndex=0) then
+  begin
+       ChkDespesa.Checked:=True;
+       DTLancamento.Date:=DM.ZQConsBaixaPenLANDOCUMENTO.AsDateTime;
+       EdtTipoDocumento.Text:=dm.ZQConsBaixaPenCODIGODOC.AsString;
+       EdtNDoc.Text:=dm.ZQConsBaixaPenLANNUMERO_DOCUMENTO.AsString;
+       EdtConsFornecedor.Text:=dm.ZQConsBaixaPenCODIGOPES.AsString;
+       EdtConsCentro.Text:=dm.ZQConsBaixaPenCENCODIGO.AsString;
+  end;
+  end;
+
 end;
 
 procedure TFrmConsBaixa.BtnAlterarClick(Sender: TObject);
@@ -351,6 +492,23 @@ begin
     FrmCadParcela.ShowModal;
   end;
 
+end;
+
+procedure TFrmConsBaixa.BtnAlterarDadosClick(Sender: TObject);
+begin
+     if (ChkReceita.Checked=False) and (ChkDespesa.Checked=False) then
+     begin
+          ShowMessage('Selecione alguma parcela na qual deseja alterar os dados do lançamento');
+     end
+     Else
+     begin
+         DTLancamento.Enabled:=True;
+         BtnConsTipoConta.Enabled:=True;
+         EdtNDoc.Enabled:=True;
+         BtnConsFor.Enabled:=True;
+         BtnConsCentro.Enabled:=True;
+         MemObservacao.Enabled:=True;
+     end;
 end;
 
 procedure TFrmConsBaixa.BtnAlterar1Click(Sender: TObject);

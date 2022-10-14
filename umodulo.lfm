@@ -1,10 +1,10 @@
 object DM: TDM
   OnCreate = DataModuleCreate
   OldCreateOrder = False
-  Height = 795
+  Height = 575
   HorizontalOffset = 78
   VerticalOffset = 0
-  Width = 1131
+  Width = 1418
   object ZFinanceiro: TZConnection
     ControlsCodePage = cCP_UTF8
     AutoEncodeStrings = True
@@ -2383,10 +2383,38 @@ object DM: TDM
       Required = False
       Precision = 22
     end
+    object ZQConsBaixaPenCENCODIGO: TLongintField
+      FieldKind = fkData
+      FieldName = 'CENCODIGO'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object ZQConsBaixaPenCENNOME: TStringField
+      FieldKind = fkData
+      FieldName = 'CENNOME'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsBaixaPenLANDOCUMENTO: TDateField
+      FieldKind = fkData
+      FieldName = 'LANDOCUMENTO'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
     object ZQConsBaixaPenLANTIPO: TSmallintField
       FieldKind = fkData
       FieldName = 'LANTIPO'
-      Index = 8
+      Index = 11
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -2395,7 +2423,7 @@ object DM: TDM
     object ZQConsBaixaPenTIPO: TStringField
       FieldKind = fkData
       FieldName = 'TIPO'
-      Index = 9
+      Index = 12
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -2405,7 +2433,7 @@ object DM: TDM
     object ZQConsBaixaPenBAISTATUS: TSmallintField
       FieldKind = fkData
       FieldName = 'BAISTATUS'
-      Index = 10
+      Index = 13
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -2414,7 +2442,7 @@ object DM: TDM
     object ZQConsBaixaPenSTATUS: TStringField
       FieldKind = fkData
       FieldName = 'STATUS'
-      Index = 11
+      Index = 14
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -2424,7 +2452,7 @@ object DM: TDM
     object ZQConsBaixaPenBAIDATAVEN: TDateField
       FieldKind = fkData
       FieldName = 'BAIDATAVEN'
-      Index = 12
+      Index = 15
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -2433,7 +2461,7 @@ object DM: TDM
     object ZQConsBaixaPenBAIVALOR: TFloatField
       FieldKind = fkData
       FieldName = 'BAIVALOR'
-      Index = 13
+      Index = 16
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -2443,7 +2471,7 @@ object DM: TDM
     object ZQConsBaixaPenCODIGOUSU: TLongintField
       FieldKind = fkData
       FieldName = 'CODIGOUSU'
-      Index = 14
+      Index = 17
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -2452,7 +2480,7 @@ object DM: TDM
     object ZQConsBaixaPenUSUNOME: TStringField
       FieldKind = fkData
       FieldName = 'USUNOME'
-      Index = 15
+      Index = 18
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -2549,10 +2577,38 @@ object DM: TDM
       Required = False
       Precision = 22
     end
+    object ZQConsBaixaEfetLANDOCUMENTO: TDateField
+      FieldKind = fkData
+      FieldName = 'LANDOCUMENTO'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsBaixaEfetCENCODIGO: TLongintField
+      FieldKind = fkData
+      FieldName = 'CENCODIGO'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object ZQConsBaixaEfetCENNOME: TStringField
+      FieldKind = fkData
+      FieldName = 'CENNOME'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
     object ZQConsBaixaEfetLANTIPO: TSmallintField
       FieldKind = fkData
       FieldName = 'LANTIPO'
-      Index = 8
+      Index = 11
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -2561,7 +2617,7 @@ object DM: TDM
     object ZQConsBaixaEfetTIPO: TStringField
       FieldKind = fkData
       FieldName = 'TIPO'
-      Index = 9
+      Index = 12
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -2571,7 +2627,7 @@ object DM: TDM
     object ZQConsBaixaEfetBAISTATUS: TSmallintField
       FieldKind = fkData
       FieldName = 'BAISTATUS'
-      Index = 10
+      Index = 13
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -2580,7 +2636,7 @@ object DM: TDM
     object ZQConsBaixaEfetSTATUS: TStringField
       FieldKind = fkData
       FieldName = 'STATUS'
-      Index = 11
+      Index = 14
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -2590,7 +2646,7 @@ object DM: TDM
     object ZQConsBaixaEfetCODIGOFOR: TLongintField
       FieldKind = fkData
       FieldName = 'CODIGOFOR'
-      Index = 12
+      Index = 15
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -2599,7 +2655,7 @@ object DM: TDM
     object ZQConsBaixaEfetFORNOME: TStringField
       FieldKind = fkData
       FieldName = 'FORNOME'
-      Index = 13
+      Index = 16
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -2609,7 +2665,7 @@ object DM: TDM
     object ZQConsBaixaEfetCODIGOCON: TLongintField
       FieldKind = fkData
       FieldName = 'CODIGOCON'
-      Index = 14
+      Index = 17
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -2618,7 +2674,7 @@ object DM: TDM
     object ZQConsBaixaEfetCONNOME: TStringField
       FieldKind = fkData
       FieldName = 'CONNOME'
-      Index = 15
+      Index = 18
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -2628,7 +2684,7 @@ object DM: TDM
     object ZQConsBaixaEfetCONAGENCIA: TStringField
       FieldKind = fkData
       FieldName = 'CONAGENCIA'
-      Index = 16
+      Index = 19
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -2638,7 +2694,7 @@ object DM: TDM
     object ZQConsBaixaEfetCONNUMERO_CONTA: TStringField
       FieldKind = fkData
       FieldName = 'CONNUMERO_CONTA'
-      Index = 17
+      Index = 20
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -2648,7 +2704,7 @@ object DM: TDM
     object ZQConsBaixaEfetCODIGOTIP: TLongintField
       FieldKind = fkData
       FieldName = 'CODIGOTIP'
-      Index = 18
+      Index = 21
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -2657,7 +2713,7 @@ object DM: TDM
     object ZQConsBaixaEfetTIPNOME: TStringField
       FieldKind = fkData
       FieldName = 'TIPNOME'
-      Index = 19
+      Index = 22
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -2667,7 +2723,7 @@ object DM: TDM
     object ZQConsBaixaEfetBAIDATAVEN: TDateField
       FieldKind = fkData
       FieldName = 'BAIDATAVEN'
-      Index = 20
+      Index = 23
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -2676,7 +2732,7 @@ object DM: TDM
     object ZQConsBaixaEfetBAIDATAPGTO: TDateField
       FieldKind = fkData
       FieldName = 'BAIDATAPGTO'
-      Index = 21
+      Index = 24
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -2685,7 +2741,7 @@ object DM: TDM
     object ZQConsBaixaEfetBAIVALOR: TFloatField
       FieldKind = fkData
       FieldName = 'BAIVALOR'
-      Index = 22
+      Index = 25
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -2695,7 +2751,7 @@ object DM: TDM
     object ZQConsBaixaEfetBAIVALORPAGO: TFloatField
       FieldKind = fkData
       FieldName = 'BAIVALORPAGO'
-      Index = 23
+      Index = 26
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -2705,7 +2761,7 @@ object DM: TDM
     object ZQConsBaixaEfetBAIMULTA_JUROS: TFloatField
       FieldKind = fkData
       FieldName = 'BAIMULTA_JUROS'
-      Index = 24
+      Index = 27
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -2715,7 +2771,7 @@ object DM: TDM
     object ZQConsBaixaEfetBAIDESCONTO: TFloatField
       FieldKind = fkData
       FieldName = 'BAIDESCONTO'
-      Index = 25
+      Index = 28
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -2725,7 +2781,7 @@ object DM: TDM
     object ZQConsBaixaEfetCODIGOUSU: TLongintField
       FieldKind = fkData
       FieldName = 'CODIGOUSU'
-      Index = 26
+      Index = 29
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -2734,7 +2790,7 @@ object DM: TDM
     object ZQConsBaixaEfetUSUNOME: TStringField
       FieldKind = fkData
       FieldName = 'USUNOME'
-      Index = 27
+      Index = 30
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False

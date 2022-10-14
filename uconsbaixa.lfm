@@ -5,8 +5,8 @@ object FrmConsBaixa: TFrmConsBaixa
   Width = 978
   BorderStyle = bsNone
   Caption = 'FrmConsBaixa'
-  ClientHeight = 749
-  ClientWidth = 962
+  ClientHeight = 788
+  ClientWidth = 978
   Color = 16577259
   OnClose = FormClose
   OnCreate = FormCreate
@@ -15,12 +15,12 @@ object FrmConsBaixa: TFrmConsBaixa
   Position = poScreenCenter
   object Panel1: TPanel
     Left = 0
-    Height = 749
+    Height = 788
     Top = 0
-    Width = 962
+    Width = 978
     Align = alClient
-    ClientHeight = 749
-    ClientWidth = 962
+    ClientHeight = 788
+    ClientWidth = 978
     TabOrder = 0
     object Panel2: TPanel
       Left = 0
@@ -72,6 +72,7 @@ object FrmConsBaixa: TFrmConsBaixa
           Height = 23
           Top = 127
           Width = 120
+          Enabled = False
           TabOrder = 0
         end
         object Label14: TLabel
@@ -98,6 +99,7 @@ object FrmConsBaixa: TFrmConsBaixa
           Caption = 'Tipo:'
           ClientHeight = 20
           ClientWidth = 140
+          Enabled = False
           TabOrder = 1
           object ChkDespesa: TRadioButton
             Left = 77
@@ -106,6 +108,7 @@ object FrmConsBaixa: TFrmConsBaixa
             Width = 63
             Align = alRight
             Caption = 'Despesa'
+            Enabled = False
             TabOrder = 0
           end
           object ChkReceita: TRadioButton
@@ -115,6 +118,7 @@ object FrmConsBaixa: TFrmConsBaixa
             Width = 58
             Align = alLeft
             Caption = 'Receita'
+            Enabled = False
             TabOrder = 1
           end
         end
@@ -123,6 +127,7 @@ object FrmConsBaixa: TFrmConsBaixa
           Height = 23
           Top = 126
           Width = 145
+          Enabled = False
           NumbersOnly = True
           TabOrder = 2
         end
@@ -131,6 +136,7 @@ object FrmConsBaixa: TFrmConsBaixa
           Height = 22
           Top = 127
           Width = 49
+          Enabled = False
           Glyph.Data = {
             62100000424D621000000000000036000000280000002D000000170000000100
             2000000000002C10000064000000640000000000000000000000FFFFFF00C100
@@ -271,6 +277,7 @@ object FrmConsBaixa: TFrmConsBaixa
           Height = 23
           Top = 128
           Width = 145
+          Enabled = False
           NumbersOnly = True
           TabOrder = 3
         end
@@ -287,6 +294,7 @@ object FrmConsBaixa: TFrmConsBaixa
           Height = 101
           Top = 192
           Width = 592
+          Enabled = False
           TabOrder = 4
         end
         object BtnSalvar: TSpeedButton
@@ -749,11 +757,12 @@ object FrmConsBaixa: TFrmConsBaixa
             00FFC10000FFC10000FFC10000FFCD3030FFECAFAFFFFFFFFFFF
           }
         end
-        object BtnConsCentro1: TSpeedButton
+        object BtnConsFor: TSpeedButton
           Left = 456
           Height = 22
           Top = 128
           Width = 49
+          Enabled = False
           Glyph.Data = {
             62100000424D621000000000000036000000280000002D000000170000000100
             2000000000002C10000064000000640000000000000000000000FFFFFF00C100
@@ -1359,6 +1368,7 @@ object FrmConsBaixa: TFrmConsBaixa
           DateOrder = doNone
           ButtonWidth = 23
           NumGlyphs = 1
+          Enabled = False
           MaxLength = 0
           TabOrder = 5
         end
@@ -1367,6 +1377,7 @@ object FrmConsBaixa: TFrmConsBaixa
           Height = 23
           Top = 72
           Width = 120
+          Enabled = False
           NumbersOnly = True
           TabOrder = 6
         end
@@ -1375,6 +1386,7 @@ object FrmConsBaixa: TFrmConsBaixa
           Height = 22
           Top = 72
           Width = 49
+          Enabled = False
           Glyph.Data = {
             62100000424D621000000000000036000000280000002D000000170000000100
             2000000000002C10000064000000640000000000000000000000FFFFFF00C100
@@ -1969,6 +1981,7 @@ object FrmConsBaixa: TFrmConsBaixa
             00FFFF3300FFFF3300FFFF3300FFFF3300FFFF3300FFFF3300FFFF3300FFFF33
             00FFFF3300FFFF3300FFFF3300FFFF5930FFFFBFAFFFFFFFFFFF
           }
+          OnClick = BtnAlterarDadosClick
         end
         object Label9: TLabel
           Left = 16

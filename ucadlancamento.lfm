@@ -1,12 +1,12 @@
 object FrmCadLancamento: TFrmCadLancamento
   Left = -8
-  Height = 788
+  Height = 827
   Top = -8
-  Width = 1498
+  Width = 1514
   BorderStyle = bsNone
   Caption = 'Lançamento'
-  ClientHeight = 749
-  ClientWidth = 1498
+  ClientHeight = 804
+  ClientWidth = 1514
   Color = 16577259
   OnCreate = FormCreate
   OnResize = FormResize
@@ -14,12 +14,12 @@ object FrmCadLancamento: TFrmCadLancamento
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 749
+    Height = 804
     Top = 0
-    Width = 1498
+    Width = 1514
     Align = alClient
-    ClientHeight = 749
-    ClientWidth = 1498
+    ClientHeight = 804
+    ClientWidth = 1514
     TabOrder = 0
     object Panel2: TPanel
       Left = 0
