@@ -55,19 +55,23 @@ type
     Panel2: TPanel;
     Panel4: TPanel;
     PnChamaLanca: TPanel;
-    SpeedButton1: TSpeedButton;
-    SpeedButton2: TSpeedButton;
+    BtnPesquisa1: TSpeedButton;
+    BtnPesquisa2: TSpeedButton;
     BtnAlterar: TSpeedButton;
     BtnVerParcelas: TSpeedButton;
     BtnAlterarDados: TSpeedButton;
+    BtnCancelarDados: TSpeedButton;
+    BtnSalvarDados: TSpeedButton;
     procedure BtnAlterar1Click(Sender: TObject);
     procedure BtnAlterarClick(Sender: TObject);
     procedure BtnAlterarDadosClick(Sender: TObject);
+    procedure BtnCancelarDadosClick(Sender: TObject);
     procedure BtnConsCentroClick(Sender: TObject);
     procedure BtnConsForClick(Sender: TObject);
     procedure BtnConsTipoContaClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
     procedure BtnSalvarClick(Sender: TObject);
+    procedure BtnSalvarDadosClick(Sender: TObject);
     procedure BtnVerParcelasClick(Sender: TObject);
     procedure DBGEfetivadoCellClick(Column: TColumn);
     procedure DBGPendenteCellClick(Column: TColumn);
@@ -78,8 +82,8 @@ type
     procedure FormShow(Sender: TObject);
     procedure Panel2Click(Sender: TObject);
     procedure PnChamaLancaClick(Sender: TObject);
-    procedure SpeedButton1Click(Sender: TObject);
-    procedure SpeedButton2Click(Sender: TObject);
+    procedure BtnPesquisa1Click(Sender: TObject);
+    procedure BtnPesquisa2Click(Sender: TObject);
   private
 
   public
@@ -145,7 +149,7 @@ end;
 
 
 
-procedure TFrmConsBaixa.SpeedButton1Click(Sender: TObject);
+procedure TFrmConsBaixa.BtnPesquisa1Click(Sender: TObject);
 begin
   //CÓDIGO ABAIXO É PARA PESQUISAR APENAS POR DATA, TIPO DE RECEITA E STATUS
   if (DTDataInicial.Date=NullDate) or (DTDataFinal.Date=NullDate) then
@@ -259,7 +263,7 @@ begin
   End;
 end;
 
-procedure TFrmConsBaixa.SpeedButton2Click(Sender: TObject);
+procedure TFrmConsBaixa.BtnPesquisa2Click(Sender: TObject);
 begin
    //CÓDIGO ABAIXO É PARA PESQUISAR POR NOME
    if (DTDataInicial.Date=NullDate) or (DTDataFinal.Date=NullDate) then
@@ -389,17 +393,76 @@ begin
   ChkDespesa.Checked:=False;
   ChkReceita.Checked:=False;
   DTLancamento.Clear;
+  DTLancamento.Enabled:=False;
   EdtTipoDocumento.Clear;
+  BtnConsTipoConta.Enabled:=False;
   EdtNDoc.Clear;
+  EdtNDoc.Enabled:=False;
   EdtConsFornecedor.Clear;
+  BtnConsFor.Enabled:=False;
   EdtConsCentro.Clear;
+  BtnConsCentro.Enabled:=False;
   MemObservacao.Clear;
+  MemObservacao.Enabled:=False;
+  BtnAlterarDados.Enabled:=True;
+  BtnSalvarDados.Enabled:=False;
+  BtnCancelarDados.Enabled:=False;
+  BtnPesquisa1.Enabled:=True;
+  BtnPesquisa2.Enabled:=True;
+  BtnVerParcelas.Enabled:=True;
+  BtnAlterar.Enabled:=True;
   Close;
 end;
 
 procedure TFrmConsBaixa.BtnSalvarClick(Sender: TObject);
 begin
 
+end;
+
+procedure TFrmConsBaixa.BtnSalvarDadosClick(Sender: TObject);
+begin
+     If(DTLancamento.Text='') then
+     begin
+          ShowMessage('Digite a data do lançamento');
+          DTLancamento.SetFocus;
+     end
+     else if (EdtTipoDocumento.Text='') then
+     begin
+          ShowMessage('Selecione o tipo de documento');
+          EdtTipoDocumento.SetFocus;
+     end
+     else if (EdtNDoc.Text='') then
+     begin
+          ShowMessage('Número do documento é obrigatório');
+          EdtNDoc.SetFocus;
+     end
+     else if (EdtConsFornecedor.Text='') then
+     begin
+          ShowMessage('O campo fornecedor é obrigatório');
+          EdtConsFornecedor.SetFocus;
+     end
+     else if (EdtConsCentro.Text='') then
+     begin
+          ShowMessage('O centro de custo é um campo obrigatório');
+          EdtConsCentro.SetFocus;
+     end
+     else
+     begin
+         ShowMessage('deu certo');
+         DTLancamento.Enabled:=False;
+         BtnConsTipoConta.Enabled:=False;
+         EdtNDoc.Enabled:=False;
+         BtnConsFor.Enabled:=False;
+         BtnConsCentro.Enabled:=False;
+         MemObservacao.Enabled:=False;
+         BtnAlterarDados.Enabled:=True;
+         BtnCancelarDados.Enabled:=False;
+         BtnSalvarDados.Enabled:=False;
+         BtnPesquisa1.Enabled:=True;
+         BtnPesquisa2.Enabled:=True;
+         BtnVerParcelas.Enabled:=True;
+         BtnAlterar.Enabled:=True;
+     end;
 end;
 
 procedure TFrmConsBaixa.BtnVerParcelasClick(Sender: TObject);
@@ -520,7 +583,39 @@ begin
          BtnConsFor.Enabled:=True;
          BtnConsCentro.Enabled:=True;
          MemObservacao.Enabled:=True;
+         BtnAlterarDados.Enabled:=False;
+         BtnCancelarDados.Enabled:=True;
+         BtnSalvarDados.Enabled:=True;
+         BtnPesquisa1.Enabled:=False;
+         BtnPesquisa2.Enabled:=False;
+         BtnVerParcelas.Enabled:=False;
+         BtnAlterar.Enabled:=False;
      end;
+end;
+
+procedure TFrmConsBaixa.BtnCancelarDadosClick(Sender: TObject);
+begin
+     ChkDespesa.Checked:=False;
+     ChkReceita.Checked:=False;
+     DTLancamento.Clear;
+     DTLancamento.Enabled:=False;
+     EdtTipoDocumento.Clear;
+     EdtNDoc.Clear;
+     BtnConsTipoConta.Enabled:=False;
+     EdtNDoc.Enabled:=False;
+     EdtConsFornecedor.Clear;
+     BtnConsFor.Enabled:=False;
+     EdtConsCentro.Clear;
+     BtnConsCentro.Enabled:=False;
+     MemObservacao.Clear;
+     MemObservacao.Enabled:=False;
+     BtnSalvarDados.Enabled:=False;
+     BtnCancelarDados.Enabled:=False;
+     BtnAlterarDados.Enabled:=True;
+     BtnPesquisa1.Enabled:=True;
+     BtnPesquisa2.Enabled:=True;
+     BtnVerParcelas.Enabled:=True;
+     BtnAlterar.Enabled:=True;
 end;
 
 procedure TFrmConsBaixa.BtnConsCentroClick(Sender: TObject);

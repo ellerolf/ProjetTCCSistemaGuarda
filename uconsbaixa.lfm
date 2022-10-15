@@ -1526,9 +1526,9 @@ object FrmConsBaixa: TFrmConsBaixa
           OnClick = BtnConsTipoContaClick
         end
         object BtnAlterarDados: TSpeedButton
-          Left = 624
+          Left = 520
           Height = 30
-          Top = 304
+          Top = 296
           Width = 120
           Glyph.Data = {
             76380000424D76380000000000003600000028000000780000001E0000000100
@@ -2001,6 +2001,24 @@ object FrmConsBaixa: TFrmConsBaixa
           Font.Style = [fsBold]
           ParentColor = False
           ParentFont = False
+        end
+        object BtnCancelarDados: TSpeedButton
+          Left = 416
+          Height = 30
+          Top = 296
+          Width = 87
+          Caption = 'CANCELAR'
+          Enabled = False
+          OnClick = BtnCancelarDadosClick
+        end
+        object BtnSalvarDados: TSpeedButton
+          Left = 656
+          Height = 30
+          Top = 296
+          Width = 80
+          Caption = 'SALVAR'
+          Enabled = False
+          OnClick = BtnSalvarDadosClick
         end
       end
       object BtnVerParcelas: TSpeedButton
@@ -3001,7 +3019,7 @@ object FrmConsBaixa: TFrmConsBaixa
         }
         OnClick = BtnAlterarClick
       end
-      object SpeedButton2: TSpeedButton
+      object BtnPesquisa2: TSpeedButton
         Left = 880
         Height = 25
         Top = 85
@@ -3088,9 +3106,9 @@ object FrmConsBaixa: TFrmConsBaixa
           00FFC10000FFC10000FFC10000FFC10000FFC10000FFC10000FFC10000FFC100
           00FFC10000FFC10000FFC10000FFC10000FFC10000EFC1000090C1000010
         }
-        OnClick = SpeedButton2Click
+        OnClick = BtnPesquisa2Click
       end
-      object SpeedButton1: TSpeedButton
+      object BtnPesquisa1: TSpeedButton
         Left = 544
         Height = 25
         Top = 87
@@ -3177,7 +3195,7 @@ object FrmConsBaixa: TFrmConsBaixa
           00FFC10000FFC10000FFC10000FFC10000FFC10000FFC10000FFC10000FFC100
           00FFC10000FFC10000FFC10000FFC10000FFC10000EFC1000090C1000010
         }
-        OnClick = SpeedButton1Click
+        OnClick = BtnPesquisa1Click
       end
       object DTDataFinal: TDateEdit
         Left = 160
