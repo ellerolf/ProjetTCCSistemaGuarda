@@ -271,6 +271,7 @@ object FrmConsBaixa: TFrmConsBaixa
             00FFC10000FFC10000FFC10000FFC10000FFC10000FFC10000C0C1000090C100
             0020FFFFFF00
           }
+          OnClick = BtnConsCentroClick
         end
         object EdtConsFornecedor: TEdit
           Left = 304
@@ -897,6 +898,7 @@ object FrmConsBaixa: TFrmConsBaixa
             00FFC10000FFC10000FFC10000FFC10000FFC10000FFC10000C0C1000090C100
             0020FFFFFF00
           }
+          OnClick = BtnConsForClick
         end
         object BtnSair1: TSpeedButton
           Left = 559

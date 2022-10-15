@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, MaskEdit,
   StdCtrls, Buttons, DBGrids, EditBtn, UModulo, uCadLancamento, UCadPagamento,
-  UConsParcelas,UBuscaDoc;
+  UConsParcelas,UBuscaDoc,UConsFornecedores,uConsCentro;
 
 type
 
@@ -63,6 +63,8 @@ type
     procedure BtnAlterar1Click(Sender: TObject);
     procedure BtnAlterarClick(Sender: TObject);
     procedure BtnAlterarDadosClick(Sender: TObject);
+    procedure BtnConsCentroClick(Sender: TObject);
+    procedure BtnConsForClick(Sender: TObject);
     procedure BtnConsTipoContaClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
     procedure BtnSalvarClick(Sender: TObject);
@@ -87,6 +89,10 @@ type
     codigoDoLancamento:Integer;
     //essa variável recebe o valor do da parcela
     valorDoLancamento:real;
+    //Essa variavel aciona o botão pesquisa fornecedor para alterar os dados do lançamento
+    acionaPesqForConsBaix:String;
+    //Essa variavel aciona o botão de pesquisa de centro de custo para alterar os dados do lançamento
+    acionaPesqCenCustConsBaix:String;
   end;
 
 var
@@ -515,6 +521,64 @@ begin
          BtnConsCentro.Enabled:=True;
          MemObservacao.Enabled:=True;
      end;
+end;
+
+procedure TFrmConsBaixa.BtnConsCentroClick(Sender: TObject);
+begin
+  acionaPesqCenCustConsBaix:='Consbaixa';
+
+  if (acionaPesqCenCustConsBaix='Consbaixa') then
+  begin
+       if (ChkReceita.Checked=True) then
+       BEGIN
+          DM.ZQBuscaCentro.Close;
+          DM.ZQBuscaCentro.SQL.Clear;
+          DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where codigotip=1 and censtatus=1');
+          DM.ZQBuscaCentro.Open;
+
+         FrmConsCentro.BtnSelecione.Visible:=True;
+         FrmConsCentro.CboTipo.Enabled:=False;
+         FrmConsCentro.CboTipo.ItemIndex:=1;
+         FrmConsCentro.CboStatus.Enabled:=False;
+         FrmConsCentro.CboStatus.ItemIndex:=1;
+         FrmConsCentro.Show;
+       end;
+
+          if (ChkDespesa.Checked=True) then
+       BEGIN
+          DM.ZQBuscaCentro.Close;
+          DM.ZQBuscaCentro.SQL.Clear;
+          DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where codigotip=2 and censtatus=1');
+          DM.ZQBuscaCentro.Open;
+
+         FrmConsCentro.BtnSelecione.Visible:=True;
+         FrmConsCentro.CboTipo.Enabled:=False;
+         FrmConsCentro.CboTipo.ItemIndex:=2;
+         FrmConsCentro.CboStatus.Enabled:=False;
+         FrmConsCentro.CboStatus.ItemIndex:=1;
+         FrmConsCentro.Show;
+       end;
+  end;
+
+end;
+
+procedure TFrmConsBaixa.BtnConsForClick(Sender: TObject);
+begin
+  acionaPesqForConsBaix:='ConsBaixa';
+
+  if(acionaPesqForConsBaix='ConsBaixa') then
+  begin
+    if (ChkReceita.Checked=True) or (ChkDespesa.Checked=True) then
+    begin
+    dm.ZQConsPessoas.Close;
+    dm.ZQConsPessoas.Sql.Clear;
+    dm.ZQConsPessoas.sql.Add('select * from vwpessoas where ativo=1');
+    dm.ZQConsPessoas.Open;
+    FrmConsFornecedores.CboStatus.Enabled:=false;
+    FrmConsFornecedores.CboStatus.ItemIndex:=1;
+    FrmConsFornecedores.Show;
+    end;
+  end;
 end;
 
 procedure TFrmConsBaixa.BtnConsTipoContaClick(Sender: TObject);

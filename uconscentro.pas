@@ -50,7 +50,8 @@ implementation
 {$R *.lfm}
 
 { TFrmConsCentro }
-  uses uCadCentroCusto,UModulo,uCadLancamento;
+  uses uCadCentroCusto,UModulo,uCadLancamento,UConsBaixa;
+
 procedure TFrmConsCentro.FormResize(Sender: TObject);
 begin
   Panel2.Left := (Panel1.ClientWidth div 2) - (Panel2.Width div 2);
@@ -81,6 +82,24 @@ begin
     dm.ZQBuscaCentro.Close;
     FrmConsCentro.Close;
   end;
+  //codigo para quando o usuario acessa pelo cons baixa
+  if(FrmConsBaixa.acionaPesqCenCustConsBaix='Consbaixa') then
+  begin
+    //após pegar o valor do centro de custo, os códigos abaixo foi feito para limpar essa tela, e o último para fechar o form
+    BtnSelecione.Visible:=False;
+    CboTipo.ItemIndex:=0;
+    CboStatus.ItemIndex:=0;
+    CboTipo.Enabled:=True;
+    CboStatus.Enabled:=True;
+    FrmConsBaixa.acionaPesqCenCustConsBaix:='Consbaixa';
+    //Foi necessário colocar o código abaixo, pq quando a pessoa entrava em lançamento e saia, e depois abria conscentro,
+    //Os campos aparecia habilitado mas a dbgrid estava com os dados da tela de lançamento. Com o ajuste abaixo isso foi resolvido
+    DM.ZQBuscaCentro.SQL.Clear;
+    DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where cennome like' +QuotedStr('%' + EdtNome1.Text + '%'));
+    DM.ZQBuscaCentro.Open;
+    dm.ZQBuscaCentro.Close;
+    FrmConsCentro.Close;
+  end;
   Close;
 end;
 
@@ -97,6 +116,27 @@ begin
     CboStatus.Enabled:=True;
     FrmCadLancamento.AcionaBtnPesqCen:='';
     //Foi necessário colocar o código abaixo, pq quando a pessoa entrava em lançamento e saia, e depois abria conscentro,
+    //Os campos aparecia habilitado mas a dbgrid estava com os dados da tela de lançamento. Com o ajuste abaixo isso foi resolvido
+    DM.ZQBuscaCentro.SQL.Clear;
+    DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where cennome like' +QuotedStr('%' + EdtNome1.Text + '%'));
+    DM.ZQBuscaCentro.Open;
+    dm.ZQBuscaCentro.Close;
+    FrmConsCentro.Close;
+  end;
+
+  //codigo abaixo é para quando ele selecione o centro de custo para tela de consbaixa
+
+  if(FrmConsBaixa.acionaPesqCenCustConsBaix='Consbaixa') then
+  begin
+    FrmConsBaixa.EdtConsCentro.Caption:=DM.ZQBuscaCentroCENCODIGO.AsString;
+    //após pegar o valor do centro de custo, os códigos abaixo foi feito para limpar essa tela, e o último para fechar o form
+    BtnSelecione.Visible:=False;
+    CboTipo.ItemIndex:=0;
+    CboStatus.ItemIndex:=0;
+    CboTipo.Enabled:=True;
+    CboStatus.Enabled:=True;
+    FrmConsBaixa.acionaPesqCenCustConsBaix:='';
+    //Foi necessário colocar o código abaixo, pq quando a pessoa entrava atraves do consbaixa e saia, e depois abria conscentro,
     //Os campos aparecia habilitado mas a dbgrid estava com os dados da tela de lançamento. Com o ajuste abaixo isso foi resolvido
     DM.ZQBuscaCentro.SQL.Clear;
     DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where cennome like' +QuotedStr('%' + EdtNome1.Text + '%'));

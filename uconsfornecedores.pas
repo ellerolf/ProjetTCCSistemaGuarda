@@ -56,7 +56,7 @@ implementation
 
 {$R *.lfm}
 
-uses uCadFornecedores,uCadLancamento;
+uses uCadFornecedores,uCadLancamento,UConsBaixa;
 
 procedure TFrmConsFornecedores.BuscaDados;
 begin
@@ -199,6 +199,25 @@ begin
     dm.ZQConsPessoas.Close;
     FrmConsFornecedores.Close;
    end;
+   //validação abaixo é do rafael, foi feito para limpar os campos caso o usuário não selecione o fornecedor e clique em sair, antees
+   //de selecionar o fornecedor
+    if (FrmConsBaixa.acionaPesqForConsBaix='ConsBaixa') then
+   begin
+    CboStatus.Enabled:=True;
+    CboStatus.ItemIndex:=0;
+    CboTipoPessoa.ItemIndex:=0;
+    EdtConsulta.Clear;
+    FrmConsBaixa.acionaPesqForConsBaix:='';
+    // Foi necessário colocar o código abaixo, pq quando a pessoa entrava atraves de consbaixa e saia, e depois abria consfornecedor
+    //Os campos aparecia habilitado mas a dbgrid estava com os dados da tela de lançamento. Com o ajuste abaixo isso foi resolvido
+    dm.ZQConsPessoas.Close;
+    dm.ZQConsPessoas.Sql.Clear;
+    dm.ZQConsPessoas.sql.Add('select * from vwpessoas');
+    dm.ZQConsPessoas.Open;
+    GrTodos.Visible := True;
+    dm.ZQConsPessoas.Close;
+    FrmConsFornecedores.Close;
+   end;
    //Gabi tive que deixar abaixo do meu código, pq se deixar em cima, ele vai executar o close primeiro e não vai pegar minha condição.
    //Se o usuario estiver direto na tela de consfornecedor e clicar em sair, minha condição será false, e ele vai fechar o consforn.
   Close;
@@ -288,7 +307,27 @@ begin
     FrmConsFornecedores.Close;
    end;
 
-   //Validação a partir deste comentário é da gabi.
+   //código do Rafael, Codigo abaixo é para levar o cod do fornecedor para consbaixa, quando o usuario altera o fornecedor
+        if (FrmConsBaixa.acionaPesqForConsBaix='ConsBaixa') then
+   begin
+     FrmConsBaixa.EdtConsFornecedor.Text:=dm.ZQConsPessoasCODIGO.AsString;
+    CboStatus.Enabled:=True;
+    CboStatus.ItemIndex:=0;
+    CboTipoPessoa.ItemIndex:=0;
+    EdtConsulta.Clear;
+    FrmConsBaixa.acionaPesqForConsBaix:='';
+    // Foi necessário colocar o código abaixo, pq quando a pessoa entrava em lançamento e saia, e depois abria consfornecedor
+    //Os campos aparecia habilitado mas a dbgrid estava com os dados da tela de lançamento. Com o ajuste abaixo isso foi resolvido
+    dm.ZQConsPessoas.Close;
+    dm.ZQConsPessoas.Sql.Clear;
+    dm.ZQConsPessoas.sql.Add('select * from vwpessoas');
+    dm.ZQConsPessoas.Open;
+    GrTodos.Visible := True;
+    dm.ZQConsPessoas.Close;
+    FrmConsFornecedores.Close;
+   end;
+
+   //VALIDAÇÃO A PARTIR DAQUI PARA BAIXO É DA GABIIIII
 
   FrmCadFornecedor.OpForn := 'U';
   //PESSOA FÍSICA
