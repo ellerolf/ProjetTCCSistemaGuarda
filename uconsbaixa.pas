@@ -411,6 +411,8 @@ begin
   BtnPesquisa2.Enabled:=True;
   BtnVerParcelas.Enabled:=True;
   BtnAlterar.Enabled:=True;
+  DBGPendente.Enabled:=True;
+  DBGEfetivado.Enabled:=True;
   Close;
 end;
 
@@ -462,6 +464,8 @@ begin
          BtnPesquisa2.Enabled:=True;
          BtnVerParcelas.Enabled:=True;
          BtnAlterar.Enabled:=True;
+         DBGPendente.Enabled:=True;
+         DBGEfetivado.Enabled:=True;
      end;
 end;
 
@@ -590,6 +594,8 @@ begin
          BtnPesquisa2.Enabled:=False;
          BtnVerParcelas.Enabled:=False;
          BtnAlterar.Enabled:=False;
+         DBGPendente.Enabled:=False;
+         DBGEfetivado.Enabled:=False;
      end;
 end;
 
@@ -616,6 +622,8 @@ begin
      BtnPesquisa2.Enabled:=True;
      BtnVerParcelas.Enabled:=True;
      BtnAlterar.Enabled:=True;
+     DBGPendente.Enabled:=True;
+     DBGEfetivado.Enabled:=True;
 end;
 
 procedure TFrmConsBaixa.BtnConsCentroClick(Sender: TObject);

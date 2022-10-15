@@ -3232,6 +3232,7 @@ object FrmConsBaixa: TFrmConsBaixa
           'RECEITA'
           'DESPESA'
         )
+        Style = csDropDownList
         TabOrder = 3
         Text = 'RECEITA'
       end
@@ -3792,6 +3793,7 @@ object FrmConsBaixa: TFrmConsBaixa
           'PENDENTE'
           'EFETIVADO'
         )
+        Style = csDropDownList
         TabOrder = 4
         Text = 'PENDENTE'
       end
