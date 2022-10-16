@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, MaskEdit,
   StdCtrls, Buttons, DBGrids, EditBtn, UModulo, uCadLancamento, UCadPagamento,
-  UConsParcelas,UBuscaDoc,UConsFornecedores,uConsCentro;
+  UConsParcelas,UBuscaDoc,UConsFornecedores,uConsCentro, UEntrarUsuario;
 
 type
 
@@ -413,6 +413,11 @@ begin
   BtnAlterar.Enabled:=True;
   DBGPendente.Enabled:=True;
   DBGEfetivado.Enabled:=True;
+  CboStatus.Enabled:=True;
+  CboRecOuDes.Enabled:=True;
+  DTDataInicial.Enabled:=True;
+  DTDataFinal.Enabled:=True;
+  EdtConsulta.Enabled:=True;
   Close;
 end;
 
@@ -423,7 +428,7 @@ end;
 
 procedure TFrmConsBaixa.BtnSalvarDadosClick(Sender: TObject);
 begin
-     If(DTLancamento.Text='') then
+     If(DTLancamento.Date=NullDate) then
      begin
           ShowMessage('Digite a data do lançamento');
           DTLancamento.SetFocus;
@@ -450,7 +455,61 @@ begin
      end
      else
      begin
-         ShowMessage('deu certo');
+          //despesa, pendente
+          if (dm.ZQConsBaixaPenLANTIPO.AsInteger=0) and (dm.ZQConsBaixaPenBAISTATUS.AsInteger=0)then
+          begin
+               dm.ZQAltLancamentos.Params.ParamByName('pLANDOCUMENTO').AsString:=FormatDateTime('yyyy-mm-dd',DTLancamento.Date);
+               dm.ZQAltLancamentos.Params.ParamByName('pCODIGODOC').AsInteger:=StrToInt(EdtTipoDocumento.Text);
+               dm.ZQAltLancamentos.Params.ParamByName('pLANNUMERO_DOCUMENTO').AsInteger:=StrToInt(EdtNDoc.Text);
+               dm.ZQAltLancamentos.Params.ParamByName('pCODIGOPES').AsInteger:=StrToInt(EdtConsFornecedor.Text);
+               dm.ZQAltLancamentos.Params.ParamByName('pCODIGOCEN').AsInteger:=StrToInt(EdtConsCentro.Text);
+               dm.ZQAltLancamentos.Params.ParamByName('pLANOBSERVACAO').AsString:=MemObservacao.Text;
+               dm.ZQAltLancamentos.Params.ParamByName('pCODIGOUSU').AsInteger:=FrmEntrarUsuario.indentidade;
+               dm.ZQAltLancamentos.Params.ParamByName('pLANCODIGO').AsInteger:=codigoDoLancamento;
+               dm.ZQAltLancamentos.ExecSQL;
+          end;
+          //receita, pendente
+          if (dm.ZQConsBaixaPenLANTIPO.AsInteger=1) and (dm.ZQConsBaixaPenBAISTATUS.AsInteger=0)then
+          begin
+               dm.ZQAltLancamentos.Params.ParamByName('pLANDOCUMENTO').AsString:=FormatDateTime('yyyy-mm-dd',DTLancamento.Date);
+               dm.ZQAltLancamentos.Params.ParamByName('pCODIGODOC').AsInteger:=StrToInt(EdtTipoDocumento.Text);
+               dm.ZQAltLancamentos.Params.ParamByName('pLANNUMERO_DOCUMENTO').AsInteger:=StrToInt(EdtNDoc.Text);
+               dm.ZQAltLancamentos.Params.ParamByName('pCODIGOPES').AsInteger:=StrToInt(EdtConsFornecedor.Text);
+               dm.ZQAltLancamentos.Params.ParamByName('pCODIGOCEN').AsInteger:=StrToInt(EdtConsCentro.Text);
+               dm.ZQAltLancamentos.Params.ParamByName('pLANOBSERVACAO').AsString:=MemObservacao.Text;
+               dm.ZQAltLancamentos.Params.ParamByName('pCODIGOUSU').AsInteger:=FrmEntrarUsuario.indentidade;
+               dm.ZQAltLancamentos.Params.ParamByName('pLANCODIGO').AsInteger:=codigoDoLancamento;
+               dm.ZQAltLancamentos.ExecSQL;
+          end;
+          //despesa, efetivado
+          if (dm.ZQConsBaixaPenLANTIPO.AsInteger=0) and (dm.ZQConsBaixaPenBAISTATUS.AsInteger=1)then
+          begin
+               dm.ZQAltLancamentos.Params.ParamByName('pLANDOCUMENTO').AsString:=FormatDateTime('yyyy-mm-dd',DTLancamento.Date);
+               dm.ZQAltLancamentos.Params.ParamByName('pCODIGODOC').AsInteger:=StrToInt(EdtTipoDocumento.Text);
+               dm.ZQAltLancamentos.Params.ParamByName('pLANNUMERO_DOCUMENTO').AsInteger:=StrToInt(EdtNDoc.Text);
+               dm.ZQAltLancamentos.Params.ParamByName('pCODIGOPES').AsInteger:=StrToInt(EdtConsFornecedor.Text);
+               dm.ZQAltLancamentos.Params.ParamByName('pCODIGOCEN').AsInteger:=StrToInt(EdtConsCentro.Text);
+               dm.ZQAltLancamentos.Params.ParamByName('pLANOBSERVACAO').AsString:=MemObservacao.Text;
+               dm.ZQAltLancamentos.Params.ParamByName('pCODIGOUSU').AsInteger:=FrmEntrarUsuario.indentidade;
+               dm.ZQAltLancamentos.Params.ParamByName('pLANCODIGO').AsInteger:=codigoDoLancamento;
+               dm.ZQAltLancamentos.ExecSQL;
+          end;
+          //receita, efetivado
+          if (dm.ZQConsBaixaPenLANTIPO.AsInteger=1) and (dm.ZQConsBaixaPenBAISTATUS.AsInteger=1)then
+          begin
+               dm.ZQAltLancamentos.Params.ParamByName('pLANDOCUMENTO').AsString:=FormatDateTime('yyyy-mm-dd',DTLancamento.Date);
+               dm.ZQAltLancamentos.Params.ParamByName('pCODIGODOC').AsInteger:=StrToInt(EdtTipoDocumento.Text);
+               dm.ZQAltLancamentos.Params.ParamByName('pLANNUMERO_DOCUMENTO').AsInteger:=StrToInt(EdtNDoc.Text);
+               dm.ZQAltLancamentos.Params.ParamByName('pCODIGOPES').AsInteger:=StrToInt(EdtConsFornecedor.Text);
+               dm.ZQAltLancamentos.Params.ParamByName('pCODIGOCEN').AsInteger:=StrToInt(EdtConsCentro.Text);
+               dm.ZQAltLancamentos.Params.ParamByName('pLANOBSERVACAO').AsString:=MemObservacao.Text;
+               dm.ZQAltLancamentos.Params.ParamByName('pCODIGOUSU').AsInteger:=FrmEntrarUsuario.indentidade;
+               dm.ZQAltLancamentos.Params.ParamByName('pLANCODIGO').AsInteger:=codigoDoLancamento;
+               dm.ZQAltLancamentos.ExecSQL;
+          end;
+
+         //validação após salvar, limpa os campos e faz outros ajustes
+         ShowMessage('Alteração de dados de lançamento realizado com sucesso');
          DTLancamento.Enabled:=False;
          BtnConsTipoConta.Enabled:=False;
          EdtNDoc.Enabled:=False;
@@ -466,6 +525,12 @@ begin
          BtnAlterar.Enabled:=True;
          DBGPendente.Enabled:=True;
          DBGEfetivado.Enabled:=True;
+         CboStatus.Enabled:=True;
+         CboRecOuDes.Enabled:=True;
+         DTDataInicial.Enabled:=True;
+         DTDataFinal.Enabled:=True;
+         EdtConsulta.Enabled:=True;
+
      end;
 end;
 
@@ -596,6 +661,11 @@ begin
          BtnAlterar.Enabled:=False;
          DBGPendente.Enabled:=False;
          DBGEfetivado.Enabled:=False;
+         CboStatus.Enabled:=False;
+         CboRecOuDes.Enabled:=False;
+         DTDataInicial.Enabled:=False;
+         DTDataFinal.Enabled:=False;
+         EdtConsulta.Enabled:=False;
      end;
 end;
 
@@ -624,6 +694,11 @@ begin
      BtnAlterar.Enabled:=True;
      DBGPendente.Enabled:=True;
      DBGEfetivado.Enabled:=True;
+     CboStatus.Enabled:=True;
+     CboRecOuDes.Enabled:=True;
+     DTDataInicial.Enabled:=True;
+     DTDataFinal.Enabled:=True;
+     EdtConsulta.Enabled:=True;
 end;
 
 procedure TFrmConsBaixa.BtnConsCentroClick(Sender: TObject);

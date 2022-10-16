@@ -1377,7 +1377,7 @@ object FrmConsBaixa: TFrmConsBaixa
         object EdtTipoDocumento: TEdit
           Left = 504
           Height = 23
-          Top = 72
+          Top = 71
           Width = 120
           Enabled = False
           NumbersOnly = True
