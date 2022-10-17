@@ -456,60 +456,99 @@ begin
      else
      begin
           //despesa, pendente
-          if (dm.ZQConsBaixaPenLANTIPO.AsInteger=0) and (dm.ZQConsBaixaPenBAISTATUS.AsInteger=0)then
+          if (CboRecOuDes.ItemIndex=1) and (CboStatus.ItemIndex=0) then
           begin
-               dm.ZQAltLancamentos.Params.ParamByName('pLANDOCUMENTO').AsString:=FormatDateTime('yyyy-mm-dd',DTLancamento.Date);
-               dm.ZQAltLancamentos.Params.ParamByName('pCODIGODOC').AsInteger:=StrToInt(EdtTipoDocumento.Text);
-               dm.ZQAltLancamentos.Params.ParamByName('pLANNUMERO_DOCUMENTO').AsInteger:=StrToInt(EdtNDoc.Text);
-               dm.ZQAltLancamentos.Params.ParamByName('pCODIGOPES').AsInteger:=StrToInt(EdtConsFornecedor.Text);
-               dm.ZQAltLancamentos.Params.ParamByName('pCODIGOCEN').AsInteger:=StrToInt(EdtConsCentro.Text);
-               dm.ZQAltLancamentos.Params.ParamByName('pLANOBSERVACAO').AsString:=MemObservacao.Text;
-               dm.ZQAltLancamentos.Params.ParamByName('pCODIGOUSU').AsInteger:=FrmEntrarUsuario.indentidade;
-               dm.ZQAltLancamentos.Params.ParamByName('pLANCODIGO').AsInteger:=codigoDoLancamento;
-               dm.ZQAltLancamentos.ExecSQL;
+               if (DTLancamento.date=dm.ZQConsBaixaPenLANDOCUMENTO.AsDateTime) and (StrToInt(EdtTipoDocumento.Text)=dm.ZQConsBaixaPenCODIGODOC.AsInteger)
+               and (EdtNDoc.Text=dm.ZQConsBaixaPenLANNUMERO_DOCUMENTO.AsString) and (StrToInt(EdtConsFornecedor.Text)=dm.ZQConsBaixaPenCODIGOPES.AsInteger)
+               and (StrToInt(EdtConsCentro.Text)=dm.ZQConsBaixaPenCENCODIGO.AsInteger) and (MemObservacao.Text=dm.ZQConsBaixaPenLANOBSERVACAO.AsString) then
+               begin
+                    ShowMessage('Não foi realizada nenhuma alteração');
+               end
+               else
+               begin
+                    dm.ZQAltLancamentos.Params.ParamByName('pLANDOCUMENTO').AsString:=FormatDateTime('yyyy-mm-dd',DTLancamento.Date);
+                    dm.ZQAltLancamentos.Params.ParamByName('pCODIGODOC').AsInteger:=StrToInt(EdtTipoDocumento.Text);
+                    dm.ZQAltLancamentos.Params.ParamByName('pLANNUMERO_DOCUMENTO').AsString:=EdtNDoc.Text;
+                    dm.ZQAltLancamentos.Params.ParamByName('pCODIGOPES').AsInteger:=StrToInt(EdtConsFornecedor.Text);
+                    dm.ZQAltLancamentos.Params.ParamByName('pCODIGOCEN').AsInteger:=StrToInt(EdtConsCentro.Text);
+                    dm.ZQAltLancamentos.Params.ParamByName('pLANOBSERVACAO').AsString:=MemObservacao.Text;
+                    dm.ZQAltLancamentos.Params.ParamByName('pCODIGOUSU').AsInteger:=FrmEntrarUsuario.indentidade;
+                    dm.ZQAltLancamentos.Params.ParamByName('pLANCODIGO').AsInteger:=codigoDoLancamento;
+                    dm.ZQAltLancamentos.ExecSQL;
+                    ShowMessage('Alteração de dados de lançamento realizado com sucesso');
+               end;
           end;
           //receita, pendente
-          if (dm.ZQConsBaixaPenLANTIPO.AsInteger=1) and (dm.ZQConsBaixaPenBAISTATUS.AsInteger=0)then
+          if (CboRecOuDes.ItemIndex=0) and (CboStatus.ItemIndex=0) then
           begin
-               dm.ZQAltLancamentos.Params.ParamByName('pLANDOCUMENTO').AsString:=FormatDateTime('yyyy-mm-dd',DTLancamento.Date);
-               dm.ZQAltLancamentos.Params.ParamByName('pCODIGODOC').AsInteger:=StrToInt(EdtTipoDocumento.Text);
-               dm.ZQAltLancamentos.Params.ParamByName('pLANNUMERO_DOCUMENTO').AsInteger:=StrToInt(EdtNDoc.Text);
-               dm.ZQAltLancamentos.Params.ParamByName('pCODIGOPES').AsInteger:=StrToInt(EdtConsFornecedor.Text);
-               dm.ZQAltLancamentos.Params.ParamByName('pCODIGOCEN').AsInteger:=StrToInt(EdtConsCentro.Text);
-               dm.ZQAltLancamentos.Params.ParamByName('pLANOBSERVACAO').AsString:=MemObservacao.Text;
-               dm.ZQAltLancamentos.Params.ParamByName('pCODIGOUSU').AsInteger:=FrmEntrarUsuario.indentidade;
-               dm.ZQAltLancamentos.Params.ParamByName('pLANCODIGO').AsInteger:=codigoDoLancamento;
-               dm.ZQAltLancamentos.ExecSQL;
+               if (DTLancamento.date=dm.ZQConsBaixaPenLANDOCUMENTO.AsDateTime) and (StrToInt(EdtTipoDocumento.Text)=dm.ZQConsBaixaPenCODIGODOC.AsInteger)
+               and (EdtNDoc.Text=dm.ZQConsBaixaPenLANNUMERO_DOCUMENTO.AsString) and (StrToInt(EdtConsFornecedor.Text)=dm.ZQConsBaixaPenCODIGOPES.AsInteger)
+               and (StrToInt(EdtConsCentro.Text)=dm.ZQConsBaixaPenCENCODIGO.AsInteger) and (MemObservacao.Text=dm.ZQConsBaixaPenLANOBSERVACAO.AsString) then
+               begin
+                    ShowMessage('Não foi realizada nenhuma alteração');
+               end
+               Else
+               begin
+                    dm.ZQAltLancamentos.Params.ParamByName('pLANDOCUMENTO').AsString:=FormatDateTime('yyyy-mm-dd',DTLancamento.Date);
+                    dm.ZQAltLancamentos.Params.ParamByName('pCODIGODOC').AsInteger:=StrToInt(EdtTipoDocumento.Text);
+                    dm.ZQAltLancamentos.Params.ParamByName('pLANNUMERO_DOCUMENTO').AsString:=EdtNDoc.Text;
+                    dm.ZQAltLancamentos.Params.ParamByName('pCODIGOPES').AsInteger:=StrToInt(EdtConsFornecedor.Text);
+                    dm.ZQAltLancamentos.Params.ParamByName('pCODIGOCEN').AsInteger:=StrToInt(EdtConsCentro.Text);
+                    dm.ZQAltLancamentos.Params.ParamByName('pLANOBSERVACAO').AsString:=MemObservacao.Text;
+                    dm.ZQAltLancamentos.Params.ParamByName('pCODIGOUSU').AsInteger:=FrmEntrarUsuario.indentidade;
+                    dm.ZQAltLancamentos.Params.ParamByName('pLANCODIGO').AsInteger:=codigoDoLancamento;
+                    dm.ZQAltLancamentos.ExecSQL;
+                    ShowMessage('Alteração de dados de lançamento realizado com sucesso');
+               end;
           end;
           //despesa, efetivado
-          if (dm.ZQConsBaixaPenLANTIPO.AsInteger=0) and (dm.ZQConsBaixaPenBAISTATUS.AsInteger=1)then
-          begin
-               dm.ZQAltLancamentos.Params.ParamByName('pLANDOCUMENTO').AsString:=FormatDateTime('yyyy-mm-dd',DTLancamento.Date);
-               dm.ZQAltLancamentos.Params.ParamByName('pCODIGODOC').AsInteger:=StrToInt(EdtTipoDocumento.Text);
-               dm.ZQAltLancamentos.Params.ParamByName('pLANNUMERO_DOCUMENTO').AsInteger:=StrToInt(EdtNDoc.Text);
-               dm.ZQAltLancamentos.Params.ParamByName('pCODIGOPES').AsInteger:=StrToInt(EdtConsFornecedor.Text);
-               dm.ZQAltLancamentos.Params.ParamByName('pCODIGOCEN').AsInteger:=StrToInt(EdtConsCentro.Text);
-               dm.ZQAltLancamentos.Params.ParamByName('pLANOBSERVACAO').AsString:=MemObservacao.Text;
-               dm.ZQAltLancamentos.Params.ParamByName('pCODIGOUSU').AsInteger:=FrmEntrarUsuario.indentidade;
-               dm.ZQAltLancamentos.Params.ParamByName('pLANCODIGO').AsInteger:=codigoDoLancamento;
-               dm.ZQAltLancamentos.ExecSQL;
-          end;
+          if(CboRecOuDes.ItemIndex=1) and (CboStatus.ItemIndex=1) then
+            begin
+                 if (DTLancamento.date=dm.ZQConsBaixaefetLANDOCUMENTO.AsDateTime) and (StrToInt(EdtTipoDocumento.Text)=dm.ZQConsBaixaefetCODIGODOC.AsInteger)
+                 and (EdtNDoc.Text=dm.ZQConsBaixaefetLANNUMERO_DOCUMENTO.AsString) and (StrToInt(EdtConsFornecedor.Text)=dm.ZQConsBaixaefetCODIGOPES.AsInteger)
+                 and (StrToInt(EdtConsCentro.Text)=dm.ZQConsBaixaefetCENCODIGO.AsInteger) and (MemObservacao.Text=dm.ZQConsBaixaefetLANOBSERVACAO.AsString) then
+                 begin
+                      ShowMessage('Não foi realizada nenhuma alteração');
+                 end
+                 Else
+                 begin
+                      dm.ZQAltLancamentos.Params.ParamByName('pLANDOCUMENTO').AsString:=FormatDateTime('yyyy-mm-dd',DTLancamento.Date);
+                      dm.ZQAltLancamentos.Params.ParamByName('pCODIGODOC').AsInteger:=StrToInt(EdtTipoDocumento.Text);
+                      dm.ZQAltLancamentos.Params.ParamByName('pLANNUMERO_DOCUMENTO').AsString:=EdtNDoc.Text;
+                      dm.ZQAltLancamentos.Params.ParamByName('pCODIGOPES').AsInteger:=StrToInt(EdtConsFornecedor.Text);
+                      dm.ZQAltLancamentos.Params.ParamByName('pCODIGOCEN').AsInteger:=StrToInt(EdtConsCentro.Text);
+                      dm.ZQAltLancamentos.Params.ParamByName('pLANOBSERVACAO').AsString:=MemObservacao.Text;
+                      dm.ZQAltLancamentos.Params.ParamByName('pCODIGOUSU').AsInteger:=FrmEntrarUsuario.indentidade;
+                      dm.ZQAltLancamentos.Params.ParamByName('pLANCODIGO').AsInteger:=codigoDoLancamento;
+                      dm.ZQAltLancamentos.ExecSQL;
+                      ShowMessage('Alteração de dados de lançamento realizado com sucesso');
+                 end;
+            end;
           //receita, efetivado
-          if (dm.ZQConsBaixaPenLANTIPO.AsInteger=1) and (dm.ZQConsBaixaPenBAISTATUS.AsInteger=1)then
+          if(CboRecOuDes.ItemIndex=0) and (CboStatus.ItemIndex=1) then
           begin
-               dm.ZQAltLancamentos.Params.ParamByName('pLANDOCUMENTO').AsString:=FormatDateTime('yyyy-mm-dd',DTLancamento.Date);
-               dm.ZQAltLancamentos.Params.ParamByName('pCODIGODOC').AsInteger:=StrToInt(EdtTipoDocumento.Text);
-               dm.ZQAltLancamentos.Params.ParamByName('pLANNUMERO_DOCUMENTO').AsInteger:=StrToInt(EdtNDoc.Text);
-               dm.ZQAltLancamentos.Params.ParamByName('pCODIGOPES').AsInteger:=StrToInt(EdtConsFornecedor.Text);
-               dm.ZQAltLancamentos.Params.ParamByName('pCODIGOCEN').AsInteger:=StrToInt(EdtConsCentro.Text);
-               dm.ZQAltLancamentos.Params.ParamByName('pLANOBSERVACAO').AsString:=MemObservacao.Text;
-               dm.ZQAltLancamentos.Params.ParamByName('pCODIGOUSU').AsInteger:=FrmEntrarUsuario.indentidade;
-               dm.ZQAltLancamentos.Params.ParamByName('pLANCODIGO').AsInteger:=codigoDoLancamento;
-               dm.ZQAltLancamentos.ExecSQL;
+               if (DTLancamento.date=dm.ZQConsBaixaefetLANDOCUMENTO.AsDateTime) and (StrToInt(EdtTipoDocumento.Text)=dm.ZQConsBaixaefetCODIGODOC.AsInteger)
+               and (EdtNDoc.Text=dm.ZQConsBaixaefetLANNUMERO_DOCUMENTO.AsString) and (StrToInt(EdtConsFornecedor.Text)=dm.ZQConsBaixaefetCODIGOPES.AsInteger)
+               and (StrToInt(EdtConsCentro.Text)=dm.ZQConsBaixaefetCENCODIGO.AsInteger) and (MemObservacao.Text=dm.ZQConsBaixaefetLANOBSERVACAO.AsString) then
+               begin
+                    ShowMessage('Não foi realizada nenhuma alteração');
+               end
+               Else
+               begin
+                    dm.ZQAltLancamentos.Params.ParamByName('pLANDOCUMENTO').AsString:=FormatDateTime('yyyy-mm-dd',DTLancamento.Date);
+                    dm.ZQAltLancamentos.Params.ParamByName('pCODIGODOC').AsInteger:=StrToInt(EdtTipoDocumento.Text);
+                    dm.ZQAltLancamentos.Params.ParamByName('pLANNUMERO_DOCUMENTO').AsString:=EdtNDoc.Text;
+                    dm.ZQAltLancamentos.Params.ParamByName('pCODIGOPES').AsInteger:=StrToInt(EdtConsFornecedor.Text);
+                    dm.ZQAltLancamentos.Params.ParamByName('pCODIGOCEN').AsInteger:=StrToInt(EdtConsCentro.Text);
+                    dm.ZQAltLancamentos.Params.ParamByName('pLANOBSERVACAO').AsString:=MemObservacao.Text;
+                    dm.ZQAltLancamentos.Params.ParamByName('pCODIGOUSU').AsInteger:=FrmEntrarUsuario.indentidade;
+                    dm.ZQAltLancamentos.Params.ParamByName('pLANCODIGO').AsInteger:=codigoDoLancamento;
+                    dm.ZQAltLancamentos.ExecSQL;
+                    ShowMessage('Alteração de dados de lançamento realizado com sucesso');
+               end;
           end;
 
          //validação após salvar, limpa os campos e faz outros ajustes
-         ShowMessage('Alteração de dados de lançamento realizado com sucesso');
          DTLancamento.Enabled:=False;
          BtnConsTipoConta.Enabled:=False;
          EdtNDoc.Enabled:=False;
@@ -530,6 +569,7 @@ begin
          DTDataInicial.Enabled:=True;
          DTDataFinal.Enabled:=True;
          EdtConsulta.Enabled:=True;
+
 
      end;
 end;
