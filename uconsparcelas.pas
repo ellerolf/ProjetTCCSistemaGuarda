@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, DBGrids, StdCtrls,
-  Buttons;
+  Buttons, UModulo;
 
 type
 
@@ -17,6 +17,8 @@ type
     DBGrid1: TDBGrid;
     Label7: TLabel;
     procedure BtnSairClick(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
   private
 
   public
@@ -35,6 +37,17 @@ implementation
 procedure TFrmConsParcelas.BtnSairClick(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TFrmConsParcelas.FormActivate(Sender: TObject);
+begin
+     DM.ZQConsVerParc.Active:=True;
+end;
+
+procedure TFrmConsParcelas.FormClose(Sender: TObject;
+  var CloseAction: TCloseAction);
+begin
+   DM.ZQConsVerParc.Active:=False;
 end;
 
 end.

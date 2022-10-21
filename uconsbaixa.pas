@@ -576,7 +576,18 @@ end;
 
 procedure TFrmConsBaixa.BtnVerParcelasClick(Sender: TObject);
 begin
-  FrmConsParcelas.show;
+  if (codigoDaParcela=0) then
+  begin
+       ShowMessage('Clique em uma parcela para ver');
+  end
+  else
+  begin
+       dm.ZQConsVerParc.Close;
+       dm.ZQConsVerParc.SQL.Clear;
+       dm.ZQConsVerParc.SQL.add('select * from vwverparcela where codigolan='+IntToStr(codigoDoLancamento));
+       dm.ZQConsVerParc.Open;
+       FrmConsParcelas.ShowModal;
+  end;
 end;
 
 procedure TFrmConsBaixa.DBGEfetivadoCellClick(Column: TColumn);

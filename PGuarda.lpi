@@ -193,6 +193,7 @@
         <Filename Value="uconsparcelas.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FrmConsParcelas"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="UConsParcelas"/>
       </Unit19>

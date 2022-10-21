@@ -1,28 +1,59 @@
 object FrmConsParcelas: TFrmConsParcelas
   Left = 1616
-  Height = 400
+  Height = 269
   Top = 31
-  Width = 300
+  Width = 735
   BorderIcons = []
   Caption = 'Parcelas'
-  ClientHeight = 400
-  ClientWidth = 300
+  ClientHeight = 269
+  ClientWidth = 735
   Color = 16577259
+  OnActivate = FormActivate
+  OnClose = FormClose
   Position = poDesktopCenter
   object DBGrid1: TDBGrid
     Left = 16
-    Height = 280
+    Height = 168
     Top = 48
-    Width = 264
+    Width = 696
     Color = clWindow
-    Columns = <>
+    Columns = <    
+      item
+        Title.Caption = 'COD'
+        Width = 40
+        FieldName = 'PESCODIGO'
+      end    
+      item
+        Title.Caption = 'NOME CLIENTE/ FORNECEDOR'
+        Width = 275
+        FieldName = 'PESNOME'
+      end    
+      item
+        Title.Caption = 'VALOR'
+        FieldName = 'BAIVALOR'
+      end    
+      item
+        Title.Caption = 'DATA VENCIMENTO'
+        Width = 110
+        FieldName = 'BAIDATAVEN'
+      end    
+      item
+        Title.Caption = 'TIPO'
+        FieldName = 'TIPO'
+      end    
+      item
+        Title.Caption = 'STATUS'
+        FieldName = 'STATUS'
+      end>
+    DataSource = DM.DSConsVerParc
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
     TabOrder = 0
   end
   object Label7: TLabel
     Left = 0
     Height = 32
     Top = 0
-    Width = 300
+    Width = 735
     Align = alTop
     Alignment = taCenter
     Caption = 'Parcelas'
@@ -37,9 +68,9 @@ object FrmConsParcelas: TFrmConsParcelas
     ParentFont = False
   end
   object BtnSair: TSpeedButton
-    Left = 160
+    Left = 592
     Height = 30
-    Top = 352
+    Top = 224
     Width = 120
     Glyph.Data = {
       76380000424D76380000000000003600000028000000780000001E0000000100

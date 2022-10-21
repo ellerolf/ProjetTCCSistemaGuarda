@@ -3100,4 +3100,127 @@ object DM: TDM
         ParamType = ptUnknown
       end>
   end
+  object ZQuery1: TZQuery
+    Params = <>
+    Left = 8
+    Top = 8
+  end
+  object ZQConsVerParc: TZQuery
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'select * from vwverparcela'
+    )
+    Params = <>
+    Left = 1017
+    Top = 571
+    object ZQConsVerParcBAICODIGO: TLongintField
+      FieldKind = fkData
+      FieldName = 'BAICODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object ZQConsVerParcBAIVALOR: TFloatField
+      FieldKind = fkData
+      FieldName = 'BAIVALOR'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 22
+    end
+    object ZQConsVerParcBAIDATAVEN: TDateField
+      FieldKind = fkData
+      FieldName = 'BAIDATAVEN'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsVerParcCODIGOLAN: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODIGOLAN'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsVerParcLANVALOR_DOCUMENTO: TFloatField
+      FieldKind = fkData
+      FieldName = 'LANVALOR_DOCUMENTO'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 22
+    end
+    object ZQConsVerParcPESCODIGO: TLongintField
+      FieldKind = fkData
+      FieldName = 'PESCODIGO'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object ZQConsVerParcPESNOME: TStringField
+      FieldKind = fkData
+      FieldName = 'PESNOME'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsVerParcLANTIPO: TSmallintField
+      FieldKind = fkData
+      FieldName = 'LANTIPO'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsVerParcTIPO: TStringField
+      FieldKind = fkData
+      FieldName = 'TIPO'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 7
+    end
+    object ZQConsVerParcBAISTATUS: TSmallintField
+      FieldKind = fkData
+      FieldName = 'BAISTATUS'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsVerParcSTATUS: TStringField
+      FieldKind = fkData
+      FieldName = 'STATUS'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 9
+    end
+  end
+  object DSConsVerParc: TDataSource
+    DataSet = ZQConsVerParc
+    Left = 1017
+    Top = 528
+  end
 end
