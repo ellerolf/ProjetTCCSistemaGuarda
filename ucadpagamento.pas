@@ -204,8 +204,18 @@ begin
     end
     Else
     begin
-      ShowMessage('Alteração efetuada com sucesso');
-      Close;
+         ShowMessage('Alteração efetuada com sucesso');
+         //O código abaixo limpa os campos e a variável na tela consbaixa, após o usuário salvar a alterações
+         FrmConsBaixa.codigoDaParcela:=0;
+         FrmConsBaixa.ChkDespesa.Checked:=False;
+         FrmConsBaixa.ChkReceita.Checked:=False;
+         FrmConsBaixa.DTLancamento.Clear;
+         FrmConsBaixa.EdtTipoDocumento.Clear;
+         FrmConsBaixa.EdtNDoc.Clear;
+         FrmConsBaixa.EdtConsFornecedor.Clear;
+         FrmConsBaixa.EdtConsCentro.Clear;
+         FrmConsBaixa.MemObservacao.Clear;
+         Close;
     end;
   end;
 
@@ -255,12 +265,22 @@ begin
         end
       else
       begin
-          BtnSalvar.Enabled:=False;
-          BtnCancelar.Enabled:=False;
-          BtnAlterar.Enabled:=True;
-          EdtValorLanc.Enabled:=False;
+           BtnSalvar.Enabled:=False;
+           BtnCancelar.Enabled:=False;
+           BtnAlterar.Enabled:=True;
+           EdtValorLanc.Enabled:=False;
+           //O código abaixo limpa os campos e a variável na tela consbaixa, após o usuário clicar em sair
+           FrmConsBaixa.codigoDaParcela:=0;
+           FrmConsBaixa.ChkDespesa.Checked:=False;
+           FrmConsBaixa.ChkReceita.Checked:=False;
+           FrmConsBaixa.DTLancamento.Clear;
+           FrmConsBaixa.EdtTipoDocumento.Clear;
+           FrmConsBaixa.EdtNDoc.Clear;
+           FrmConsBaixa.EdtConsFornecedor.Clear;
+           FrmConsBaixa.EdtConsCentro.Clear;
+           FrmConsBaixa.MemObservacao.Clear;
 
-          FrmCadParcela.Close;
+           FrmCadParcela.Close;
       end;
      end;
 
