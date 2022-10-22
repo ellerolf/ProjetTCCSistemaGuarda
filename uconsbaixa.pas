@@ -31,7 +31,6 @@ type
     DTLancamento: TDateEdit;
     EdtConsCentro: TEdit;
     EdtConsFornecedor: TEdit;
-
     EdtConsulta: TEdit;
     EdtNDoc: TEdit;
     EdtTipoDocumento: TEdit;
@@ -62,13 +61,14 @@ type
     BtnAlterarDados: TSpeedButton;
     BtnCancelarDados: TSpeedButton;
     BtnSalvarDados: TSpeedButton;
-    procedure BtnAlterar1Click(Sender: TObject);
+    BtnExcluir: TSpeedButton;
     procedure BtnAlterarClick(Sender: TObject);
     procedure BtnAlterarDadosClick(Sender: TObject);
     procedure BtnCancelarDadosClick(Sender: TObject);
     procedure BtnConsCentroClick(Sender: TObject);
     procedure BtnConsForClick(Sender: TObject);
     procedure BtnConsTipoContaClick(Sender: TObject);
+    procedure BtnExcluirClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
     procedure BtnSalvarClick(Sender: TObject);
     procedure BtnSalvarDadosClick(Sender: TObject);
@@ -178,6 +178,7 @@ begin
         DBGPendente.Visible:=True;
         DBGEfetivado.Visible:=False;
         //codigo abaixo limpa o form de alteracao de dados de lançamento.
+        codigoDaParcela:=0;
         ChkDespesa.Checked:=False;
         ChkReceita.Checked:=False;
         DTLancamento.Clear;
@@ -202,6 +203,7 @@ begin
         DBGPendente.Visible:=True;
         DBGEfetivado.Visible:=False;
         //codigo abaixo limpa o form de alteracao de dados de lançamento.
+        codigoDaParcela:=0;
         ChkDespesa.Checked:=False;
         ChkReceita.Checked:=False;
         DTLancamento.Clear;
@@ -226,6 +228,7 @@ begin
         DBGEfetivado.Visible:=True;
         DBGPendente.Visible:=False;
         //codigo abaixo limpa o form de alteracao de dados de lançamento.
+        codigoDaParcela:=0;
         ChkDespesa.Checked:=False;
         ChkReceita.Checked:=False;
         DTLancamento.Clear;
@@ -250,6 +253,7 @@ begin
         DBGEfetivado.Visible:=True;
         DBGPendente.Visible:=False;
         //codigo abaixo limpa o form de alteracao de dados de lançamento.
+        codigoDaParcela:=0;
         ChkDespesa.Checked:=False;
         ChkReceita.Checked:=False;
         DTLancamento.Clear;
@@ -293,6 +297,7 @@ begin
         DBGEfetivado.Visible:=False;
         EdtConsulta.Clear;
         //codigo abaixo limpa o form de alteracao de dados de lançamento.
+        codigoDaParcela:=0;
         ChkDespesa.Checked:=False;
         ChkReceita.Checked:=False;
         DTLancamento.Clear;
@@ -318,6 +323,7 @@ begin
         DBGEfetivado.Visible:=False;
         EdtConsulta.Clear;
         //codigo abaixo limpa o form de alteracao de dados de lançamento.
+        codigoDaParcela:=0;
         ChkDespesa.Checked:=False;
         ChkReceita.Checked:=False;
         DTLancamento.Clear;
@@ -343,6 +349,7 @@ begin
         DBGPendente.Visible:=False;
         EdtConsulta.Clear;
         //codigo abaixo limpa o form de alteracao de dados de lançamento.
+        codigoDaParcela:=0;
         ChkDespesa.Checked:=False;
         ChkReceita.Checked:=False;
         DTLancamento.Clear;
@@ -368,6 +375,7 @@ begin
         DBGPendente.Visible:=False;
         EdtConsulta.Clear;
         //codigo abaixo limpa o form de alteracao de dados de lançamento.
+        codigoDaParcela:=0;
         ChkDespesa.Checked:=False;
         ChkReceita.Checked:=False;
         DTLancamento.Clear;
@@ -418,6 +426,7 @@ begin
   DTDataInicial.Enabled:=True;
   DTDataFinal.Enabled:=True;
   EdtConsulta.Enabled:=True;
+  BtnExcluir.Enabled:=True;
   Close;
 end;
 
@@ -569,6 +578,7 @@ begin
          DTDataInicial.Enabled:=True;
          DTDataFinal.Enabled:=True;
          EdtConsulta.Enabled:=True;
+         BtnExcluir.Enabled:=True;
 
 
      end;
@@ -671,7 +681,7 @@ procedure TFrmConsBaixa.BtnAlterarClick(Sender: TObject);
 begin
   if (codigoDaParcela=0) then
   begin
-       ShowMessage('Não tem parcela a ser alterada');
+       ShowMessage('Selecione uma parcela para alterar');
   end
   else
   begin
@@ -717,6 +727,7 @@ begin
          DTDataInicial.Enabled:=False;
          DTDataFinal.Enabled:=False;
          EdtConsulta.Enabled:=False;
+         BtnExcluir.Enabled:=False;
      end;
 end;
 
@@ -750,6 +761,9 @@ begin
      DTDataInicial.Enabled:=True;
      DTDataFinal.Enabled:=True;
      EdtConsulta.Enabled:=True;
+     BtnExcluir.Enabled:=True;
+
+
 end;
 
 procedure TFrmConsBaixa.BtnConsCentroClick(Sender: TObject);
@@ -831,10 +845,105 @@ begin
   end;
 end;
 
-procedure TFrmConsBaixa.BtnAlterar1Click(Sender: TObject);
+procedure TFrmConsBaixa.BtnExcluirClick(Sender: TObject);
 begin
+  if (codigoDaParcela=0) then
+  begin
+       ShowMessage('Clique em uma parcela para excluir as parcelas e o lançamento');
+  end
+  else
+  begin
+       if MessageDlg('ATENÇÃO, REALMENTE DESEJA EXCLUIR TUDO?','Você apagará o lançamento e as respectivas parcelas!',mtInformation,[mbOk,mbCancel],0)=mrOk then
+       BEGIN
+            DM.ZQDelDataLan.Params.ParamByName('PCODIGOLAN').Value:=codigoDoLancamento;
+            dm.ZQDelDataLan.ExecSQL;
 
+            dm.ZQDelLancamentos.Params.ParamByName('PLANCODIGO').Value:=codigoDoLancamento;
+            DM.ZQDelLancamentos.ExecSQL;
+
+            //após excluir a lanç+parc ele limpa os campos de alteração de lançamento e zera a variável que recebe o cod do lançamento.
+            codigoDaParcela:=0;
+
+            ChkDespesa.Checked:=False;
+            ChkReceita.Checked:=False;
+            DTLancamento.Clear;
+            EdtTipoDocumento.Clear;
+            EdtNDoc.Clear;
+            EdtConsFornecedor.Clear;
+            EdtConsCentro.Clear;
+            MemObservacao.Clear;
+
+
+            //Código abaixo é para atualizar a dbgrid após ter excluido o lançamento e parcelas
+             //receita + pendente
+            if (FrmConsBaixa.CboRecOuDes.ItemIndex=0) and (FrmConsBaixa.CboStatus.ItemIndex=0) then
+            begin
+            with dm.ZQConsBaixaPen do
+              begin
+                Close ;
+                sql.Clear;
+                SQL.Add('SELECT * FROM vwmostrabaixapen where LANTIPO=1 AND BAISTATUS=0 AND BAIDATAVEN BETWEEN :dtinicial and :dtfinal');
+                ParamByName('dtinicial').Value:=FormatDateTime('yyyy-mm-dd',FrmConsBaixa.DTDataInicial.Date);
+                ParamByName('dtfinal').Value:=FormatDateTime('yyyy-mm-dd',FrmConsBaixa.DTDataFinal.Date);
+                Open;
+                FrmConsBaixa.DBGPendente.Visible:=True;
+                FrmConsBaixa.DBGEfetivado.Visible:=False;
+                end;
+            End;
+              //despesa + pendente
+            if (FrmConsBaixa.CboRecOuDes.ItemIndex=1) and (FrmConsBaixa.CboStatus.ItemIndex=0) then
+            begin
+            with dm.ZQConsBaixaPen do
+              begin
+                Close ;
+                sql.Clear;
+                SQL.Add('SELECT * FROM vwmostrabaixapen where LANTIPO=0 AND BAISTATUS=0 AND BAIDATAVEN BETWEEN :dtinicial and :dtfinal');
+                ParamByName('dtinicial').Value:=FormatDateTime('yyyy-mm-dd',FrmConsBaixa.DTDataInicial.Date);
+                ParamByName('dtfinal').Value:=FormatDateTime('yyyy-mm-dd',FrmConsBaixa.DTDataFinal.Date);
+                Open;
+                FrmConsBaixa.DBGPendente.Visible:=True;
+                FrmConsBaixa.DBGEfetivado.Visible:=False;
+                end;
+            End;
+               //Receita + efetivado
+            if (FrmConsBaixa.CboRecOuDes.ItemIndex=0) and (FrmConsBaixa.CboStatus.ItemIndex=1) then
+            begin
+            with dm.ZQConsBaixaEfet do
+              begin
+                Close ;
+                sql.Clear;
+                SQL.Add('SELECT * FROM vwmostrabaixaefet where LANTIPO=1 AND BAISTATUS=1 AND BAIDATAVEN BETWEEN :dtinicial and :dtfinal');
+                ParamByName('dtinicial').Value:=FormatDateTime('yyyy-mm-dd',FrmConsBaixa.DTDataInicial.Date);
+                ParamByName('dtfinal').Value:=FormatDateTime('yyyy-mm-dd',FrmConsBaixa.DTDataFinal.Date);
+                Open;
+                FrmConsBaixa.DBGEfetivado.Visible:=True;
+                FrmConsBaixa.DBGPendente.Visible:=False;
+              end;
+            End;
+               //Despesa + efetivado
+            if (FrmConsBaixa.CboRecOuDes.ItemIndex=1) and (FrmConsBaixa.CboStatus.ItemIndex=1) then
+            Begin
+             with dm.ZQConsBaixaEfet do
+               begin
+                Close ;
+                sql.Clear;
+                SQL.Add('SELECT * FROM vwmostrabaixaefet where LANTIPO=0 AND BAISTATUS=1 AND BAIDATAVEN BETWEEN :dtinicial and :dtfinal');
+                ParamByName('dtinicial').Value:=FormatDateTime('yyyy-mm-dd',FrmConsBaixa.DTDataInicial.Date);
+                ParamByName('dtfinal').Value:=FormatDateTime('yyyy-mm-dd',FrmConsBaixa.DTDataFinal.Date);
+                Open;
+                FrmConsBaixa.DBGEfetivado.Visible:=True;
+                FrmConsBaixa.DBGPendente.Visible:=False;
+               end;
+             End;
+
+       end
+       ELSE
+       BEGIN
+            Abort;
+       end;
+  end;
 end;
+
 
 end.
 

@@ -4,7 +4,7 @@ object DM: TDM
   Height = 685
   HorizontalOffset = 78
   VerticalOffset = 0
-  Width = 1131
+  Width = 890
   object ZFinanceiro: TZConnection
     ControlsCodePage = cCP_UTF8
     AutoEncodeStrings = True

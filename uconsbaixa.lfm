@@ -4002,6 +4002,14 @@ object FrmConsBaixa: TFrmConsBaixa
         Visible = False
         OnCellClick = DBGEfetivadoCellClick
       end
+      object BtnExcluir: TSpeedButton
+        Left = 645
+        Height = 30
+        Top = 272
+        Width = 123
+        Caption = 'Excluir Parc+Lan'
+        OnClick = BtnExcluirClick
+      end
     end
   end
 end
