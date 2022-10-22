@@ -231,6 +231,7 @@ begin
      end
      else
      begin
+        ChkMostrar.Checked:=false;
        DM.ZQConsUsuario.Close;
        DM.ZQConsUsuario.SQL.Clear;
        DM.ZQConsUsuario.SQL.Add('select * from usuario where usulogin='+QuotedStr(EdtNomeUsuario.Text));
