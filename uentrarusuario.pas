@@ -80,8 +80,13 @@ begin
   begin
     DM.ZQConsUsuario.Close;
     DM.ZQConsUsuario.SQL.Clear;
-    DM.ZQConsUsuario.SQL.Add('select * from usuario where usulogin=' + QuotedStr(EdtUsuario.Text) + 'and ususenha=' + QuotedStr(EdtSenha.Text));
+    DM.ZQConsUsuario.SQL.Add('select * from usuario where usulogin=' + QuotedStr(EdtUsuario.Text) + 'and ususenha=' + QuotedStr(EdtSenha.Text)+'and usustatus=1');
     DM.ZQConsUsuario.Open;
+    if(DM.ZQConsUsuarioUSUSTATUS.value=0)then
+    begin
+      ShowMessage('SEU USUÁRIO ESTÁ INATIVO, VOCÊ NÃO PODE FAZER LOGIN.');
+    end
+    else
     if (DM.ZQConsUsuario.RecordCount = 1) then
     begin
       LblMensagem.Caption := '*Campos Obrigatorios!';
