@@ -190,7 +190,7 @@ begin
     end
     Else
     begin
-      ShowMessage('cadastro efetuado com sucesso');
+      ShowMessage('Cadastro efetuado com sucesso');
       Close;
     end;
   end;

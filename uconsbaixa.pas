@@ -97,6 +97,8 @@ type
     acionaPesqForConsBaix:String;
     //Essa variavel aciona o botão de pesquisa de centro de custo para alterar os dados do lançamento
     acionaPesqCenCustConsBaix:String;
+    //A variável abaixo ela recebe o número de parcelas baixadas, uso ela na hora de excluir o  lanç+parc.
+    ParcelaBaixadas:Integer;
   end;
 
 var
@@ -853,93 +855,197 @@ begin
   end
   else
   begin
-       if MessageDlg('ATENÇÃO, REALMENTE DESEJA EXCLUIR TUDO?','Você apagará o lançamento e as respectivas parcelas!',mtInformation,[mbOk,mbCancel],0)=mrOk then
-       BEGIN
-            DM.ZQDelDataLan.Params.ParamByName('PCODIGOLAN').Value:=codigoDoLancamento;
-            dm.ZQDelDataLan.ExecSQL;
+       //teste para ver se já existe parcela baixada
+       dm.ZQConsLanData.Close;
+       dm.ZQConsLanData.SQL.Clear;
+       dm.ZQConsLanData.SQL.add('select * from baixa where baistatus=1 and codigolan='+IntToStr(codigoDoLancamento));
+       dm.ZQConsLanData.Open;
 
-            dm.ZQDelLancamentos.Params.ParamByName('PLANCODIGO').Value:=codigoDoLancamento;
-            DM.ZQDelLancamentos.ExecSQL;
+       if (dm.ZQConsLanData.RecordCount>0) then
+       begin
+            ParcelaBaixadas:=DM.ZQConsLanData.RecordCount;
+            //caso tiver parcelas baixadas ele mostrará a quantidade de parcela já baixada, e alertará o usuário
+            if MessageDlg('ATENÇÃO, REALMENTE DESEJA EXCLUIR TUDO?','Encontramos '+IntToStr(ParcelaBaixadas)+' parcela já efetivada, deseja excluir mesmo assim?',mtInformation,[mbOk,mbCancel],0)=mrOk then
+             BEGIN
+                  DM.ZQDelDataLan.Params.ParamByName('PCODIGOLAN').Value:=codigoDoLancamento;
+                  dm.ZQDelDataLan.ExecSQL;
 
-            //após excluir a lanç+parc ele limpa os campos de alteração de lançamento e zera a variável que recebe o cod do lançamento.
-            codigoDaParcela:=0;
+                  dm.ZQDelLancamentos.Params.ParamByName('PLANCODIGO').Value:=codigoDoLancamento;
+                  DM.ZQDelLancamentos.ExecSQL;
 
-            ChkDespesa.Checked:=False;
-            ChkReceita.Checked:=False;
-            DTLancamento.Clear;
-            EdtTipoDocumento.Clear;
-            EdtNDoc.Clear;
-            EdtConsFornecedor.Clear;
-            EdtConsCentro.Clear;
-            MemObservacao.Clear;
+                  //após excluir a lanç+parc ele limpa os campos de alteração de lançamento e zera a variável que recebe o cod do lançamento.
+                  codigoDaParcela:=0;
+
+                  ChkDespesa.Checked:=False;
+                  ChkReceita.Checked:=False;
+                  DTLancamento.Clear;
+                  EdtTipoDocumento.Clear;
+                  EdtNDoc.Clear;
+                  EdtConsFornecedor.Clear;
+                  EdtConsCentro.Clear;
+                  MemObservacao.Clear;
 
 
-            //Código abaixo é para atualizar a dbgrid após ter excluido o lançamento e parcelas
-             //receita + pendente
-            if (FrmConsBaixa.CboRecOuDes.ItemIndex=0) and (FrmConsBaixa.CboStatus.ItemIndex=0) then
-            begin
-            with dm.ZQConsBaixaPen do
-              begin
-                Close ;
-                sql.Clear;
-                SQL.Add('SELECT * FROM vwmostrabaixapen where LANTIPO=1 AND BAISTATUS=0 AND BAIDATAVEN BETWEEN :dtinicial and :dtfinal');
-                ParamByName('dtinicial').Value:=FormatDateTime('yyyy-mm-dd',FrmConsBaixa.DTDataInicial.Date);
-                ParamByName('dtfinal').Value:=FormatDateTime('yyyy-mm-dd',FrmConsBaixa.DTDataFinal.Date);
-                Open;
-                FrmConsBaixa.DBGPendente.Visible:=True;
-                FrmConsBaixa.DBGEfetivado.Visible:=False;
-                end;
-            End;
-              //despesa + pendente
-            if (FrmConsBaixa.CboRecOuDes.ItemIndex=1) and (FrmConsBaixa.CboStatus.ItemIndex=0) then
-            begin
-            with dm.ZQConsBaixaPen do
-              begin
-                Close ;
-                sql.Clear;
-                SQL.Add('SELECT * FROM vwmostrabaixapen where LANTIPO=0 AND BAISTATUS=0 AND BAIDATAVEN BETWEEN :dtinicial and :dtfinal');
-                ParamByName('dtinicial').Value:=FormatDateTime('yyyy-mm-dd',FrmConsBaixa.DTDataInicial.Date);
-                ParamByName('dtfinal').Value:=FormatDateTime('yyyy-mm-dd',FrmConsBaixa.DTDataFinal.Date);
-                Open;
-                FrmConsBaixa.DBGPendente.Visible:=True;
-                FrmConsBaixa.DBGEfetivado.Visible:=False;
-                end;
-            End;
-               //Receita + efetivado
-            if (FrmConsBaixa.CboRecOuDes.ItemIndex=0) and (FrmConsBaixa.CboStatus.ItemIndex=1) then
-            begin
-            with dm.ZQConsBaixaEfet do
-              begin
-                Close ;
-                sql.Clear;
-                SQL.Add('SELECT * FROM vwmostrabaixaefet where LANTIPO=1 AND BAISTATUS=1 AND BAIDATAVEN BETWEEN :dtinicial and :dtfinal');
-                ParamByName('dtinicial').Value:=FormatDateTime('yyyy-mm-dd',FrmConsBaixa.DTDataInicial.Date);
-                ParamByName('dtfinal').Value:=FormatDateTime('yyyy-mm-dd',FrmConsBaixa.DTDataFinal.Date);
-                Open;
-                FrmConsBaixa.DBGEfetivado.Visible:=True;
-                FrmConsBaixa.DBGPendente.Visible:=False;
-              end;
-            End;
-               //Despesa + efetivado
-            if (FrmConsBaixa.CboRecOuDes.ItemIndex=1) and (FrmConsBaixa.CboStatus.ItemIndex=1) then
-            Begin
-             with dm.ZQConsBaixaEfet do
-               begin
-                Close ;
-                sql.Clear;
-                SQL.Add('SELECT * FROM vwmostrabaixaefet where LANTIPO=0 AND BAISTATUS=1 AND BAIDATAVEN BETWEEN :dtinicial and :dtfinal');
-                ParamByName('dtinicial').Value:=FormatDateTime('yyyy-mm-dd',FrmConsBaixa.DTDataInicial.Date);
-                ParamByName('dtfinal').Value:=FormatDateTime('yyyy-mm-dd',FrmConsBaixa.DTDataFinal.Date);
-                Open;
-                FrmConsBaixa.DBGEfetivado.Visible:=True;
-                FrmConsBaixa.DBGPendente.Visible:=False;
-               end;
-             End;
+                  //Código abaixo é para atualizar a dbgrid após ter excluido o lançamento e parcelas
+                   //receita + pendente
+                  if (FrmConsBaixa.CboRecOuDes.ItemIndex=0) and (FrmConsBaixa.CboStatus.ItemIndex=0) then
+                  begin
+                  with dm.ZQConsBaixaPen do
+                    begin
+                      Close ;
+                      sql.Clear;
+                      SQL.Add('SELECT * FROM vwmostrabaixapen where LANTIPO=1 AND BAISTATUS=0 AND BAIDATAVEN BETWEEN :dtinicial and :dtfinal');
+                      ParamByName('dtinicial').Value:=FormatDateTime('yyyy-mm-dd',FrmConsBaixa.DTDataInicial.Date);
+                      ParamByName('dtfinal').Value:=FormatDateTime('yyyy-mm-dd',FrmConsBaixa.DTDataFinal.Date);
+                      Open;
+                      FrmConsBaixa.DBGPendente.Visible:=True;
+                      FrmConsBaixa.DBGEfetivado.Visible:=False;
+                      end;
+                  End;
+                    //despesa + pendente
+                  if (FrmConsBaixa.CboRecOuDes.ItemIndex=1) and (FrmConsBaixa.CboStatus.ItemIndex=0) then
+                  begin
+                  with dm.ZQConsBaixaPen do
+                    begin
+                      Close ;
+                      sql.Clear;
+                      SQL.Add('SELECT * FROM vwmostrabaixapen where LANTIPO=0 AND BAISTATUS=0 AND BAIDATAVEN BETWEEN :dtinicial and :dtfinal');
+                      ParamByName('dtinicial').Value:=FormatDateTime('yyyy-mm-dd',FrmConsBaixa.DTDataInicial.Date);
+                      ParamByName('dtfinal').Value:=FormatDateTime('yyyy-mm-dd',FrmConsBaixa.DTDataFinal.Date);
+                      Open;
+                      FrmConsBaixa.DBGPendente.Visible:=True;
+                      FrmConsBaixa.DBGEfetivado.Visible:=False;
+                      end;
+                  End;
+                     //Receita + efetivado
+                  if (FrmConsBaixa.CboRecOuDes.ItemIndex=0) and (FrmConsBaixa.CboStatus.ItemIndex=1) then
+                  begin
+                  with dm.ZQConsBaixaEfet do
+                    begin
+                      Close ;
+                      sql.Clear;
+                      SQL.Add('SELECT * FROM vwmostrabaixaefet where LANTIPO=1 AND BAISTATUS=1 AND BAIDATAVEN BETWEEN :dtinicial and :dtfinal');
+                      ParamByName('dtinicial').Value:=FormatDateTime('yyyy-mm-dd',FrmConsBaixa.DTDataInicial.Date);
+                      ParamByName('dtfinal').Value:=FormatDateTime('yyyy-mm-dd',FrmConsBaixa.DTDataFinal.Date);
+                      Open;
+                      FrmConsBaixa.DBGEfetivado.Visible:=True;
+                      FrmConsBaixa.DBGPendente.Visible:=False;
+                    end;
+                  End;
+                     //Despesa + efetivado
+                  if (FrmConsBaixa.CboRecOuDes.ItemIndex=1) and (FrmConsBaixa.CboStatus.ItemIndex=1) then
+                  Begin
+                   with dm.ZQConsBaixaEfet do
+                     begin
+                      Close ;
+                      sql.Clear;
+                      SQL.Add('SELECT * FROM vwmostrabaixaefet where LANTIPO=0 AND BAISTATUS=1 AND BAIDATAVEN BETWEEN :dtinicial and :dtfinal');
+                      ParamByName('dtinicial').Value:=FormatDateTime('yyyy-mm-dd',FrmConsBaixa.DTDataInicial.Date);
+                      ParamByName('dtfinal').Value:=FormatDateTime('yyyy-mm-dd',FrmConsBaixa.DTDataFinal.Date);
+                      Open;
+                      FrmConsBaixa.DBGEfetivado.Visible:=True;
+                      FrmConsBaixa.DBGPendente.Visible:=False;
+                     end;
+                   End;
+
+             end
+             ELSE
+             BEGIN
+                  Abort;
+             end;
 
        end
-       ELSE
-       BEGIN
-            Abort;
+       else
+       begin
+            //caso não tiver parcelas baixadas ele executará esse código, e não alertará para o usuário que existe parcela já baixada
+             if MessageDlg('ATENÇÃO, REALMENTE DESEJA EXCLUIR TUDO?','Você apagará o lançamento e as respectivas parcelas!',mtInformation,[mbOk,mbCancel],0)=mrOk then
+             BEGIN
+                  DM.ZQDelDataLan.Params.ParamByName('PCODIGOLAN').Value:=codigoDoLancamento;
+                  dm.ZQDelDataLan.ExecSQL;
+
+                  dm.ZQDelLancamentos.Params.ParamByName('PLANCODIGO').Value:=codigoDoLancamento;
+                  DM.ZQDelLancamentos.ExecSQL;
+
+                  //após excluir a lanç+parc ele limpa os campos de alteração de lançamento e zera a variável que recebe o cod do lançamento.
+                  codigoDaParcela:=0;
+
+                  ChkDespesa.Checked:=False;
+                  ChkReceita.Checked:=False;
+                  DTLancamento.Clear;
+                  EdtTipoDocumento.Clear;
+                  EdtNDoc.Clear;
+                  EdtConsFornecedor.Clear;
+                  EdtConsCentro.Clear;
+                  MemObservacao.Clear;
+
+
+                  //Código abaixo é para atualizar a dbgrid após ter excluido o lançamento e parcelas
+                   //receita + pendente
+                  if (FrmConsBaixa.CboRecOuDes.ItemIndex=0) and (FrmConsBaixa.CboStatus.ItemIndex=0) then
+                  begin
+                  with dm.ZQConsBaixaPen do
+                    begin
+                      Close ;
+                      sql.Clear;
+                      SQL.Add('SELECT * FROM vwmostrabaixapen where LANTIPO=1 AND BAISTATUS=0 AND BAIDATAVEN BETWEEN :dtinicial and :dtfinal');
+                      ParamByName('dtinicial').Value:=FormatDateTime('yyyy-mm-dd',FrmConsBaixa.DTDataInicial.Date);
+                      ParamByName('dtfinal').Value:=FormatDateTime('yyyy-mm-dd',FrmConsBaixa.DTDataFinal.Date);
+                      Open;
+                      FrmConsBaixa.DBGPendente.Visible:=True;
+                      FrmConsBaixa.DBGEfetivado.Visible:=False;
+                      end;
+                  End;
+                    //despesa + pendente
+                  if (FrmConsBaixa.CboRecOuDes.ItemIndex=1) and (FrmConsBaixa.CboStatus.ItemIndex=0) then
+                  begin
+                  with dm.ZQConsBaixaPen do
+                    begin
+                      Close ;
+                      sql.Clear;
+                      SQL.Add('SELECT * FROM vwmostrabaixapen where LANTIPO=0 AND BAISTATUS=0 AND BAIDATAVEN BETWEEN :dtinicial and :dtfinal');
+                      ParamByName('dtinicial').Value:=FormatDateTime('yyyy-mm-dd',FrmConsBaixa.DTDataInicial.Date);
+                      ParamByName('dtfinal').Value:=FormatDateTime('yyyy-mm-dd',FrmConsBaixa.DTDataFinal.Date);
+                      Open;
+                      FrmConsBaixa.DBGPendente.Visible:=True;
+                      FrmConsBaixa.DBGEfetivado.Visible:=False;
+                      end;
+                  End;
+                     //Receita + efetivado
+                  if (FrmConsBaixa.CboRecOuDes.ItemIndex=0) and (FrmConsBaixa.CboStatus.ItemIndex=1) then
+                  begin
+                  with dm.ZQConsBaixaEfet do
+                    begin
+                      Close ;
+                      sql.Clear;
+                      SQL.Add('SELECT * FROM vwmostrabaixaefet where LANTIPO=1 AND BAISTATUS=1 AND BAIDATAVEN BETWEEN :dtinicial and :dtfinal');
+                      ParamByName('dtinicial').Value:=FormatDateTime('yyyy-mm-dd',FrmConsBaixa.DTDataInicial.Date);
+                      ParamByName('dtfinal').Value:=FormatDateTime('yyyy-mm-dd',FrmConsBaixa.DTDataFinal.Date);
+                      Open;
+                      FrmConsBaixa.DBGEfetivado.Visible:=True;
+                      FrmConsBaixa.DBGPendente.Visible:=False;
+                    end;
+                  End;
+                     //Despesa + efetivado
+                  if (FrmConsBaixa.CboRecOuDes.ItemIndex=1) and (FrmConsBaixa.CboStatus.ItemIndex=1) then
+                  Begin
+                   with dm.ZQConsBaixaEfet do
+                     begin
+                      Close ;
+                      sql.Clear;
+                      SQL.Add('SELECT * FROM vwmostrabaixaefet where LANTIPO=0 AND BAISTATUS=1 AND BAIDATAVEN BETWEEN :dtinicial and :dtfinal');
+                      ParamByName('dtinicial').Value:=FormatDateTime('yyyy-mm-dd',FrmConsBaixa.DTDataInicial.Date);
+                      ParamByName('dtfinal').Value:=FormatDateTime('yyyy-mm-dd',FrmConsBaixa.DTDataFinal.Date);
+                      Open;
+                      FrmConsBaixa.DBGEfetivado.Visible:=True;
+                      FrmConsBaixa.DBGPendente.Visible:=False;
+                     end;
+                   End;
+
+             end
+             ELSE
+             BEGIN
+                  Abort;
+             end;
        end;
   end;
 end;
