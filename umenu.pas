@@ -135,10 +135,19 @@ procedure TFrmMenu.FormShow(Sender: TObject);
 begin
   FrmEntrarUsuario.hide;
   LblUsuario.Caption:=FrmEntrarUsuario.usuarios;
+  if (FrmEntrarUsuario.acesso<>1)then
+  begin
+    BtnCadUsuarios.Enabled:=False;
+    BtnConsUsuario.Enabled:=False;
+  end;
 end;
 
 procedure TFrmMenu.BtnCadUsuariosClick(Sender: TObject);
 begin
+  {if (FrmEntrarUsuario.acesso=2)then
+  begin
+    ShowMessage('Sua conta de usuario não tem acesso a essa função');
+  end;}
   FrmCadUsuario.AltOUCad:='C';
   FrmCadUsuario.Parent := PnChama;
   FrmCadUsuario.Align := alClient;

@@ -41,7 +41,8 @@ type
 
   public
     usuarios: string;
-    indentidade: integer;
+    indentidade, acesso: integer;
+
   end;
 
 var
@@ -88,6 +89,7 @@ begin
       usuarios := DM.ZQConsUsuarioUSUNOME.AsString;
       //aqui esta atribuindo o codigo do usuario para como "indentidade" para uso de outros frorms
       indentidade:= DM.ZQConsUsuarioUSUCODIGO.AsInteger;
+      acesso:= DM.ZQConsUsuarioCODIGONIV.AsInteger;
       FrmMenu.Show;
     end
     else
