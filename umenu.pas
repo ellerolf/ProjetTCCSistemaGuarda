@@ -43,6 +43,7 @@ type
     BtnConsUsuario: TSpeedButton;
     BtnConsCentro: TSpeedButton;
     BtnLogoff: TSpeedButton;
+    BtnMudarSenha: TSpeedButton;
     procedure BtnCadBancoClick(Sender: TObject);
     procedure BtnCadCentroClick(Sender: TObject);
     procedure BtnCadFornecedorClick(Sender: TObject);
