@@ -16,17 +16,29 @@ type
   { TFrmMenu }
 
   TFrmMenu = class(TForm)
+    EdtSenhaAtual: TEdit;
+    EdtSenhaNova: TEdit;
+    EdtConfirmaSenha: TEdit;
     espaca1: TLabel;
+    espaca2: TLabel;
     Image1: TImage;
     Image2: TImage;
     Image3: TImage;
     Image4: TImage;
     Image5: TImage;
     espaca: TLabel;
+    Image6: TImage;
+    Label5: TLabel;
+    LblNomeUsu: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    LblRetorno: TLabel;
     LblUsuario: TLabel;
     Panel1: TPanel;
     Panel2: TPanel;
     Panel3: TPanel;
+    PnTrocaSenha: TPanel;
+    Panel8: TPanel;
     PnChama: TPanel;
     Panel4: TPanel;
     Panel5: TPanel;
@@ -47,6 +59,7 @@ type
     BtnConsCentro: TSpeedButton;
     BtnLogoff: TSpeedButton;
     BtnMudarSenha: TSpeedButton;
+    BtnAlteraSenha: TSpeedButton;
     procedure BtnCadBancoClick(Sender: TObject);
     procedure BtnCadCentroClick(Sender: TObject);
     procedure BtnCadFornecedorClick(Sender: TObject);
