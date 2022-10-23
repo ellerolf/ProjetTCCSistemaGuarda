@@ -3,9 +3,9 @@ object FrmEntrarUsuario: TFrmEntrarUsuario
   Height = 600
   Top = -8
   Width = 900
-  BorderIcons = [biSystemMenu]
+  BorderIcons = []
   BorderStyle = bsSingle
-  Caption = 'Acesso ao Sistema'
+  Caption = 'RMG -  Controle Financeiro'
   ClientHeight = 600
   ClientWidth = 900
   Color = 14927272
@@ -20,7 +20,7 @@ object FrmEntrarUsuario: TFrmEntrarUsuario
     Align = alClient
     ClientHeight = 600
     ClientWidth = 900
-    Color = 16242369
+    Color = 10768149
     Font.CharSet = ANSI_CHARSET
     Font.Color = clWhite
     Font.Height = -15
@@ -31,18 +31,18 @@ object FrmEntrarUsuario: TFrmEntrarUsuario
     ParentFont = False
     TabOrder = 0
     object Panel2: TPanel
-      Left = 344
-      Height = 568
-      Top = 24
+      Left = 232
+      Height = 600
+      Top = 0
       Width = 440
       BevelOuter = bvNone
-      ClientHeight = 568
+      ClientHeight = 600
       ClientWidth = 440
       TabOrder = 0
       object pncentro: TPanel
-        Left = 8
+        Left = 24
         Height = 328
-        Top = 168
+        Top = 200
         Width = 392
         ClientHeight = 328
         ClientWidth = 392
@@ -67,7 +67,7 @@ object FrmEntrarUsuario: TFrmEntrarUsuario
         object LblMensagem: TLabel
           Left = 128
           Height = 17
-          Top = 256
+          Top = 264
           Width = 137
           Caption = '*Campos Obrigatorios'
           Font.CharSet = ANSI_CHARSET
@@ -83,7 +83,7 @@ object FrmEntrarUsuario: TFrmEntrarUsuario
         object BtnEntrar: TSpeedButton
           Left = 200
           Height = 34
-          Top = 208
+          Top = 216
           Width = 124
           AutoSize = True
           Glyph.Data = {
@@ -566,7 +566,7 @@ object FrmEntrarUsuario: TFrmEntrarUsuario
           Width = 46
           Caption = 'Senha:'
           Font.CharSet = ANSI_CHARSET
-          Font.Color = clWhite
+          Font.Color = clBlack
           Font.Height = -15
           Font.Pitch = fpVariable
           Font.Quality = fqDraft
@@ -598,7 +598,7 @@ object FrmEntrarUsuario: TFrmEntrarUsuario
           Width = 58
           Caption = 'Usuario:'
           Font.CharSet = ANSI_CHARSET
-          Font.Color = clWhite
+          Font.Color = clBlack
           Font.Height = -15
           Font.Pitch = fpVariable
           Font.Quality = fqDraft
@@ -609,7 +609,7 @@ object FrmEntrarUsuario: TFrmEntrarUsuario
         object SpeedButton1: TSpeedButton
           Left = 72
           Height = 34
-          Top = 208
+          Top = 216
           Width = 124
           AutoSize = True
           Glyph.Data = {
@@ -1070,9 +1070,9 @@ object FrmEntrarUsuario: TFrmEntrarUsuario
         end
       end
       object Image1: TImage
-        Left = 8
+        Left = 24
         Height = 130
-        Top = 40
+        Top = 72
         Width = 392
         OnClick = Image1Click
         Picture.Data = {
