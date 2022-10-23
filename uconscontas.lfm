@@ -1,12 +1,12 @@
 object FrmConsContas: TFrmConsContas
   Left = -8
-  Height = 788
+  Height = 656
   Top = -8
-  Width = 976
+  Width = 894
   BorderStyle = bsNone
   Caption = 'FrmConsContas'
-  ClientHeight = 749
-  ClientWidth = 976
+  ClientHeight = 656
+  ClientWidth = 894
   Color = 16577259
   OnClose = FormClose
   OnResize = FormResize
@@ -15,28 +15,28 @@ object FrmConsContas: TFrmConsContas
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 749
+    Height = 656
     Top = 0
-    Width = 976
+    Width = 894
     Align = alClient
-    ClientHeight = 749
-    ClientWidth = 976
+    ClientHeight = 656
+    ClientWidth = 894
     TabOrder = 0
     object Panel2: TPanel
-      Left = 0
-      Height = 680
-      Top = 0
-      Width = 704
+      Left = 1
+      Height = 654
+      Top = 1
+      Width = 892
+      Align = alClient
       BevelOuter = bvNone
-      Caption = 'Panel2'
-      ClientHeight = 680
-      ClientWidth = 704
+      ClientHeight = 654
+      ClientWidth = 892
       TabOrder = 0
       object Label7: TLabel
         Left = 0
         Height = 32
         Top = 0
-        Width = 704
+        Width = 892
         Align = alTop
         Alignment = taCenter
         Caption = 'Contas Bancarias'
@@ -51,9 +51,9 @@ object FrmConsContas: TFrmConsContas
         ParentFont = False
       end
       object Label1: TLabel
-        Left = 264
+        Left = 345
         Height = 17
-        Top = 56
+        Top = 51
         Width = 86
         Caption = 'Ativo/Inativo:'
         Font.CharSet = ANSI_CHARSET
@@ -65,9 +65,9 @@ object FrmConsContas: TFrmConsContas
         ParentFont = False
       end
       object Label2: TLabel
-        Left = 400
+        Left = 481
         Height = 17
-        Top = 56
+        Top = 51
         Width = 66
         Caption = 'Por Nome:'
         Font.CharSet = ANSI_CHARSET
@@ -79,9 +79,9 @@ object FrmConsContas: TFrmConsContas
         ParentFont = False
       end
       object CboStatus: TComboBox
-        Left = 264
+        Left = 345
         Height = 23
-        Top = 76
+        Top = 68
         Width = 128
         ItemHeight = 15
         Items.Strings = (
@@ -94,17 +94,17 @@ object FrmConsContas: TFrmConsContas
         TabOrder = 0
       end
       object EdtConsulta: TEdit
-        Left = 400
+        Left = 481
         Height = 23
-        Top = 76
+        Top = 68
         Width = 192
         OnChange = EdtConsultaChange
         TabOrder = 1
       end
       object BtnAlterar: TSpeedButton
-        Left = 400
-        Height = 30
-        Top = 584
+        Left = 481
+        Height = 27
+        Top = 552
         Width = 120
         Glyph.Data = {
           76380000424D76380000000000003600000028000000780000001E0000000100
@@ -563,9 +563,9 @@ object FrmConsContas: TFrmConsContas
         OnClick = BtnAlterarClick
       end
       object BtnSair: TSpeedButton
-        Left = 528
-        Height = 30
-        Top = 584
+        Left = 609
+        Height = 27
+        Top = 552
         Width = 120
         Glyph.Data = {
           76380000424D76380000000000003600000028000000780000001E0000000100
@@ -1024,9 +1024,9 @@ object FrmConsContas: TFrmConsContas
         OnClick = BtnSairClick
       end
       object DBGConsCaixa: TDBGrid
-        Left = 48
-        Height = 448
-        Top = 120
+        Left = 129
+        Height = 397
+        Top = 107
         Width = 600
         Color = clWindow
         Columns = <        
@@ -1056,9 +1056,9 @@ object FrmConsContas: TFrmConsContas
         OnCellClick = DBGConsCaixaCellClick
       end
       object RGBConsTipoConta: TRadioGroup
-        Left = 48
-        Height = 49
-        Top = 56
+        Left = 129
+        Height = 43
+        Top = 51
         Width = 208
         AutoFill = True
         Caption = 'Tipo de Conta'
@@ -1069,7 +1069,7 @@ object FrmConsContas: TFrmConsContas
         ChildSizing.ShrinkVertical = crsScaleChilds
         ChildSizing.Layout = cclLeftToRightThenTopToBottom
         ChildSizing.ControlsPerLine = 2
-        ClientHeight = 29
+        ClientHeight = 23
         ClientWidth = 204
         Columns = 2
         Items.Strings = (
@@ -1080,9 +1080,9 @@ object FrmConsContas: TFrmConsContas
         TabOrder = 3
       end
       object DBGConsContasBancarias: TDBGrid
-        Left = 48
-        Height = 448
-        Top = 120
+        Left = 129
+        Height = 397
+        Top = 107
         Width = 600
         Color = clWindow
         Columns = <        
@@ -1123,9 +1123,9 @@ object FrmConsContas: TFrmConsContas
         OnCellClick = DBGConsContasBancariasCellClick
       end
       object BtnPesquisar: TSpeedButton
-        Left = 599
+        Left = 680
         Height = 27
-        Top = 72
+        Top = 65
         Width = 49
         AutoSize = True
         Glyph.Data = {

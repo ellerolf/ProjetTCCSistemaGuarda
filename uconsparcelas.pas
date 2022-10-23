@@ -19,6 +19,7 @@ type
     procedure BtnSairClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
+    procedure Label7Click(Sender: TObject);
   private
 
   public
@@ -48,6 +49,11 @@ procedure TFrmConsParcelas.FormClose(Sender: TObject;
   var CloseAction: TCloseAction);
 begin
    DM.ZQConsVerParc.Active:=False;
+end;
+
+procedure TFrmConsParcelas.Label7Click(Sender: TObject);
+begin
+
 end;
 
 end.

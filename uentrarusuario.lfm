@@ -11,8 +11,7 @@ object FrmEntrarUsuario: TFrmEntrarUsuario
   Color = 14927272
   OnCreate = FormCreate
   OnResize = FormResize
-  Position = poDesktopCenter
-  LCLVersion = '2.2.2.0'
+  Position = poScreenCenter
   object Panel1: TPanel
     Left = 0
     Height = 600

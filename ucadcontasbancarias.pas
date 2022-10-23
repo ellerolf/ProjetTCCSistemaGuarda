@@ -13,23 +13,17 @@ type
   { TFrmCadContasBancarias }
 
   TFrmCadContasBancarias = class(TForm)
+    BtnConsultaD: TSpeedButton;
     BtnConsultaO: TSpeedButton;
+    CboBanco: TComboBox;
     CboTipo: TDBLookupComboBox;
     DtDataTransf: TDateEdit;
-    EdtCodContaO: TEdit;
-    EdtCodContaDes: TEdit;
-    EdtNomeConta: TEdit;
-    Label8: TLabel;
-    RGBStatusTransf: TRadioGroup;
-    RGBStatusConta: TRadioGroup;
-    RdbCadConta: TRadioButton;
-    RdbCadTrans: TRadioButton;
-    BtnSair: TSpeedButton;
-    BtnSalvar: TSpeedButton;
-    CboBanco: TComboBox;
     EdtAgencia: TEdit;
+    EdtCodContaDes: TEdit;
+    EdtCodContaO: TEdit;
     EdtNConta: TEdit;
     EdtNDoc: TEdit;
+    EdtNomeConta: TEdit;
     EdtSaldoInicial: TEdit;
     EdtVlrTras: TEdit;
     GrpCadastro: TGroupBox;
@@ -43,12 +37,18 @@ type
     Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
-    Label7: TLabel;
+    Label8: TLabel;
     Label9: TLabel;
-    LblMensagem: TLabel;
+    Panel3: TPanel;
+    RdbCadConta: TRadioButton;
+    RdbCadTrans: TRadioButton;
+    RGBStatusConta: TRadioGroup;
+    BtnSair: TSpeedButton;
+    BtnSalvar: TSpeedButton;
+    Label7: TLabel;
     Panel1: TPanel;
     Panel2: TPanel;
-    BtnConsultaD: TSpeedButton;
+    RGBStatusTransf: TRadioGroup;
     procedure BtnConsultaDClick(Sender: TObject);
     procedure BtnConsultaOClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);

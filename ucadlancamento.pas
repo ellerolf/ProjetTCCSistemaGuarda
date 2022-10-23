@@ -39,6 +39,7 @@ type
     Panel1: TPanel;
     Panel2: TPanel;
     BtnConsTipoConta: TSpeedButton;
+    Panel3: TPanel;
     procedure BtnConsCentro1Click(Sender: TObject);
     procedure BtnConsCentroClick(Sender: TObject);
     procedure BtnConsTipoContaClick(Sender: TObject);

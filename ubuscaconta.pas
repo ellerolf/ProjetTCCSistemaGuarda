@@ -19,6 +19,7 @@ type
     DBGCaixa: TDBGrid;
     DBGContasBanc: TDBGrid;
     EdtConsulta: TEdit;
+    Label7: TLabel;
     Panel1: TPanel;
     RGBTipoConta: TRadioGroup;
     procedure BtnConsultaClick(Sender: TObject);

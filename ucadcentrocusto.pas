@@ -22,6 +22,7 @@ type
     LblMensagem: TLabel;
     Panel1: TPanel;
     Panel2: TPanel;
+    Panel3: TPanel;
     RgbStatus: TRadioGroup;
     RgbTipo: TRadioGroup;
     procedure BtnAlterarClick(Sender: TObject);
@@ -32,6 +33,7 @@ type
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormResize(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure Label1Click(Sender: TObject);
     procedure Label4Click(Sender: TObject);
     procedure LblFormNomeClick(Sender: TObject);
     procedure Panel2Click(Sender: TObject);
@@ -186,6 +188,11 @@ begin
     RgbStatus.ItemIndex:=0;
     LblMensagem.Caption:='*Campos Obrigatorios';
   end;
+end;
+
+procedure TFrmCadCentroCusto.Label1Click(Sender: TObject);
+begin
+
 end;
 
 procedure TFrmCadCentroCusto.Label4Click(Sender: TObject);

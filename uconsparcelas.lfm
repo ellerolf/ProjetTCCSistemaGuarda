@@ -2,20 +2,20 @@ object FrmConsParcelas: TFrmConsParcelas
   Left = 1616
   Height = 269
   Top = 31
-  Width = 735
+  Width = 688
   BorderIcons = []
-  Caption = 'Parcelas'
+  Caption = 'Ver Parcelas'
   ClientHeight = 269
-  ClientWidth = 735
+  ClientWidth = 688
   Color = 16577259
   OnActivate = FormActivate
   OnClose = FormClose
-  Position = poDesktopCenter
+  Position = poScreenCenter
   object DBGrid1: TDBGrid
     Left = 16
     Height = 168
     Top = 48
-    Width = 696
+    Width = 656
     Color = clWindow
     Columns = <    
       item
@@ -53,10 +53,10 @@ object FrmConsParcelas: TFrmConsParcelas
     Left = 0
     Height = 32
     Top = 0
-    Width = 735
+    Width = 688
     Align = alTop
     Alignment = taCenter
-    Caption = 'Parcelas'
+    Caption = 'Ver Parcelas'
     Font.CharSet = ANSI_CHARSET
     Font.Color = 10420224
     Font.Height = -24
@@ -66,11 +66,12 @@ object FrmConsParcelas: TFrmConsParcelas
     Font.Style = [fsBold]
     ParentColor = False
     ParentFont = False
+    OnClick = Label7Click
   end
   object BtnSair: TSpeedButton
-    Left = 592
+    Left = 544
     Height = 30
-    Top = 224
+    Top = 232
     Width = 120
     Glyph.Data = {
       76380000424D76380000000000003600000028000000780000001E0000000100

@@ -1,38 +1,38 @@
 object FrmBuscaConta: TFrmBuscaConta
   Left = 275
-  Height = 492
+  Height = 540
   Top = 31
-  Width = 598
+  Width = 590
   BorderIcons = []
-  Caption = 'FrmBuscaConta'
-  ClientHeight = 492
-  ClientWidth = 598
+  Caption = 'Pesquisar Contas Bancárias'
+  ClientHeight = 540
+  ClientWidth = 590
   OnClose = FormClose
   OnShow = FormShow
   Position = poDesktopCenter
   object Panel1: TPanel
     Left = 0
-    Height = 492
+    Height = 540
     Top = 0
-    Width = 598
+    Width = 590
     Align = alClient
-    ClientHeight = 492
-    ClientWidth = 598
+    ClientHeight = 540
+    ClientWidth = 590
     Color = 16577259
     ParentColor = False
     TabOrder = 0
     object EdtConsulta: TEdit
       Left = 16
       Height = 23
-      Top = 16
+      Top = 60
       Width = 224
       OnChange = EdtConsultaChange
       TabOrder = 0
     end
     object BtnConsulta: TSpeedButton
-      Left = 252
+      Left = 248
       Height = 27
-      Top = 16
+      Top = 56
       Width = 49
       AutoSize = True
       Glyph.Data = {
@@ -174,7 +174,7 @@ object FrmBuscaConta: TFrmBuscaConta
     object DBGCaixa: TDBGrid
       Left = 16
       Height = 376
-      Top = 56
+      Top = 104
       Width = 285
       Color = clWindow
       Columns = <      
@@ -194,9 +194,9 @@ object FrmBuscaConta: TFrmBuscaConta
       Visible = False
     end
     object BtnSelecione: TSpeedButton
-      Left = 177
+      Left = 452
       Height = 34
-      Top = 440
+      Top = 496
       Width = 124
       AutoSize = True
       Glyph.Data = {
@@ -351,9 +351,9 @@ object FrmBuscaConta: TFrmBuscaConta
       OnClick = BtnSelecioneClick
     end
     object BtnSelecione1: TSpeedButton
-      Left = 16
+      Left = 328
       Height = 34
-      Top = 440
+      Top = 496
       Width = 124
       AutoSize = True
       Glyph.Data = {
@@ -508,10 +508,10 @@ object FrmBuscaConta: TFrmBuscaConta
       OnClick = BtnSelecione1Click
     end
     object RGBTipoConta: TRadioGroup
-      Left = 312
-      Height = 49
-      Top = 0
-      Width = 264
+      Left = 356
+      Height = 33
+      Top = 56
+      Width = 216
       AutoFill = True
       Caption = 'TIPOS DE CONTA'
       ChildSizing.LeftRightSpacing = 6
@@ -521,21 +521,27 @@ object FrmBuscaConta: TFrmBuscaConta
       ChildSizing.ShrinkVertical = crsScaleChilds
       ChildSizing.Layout = cclLeftToRightThenTopToBottom
       ChildSizing.ControlsPerLine = 2
-      ClientHeight = 29
-      ClientWidth = 260
+      ClientHeight = 15
+      ClientWidth = 212
       Columns = 2
+      Font.CharSet = ANSI_CHARSET
+      Font.Height = -11
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
       Items.Strings = (
         'CAIXA'
         'CONTAS BANCÁRIAS'
       )
       OnChangeBounds = RGBTipoContaChangeBounds
       OnClick = RGBTipoContaClick
+      ParentFont = False
       TabOrder = 2
     end
     object DBGContasBanc: TDBGrid
       Left = 16
       Height = 380
-      Top = 56
+      Top = 104
       Width = 560
       Color = clWindow
       Columns = <      
@@ -569,6 +575,24 @@ object FrmBuscaConta: TFrmBuscaConta
       TabOrder = 3
       Visible = False
       OnCellClick = DBGContasBancCellClick
+    end
+    object Label7: TLabel
+      Left = 1
+      Height = 32
+      Top = 1
+      Width = 588
+      Align = alTop
+      Alignment = taCenter
+      Caption = 'Pesquisar Contas Bancárias'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = 10420224
+      Font.Height = -24
+      Font.Name = 'Segoe UI'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
     end
   end
 end

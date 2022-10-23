@@ -1,12 +1,12 @@
 object FrmConsFornecedores: TFrmConsFornecedores
   Left = -8
-  Height = 866
+  Height = 656
   Top = -8
-  Width = 1466
+  Width = 894
   BorderStyle = bsNone
   Caption = 'FrmConsFornecedores'
-  ClientHeight = 843
-  ClientWidth = 1466
+  ClientHeight = 656
+  ClientWidth = 894
   Color = 16577259
   OnClose = FormClose
   OnResize = FormResize
@@ -15,12 +15,12 @@ object FrmConsFornecedores: TFrmConsFornecedores
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 843
+    Height = 656
     Top = 0
-    Width = 1466
+    Width = 894
     Align = alClient
-    ClientHeight = 843
-    ClientWidth = 1466
+    ClientHeight = 656
+    ClientWidth = 894
     TabOrder = 0
     object Panel2: TPanel
       Left = 0
@@ -51,7 +51,7 @@ object FrmConsFornecedores: TFrmConsFornecedores
         ParentFont = False
       end
       object EdtConsulta: TEdit
-        Left = 448
+        Left = 440
         Height = 23
         Top = 75
         Width = 328
@@ -59,7 +59,7 @@ object FrmConsFornecedores: TFrmConsFornecedores
         TabOrder = 1
       end
       object CboStatus: TComboBox
-        Left = 176
+        Left = 168
         Height = 23
         Top = 75
         Width = 128
@@ -75,7 +75,7 @@ object FrmConsFornecedores: TFrmConsFornecedores
         Text = 'Selecione à opção'
       end
       object Label1: TLabel
-        Left = 176
+        Left = 168
         Height = 17
         Top = 56
         Width = 86
@@ -89,7 +89,7 @@ object FrmConsFornecedores: TFrmConsFornecedores
         ParentFont = False
       end
       object Label2: TLabel
-        Left = 448
+        Left = 440
         Height = 17
         Top = 56
         Width = 66
@@ -103,7 +103,7 @@ object FrmConsFornecedores: TFrmConsFornecedores
         ParentFont = False
       end
       object GrCPF: TDBGrid
-        Left = 40
+        Left = 32
         Height = 450
         Top = 112
         Width = 830
@@ -152,7 +152,7 @@ object FrmConsFornecedores: TFrmConsFornecedores
         OnCellClick = GrCPFCellClick
       end
       object CboTipoPessoa: TComboBox
-        Left = 312
+        Left = 304
         Height = 23
         Top = 75
         Width = 128
@@ -168,7 +168,7 @@ object FrmConsFornecedores: TFrmConsFornecedores
         Text = 'Selecione à opção'
       end
       object Label3: TLabel
-        Left = 312
+        Left = 304
         Height = 17
         Top = 56
         Width = 60
@@ -182,7 +182,7 @@ object FrmConsFornecedores: TFrmConsFornecedores
         ParentFont = False
       end
       object BtnSair: TSpeedButton
-        Left = 746
+        Left = 738
         Height = 34
         Top = 568
         Width = 124
@@ -644,7 +644,7 @@ object FrmConsFornecedores: TFrmConsFornecedores
         OnClick = BtnSairClick
       end
       object BtnSelecionar: TSpeedButton
-        Left = 612
+        Left = 604
         Height = 34
         Top = 568
         Width = 124
@@ -1106,7 +1106,7 @@ object FrmConsFornecedores: TFrmConsFornecedores
         OnClick = BtnSelecionarClick
       end
       object GrCNPJ: TDBGrid
-        Left = 40
+        Left = 32
         Height = 450
         Top = 112
         Width = 830
@@ -1155,7 +1155,7 @@ object FrmConsFornecedores: TFrmConsFornecedores
         OnCellClick = GrCNPJCellClick
       end
       object GrTodos: TDBGrid
-        Left = 40
+        Left = 32
         Height = 450
         Top = 112
         Width = 830
@@ -1199,7 +1199,7 @@ object FrmConsFornecedores: TFrmConsFornecedores
         OnCellClick = GrTodosCellClick
       end
       object PnChama: TPanel
-        Left = 38
+        Left = 32
         Height = 546
         Top = 56
         Width = 832

@@ -16,14 +16,17 @@ type
   { TFrmMenu }
 
   TFrmMenu = class(TForm)
+    espaca1: TLabel;
     Image1: TImage;
     Image2: TImage;
     Image3: TImage;
     Image4: TImage;
     Image5: TImage;
+    espaca: TLabel;
     LblUsuario: TLabel;
     Panel1: TPanel;
     Panel2: TPanel;
+    Panel3: TPanel;
     PnChama: TPanel;
     Panel4: TPanel;
     Panel5: TPanel;

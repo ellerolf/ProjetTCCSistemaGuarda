@@ -1,36 +1,36 @@
 object FrmBuscaDoc: TFrmBuscaDoc
   Left = 265
-  Height = 526
+  Height = 529
   Top = 31
-  Width = 320
+  Width = 322
   BorderIcons = []
-  Caption = 'FrmBuscaDoc'
-  ClientHeight = 526
-  ClientWidth = 320
+  Caption = 'Pesquisar Tipo de Documentos'
+  ClientHeight = 529
+  ClientWidth = 322
   Color = 16577259
   OnClose = FormClose
   OnShow = FormShow
-  Position = poDesktopCenter
+  Position = poScreenCenter
   object Panel1: TPanel
     Left = 0
-    Height = 526
+    Height = 529
     Top = 0
-    Width = 320
+    Width = 322
     Align = alClient
-    ClientHeight = 526
-    ClientWidth = 320
+    ClientHeight = 529
+    ClientWidth = 322
     TabOrder = 0
     object EdtBuscaTipoDoc: TEdit
       Left = 16
       Height = 23
-      Top = 16
+      Top = 56
       Width = 232
       TabOrder = 0
     end
     object BtnBuscaTipoDoc: TSpeedButton
       Left = 256
       Height = 27
-      Top = 16
+      Top = 56
       Width = 49
       Glyph.Data = {
         62100000424D621000000000000036000000280000002D000000170000000100
@@ -171,7 +171,7 @@ object FrmBuscaDoc: TFrmBuscaDoc
     object DBGrid1: TDBGrid
       Left = 16
       Height = 412
-      Top = 56
+      Top = 96
       Width = 288
       Color = clWindow
       Columns = <      
@@ -192,7 +192,7 @@ object FrmBuscaDoc: TFrmBuscaDoc
     object BtnCancelar: TSpeedButton
       Left = 16
       Height = 34
-      Top = 480
+      Top = 520
       Width = 124
       Glyph.Data = {
         46120000424D46120000000000003604000028000000780000001E0000000100
@@ -348,7 +348,7 @@ object FrmBuscaDoc: TFrmBuscaDoc
     object BtnSelecionar: TSpeedButton
       Left = 180
       Height = 34
-      Top = 480
+      Top = 520
       Width = 124
       Glyph.Data = {
         46120000424D46120000000000003604000028000000780000001E0000000100
@@ -500,6 +500,25 @@ object FrmBuscaDoc: TFrmBuscaDoc
         02020202020202892519
       }
       OnClick = BtnSelecionarClick
+    end
+    object Label7: TLabel
+      Left = 1
+      Height = 32
+      Top = 1
+      Width = 320
+      Align = alTop
+      Alignment = taCenter
+      Caption = 'Pesquisar Tipo de Docs'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = 10420224
+      Font.Height = -24
+      Font.Name = 'Segoe UI'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      OnClick = Label7Click
     end
   end
 end

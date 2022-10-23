@@ -15,6 +15,7 @@ type
   TFrmBuscaDoc = class(TForm)
     DBGrid1: TDBGrid;
     EdtBuscaTipoDoc: TEdit;
+    Label7: TLabel;
     Panel1: TPanel;
     BtnBuscaTipoDoc: TSpeedButton;
     BtnCancelar: TSpeedButton;
@@ -24,6 +25,7 @@ type
     procedure BtnSelecionarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormShow(Sender: TObject);
+    procedure Label7Click(Sender: TObject);
   private
 
   public
@@ -114,6 +116,11 @@ end;
 procedure TFrmBuscaDoc.FormShow(Sender: TObject);
 begin
   DM.ZQBuscaTipoDoc.Active:=True;
+end;
+
+procedure TFrmBuscaDoc.Label7Click(Sender: TObject);
+begin
+
 end;
 
 end.

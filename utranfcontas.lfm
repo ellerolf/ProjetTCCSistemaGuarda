@@ -1,12 +1,12 @@
 object FrmTranfContas: TFrmTranfContas
   Left = -8
-  Height = 872
+  Height = 656
   Top = -8
-  Width = 726
+  Width = 894
   BorderStyle = bsNone
   Caption = 'FrmTranfContas'
-  ClientHeight = 849
-  ClientWidth = 726
+  ClientHeight = 656
+  ClientWidth = 894
   Color = 16577259
   OnClose = FormClose
   OnResize = FormResize
@@ -15,27 +15,28 @@ object FrmTranfContas: TFrmTranfContas
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 849
+    Height = 656
     Top = 0
-    Width = 726
+    Width = 894
     Align = alClient
-    ClientHeight = 849
-    ClientWidth = 726
+    ClientHeight = 656
+    ClientWidth = 894
     TabOrder = 0
     object Panel2: TPanel
-      Left = 0
-      Height = 560
-      Top = 0
-      Width = 598
+      Left = 1
+      Height = 622
+      Top = 33
+      Width = 892
+      Align = alClient
       BevelOuter = bvNone
-      ClientHeight = 560
-      ClientWidth = 598
+      ClientHeight = 622
+      ClientWidth = 892
       TabOrder = 0
       OnResize = Panel1Resize
       object BtnCancela: TSpeedButton
-        Left = 452
+        Left = 604
         Height = 34
-        Top = 504
+        Top = 480
         Width = 124
         Glyph.Data = {
           76380000424D76380000000000003600000028000000780000001E0000000100
@@ -494,9 +495,9 @@ object FrmTranfContas: TFrmTranfContas
         OnClick = BtnCancelaClick
       end
       object BtnSeleciona: TSpeedButton
-        Left = 320
+        Left = 472
         Height = 34
-        Top = 504
+        Top = 480
         Width = 124
         Glyph.Data = {
           76380000424D76380000000000003600000028000000780000001E0000000100
@@ -955,10 +956,12 @@ object FrmTranfContas: TFrmTranfContas
         OnClick = BtnSelecionaClick
       end
       object SpeedButton3: TSpeedButton
-        Left = 527
+        Left = 512
         Height = 27
-        Top = 72
+        Top = 49
         Width = 49
+        AutoSize = True
+        Flat = True
         Glyph.Data = {
           62100000424D621000000000000036000000280000002D000000170000000100
           2000000000002C10000064000000640000000000000000000000FFFFFF00C100
@@ -1096,9 +1099,9 @@ object FrmTranfContas: TFrmTranfContas
         OnClick = SpeedButton3Click
       end
       object DBGrid1: TDBGrid
-        Left = 16
+        Left = 168
         Height = 380
-        Top = 108
+        Top = 84
         Width = 560
         Color = clWindow
         Columns = <        
@@ -1139,28 +1142,10 @@ object FrmTranfContas: TFrmTranfContas
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
         TabOrder = 0
       end
-      object Label7: TLabel
-        Left = 0
-        Height = 32
-        Top = 0
-        Width = 598
-        Align = alTop
-        Alignment = taCenter
-        Caption = 'Transferências Bancarias'
-        Font.CharSet = ANSI_CHARSET
-        Font.Color = 10420224
-        Font.Height = -24
-        Font.Name = 'Segoe UI'
-        Font.Pitch = fpVariable
-        Font.Quality = fqDraft
-        Font.Style = [fsBold]
-        ParentColor = False
-        ParentFont = False
-      end
       object Label1: TLabel
-        Left = 16
+        Left = 168
         Height = 17
-        Top = 56
+        Top = 32
         Width = 86
         Caption = 'Ativo/Inativo:'
         Font.CharSet = ANSI_CHARSET
@@ -1172,9 +1157,9 @@ object FrmTranfContas: TFrmTranfContas
         ParentFont = False
       end
       object CboStatus: TComboBox
-        Left = 16
+        Left = 168
         Height = 23
-        Top = 76
+        Top = 52
         Width = 128
         ItemHeight = 15
         Items.Strings = (
@@ -1186,9 +1171,9 @@ object FrmTranfContas: TFrmTranfContas
         TabOrder = 1
       end
       object DTInicial: TDateTimePicker
-        Left = 280
+        Left = 320
         Height = 23
-        Top = 72
+        Top = 52
         Width = 83
         CenturyFrom = 1941
         MaxDate = 2958465
@@ -1208,9 +1193,9 @@ object FrmTranfContas: TFrmTranfContas
         MonthNames = 'Long'
       end
       object DTFinal: TDateTimePicker
-        Left = 392
+        Left = 416
         Height = 23
-        Top = 72
+        Top = 52
         Width = 83
         CenturyFrom = 1941
         MaxDate = 2958465
@@ -1229,6 +1214,24 @@ object FrmTranfContas: TFrmTranfContas
         HideDateTimeParts = []
         MonthNames = 'Long'
       end
+    end
+    object Label7: TLabel
+      Left = 1
+      Height = 32
+      Top = 1
+      Width = 892
+      Align = alTop
+      Alignment = taCenter
+      Caption = 'Transferências Bancarias'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = 10420224
+      Font.Height = -24
+      Font.Name = 'Segoe UI'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
     end
   end
 end

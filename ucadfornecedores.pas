@@ -60,6 +60,7 @@ type
     MemObs: TMemo;
     Panel1: TPanel;
     Panel2: TPanel;
+    Panel3: TPanel;
     procedure BtnAlterarClick(Sender: TObject);
     procedure BtnAtivoChange(Sender: TObject);
     procedure BtnCnpjChange(Sender: TObject);

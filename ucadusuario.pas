@@ -28,6 +28,7 @@ type
     LblMensagem: TLabel;
     Panel1: TPanel;
     Panel2: TPanel;
+    Panel3: TPanel;
     RgbAltStatus: TRadioGroup;
     RgbNivel: TRadioGroup;
     procedure BtnAlterarClick(Sender: TObject);

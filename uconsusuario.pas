@@ -24,6 +24,7 @@ type
     Panel1: TPanel;
     Panel2: TPanel;
     BtnConsulta: TSpeedButton;
+    Panel4: TPanel;
     PnAlterausu: TPanel;
     procedure BtnAlterarClick(Sender: TObject);
     procedure BtnConsultaClick(Sender: TObject);
