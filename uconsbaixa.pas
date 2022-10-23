@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, MaskEdit,
   StdCtrls, Buttons, DBGrids, EditBtn, UModulo, uCadLancamento, UCadPagamento,
-  UConsParcelas,UBuscaDoc,UConsFornecedores,uConsCentro, UEntrarUsuario;
+  UConsParcelas,UBuscaDoc,UConsFornecedores,uConsCentro, UEntrarUsuario,UbaixaParcela;
 
 type
 
@@ -62,6 +62,7 @@ type
     BtnCancelarDados: TSpeedButton;
     BtnSalvarDados: TSpeedButton;
     BtnExcluir: TSpeedButton;
+    SpeedButton1: TSpeedButton;
     procedure BtnAlterarClick(Sender: TObject);
     procedure BtnAlterarDadosClick(Sender: TObject);
     procedure BtnCancelarDadosClick(Sender: TObject);
@@ -84,6 +85,7 @@ type
     procedure PnChamaLancaClick(Sender: TObject);
     procedure BtnPesquisa1Click(Sender: TObject);
     procedure BtnPesquisa2Click(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
   private
 
   public
@@ -389,6 +391,11 @@ begin
        end;
      End;
   End;
+end;
+
+procedure TFrmConsBaixa.SpeedButton1Click(Sender: TObject);
+begin
+  FRMBaixaParcela.ShowModal;
 end;
 
 procedure TFrmConsBaixa.BtnSairClick(Sender: TObject);

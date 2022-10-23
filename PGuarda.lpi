@@ -44,7 +44,7 @@
         <PackageName Value="LCL"/>
       </Item5>
     </RequiredPackages>
-    <Units Count="20">
+    <Units Count="21">
       <Unit0>
         <Filename Value="PGuarda.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -197,6 +197,14 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="UConsParcelas"/>
       </Unit19>
+      <Unit20>
+        <Filename Value="ubaixaparcela.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FRMBaixaParcela"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="UbaixaParcela"/>
+      </Unit20>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
