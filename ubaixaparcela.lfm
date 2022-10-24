@@ -7,6 +7,8 @@ object FRMBaixaParcela: TFRMBaixaParcela
   ClientHeight = 487
   ClientWidth = 741
   Color = 16577259
+  OnClose = FormClose
+  Position = poScreenCenter
   object Panel1: TPanel
     Left = 0
     Height = 455
@@ -73,7 +75,7 @@ object FRMBaixaParcela: TFRMBaixaParcela
         ParentColor = False
         ParentFont = False
       end
-      object DtaVencimento: TDateEdit
+      object DtDataVencimento: TDateEdit
         Left = 472
         Height = 29
         Top = 8
@@ -89,10 +91,9 @@ object FRMBaixaParcela: TFRMBaixaParcela
         Font.Quality = fqDraft
         Font.Style = [fsBold]
         MaxLength = 0
-        OnChange = DtaVencimentoChange
+        OnChange = DtDataVencimentoChange
         ParentFont = False
         TabOrder = 1
-        Text = '__/__/__'
       end
     end
     object Panel3: TPanel
@@ -129,7 +130,7 @@ object FRMBaixaParcela: TFRMBaixaParcela
           ParentColor = False
           ParentFont = False
         end
-        object DateEdit1: TDateEdit
+        object DTDataDoPagamento: TDateEdit
           Left = 176
           Height = 23
           Top = 16
@@ -166,7 +167,7 @@ object FRMBaixaParcela: TFRMBaixaParcela
           ParentColor = False
           ParentFont = False
         end
-        object EdtFormPg: TEdit
+        object EdtFormaPagamento: TEdit
           Left = 192
           Height = 23
           Top = 13
@@ -289,7 +290,7 @@ object FRMBaixaParcela: TFRMBaixaParcela
           ParentColor = False
           ParentFont = False
         end
-        object EdtContaBank: TEdit
+        object EdtContaBancaria: TEdit
           Left = 176
           Height = 23
           Top = 13
@@ -417,8 +418,9 @@ object FRMBaixaParcela: TFRMBaixaParcela
           Height = 23
           Top = 12
           Width = 80
+          OnExit = EdtDescontoExit
+          OnKeyPress = EdtDescontoKeyPress
           TabOrder = 0
-          Text = '0,00'
         end
       end
       object Panel8: TPanel
@@ -445,13 +447,14 @@ object FRMBaixaParcela: TFRMBaixaParcela
           ParentColor = False
           ParentFont = False
         end
-        object EdtMulta: TEdit
+        object EdtMultaJuros: TEdit
           Left = 176
           Height = 23
           Top = 14
           Width = 104
+          OnExit = EdtMultaJurosExit
+          OnKeyPress = EdtMultaJurosKeyPress
           TabOrder = 0
-          Text = '0,00'
         end
       end
     end
@@ -1641,6 +1644,7 @@ object FRMBaixaParcela: TFRMBaixaParcela
         FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000
         FFFF0000FFFF0000FFFF0000FFFF3030FFFFAFAFFFFFFFFFFFFF
       }
+      OnClick = BtnSairClick
     end
     object BtnCancela: TSpeedButton
       Left = 320
@@ -1648,6 +1652,7 @@ object FRMBaixaParcela: TFRMBaixaParcela
       Top = 352
       Width = 194
       AutoSize = True
+      Enabled = False
       Flat = True
       Glyph.Data = {
         46590000424D46590000000000003600000028000000BE0000001E0000000100

@@ -4563,7 +4563,7 @@ object FrmConsBaixa: TFrmConsBaixa
         OnCellClick = DBGPendenteCellClick
       end
       object DBGEfetivado: TDBGrid
-        Left = 24
+        Left = 23
         Height = 140
         Top = 124
         Width = 889
@@ -5359,7 +5359,7 @@ object FrmConsBaixa: TFrmConsBaixa
         }
         OnClick = BtnExcluirClick
       end
-      object SpeedButton1: TSpeedButton
+      object BtnPagar: TSpeedButton
         Left = 475
         Height = 30
         Top = 272
@@ -5744,7 +5744,7 @@ object FrmConsBaixa: TFrmConsBaixa
           00FF006600FF006600FF006600FF006600FF006600FF006600FF006600FF0066
           00FF006600FF006600FF006600FF006600EF00660080FFFFFF00
         }
-        OnClick = SpeedButton1Click
+        OnClick = BtnPagarClick
       end
     end
   end

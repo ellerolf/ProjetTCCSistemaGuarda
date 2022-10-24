@@ -62,7 +62,7 @@ type
     BtnCancelarDados: TSpeedButton;
     BtnSalvarDados: TSpeedButton;
     BtnExcluir: TSpeedButton;
-    SpeedButton1: TSpeedButton;
+    BtnPagar: TSpeedButton;
     procedure BtnAlterarClick(Sender: TObject);
     procedure BtnAlterarDadosClick(Sender: TObject);
     procedure BtnCancelarDadosClick(Sender: TObject);
@@ -85,7 +85,7 @@ type
     procedure PnChamaLancaClick(Sender: TObject);
     procedure BtnPesquisa1Click(Sender: TObject);
     procedure BtnPesquisa2Click(Sender: TObject);
-    procedure SpeedButton1Click(Sender: TObject);
+    procedure BtnPagarClick(Sender: TObject);
   private
 
   public
@@ -101,6 +101,24 @@ type
     acionaPesqCenCustConsBaix:String;
     //A variável abaixo ela recebe o número de parcelas baixadas, uso ela na hora de excluir o  lanç+parc.
     ParcelaBaixadas:Integer;
+    //A variável abaixo recebe o valor da parcela
+    valorDaParcela:Real;
+    //A variável abaixo recebe a data de vencimento da parcela clicada
+    vencimentoDaParcela:String;
+    //A variável abaixo recebe o status da parcela a ser baixada
+    statusparcela:Integer;
+    //a variável abaixo recebe a data do pagamento
+    dataDoPagamento:String;
+    //a variável abaixo recebe a forma de pagamento
+    formaDoPagamento:Integer;
+    //a variável abaixo recebe o valor da multa e juros
+    MultaEJuros:Real;
+    //a variável abaixo recebe o valor do desconto
+    Desconto:Real;
+    //a variável abaixo recebe a conta bancária que utilizou para pagar a parcela
+    contaBancaria:Integer;
+    //a variável abaixo recebe o valor total do pagamento
+    totalDoPagamento:Real;
   end;
 
 var
@@ -393,9 +411,45 @@ begin
   End;
 end;
 
-procedure TFrmConsBaixa.SpeedButton1Click(Sender: TObject);
+procedure TFrmConsBaixa.BtnPagarClick(Sender: TObject);
 begin
-  FRMBaixaParcela.ShowModal;
+   if (codigoDaParcela=0) then
+  begin
+       ShowMessage('Clique em uma parcela para efetuar o pagamento');
+  end
+  else
+  begin
+       if (FrmConsBaixa.statusparcela=0) then
+       begin
+            FRMBaixaParcela.EdtValorParcela.Text:=formatFloat('0.00',valorDaParcela);
+            FRMBaixaParcela.DtDataVencimento.Date:=StrToDate(vencimentoDaParcela);
+            FRMBaixaParcela.BtnConfirma.Enabled:=True;
+            FRMBaixaParcela.BtnCancela.Enabled:=False;
+            FRMBaixaParcela.ShowModal;
+       end;
+       if (FrmConsBaixa.statusparcela=1) then
+       begin
+            FRMBaixaParcela.EdtValorParcela.Text:=formatFloat('0.00',valorDaParcela);
+            FRMBaixaParcela.DtDataVencimento.Date:=StrToDate(vencimentoDaParcela);
+            FRMBaixaParcela.DTDataDoPagamento.Date:=StrToDate(dataDoPagamento);
+            FRMBaixaParcela.EdtFormaPagamento.Text:=IntToStr(formaDoPagamento);
+            FRMBaixaParcela.EdtMultaJuros.Text:=FormatFloat('0.00',MultaEJuros);
+            FRMBaixaParcela.EdtDesconto.Text:=FormatFloat('0.00',Desconto);
+            FRMBaixaParcela.EdtContaBancaria.Text:=IntToStr(contaBancaria);
+            FRMBaixaParcela.LblTotPg.Caption:='TOTAL DO PAGAMENTO: '+FormatFloat('R$ 0.00',totalDoPagamento);
+
+            FRMBaixaParcela.EdtMultaJuros.Enabled:=False;
+            FRMBaixaParcela.EdtDesconto.Enabled:=False;
+            FRMBaixaParcela.BtnConsConta.Enabled:=False;
+            FRMBaixaParcela.BtnConsFormPg.Enabled:=False;
+            FRMBaixaParcela.DTDataDoPagamento.Enabled:=False;
+
+            FRMBaixaParcela.BtnCancela.Enabled:=True;
+            FRMBaixaParcela.BtnConfirma.Enabled:=False;
+            FRMBaixaParcela.ShowModal;
+       end;
+  end;
+
 end;
 
 procedure TFrmConsBaixa.BtnSairClick(Sender: TObject);
@@ -436,6 +490,7 @@ begin
   DTDataFinal.Enabled:=True;
   EdtConsulta.Enabled:=True;
   BtnExcluir.Enabled:=True;
+  BtnPagar.Enabled:=True;
   Close;
 end;
 
@@ -588,6 +643,7 @@ begin
          DTDataFinal.Enabled:=True;
          EdtConsulta.Enabled:=True;
          BtnExcluir.Enabled:=True;
+         BtnPagar.Enabled:=True;
 
 
      end;
@@ -614,6 +670,16 @@ begin
   codigoDaParcela:=DM.ZQConsBaixaEfetBAICODIGO.AsInteger;
   codigoDoLancamento:=DM.ZQConsBaixaEfetCODIGOLAN.AsInteger;
   valorDoLancamento:=dm.ZQConsBaixaEfetLANVALOR_DOCUMENTO.AsFloat;
+  //as variáveis abaixo utilizei para levar os dados e validar a baixa de parcela
+  valorDaParcela:=dm.ZQConsBaixaEfetBAIVALOR.AsFloat;
+  vencimentoDaParcela:=DateToStr(DM.ZQConsBaixaEfetBAIDATAVEN.AsDateTime);
+  statusparcela:=dm.ZQConsBaixaEfetBAISTATUS.AsInteger;
+  dataDoPagamento:=DateToStr(dm.ZQConsBaixaEfetBAIDATAPGTO.AsDateTime);
+  formaDoPagamento:=dm.ZQConsBaixaEfetCODIGOFOR.AsInteger;
+  MultaEJuros:=dm.ZQConsBaixaEfetBAIMULTA_JUROS.AsFloat;
+  Desconto:=dm.ZQConsBaixaEfetBAIDESCONTO.AsFloat;
+  contaBancaria:=DM.ZQConsBaixaEfetCODIGOCON.AsInteger;
+  totalDoPagamento:=DM.ZQConsBaixaEfetBAIVALORPAGO.AsFloat;
 
    {CÓDIGO ABAIXO CARREGA OS DADOS NO PANEL ABAIXO PARA CASO O USUÁRIO QUEIRA ALTERAR
   ALGUM DADO RELACIONADO AO LANÇAMENTO.}
@@ -652,6 +718,9 @@ begin
   codigoDaParcela:=dm.ZQConsBaixaPenBAICODIGO.AsInteger;
   codigoDoLancamento:=dm.ZQConsBaixaPenCODIGOLAN.AsInteger;
   valorDoLancamento:=dm.ZQConsBaixaPenLANVALOR_DOCUMENTO.AsFloat;
+  valorDaParcela:=dm.ZQConsBaixaPenBAIVALOR.AsFloat;
+  vencimentoDaParcela:=DateToStr(dm.ZQConsBaixaPenBAIDATAVEN.AsDateTime);
+  statusparcela:=dm.ZQConsBaixaPenBAISTATUS.AsInteger;
 
   {CÓDIGO ABAIXO CARREGA OS DADOS NO PANEL ABAIXO PARA CASO O USUÁRIO QUEIRA ALTERAR
   ALGUM DADO RELACIONADO AO LANÇAMENTO.}
@@ -737,6 +806,7 @@ begin
          DTDataFinal.Enabled:=False;
          EdtConsulta.Enabled:=False;
          BtnExcluir.Enabled:=False;
+         BtnPagar.Enabled:=False;
      end;
 end;
 
@@ -771,6 +841,7 @@ begin
      DTDataFinal.Enabled:=True;
      EdtConsulta.Enabled:=True;
      BtnExcluir.Enabled:=True;
+     BtnPagar.Enabled:=True;
 
 
 end;
