@@ -70,6 +70,7 @@ type
     procedure BtnConsFornecedoresClick(Sender: TObject);
     procedure BtnConsReceitaDespesasClick(Sender: TObject);
     procedure BtnLogoffClick(Sender: TObject);
+    procedure BtnMudarSenhaClick(Sender: TObject);
     procedure BtnRelaPrestaClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
     procedure BtnTrasfClick(Sender: TObject);
@@ -151,6 +152,7 @@ end;
 procedure TFrmMenu.FormShow(Sender: TObject);
 begin
   FrmEntrarUsuario.hide;
+  PnTrocaSenha.Visible := False;
   LblUsuario.Caption:=FrmEntrarUsuario.usuarios;
   if (FrmEntrarUsuario.acesso<>1)then
   begin
@@ -201,6 +203,7 @@ end;
 
 procedure TFrmMenu.BtnLogoffClick(Sender: TObject);
 begin
+
   FrmCadUsuario.BtnSair.Click;
   FrmCadFornecedor.BtnSair.Click;
   FrmCadLancamento.BtnSair.Click;
@@ -217,6 +220,19 @@ begin
   FrmEntrarUsuario.EdtSenha.Text:='';
   FrmEntrarUsuario.Show;
 
+end;
+
+procedure TFrmMenu.BtnMudarSenhaClick(Sender: TObject);
+begin
+  if (PnTrocaSenha.visible = true) then
+  begin
+    PnTrocaSenha.Visible:= False;
+  end
+  else
+  if (PnTrocaSenha.visible= false) then
+  begin
+    PnTrocaSenha.visible := true;
+  end;
 end;
 
 procedure TFrmMenu.BtnRelaPrestaClick(Sender: TObject);

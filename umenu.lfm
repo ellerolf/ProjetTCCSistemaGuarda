@@ -12299,6 +12299,7 @@ object FrmMenu: TFrmMenu
         FF00FFFFFF00FFFFFF00
       }
       Transparent = False
+      OnClick = BtnMudarSenhaClick
     end
     object Panel3: TPanel
       Left = 875
