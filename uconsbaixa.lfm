@@ -4563,7 +4563,7 @@ object FrmConsBaixa: TFrmConsBaixa
         OnCellClick = DBGPendenteCellClick
       end
       object DBGEfetivado: TDBGrid
-        Left = 23
+        Left = 24
         Height = 140
         Top = 124
         Width = 889

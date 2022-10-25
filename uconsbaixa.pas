@@ -119,6 +119,8 @@ type
     contaBancaria:Integer;
     //a variável abaixo recebe o valor total do pagamento
     totalDoPagamento:Real;
+    //a variável abaixo recebe o tipo da parcela, se é receita ou despesa
+    tipoDaParcela:integer;
   end;
 
 var
@@ -158,6 +160,8 @@ begin
   dm.ZQConsBaixaPen.Active:=True;
   dm.ZQConsBaixaEfet.Active:=True;
 end;
+
+
 
 procedure TFrmConsBaixa.Panel2Click(Sender: TObject);
 begin
@@ -419,15 +423,62 @@ begin
   end
   else
   begin
-       if (FrmConsBaixa.statusparcela=0) then
+       //PENDENTE + RECEITA
+       if (FrmConsBaixa.statusparcela=0) and (FrmConsBaixa.tipoDaParcela=1)then
        begin
             FRMBaixaParcela.EdtValorParcela.Text:=formatFloat('0.00',valorDaParcela);
             FRMBaixaParcela.DtDataVencimento.Date:=StrToDate(vencimentoDaParcela);
             FRMBaixaParcela.BtnConfirma.Enabled:=True;
             FRMBaixaParcela.BtnCancela.Enabled:=False;
+            //altera os nomes da label
+            FRMBaixaParcela.LblDataPagamento.Caption:='Data do Recebimento:';
+            FRMBaixaParcela.LblFormaPagamento.Caption:='Forma de Recebimento:';
+            FRMBaixaParcela.LblTotPg.Caption:='TOTAL DO RECEBIMENTO: R$ 0,00';
+
             FRMBaixaParcela.ShowModal;
        end;
-       if (FrmConsBaixa.statusparcela=1) then
+       //finalizado + receita
+       if (FrmConsBaixa.statusparcela=1) and (FrmConsBaixa.tipoDaParcela=1) then
+       begin
+            FRMBaixaParcela.EdtValorParcela.Text:=formatFloat('0.00',valorDaParcela);
+            FRMBaixaParcela.DtDataVencimento.Date:=StrToDate(vencimentoDaParcela);
+            FRMBaixaParcela.DTDataDoPagamento.Date:=StrToDate(dataDoPagamento);
+            FRMBaixaParcela.EdtFormaPagamento.Text:=IntToStr(formaDoPagamento);
+            FRMBaixaParcela.EdtMultaJuros.Text:=FormatFloat('0.00',MultaEJuros);
+            FRMBaixaParcela.EdtDesconto.Text:=FormatFloat('0.00',Desconto);
+            FRMBaixaParcela.EdtContaBancaria.Text:=IntToStr(contaBancaria);
+            FRMBaixaParcela.LblTotPg.Caption:='TOTAL DO RECEBIMENTO: '+FormatFloat('R$ 0.00',totalDoPagamento);
+            //altera os nomes da label
+            FRMBaixaParcela.LblDataPagamento.Caption:='Data do Recebimento:';
+            FRMBaixaParcela.LblFormaPagamento.Caption:='Forma de Recebimento:';
+
+            FRMBaixaParcela.EdtMultaJuros.Enabled:=False;
+            FRMBaixaParcela.EdtDesconto.Enabled:=False;
+            FRMBaixaParcela.BtnConsConta.Enabled:=False;
+            FRMBaixaParcela.BtnConsFormPg.Enabled:=False;
+            FRMBaixaParcela.DTDataDoPagamento.Enabled:=False;
+
+            FRMBaixaParcela.BtnCancela.Enabled:=True;
+            FRMBaixaParcela.BtnConfirma.Enabled:=False;
+            FRMBaixaParcela.ShowModal;
+       end;
+
+       //PENDENTE + DESPESA
+       if (FrmConsBaixa.statusparcela=0) and (FrmConsBaixa.tipoDaParcela=0)then
+       begin
+            FRMBaixaParcela.EdtValorParcela.Text:=formatFloat('0.00',valorDaParcela);
+            FRMBaixaParcela.DtDataVencimento.Date:=StrToDate(vencimentoDaParcela);
+            FRMBaixaParcela.BtnConfirma.Enabled:=True;
+            FRMBaixaParcela.BtnCancela.Enabled:=False;
+            //altera os nomes da label
+            FRMBaixaParcela.LblDataPagamento.Caption:='Data do Pagamento:';
+            FRMBaixaParcela.LblFormaPagamento.Caption:='Forma de Pagamento:';
+            FRMBaixaParcela.LblTotPg.Caption:='TOTAL DO PAGAMENTO: R$ 0,00';
+
+            FRMBaixaParcela.ShowModal;
+       end;
+              //finalizado + despesa
+       if (FrmConsBaixa.statusparcela=1) and (FrmConsBaixa.tipoDaParcela=0) then
        begin
             FRMBaixaParcela.EdtValorParcela.Text:=formatFloat('0.00',valorDaParcela);
             FRMBaixaParcela.DtDataVencimento.Date:=StrToDate(vencimentoDaParcela);
@@ -437,6 +488,9 @@ begin
             FRMBaixaParcela.EdtDesconto.Text:=FormatFloat('0.00',Desconto);
             FRMBaixaParcela.EdtContaBancaria.Text:=IntToStr(contaBancaria);
             FRMBaixaParcela.LblTotPg.Caption:='TOTAL DO PAGAMENTO: '+FormatFloat('R$ 0.00',totalDoPagamento);
+            //altera os nomes da label
+            FRMBaixaParcela.LblDataPagamento.Caption:='Data do Pagamento:';
+            FRMBaixaParcela.LblFormaPagamento.Caption:='Forma de Pagamento:';
 
             FRMBaixaParcela.EdtMultaJuros.Enabled:=False;
             FRMBaixaParcela.EdtDesconto.Enabled:=False;
@@ -680,6 +734,7 @@ begin
   Desconto:=dm.ZQConsBaixaEfetBAIDESCONTO.AsFloat;
   contaBancaria:=DM.ZQConsBaixaEfetCODIGOCON.AsInteger;
   totalDoPagamento:=DM.ZQConsBaixaEfetBAIVALORPAGO.AsFloat;
+  tipoDaParcela:=DM.ZQConsBaixaEfetLANTIPO.AsInteger;
 
    {CÓDIGO ABAIXO CARREGA OS DADOS NO PANEL ABAIXO PARA CASO O USUÁRIO QUEIRA ALTERAR
   ALGUM DADO RELACIONADO AO LANÇAMENTO.}
@@ -721,6 +776,7 @@ begin
   valorDaParcela:=dm.ZQConsBaixaPenBAIVALOR.AsFloat;
   vencimentoDaParcela:=DateToStr(dm.ZQConsBaixaPenBAIDATAVEN.AsDateTime);
   statusparcela:=dm.ZQConsBaixaPenBAISTATUS.AsInteger;
+  tipoDaParcela:=DM.ZQConsBaixaPenLANTIPO.AsInteger;
 
   {CÓDIGO ABAIXO CARREGA OS DADOS NO PANEL ABAIXO PARA CASO O USUÁRIO QUEIRA ALTERAR
   ALGUM DADO RELACIONADO AO LANÇAMENTO.}
