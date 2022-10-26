@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Menus, ExtCtrls,
   Buttons, ActnList, StdCtrls, uCadUsuario, uCadContasBancarias,
-  uCadCentroCusto, uCadFornecedores, uCadLancamento, UConsFornecedores,
+  uCadCentroCusto, UModulo, uCadFornecedores, uCadLancamento, UConsFornecedores,
   UConsBaixa, UConsContas, UEntrarUsuario, UTranfContas, UConsUsuario,
   uConsCentro, Ferramentas;
 
@@ -60,6 +60,7 @@ type
     BtnLogoff: TSpeedButton;
     BtnMudarSenha: TSpeedButton;
     BtnAlteraSenha: TSpeedButton;
+    procedure BtnAlteraSenhaClick(Sender: TObject);
     procedure BtnCadBancoClick(Sender: TObject);
     procedure BtnCadCentroClick(Sender: TObject);
     procedure BtnCadFornecedorClick(Sender: TObject);
@@ -153,6 +154,8 @@ procedure TFrmMenu.FormShow(Sender: TObject);
 begin
   FrmEntrarUsuario.hide;
   PnTrocaSenha.Visible := False;
+  EdtConfirmaSenha.Enabled:=False;
+  EdtSenhaNova.Enabled:=False;
   LblUsuario.Caption:=FrmEntrarUsuario.usuarios;
   if (FrmEntrarUsuario.acesso<>1)then
   begin
@@ -215,6 +218,8 @@ begin
   FrmConsCentro.BtnSair.Click;
   FrmTranfContas.BtnCancela.Click;
   FrmConsContas.BtnSair.Click;
+  BtnCadUsuarios.Enabled:=True;
+  BtnConsUsuario.Enabled:=true;
   FrmMenu.hide;
   FrmEntrarUsuario.EdtUsuario.Text:='';
   FrmEntrarUsuario.EdtSenha.Text:='';
@@ -231,6 +236,11 @@ begin
   else
   if (PnTrocaSenha.visible= false) then
   begin
+    EdtConfirmaSenha.Enabled:=False;
+    EdtSenhaNova.Enabled:=False;
+    EdtSenhaAtual.Text:='';
+    EdtSenhaNova.Text:='';
+    EdtConfirmaSenha.Text:='';
     PnTrocaSenha.visible := true;
   end;
 end;
@@ -247,6 +257,16 @@ begin
   FrmCadContasBancarias.Parent := PnChama;
   FrmCadContasBancarias.Align := alClient;
   FrmCadContasBancarias.Show;
+end;
+
+procedure TFrmMenu.BtnAlteraSenhaClick(Sender: TObject);
+begin
+  if ((EdtSenhaAtual.Text = DM.ZQConsUsuarioUSUSENHA.Value) and (FrmEntrarUsuario.indentidade = DM.ZQConsUsuarioUSUCODIGO.Value)) then
+  begin
+    EdtSenhaNova.Enabled:= True;
+    EdtConfirmaSenha.enabled := True;
+
+  end;
 end;
 
 procedure TFrmMenu.BtnCadCentroClick(Sender: TObject);

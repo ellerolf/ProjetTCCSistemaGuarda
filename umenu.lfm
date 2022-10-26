@@ -16268,6 +16268,7 @@ object FrmMenu: TFrmMenu
             00FFFF3300FFFF3300FFFF3300FFFF3300FFFF3300FFFF3300FFFF3300FFFF33
             00FFFF3300FFFF3300FFFF3300FFFF5930FFFFBFAFFFFFFFFFFF
           }
+          OnClick = BtnAlteraSenhaClick
         end
         object LblRetorno: TLabel
           Left = 82
