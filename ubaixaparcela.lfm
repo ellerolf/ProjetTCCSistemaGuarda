@@ -2109,18 +2109,52 @@ object FRMBaixaParcela: TFRMBaixaParcela
       }
     end
     object LblTotPg: TLabel
-      Left = 392
-      Height = 25
+      Left = 424
+      Height = 21
       Top = 296
-      Width = 291
-      Caption = 'TOTAL DO PAGAMENTO: R$ 0,00'
+      Width = 185
+      Caption = 'TOTAL DO PAGAMENTO:'
       Font.CharSet = ANSI_CHARSET
-      Font.Height = -19
+      Font.Height = -16
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
       Font.Style = [fsBold, fsItalic]
       ParentColor = False
       ParentFont = False
+    end
+    object Panel7: TPanel
+      Left = 626
+      Height = 21
+      Top = 297
+      Width = 80
+      AutoSize = True
+      BevelColor = clBackground
+      BevelOuter = bvNone
+      ClientHeight = 21
+      ClientWidth = 80
+      Enabled = False
+      TabOrder = 2
+      object EdtValorTot: TEdit
+        Left = 0
+        Height = 21
+        Top = 0
+        Width = 80
+        Align = alClient
+        Alignment = taRightJustify
+        BorderStyle = bsNone
+        DoubleBuffered = True
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBackground
+        Font.Height = -16
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold, fsItalic]
+        ParentColor = True
+        ParentDoubleBuffered = False
+        ParentFont = False
+        TabOrder = 0
+        Text = 'R$ 0,00'
+      end
     end
   end
   object Label10: TLabel

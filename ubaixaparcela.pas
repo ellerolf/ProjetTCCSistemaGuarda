@@ -20,6 +20,7 @@ type
     EdtFormaPagamento: TEdit;
     EdtMultaJuros: TEdit;
     EdtDesconto: TEdit;
+    EdtValorTot: TEdit;
     Label10: TLabel;
     Label2: TLabel;
     LblDataPagamento: TLabel;
@@ -35,6 +36,7 @@ type
     Panel4: TPanel;
     Panel5: TPanel;
     Panel6: TPanel;
+    Panel7: TPanel;
     Panel8: TPanel;
     Panel9: TPanel;
     BtnConsFormPg: TSpeedButton;
