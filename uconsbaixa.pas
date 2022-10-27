@@ -81,6 +81,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure ListBox1Click(Sender: TObject);
     procedure Panel2Click(Sender: TObject);
     procedure PnChamaLancaClick(Sender: TObject);
     procedure BtnPesquisa1Click(Sender: TObject);
@@ -159,6 +160,11 @@ procedure TFrmConsBaixa.FormShow(Sender: TObject);
 begin
   dm.ZQConsBaixaPen.Active:=True;
   dm.ZQConsBaixaEfet.Active:=True;
+end;
+
+procedure TFrmConsBaixa.ListBox1Click(Sender: TObject);
+begin
+
 end;
 
 
@@ -433,7 +439,9 @@ begin
             //altera os nomes da label
             FRMBaixaParcela.LblDataPagamento.Caption:='Data do Recebimento:';
             FRMBaixaParcela.LblFormaPagamento.Caption:='Forma de Recebimento:';
-            FRMBaixaParcela.LblTotPg.Caption:='TOTAL DO RECEBIMENTO: R$ 0,00';
+            FRMBaixaParcela.LblTotPg.Caption:='TOTAL DO RECEBIMENTO:';
+            FRMBaixaParcela.valor:=valorDaParcela;
+            FRMBaixaParcela.EdtValorTot.Text:=FormatFloat('0.00',FRMBaixaParcela.valor);
 
             FRMBaixaParcela.ShowModal;
        end;
@@ -447,7 +455,9 @@ begin
             FRMBaixaParcela.EdtMultaJuros.Text:=FormatFloat('0.00',MultaEJuros);
             FRMBaixaParcela.EdtDesconto.Text:=FormatFloat('0.00',Desconto);
             FRMBaixaParcela.EdtContaBancaria.Text:=IntToStr(contaBancaria);
-            FRMBaixaParcela.LblTotPg.Caption:='TOTAL DO RECEBIMENTO: '+FormatFloat('R$ 0.00',totalDoPagamento);
+            FRMBaixaParcela.LblTotPg.Caption:='TOTAL DO RECEBIMENTO:';
+            FRMBaixaParcela.EdtValorTot.Text:=FormatFloat('R$ 0.00',totalDoPagamento);
+
             //altera os nomes da label
             FRMBaixaParcela.LblDataPagamento.Caption:='Data do Recebimento:';
             FRMBaixaParcela.LblFormaPagamento.Caption:='Forma de Recebimento:';
@@ -473,7 +483,10 @@ begin
             //altera os nomes da label
             FRMBaixaParcela.LblDataPagamento.Caption:='Data do Pagamento:';
             FRMBaixaParcela.LblFormaPagamento.Caption:='Forma de Pagamento:';
-            FRMBaixaParcela.LblTotPg.Caption:='TOTAL DO PAGAMENTO: R$ 0,00';
+            FRMBaixaParcela.LblTotPg.Caption:='TOTAL DO PAGAMENTO:';
+            FRMBaixaParcela.valor:=valorDaParcela;
+            FRMBaixaParcela.EdtValorTot.Text:=FormatFloat('0.00',FRMBaixaParcela.valor);
+
 
             FRMBaixaParcela.ShowModal;
        end;
@@ -487,7 +500,8 @@ begin
             FRMBaixaParcela.EdtMultaJuros.Text:=FormatFloat('0.00',MultaEJuros);
             FRMBaixaParcela.EdtDesconto.Text:=FormatFloat('0.00',Desconto);
             FRMBaixaParcela.EdtContaBancaria.Text:=IntToStr(contaBancaria);
-            FRMBaixaParcela.LblTotPg.Caption:='TOTAL DO PAGAMENTO: '+FormatFloat('R$ 0.00',totalDoPagamento);
+            FRMBaixaParcela.LblTotPg.Caption:='TOTAL DO PAGAMENTO:';
+            FRMBaixaParcela.EdtValorTot.Text:=FormatFloat('R$ 0.00',totalDoPagamento);
             //altera os nomes da label
             FRMBaixaParcela.LblDataPagamento.Caption:='Data do Pagamento:';
             FRMBaixaParcela.LblFormaPagamento.Caption:='Forma de Pagamento:';

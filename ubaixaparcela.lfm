@@ -418,6 +418,7 @@ object FRMBaixaParcela: TFRMBaixaParcela
           Height = 23
           Top = 12
           Width = 80
+          OnChange = EdtDescontoChange
           OnExit = EdtDescontoExit
           OnKeyPress = EdtDescontoKeyPress
           TabOrder = 0
@@ -452,6 +453,7 @@ object FRMBaixaParcela: TFRMBaixaParcela
           Height = 23
           Top = 14
           Width = 104
+          OnChange = EdtMultaJurosChange
           OnExit = EdtMultaJurosExit
           OnKeyPress = EdtMultaJurosKeyPress
           TabOrder = 0
@@ -918,6 +920,7 @@ object FRMBaixaParcela: TFRMBaixaParcela
         00FF004F00FF004F00FF004F00FF004F00FF004F00FF004F00FF004F00FF004F
         00FF004F00FF004F00FF004F00FF135313FF3B683BFFD7DFD7FF
       }
+      OnClick = BtnConfirmaClick
     end
     object BtnSair: TSpeedButton
       Left = 264

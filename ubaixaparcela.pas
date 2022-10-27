@@ -44,10 +44,13 @@ type
     BtnConfirma: TSpeedButton;
     BtnSair: TSpeedButton;
     BtnCancela: TSpeedButton;
+    procedure BtnConfirmaClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
     procedure DtDataVencimentoChange(Sender: TObject);
+    procedure EdtDescontoChange(Sender: TObject);
     procedure EdtDescontoExit(Sender: TObject);
     procedure EdtDescontoKeyPress(Sender: TObject; var Key: char);
+    procedure EdtMultaJurosChange(Sender: TObject);
     procedure EdtMultaJurosExit(Sender: TObject);
     procedure EdtMultaJurosKeyPress(Sender: TObject; var Key: char);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -55,7 +58,14 @@ type
   private
 
   public
-
+       //variável abaixo recebe o valor total da parcela
+       valor:real;
+       //variável abaixo recebe a multa e juros
+       multaEjuros:real;
+       //variável abaixo recebe o desconto
+       desconto:real;
+       //variável abaixo recebe o resultado da soma
+       resultado:real;
   end;
 
 var
@@ -79,6 +89,21 @@ begin
 
 end;
 
+procedure TFRMBaixaParcela.EdtDescontoChange(Sender: TObject);
+begin
+     //desconto:=StrToFloat(EdtDesconto.Text);
+     if (EdtDesconto.Text='') then
+     begin
+          EdtDesconto.Text:='0';
+     end
+     else
+     begin
+          desconto:=StrToFloat(EdtDesconto.Text);
+          resultado:=valor+multaEjuros-desconto;
+          EdtValorTot.Text:=FormatFloat('0.00',resultado);
+     end;
+end;
+
 procedure TFRMBaixaParcela.EdtDescontoExit(Sender: TObject);
 begin
      (Sender as TEdit).Text := Simpl.FormataValor((Sender as TEdit).Text,2);
@@ -87,6 +112,21 @@ end;
 procedure TFRMBaixaParcela.EdtDescontoKeyPress(Sender: TObject; var Key: char);
 begin
      Key := Simpl.SoValor(Key);
+end;
+
+procedure TFRMBaixaParcela.EdtMultaJurosChange(Sender: TObject);
+begin
+     if (EdtMultaJuros.Text='') then
+     begin
+          EdtMultaJuros.Text:='0';
+     end
+     else
+     begin
+          multaEjuros:=StrToFloat(EdtMultaJuros.Text);
+          resultado:=valor+multaEjuros-desconto;
+          EdtValorTot.Text:=FormatFloat('0.00',resultado);
+
+     end;
 end;
 
 procedure TFRMBaixaParcela.EdtMultaJurosExit(Sender: TObject);
@@ -179,7 +219,8 @@ begin
      EdtContaBancaria.Clear;
      EdtFormaPagamento.Clear;
      EdtDesconto.Clear;
-     LblTotPg.Caption:='TOTAL DO PAGAMENTO: R$ 0,00';
+     EdtValorTot.Clear;
+     LblTotPg.Caption:='TOTAL DO PAGAMENTO:';
 
   //O código abaixo limpa os campos e a variável na tela consbaixa, após o usuário clicar em sair
      FrmConsBaixa.codigoDaParcela:=0;
@@ -192,6 +233,11 @@ begin
      FrmConsBaixa.EdtConsCentro.Clear;
      FrmConsBaixa.MemObservacao.Clear;
      close;
+end;
+
+procedure TFRMBaixaParcela.BtnConfirmaClick(Sender: TObject);
+begin
+
 end;
 
 end.
