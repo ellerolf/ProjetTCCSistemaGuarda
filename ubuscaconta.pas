@@ -25,6 +25,7 @@ type
     procedure BtnConsultaClick(Sender: TObject);
     procedure BtnSelecione1Click(Sender: TObject);
     procedure BtnSelecioneClick(Sender: TObject);
+    procedure DBGCaixaCellClick(Column: TColumn);
     procedure DBGContasBancCellClick(Column: TColumn);
     procedure EdtConsultaChange(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -45,13 +46,17 @@ implementation
 {$R *.lfm}
 
 { TFrmBuscaConta }
-uses uCadContasBancarias;
+uses uCadContasBancarias, UbaixaParcela;
 
 procedure TFrmBuscaConta.BtnSelecione1Click(Sender: TObject);
 begin
-  close;
-  FrmCadContasBancarias.AcionaBtnD:='';
-  FrmCadContasBancarias.AcionaBtnO:='';
+     FrmCadContasBancarias.AcionaBtnD:='';
+     FrmCadContasBancarias.AcionaBtnO:='';
+     FRMBaixaParcela.acionaConsConta:='';
+     RGBTipoConta.ItemIndex:=-1;
+     DBGCaixa.Visible:=False;
+     DBGContasBanc.Visible:=False;
+     close;
 end;
 
 procedure TFrmBuscaConta.BtnConsultaClick(Sender: TObject);
@@ -89,11 +94,40 @@ begin
   FrmCadContasBancarias.AcionaBtnD:='';
   FrmBuscaConta.close;
   end;
+
+  if(FRMBaixaParcela.acionaConsConta='aciona') then
+  begin
+       if (FRMBaixaParcela.codigoDaContaSelecionada>0) then
+       begin
+            FRMBaixaParcela.EdtContaBancaria.Text:=IntToStr(FRMBaixaParcela.codigoDaContaSelecionada);
+            FRMBaixaParcela.acionaConsConta:='';
+            RGBTipoConta.ItemIndex:=-1;
+            DBGCaixa.Visible:=False;
+            DBGContasBanc.Visible:=False;
+            FrmBuscaConta.close;
+       end;
+       FRMBaixaParcela.acionaConsConta:='';
+       RGBTipoConta.ItemIndex:=-1;
+       DBGCaixa.Visible:=False;
+       DBGContasBanc.Visible:=False;
+       FrmBuscaConta.close;
+  end;
+end;
+
+procedure TFrmBuscaConta.DBGCaixaCellClick(Column: TColumn);
+begin
+     if(FRMBaixaParcela.acionaConsConta='aciona') then
+     begin
+          FRMBaixaParcela.codigoDaContaSelecionada:=dm.ZQBuscaContaCONCODIGO.AsInteger;
+     end;
 end;
 
 procedure TFrmBuscaConta.DBGContasBancCellClick(Column: TColumn);
 begin
-
+     if(FRMBaixaParcela.acionaConsConta='aciona') then
+     begin
+          FRMBaixaParcela.codigoDaContaSelecionada:=dm.ZQBuscaContaCONCODIGO.AsInteger;
+     end;
 end;
 
 procedure TFrmBuscaConta.EdtConsultaChange(Sender: TObject);

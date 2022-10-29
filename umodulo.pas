@@ -264,6 +264,7 @@ type
     ZQDelParcPen: TZQuery;
     ZQuery1: TZQuery;
     ZQConsVerParc: TZQuery;
+    ZQAltBaixaDeParcela: TZQuery;
     procedure DSBuscaTipoDocDataChange(Sender: TObject; Field: TField);
     procedure DSConsPessoasDataChange(Sender: TObject; Field: TField);
 

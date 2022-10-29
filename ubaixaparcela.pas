@@ -44,9 +44,12 @@ type
     BtnConfirma: TSpeedButton;
     BtnSair: TSpeedButton;
     BtnCancela: TSpeedButton;
+    procedure BtnCancelaClick(Sender: TObject);
     procedure BtnConfirmaClick(Sender: TObject);
+    procedure BtnConsContaClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
     procedure DtDataVencimentoChange(Sender: TObject);
+    procedure EdtContaBancariaChange(Sender: TObject);
     procedure EdtDescontoChange(Sender: TObject);
     procedure EdtDescontoExit(Sender: TObject);
     procedure EdtDescontoKeyPress(Sender: TObject; var Key: char);
@@ -66,6 +69,10 @@ type
        desconto:real;
        //variável abaixo recebe o resultado da soma
        resultado:real;
+       //Essa variável diz se vai acionar a consulta de contas bancárias
+       acionaConsConta:string;
+       //Essa variável recebe o codigo da conta bancária selecionada na dbgrid
+       codigoDaContaSelecionada:Integer;
   end;
 
 var
@@ -76,7 +83,7 @@ implementation
 {$R *.lfm}
 
 { TFRMBaixaParcela }
-uses UConsBaixa;
+uses UConsBaixa, UEntrarUsuario, UBuscaConta;
 
 
 procedure TFRMBaixaParcela.Panel2Click(Sender: TObject);
@@ -85,6 +92,11 @@ begin
 end;
 
 procedure TFRMBaixaParcela.DtDataVencimentoChange(Sender: TObject);
+begin
+
+end;
+
+procedure TFRMBaixaParcela.EdtContaBancariaChange(Sender: TObject);
 begin
 
 end;
@@ -237,7 +249,65 @@ end;
 
 procedure TFRMBaixaParcela.BtnConfirmaClick(Sender: TObject);
 begin
+     if(DTDataDoPagamento.Date=NullDate) then
+     begin
+          ShowMessage('É obrigatório digitar a data.');
+          DTDataDoPagamento.SetFocus;
+     end
+     else if (EdtContaBancaria.Text='') then
+     begin
+          ShowMessage('É obrigatório colocar a conta.');
+     end
+     else if (EdtFormaPagamento.Text='') then
+     begin
+          ShowMessage('É obrigatório colocar a forma de pagamento.');
+     end
+     else if (StrToFloat(EdtValorTot.Text)<0) then
+     begin
+          ShowMessage('O valor total da está negativo, confira os valores e clique em confirmar novamente');
+          EdtMultaJuros.Clear;
+          EdtDesconto.Clear;
+     end
+     Else
+     Begin
+          ShowMessage('DEU CERTO');
+     end;
+end;
 
+procedure TFRMBaixaParcela.BtnConsContaClick(Sender: TObject);
+begin
+     acionaConsConta:='aciona';
+     FrmBuscaConta.ShowModal;
+end;
+
+procedure TFRMBaixaParcela.BtnCancelaClick(Sender: TObject);
+begin
+     if MessageDlg('ATENÇÃO, DESEJA CANCELAR ESTA OPERAÇÃO?','Essa parcela efetivada voltará para pendente.',mtInformation,[mbOk,mbCancel],0)=mrOk then
+     BEGIN
+          DM.ZQAltBaixaDeParcela.Params.ParamByName('pBAISTATUS').AsInteger:=0;
+          DM.ZQAltBaixaDeParcela.Params.ParamByName('pCODIGOFOR').Value:=Null;
+          DM.ZQAltBaixaDeParcela.Params.ParamByName('pCODIGOCON').Value:=Null;
+          DM.ZQAltBaixaDeParcela.Params.ParamByName('pBAIMULTA_JUROS').Value:=Null;
+          DM.ZQAltBaixaDeParcela.Params.ParamByName('pBAIDESCONTO').Value:=Null;
+          DM.ZQAltBaixaDeParcela.Params.ParamByName('pCODIGOUSU').AsInteger:=FrmEntrarUsuario.indentidade;
+          DM.ZQAltBaixaDeParcela.Params.ParamByName('pBAIDATAPGTO').Value:=Null;
+          DM.ZQAltBaixaDeParcela.Params.ParamByName('pBAIVALORPAGO').Value:=Null;
+          DM.ZQAltBaixaDeParcela.Params.ParamByName('pBAICODIGO').AsInteger:=FrmConsBaixa.codigoDaParcela;
+          DM.ZQAltBaixaDeParcela.ExecSQL;
+
+          //LIMPA OS CAMPOS
+          DTDataDoPagamento.Clear;
+          EdtMultaJuros.Clear;
+          EdtContaBancaria.Clear;
+          EdtFormaPagamento.Clear;
+          EdtDesconto.Clear;
+          EdtValorTot.Clear;
+          Close;
+     end
+     Else
+     Begin
+          Abort;
+     end;
 end;
 
 end.

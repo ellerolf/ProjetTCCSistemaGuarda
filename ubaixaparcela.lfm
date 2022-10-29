@@ -3,7 +3,7 @@ object FRMBaixaParcela: TFRMBaixaParcela
   Height = 487
   Top = 31
   Width = 741
-  Caption = 'FRMBaixaParcela'
+  Caption = 'Baixa de parcelas'
   ClientHeight = 487
   ClientWidth = 741
   Color = 16577259
@@ -296,6 +296,7 @@ object FRMBaixaParcela: TFRMBaixaParcela
           Top = 13
           Width = 104
           Enabled = False
+          OnChange = EdtContaBancariaChange
           TabOrder = 0
         end
         object BtnConsConta: TSpeedButton
@@ -387,6 +388,7 @@ object FRMBaixaParcela: TFRMBaixaParcela
             00FFC10000FFC10000FFC10000FFC10000FFC10000FFC10000FFC10000FFC100
             00FFC10000FFC10000FFC10000FFC10000FFC10000EFC1000090C1000010
           }
+          OnClick = BtnConsContaClick
         end
       end
       object Panel9: TPanel
@@ -2110,6 +2112,7 @@ object FRMBaixaParcela: TFRMBaixaParcela
         FFFF0080FFFF0080FFFF0080FFFF0080FFFF0080FFFF0781FFFF1279FFFF1273
         FFFFB1D0FFFFFFFFFFFF
       }
+      OnClick = BtnCancelaClick
     end
     object LblTotPg: TLabel
       Left = 424

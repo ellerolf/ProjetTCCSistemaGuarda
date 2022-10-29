@@ -192,9 +192,10 @@ object FrmBuscaConta: TFrmBuscaConta
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
       TabOrder = 1
       Visible = False
+      OnCellClick = DBGCaixaCellClick
     end
     object BtnSelecione: TSpeedButton
-      Left = 452
+      Left = 456
       Height = 34
       Top = 496
       Width = 124

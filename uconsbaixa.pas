@@ -429,9 +429,9 @@ begin
   end
   else
   begin
-       //PENDENTE + RECEITA
        if (FrmConsBaixa.statusparcela=0) and (FrmConsBaixa.tipoDaParcela=1)then
        begin
+            //PENDENTE + RECEITA
             FRMBaixaParcela.EdtValorParcela.Text:=formatFloat('0.00',valorDaParcela);
             FRMBaixaParcela.DtDataVencimento.Date:=StrToDate(vencimentoDaParcela);
             FRMBaixaParcela.BtnConfirma.Enabled:=True;
@@ -443,11 +443,18 @@ begin
             FRMBaixaParcela.valor:=valorDaParcela;
             FRMBaixaParcela.EdtValorTot.Text:=FormatFloat('0.00',FRMBaixaParcela.valor);
 
+            //HABILITA OS CAMPOS
+            FRMBaixaParcela.EdtMultaJuros.Enabled:=True;
+            FRMBaixaParcela.EdtDesconto.Enabled:=True;
+            FRMBaixaParcela.BtnConsConta.Enabled:=True;
+            FRMBaixaParcela.BtnConsFormPg.Enabled:=True;
+            FRMBaixaParcela.DTDataDoPagamento.Enabled:=True;
+
             FRMBaixaParcela.ShowModal;
-       end;
-       //finalizado + receita
-       if (FrmConsBaixa.statusparcela=1) and (FrmConsBaixa.tipoDaParcela=1) then
+       end
+       else if (FrmConsBaixa.statusparcela=1) and (FrmConsBaixa.tipoDaParcela=1) then
        begin
+            //finalizado + receita
             FRMBaixaParcela.EdtValorParcela.Text:=formatFloat('0.00',valorDaParcela);
             FRMBaixaParcela.DtDataVencimento.Date:=StrToDate(vencimentoDaParcela);
             FRMBaixaParcela.DTDataDoPagamento.Date:=StrToDate(dataDoPagamento);
@@ -462,6 +469,7 @@ begin
             FRMBaixaParcela.LblDataPagamento.Caption:='Data do Recebimento:';
             FRMBaixaParcela.LblFormaPagamento.Caption:='Forma de Recebimento:';
 
+            //INABILITA OS CAMPOS
             FRMBaixaParcela.EdtMultaJuros.Enabled:=False;
             FRMBaixaParcela.EdtDesconto.Enabled:=False;
             FRMBaixaParcela.BtnConsConta.Enabled:=False;
@@ -471,11 +479,10 @@ begin
             FRMBaixaParcela.BtnCancela.Enabled:=True;
             FRMBaixaParcela.BtnConfirma.Enabled:=False;
             FRMBaixaParcela.ShowModal;
-       end;
-
-       //PENDENTE + DESPESA
-       if (FrmConsBaixa.statusparcela=0) and (FrmConsBaixa.tipoDaParcela=0)then
+       end
+       Else if (FrmConsBaixa.statusparcela=0) and (FrmConsBaixa.tipoDaParcela=0)then
        begin
+            //PENDENTE + DESPESA
             FRMBaixaParcela.EdtValorParcela.Text:=formatFloat('0.00',valorDaParcela);
             FRMBaixaParcela.DtDataVencimento.Date:=StrToDate(vencimentoDaParcela);
             FRMBaixaParcela.BtnConfirma.Enabled:=True;
@@ -487,12 +494,18 @@ begin
             FRMBaixaParcela.valor:=valorDaParcela;
             FRMBaixaParcela.EdtValorTot.Text:=FormatFloat('0.00',FRMBaixaParcela.valor);
 
+            //HABILITA OS CAMPOS
+            FRMBaixaParcela.EdtMultaJuros.Enabled:=True;
+            FRMBaixaParcela.EdtDesconto.Enabled:=True;
+            FRMBaixaParcela.BtnConsConta.Enabled:=True;
+            FRMBaixaParcela.BtnConsFormPg.Enabled:=True;
+            FRMBaixaParcela.DTDataDoPagamento.Enabled:=True;
 
             FRMBaixaParcela.ShowModal;
-       end;
-              //finalizado + despesa
-       if (FrmConsBaixa.statusparcela=1) and (FrmConsBaixa.tipoDaParcela=0) then
+       end
+       Else if (FrmConsBaixa.statusparcela=1) and (FrmConsBaixa.tipoDaParcela=0) then
        begin
+            //finalizado + despesa
             FRMBaixaParcela.EdtValorParcela.Text:=formatFloat('0.00',valorDaParcela);
             FRMBaixaParcela.DtDataVencimento.Date:=StrToDate(vencimentoDaParcela);
             FRMBaixaParcela.DTDataDoPagamento.Date:=StrToDate(dataDoPagamento);
@@ -506,6 +519,7 @@ begin
             FRMBaixaParcela.LblDataPagamento.Caption:='Data do Pagamento:';
             FRMBaixaParcela.LblFormaPagamento.Caption:='Forma de Pagamento:';
 
+            //INABILITA OS CAMPOS
             FRMBaixaParcela.EdtMultaJuros.Enabled:=False;
             FRMBaixaParcela.EdtDesconto.Enabled:=False;
             FRMBaixaParcela.BtnConsConta.Enabled:=False;

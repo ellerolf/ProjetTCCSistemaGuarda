@@ -1,10 +1,10 @@
 object DM: TDM
   OnCreate = DataModuleCreate
   OldCreateOrder = False
-  Height = 685
+  Height = 1009
   HorizontalOffset = 78
   VerticalOffset = 0
-  Width = 890
+  Width = 1131
   object ZFinanceiro: TZConnection
     ControlsCodePage = cCP_UTF8
     AutoEncodeStrings = True
@@ -3222,5 +3222,105 @@ object DM: TDM
     DataSet = ZQConsVerParc
     Left = 1017
     Top = 528
+  end
+  object ZQAltBaixaDeParcela: TZQuery
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'UPDATE baixa SET BAISTATUS=:pBAISTATUS, CODIGOFOR=:pCODIGOFOR, CODIGOCON=:pCODIGOCON, BAIMULTA_JUROS=:pBAIMULTA_JUROS, BAIDESCONTO=:pBAIDESCONTO, CODIGOUSU=:pCODIGOUSU, BAIDATAPGTO=:pBAIDATAPGTO, BAIVALORPAGO=:pBAIVALORPAGO WHERE BAICODIGO=:pBAICODIGO   '
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'pBAISTATUS'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pCODIGOFOR'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pCODIGOCON'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pBAIMULTA_JUROS'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pBAIDESCONTO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pCODIGOUSU'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pBAIDATAPGTO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pBAIVALORPAGO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pBAICODIGO'
+        ParamType = ptUnknown
+      end>
+    Left = 344
+    Top = 784
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'pBAISTATUS'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pCODIGOFOR'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pCODIGOCON'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pBAIMULTA_JUROS'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pBAIDESCONTO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pCODIGOUSU'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pBAIDATAPGTO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pBAIVALORPAGO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pBAICODIGO'
+        ParamType = ptUnknown
+      end>
   end
 end
