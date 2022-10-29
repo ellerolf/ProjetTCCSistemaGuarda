@@ -80,11 +80,16 @@ begin
   begin
     DM.ZQConsUsuario.Close;
     DM.ZQConsUsuario.SQL.Clear;
-    DM.ZQConsUsuario.SQL.Add('select * from usuario where usulogin=' + QuotedStr(EdtUsuario.Text) + 'and ususenha=' + QuotedStr(EdtSenha.Text)+'and usustatus=1');
+    DM.ZQConsUsuario.SQL.Add('select * from usuario where usulogin=' + QuotedStr(EdtUsuario.Text) + 'and ususenha=' + QuotedStr(EdtSenha.Text));
     DM.ZQConsUsuario.Open;
-    if(DM.ZQConsUsuarioUSUSTATUS.value=0)then
+    if ((EdtUsuario.Text <> DM.ZQConsUsuarioUSULOGIN.Value) and (EdtSenha.Text <> DM.ZQConsUsuarioUSUSENHA.Value)) then
     begin
-      ShowMessage('SEU USUÁRIO ESTÁ INATIVO, VOCÊ NÃO PODE FAZER LOGIN.');
+      ShowMessage('*USUARIO OU SENHA ERRADOS*');
+    end
+    else
+    if (DM.ZQConsUsuarioUSUSTATUS.Value <> 1) then
+    begin
+       ShowMessage('*USUARIO INATIVO*');
     end
     else
     if (DM.ZQConsUsuario.RecordCount = 1) then
@@ -96,12 +101,7 @@ begin
       indentidade:= DM.ZQConsUsuarioUSUCODIGO.AsInteger;
       acesso:= DM.ZQConsUsuarioCODIGONIV.AsInteger;
       FrmMenu.Show;
-    end
-    else
-    begin
-      ShowMessage('*USUARIO OU SENHA ERRADOS*');
     end;
-
   end;
 end;
 
