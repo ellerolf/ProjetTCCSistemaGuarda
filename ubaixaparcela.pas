@@ -271,6 +271,24 @@ begin
      Else
      Begin
           ShowMessage('DEU CERTO');
+          //ao salvar ele limpa os campos e limpa a tela de dados do lançamento em consbaixa.
+          DTDataDoPagamento.Clear;
+          EdtMultaJuros.Clear;
+          EdtContaBancaria.Clear;
+          EdtFormaPagamento.Clear;
+          EdtDesconto.Clear;
+          EdtValorTot.Clear;
+
+          FrmConsBaixa.codigoDaParcela:=0;
+          FrmConsBaixa.ChkDespesa.Checked:=False;
+          FrmConsBaixa.ChkReceita.Checked:=False;
+          FrmConsBaixa.DTLancamento.Clear;
+          FrmConsBaixa.EdtTipoDocumento.Clear;
+          FrmConsBaixa.EdtNDoc.Clear;
+          FrmConsBaixa.EdtConsFornecedor.Clear;
+          FrmConsBaixa.EdtConsCentro.Clear;
+          FrmConsBaixa.MemObservacao.Clear;
+          Close;
      end;
 end;
 

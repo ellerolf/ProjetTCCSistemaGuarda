@@ -172,7 +172,6 @@ object FRMBaixaParcela: TFRMBaixaParcela
           Height = 23
           Top = 13
           Width = 80
-          Enabled = False
           TabOrder = 0
         end
         object BtnConsFormPg: TSpeedButton
