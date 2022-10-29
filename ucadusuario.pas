@@ -303,7 +303,7 @@ ele não vai consequi para que a execução não trave ele vai mostrar um mensag
           DM.ZQAltUsuario.Params.ParamByName('pusunome').Value:=EdtNome.Text;
           DM.ZQAltUsuario.Params.ParamByName('pusulogin').Value:=EdtNomeUsuario.Text;
           DM.ZQAltUsuario.Params.ParamByName('pususenha').Value:=EdtSenha.Text;
-          DM.ZQAltUsuario.Params.ParamByName('pususenha').Value:=EdtConfSenha.Text;
+         // DM.ZQAltUsuario.Params.ParamByName('pususenha').Value:=EdtConfSenha.Text;
 
            if(RgbNivel.ItemIndex=0)then
            begin
@@ -337,6 +337,7 @@ ele não vai consequi para que a execução não trave ele vai mostrar um mensag
           RgbNivel.ItemIndex:=-1;
           RgbAltStatus.ItemIndex:=-1;
           RgbAltStatus.Visible:=False;
+          FrmConsUsuario.PnAlterausu.Visible:=False;
           LblMensagem.Caption:='*Campos Obrigatorios';
           close;
           end;

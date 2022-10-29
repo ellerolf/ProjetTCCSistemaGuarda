@@ -1222,10 +1222,10 @@ object FrmConsUsuario: TFrmConsUsuario
     end
   end
   object PnAlterausu: TPanel
-    Left = 128
-    Height = 512
+    Left = 16
+    Height = 520
     Top = 48
-    Width = 616
+    Width = 744
     BevelOuter = bvNone
     TabOrder = 1
   end

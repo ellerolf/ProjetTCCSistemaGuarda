@@ -139,7 +139,7 @@ end;
 
 procedure TFrmConsUsuario.DBGrid1CellClick(Column: TColumn);
 begin
-  usualtera:=DM.ZQBuscaUsuarioUSUCODIGO.AsInteger;;
+  usualtera:=DM.ZQBuscaUsuarioUSUCODIGO.AsInteger;
 end;
 
 procedure TFrmConsUsuario.FormClose(Sender: TObject;

@@ -241,6 +241,7 @@ begin
     EdtSenhaAtual.Text:='';
     EdtSenhaNova.Text:='';
     EdtConfirmaSenha.Text:='';
+     EdtSenhaAtual.Enabled:=true;
     PnTrocaSenha.visible := true;
   end;
 end;
@@ -260,13 +261,58 @@ begin
 end;
 
 procedure TFrmMenu.BtnAlteraSenhaClick(Sender: TObject);
+var
+  verificar: integer;
 begin
-  if ((EdtSenhaAtual.Text = DM.ZQConsUsuarioUSUSENHA.Value) and (FrmEntrarUsuario.indentidade = DM.ZQConsUsuarioUSUCODIGO.Value)) then
-  begin
-    EdtSenhaNova.Enabled:= True;
-    EdtConfirmaSenha.enabled := True;
+  verificar := Length(EdtSenhaNova.Text);
+  if ((EdtSenhaNova.Enabled = false) and ( EdtConfirmaSenha.enabled = false)) then
+    begin
+        if ((EdtSenhaAtual.Text = DM.ZQConsUsuarioUSUSENHA.Value) and (FrmEntrarUsuario.indentidade = DM.ZQConsUsuarioUSUCODIGO.Value)) then
+        begin
+          EdtSenhaNova.Enabled:= True;
+          EdtConfirmaSenha.enabled := True;
+          EdtSenhaAtual.Enabled:=False;
+        end;
+    end
+    else
+  if ((EdtSenhaNova.Enabled = true) and ( EdtConfirmaSenha.enabled = true)) then
+     begin
+         if ((EdtSenhaNova.Text = '')or(EdtConfirmaSenha.Text = '')) then
+            begin
+              ShowMessage('CAMPOS FALTANDO');
+            end
+         else
+         if (EdtSenhaNova.Text<>EdtConfirmaSenha.Text)then
+          begin
+            ShowMessage('SENHAS NAO CONFEREM, FAVOR CONFERIR NOVAMENTE');
+          end
+        else
+        if (verificar < 8) then
+          begin
+            ShowMessage('A SENHA DEVE TER NO MINIMO 8 DIGITOS');
+          end
+        else
+        begin
+          DM.ZQAltUsuario.Params.ParamByName('pusunome').Value:=DM.ZQConsUsuarioUSUNOME.Value;
+          DM.ZQAltUsuario.Params.ParamByName('pusulogin').Value:=DM.ZQConsUsuarioUSULOGIN.value;
+          DM.ZQAltUsuario.Params.ParamByName('pususenha').Value:=EdtSenhaNova.Text;
+          DM.ZQAltUsuario.Params.ParamByName('pcodigoniv').Value:= DM.ZQConsUsuarioCODIGONIV.value;
+          DM.ZQAltUsuario.Params.ParamByName('pusustatus').Value:= DM.ZQConsUsuarioUSUSTATUS.Value;
+          DM.ZQAltUsuario.Params.ParamByName('pusucodigo').Value:=FrmEntrarUsuario.indentidade;
+          DM.ZQAltUsuario.ExecSQL;
 
-  end;
+          DM.ZQBuscaUsuario.Close;
+          DM.ZQBuscaUsuario.Open;
+
+          ShowMessage('SENHA ALTERADA COM SUCESSO');
+          EdtSenhaAtual.Text:='';
+          EdtSenhaNova.Text:= '';
+          EdtConfirmaSenha.Text := '';
+          EdtSenhaNova.Enabled:= false;
+          EdtConfirmaSenha.enabled := false;
+          PnTrocaSenha.Visible:= False;
+        end;
+     end;
 end;
 
 procedure TFrmMenu.BtnCadCentroClick(Sender: TObject);
