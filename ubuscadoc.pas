@@ -23,6 +23,7 @@ type
     procedure BtnBuscaTipoDocClick(Sender: TObject);
     procedure BtnCancelarClick(Sender: TObject);
     procedure BtnSelecionarClick(Sender: TObject);
+    procedure DBGrid1CellClick(Column: TColumn);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure Label7Click(Sender: TObject);
@@ -47,6 +48,7 @@ uses uCadLancamento,UConsBaixa;
 procedure TFrmBuscaDoc.BtnCancelarClick(Sender: TObject);
 begin
   BuscaDocTela:='';
+  EdtBuscaTipoDoc.Clear;
   close;
 end;
 
@@ -97,13 +99,28 @@ procedure TFrmBuscaDoc.BtnSelecionarClick(Sender: TObject);
 begin
   if (BuscaDocTela='lanc') then
     begin
-        FrmCadLancamento.EdtTipoDocumento.Text:=DM.ZQBuscaTipoDocDOCCODIGO.AsString;
-        Close;
+         if (FrmCadLancamento.NdoDocSelecionado>0) then
+           begin
+                FrmCadLancamento.EdtTipoDocumento.Text:=IntToStr(FrmCadLancamento.NdoDocSelecionado);
+                EdtBuscaTipoDoc.Clear;
+                FrmCadLancamento.NdoDocSelecionado:=0;
+                Close;
+           end;
+         Close;
     end;
+
   if (BuscaDocTela='consbaix') then
     begin
         FrmConsBaixa.EdtTipoDocumento.Text:=DM.ZQBuscaTipoDocDOCCODIGO.AsString;
         Close;
+    end;
+end;
+
+procedure TFrmBuscaDoc.DBGrid1CellClick(Column: TColumn);
+begin
+     if (BuscaDocTela='lanc') then
+    begin
+        FrmCadLancamento.NdoDocSelecionado:=DM.ZQBuscaTipoDocDOCCODIGO.AsInteger;
     end;
 end;
 

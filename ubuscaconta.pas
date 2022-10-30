@@ -53,6 +53,7 @@ begin
      FrmCadContasBancarias.AcionaBtnD:='';
      FrmCadContasBancarias.AcionaBtnO:='';
      FRMBaixaParcela.acionaConsConta:='';
+     EdtConsulta.Clear;
      RGBTipoConta.ItemIndex:=-1;
      DBGCaixa.Visible:=False;
      DBGContasBanc.Visible:=False;
@@ -104,10 +105,13 @@ begin
             RGBTipoConta.ItemIndex:=-1;
             DBGCaixa.Visible:=False;
             DBGContasBanc.Visible:=False;
+            FRMBaixaParcela.codigoDaContaSelecionada:=0;
+            EdtConsulta.Clear;
             FrmBuscaConta.close;
        end;
        FRMBaixaParcela.acionaConsConta:='';
        RGBTipoConta.ItemIndex:=-1;
+       EdtConsulta.Clear;
        DBGCaixa.Visible:=False;
        DBGContasBanc.Visible:=False;
        FrmBuscaConta.close;

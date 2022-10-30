@@ -188,6 +188,7 @@ object FrmBuscaDoc: TFrmBuscaDoc
       DataSource = DM.DSBuscaTipoDoc
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
       TabOrder = 1
+      OnCellClick = DBGrid1CellClick
     end
     object BtnCancelar: TSpeedButton
       Left = 16

@@ -67,6 +67,8 @@ type
 
      codigoDoLanc:Integer;
    CadOuAltLanDatValor:String;
+   //Variável abaixo recebe o numero do documento selecionado no buscaconta
+   NdoDocSelecionado:Integer;
 
   end;
 
