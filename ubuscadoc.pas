@@ -106,21 +106,34 @@ begin
                 FrmCadLancamento.NdoDocSelecionado:=0;
                 Close;
            end;
+         EdtBuscaTipoDoc.Clear;
          Close;
     end;
 
   if (BuscaDocTela='consbaix') then
     begin
-        FrmConsBaixa.EdtTipoDocumento.Text:=DM.ZQBuscaTipoDocDOCCODIGO.AsString;
-        Close;
+         if (FrmConsBaixa.NdoDocumentoSelecionado>0) then
+           begin
+                FrmConsBaixa.EdtTipoDocumento.Text:=IntToStr(FrmConsBaixa.NdoDocumentoSelecionado);
+                EdtBuscaTipoDoc.Clear;
+                FrmConsBaixa.NdoDocumentoSelecionado:=0;
+                close;
+           end;
+         EdtBuscaTipoDoc.Clear;
+         Close;
     end;
 end;
 
 procedure TFrmBuscaDoc.DBGrid1CellClick(Column: TColumn);
 begin
      if (BuscaDocTela='lanc') then
-    begin
+     begin
         FrmCadLancamento.NdoDocSelecionado:=DM.ZQBuscaTipoDocDOCCODIGO.AsInteger;
+     end;
+
+     if (BuscaDocTela='consbaix') then
+    begin
+        FrmConsBaixa.NdoDocumentoSelecionado:=DM.ZQBuscaTipoDocDOCCODIGO.AsInteger;
     end;
 end;
 

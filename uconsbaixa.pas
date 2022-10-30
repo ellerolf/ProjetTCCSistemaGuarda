@@ -122,6 +122,8 @@ type
     totalDoPagamento:Real;
     //a variável abaixo recebe o tipo da parcela, se é receita ou despesa
     tipoDaParcela:integer;
+    //variável abaixo recebe o numero do documento selecionado quando o usuários alterar os dados de lançamento
+    NdoDocumentoSelecionado:Integer;
   end;
 
 var
