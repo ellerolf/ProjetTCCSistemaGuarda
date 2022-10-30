@@ -501,27 +501,24 @@ object FrmCadParcela: TFrmCadParcela
     object DBGrid1: TDBGrid
       Left = 40
       Height = 240
-      Top = 248
+      Top = 240
       Width = 312
       Color = clWindow
       Columns = <      
         item
-          Title.Caption = 'CÓDIGO LANÇ'
-          Width = 85
-          FieldName = 'CODIGOLAN'
+          Title.Caption = 'CÓD PARCELA'
+          Width = 83
+          FieldName = 'BAICODIGO'
         end      
         item
-          Title.Caption = 'DATA DE VENCIMENTO'
-          Width = 129
+          Title.Caption = 'VENCIMENTO'
+          Width = 100
           FieldName = 'BAIDATAVEN'
         end      
         item
           Title.Caption = 'VALOR'
+          Width = 95
           FieldName = 'BAIVALOR'
-        end      
-        item
-          Title.Caption = 'USUÁRIO'
-          FieldName = 'CODIGOUSU'
         end>
       DataSource = DM.DSConsLanData
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
