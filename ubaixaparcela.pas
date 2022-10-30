@@ -270,7 +270,42 @@ begin
      end
      Else
      Begin
-          ShowMessage('DEU CERTO');
+          if (multaEjuros=0) and (desconto=0) then
+          begin
+               DM.ZQAltBaixaDeParcela.Params.ParamByName('pBAIVALORPAGO').AsFloat:=valor;
+          end
+          Else
+          Begin
+               DM.ZQAltBaixaDeParcela.Params.ParamByName('pBAIVALORPAGO').AsFloat:=resultado;
+          end;
+
+          if (multaEjuros=0) then
+          begin
+               DM.ZQAltBaixaDeParcela.Params.ParamByName('pBAIMULTA_JUROS').Value:=Null;
+          end
+          Else
+          begin
+               DM.ZQAltBaixaDeParcela.Params.ParamByName('pBAIMULTA_JUROS').AsFloat:=multaEjuros;
+          end;
+
+          if (desconto=0) then
+          begin
+               DM.ZQAltBaixaDeParcela.Params.ParamByName('pBAIDESCONTO').Value:=Null;
+          end
+          Else
+          begin
+               DM.ZQAltBaixaDeParcela.Params.ParamByName('pBAIDESCONTO').AsFloat:=desconto;
+          end;
+
+          DM.ZQAltBaixaDeParcela.Params.ParamByName('pBAISTATUS').AsInteger:=1;
+          DM.ZQAltBaixaDeParcela.Params.ParamByName('pCODIGOFOR').Value:=EdtFormaPagamento.Text;
+          DM.ZQAltBaixaDeParcela.Params.ParamByName('pCODIGOCON').Value:=EdtContaBancaria.Text;
+          DM.ZQAltBaixaDeParcela.Params.ParamByName('pCODIGOUSU').AsInteger:=FrmEntrarUsuario.indentidade;
+          DM.ZQAltBaixaDeParcela.Params.ParamByName('pBAIDATAPGTO').Value:=FormatDateTime('yyyy-mm-dd',DTDataDoPagamento.Date);
+          DM.ZQAltBaixaDeParcela.Params.ParamByName('pBAICODIGO').AsInteger:=FrmConsBaixa.codigoDaParcela;
+          DM.ZQAltBaixaDeParcela.ExecSQL;
+
+          ShowMessage('Parcela efetivada com sucesso!');
           //ao salvar ele limpa os campos e limpa a tela de dados do lançamento em consbaixa.
           DTDataDoPagamento.Clear;
           EdtMultaJuros.Clear;
@@ -278,6 +313,12 @@ begin
           EdtFormaPagamento.Clear;
           EdtDesconto.Clear;
           EdtValorTot.Clear;
+          valor:=0;
+          multaEjuros:=0;
+          desconto:=0;
+          resultado:=0;
+          codigoDaContaSelecionada:=0;
+
 
           FrmConsBaixa.codigoDaParcela:=0;
           FrmConsBaixa.ChkDespesa.Checked:=False;
@@ -320,6 +361,17 @@ begin
           EdtFormaPagamento.Clear;
           EdtDesconto.Clear;
           EdtValorTot.Clear;
+
+          //O código abaixo limpa os campos e a variável na tela consbaixa, após o usuário clicar em sair
+          FrmConsBaixa.codigoDaParcela:=0;
+          FrmConsBaixa.ChkDespesa.Checked:=False;
+          FrmConsBaixa.ChkReceita.Checked:=False;
+          FrmConsBaixa.DTLancamento.Clear;
+          FrmConsBaixa.EdtTipoDocumento.Clear;
+          FrmConsBaixa.EdtNDoc.Clear;
+          FrmConsBaixa.EdtConsFornecedor.Clear;
+          FrmConsBaixa.EdtConsCentro.Clear;
+          FrmConsBaixa.MemObservacao.Clear;
           Close;
      end
      Else
