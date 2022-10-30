@@ -80,7 +80,9 @@ type
      OpeCadOuAltConta:string;
       {Se 'OpecadOuAltTransf' do tipo string receber 'U' vai habilitar a consulta,
      se OpecadOuAltTransf receber 'I' vai habilitar o cadastro'}
-     OpecadOuAltTransf: string
+     OpecadOuAltTransf: string;
+     // A variável abaixo recebe o numero da conta seleciona no buscaconta na transferencia
+     ContaSelecionada:Integer;
 
   end;
 

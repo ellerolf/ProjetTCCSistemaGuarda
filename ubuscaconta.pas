@@ -84,16 +84,40 @@ procedure TFrmBuscaConta.BtnSelecioneClick(Sender: TObject);
 begin
   If(FrmCadContasBancarias.AcionaBtnO='o') then
   begin
-  FrmCadContasBancarias.EdtCodContaO.Text:=dm.ZQBuscaContaCONCODIGO.AsString;
-  FrmCadContasBancarias.AcionaBtnO:='';
-  FrmBuscaConta.close;
+       if (FrmCadContasBancarias.ContaSelecionada>0) then
+       begin
+            FrmCadContasBancarias.EdtCodContaO.Text:=IntToStr(FrmCadContasBancarias.ContaSelecionada);
+            FrmCadContasBancarias.ContaSelecionada:=0;
+            RGBTipoConta.ItemIndex:=-1;
+            DBGCaixa.Visible:=False;
+            DBGContasBanc.Visible:=False;
+            EdtConsulta.Clear;
+
+            FrmCadContasBancarias.AcionaBtnO:='';
+            FrmBuscaConta.close;
+       end;
+       FrmCadContasBancarias.AcionaBtnO:='';
+       EdtConsulta.Clear;
+       FrmBuscaConta.close;
   end;
 
   If(FrmCadContasBancarias.AcionaBtnD='d') then
   begin
-  FrmCadContasBancarias.EdtCodContaDes.Text:=dm.ZQBuscaContaCONCODIGO.AsString;
-  FrmCadContasBancarias.AcionaBtnD:='';
-  FrmBuscaConta.close;
+       if (FrmCadContasBancarias.ContaSelecionada>0) then
+       begin
+            FrmCadContasBancarias.EdtCodContaDes.Text:=IntToStr(FrmCadContasBancarias.ContaSelecionada);
+            FrmCadContasBancarias.ContaSelecionada:=0;
+            RGBTipoConta.ItemIndex:=-1;
+            DBGCaixa.Visible:=False;
+            DBGContasBanc.Visible:=False;
+            EdtConsulta.Clear;
+
+            FrmCadContasBancarias.AcionaBtnD:='';
+            FrmBuscaConta.close;
+       end;
+       FrmCadContasBancarias.AcionaBtnD:='';
+       EdtConsulta.Clear;
+       FrmBuscaConta.close;
   end;
 
   if(FRMBaixaParcela.acionaConsConta='aciona') then
@@ -124,6 +148,11 @@ begin
      begin
           FRMBaixaParcela.codigoDaContaSelecionada:=dm.ZQBuscaContaCONCODIGO.AsInteger;
      end;
+
+     if (FrmCadContasBancarias.AcionaBtnO='o') or (FrmCadContasBancarias.AcionaBtnD='d') then
+     begin
+          FrmCadContasBancarias.ContaSelecionada:=dm.ZQBuscaContaCONCODIGO.AsInteger;
+     end;
 end;
 
 procedure TFrmBuscaConta.DBGContasBancCellClick(Column: TColumn);
@@ -131,6 +160,11 @@ begin
      if(FRMBaixaParcela.acionaConsConta='aciona') then
      begin
           FRMBaixaParcela.codigoDaContaSelecionada:=dm.ZQBuscaContaCONCODIGO.AsInteger;
+     end;
+
+     if (FrmCadContasBancarias.AcionaBtnO='o') or (FrmCadContasBancarias.AcionaBtnD='d') then
+     begin
+          FrmCadContasBancarias.ContaSelecionada:=dm.ZQBuscaContaCONCODIGO.AsInteger;
      end;
 end;
 
