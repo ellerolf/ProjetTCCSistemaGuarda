@@ -191,6 +191,8 @@ begin
     Else
     begin
       ShowMessage('Cadastro efetuado com sucesso');
+      DtDataParcela.Clear;
+      EdtValor.Clear;
       Close;
     end;
   end;
@@ -205,6 +207,8 @@ begin
     Else
     begin
          ShowMessage('Alteração efetuada com sucesso');
+         DtDataParcela.Clear;
+         EdtValor.Clear;
          //O código abaixo limpa os campos e a variável na tela consbaixa, após o usuário salvar a alterações
          FrmConsBaixa.codigoDaParcela:=0;
          FrmConsBaixa.ChkDespesa.Checked:=False;
@@ -241,6 +245,8 @@ begin
               dm.ZQConsLanData.Open;
               dm.ZQConsLanData.Close;
               //caso ele deixa o salvar ativo e clique em sair o codigo abaixo acerta os botoes
+              DtDataParcela.Clear;
+              EdtValor.Clear;
               EdtValorLanc.Clear;
               BtnSalvar.Enabled:=False;
               BtnCancelar.Enabled:=False;
@@ -265,6 +271,8 @@ begin
         end
       else
       begin
+           DtDataParcela.Clear;
+           EdtValor.Clear;
            BtnSalvar.Enabled:=False;
            BtnCancelar.Enabled:=False;
            BtnAlterar.Enabled:=True;

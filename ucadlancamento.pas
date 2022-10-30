@@ -247,7 +247,6 @@ begin
     else if (EdtTipoDocumento.Text='') then
     begin
       ShowMessage('Selecione o tipo de documento');
-      EdtTipoDocumento.SetFocus;
     end
     else if (EdtNDoc.Text='') then
     begin
@@ -257,12 +256,10 @@ begin
     else if (EdtConsFornecedor.Text='') then
     begin
       ShowMessage('O campo fornecedor é obrigatório');
-      EdtConsFornecedor.SetFocus;
     end
     else if (EdtConsCentro.Text='') then
     begin
       ShowMessage('O centro de custo é um campo obrigatório');
-      EdtConsCentro.SetFocus;
     end
     else if (EdtValor.Text='') or (EdtValor.Text= '0,00') then
     begin

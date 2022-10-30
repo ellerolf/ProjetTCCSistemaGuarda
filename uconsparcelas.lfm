@@ -2,11 +2,11 @@ object FrmConsParcelas: TFrmConsParcelas
   Left = 1616
   Height = 269
   Top = 31
-  Width = 688
+  Width = 727
   BorderIcons = []
   Caption = 'Ver Parcelas'
   ClientHeight = 269
-  ClientWidth = 688
+  ClientWidth = 727
   Color = 16577259
   OnActivate = FormActivate
   OnClose = FormClose
@@ -15,7 +15,7 @@ object FrmConsParcelas: TFrmConsParcelas
     Left = 16
     Height = 168
     Top = 48
-    Width = 656
+    Width = 696
     Color = clWindow
     Columns = <    
       item
@@ -25,7 +25,7 @@ object FrmConsParcelas: TFrmConsParcelas
       end    
       item
         Title.Caption = 'NOME CLIENTE/ FORNECEDOR'
-        Width = 275
+        Width = 278
         FieldName = 'PESNOME'
       end    
       item
@@ -53,7 +53,7 @@ object FrmConsParcelas: TFrmConsParcelas
     Left = 0
     Height = 32
     Top = 0
-    Width = 688
+    Width = 727
     Align = alTop
     Alignment = taCenter
     Caption = 'Ver Parcelas'
@@ -69,7 +69,7 @@ object FrmConsParcelas: TFrmConsParcelas
     OnClick = Label7Click
   end
   object BtnSair: TSpeedButton
-    Left = 544
+    Left = 592
     Height = 30
     Top = 232
     Width = 120

@@ -5,12 +5,13 @@ object FrmCadLancamento: TFrmCadLancamento
   Width = 958
   BorderStyle = bsNone
   Caption = 'Lançamento'
-  ClientHeight = 789
+  ClientHeight = 812
   ClientWidth = 958
   Color = 16577259
   OnCreate = FormCreate
   OnResize = FormResize
   Position = poScreenCenter
+  LCLVersion = '2.2.2.0'
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
