@@ -14,7 +14,6 @@ object FrmMenu: TFrmMenu
   OnResize = FormResize
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.2.2.0'
   object Panel1: TPanel
     Left = 0
     Height = 672
@@ -15785,6 +15784,7 @@ object FrmMenu: TFrmMenu
         Top = 160
         Width = 184
         EchoMode = emPassword
+        OnKeyPress = EdtSenhaAtualKeyPress
         PasswordChar = '*'
         TabOrder = 0
       end
@@ -15794,6 +15794,8 @@ object FrmMenu: TFrmMenu
         Top = 208
         Width = 184
         EchoMode = emPassword
+        OnChange = EdtSenhaNovaChange
+        OnKeyPress = EdtSenhaNovaKeyPress
         PasswordChar = '*'
         TabOrder = 1
       end
@@ -16294,6 +16296,7 @@ object FrmMenu: TFrmMenu
         Top = 256
         Width = 184
         EchoMode = emPassword
+        OnKeyPress = EdtConfirmaSenhaKeyPress
         PasswordChar = '*'
         TabOrder = 2
       end

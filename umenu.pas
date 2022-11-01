@@ -75,6 +75,10 @@ type
     procedure BtnRelaPrestaClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
     procedure BtnTrasfClick(Sender: TObject);
+    procedure EdtConfirmaSenhaKeyPress(Sender: TObject; var Key: char);
+    procedure EdtSenhaAtualKeyPress(Sender: TObject; var Key: char);
+    procedure EdtSenhaNovaChange(Sender: TObject);
+    procedure EdtSenhaNovaKeyPress(Sender: TObject; var Key: char);
     procedure FormClose(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
@@ -138,6 +142,35 @@ begin
   FrmTranfContas.Parent := PnChama;
   FrmTranfContas.Align := alClient;
   FrmTranfContas.Show;
+end;
+
+procedure TFrmMenu.EdtConfirmaSenhaKeyPress(Sender: TObject; var Key: char);
+begin
+  if key=#13 then
+  begin
+    BtnAlteraSenha.Click;
+  end;
+end;
+
+procedure TFrmMenu.EdtSenhaAtualKeyPress(Sender: TObject; var Key: char);
+begin
+  if key=#13 then
+  begin
+    BtnAlteraSenha.Click;
+  end;
+end;
+
+procedure TFrmMenu.EdtSenhaNovaChange(Sender: TObject);
+begin
+
+end;
+
+procedure TFrmMenu.EdtSenhaNovaKeyPress(Sender: TObject; var Key: char);
+begin
+ if key=#13 then
+  begin
+    EdtConfirmaSenha.setfocus;
+  end;
 end;
 
 procedure TFrmMenu.FormClose(Sender: TObject);
@@ -239,8 +272,9 @@ begin
     EdtSenhaAtual.Text:='';
     EdtSenhaNova.Text:='';
     EdtConfirmaSenha.Text:='';
-    EdtSenhaAtual.Enabled:=true;
+     EdtSenhaAtual.Enabled:=true;
     PnTrocaSenha.visible := true;
+    EdtSenhaAtual.SetFocus;
   end;
 end;
 
@@ -270,7 +304,12 @@ begin
           EdtSenhaNova.Enabled:= True;
           EdtConfirmaSenha.enabled := True;
           EdtSenhaAtual.Enabled:=False;
-        end;
+          EdtSenhaNova.SetFocus;
+        end
+        else
+        begin
+            ShowMessage('FAVOR VERIFIQUE SE SUA SENHA ESTA ERRADA');
+        end
     end
     else
   if ((EdtSenhaNova.Enabled = true) and ( EdtConfirmaSenha.enabled = true)) then
