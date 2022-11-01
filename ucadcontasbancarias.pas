@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, Buttons,
-  StdCtrls, MaskEdit, ComCtrls, DBCtrls, EditBtn, UModulo, UBuscaConta;
+  StdCtrls, MaskEdit, ComCtrls, DBCtrls, EditBtn, UModulo, UBuscaConta, Ferramentas;
 
 type
 
@@ -55,7 +55,9 @@ type
     procedure BtnSalvarClick(Sender: TObject);
     procedure CboTipoChange(Sender: TObject);
     procedure EdtSaldoInicialChange(Sender: TObject);
+    procedure EdtSaldoInicialExit(Sender: TObject);
     procedure EdtSaldoInicialKeyPress(Sender: TObject; var Key: char);
+    procedure EdtVlrTrasExit(Sender: TObject);
     procedure EdtVlrTrasKeyPress(Sender: TObject; var Key: char);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -334,7 +336,7 @@ begin
              ShowMessage('Você não preencheu o número do documento, este campo é um campo obrigatório');
              EdtNDoc.SetFocus;
         end
-        else if (EdtVlrTras.Text='') then
+        else if (EdtVlrTras.Text='') or (EdtVlrTras.Text= '0,00') then
         begin
               ShowMessage('Você não preencheu o valor da transferência, este campo é um campo obrigatório');
               EdtVlrTras.SetFocus;
@@ -493,24 +495,26 @@ begin
 
 end;
 
+procedure TFrmCadContasBancarias.EdtSaldoInicialExit(Sender: TObject);
+begin
+     (Sender as TEdit).Text := Simpl.FormataValor((Sender as TEdit).Text,2);
+end;
+
 procedure TFrmCadContasBancarias.EdtSaldoInicialKeyPress(Sender: TObject;
   var Key: char);
 begin
-  if not (key in ['0'..'9', #8, ',']) then
-  begin
-    key := #0;
-    Beep;
-  end;
+     Key := Simpl.SoValor(Key);
+end;
+
+procedure TFrmCadContasBancarias.EdtVlrTrasExit(Sender: TObject);
+begin
+     (Sender as TEdit).Text := Simpl.FormataValor((Sender as TEdit).Text,2);
 end;
 
 procedure TFrmCadContasBancarias.EdtVlrTrasKeyPress(Sender: TObject;
   var Key: char);
 begin
-  if not (key in['0'..'9',#8,',']) then
-  begin
-    key:=#0;
-    Beep;
-  end;
+     Key := Simpl.SoValor(Key);
 end;
 
 procedure TFrmCadContasBancarias.FormClose(Sender: TObject;
