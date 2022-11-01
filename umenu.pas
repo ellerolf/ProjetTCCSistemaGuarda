@@ -166,10 +166,6 @@ end;
 
 procedure TFrmMenu.BtnCadUsuariosClick(Sender: TObject);
 begin
-  {if (FrmEntrarUsuario.acesso=2)then
-  begin
-    ShowMessage('Sua conta de usuario não tem acesso a essa função');
-  end;}
   FrmCadUsuario.AltOUCad:='C';
   FrmCadUsuario.Parent := PnChama;
   FrmCadUsuario.Align := alClient;
@@ -232,16 +228,18 @@ begin
   if (PnTrocaSenha.visible = true) then
   begin
     PnTrocaSenha.Visible:= False;
+    DM.ZQConsUsuario.Active:=False;
   end
   else
   if (PnTrocaSenha.visible= false) then
   begin
+    DM.ZQConsUsuario.Active:=True;
     EdtConfirmaSenha.Enabled:=False;
     EdtSenhaNova.Enabled:=False;
     EdtSenhaAtual.Text:='';
     EdtSenhaNova.Text:='';
     EdtConfirmaSenha.Text:='';
-     EdtSenhaAtual.Enabled:=true;
+    EdtSenhaAtual.Enabled:=true;
     PnTrocaSenha.visible := true;
   end;
 end;
@@ -272,10 +270,6 @@ begin
           EdtSenhaNova.Enabled:= True;
           EdtConfirmaSenha.enabled := True;
           EdtSenhaAtual.Enabled:=False;
-        end
-        else
-        begin
-          ShowMessage('Coloque sua senha atual para confirmar seu usuario');
         end;
     end
     else

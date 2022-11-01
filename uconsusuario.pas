@@ -64,6 +64,7 @@ end;
 procedure TFrmConsUsuario.BtnAlterarClick(Sender: TObject);
 begin
   FrmCadUsuario.AltOUCad:='A';
+  FrmCadUsuario.ChkMostrar.Checked:=False;
   PnAlterausu.Visible:=True;
   FrmCadUsuario.Parent := PnAlterausu;
   FrmCadUsuario.Align := alClient;
