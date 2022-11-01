@@ -272,6 +272,10 @@ begin
           EdtSenhaNova.Enabled:= True;
           EdtConfirmaSenha.enabled := True;
           EdtSenhaAtual.Enabled:=False;
+        end
+        else
+        begin
+          ShowMessage('Coloque sua senha atual para confirmar seu usuario');
         end;
     end
     else
