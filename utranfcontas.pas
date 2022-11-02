@@ -66,7 +66,7 @@ begin
     FrmCadContasBancarias.RGBStatusTransf.ItemIndex:=1;
     FrmCadContasBancarias.DtDataTransf.Date:=DM.ZQConsTransferenciaTRADATA.AsDateTime;
     FrmCadContasBancarias.EdtNDoc.Text:=DM.ZQConsTransferenciaTRANUMERO_DOCUMENTO.Text;
-    FrmCadContasBancarias.EdtVlrTras.Text:=FormatCurr('0.00',dm.ZQConsTransferenciaTRAVALOR.AsCurrency);
+    FrmCadContasBancarias.EdtVlrTras.Text:=FormatFloat('0.00',dm.ZQConsTransferenciaTRAVALOR.AsFloat);
     FrmCadContasBancarias.EdtCodContaO.Text:=dm.ZQConsTransferenciaTRACODIGO_CONORI.Text;
     FrmCadContasBancarias.EdtCodContaDes.Text:=dm.ZQConsTransferenciaTRACODIGO_CONDES.Text;
     FrmCadContasBancarias.Show;
@@ -82,7 +82,7 @@ begin
     FrmCadContasBancarias.RGBStatusTransf.ItemIndex:=0;
     FrmCadContasBancarias.DtDataTransf.Date:=DM.ZQConsTransferenciaTRADATA.AsDateTime;
     FrmCadContasBancarias.EdtNDoc.Text:=DM.ZQConsTransferenciaTRANUMERO_DOCUMENTO.Text;
-    FrmCadContasBancarias.EdtVlrTras.Text:=FormatCurr('0.00',dm.ZQConsTransferenciaTRAVALOR.AsCurrency);
+    FrmCadContasBancarias.EdtVlrTras.Text:=FormatFloat('0.00',dm.ZQConsTransferenciaTRAVALOR.AsFloat);
     FrmCadContasBancarias.EdtCodContaO.Text:=dm.ZQConsTransferenciaTRACODIGO_CONORI.Text;
     FrmCadContasBancarias.EdtCodContaDes.Text:=dm.ZQConsTransferenciaTRACODIGO_CONDES.Text;
     FrmCadContasBancarias.Show;

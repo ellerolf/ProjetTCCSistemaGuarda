@@ -6,7 +6,8 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, Buttons,
-  StdCtrls, MaskEdit, ComCtrls, DBCtrls, EditBtn, UModulo, UBuscaConta, Ferramentas;
+  StdCtrls, MaskEdit, ComCtrls, DBCtrls, EditBtn, Menus, UModulo, UBuscaConta,
+  Ferramentas;
 
 type
 
@@ -57,6 +58,7 @@ type
     procedure EdtSaldoInicialChange(Sender: TObject);
     procedure EdtSaldoInicialExit(Sender: TObject);
     procedure EdtSaldoInicialKeyPress(Sender: TObject; var Key: char);
+    procedure EdtVlrTrasChange(Sender: TObject);
     procedure EdtVlrTrasExit(Sender: TObject);
     procedure EdtVlrTrasKeyPress(Sender: TObject; var Key: char);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -85,6 +87,8 @@ type
      OpecadOuAltTransf: string;
      // A variável abaixo recebe o numero da conta seleciona no buscaconta na transferencia
      ContaSelecionada:Integer;
+     //variável abaixo recebe o valor da transferencia
+     ValorDaTransferenc:real;
 
   end;
 
@@ -380,12 +384,17 @@ begin
              EdtCodContaDes.Clear;
              EdtCodContaDes.SetFocus;
         end
+        else if (ValorDaTransferenc=0) then
+        begin
+             ShowMessage('Não pode ser zero o valor da transferência, este campo é um campo obrigatório');
+             EdtVlrTras.SetFocus;
+        end
         else
         begin
           dm.ZQCadTransferencia.Params.ParamByName('pTRADATA').AsString:=FormatDateTime('yyyy-mm-dd',DtDataTransf.Date);
           dm.ZQCadTransferencia.Params.ParamByName('pTRANUMERO_DOCUMENTO').Value:=EdtNDoc.Text;
-          EdtVlrTras.Text :=StringReplace(EdtVlrTras.Text, ',', '.', [rfReplaceAll]);
-          dm.ZQCadTransferencia.Params.ParamByName('pTRAVALOR').Value:=EdtVlrTras.Text;
+          //EdtVlrTras.Text :=StringReplace(EdtVlrTras.Text, ',', '.', [rfReplaceAll]);
+          dm.ZQCadTransferencia.Params.ParamByName('pTRAVALOR').AsFloat:=ValorDaTransferenc;
           dm.ZQCadTransferencia.Params.ParamByName('pTRACODIGO_CONORI').Value:=EdtCodContaO.Text;
           dm.ZQCadTransferencia.Params.ParamByName('pTRACODIGO_CONDES').Value:=EdtCodContaDes.Text;
           dm.ZQCadTransferencia.ExecSQL;
@@ -395,6 +404,7 @@ begin
           EdtVlrTras.Clear;
           EdtCodContaO.clear;
           EdtCodContaDes.clear;
+          ValorDaTransferenc:=0;
           RdbCadTrans.Checked:=false;
         end;
    end;
@@ -437,6 +447,11 @@ begin
              EdtCodContaDes.Clear;
              EdtCodContaDes.SetFocus;
         end
+        else if (ValorDaTransferenc=0) then
+        begin
+             ShowMessage('Não pode ser zero o valor da transferência, este campo é um campo obrigatório');
+             EdtVlrTras.SetFocus;
+        end
         else
         begin
 
@@ -452,8 +467,8 @@ begin
 
           dm.ZQAltTransferencia.Params.ParamByName('pTRADATA').AsString:=FormatDateTime('yyyy-mm-dd',DtDataTransf.Date);
           dm.ZQAltTransferencia.Params.ParamByName('pTRANUMERO_DOCUMENTO').Value:=EdtNDoc.Text;
-          EdtVlrTras.Text :=StringReplace(EdtVlrTras.Text, ',', '.', [rfReplaceAll]);
-          dm.ZQAltTransferencia.Params.ParamByName('pTRAVALOR').Value:=EdtVlrTras.Text;
+          //EdtVlrTras.Text :=StringReplace(EdtVlrTras.Text, ',', '.', [rfReplaceAll]);
+          dm.ZQAltTransferencia.Params.ParamByName('pTRAVALOR').AsFloat:=ValorDaTransferenc;
           dm.ZQAltTransferencia.Params.ParamByName('pTRACODIGO_CONORI').Value:=EdtCodContaO.Text;
           dm.ZQAltTransferencia.Params.ParamByName('pTRACODIGO_CONDES').Value:=EdtCodContaDes.Text;
           dm.ZQAltTransferencia.Params.ParamByName('ptracodigo').Value:=DM.ZQConsTransferenciaTRACODIGO.AsInteger;
@@ -467,6 +482,7 @@ begin
           RdbCadConta.Enabled:=True;
           RdbCadTrans.Caption:='Cadastro de Transferência';
           OpecadOuAltTransf:='';
+          ValorDaTransferenc:=0;
           FrmCadContasBancarias.Close;
 
           {EdtNDoc.Clear;
@@ -515,6 +531,14 @@ end;
 procedure TFrmCadContasBancarias.EdtSaldoInicialChange(Sender: TObject);
 
 begin
+     if (EdtSaldoInicial.Text='') then
+     begin
+          EdtSaldoInicial.Text:='0';
+     end
+     else
+     begin
+
+     end;
 
 end;
 
@@ -527,6 +551,18 @@ procedure TFrmCadContasBancarias.EdtSaldoInicialKeyPress(Sender: TObject;
   var Key: char);
 begin
      Key := Simpl.SoValor(Key);
+end;
+
+procedure TFrmCadContasBancarias.EdtVlrTrasChange(Sender: TObject);
+begin
+      if (EdtVlrTras.Text='') then
+     begin
+          EdtVlrTras.Text:='0';
+     end
+     else
+     begin
+          ValorDaTransferenc:=StrToFloat(EdtVlrTras.Text);
+     end;
 end;
 
 procedure TFrmCadContasBancarias.EdtVlrTrasExit(Sender: TObject);
@@ -638,6 +674,7 @@ begin
     EdtVlrTras.Clear;
     EdtCodContaO.Clear;
     EdtCodContaDes.clear;
+    ValorDaTransferenc:=0;
   end;
 end;
 
