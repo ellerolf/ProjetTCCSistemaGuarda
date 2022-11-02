@@ -100,6 +100,7 @@ implementation
 {$R *.lfm}
 
 { TFrmCadContasBancarias }
+uses UTranfContas;
 
 
 
@@ -118,6 +119,7 @@ begin
   RGBStatusTransf.Visible:=False;
   RdbCadConta.Caption:='Cadastro de Contas';
   RdbCadTrans.Caption:='Cadastro de Transferência';
+  FrmTranfContas.CodigoDaTransf:=0;
   Close;
 end;
 
@@ -483,6 +485,7 @@ begin
           RdbCadTrans.Caption:='Cadastro de Transferência';
           OpecadOuAltTransf:='';
           ValorDaTransferenc:=0;
+          FrmTranfContas.CodigoDaTransf:=0;
           FrmCadContasBancarias.Close;
 
           {EdtNDoc.Clear;
