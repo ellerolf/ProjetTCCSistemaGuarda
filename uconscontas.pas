@@ -40,12 +40,12 @@ type
     procedure RGBConsTipoContaClick(Sender: TObject);
     procedure ConsContas();
   private
-    {Professor zanata disse que é importante quando tem duas grids armazenar o valor
-     em uma variável durante o clique. Por isso foi criado uma variável chamada
-    'ctipo' para receber o codigo de onde o usuário está clicando. }
-    ctipo: integer;
-  public
 
+  public
+        {Professor zanata disse que é importante quando tem duas grids armazenar o valor
+        em uma variável durante o clique. Por isso foi criado uma variável chamada
+        'ctipo' para receber o codigo de onde o usuário está clicando. }
+        ctipo:integer;
   end;
 
 var
@@ -60,6 +60,7 @@ uses uCadContasBancarias;
 
 procedure TFrmConsContas.BtnSairClick(Sender: TObject);
 begin
+  ctipo:=0;
   RGBConsTipoConta.ItemIndex := -1;
   CboStatus.ItemIndex := -1;
   DBGConsContasBancarias.Visible := False;
@@ -72,7 +73,7 @@ procedure TFrmConsContas.BtnAlterarClick(Sender: TObject);
 begin
   FrmCadContasBancarias.OpeCadOuAltConta := 'u';
    //se for do tipo caixa e status ativo
-  if (dm.ZQConsBancariasCODIGOTIP.AsInteger = 3) and (dm.ZQConsBancariasCONSTATUS.value=1) then
+  if (ctipo = 3) and (dm.ZQConsBancariasCONSTATUS.value=1) then
   begin
     FrmCadContasBancarias.RdbCadTrans.Enabled:=False;
     FrmCadContasBancarias.RdbCadConta.Checked:=true;
@@ -88,7 +89,7 @@ begin
     FrmCadContasBancarias.show;
   end;
   //se for do tipo caixa e status inativo
-  if (dm.ZQConsBancariasCODIGOTIP.AsInteger = 3) and (dm.ZQConsBancariasCONSTATUS.value=0) then
+  if (ctipo = 3) and (dm.ZQConsBancariasCONSTATUS.value=0) then
   begin
     FrmCadContasBancarias.RdbCadTrans.Enabled:=False;
     FrmCadContasBancarias.RdbCadConta.Checked:=true;
@@ -105,7 +106,7 @@ begin
   end;
   //se for do tipo conta corrente e status ativo
 
-  if (dm.ZQConsBancariasCODIGOTIP.AsInteger = 1) and (dm.ZQConsBancariasCONSTATUS.value=1) then
+  if (ctipo = 1) and (dm.ZQConsBancariasCONSTATUS.value=1) then
   begin
     FrmCadContasBancarias.RdbCadTrans.Enabled:=False;
     FrmCadContasBancarias.RdbCadConta.Checked:=true;
@@ -126,7 +127,7 @@ begin
   end;
   //se for do tipo conta corrente e status inativo
 
-   if (dm.ZQConsBancariasCODIGOTIP.AsInteger = 1) and (dm.ZQConsBancariasCONSTATUS.value=0) then
+   if (ctipo = 1) and (dm.ZQConsBancariasCONSTATUS.value=0) then
   begin
     FrmCadContasBancarias.RdbCadTrans.Enabled:=False;
     FrmCadContasBancarias.RdbCadConta.Checked:=true;
@@ -147,7 +148,7 @@ begin
   end;
     //se for do tipo conta de aplicação e status ativo
 
-    if (dm.ZQConsBancariasCODIGOTIP.AsInteger = 2) and (dm.ZQConsBancariasCONSTATUS.value=1) then
+    if (ctipo = 2) and (dm.ZQConsBancariasCONSTATUS.value=1) then
   begin
     FrmCadContasBancarias.RdbCadTrans.Enabled:=False;
     FrmCadContasBancarias.RdbCadConta.Checked:=true;
@@ -167,7 +168,7 @@ begin
     FrmCadContasBancarias.show;
   end;
    //se for do tipo conta de aplicação e status inativo
-     if (dm.ZQConsBancariasCODIGOTIP.AsInteger = 2) and (dm.ZQConsBancariasCONSTATUS.value=0) then
+     if (ctipo = 2) and (dm.ZQConsBancariasCONSTATUS.value=0) then
   begin
     FrmCadContasBancarias.RdbCadTrans.Enabled:=False;
     FrmCadContasBancarias.RdbCadConta.Checked:=true;

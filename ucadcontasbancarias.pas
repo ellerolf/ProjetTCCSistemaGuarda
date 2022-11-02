@@ -100,7 +100,7 @@ implementation
 {$R *.lfm}
 
 { TFrmCadContasBancarias }
-uses UTranfContas;
+uses UTranfContas,UConsContas;
 
 
 
@@ -111,16 +111,17 @@ end;
 
 procedure TFrmCadContasBancarias.BtnSairClick(Sender: TObject);
 begin
-  OpeCadOuAltConta:='';
-  OpecadOuAltTransf:='';
-  RdbCadTrans.Enabled:=True;
-  RdbCadConta.Enabled:=True;
-  RGBStatusConta.Visible:=False;
-  RGBStatusTransf.Visible:=False;
-  RdbCadConta.Caption:='Cadastro de Contas';
-  RdbCadTrans.Caption:='Cadastro de Transferência';
-  FrmTranfContas.CodigoDaTransf:=0;
-  Close;
+     OpeCadOuAltConta:='';
+     OpecadOuAltTransf:='';
+     RdbCadTrans.Enabled:=True;
+     RdbCadConta.Enabled:=True;
+     RGBStatusConta.Visible:=False;
+     RGBStatusTransf.Visible:=False;
+     RdbCadConta.Caption:='Cadastro de Contas';
+     RdbCadTrans.Caption:='Cadastro de Transferência';
+     FrmTranfContas.CodigoDaTransf:=0;
+     FrmConsContas.ctipo:=0;
+     Close;
 end;
 
 procedure TFrmCadContasBancarias.BtnConsultaOClick(Sender: TObject);
@@ -290,6 +291,7 @@ begin
         RdbCadTrans.Enabled:=True;
         RdbCadConta.Caption:='Cadastro de Contas';
         OpeCadOuAltConta:='';
+        FrmConsContas.ctipo:=0;
         FrmCadContasBancarias.Close;
 
         {CboTipo.ClearSelection;
@@ -337,6 +339,7 @@ begin
         RdbCadTrans.Enabled:=True;
         RdbCadConta.Caption:='Cadastro de Contas';
         OpeCadOuAltConta:='';
+        FrmConsContas.ctipo:=0;
         FrmCadContasBancarias.Close;
 
         {CboTipo.ClearSelection;
