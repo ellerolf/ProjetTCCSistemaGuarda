@@ -1,7 +1,7 @@
 object DM: TDM
   OnCreate = DataModuleCreate
   OldCreateOrder = False
-  Height = 1009
+  Height = 718
   HorizontalOffset = 78
   VerticalOffset = 0
   Width = 1131
@@ -3100,11 +3100,6 @@ object DM: TDM
         ParamType = ptUnknown
       end>
   end
-  object ZQuery1: TZQuery
-    Params = <>
-    Left = 8
-    Top = 8
-  end
   object ZQConsVerParc: TZQuery
     Connection = ZFinanceiro
     SQL.Strings = (
@@ -3322,5 +3317,19 @@ object DM: TDM
         Name = 'pBAICODIGO'
         ParamType = ptUnknown
       end>
+  end
+  object ZQValidCadContaBanc: TZQuery
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'SELECT * FROM VWCONTAS'
+    )
+    Params = <>
+    Left = 532
+    Top = 595
+  end
+  object DSValidCadContaBanc: TDataSource
+    DataSet = ZQValidCadContaBanc
+    Left = 528
+    Top = 544
   end
 end

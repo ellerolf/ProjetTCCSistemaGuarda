@@ -164,21 +164,32 @@ begin
       end
       else
       begin
-        dm.ZQCadBancarias.Params.ParamByName('pcodigotip').Value := CboTipo.KeyValue;
-        dm.ZQCadBancarias.Params.ParamByName('pconnome').Value := CboBanco.Text;
-        dm.ZQCadBancarias.Params.ParamByName('pconagencia').Value := EdtAgencia.Text;
-        dm.ZQCadBancarias.Params.ParamByName('pconnumero_conta').Value := EdtNConta.Text;
-        EdtSaldoInicial.Text :=StringReplace(EdtSaldoInicial.Text, ',', '.', [rfReplaceAll]);
-        dm.ZQCadBancarias.Params.ParamByName('pconsaldo_inicial').Value :=EdtSaldoInicial.Text;
-        dm.ZQCadBancarias.ExecSQL;
-        ShowMessage('Conta registrada com sucesso!');
-        CboTipo.ClearSelection;
-        CboBanco.ClearSelection;
-        EdtAgencia.Clear;
-        EdtNConta.Clear;
-        EdtSaldoInicial.Clear;
-        RdbCadConta.Checked:=false;
+           dm.ZQValidCadContaBanc.close;
+           dm.ZQValidCadContaBanc.SQL.Clear;
+           dm.ZQValidCadContaBanc.SQL.Add('SELECT * from vwcontas WHERE CODIGOTIP<3 AND CONNOME ='+QuotedStr(CboBanco.Text)+' AND CONAGENCIA = '+QuotedStr(EdtAgencia.Text)+' AND CONNUMERO_CONTA = '+QuotedStr(EdtNConta.Text)+' AND CODIGOTIP = '+QuotedStr(CboTipo.KeyValue));
+           dm.ZQValidCadContaBanc.open;
 
+           IF (dm.ZQValidCadContaBanc.RecordCount=0) THEN
+           BEGIN
+                dm.ZQCadBancarias.Params.ParamByName('pcodigotip').Value := CboTipo.KeyValue;
+                dm.ZQCadBancarias.Params.ParamByName('pconnome').Value := CboBanco.Text;
+                dm.ZQCadBancarias.Params.ParamByName('pconagencia').Value := EdtAgencia.Text;
+                dm.ZQCadBancarias.Params.ParamByName('pconnumero_conta').Value := EdtNConta.Text;
+                EdtSaldoInicial.Text :=StringReplace(EdtSaldoInicial.Text, ',', '.', [rfReplaceAll]);
+                dm.ZQCadBancarias.Params.ParamByName('pconsaldo_inicial').Value :=EdtSaldoInicial.Text;
+                dm.ZQCadBancarias.ExecSQL;
+                ShowMessage('Conta registrada com sucesso!');
+                CboTipo.ClearSelection;
+                CboBanco.ClearSelection;
+                EdtAgencia.Clear;
+                EdtNConta.Clear;
+                EdtSaldoInicial.Clear;
+                RdbCadConta.Checked:=false;
+           end
+           Else
+           begin
+                ShowMessage('Conta já está cadastrada');
+           end;
       end;
 
     end;
@@ -190,18 +201,30 @@ begin
       end
       else
       begin
-        dm.ZQCadBancarias.Params.ParamByName('pcodigotip').Value :=CboTipo.KeyValue;
-        dm.ZQCadBancarias.Params.ParamByName('pconnome').Value :=EdtNomeConta.Text;
-        EdtSaldoInicial.Text :=StringReplace(EdtSaldoInicial.Text, ',', '.', [rfReplaceAll]);
-        dm.ZQCadBancarias.Params.ParamByName('pconsaldo_inicial').Value :=EdtSaldoInicial.Text;
-        dm.ZQCadBancarias.Params.ParamByName('pconagencia').value:=Null;
-        dm.ZQCadBancarias.Params.ParamByName('pconnumero_conta').value:=Null;
-        dm.ZQCadBancarias.ExecSQL;
-        ShowMessage('Conta registrada com sucesso!');
-        CboTipo.ClearSelection;
-        EdtNomeConta.Clear;
-        EdtSaldoInicial.Clear;
-        RdbCadConta.Checked:=false;
+           dm.ZQValidCadContaBanc.close;
+           dm.ZQValidCadContaBanc.SQL.Clear;
+           dm.ZQValidCadContaBanc.SQL.Add('SELECT * from vwcontas WHERE CODIGOTIP=3 AND CONNOME ='+QuotedStr(EdtNomeConta.Text)+' AND CODIGOTIP = '+QuotedStr(CboTipo.KeyValue));
+           dm.ZQValidCadContaBanc.open;
+
+           IF (dm.ZQValidCadContaBanc.RecordCount=0) then
+           begin
+                dm.ZQCadBancarias.Params.ParamByName('pcodigotip').Value :=CboTipo.KeyValue;
+                dm.ZQCadBancarias.Params.ParamByName('pconnome').Value :=EdtNomeConta.Text;
+                EdtSaldoInicial.Text :=StringReplace(EdtSaldoInicial.Text, ',', '.', [rfReplaceAll]);
+                dm.ZQCadBancarias.Params.ParamByName('pconsaldo_inicial').Value :=EdtSaldoInicial.Text;
+                dm.ZQCadBancarias.Params.ParamByName('pconagencia').value:=Null;
+                dm.ZQCadBancarias.Params.ParamByName('pconnumero_conta').value:=Null;
+                dm.ZQCadBancarias.ExecSQL;
+                ShowMessage('Conta registrada com sucesso!');
+                CboTipo.ClearSelection;
+                EdtNomeConta.Clear;
+                EdtSaldoInicial.Clear;
+                RdbCadConta.Checked:=false;
+           end
+           Else
+           Begin
+                ShowMessage('Conta já está cadastrada!');
+           end;
       end;
     end;
   end;
@@ -523,6 +546,7 @@ begin
   dm.ZQConsTipoConta.Active := False;
   RdbCadConta.Checked:=false;
   RdbCadTrans.Checked:=false;
+  DM.ZQValidCadContaBanc.Active:=False;
 end;
 
 procedure TFrmCadContasBancarias.FormCreate(Sender: TObject);
@@ -539,7 +563,7 @@ end;
 procedure TFrmCadContasBancarias.FormShow(Sender: TObject);
 begin
   dm.ZQConsTipoConta.Active := True;
-
+  DM.ZQValidCadContaBanc.Active:=True;
 end;
 
 procedure TFrmCadContasBancarias.MaskEdit1Change(Sender: TObject);

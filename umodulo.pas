@@ -12,6 +12,7 @@ type
   { TDM }
 
   TDM = class(TDataModule)
+    DSValidCadContaBanc: TDataSource;
     DSConsVerParc: TDataSource;
     DSConsSomaParcBaixada: TDataSource;
     DSConsLancamento2: TDataSource;
@@ -262,9 +263,9 @@ type
     ZQConsLancamento2: TZQuery;
     ZQConsSomaParcBaixada: TZQuery;
     ZQDelParcPen: TZQuery;
-    ZQuery1: TZQuery;
     ZQConsVerParc: TZQuery;
     ZQAltBaixaDeParcela: TZQuery;
+    ZQValidCadContaBanc: TZQuery;
     procedure DSBuscaTipoDocDataChange(Sender: TObject; Field: TField);
     procedure DSConsPessoasDataChange(Sender: TObject; Field: TField);
 
