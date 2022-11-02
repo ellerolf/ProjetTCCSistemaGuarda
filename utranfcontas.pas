@@ -40,6 +40,8 @@ type
   public
         //Essa variável recebe o código da transferencia ao clicar na dbgrid.
         CodigoDaTransf:Integer;
+        //Essa variável recebe o status da transferencia.
+        StatusDaTransf:Integer;
   end;
 
 var
@@ -59,6 +61,7 @@ end;
 procedure TFrmTranfContas.DBGrid1CellClick(Column: TColumn);
 begin
      CodigoDaTransf:=dm.ZQConsTransferenciaTRACODIGO.AsInteger;
+     StatusDaTransf:=dm.ZQConsTransferenciaTRASTATUS.AsInteger;
 end;
 
 procedure TFrmTranfContas.BtnSelecionaClick(Sender: TObject);
@@ -74,7 +77,7 @@ begin
             FrmCadContasBancarias.RdbCadTrans.Checked:=true;
             FrmCadContasBancarias.RdbCadTrans.Caption:='Alteração da Transferência';
             FrmCadContasBancarias.RGBStatusTransf.Visible:=True;
-            FrmCadContasBancarias.RGBStatusTransf.ItemIndex:=1;
+            FrmCadContasBancarias.RGBStatusTransf.ItemIndex:=0;
             FrmCadContasBancarias.DtDataTransf.Date:=DM.ZQConsTransferenciaTRADATA.AsDateTime;
             FrmCadContasBancarias.EdtNDoc.Text:=DM.ZQConsTransferenciaTRANUMERO_DOCUMENTO.Text;
             FrmCadContasBancarias.EdtVlrTras.Text:=FormatFloat('0.00',dm.ZQConsTransferenciaTRAVALOR.AsFloat);
@@ -90,7 +93,7 @@ begin
             FrmCadContasBancarias.RdbCadTrans.Checked:=true;
             FrmCadContasBancarias.RdbCadTrans.Caption:='Alteração da Transferência';
             FrmCadContasBancarias.RGBStatusTransf.Visible:=True;
-            FrmCadContasBancarias.RGBStatusTransf.ItemIndex:=0;
+            FrmCadContasBancarias.RGBStatusTransf.ItemIndex:=1;
             FrmCadContasBancarias.DtDataTransf.Date:=DM.ZQConsTransferenciaTRADATA.AsDateTime;
             FrmCadContasBancarias.EdtNDoc.Text:=DM.ZQConsTransferenciaTRANUMERO_DOCUMENTO.Text;
             FrmCadContasBancarias.EdtVlrTras.Text:=FormatFloat('0.00',dm.ZQConsTransferenciaTRAVALOR.AsFloat);
@@ -143,7 +146,7 @@ begin
      end
      else if (DTFinal.Date<DTInicial.Date) then
      begin
-          ShowMessage('Período pesquisado não é vadido, digite novamente');
+          ShowMessage('Período pesquisado não é valido, digite novamente');
           DBGrid1.Visible:=False;
           DTFinal.Clear;
           DTInicial.Clear;

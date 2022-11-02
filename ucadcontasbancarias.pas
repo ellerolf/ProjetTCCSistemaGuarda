@@ -456,44 +456,53 @@ begin
         end
         else
         begin
+              if(RGBStatusTransf.ItemIndex=FrmTranfContas.StatusDaTransf) and (DtDataTransf.Date=dm.ZQConsTransferenciaTRADATA.AsDateTime) and (EdtNDoc.Text=DM.ZQConsTransferenciaTRANUMERO_DOCUMENTO.AsString) and
+              (ValorDaTransferenc=dm.ZQConsTransferenciaTRAVALOR.AsFloat) and (EdtCodContaO.Text=DM.ZQConsTransferenciaTRACODIGO_CONORI.AsString) and
+              (EdtCodContaDes.Text=dm.ZQConsTransferenciaTRACODIGO_CONDES.AsString) then
+              begin
+                   ShowMessage('Não foi realizada nenhuma alteração');
+              end
+              else
+              begin
 
-          if (RGBStatusTransf.ItemIndex=0)then
-        begin
-          dm.ZQAltTransferencia.ParamByName('pTRASTATUS').Value:=1;
-        end;
+              if (RGBStatusTransf.ItemIndex=0)then
+            begin
+              dm.ZQAltTransferencia.ParamByName('pTRASTATUS').Value:=0;
+            end;
 
-        if (RGBStatusTransf.ItemIndex=1)then
-        begin
-          dm.ZQAltTransferencia.ParamByName('pTRASTATUS').Value:=0;
-        end;
+            if (RGBStatusTransf.ItemIndex=1)then
+            begin
+              dm.ZQAltTransferencia.ParamByName('pTRASTATUS').Value:=1;
+            end;
 
-          dm.ZQAltTransferencia.Params.ParamByName('pTRADATA').AsString:=FormatDateTime('yyyy-mm-dd',DtDataTransf.Date);
-          dm.ZQAltTransferencia.Params.ParamByName('pTRANUMERO_DOCUMENTO').Value:=EdtNDoc.Text;
-          //EdtVlrTras.Text :=StringReplace(EdtVlrTras.Text, ',', '.', [rfReplaceAll]);
-          dm.ZQAltTransferencia.Params.ParamByName('pTRAVALOR').AsFloat:=ValorDaTransferenc;
-          dm.ZQAltTransferencia.Params.ParamByName('pTRACODIGO_CONORI').Value:=EdtCodContaO.Text;
-          dm.ZQAltTransferencia.Params.ParamByName('pTRACODIGO_CONDES').Value:=EdtCodContaDes.Text;
-          dm.ZQAltTransferencia.Params.ParamByName('ptracodigo').Value:=DM.ZQConsTransferenciaTRACODIGO.AsInteger;
-          dm.ZQAltTransferencia.ExecSQL;
-          ShowMessage('Transferência alterada com sucesso!');
+              dm.ZQAltTransferencia.Params.ParamByName('pTRADATA').AsString:=FormatDateTime('yyyy-mm-dd',DtDataTransf.Date);
+              dm.ZQAltTransferencia.Params.ParamByName('pTRANUMERO_DOCUMENTO').Value:=EdtNDoc.Text;
+              //EdtVlrTras.Text :=StringReplace(EdtVlrTras.Text, ',', '.', [rfReplaceAll]);
+              dm.ZQAltTransferencia.Params.ParamByName('pTRAVALOR').AsFloat:=ValorDaTransferenc;
+              dm.ZQAltTransferencia.Params.ParamByName('pTRACODIGO_CONORI').Value:=EdtCodContaO.Text;
+              dm.ZQAltTransferencia.Params.ParamByName('pTRACODIGO_CONDES').Value:=EdtCodContaDes.Text;
+              dm.ZQAltTransferencia.Params.ParamByName('ptracodigo').Value:=DM.ZQConsTransferenciaTRACODIGO.AsInteger;
+              dm.ZQAltTransferencia.ExecSQL;
+              ShowMessage('Transferência alterada com sucesso!');
 
-          dm.ZQConsTransferencia.Close;
-          dm.ZQConsTransferencia.Open;
+              dm.ZQConsTransferencia.Close;
+              dm.ZQConsTransferencia.Open;
 
-          RGBStatusTransf.Visible:=False;
-          RdbCadConta.Enabled:=True;
-          RdbCadTrans.Caption:='Cadastro de Transferência';
-          OpecadOuAltTransf:='';
-          ValorDaTransferenc:=0;
-          FrmTranfContas.CodigoDaTransf:=0;
-          FrmCadContasBancarias.Close;
+              RGBStatusTransf.Visible:=False;
+              RdbCadConta.Enabled:=True;
+              RdbCadTrans.Caption:='Cadastro de Transferência';
+              OpecadOuAltTransf:='';
+              ValorDaTransferenc:=0;
+              FrmTranfContas.CodigoDaTransf:=0;
+              FrmCadContasBancarias.Close;
 
-          {EdtNDoc.Clear;
-          DtDataTransf.Clear;
-          EdtVlrTras.Clear;
-          EdtCodContaO.clear;
-          EdtCodContaDes.clear;
-          RdbCadTrans.Checked:=false;}
+              {EdtNDoc.Clear;
+              DtDataTransf.Clear;
+              EdtVlrTras.Clear;
+              EdtCodContaO.clear;
+              EdtCodContaDes.clear;
+              RdbCadTrans.Checked:=false;}
+              end;
         end;
    end;
   end;
@@ -530,6 +539,8 @@ begin
     EdtNomeConta.Clear;
   end;
 end;
+
+
 
 procedure TFrmCadContasBancarias.EdtSaldoInicialChange(Sender: TObject);
 

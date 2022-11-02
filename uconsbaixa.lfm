@@ -13,6 +13,7 @@ object FrmConsBaixa: TFrmConsBaixa
   OnResize = FormResize
   OnShow = FormShow
   Position = poScreenCenter
+  LCLVersion = '2.2.2.0'
   object Panel1: TPanel
     Left = 0
     Height = 670
