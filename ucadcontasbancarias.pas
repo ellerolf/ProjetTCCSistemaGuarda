@@ -264,43 +264,52 @@ begin
       end
       else
       begin
-        if (RGBStatusConta.ItemIndex=0)then
-        begin
-          dm.ZQAltBancarias.ParamByName('pconstatus').Value:=1;
-        end;
+           if (RGBStatusConta.ItemIndex=FrmConsContas.StatusDaConta) and (CboTipo.KeyValue=dm.ZQConsBancariasCODIGOTIP.AsInteger) and
+           (CboBanco.Text=dm.ZQConsBancariasCONNOME.AsString) and (EdtAgencia.Text=dm.ZQConsBancariasCONAGENCIA.AsString) and
+           (EdtNConta.Text=dm.ZQConsBancariasCONNUMERO_CONTA.AsString) and (StrToFloat(EdtSaldoInicial.Text)=dm.ZQConsBancariasCONSALDO_INICIAL.AsFloat) then
+           begin
+                ShowMessage('Não foi realizada nenhuma alteração');
+           end
+           else
+           begin
+            if (RGBStatusConta.ItemIndex=0)then
+            begin
+              dm.ZQAltBancarias.ParamByName('pconstatus').Value:=0;
+            end;
 
-        if (RGBStatusConta.ItemIndex=1)then
-        begin
-          dm.ZQAltBancarias.ParamByName('pconstatus').Value:=0;
-        end;
+            if (RGBStatusConta.ItemIndex=1)then
+            begin
+              dm.ZQAltBancarias.ParamByName('pconstatus').Value:=1;
+            end;
 
-        dm.ZQAltBancarias.Params.ParamByName('pcodigotip').Value := CboTipo.KeyValue;
-        dm.ZQAltBancarias.Params.ParamByName('pconnome').Value := CboBanco.Text;
-        dm.ZQAltBancarias.Params.ParamByName('pconagencia').Value := EdtAgencia.Text;
-        dm.ZQAltBancarias.Params.ParamByName('pconnumero_conta').Value := EdtNConta.Text;
-        EdtSaldoInicial.Text :=StringReplace(EdtSaldoInicial.Text, ',', '.', [rfReplaceAll]);
-        dm.ZQAltBancarias.Params.ParamByName('pconsaldo_inicial').Value :=EdtSaldoInicial.Text;
-        dm.ZQAltBancarias.ParamByName('pconcodigo').Value:=dm.ZQConsBancariasCONCODIGO.AsInteger;
-        dm.ZQAltBancarias.ExecSQL;
+            dm.ZQAltBancarias.Params.ParamByName('pcodigotip').Value := CboTipo.KeyValue;
+            dm.ZQAltBancarias.Params.ParamByName('pconnome').Value := CboBanco.Text;
+            dm.ZQAltBancarias.Params.ParamByName('pconagencia').Value := EdtAgencia.Text;
+            dm.ZQAltBancarias.Params.ParamByName('pconnumero_conta').Value := EdtNConta.Text;
+            EdtSaldoInicial.Text :=StringReplace(EdtSaldoInicial.Text, ',', '.', [rfReplaceAll]);
+            dm.ZQAltBancarias.Params.ParamByName('pconsaldo_inicial').Value :=EdtSaldoInicial.Text;
+            dm.ZQAltBancarias.ParamByName('pconcodigo').Value:=dm.ZQConsBancariasCONCODIGO.AsInteger;
+            dm.ZQAltBancarias.ExecSQL;
 
-        dm.ZQConsBancarias.Close;
-        dm.ZQConsBancarias.Open;
+            dm.ZQConsBancarias.Close;
+            dm.ZQConsBancarias.Open;
 
-        ShowMessage('Conta alterada com sucesso!');
-        RGBStatusConta.Visible:=False;
-        RdbCadTrans.Enabled:=True;
-        RdbCadConta.Caption:='Cadastro de Contas';
-        OpeCadOuAltConta:='';
-        FrmConsContas.ctipo:=0;
-        FrmCadContasBancarias.Close;
+            ShowMessage('Conta alterada com sucesso!');
+            RGBStatusConta.Visible:=False;
+            RdbCadTrans.Enabled:=True;
+            RdbCadConta.Caption:='Cadastro de Contas';
+            OpeCadOuAltConta:='';
+            FrmConsContas.ctipo:=0;
+            FrmCadContasBancarias.Close;
 
-        {CboTipo.ClearSelection;
-        CboBanco.ClearSelection;
-        EdtAgencia.Clear;
-        EdtNConta.Clear;
-        EdtSaldoInicial.Clear;
-        RdbCadConta.Checked:=false;}
+            {CboTipo.ClearSelection;
+            CboBanco.ClearSelection;
+            EdtAgencia.Clear;
+            EdtNConta.Clear;
+            EdtSaldoInicial.Clear;
+            RdbCadConta.Checked:=false;}
 
+           end;
       end;
 
     end;
@@ -312,40 +321,49 @@ begin
       end
       else
       begin
-        if (RGBStatusConta.ItemIndex=0)then
-        begin
-          dm.ZQAltBancarias.ParamByName('pconstatus').Value:=1;
-        end;
+           if (RGBStatusConta.ItemIndex=FrmConsContas.StatusDaConta) and (EdtNomeConta.Text=dm.ZQConsBancariasCONNOME.AsString) and
+              (StrToFloat(EdtSaldoInicial.Text)=dm.ZQConsBancariasCONSALDO_INICIAL.AsFloat) then
+           begin
+                ShowMessage('Não foi realizada nenhuma alteração');
+           End
+           Else
+           begin
+            if (RGBStatusConta.ItemIndex=0)then
+            begin
+              dm.ZQAltBancarias.ParamByName('pconstatus').Value:=0;
+            end;
 
-        if (RGBStatusConta.ItemIndex=1)then
-        begin
-          dm.ZQAltBancarias.ParamByName('pconstatus').Value:=0;
-        end;
+            if (RGBStatusConta.ItemIndex=1)then
+            begin
+              dm.ZQAltBancarias.ParamByName('pconstatus').Value:=1;
+            end;
 
-        dm.ZQAltBancarias.Params.ParamByName('pcodigotip').Value :=CboTipo.KeyValue;
-        dm.ZQAltBancarias.Params.ParamByName('pconnome').Value :=EdtNomeConta.Text;
-        EdtSaldoInicial.Text :=StringReplace(EdtSaldoInicial.Text, ',', '.', [rfReplaceAll]);
-        dm.ZQAltBancarias.Params.ParamByName('pconsaldo_inicial').Value :=EdtSaldoInicial.Text;
-        dm.ZQAltBancarias.Params.ParamByName('pconagencia').value:=Null;
-        dm.ZQAltBancarias.Params.ParamByName('pconnumero_conta').value:=Null;
-        dm.ZQAltBancarias.ParamByName('pconcodigo').Value:=dm.ZQConsBancariasCONCODIGO.AsInteger;
-        dm.ZQAltBancarias.ExecSQL;
+            dm.ZQAltBancarias.Params.ParamByName('pcodigotip').Value :=CboTipo.KeyValue;
+            dm.ZQAltBancarias.Params.ParamByName('pconnome').Value :=EdtNomeConta.Text;
+            EdtSaldoInicial.Text :=StringReplace(EdtSaldoInicial.Text, ',', '.', [rfReplaceAll]);
+            dm.ZQAltBancarias.Params.ParamByName('pconsaldo_inicial').Value :=EdtSaldoInicial.Text;
+            dm.ZQAltBancarias.Params.ParamByName('pconagencia').value:=Null;
+            dm.ZQAltBancarias.Params.ParamByName('pconnumero_conta').value:=Null;
+            dm.ZQAltBancarias.ParamByName('pconcodigo').Value:=dm.ZQConsBancariasCONCODIGO.AsInteger;
+            dm.ZQAltBancarias.ExecSQL;
 
-        dm.ZQConsBancarias.Close;
-        dm.ZQConsBancarias.Open;
+            dm.ZQConsBancarias.Close;
+            dm.ZQConsBancarias.Open;
 
-        ShowMessage('Conta alterada com sucesso!');
-        RGBStatusConta.Visible:=False;
-        RdbCadTrans.Enabled:=True;
-        RdbCadConta.Caption:='Cadastro de Contas';
-        OpeCadOuAltConta:='';
-        FrmConsContas.ctipo:=0;
-        FrmCadContasBancarias.Close;
+            ShowMessage('Conta alterada com sucesso!');
+            RGBStatusConta.Visible:=False;
+            RdbCadTrans.Enabled:=True;
+            RdbCadConta.Caption:='Cadastro de Contas';
+            OpeCadOuAltConta:='';
+            FrmConsContas.ctipo:=0;
+            FrmCadContasBancarias.Close;
 
-        {CboTipo.ClearSelection;
-        EdtNomeConta.Clear;
-        EdtSaldoInicial.Clear;
-        RdbCadConta.Checked:=false;}
+            {CboTipo.ClearSelection;
+            EdtNomeConta.Clear;
+            EdtSaldoInicial.Clear;
+            RdbCadConta.Checked:=false;}
+
+           end;
       end;
     end;
   end;

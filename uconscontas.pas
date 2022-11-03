@@ -46,6 +46,8 @@ type
         em uma variável durante o clique. Por isso foi criado uma variável chamada
         'ctipo' para receber o codigo de onde o usuário está clicando. }
         ctipo:integer;
+        //Essa variável recebe o status da conta
+        StatusDaConta:Integer;
   end;
 
 var
@@ -79,7 +81,7 @@ begin
     FrmCadContasBancarias.RdbCadConta.Checked:=true;
     FrmCadContasBancarias.RdbCadConta.Caption:='Alteração de Conta';
     FrmCadContasBancarias.RGBStatusConta.Visible:=True;
-    FrmCadContasBancarias.RGBStatusConta.ItemIndex:=0;
+    FrmCadContasBancarias.RGBStatusConta.ItemIndex:=1;
     dm.ZQConsTipoConta.Open;
     FrmCadContasBancarias.CboTipo.KeyValue:=3;
     FrmCadContasBancarias.EdtNomeConta.Enabled:=True;
@@ -95,7 +97,7 @@ begin
     FrmCadContasBancarias.RdbCadConta.Checked:=true;
     FrmCadContasBancarias.RdbCadConta.Caption:='Alteração de Conta';
     FrmCadContasBancarias.RGBStatusConta.Visible:=True;
-    FrmCadContasBancarias.RGBStatusConta.ItemIndex:=1;
+    FrmCadContasBancarias.RGBStatusConta.ItemIndex:=0;
     dm.ZQConsTipoConta.Open;
     FrmCadContasBancarias.CboTipo.KeyValue:=3;
     FrmCadContasBancarias.EdtNomeConta.Enabled:=True;
@@ -112,7 +114,7 @@ begin
     FrmCadContasBancarias.RdbCadConta.Checked:=true;
     FrmCadContasBancarias.RdbCadConta.Caption:='Alteração de Conta';
     FrmCadContasBancarias.RGBStatusConta.Visible:=True;
-    FrmCadContasBancarias.RGBStatusConta.ItemIndex:=0;
+    FrmCadContasBancarias.RGBStatusConta.ItemIndex:=1;
     dm.ZQConsTipoConta.Open;
     FrmCadContasBancarias.CboTipo.KeyValue:=1;
     FrmCadContasBancarias.CboBanco.Enabled:=True;
@@ -133,7 +135,7 @@ begin
     FrmCadContasBancarias.RdbCadConta.Checked:=true;
     FrmCadContasBancarias.RdbCadConta.Caption:='Alteração de Conta';
     FrmCadContasBancarias.RGBStatusConta.Visible:=True;
-    FrmCadContasBancarias.RGBStatusConta.ItemIndex:=1;
+    FrmCadContasBancarias.RGBStatusConta.ItemIndex:=0;
     dm.ZQConsTipoConta.Open;
     FrmCadContasBancarias.CboTipo.KeyValue:=1;
     FrmCadContasBancarias.CboBanco.Enabled:=True;
@@ -154,7 +156,7 @@ begin
     FrmCadContasBancarias.RdbCadConta.Checked:=true;
     FrmCadContasBancarias.RdbCadConta.Caption:='Alteração de Conta';
     FrmCadContasBancarias.RGBStatusConta.Visible:=True;
-    FrmCadContasBancarias.RGBStatusConta.ItemIndex:=0;
+    FrmCadContasBancarias.RGBStatusConta.ItemIndex:=1;
     dm.ZQConsTipoConta.Open;
     FrmCadContasBancarias.CboTipo.KeyValue:=2;
     FrmCadContasBancarias.CboBanco.Enabled:=True;
@@ -174,7 +176,7 @@ begin
     FrmCadContasBancarias.RdbCadConta.Checked:=true;
     FrmCadContasBancarias.RdbCadConta.Caption:='Alteração de Conta';
     FrmCadContasBancarias.RGBStatusConta.Visible:=True;
-    FrmCadContasBancarias.RGBStatusConta.ItemIndex:=1;
+    FrmCadContasBancarias.RGBStatusConta.ItemIndex:=0;
     dm.ZQConsTipoConta.Open;
     FrmCadContasBancarias.CboTipo.KeyValue:=2;
     FrmCadContasBancarias.CboBanco.Enabled:=True;
@@ -267,11 +269,13 @@ end;
 procedure TFrmConsContas.DBGConsCaixaCellClick(Column: TColumn);
 begin
   ctipo := dm.ZQConsBancariasCODIGOTIP.AsInteger;
+  StatusDaConta:=dm.ZQConsBancariasCONSTATUS.AsInteger;
 end;
 
 procedure TFrmConsContas.DBGConsContasBancariasCellClick(Column: TColumn);
 begin
   ctipo := dm.ZQConsBancariasCODIGOTIP.AsInteger;
+  StatusDaConta:=dm.ZQConsBancariasCONSTATUS.AsInteger;
 end;
 
 procedure TFrmConsContas.EdtConsultaChange(Sender: TObject);
