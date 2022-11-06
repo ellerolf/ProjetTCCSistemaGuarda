@@ -268,6 +268,10 @@ begin
       ShowMessage('Valor do documento é um campo obrigatório');
       EdtValor.SetFocus;
     end
+    else if (StrToFloat(EdtValor.Text)=0) then
+    begin
+         ShowMessage('Valor do lançamento não pode ser zero!');
+    end
     else
     begin
       valorDoDocumento:=StrToFloat(EdtValor.Text);
