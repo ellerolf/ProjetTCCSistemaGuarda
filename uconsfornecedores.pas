@@ -189,6 +189,7 @@ begin
     CboTipoPessoa.ItemIndex:=0;
     EdtConsulta.Clear;
     FrmCadLancamento.AcionaBtnPesqForn:='';
+    seleciona:=0;
     // Foi necessário colocar o código abaixo, pq quando a pessoa entrava em lançamento e saia, e depois abria consfornecedor
     //Os campos aparecia habilitado mas a dbgrid estava com os dados da tela de lançamento. Com o ajuste abaixo isso foi resolvido
     dm.ZQConsPessoas.Close;
@@ -208,6 +209,7 @@ begin
     CboTipoPessoa.ItemIndex:=0;
     EdtConsulta.Clear;
     FrmConsBaixa.acionaPesqForConsBaix:='';
+    seleciona:=0;
     // Foi necessário colocar o código abaixo, pq quando a pessoa entrava atraves de consbaixa e saia, e depois abria consfornecedor
     //Os campos aparecia habilitado mas a dbgrid estava com os dados da tela de lançamento. Com o ajuste abaixo isso foi resolvido
     dm.ZQConsPessoas.Close;
@@ -290,7 +292,25 @@ begin
     // e ir cadastrar um fornecedor ele aparece os dados de fornecedor que foi selecionado na tela de lancamento.
    if (FrmCadLancamento.AcionaBtnPesqForn='liga') then
    begin
-     FrmCadLancamento.EdtConsFornecedor.Text:=dm.ZQConsPessoasCODIGO.AsString;
+        if(seleciona>0) then
+        begin
+             FrmCadLancamento.EdtConsFornecedor.Text:=IntToStr(seleciona);
+             CboStatus.Enabled:=True;
+             CboStatus.ItemIndex:=0;
+             CboTipoPessoa.ItemIndex:=0;
+             EdtConsulta.Clear;
+             FrmCadLancamento.AcionaBtnPesqForn:='';
+
+             dm.ZQConsPessoas.Close;
+             dm.ZQConsPessoas.Sql.Clear;
+             dm.ZQConsPessoas.sql.Add('select * from vwpessoas');
+             dm.ZQConsPessoas.Open;
+             GrTodos.Visible := True;
+             dm.ZQConsPessoas.Close;
+             FrmConsFornecedores.Close;
+        end;
+
+
     CboStatus.Enabled:=True;
     CboStatus.ItemIndex:=0;
     CboTipoPessoa.ItemIndex:=0;
@@ -310,7 +330,25 @@ begin
    //código do Rafael, Codigo abaixo é para levar o cod do fornecedor para consbaixa, quando o usuario altera o fornecedor
         if (FrmConsBaixa.acionaPesqForConsBaix='ConsBaixa') then
    begin
-     FrmConsBaixa.EdtConsFornecedor.Text:=dm.ZQConsPessoasCODIGO.AsString;
+         if(seleciona>0) then
+        begin
+             FrmConsBaixa.EdtConsFornecedor.Text:=IntToStr(seleciona);
+             CboStatus.Enabled:=True;
+             CboStatus.ItemIndex:=0;
+             CboTipoPessoa.ItemIndex:=0;
+             EdtConsulta.Clear;
+             FrmConsBaixa.acionaPesqForConsBaix:='';
+
+            dm.ZQConsPessoas.Close;
+            dm.ZQConsPessoas.Sql.Clear;
+            dm.ZQConsPessoas.sql.Add('select * from vwpessoas');
+            dm.ZQConsPessoas.Open;
+            GrTodos.Visible := True;
+            dm.ZQConsPessoas.Close;
+            FrmConsFornecedores.Close;
+        end;
+
+    //FrmConsBaixa.EdtConsFornecedor.Text:=IntToStr(seleciona);
     CboStatus.Enabled:=True;
     CboStatus.ItemIndex:=0;
     CboTipoPessoa.ItemIndex:=0;

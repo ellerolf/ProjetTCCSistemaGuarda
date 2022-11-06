@@ -1,12 +1,12 @@
 object FrmConsFornecedores: TFrmConsFornecedores
   Left = -8
-  Height = 695
+  Height = 734
   Top = -8
-  Width = 910
+  Width = 926
   BorderStyle = bsNone
   Caption = 'FrmConsFornecedores'
-  ClientHeight = 672
-  ClientWidth = 910
+  ClientHeight = 711
+  ClientWidth = 926
   Color = 16577259
   OnClose = FormClose
   OnResize = FormResize
@@ -15,12 +15,12 @@ object FrmConsFornecedores: TFrmConsFornecedores
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 672
+    Height = 711
     Top = 0
-    Width = 910
+    Width = 926
     Align = alClient
-    ClientHeight = 672
-    ClientWidth = 910
+    ClientHeight = 711
+    ClientWidth = 926
     TabOrder = 0
     object Panel2: TPanel
       Left = 0
@@ -1199,7 +1199,7 @@ object FrmConsFornecedores: TFrmConsFornecedores
         OnCellClick = GrTodosCellClick
       end
       object PnChama: TPanel
-        Left = 32
+        Left = -24
         Height = 546
         Top = 56
         Width = 832
