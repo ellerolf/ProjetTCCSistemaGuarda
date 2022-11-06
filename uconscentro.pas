@@ -80,6 +80,7 @@ begin
     DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where cennome like' +QuotedStr('%' + EdtNome1.Text + '%'));
     DM.ZQBuscaCentro.Open;
     dm.ZQBuscaCentro.Close;
+    cencodigo:=0;
     FrmConsCentro.Close;
   end;
   //codigo para quando o usuario acessa pelo cons baixa
@@ -98,6 +99,7 @@ begin
     DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where cennome like' +QuotedStr('%' + EdtNome1.Text + '%'));
     DM.ZQBuscaCentro.Open;
     dm.ZQBuscaCentro.Close;
+    cencodigo:=0;
     FrmConsCentro.Close;
   end;
   Close;
@@ -107,7 +109,24 @@ procedure TFrmConsCentro.BtnSelecioneClick(Sender: TObject);
 begin
   if(FrmCadLancamento.AcionaBtnPesqCen='ativa') then
   begin
-    FrmCadLancamento.EdtConsCentro.Caption:=DM.ZQBuscaCentroCENCODIGO.AsString;
+       if (cencodigo>0) then
+       begin
+            FrmCadLancamento.EdtConsCentro.Caption:=IntToStr(cencodigo);
+            BtnSelecione.Visible:=False;
+            CboTipo.ItemIndex:=0;
+            CboStatus.ItemIndex:=0;
+            CboTipo.Enabled:=True;
+            CboStatus.Enabled:=True;
+            FrmCadLancamento.AcionaBtnPesqCen:='';
+
+            DM.ZQBuscaCentro.SQL.Clear;
+            DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where cennome like' +QuotedStr('%' + EdtNome1.Text + '%'));
+            DM.ZQBuscaCentro.Open;
+            dm.ZQBuscaCentro.Close;
+            cencodigo:=0;
+            FrmConsCentro.Close;
+       end;
+
     //após pegar o valor do centro de custo, os códigos abaixo foi feito para limpar essa tela, e o último para fechar o form
     BtnSelecione.Visible:=False;
     CboTipo.ItemIndex:=0;
@@ -128,7 +147,24 @@ begin
 
   if(FrmConsBaixa.acionaPesqCenCustConsBaix='Consbaixa') then
   begin
-    FrmConsBaixa.EdtConsCentro.Caption:=DM.ZQBuscaCentroCENCODIGO.AsString;
+       if (cencodigo>0) then
+       begin
+            FrmConsBaixa.EdtConsCentro.Caption:=IntToStr(cencodigo);
+            BtnSelecione.Visible:=False;
+            CboTipo.ItemIndex:=0;
+            CboStatus.ItemIndex:=0;
+            CboTipo.Enabled:=True;
+            CboStatus.Enabled:=True;
+            FrmConsBaixa.acionaPesqCenCustConsBaix:='';
+
+            DM.ZQBuscaCentro.SQL.Clear;
+            DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where cennome like' +QuotedStr('%' + EdtNome1.Text + '%'));
+            DM.ZQBuscaCentro.Open;
+            dm.ZQBuscaCentro.Close;
+            cencodigo:=0;
+            FrmConsCentro.Close;
+       end;
+
     //após pegar o valor do centro de custo, os códigos abaixo foi feito para limpar essa tela, e o último para fechar o form
     BtnSelecione.Visible:=False;
     CboTipo.ItemIndex:=0;

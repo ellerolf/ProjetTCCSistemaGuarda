@@ -307,6 +307,7 @@ begin
              dm.ZQConsPessoas.Open;
              GrTodos.Visible := True;
              dm.ZQConsPessoas.Close;
+             seleciona:=0;
              FrmConsFornecedores.Close;
         end;
 
@@ -345,6 +346,7 @@ begin
             dm.ZQConsPessoas.Open;
             GrTodos.Visible := True;
             dm.ZQConsPessoas.Close;
+            seleciona:=0;
             FrmConsFornecedores.Close;
         end;
 
