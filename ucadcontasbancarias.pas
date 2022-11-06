@@ -262,22 +262,13 @@ begin
         ShowMessage('O preenchimento do n° da conta é obrigatório!');
         EdtNConta.SetFocus;
       end
-      Else if (RGBStatusConta.ItemIndex=FrmConsContas.StatusDaConta) and (CboTipo.KeyValue=dm.ZQConsBancariasCODIGOTIP.AsInteger) and
-           (CboBanco.Text=dm.ZQConsBancariasCONNOME.AsString) and (EdtAgencia.Text=dm.ZQConsBancariasCONAGENCIA.AsString) and
-           (EdtNConta.Text=dm.ZQConsBancariasCONNUMERO_CONTA.AsString) and (StrToFloat(EdtSaldoInicial.Text)=dm.ZQConsBancariasCONSALDO_INICIAL.AsFloat) then
-      begin
-           ShowMessage('Não foi realizada nenhuma alteração');
-      end
       else
       begin
-           dm.ZQValidCadContaBanc.close;
-           dm.ZQValidCadContaBanc.SQL.Clear;
-           dm.ZQValidCadContaBanc.SQL.Add('SELECT * from vwcontas WHERE CODIGOTIP<3 AND CONNOME ='+QuotedStr(CboBanco.Text)+' AND CONAGENCIA = '+QuotedStr(EdtAgencia.Text)+' AND CONNUMERO_CONTA = '+QuotedStr(EdtNConta.Text)+' AND CODIGOTIP = '+QuotedStr(CboTipo.KeyValue));
-           dm.ZQValidCadContaBanc.open;
-
-           if (dm.ZQValidCadContaBanc.RecordCount>0) THEN
+           if (RGBStatusConta.ItemIndex=FrmConsContas.StatusDaConta) and (CboTipo.KeyValue=dm.ZQConsBancariasCODIGOTIP.AsInteger) and
+           (CboBanco.Text=dm.ZQConsBancariasCONNOME.AsString) and (EdtAgencia.Text=dm.ZQConsBancariasCONAGENCIA.AsString) and
+           (EdtNConta.Text=dm.ZQConsBancariasCONNUMERO_CONTA.AsString) and (StrToFloat(EdtSaldoInicial.Text)=dm.ZQConsBancariasCONSALDO_INICIAL.AsFloat) then
            begin
-                ShowMessage('Essa conta já existe');
+                ShowMessage('Não foi realizada nenhuma alteração');
            end
            else
            begin
@@ -328,22 +319,13 @@ begin
       begin
         ShowMessage('Digite um nome para essa conta caixa!');
       end
-      Else if (RGBStatusConta.ItemIndex=FrmConsContas.StatusDaConta) and (EdtNomeConta.Text=dm.ZQConsBancariasCONNOME.AsString) and
+      else
+      begin
+           if (RGBStatusConta.ItemIndex=FrmConsContas.StatusDaConta) and (EdtNomeConta.Text=dm.ZQConsBancariasCONNOME.AsString) and
               (StrToFloat(EdtSaldoInicial.Text)=dm.ZQConsBancariasCONSALDO_INICIAL.AsFloat) then
            begin
                 ShowMessage('Não foi realizada nenhuma alteração');
            End
-      else
-      begin
-           dm.ZQValidCadContaBanc.close;
-           dm.ZQValidCadContaBanc.SQL.Clear;
-           dm.ZQValidCadContaBanc.SQL.Add('SELECT * from vwcontas WHERE CODIGOTIP=3 AND CONNOME ='+QuotedStr(EdtNomeConta.Text)+' AND CODIGOTIP = '+QuotedStr(CboTipo.KeyValue));
-           dm.ZQValidCadContaBanc.open;
-
-           if (dm.ZQValidCadContaBanc.RecordCount>0) then
-           begin
-                ShowMessage('Essa conta já existe');
-           end
            Else
            begin
             if (RGBStatusConta.ItemIndex=0)then
