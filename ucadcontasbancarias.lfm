@@ -6,7 +6,7 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
   BorderIcons = [biSystemMenu]
   BorderStyle = bsNone
   Caption = 'Cadastro de Contas Bancarias'
-  ClientHeight = 1038
+  ClientHeight = 1061
   ClientWidth = 1118
   Color = 16577259
   Font.CharSet = ANSI_CHARSET
@@ -19,6 +19,7 @@ object FrmCadContasBancarias: TFrmCadContasBancarias
   OnResize = FormResize
   OnShow = FormShow
   Position = poDesktopCenter
+  LCLVersion = '2.2.2.0'
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
