@@ -75,47 +75,8 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
           ParentColor = False
           ParentFont = False
         end
-        object DBGrid1: TDBGrid
-          Left = 28
-          Height = 194
-          Top = 232
-          Width = 496
-          Color = 16577259
-          Columns = <          
-            item
-              Title.Caption = 'CODIGO'
-              Width = 65
-              FieldName = 'CENCODIGO'
-            end          
-            item
-              Title.Caption = 'NOME'
-              Width = 270
-              FieldName = 'CENNOME'
-            end          
-            item
-              Title.Caption = 'STATUS'
-              Width = 65
-              FieldName = 'STATUS'
-            end          
-            item
-              Title.Caption = 'TIPO'
-              Width = 65
-              FieldName = 'TIPOCEN'
-            end>
-          DataSource = DM.DSBuscaCentro
-          FixedColor = clHighlight
-          Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
-          TabOrder = 1
-          TitleFont.CharSet = ANSI_CHARSET
-          TitleFont.Color = clWhite
-          TitleFont.Height = -13
-          TitleFont.Pitch = fpVariable
-          TitleFont.Quality = fqDraft
-          TitleFont.Style = [fsBold]
-          OnCellClick = DBGrid1CellClick
-        end
         object BtnSair: TSpeedButton
-          Left = 358
+          Left = 400
           Height = 34
           Top = 450
           Width = 124
@@ -577,7 +538,7 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
           OnClick = BtnSairClick
         end
         object BtnSalvar: TSpeedButton
-          Left = 245
+          Left = 264
           Height = 34
           Top = 450
           Width = 124
@@ -1059,7 +1020,8 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
             'RECEITA'
             'DESPESA'
           )
-          TabOrder = 2
+          OnClick = RgbTipoClick
+          TabOrder = 1
         end
         object RgbStatus: TRadioGroup
           Left = 207
@@ -1082,7 +1044,7 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
             'ATIVO'
             'INATIVO'
           )
-          TabOrder = 3
+          TabOrder = 2
         end
       end
     end
