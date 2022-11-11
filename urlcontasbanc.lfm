@@ -1,0 +1,213 @@
+object FrmRlContasBanc: TFrmRlContasBanc
+  Left = 246
+  Height = 618
+  Top = 31
+  Width = 798
+  Caption = 'Relatório de Contas bancárias'
+  ClientHeight = 618
+  ClientWidth = 798
+  object RLContasbancarias: TRLReport
+    Left = 0
+    Height = 1123
+    Top = 0
+    Width = 794
+    DataSource = DM.DSConsBancarias
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Arial'
+    BeforePrint = RLContasbancariasBeforePrint
+    object RLGroup1: TRLGroup
+      Left = 38
+      Height = 328
+      Top = 38
+      Width = 718
+      object RLBand1: TRLBand
+        Left = 0
+        Height = 40
+        Top = 0
+        Width = 718
+        BandType = btHeader
+        Borders.Sides = sdCustom
+        Borders.DrawLeft = False
+        Borders.DrawTop = False
+        Borders.DrawRight = False
+        Borders.DrawBottom = False
+        object RLLabel1: TRLLabel
+          Left = 0
+          Height = 20
+          Top = 0
+          Width = 718
+          Align = faTop
+          Alignment = taCenter
+          Borders.Sides = sdCustom
+          Borders.DrawLeft = False
+          Borders.DrawTop = True
+          Borders.DrawRight = False
+          Borders.DrawBottom = True
+          Borders.FixedBottom = True
+          Caption = 'RELATÓRIO DE CONTAS BANCÁRIAS'
+        end
+      end
+      object RLBand2: TRLBand
+        Left = 0
+        Height = 32
+        Top = 72
+        Width = 718
+        object RLDBText2: TRLDBText
+          Left = 80
+          Height = 16
+          Top = 8
+          Width = 71
+          DataField = 'CONNOME'
+          DataSource = DM.DSConsBancarias
+        end
+        object RLDBText3: TRLDBText
+          Left = 320
+          Height = 16
+          Top = 8
+          Width = 62
+          DataField = 'TIPNOME'
+          DataSource = DM.DSConsBancarias
+        end
+        object RLDBText1: TRLDBText
+          Left = 0
+          Height = 16
+          Top = 8
+          Width = 40
+          DataField = 'CONCODIGO'
+          DataSource = DM.DSConsBancarias
+          AfterPrint = RLDBText1AfterPrint
+        end
+        object RLDBText4: TRLDBText
+          Left = 440
+          Height = 16
+          Top = 8
+          Width = 90
+          Alignment = taJustify
+          DataField = 'CONAGENCIA'
+          DataSource = DM.DSConsBancarias
+        end
+        object RLDBText5: TRLDBText
+          Left = 536
+          Height = 16
+          Top = 8
+          Width = 140
+          Alignment = taCenter
+          DataField = 'CONNUMERO_CONTA'
+          DataSource = DM.DSConsBancarias
+        end
+        object RLDBText6: TRLDBText
+          Left = 648
+          Height = 16
+          Top = 8
+          Width = 54
+          DataField = 'STATUS'
+          DataSource = DM.DSConsBancarias
+        end
+      end
+      object RLBand4: TRLBand
+        Left = 0
+        Height = 32
+        Top = 40
+        Width = 718
+        BandType = btHeader
+        Borders.Sides = sdCustom
+        Borders.DrawLeft = False
+        Borders.DrawTop = True
+        Borders.DrawRight = False
+        Borders.DrawBottom = True
+        Borders.FixedTop = True
+        Borders.FixedBottom = True
+        object RLLabel7: TRLLabel
+          Left = 648
+          Height = 16
+          Top = 9
+          Width = 54
+          Caption = 'STATUS'
+        end
+        object RLLabel6: TRLLabel
+          Left = 536
+          Height = 16
+          Top = 9
+          Width = 88
+          Caption = 'N° DA CONTA'
+        end
+        object RLLabel5: TRLLabel
+          Left = 440
+          Height = 16
+          Top = 9
+          Width = 62
+          Caption = 'AGÊNCIA'
+        end
+        object RLLabel4: TRLLabel
+          Left = 320
+          Height = 16
+          Top = 9
+          Width = 33
+          Caption = 'TIPO'
+        end
+        object RLLabel3: TRLLabel
+          Left = 80
+          Height = 16
+          Top = 9
+          Width = 183
+          Borders.Sides = sdCustom
+          Borders.DrawLeft = False
+          Borders.DrawTop = False
+          Borders.DrawRight = False
+          Borders.DrawBottom = False
+          Caption = 'NOME DA CONTA BANCÁRIA'
+        end
+        object RLLabel2: TRLLabel
+          Left = 0
+          Height = 16
+          Top = 9
+          Width = 55
+          Caption = 'CODIGO'
+        end
+      end
+    end
+    object RLBand3: TRLBand
+      Left = 38
+      Height = 32
+      Top = 366
+      Width = 718
+      BandType = btFooter
+      Borders.Sides = sdCustom
+      Borders.DrawLeft = False
+      Borders.DrawTop = True
+      Borders.DrawRight = False
+      Borders.DrawBottom = False
+      Borders.FixedTop = True
+      object RLSystemInfo1: TRLSystemInfo
+        Left = 336
+        Height = 16
+        Top = 8
+        Width = 74
+        Text = 'Data: '
+      end
+      object RLSystemInfo2: TRLSystemInfo
+        Left = 456
+        Height = 16
+        Top = 8
+        Width = 74
+        Info = itHour
+        Text = 'Hora: '
+      end
+      object RLSystemInfo3: TRLSystemInfo
+        Left = 568
+        Height = 16
+        Top = 8
+        Width = 147
+        Info = itPageNumber
+        Text = 'Página n°:'
+      end
+      object RLLabel8: TRLLabel
+        Left = 192
+        Height = 16
+        Top = 9
+        Width = 58
+      end
+    end
+  end
+end

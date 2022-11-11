@@ -1,12 +1,12 @@
 object FrmConsContas: TFrmConsContas
   Left = -8
-  Height = 773
+  Height = 788
   Top = -8
-  Width = 942
+  Width = 990
   BorderStyle = bsNone
   Caption = 'FrmConsContas'
-  ClientHeight = 750
-  ClientWidth = 942
+  ClientHeight = 749
+  ClientWidth = 990
   Color = 16577259
   OnClose = FormClose
   OnResize = FormResize
@@ -15,28 +15,28 @@ object FrmConsContas: TFrmConsContas
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 750
+    Height = 749
     Top = 0
-    Width = 942
+    Width = 990
     Align = alClient
-    ClientHeight = 750
-    ClientWidth = 942
+    ClientHeight = 749
+    ClientWidth = 990
     TabOrder = 0
     object Panel2: TPanel
       Left = 1
-      Height = 748
+      Height = 747
       Top = 1
-      Width = 940
+      Width = 988
       Align = alClient
       BevelOuter = bvNone
-      ClientHeight = 748
-      ClientWidth = 940
+      ClientHeight = 747
+      ClientWidth = 988
       TabOrder = 0
       object Label7: TLabel
         Left = 0
         Height = 32
         Top = 0
-        Width = 940
+        Width = 988
         Align = alTop
         Alignment = taCenter
         Caption = 'Contas Bancarias'
@@ -1263,6 +1263,14 @@ object FrmConsContas: TFrmConsContas
           0020FFFFFF00
         }
         OnClick = BtnPesquisarClick
+      end
+      object BtnImprimir: TSpeedButton
+        Left = 368
+        Height = 22
+        Top = 552
+        Width = 80
+        Caption = 'IMPRIMIR'
+        OnClick = BtnImprimirClick
       end
     end
   end
