@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 22/10/2022 às 01:41
+-- Tempo de geração: 12/11/2022 às 18:34
 -- Versão do servidor: 10.1.35-MariaDB
 -- Versão do PHP: 7.2.9
 
@@ -131,8 +131,19 @@ INSERT INTO `contas` (`CONCODIGO`, `CONNOME`, `CODIGOTIP`, `CONAGENCIA`, `CONNUM
 (6, 'Brasil', 1, '12345', '126566', 45.5, 1),
 (7, '', 3, '', '', 105.85, 1),
 (8, 'BRADESCO', 1, '1233', '67656756', 54.5, 1),
-(9, 'MARIA', 3, NULL, NULL, 1.2, 1),
-(10, 'BRASIL', 1, '22', '33', 33, 1);
+(9, 'MARIA', 3, NULL, NULL, 0, 1),
+(10, 'BRASIL', 1, '22', '33', 33, 1),
+(11, 'BANCO DO BRASIL ', 1, '1', '1', 0, 1),
+(12, 'BANCO DO BRASIL ', 2, '6', '1', 0, 1),
+(13, 'TESTE', 3, NULL, NULL, 1.52, 1),
+(14, 'BANCO DO BRASIL ', 1, '1', '1', 0.01, 0),
+(15, 'BANCO DO BRASIL ', 1, '1', '1', 0, 1),
+(16, 'BANCO DO BRASIL ', 1, '1', '1', 0, 1),
+(17, 'BANCO DO BRASIL ', 1, '1', '2', 0, 1),
+(18, 'BANCO DO BRASIL ', 1, '2', '2', 0, 1),
+(19, 'BANCO DO BRASIL ', 2, '1', '1', 0, 1),
+(20, 'MARIAAAAAAA', 3, NULL, NULL, 0, 1),
+(21, 'BANCO DO BRASIL ', 1, '1', '3', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -261,8 +272,8 @@ CREATE TABLE `pessoa` (
   `PESDATA_NASCIMENTO` date DEFAULT NULL COMMENT 'Data de nascimento da pessoa a ser cadastrada',
   `PESCNPJ` varchar(50) DEFAULT NULL COMMENT 'CNPJ da empresa a ser cadastrada',
   `PESNOME_FANTASIA` varchar(50) DEFAULT NULL COMMENT 'Nome fantasia da empresa a ser cadastrada',
-  `PESINSCRICAO_ESTADUAL` int(11) DEFAULT NULL COMMENT 'Inscrição estadual da empresa a ser cadastrada',
-  `PESINSCRICAO_MUNICIPAL` int(11) DEFAULT NULL COMMENT 'Inscrição municipal da empresa a ser cadastrada',
+  `PESINSCRICAO_ESTADUAL` varchar(20) DEFAULT NULL COMMENT 'Inscrição estadual da empresa a ser cadastrada',
+  `PESINSCRICAO_MUNICIPAL` varchar(20) DEFAULT NULL COMMENT 'Inscrição municipal da empresa a ser cadastrada',
   `PESCEP` varchar(50) DEFAULT NULL COMMENT 'CEP da pessoa ou empresa a ser cadastrada',
   `PESENDERECO` varchar(50) DEFAULT NULL COMMENT 'Endereço da pessoa ou empresa a ser cadastrada',
   `PESNUMERO` int(11) DEFAULT NULL COMMENT 'Número do imóvel da empresa ou pessoa a ser cadastrada',
@@ -283,7 +294,7 @@ CREATE TABLE `pessoa` (
 
 INSERT INTO `pessoa` (`PESCODIGO`, `PESNOME`, `CODIGOTIP`, `PESCPF`, `PESDATA_NASCIMENTO`, `PESCNPJ`, `PESNOME_FANTASIA`, `PESINSCRICAO_ESTADUAL`, `PESINSCRICAO_MUNICIPAL`, `PESCEP`, `PESENDERECO`, `PESNUMERO`, `PESCOMPLEMENTO`, `PESESTADO`, `PESCIDADE`, `PESBAIRRO`, `PESEMAIL`, `PESTELEFONE`, `PESCELULAR`, `PESOBSERVACAO`, `PESSTATUS`) VALUES
 (1, 'GABRIELLE ROBERTA FERREIRA', 1, '123.456.789-X', '1998-04-29', NULL, NULL, NULL, NULL, '18800-000', 'RUA DAS FLORES', 2, 'APARTAMENTO', 'SP', 'PIRAJU', 'BAIRRO DAS CAPIVARA', 'GR@GMAIL.COM', '14-3351-0000', '14-99838-9911', 'devedora', 1),
-(2, NULL, 2, NULL, NULL, '14.041.086/0001-05', 'ESCRITORIO CONTABIL PADRAO', NULL, 8547, '18810-009', 'RUA MAJOR MARIANO', 1009, 'DE FRENTE A CASA DOS COLCHÃO', 'SP', 'PIRAJU', 'CENTRO', 'RH@HOTMAIL.COM', '14-3351-3500', '14-99838-1234', NULL, 1),
+(2, NULL, 2, NULL, NULL, '14.041.086/0001-05', 'ESCRITORIO CONTABIL PADRAO', NULL, '8547', '18810-009', 'RUA MAJOR MARIANO', 1009, 'DE FRENTE A CASA DOS COLCHÃO', 'SP', 'PIRAJU', 'CENTRO', 'RH@HOTMAIL.COM', '14-3351-3500', '14-99838-1234', NULL, 1),
 (3, 'JOAO', 1, '123.456.847.-  ', '2022-02-25', NULL, NULL, NULL, NULL, '18800-000', 'RUA ANTONIO BASTIAO NETO', 50, 'AO LADO DA BIQUEIRA', 'SP', 'PIRAJU', 'CENTRO', 'GABRIUEL@HOTMAIL.COM', '(  )    -    ', '(  )     -    ', 'FILHO DO PRESIDENTE DA GUARDA', 1);
 
 -- --------------------------------------------------------
@@ -391,8 +402,14 @@ INSERT INTO `transferencia` (`TRACODIGO`, `TRAVALOR`, `TRACODIGO_CONORI`, `TRACO
 (3, 1000, 4, 1, '2022-04-30', '8500', 1),
 (4, 458, 4, 1, '2022-10-15', '459', 1),
 (5, 1, 1, 2, '2022-10-10', '1', 1),
-(6, 1, 2, 9, '2022-06-21', '211', 1),
-(7, 150, 3, 9, '2022-10-12', '155', 1);
+(6, 1.03, 2, 9, '2022-06-21', '211', 0),
+(7, 150, 3, 9, '2022-10-12', '155', 1),
+(8, 0, 1, 2, '2022-11-01', '1', 1),
+(9, 21.51, 13, 8, '2022-11-01', '1', 1),
+(10, 0, 1, 2, '2022-11-01', '1', 1),
+(11, 22, 1, 2, '2022-11-02', '2221', 1),
+(12, 96, 1, 2, '2022-11-01', '1', 1),
+(13, 96, 1, 2, '2022-11-01', '1', 1);
 
 -- --------------------------------------------------------
 
@@ -561,8 +578,8 @@ CREATE TABLE `vwpessoas` (
 ,`DATA NASCIMENTO` date
 ,`CNPJ` varchar(50)
 ,`NOME FANTASIA` varchar(50)
-,`INSCRIÇÃO ESTADUAL` int(11)
-,`INSCRIÇÃO MUNICIPAL` int(11)
+,`INSCRIÇÃO ESTADUAL` varchar(20)
+,`INSCRIÇÃO MUNICIPAL` varchar(20)
 ,`CEP` varchar(50)
 ,`ENDEREÇO` varchar(50)
 ,`NÚMERO` int(11)
@@ -780,7 +797,7 @@ ALTER TABLE `centro_custo`
 -- AUTO_INCREMENT de tabela `contas`
 --
 ALTER TABLE `contas`
-  MODIFY `CONCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=11;
+  MODIFY `CONCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de tabela `forma_pagamento`
@@ -834,7 +851,7 @@ ALTER TABLE `tipo_pessoa`
 -- AUTO_INCREMENT de tabela `transferencia`
 --
 ALTER TABLE `transferencia`
-  MODIFY `TRACODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=8;
+  MODIFY `TRACODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
