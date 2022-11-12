@@ -42,7 +42,7 @@ type
 
   public
     codigo: integer;
-    CadOUAlt,ReceDesp: string;
+    CadOUAlt, ReceDesp: string;
   end;
 
 var
@@ -69,27 +69,106 @@ procedure TFrmCadCentroCusto.BtnSalvarClick(Sender: TObject);
 begin
   if (CadOUAlt = 'C') then
   begin
-    ShowMessage('entrou no if C');
-    if ((EdtNome.Text = '') or (RgbTipo.ItemIndex= -1))then
+    if ((EdtNome.Text = '') or (RgbTipo.ItemIndex = -1)) then
     begin
-       ShowMessage('faltou');
+      ShowMessage('Campos Faltando favor conferir');
     end
     else
-    ShowMessage('colocou');
+    begin
       DM.ZQConsCentro.Close;
       DM.ZQConsCentro.SQL.Clear;
-      DM.ZQConsCentro.SQL.Add('select * from centro_custo where cennome = '+QuotedStr(EdtNome.text));
-      DM.ZQConsCentro.SQL.Add(' and codigotip = '+QuotedStr(ReceDesp));
+      DM.ZQConsCentro.SQL.Add('select * from centro_custo where cennome = ' +
+        QuotedStr(EdtNome.Text));
+      DM.ZQConsCentro.SQL.Add(' and codigotip = ' + QuotedStr(ReceDesp));
       DM.ZQConsCentro.Open;
-       if (DM.ZQConsCentro.RecordCount <> 0) then
+      if (DM.ZQConsCentro.RecordCount <> 0) then
       begin
         ShowMessage('Centro de Custo já cadastrado no sistema, Favor verificar');
       end
-       else
-       begin
-        ShowMessage(' não encontrou comando insert');
-       end;
-  end; //tirar ponto e virgula else e o comando do a
+      else
+      begin
+        DM.ZQCadCentro.Params.ParamByName('pcennome').Value := EdtNome.Text;
+        if (RgbTipo.ItemIndex = 0) then
+        begin
+          DM.ZQCadCentro.Params.ParamByName('pcodigotip').Value := 1;
+        end
+        else
+        if (RgbTipo.ItemIndex = 0) then
+        begin
+          DM.ZQCadCentro.Params.ParamByName('pcodigotip').Value := 2;
+        end;
+        DM.ZQCadCentro.ExecSQL;
+
+        DM.ZQConsCentro.Close;
+        DM.ZQConsCentro.Open;
+
+        ShowMessage('CADASTRO FEITO COM SUCESSO!!');
+        EdtNome.Clear;
+        RgbTipo.ItemIndex := -1;
+        LblMensagem.Caption := '*Campos Obrigatorios';
+      end;
+    end;
+  end
+  else
+  if (CadOUAlt = 'A') then
+  begin
+    if (EdtNome.Text = '') or (RgbTipo.ItemIndex = -1) or (RgbStatus.ItemIndex = -1) then
+    begin
+      LblMensagem.Caption := 'CAMPOS FALTANDO';
+    end
+    else
+    begin
+      DM.ZQConsCentro.Close;
+      DM.ZQConsCentro.SQL.Clear;
+      DM.ZQConsCentro.SQL.Add('select * from centro_custo where cennome = ' +
+        QuotedStr(EdtNome.Text));
+      DM.ZQConsCentro.SQL.Add(' and codigotip = ' + QuotedStr(ReceDesp));
+      DM.ZQConsCentro.Open;
+      if (DM.ZQConsCentro.RecordCount <> 0) then
+      begin
+        ShowMessage('Centro de Custo já cadastrado no sistema, Favor verificar');
+      end
+      else
+      begin
+        RgbStatus.Visible := True;
+
+        DM.ZQAltCentro.Params.ParamByName('pcennome').Value := EdtNome.Text;
+        if (RgbTipo.ItemIndex = 0) then
+        begin
+          DM.ZQAltCentro.Params.ParamByName('pcodigotip').Value := 1;
+        end
+        else
+        if (RgbTipo.ItemIndex = 1) then
+        begin
+          DM.ZQAltCentro.Params.ParamByName('pcodigotip').Value := 2;
+        end;
+
+        if (RgbStatus.ItemIndex = 0) then
+        begin
+          DM.ZQAltCentro.Params.ParamByName('pcenstatus').Value := 1;
+        end
+        else
+        if (RgbStatus.ItemIndex = 1) then
+        begin
+          DM.ZQAltCentro.Params.ParamByName('pcenstatus').Value := 0;
+        end;
+        DM.ZQAltCentro.Params.ParamByName('pcencodigo').Value := codigo;
+        DM.ZQAltCentro.ExecSQL;
+
+        DM.ZQBuscaCentro.Close;
+        DM.ZQBuscaCentro.Open;
+
+        ShowMessage('ALTERAÇÃO FEITA COM SUCESSO!!');
+        EdtNome.Clear;
+        RgbTipo.ItemIndex := -1;
+        RgbStatus.ItemIndex := -1;
+        RgbStatus.Visible := False;
+        Close;
+      end;
+
+    end;
+
+  end;
 
 end;
 
@@ -161,15 +240,15 @@ end;
 
 procedure TFrmCadCentroCusto.RgbTipoClick(Sender: TObject);
 begin
-   if (RgbTipo.ItemIndex = 0) then
-    begin
-      ReceDesp := '1';
-    end
-    else
-    if (RgbTipo.ItemIndex = 1) then
-    begin
-      ReceDesp := '2';
-    end;
+  if (RgbTipo.ItemIndex = 0) then
+  begin
+    ReceDesp := '1';
+  end
+  else
+  if (RgbTipo.ItemIndex = 1) then
+  begin
+    ReceDesp := '2';
+  end;
 end;
 
 procedure TFrmCadCentroCusto.ToggleBox1Change(Sender: TObject);
