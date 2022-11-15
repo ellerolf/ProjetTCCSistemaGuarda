@@ -12,7 +12,7 @@ uses
   UConsFornecedores, UConsBaixa, UConsContas, UModulo, UBuscaConta,
   UTranfContas, UConsUsuario, uConsCentro, UBuscaDoc, UCadPagamento, 
 Ferramentas, UConsParcelas, UbaixaParcela, uRlContasBanc, urlcontascaixa, 
-urlcontasapagarpen;
+urlcontasapagarpen, urlcontasareceberpen;
 
 {$R *.res}
 
@@ -42,6 +42,7 @@ begin
   Application.CreateForm(TFrmRlContasBanc, FrmRlContasBanc);
   Application.CreateForm(TFrmRlContasCaixa, FrmRlContasCaixa);
   Application.CreateForm(TFrmRlContasAPagarPen, FrmRlContasAPagarPen);
+  Application.CreateForm(TFrmRlContasAReceberPen, FrmRlContasAReceberPen);
   Application.Run;
 end.
 

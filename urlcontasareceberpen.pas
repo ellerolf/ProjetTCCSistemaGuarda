@@ -1,25 +1,24 @@
-unit urlcontasapagarpen;
+unit urlcontasareceberpen;
 
 {$mode ObjFPC}{$H+}
 
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, RLReport,
-  RLParser;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, RLReport, RLParser;
 
 type
 
-  { TFrmRlContasAPagarPen }
+  { TFrmRlContasAReceberPen }
 
-  TFrmRlContasAPagarPen = class(TForm)
+  TFrmRlContasAReceberPen = class(TForm)
     RLBand1: TRLBand;
     RLBand2: TRLBand;
     RLBand3: TRLBand;
     RLBand4: TRLBand;
     RLBand5: TRLBand;
     RLBand6: TRLBand;
-    RLContasAPagarPen: TRLReport;
+    RLContasAReceberPen: TRLReport;
     RLDBResult1: TRLDBResult;
     RLDBResult2: TRLDBResult;
     RLDBResult3: TRLDBResult;
@@ -46,12 +45,8 @@ type
     RLSystemInfo1: TRLSystemInfo;
     RLSystemInfo2: TRLSystemInfo;
     RLSystemInfo3: TRLSystemInfo;
-    procedure RLBand5AfterPrint(Sender: TObject);
-    procedure RLContasAPagarPenBeforePrint(Sender: TObject; var PrintIt: Boolean
-      );
-    procedure RLLabel1AfterPrint(Sender: TObject);
-
-
+    procedure RLContasAReceberPenBeforePrint(Sender: TObject;
+      var PrintIt: Boolean);
   private
 
   public
@@ -59,7 +54,7 @@ type
   end;
 
 var
-  FrmRlContasAPagarPen: TFrmRlContasAPagarPen;
+  FrmRlContasAReceberPen: TFrmRlContasAReceberPen;
 
 implementation
 
@@ -67,28 +62,14 @@ implementation
 
 uses UModulo,UEntrarUsuario,UConsBaixa;
 
-{ TFrmRlContasAPagarPen }
+{ TFrmRlContasAReceberPen }
 
-procedure TFrmRlContasAPagarPen.RLLabel1AfterPrint(Sender: TObject);
+procedure TFrmRlContasAReceberPen.RLContasAReceberPenBeforePrint(
+  Sender: TObject; var PrintIt: Boolean);
 begin
-
+     FrmRlContasAReceberPen.RLLabel2.Caption:='Período : '+DateToStr(FrmConsBaixa.DTDataInicial.Date)+' à '+DateToStr(FrmConsBaixa.DTDataFinal.Date);
+     FrmRlContasAReceberPen.RLLabel12.Caption:='Impresso por : '+FrmEntrarUsuario.usuarios;
 end;
-
-procedure TFrmRlContasAPagarPen.RLContasAPagarPenBeforePrint(Sender: TObject;
-  var PrintIt: Boolean);
-begin
-     FrmRlContasAPagarPen.RLLabel2.Caption:='Período : '+DateToStr(FrmConsBaixa.DTDataInicial.Date)+' à '+DateToStr(FrmConsBaixa.DTDataFinal.Date);
-     FrmRlContasAPagarPen.RLLabel12.Caption:='Impresso por : '+FrmEntrarUsuario.usuarios;
-end;
-
-procedure TFrmRlContasAPagarPen.RLBand5AfterPrint(Sender: TObject);
-begin
-
-end;
-
-
-
-
 
 end.
 

@@ -137,7 +137,7 @@ implementation
 
 { TFrmConsBaixa }
 
-uses urlcontasapagarpen;
+uses urlcontasapagarpen, urlcontasareceberpen;
 
 procedure TFrmConsBaixa.EdtDataInicioChange(Sender: TObject);
 begin
@@ -1222,12 +1222,20 @@ procedure TFrmConsBaixa.BtnImprimirClick(Sender: TObject);
 begin
      //DESPESA+ PENDENTE
      if (CboRecOuDes.ItemIndex=1) and (CboStatus.ItemIndex=0) then
-    begin
+     begin
          if (dm.ZQConsBaixaPen.RecordCount>0) then
          begin
               FrmRlContasAPagarPen.RLContasAPagarPen.Preview();
          end;
-    end;
+     end
+     //RECEITA+ PENDENTE
+     else if (CboRecOuDes.ItemIndex=0) and (CboStatus.ItemIndex=0) then
+     begin
+          if (dm.ZQConsBaixaPen.RecordCount>0) then
+          begin
+               FrmRlContasAReceberPen.RLContasAReceberPen.Preview();
+          end;
+     end;
 end;
 
 
