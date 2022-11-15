@@ -63,6 +63,7 @@ type
     BtnSalvarDados: TSpeedButton;
     BtnExcluir: TSpeedButton;
     BtnPagar: TSpeedButton;
+    BtnImprimir: TSpeedButton;
     procedure BtnAlterarClick(Sender: TObject);
     procedure BtnAlterarDadosClick(Sender: TObject);
     procedure BtnCancelarDadosClick(Sender: TObject);
@@ -70,6 +71,7 @@ type
     procedure BtnConsForClick(Sender: TObject);
     procedure BtnConsTipoContaClick(Sender: TObject);
     procedure BtnExcluirClick(Sender: TObject);
+    procedure BtnImprimirClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
     procedure BtnSalvarClick(Sender: TObject);
     procedure BtnSalvarDadosClick(Sender: TObject);
@@ -134,6 +136,8 @@ implementation
 {$R *.lfm}
 
 { TFrmConsBaixa }
+
+uses urlcontasapagarpen;
 
 procedure TFrmConsBaixa.EdtDataInicioChange(Sender: TObject);
 begin
@@ -1212,6 +1216,18 @@ begin
              end;
        end;
   end;
+end;
+
+procedure TFrmConsBaixa.BtnImprimirClick(Sender: TObject);
+begin
+     //DESPESA+ PENDENTE
+     if (CboRecOuDes.ItemIndex=1) and (CboStatus.ItemIndex=0) then
+    begin
+         if (dm.ZQConsBaixaPen.RecordCount>0) then
+         begin
+              FrmRlContasAPagarPen.RLContasAPagarPen.Preview();
+         end;
+    end;
 end;
 
 

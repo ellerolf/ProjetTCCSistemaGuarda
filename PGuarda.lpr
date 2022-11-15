@@ -11,7 +11,8 @@ uses
   uCadContasBancarias, uCadCentroCusto, uCadFornecedores, uCadLancamento,
   UConsFornecedores, UConsBaixa, UConsContas, UModulo, UBuscaConta,
   UTranfContas, UConsUsuario, uConsCentro, UBuscaDoc, UCadPagamento, 
-Ferramentas, UConsParcelas, UbaixaParcela, uRlContasBanc, urlcontascaixa;
+Ferramentas, UConsParcelas, UbaixaParcela, uRlContasBanc, urlcontascaixa, 
+urlcontasapagarpen;
 
 {$R *.res}
 
@@ -40,6 +41,7 @@ begin
   Application.CreateForm(TFRMBaixaParcela, FRMBaixaParcela);
   Application.CreateForm(TFrmRlContasBanc, FrmRlContasBanc);
   Application.CreateForm(TFrmRlContasCaixa, FrmRlContasCaixa);
+  Application.CreateForm(TFrmRlContasAPagarPen, FrmRlContasAPagarPen);
   Application.Run;
 end.
 

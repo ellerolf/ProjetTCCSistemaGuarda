@@ -54,6 +54,7 @@ object FrmRlContasCaixa: TFrmRlContasCaixa
         Borders.DrawTop = True
         Borders.DrawRight = False
         Borders.DrawBottom = True
+        Borders.Width = 3
         Borders.FixedTop = True
         Borders.FixedBottom = True
         object RLLabel2: TRLLabel
@@ -150,6 +151,12 @@ object FrmRlContasCaixa: TFrmRlContasCaixa
       Top = 358
       Width = 718
       BandType = btFooter
+      Borders.Sides = sdCustom
+      Borders.DrawLeft = False
+      Borders.DrawTop = True
+      Borders.DrawRight = False
+      Borders.DrawBottom = False
+      Borders.Width = 3
       object RLSystemInfo1: TRLSystemInfo
         Left = 608
         Height = 16
@@ -174,9 +181,9 @@ object FrmRlContasCaixa: TFrmRlContasCaixa
         Text = 'Data: '
       end
       object RLLabel5: TRLLabel
-        Left = 216
+        Left = 112
         Height = 16
-        Top = 14
+        Top = 11
         Width = 58
       end
     end

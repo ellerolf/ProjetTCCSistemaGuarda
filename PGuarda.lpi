@@ -47,7 +47,7 @@
         <PackageName Value="LCL"/>
       </Item6>
     </RequiredPackages>
-    <Units Count="23">
+    <Units Count="24">
       <Unit0>
         <Filename Value="PGuarda.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -220,8 +220,16 @@
         <Filename Value="urlcontascaixa.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FrmRlContasCaixa"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit22>
+      <Unit23>
+        <Filename Value="urlcontasapagarpen.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmRlContasAPagarPen"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit23>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

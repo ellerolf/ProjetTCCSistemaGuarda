@@ -13,7 +13,6 @@ object FrmConsBaixa: TFrmConsBaixa
   OnResize = FormResize
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.2.2.0'
   object Panel1: TPanel
     Left = 0
     Height = 670
@@ -5746,6 +5745,14 @@ object FrmConsBaixa: TFrmConsBaixa
           00FF006600FF006600FF006600FF006600EF00660080FFFFFF00
         }
         OnClick = BtnPagarClick
+      end
+      object BtnImprimir: TSpeedButton
+        Left = 384
+        Height = 30
+        Top = 272
+        Width = 88
+        Caption = 'IMPRIMIR'
+        OnClick = BtnImprimirClick
       end
     end
   end
