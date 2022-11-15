@@ -1,29 +1,29 @@
-object FrmRlContasAReceberPen: TFrmRlContasAReceberPen
+object FrmRlContasAReceberEfet: TFrmRlContasAReceberEfet
   Left = 339
-  Height = 519
+  Height = 702
   Top = 31
-  Width = 1113
-  Caption = 'Relatório de Contas a Receber Pendente'
-  ClientHeight = 519
-  ClientWidth = 1113
-  object RLContasAReceberPen: TRLReport
+  Width = 1128
+  Caption = 'FrmRlContasAReceberEfet'
+  ClientHeight = 702
+  ClientWidth = 1128
+  object RLContasAReceberEfet: TRLReport
     Left = 0
     Height = 794
     Top = 0
     Width = 1123
-    DataSource = DM.DSConsBaixaPen
+    DataSource = DM.DSConsBaixaEfet
     Font.Color = clBlack
     Font.Height = -13
     Font.Name = 'Arial'
     PageSetup.Orientation = poLandscape
     ExpressionParser = RLExpressionParser1
-    BeforePrint = RLContasAReceberPenBeforePrint
+    BeforePrint = RLContasAReceberEfetBeforePrint
     object RLBand1: TRLBand
       Left = 38
       Height = 64
       Top = 38
       Width = 1047
-      BandType = btHeader
+      BandType = btColumnHeader
       object RLLabel1: TRLLabel
         Left = 0
         Height = 20
@@ -38,7 +38,7 @@ object FrmRlContasAReceberPen: TFrmRlContasAReceberPen
         Borders.DrawBottom = True
         Borders.FixedTop = True
         Borders.FixedBottom = True
-        Caption = 'RELATÓRIO DE CONTA A RECEBER (PENDENTE)'
+        Caption = 'RELATÓRIO DE CONTA A RECEBER (RECEBIDO)'
       end
       object RLLabel2: TRLLabel
         Left = 0
@@ -58,7 +58,7 @@ object FrmRlContasAReceberPen: TFrmRlContasAReceberPen
       DataFields = 'BAIDATAVEN'
       object RLBand2: TRLBand
         Left = 0
-        Height = 24
+        Height = 32
         Top = 0
         Width = 1047
         BandType = btColumnHeader
@@ -70,127 +70,140 @@ object FrmRlContasAReceberPen: TFrmRlContasAReceberPen
         Borders.Width = 2
         Borders.FixedTop = True
         Borders.FixedBottom = True
+        object RLLabel3: TRLLabel
+          Left = 0
+          Height = 16
+          Top = 8
+          Width = 89
+          Caption = 'VENCIMENTO'
+        end
         object RLLabel4: TRLLabel
-          Left = 912
+          Left = 96
           Height = 16
-          Top = 1
-          Width = 48
-          Caption = 'VALOR'
-        end
-        object RLLabel14: TRLLabel
-          Left = 680
-          Height = 16
-          Top = 1
-          Width = 33
-          Caption = 'TIPO'
-        end
-        object RLLabel13: TRLLabel
-          Left = 432
-          Height = 16
-          Top = 1
-          Width = 127
-          Caption = 'CENTRO DE CUSTO'
-        end
-        object RLLabel5: TRLLabel
-          Left = 120
-          Height = 16
-          Top = 1
+          Top = 8
           Width = 57
           Caption = 'CLIENTE'
         end
-        object RLLabel3: TRLLabel
-          Left = 16
+        object RLLabel5: TRLLabel
+          Left = 487
           Height = 16
-          Top = 1
-          Width = 89
-          Caption = 'VENCIMENTO'
+          Top = 8
+          Width = 107
+          Caption = 'MULTA E JUROS'
+        end
+        object RLLabel6: TRLLabel
+          Left = 400
+          Height = 16
+          Top = 8
+          Width = 78
+          Caption = 'DATA PGTO'
+        end
+        object RLLabel7: TRLLabel
+          Left = 600
+          Height = 16
+          Top = 8
+          Width = 76
+          Caption = 'DESCONTO'
+        end
+        object RLLabel8: TRLLabel
+          Left = 680
+          Height = 16
+          Top = 8
+          Width = 90
+          Caption = 'VALOR PAGO'
         end
       end
       object RLBand3: TRLBand
         Left = 0
         Height = 32
-        Top = 24
+        Top = 32
         Width = 1047
-        object RLDBText2: TRLDBText
-          Left = 907
-          Height = 16
-          Top = 8
-          Width = 69
-          DataField = 'BAIVALOR'
-          DataSource = DM.DSConsBaixaPen
-        end
-        object RLDBText5: TRLDBText
-          Left = 680
-          Height = 16
-          Top = 8
-          Width = 208
-          AutoSize = False
-          DataField = 'DOCNOME'
-          DataSource = DM.DSConsBaixaPen
-        end
-        object RLDBText4: TRLDBText
-          Left = 432
-          Height = 16
-          Top = 8
-          Width = 232
-          AutoSize = False
-          DataField = 'CENNOME'
-          DataSource = DM.DSConsBaixaPen
-        end
-        object RLDBText3: TRLDBText
-          Left = 120
-          Height = 16
-          Top = 8
-          Width = 296
-          AutoSize = False
-          DataField = 'PESNOME'
-          DataSource = DM.DSConsBaixaPen
-        end
         object RLDBText1: TRLDBText
-          Left = 16
+          Left = 0
           Height = 16
           Top = 8
           Width = 86
           DataField = 'BAIDATAVEN'
-          DataSource = DM.DSConsBaixaPen
+          DataSource = DM.DSConsBaixaEfet
+        end
+        object RLDBText2: TRLDBText
+          Left = 96
+          Height = 16
+          Top = 8
+          Width = 70
+          DataField = 'PESNOME'
+          DataSource = DM.DSConsBaixaEfet
+        end
+        object RLDBText3: TRLDBText
+          Left = 600
+          Height = 16
+          Top = 8
+          Width = 97
+          DataField = 'BAIDESCONTO'
+          DataSource = DM.DSConsBaixaEfet
+        end
+        object RLDBText4: TRLDBText
+          Left = 400
+          Height = 16
+          Top = 8
+          Width = 95
+          DataField = 'BAIDATAPGTO'
+          DataSource = DM.DSConsBaixaEfet
+        end
+        object RLDBText5: TRLDBText
+          Left = 487
+          Height = 16
+          Top = 8
+          Width = 118
+          DataField = 'BAIMULTA_JUROS'
+          DataSource = DM.DSConsBaixaEfet
+        end
+        object RLDBText6: TRLDBText
+          Left = 680
+          Height = 16
+          Top = 8
+          Width = 107
+          DataField = 'BAIVALORPAGO'
+          DataSource = DM.DSConsBaixaEfet
         end
       end
       object RLBand4: TRLBand
         Left = 0
         Height = 32
-        Top = 56
+        Top = 64
         Width = 1047
-        BandType = btFooter
-        object RLDBResult1: TRLDBResult
-          Left = 907
-          Height = 16
-          Top = 9
-          Width = 140
-          DataFormula = 'sum(baivalor)'
-          DataSource = DM.DSConsBaixaPen
-          DisplayMask = 'R$ #,##,0.00'
-        end
-        object RLLabel6: TRLLabel
-          Left = 864
-          Height = 16
-          Top = 9
-          Width = 32
-          Caption = 'Total'
-        end
-        object RLDBResult2: TRLDBResult
-          Left = 152
-          Height = 16
-          Top = 8
-          Width = 46
-          DataSource = DM.DSConsBaixaPen
-          Info = riCount
-        end
-        object RLLabel7: TRLLabel
-          Left = 88
+        BandType = btColumnFooter
+        object RLLabel9: TRLLabel
+          Left = 40
           Height = 16
           Top = 8
           Width = 56
           Caption = 'Registro:'
+        end
+        object RLDBResult1: TRLDBResult
+          Left = 104
+          Height = 16
+          Top = 8
+          Width = 46
+          DataSource = DM.DSConsBaixaEfet
+          Info = riCount
+        end
+        object RLLabel10: TRLLabel
+          Left = 632
+          Height = 16
+          Top = 8
+          Width = 40
+          Caption = 'Total: '
+        end
+        object RLDBResult2: TRLDBResult
+          Left = 680
+          Height = 16
+          Top = 8
+          Width = 187
+          DataFormula = 'sum(BAIVALORPAGO)'
+          DataSource = DM.DSConsBaixaEfet
+          DisplayMask = 'R$ #,##,0.00'
+          Info = riSum
         end
       end
     end
@@ -207,37 +220,36 @@ object FrmRlContasAReceberPen: TFrmRlContasAReceberPen
       Borders.DrawBottom = True
       Borders.Width = 3
       Borders.FixedBottom = True
-      object RLDBResult3: TRLDBResult
-        Left = 912
-        Height = 16
-        Top = 17
-        Width = 108
-        DataField = 'BAIVALOR'
-        DataSource = DM.DSConsBaixaPen
-        DisplayMask = 'R$ #,##,0.00'
-        Info = riSum
-      end
-      object RLLabel10: TRLLabel
-        Left = 808
-        Height = 16
-        Top = 17
-        Width = 92
-        Caption = 'TOTAL GERAL'
-      end
-      object RLDBResult5: TRLDBResult
-        Left = 152
-        Height = 16
-        Top = 17
-        Width = 46
-        DataSource = DM.DSConsBaixaPen
-        Info = riCount
-      end
       object RLLabel11: TRLLabel
         Left = 0
         Height = 16
-        Top = 17
+        Top = 16
         Width = 140
         Caption = 'TOTAL DE REGISTRO:'
+      end
+      object RLDBResult3: TRLDBResult
+        Left = 144
+        Height = 16
+        Top = 16
+        Width = 46
+        DataSource = DM.DSConsBaixaEfet
+        Info = riCount
+      end
+      object RLLabel12: TRLLabel
+        Left = 568
+        Height = 16
+        Top = 16
+        Width = 94
+        Caption = 'TOTAL PAGO: '
+      end
+      object RLDBResult4: TRLDBResult
+        Left = 680
+        Height = 16
+        Top = 16
+        Width = 200
+        DataFormula = 'sum(BAIVALORPAGO)'
+        DataSource = DM.DSConsBaixaEfet
+        DisplayMask = 'R$ #,##,0.00'
       end
     end
     object RLBand6: TRLBand
@@ -269,7 +281,7 @@ object FrmRlContasAReceberPen: TFrmRlContasAReceberPen
         Width = 70
         Text = 'Data:'
       end
-      object RLLabel12: TRLLabel
+      object RLLabel13: TRLLabel
         Left = 112
         Height = 16
         Top = 8
@@ -278,7 +290,7 @@ object FrmRlContasAReceberPen: TFrmRlContasAReceberPen
     end
   end
   object RLExpressionParser1: TRLExpressionParser
-    Left = 451
-    Top = 273
+    Left = 439
+    Top = 226
   end
 end

@@ -1,10 +1,10 @@
 object DM: TDM
   OnCreate = DataModuleCreate
   OldCreateOrder = False
-  Height = 718
+  Height = 573
   HorizontalOffset = 78
   VerticalOffset = 0
-  Width = 1131
+  Width = 1349
   object ZFinanceiro: TZConnection
     ControlsCodePage = cCP_UTF8
     AutoEncodeStrings = True
@@ -2862,6 +2862,7 @@ object DM: TDM
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
+      Currency = True
       Precision = 22
     end
     object ZQConsBaixaEfetBAIMULTA_JUROS: TFloatField
