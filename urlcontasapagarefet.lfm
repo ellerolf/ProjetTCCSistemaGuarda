@@ -131,7 +131,7 @@ object FrmRlContasAPagarEfet: TFrmRlContasAPagarEfet
           Left = 96
           Height = 16
           Top = 8
-          Width = 296
+          Width = 70
           DataField = 'PESNOME'
           DataSource = DM.DSConsBaixaEfet
         end
@@ -139,7 +139,7 @@ object FrmRlContasAPagarEfet: TFrmRlContasAPagarEfet
           Left = 400
           Height = 16
           Top = 8
-          Width = 78
+          Width = 95
           DataField = 'BAIDATAPGTO'
           DataSource = DM.DSConsBaixaEfet
         end
@@ -147,7 +147,7 @@ object FrmRlContasAPagarEfet: TFrmRlContasAPagarEfet
           Left = 490
           Height = 16
           Top = 8
-          Width = 105
+          Width = 118
           DataField = 'BAIMULTA_JUROS'
           DataSource = DM.DSConsBaixaEfet
         end
@@ -155,7 +155,7 @@ object FrmRlContasAPagarEfet: TFrmRlContasAPagarEfet
           Left = 600
           Height = 16
           Top = 8
-          Width = 76
+          Width = 97
           DataField = 'BAIDESCONTO'
           DataSource = DM.DSConsBaixaEfet
         end
@@ -163,7 +163,7 @@ object FrmRlContasAPagarEfet: TFrmRlContasAPagarEfet
           Left = 680
           Height = 16
           Top = 8
-          Width = 90
+          Width = 107
           DataField = 'BAIVALORPAGO'
           DataSource = DM.DSConsBaixaEfet
         end
@@ -192,8 +192,8 @@ object FrmRlContasAPagarEfet: TFrmRlContasAPagarEfet
           Left = 680
           Height = 16
           Top = 8
-          Width = 187
-          DataFormula = 'sum(BAIVALORPAGO)'
+          Width = 146
+          DataField = 'BAIVALORPAGO'
           DataSource = DM.DSConsBaixaEfet
           DisplayMask = 'R$ #,##,0.00'
           Info = riSum

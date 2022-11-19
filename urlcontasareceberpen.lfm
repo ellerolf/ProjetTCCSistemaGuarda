@@ -165,10 +165,11 @@ object FrmRlContasAReceberPen: TFrmRlContasAReceberPen
           Left = 907
           Height = 16
           Top = 9
-          Width = 140
-          DataFormula = 'sum(baivalor)'
+          Width = 108
+          DataField = 'BAIVALOR'
           DataSource = DM.DSConsBaixaPen
           DisplayMask = 'R$ #,##,0.00'
+          Info = riSum
         end
         object RLLabel6: TRLLabel
           Left = 864

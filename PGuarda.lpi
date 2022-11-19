@@ -248,6 +248,7 @@
         <Filename Value="urlcontasapagarefet.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FrmRlContasAPagarEfet"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit26>
     </Units>

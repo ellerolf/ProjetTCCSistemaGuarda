@@ -199,8 +199,8 @@ object FrmRlContasAReceberEfet: TFrmRlContasAReceberEfet
           Left = 680
           Height = 16
           Top = 8
-          Width = 187
-          DataFormula = 'sum(BAIVALORPAGO)'
+          Width = 146
+          DataField = 'BAIVALORPAGO'
           DataSource = DM.DSConsBaixaEfet
           DisplayMask = 'R$ #,##,0.00'
           Info = riSum

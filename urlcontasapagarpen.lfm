@@ -176,10 +176,11 @@ object FrmRlContasAPagarPen: TFrmRlContasAPagarPen
           Left = 912
           Height = 16
           Top = 9
-          Width = 140
-          DataFormula = 'sum(baivalor)'
+          Width = 108
+          DataField = 'BAIVALOR'
           DataSource = DM.DSConsBaixaPen
           DisplayMask = 'R$ #,##,0.00'
+          Info = riSum
         end
         object RLDBResult2: TRLDBResult
           Left = 152
