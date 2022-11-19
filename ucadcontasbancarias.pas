@@ -478,8 +478,8 @@ begin
         else
         begin
               if(RGBStatusTransf.ItemIndex=FrmTranfContas.StatusDaTransf) and (DtDataTransf.Date=dm.ZQConsTransferenciaTRADATA.AsDateTime) and (EdtNDoc.Text=DM.ZQConsTransferenciaTRANUMERO_DOCUMENTO.AsString) and
-              (ValorDaTransferenc=dm.ZQConsTransferenciaTRAVALOR.AsFloat) and (EdtCodContaO.Text=DM.ZQConsTransferenciaTRACODIGO_CONORI.AsString) and
-              (EdtCodContaDes.Text=dm.ZQConsTransferenciaTRACODIGO_CONDES.AsString) then
+              (ValorDaTransferenc=dm.ZQConsTransferenciaTRAVALOR.AsFloat) and (EdtCodContaO.Text=DM.ZQConsTransferenciaCODIGODACONTADEORIGEM.AsString) and
+              (EdtCodContaDes.Text=dm.ZQConsTransferenciaCODIGODACONTADEDESTINO.AsString) then
               begin
                    ShowMessage('Não foi realizada nenhuma alteração');
               end

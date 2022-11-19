@@ -1,12 +1,12 @@
 object FrmTranfContas: TFrmTranfContas
   Left = -8
-  Height = 734
+  Height = 773
   Top = -8
-  Width = 926
+  Width = 942
   BorderStyle = bsNone
   Caption = 'FrmTranfContas'
-  ClientHeight = 711
-  ClientWidth = 926
+  ClientHeight = 749
+  ClientWidth = 942
   Color = 16577259
   OnClose = FormClose
   OnResize = FormResize
@@ -15,22 +15,22 @@ object FrmTranfContas: TFrmTranfContas
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 711
+    Height = 749
     Top = 0
-    Width = 926
+    Width = 942
     Align = alClient
-    ClientHeight = 711
-    ClientWidth = 926
+    ClientHeight = 749
+    ClientWidth = 942
     TabOrder = 0
     object Panel2: TPanel
       Left = 1
-      Height = 677
+      Height = 715
       Top = 33
-      Width = 924
+      Width = 940
       Align = alClient
       BevelOuter = bvNone
-      ClientHeight = 677
-      ClientWidth = 924
+      ClientHeight = 715
+      ClientWidth = 940
       TabOrder = 0
       OnResize = Panel1Resize
       object BtnCancela: TSpeedButton
@@ -1111,32 +1111,52 @@ object FrmTranfContas: TFrmTranfContas
             FieldName = 'TRACODIGO'
           end        
           item
+            Title.Caption = 'DATA'
+            Width = 65
+            FieldName = 'TRADATA'
+          end        
+          item
+            Title.Caption = 'NOME DA CONTA DE ORIGEM'
+            Width = 200
+            FieldName = 'NOME DA CONTA DE ORIGEM'
+          end        
+          item
+            Title.Caption = 'N° CONTA DE ORIGEM'
+            Width = 127
+            FieldName = 'N° CONTA DE ORIGEM'
+          end        
+          item
+            Title.Caption = 'TIPO DA CONTA DE ORIGEM'
+            Width = 160
+            FieldName = 'TIPO DA CONTA DE ORIGEM'
+          end        
+          item
+            Title.Caption = 'NOME DA CONTA DE DESTINO'
+            Width = 200
+            FieldName = 'NOME DA CONTA DE DESTINO'
+          end        
+          item
+            Title.Caption = 'N° CONTA DE DESTINO'
+            Width = 130
+            FieldName = 'N° CONTA DE DESTINO'
+          end        
+          item
+            Title.Caption = 'TIPO DA CONTA DE DESTINO'
+            Width = 160
+            FieldName = 'TIPO DA CONTA DE DESTINO'
+          end        
+          item
+            Title.Caption = 'N° DO DOCUMENTO'
+            Width = 116
+            FieldName = 'TRANUMERO_DOCUMENTO'
+          end        
+          item
             Title.Caption = 'VALOR'
             FieldName = 'TRAVALOR'
           end        
           item
-            Title.Caption = 'CODIGO ORIGEM'
-            Width = 98
-            FieldName = 'TRACODIGO_CONORI'
-          end        
-          item
-            Title.Caption = 'CÓDIGO DESTINO'
-            Width = 101
-            FieldName = 'TRACODIGO_CONDES'
-          end        
-          item
-            Title.Caption = 'DATA'
-            FieldName = 'TRADATA'
-          end        
-          item
-            Title.Caption = 'N° DOCUMENTO'
-            Width = 95
-            FieldName = 'TRANUMERO_DOCUMENTO'
-          end        
-          item
             Title.Caption = 'STATUS'
-            Width = 54
-            FieldName = 'TRASTATUS'
+            FieldName = 'STATUS'
           end>
         DataSource = DM.DSConsTransferencia
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
@@ -1225,7 +1245,7 @@ object FrmTranfContas: TFrmTranfContas
       Left = 1
       Height = 32
       Top = 1
-      Width = 924
+      Width = 940
       Align = alTop
       Alignment = taCenter
       Caption = 'Transferências Bancarias'

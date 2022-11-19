@@ -2,9 +2,9 @@ object DM: TDM
   OnCreate = DataModuleCreate
   OldCreateOrder = False
   Height = 573
-  HorizontalOffset = 78
+  HorizontalOffset = 0
   VerticalOffset = 0
-  Width = 1349
+  Width = 1316
   object ZFinanceiro: TZConnection
     ControlsCodePage = cCP_UTF8
     AutoEncodeStrings = True
@@ -835,7 +835,7 @@ object DM: TDM
   object ZQConsTransferencia: TZQuery
     Connection = ZFinanceiro
     SQL.Strings = (
-      'SELECT * FROM transferencia WHERE TRADATA between :dtini and :dtfin'
+      'SELECT * FROM vwtransferencia WHERE TRADATA between :dtini and :dtfin'
     )
     Params = <    
       item
@@ -880,28 +880,10 @@ object DM: TDM
       Required = False
       Precision = 22
     end
-    object ZQConsTransferenciaTRACODIGO_CONORI: TLongintField
-      FieldKind = fkData
-      FieldName = 'TRACODIGO_CONORI'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object ZQConsTransferenciaTRACODIGO_CONDES: TLongintField
-      FieldKind = fkData
-      FieldName = 'TRACODIGO_CONDES'
-      Index = 3
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
     object ZQConsTransferenciaTRADATA: TDateField
       FieldKind = fkData
       FieldName = 'TRADATA'
-      Index = 4
+      Index = 2
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -910,7 +892,7 @@ object DM: TDM
     object ZQConsTransferenciaTRANUMERO_DOCUMENTO: TStringField
       FieldKind = fkData
       FieldName = 'TRANUMERO_DOCUMENTO'
-      Index = 5
+      Index = 3
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -920,11 +902,119 @@ object DM: TDM
     object ZQConsTransferenciaTRASTATUS: TSmallintField
       FieldKind = fkData
       FieldName = 'TRASTATUS'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQConsTransferenciaSTATUS: TStringField
+      FieldKind = fkData
+      FieldName = 'STATUS'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 7
+    end
+    object ZQConsTransferenciaNOMEDACONTADEORIGEM: TStringField
+      FieldKind = fkData
+      FieldName = 'NOME DA CONTA DE ORIGEM'
       Index = 6
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
+      Size = 50
+    end
+    object ZQConsTransferenciaAGENCIADACONTADEORIGEM: TStringField
+      FieldKind = fkData
+      FieldName = 'AGENCIA DA CONTA DE ORIGEM'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsTransferenciaNCONTADEORIGEM: TStringField
+      FieldKind = fkData
+      FieldName = 'N° CONTA DE ORIGEM'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsTransferenciaCODIGODACONTADEORIGEM: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODIGO DA CONTA DE ORIGEM'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object ZQConsTransferenciaNOMEDACONTADEDESTINO: TStringField
+      FieldKind = fkData
+      FieldName = 'NOME DA CONTA DE DESTINO'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsTransferenciaAGENCIADACONTADEdestino: TStringField
+      FieldKind = fkData
+      FieldName = 'AGENCIA DA CONTA DE destino'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsTransferenciaNCONTADEDESTINO: TStringField
+      FieldKind = fkData
+      FieldName = 'N° CONTA DE DESTINO'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsTransferenciaCODIGODACONTADEDESTINO: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODIGO DA CONTA DE DESTINO'
+      Index = 13
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object ZQConsTransferenciaTIPODACONTADEORIGEM: TStringField
+      FieldKind = fkData
+      FieldName = 'TIPO DA CONTA DE ORIGEM'
+      Index = 14
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ZQConsTransferenciaTIPODACONTADEDESTINO: TStringField
+      FieldKind = fkData
+      FieldName = 'TIPO DA CONTA DE DESTINO'
+      Index = 15
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
     end
   end
   object ZQDelUsuario: TZQuery

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 12/11/2022 às 18:34
+-- Tempo de geração: 20/11/2022 às 00:29
 -- Versão do servidor: 10.1.35-MariaDB
 -- Versão do PHP: 7.2.9
 
@@ -598,6 +598,31 @@ CREATE TABLE `vwpessoas` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura stand-in para view `vwtransferencia`
+-- (Veja abaixo para a visão atual)
+--
+CREATE TABLE `vwtransferencia` (
+`TRACODIGO` int(11)
+,`TRAVALOR` double
+,`TRADATA` date
+,`TRANUMERO_DOCUMENTO` varchar(50)
+,`TRASTATUS` tinyint(1)
+,`STATUS` varchar(7)
+,`NOME DA CONTA DE ORIGEM` varchar(50)
+,`AGENCIA DA CONTA DE ORIGEM` varchar(50)
+,`N° CONTA DE ORIGEM` varchar(50)
+,`CODIGO DA CONTA DE ORIGEM` int(11)
+,`NOME DA CONTA DE DESTINO` varchar(50)
+,`AGENCIA DA CONTA DE destino` varchar(50)
+,`N° CONTA DE DESTINO` varchar(50)
+,`CODIGO DA CONTA DE DESTINO` int(11)
+,`TIPO DA CONTA DE ORIGEM` varchar(50)
+,`TIPO DA CONTA DE DESTINO` varchar(50)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura stand-in para view `vwverparcela`
 -- (Veja abaixo para a visão atual)
 --
@@ -668,6 +693,15 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 DROP TABLE IF EXISTS `vwpessoas`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vwpessoas`  AS  select `p`.`PESCODIGO` AS `CODIGO`,`p`.`PESNOME` AS `NOME`,`p`.`CODIGOTIP` AS `CODIGOTIP`,`t`.`TIPNOME` AS `TIPO`,`p`.`PESCPF` AS `CPF`,`p`.`PESDATA_NASCIMENTO` AS `DATA NASCIMENTO`,`p`.`PESCNPJ` AS `CNPJ`,`p`.`PESNOME_FANTASIA` AS `NOME FANTASIA`,`p`.`PESINSCRICAO_ESTADUAL` AS `INSCRIÇÃO ESTADUAL`,`p`.`PESINSCRICAO_MUNICIPAL` AS `INSCRIÇÃO MUNICIPAL`,`p`.`PESCEP` AS `CEP`,`p`.`PESENDERECO` AS `ENDEREÇO`,`p`.`PESNUMERO` AS `NÚMERO`,`p`.`PESCOMPLEMENTO` AS `COMPLEMENTO`,`p`.`PESESTADO` AS `ESTADO`,`p`.`PESCIDADE` AS `CIDADE`,`p`.`PESBAIRRO` AS `BAIRRO`,`p`.`PESEMAIL` AS `E-MAIL`,`p`.`PESTELEFONE` AS `TELEFONE`,`p`.`PESCELULAR` AS `CELULAR`,`p`.`PESOBSERVACAO` AS `OBSERVAÇÃO`,`p`.`PESSTATUS` AS `ATIVO`,(case when (`p`.`PESSTATUS` = 1) then 'ATIVO' else 'INATIVO' end) AS `STATUS` from (`pessoa` `p` join `tipo_pessoa` `t` on((`p`.`CODIGOTIP` = `t`.`TIPCODIGO`))) ;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para view `vwtransferencia`
+--
+DROP TABLE IF EXISTS `vwtransferencia`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vwtransferencia`  AS  select `transferencia`.`TRACODIGO` AS `TRACODIGO`,`transferencia`.`TRAVALOR` AS `TRAVALOR`,`transferencia`.`TRADATA` AS `TRADATA`,`transferencia`.`TRANUMERO_DOCUMENTO` AS `TRANUMERO_DOCUMENTO`,`transferencia`.`TRASTATUS` AS `TRASTATUS`,(case when (`transferencia`.`TRASTATUS` = 1) then 'ATIVO' when (`transferencia`.`TRASTATUS` = 0) then 'INATIVO' end) AS `STATUS`,`origem`.`CONNOME` AS `NOME DA CONTA DE ORIGEM`,`origem`.`CONAGENCIA` AS `AGENCIA DA CONTA DE ORIGEM`,`origem`.`CONNUMERO_CONTA` AS `N° CONTA DE ORIGEM`,`origem`.`CONCODIGO` AS `CODIGO DA CONTA DE ORIGEM`,`destino`.`CONNOME` AS `NOME DA CONTA DE DESTINO`,`destino`.`CONAGENCIA` AS `AGENCIA DA CONTA DE destino`,`destino`.`CONNUMERO_CONTA` AS `N° CONTA DE DESTINO`,`destino`.`CONCODIGO` AS `CODIGO DA CONTA DE DESTINO`,`tipocontaorigem`.`TIPNOME` AS `TIPO DA CONTA DE ORIGEM`,`tipocontadestino`.`TIPNOME` AS `TIPO DA CONTA DE DESTINO` from ((((`transferencia` join `contas` `origem` on((`origem`.`CONCODIGO` = `transferencia`.`TRACODIGO_CONORI`))) join `contas` `destino` on((`destino`.`CONCODIGO` = `transferencia`.`TRACODIGO_CONDES`))) join `tipo_conta` `tipocontaorigem` on((`origem`.`CODIGOTIP` = `tipocontaorigem`.`TIPCODIGO`))) join `tipo_conta` `tipocontadestino` on((`destino`.`CODIGOTIP` = `tipocontadestino`.`TIPCODIGO`))) order by `transferencia`.`TRADATA` ;
 
 -- --------------------------------------------------------
 

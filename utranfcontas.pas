@@ -81,8 +81,8 @@ begin
             FrmCadContasBancarias.DtDataTransf.Date:=DM.ZQConsTransferenciaTRADATA.AsDateTime;
             FrmCadContasBancarias.EdtNDoc.Text:=DM.ZQConsTransferenciaTRANUMERO_DOCUMENTO.Text;
             FrmCadContasBancarias.EdtVlrTras.Text:=FormatFloat('0.00',dm.ZQConsTransferenciaTRAVALOR.AsFloat);
-            FrmCadContasBancarias.EdtCodContaO.Text:=dm.ZQConsTransferenciaTRACODIGO_CONORI.Text;
-            FrmCadContasBancarias.EdtCodContaDes.Text:=dm.ZQConsTransferenciaTRACODIGO_CONDES.Text;
+            FrmCadContasBancarias.EdtCodContaO.Text:=dm.ZQConsTransferenciaCODIGODACONTADEORIGEM.Text;
+            FrmCadContasBancarias.EdtCodContaDes.Text:=dm.ZQConsTransferenciaCODIGODACONTADEDESTINO.Text;
             FrmCadContasBancarias.Show;
        end;
 
@@ -97,8 +97,8 @@ begin
             FrmCadContasBancarias.DtDataTransf.Date:=DM.ZQConsTransferenciaTRADATA.AsDateTime;
             FrmCadContasBancarias.EdtNDoc.Text:=DM.ZQConsTransferenciaTRANUMERO_DOCUMENTO.Text;
             FrmCadContasBancarias.EdtVlrTras.Text:=FormatFloat('0.00',dm.ZQConsTransferenciaTRAVALOR.AsFloat);
-            FrmCadContasBancarias.EdtCodContaO.Text:=dm.ZQConsTransferenciaTRACODIGO_CONORI.Text;
-            FrmCadContasBancarias.EdtCodContaDes.Text:=dm.ZQConsTransferenciaTRACODIGO_CONDES.Text;
+            FrmCadContasBancarias.EdtCodContaO.Text:=dm.ZQConsTransferenciaCODIGODACONTADEORIGEM.Text;
+            FrmCadContasBancarias.EdtCodContaDes.Text:=dm.ZQConsTransferenciaCODIGODACONTADEDESTINO.Text;
             FrmCadContasBancarias.Show;
        end;
   end;
@@ -159,7 +159,7 @@ begin
                 begin
                      Close ;
                      sql.Clear;
-                     SQL.Add('SELECT * FROM transferencia WHERE TRADATA between :dtini and :dtfin');
+                     SQL.Add('SELECT * FROM vwtransferencia WHERE TRADATA between :dtini and :dtfin');
                      ParamByName('dtini').Value:=FormatDateTime('yyyy-mm-dd',DTInicial.Date);
                      ParamByName('dtfin').Value:=FormatDateTime('yyyy-mm-dd',DTFinal.Date);
                      Open;
@@ -173,7 +173,7 @@ begin
                 begin
                      Close;
                      sql.Clear;
-                     SQL.Add('SELECT * FROM transferencia WHERE TRASTATUS=1 and TRADATA between :dtini and :dtfin');
+                     SQL.Add('SELECT * FROM vwtransferencia WHERE TRASTATUS=1 and TRADATA between :dtini and :dtfin');
                      ParamByName('dtini').Value:=FormatDateTime('yyyy-mm-dd',DTInicial.Date);
                      ParamByName('dtfin').Value:=FormatDateTime('yyyy-mm-dd',DTFinal.Date);
                      Open;
@@ -187,7 +187,7 @@ begin
                 begin
                      Close ;
                      sql.Clear;
-                     SQL.Add('SELECT * FROM transferencia WHERE TRASTATUS=0 and TRADATA between :dtini and :dtfin');
+                     SQL.Add('SELECT * FROM vwtransferencia WHERE TRASTATUS=0 and TRADATA between :dtini and :dtfin');
                      ParamByName('dtini').Value:=FormatDateTime('yyyy-mm-dd',DTInicial.Date);
                      ParamByName('dtfin').Value:=FormatDateTime('yyyy-mm-dd',DTFinal.Date);
                      Open;
