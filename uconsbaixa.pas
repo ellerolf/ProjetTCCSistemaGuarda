@@ -137,7 +137,7 @@ implementation
 
 { TFrmConsBaixa }
 
-uses urlcontasapagarpen, urlcontasareceberpen, urlcontasareceberefet;
+uses urlcontasapagarpen, urlcontasareceberpen, urlcontasareceberefet, urlcontasapagarefet;
 
 procedure TFrmConsBaixa.EdtDataInicioChange(Sender: TObject);
 begin
@@ -1242,6 +1242,14 @@ begin
           if (dm.ZQConsBaixaEfet.RecordCount>0) then
           begin
                FrmRlContasAReceberEfet.RLContasAReceberEfet.Preview();
+          end;
+     end
+     //Despesa + efetivado
+     Else if (CboRecOuDes.ItemIndex=1) and (CboStatus.ItemIndex=1) then
+     begin
+          if (dm.ZQConsBaixaEfet.RecordCount>0) then
+          begin
+               FrmRlContasAPagarEfet.RLContasAPagarEfet.Preview();
           end;
      end;
 end;

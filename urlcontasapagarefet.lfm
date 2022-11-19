@@ -1,12 +1,12 @@
-object FrmRlContasAReceberEfet: TFrmRlContasAReceberEfet
+object FrmRlContasAPagarEfet: TFrmRlContasAPagarEfet
   Left = 339
-  Height = 702
+  Height = 411
   Top = 31
-  Width = 1128
-  Caption = 'Relatório de Contas a Receber Efetivado'
-  ClientHeight = 702
-  ClientWidth = 1128
-  object RLContasAReceberEfet: TRLReport
+  Width = 1125
+  Caption = 'Relatório de Contas a Pagar Efetivado'
+  ClientHeight = 411
+  ClientWidth = 1125
+  object RLContasAPagarEfet: TRLReport
     Left = 0
     Height = 794
     Top = 0
@@ -17,13 +17,14 @@ object FrmRlContasAReceberEfet: TFrmRlContasAReceberEfet
     Font.Name = 'Arial'
     PageSetup.Orientation = poLandscape
     ExpressionParser = RLExpressionParser1
-    BeforePrint = RLContasAReceberEfetBeforePrint
+    BeforePrint = RLContasAPagarEfetBeforePrint
     object RLBand1: TRLBand
       Left = 38
       Height = 64
       Top = 38
       Width = 1047
-      BandType = btColumnHeader
+      BandType = btHeader
+      AfterPrint = RLBand1AfterPrint
       object RLLabel1: TRLLabel
         Left = 0
         Height = 20
@@ -38,7 +39,7 @@ object FrmRlContasAReceberEfet: TFrmRlContasAReceberEfet
         Borders.DrawBottom = True
         Borders.FixedTop = True
         Borders.FixedBottom = True
-        Caption = 'RELATÓRIO DE CONTA A RECEBER (RECEBIDO)'
+        Caption = 'RELATÓRIO DE CONTA A PAGAR (PAGO)'
       end
       object RLLabel2: TRLLabel
         Left = 0
@@ -81,22 +82,22 @@ object FrmRlContasAReceberEfet: TFrmRlContasAReceberEfet
           Left = 96
           Height = 16
           Top = 8
-          Width = 57
-          Caption = 'CLIENTE'
+          Width = 95
+          Caption = 'FORNECEDOR'
         end
         object RLLabel5: TRLLabel
-          Left = 487
-          Height = 16
-          Top = 8
-          Width = 107
-          Caption = 'MULTA E JUROS'
-        end
-        object RLLabel6: TRLLabel
           Left = 400
           Height = 16
           Top = 8
           Width = 78
           Caption = 'DATA PGTO'
+        end
+        object RLLabel6: TRLLabel
+          Left = 488
+          Height = 16
+          Top = 8
+          Width = 107
+          Caption = 'MULTA E JUROS'
         end
         object RLLabel7: TRLLabel
           Left = 600
@@ -130,39 +131,39 @@ object FrmRlContasAReceberEfet: TFrmRlContasAReceberEfet
           Left = 96
           Height = 16
           Top = 8
-          Width = 70
+          Width = 296
           DataField = 'PESNOME'
           DataSource = DM.DSConsBaixaEfet
         end
         object RLDBText3: TRLDBText
-          Left = 600
-          Height = 16
-          Top = 8
-          Width = 97
-          DataField = 'BAIDESCONTO'
-          DataSource = DM.DSConsBaixaEfet
-        end
-        object RLDBText4: TRLDBText
           Left = 400
           Height = 16
           Top = 8
-          Width = 95
+          Width = 78
           DataField = 'BAIDATAPGTO'
           DataSource = DM.DSConsBaixaEfet
         end
-        object RLDBText5: TRLDBText
-          Left = 487
+        object RLDBText4: TRLDBText
+          Left = 490
           Height = 16
           Top = 8
-          Width = 118
+          Width = 105
           DataField = 'BAIMULTA_JUROS'
+          DataSource = DM.DSConsBaixaEfet
+        end
+        object RLDBText5: TRLDBText
+          Left = 600
+          Height = 16
+          Top = 8
+          Width = 76
+          DataField = 'BAIDESCONTO'
           DataSource = DM.DSConsBaixaEfet
         end
         object RLDBText6: TRLDBText
           Left = 680
           Height = 16
           Top = 8
-          Width = 107
+          Width = 90
           DataField = 'BAIVALORPAGO'
           DataSource = DM.DSConsBaixaEfet
         end
@@ -180,14 +181,6 @@ object FrmRlContasAReceberEfet: TFrmRlContasAReceberEfet
           Width = 56
           Caption = 'Registro:'
         end
-        object RLDBResult1: TRLDBResult
-          Left = 104
-          Height = 16
-          Top = 8
-          Width = 46
-          DataSource = DM.DSConsBaixaEfet
-          Info = riCount
-        end
         object RLLabel10: TRLLabel
           Left = 632
           Height = 16
@@ -195,7 +188,7 @@ object FrmRlContasAReceberEfet: TFrmRlContasAReceberEfet
           Width = 40
           Caption = 'Total: '
         end
-        object RLDBResult2: TRLDBResult
+        object RLDBResult1: TRLDBResult
           Left = 680
           Height = 16
           Top = 8
@@ -204,6 +197,14 @@ object FrmRlContasAReceberEfet: TFrmRlContasAReceberEfet
           DataSource = DM.DSConsBaixaEfet
           DisplayMask = 'R$ #,##,0.00'
           Info = riSum
+        end
+        object RLDBResult2: TRLDBResult
+          Left = 104
+          Height = 16
+          Top = 8
+          Width = 46
+          DataSource = DM.DSConsBaixaEfet
+          Info = riCount
         end
       end
     end
@@ -227,22 +228,14 @@ object FrmRlContasAReceberEfet: TFrmRlContasAReceberEfet
         Width = 140
         Caption = 'TOTAL DE REGISTRO:'
       end
-      object RLDBResult3: TRLDBResult
-        Left = 144
-        Height = 16
-        Top = 16
-        Width = 46
-        DataSource = DM.DSConsBaixaEfet
-        Info = riCount
-      end
       object RLLabel12: TRLLabel
-        Left = 568
+        Left = 576
         Height = 16
         Top = 16
         Width = 94
         Caption = 'TOTAL PAGO: '
       end
-      object RLDBResult4: TRLDBResult
+      object RLDBResult3: TRLDBResult
         Left = 680
         Height = 16
         Top = 16
@@ -251,6 +244,14 @@ object FrmRlContasAReceberEfet: TFrmRlContasAReceberEfet
         DataSource = DM.DSConsBaixaEfet
         DisplayMask = 'R$ #,##,0.00'
         Info = riSum
+      end
+      object RLDBResult4: TRLDBResult
+        Left = 144
+        Height = 16
+        Top = 16
+        Width = 46
+        DataSource = DM.DSConsBaixaEfet
+        Info = riCount
       end
     end
     object RLBand6: TRLBand
@@ -291,7 +292,7 @@ object FrmRlContasAReceberEfet: TFrmRlContasAReceberEfet
     end
   end
   object RLExpressionParser1: TRLExpressionParser
-    Left = 439
-    Top = 226
+    Left = 480
+    Top = 216
   end
 end

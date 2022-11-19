@@ -2873,6 +2873,7 @@ object DM: TDM
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
+      Currency = True
       Precision = 22
     end
     object ZQConsBaixaEfetBAIDESCONTO: TFloatField
@@ -2883,6 +2884,7 @@ object DM: TDM
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
+      Currency = True
       Precision = 22
     end
     object ZQConsBaixaEfetCODIGOUSU: TLongintField
