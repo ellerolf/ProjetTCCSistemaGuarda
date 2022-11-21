@@ -47,7 +47,7 @@ type
     LblCpfCnpj: TLabel;
     LblEstadual: TLabel;
     LblMunicipal: TLabel;
-    Label7: TLabel;
+    LblTitulo: TLabel;
     LblEndereco: TLabel;
     LblMensagem: TLabel;
     EdtCpfCnpj: TMaskEdit;
@@ -82,6 +82,8 @@ type
     procedure DesativaCampoForn();
     procedure trocacor();
     procedure limpacampo();
+    procedure sobeBanco();
+
 
   end;
 
@@ -216,6 +218,12 @@ begin
   MemObs.Clear;
 end;
 
+procedure TFrmCadFornecedor.sobeBanco;
+begin
+  //test de up para o banco
+
+end;
+
 
 
 
@@ -256,7 +264,7 @@ end;
 
 procedure TFrmCadFornecedor.BtnCpfChange(Sender: TObject);
 begin
-  EdtCpfCnpj.EditMask := '999.999.999.-99;1;_';
+  EdtCpfCnpj.EditMask := '999.999.999-99;1;_';
   LblCpfCnpj.Caption := 'CPF';
   LblNomeRazao.Caption := 'Nome';
   AtivaCampoForn();
@@ -319,7 +327,7 @@ begin
         dm.ZQCadPessoas.Params.ParamByName('pesnome_fantasia').Value :=
           EdtFantasia.Text;
         dm.ZQCadPessoas.Params.ParamByName('pesinscricao_estadual').Value :=
-          StrToInt(EdtInsEstadual.Text);
+          EdtInsEstadual.Text;
         dm.ZQCadPessoas.params.ParamByName('pesinscricao_municipal').Value :=
           EdtInsMun.Text;
         dm.ZQCadPessoas.params.ParamByName('pescep').Value := EdtCep.Text;
@@ -413,10 +421,54 @@ begin
     end;//fim cpf
   end;//fim insert
 
-  //Update
+  //INICIO DO UP
   if (OpForn = 'U') then
   begin
-    //CNPJ-----------------------------------------------------------------------
+    //altera CPF-----------------------------------------------------------------------
+    if (BtnCpf.Checked = True) then
+    begin
+
+      dm.ZQAltPessoas.Params.ParamByName('pesnome').Value := EdtNome.Text;
+      dm.ZQAltPessoas.Params.ParamByName('codigotip').Value := 1;
+      dm.ZQAltPessoas.Params.ParamByName('pescpf').Value := EdtCpfCnpj.Text;
+      dm.ZQAltPessoas.Params.ParamByName('pesdata_nascimento').AsString :=
+        FormatDateTime('yyyy-mm-dd', DTNasc.Date);
+      dm.ZQAltPessoas.Params.ParamByName('pescnpj').Value := null;
+      dm.ZQCadPessoas.Params.ParamByName('pesnome_fantasia').Value := null;
+      dm.ZQAltPessoas.Params.ParamByName('pesinscricao_estadual').Value := null;
+      dm.ZQAltPessoas.params.ParamByName('pesinscricao_municipal').Value :=
+        null;
+      dm.ZQAltPessoas.params.ParamByName('pescep').Value := EdtCep.Text;
+      dm.ZQAltPessoas.params.ParamByName('pesendereco').Value := EdtEndereco.Text;
+      dm.ZQAltPessoas.params.ParamByName('pesnumero').Value := EdtNumero.Text;
+      dm.ZQAltPessoas.params.ParamByName('pescomplemento').Value := EdtComplemento.Text;
+      dm.ZQAltPessoas.params.ParamByName('pesestado').Value := CboUf.Text;
+      dm.ZQAltPessoas.params.ParamByName('pescidade').Value := EdtCidade.Text;
+      dm.ZQAltPessoas.params.ParamByName('pesbairro').Value := EdtBairro.Text;
+      dm.ZQAltPessoas.params.ParamByName('pesemail').Value := EdtEmail.Text;
+      dm.ZQAltPessoas.params.ParamByName('pestelefone').Value := EdtTel.Text;
+      dm.ZQAltPessoas.params.ParamByName('pescelular').Value := EdtCel.Text;
+      dm.ZQAltPessoas.params.ParamByName('pesobservacao').Value := MemObs.Text;
+      //condicao ativo ou inativo
+      if (BtnAtivo.Checked = True) then
+      begin
+        dm.ZQAltPessoas.params.ParamByName('pesstatus').Value := 1;
+      end;
+      if (BtnInativo.Checked = True) then
+      begin
+        dm.ZQAltPessoas.params.ParamByName('pesstatus').Value := 0;
+      end;
+      dm.ZQAltPessoas.params.ParamByName('pescodigo').Value :=
+        dm.ZQConsPessoasCODIGO.AsInteger;
+
+      dm.ZQAltPessoas.ExecSQL;
+
+      dm.ZQConsPessoas.Close;
+      dm.ZQConsPessoas.Open;
+
+      ShowMessage('Dados Alterados com sucesso!');
+    end;
+    //altera CNPJ-----------------------------------------------------------------------
     if (BtnCnpj.Checked = True) then
     begin
       dm.ZQAltPessoas.Params.ParamByName('pesnome').Value := EdtNome.Text;
@@ -440,7 +492,7 @@ begin
       dm.ZQAltPessoas.params.ParamByName('pestelefone').Value := EdtTel.Text;
       dm.ZQAltPessoas.params.ParamByName('pescelular').Value := EdtCel.Text;
       dm.ZQAltPessoas.params.ParamByName('pesobservacao').Value := MemObs.Text;
-      //como faço para fazer subir no banco esta subindo nulo e quando entra na tela novamente ele não troca mais o status
+
       if (BtnAtivo.Checked = True) then
       begin
         dm.ZQAltPessoas.params.ParamByName('pesstatus').Value := 1;
@@ -449,109 +501,18 @@ begin
       begin
         dm.ZQAltPessoas.params.ParamByName('pesstatus').Value := 0;
       end;
-      dm.ZQAltPessoas.params.ParamByName('pescodigo').Value := pescodigo;
+
+      dm.ZQAltPessoas.params.ParamByName('pescodigo').Value :=
+        dm.ZQConsPessoasCODIGO.AsInteger;
+
       dm.ZQAltPessoas.ExecSQL;
 
       dm.ZQConsPessoas.Close;
       dm.ZQConsPessoas.Open;
-
-      ShowMessage('Alteração Gravada com sucesso!');
-      EdtCpfCnpj.Clear;
-      EdtNome.Clear;
-      EdtFantasia.Clear;
-      EdtInsEstadual.Clear;
-      EdtInsMun.Clear;
-      DTNasc.Clear;
-      EdtEndereco.Clear;
-      EdtNumero.Clear;
-      EdtComplemento.Clear;
-      EdtBairro.Clear;
-      EdtCep.Clear;
-      EdtCidade.Clear;
-      CboUf.Caption := 'UF';
-      EdtTel.Clear;
-      EdtCel.Clear;
-      EdtEmail.Clear;
-      MemObs.Clear;
-      EdtCpfCnpj.SetFocus;
     end;
 
-    //CPF-----------------------------------------------------------------------
-    if (btncpf.Checked = True) then
-    begin
-      dm.ZQAltPessoas.Params.ParamByName('pesnome').Value := EdtNome.Text;
-      dm.ZQAltPessoas.Params.ParamByName('codigotip').Value := 1;
-      dm.ZQAltPessoas.Params.ParamByName('pescpf').Value := EdtCpfCnpj.Text;
-      dm.ZQAltPessoas.Params.ParamByName('pesdata_nascimento').AsString :=
-        FormatDateTime('yyyy-mm-dd', DTNasc.Date);
-      dm.ZQAltPessoas.Params.ParamByName('pescnpj').Value := null;
-      dm.ZQCadPessoas.Params.ParamByName('pesnome_fantasia').Value := null;
-      dm.ZQAltPessoas.Params.ParamByName('pesinscricao_estadual').Value := null;
-      dm.ZQAltPessoas.params.ParamByName('pesinscricao_municipal').Value :=
-        null;
-      dm.ZQAltPessoas.params.ParamByName('pescep').Value := EdtCep.Text;
-      dm.ZQAltPessoas.params.ParamByName('pesendereco').Value := EdtEndereco.Text;
-      dm.ZQAltPessoas.params.ParamByName('pesnumero').Value := EdtNumero.Text;
-      dm.ZQAltPessoas.params.ParamByName('pescomplemento').Value := EdtComplemento.Text;
-      dm.ZQAltPessoas.params.ParamByName('pesestado').Value := CboUf.Text;
-      dm.ZQAltPessoas.params.ParamByName('pescidade').Value := EdtCidade.Text;
-      dm.ZQAltPessoas.params.ParamByName('pesbairro').Value := EdtBairro.Text;
-      dm.ZQAltPessoas.params.ParamByName('pesemail').Value := EdtEmail.Text;
-      dm.ZQAltPessoas.params.ParamByName('pestelefone').Value := EdtTel.Text;
-      dm.ZQAltPessoas.params.ParamByName('pescelular').Value := EdtCel.Text;
-      dm.ZQAltPessoas.params.ParamByName('pesobservacao').Value := MemObs.Text;
-      dm.ZQAltPessoas.params.ParamByName('pescodigo').Value :=
-        dm.ZQConsPessoasCODIGO.AsInteger;
-      if (BtnAtivo.Checked = True) then
-      begin
-        dm.ZQAltPessoas.params.ParamByName('pesstatus').Value := 1;
-      end;
-      if (BtnInativo.Checked = True) then
-      begin
-        dm.ZQAltPessoas.params.ParamByName('pesstatus').Value := 0;
-      end;
-      //mensagem
-      if (BtnAtivo.Checked = True) then
-      begin
-        if MessageDlg('O Status ativo esta selecionado deseja continuar?',mtConfirmation,[mbYes, mbNo], 0) = mrYes then
-        begin
-          dm.ZQAltPessoas.ExecSQL;
-          dm.ZQConsPessoas.Close;
-          dm.ZQConsPessoas.Open;
-        end
-        else
-        begin
-
-        end;
-
-      end;
-      if (BtnInativo.Checked = True) then
-      begin
-        ShowMessage('!');
-      end;
-      EdtCpfCnpj.Clear;
-      EdtNome.Clear;
-      EdtFantasia.Clear;
-      EdtInsEstadual.Clear;
-      EdtInsMun.Clear;
-      DTNasc.Clear;
-      EdtEndereco.Clear;
-      EdtNumero.Clear;
-      EdtComplemento.Clear;
-      EdtBairro.Clear;
-      EdtCep.Clear;
-      EdtCidade.Clear;
-      CboUf.Caption := 'UF';
-      EdtTel.Clear;
-      EdtCel.Clear;
-      EdtEmail.Clear;
-      MemObs.Clear;
-      EdtCpfCnpj.SetFocus;
-      BtnAtivo.Checked:=True;
-    end;
-    FrmCadFornecedor.Hide;
-    FrmConsFornecedores.PnChama.Visible:=false;
   end;
+
 end;//fim procedure
 
 
@@ -582,7 +543,7 @@ end;
 
 procedure TFrmCadFornecedor.FormShow(Sender: TObject);
 begin
-  BtnInativo.Enabled := False;
+  //BtnInativo.Enabled := False;
 end;
 
 end.

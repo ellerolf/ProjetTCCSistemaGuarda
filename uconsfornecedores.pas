@@ -46,7 +46,7 @@ type
     procedure BuscaDados();
 
   public
-
+    test:integer;
   end;
 
 var
@@ -286,6 +286,7 @@ begin
 end;
 
 procedure TFrmConsFornecedores.BtnSelecionarClick(Sender: TObject);
+
 begin
     // validação abaixo é do Rafael, foi feito, para levar o código do cliente para o lançamento
     //tive que colocar por primeiro, pq essa minha condição estava sendo executada por ultimo, ai se o usuário sair da tela de lançamento
@@ -373,6 +374,7 @@ begin
   //PESSOA FÍSICA
   if (dm.ZQConsPessoasCODIGOTIP.AsInteger = 1) then
   begin
+    FrmCadFornecedor.LblTitulo.Caption:= 'Altera Fornecedores';
     FrmCadFornecedor.BtnCpf.Checked := True;
     FrmCadFornecedor.pescodigo := seleciona;
     FrmCadFornecedor.EdtCpfCnpj.Text := dm.ZQConsPessoasCPF.AsString;

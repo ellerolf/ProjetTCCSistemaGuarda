@@ -146,7 +146,7 @@ end;
 
 procedure TFrmMenu.EdtConfirmaSenhaKeyPress(Sender: TObject; var Key: char);
 begin
-  if key=#13 then
+  if key = #13 then
   begin
     BtnAlteraSenha.Click;
   end;
@@ -154,7 +154,7 @@ end;
 
 procedure TFrmMenu.EdtSenhaAtualKeyPress(Sender: TObject; var Key: char);
 begin
-  if key=#13 then
+  if key = #13 then
   begin
     BtnAlteraSenha.Click;
   end;
@@ -167,9 +167,9 @@ end;
 
 procedure TFrmMenu.EdtSenhaNovaKeyPress(Sender: TObject; var Key: char);
 begin
- if key=#13 then
+  if key = #13 then
   begin
-    EdtConfirmaSenha.setfocus;
+    EdtConfirmaSenha.SetFocus;
   end;
 end;
 
@@ -187,19 +187,19 @@ procedure TFrmMenu.FormShow(Sender: TObject);
 begin
   FrmEntrarUsuario.hide;
   PnTrocaSenha.Visible := False;
-  EdtConfirmaSenha.Enabled:=False;
-  EdtSenhaNova.Enabled:=False;
-  LblUsuario.Caption:=FrmEntrarUsuario.usuarios;
-  if (FrmEntrarUsuario.acesso<>1)then
+  EdtConfirmaSenha.Enabled := False;
+  EdtSenhaNova.Enabled := False;
+  LblUsuario.Caption := FrmEntrarUsuario.usuarios;
+  if (FrmEntrarUsuario.acesso <> 1) then
   begin
-    BtnCadUsuarios.Enabled:=False;
-    BtnConsUsuario.Enabled:=False;
+    BtnCadUsuarios.Enabled := False;
+    BtnConsUsuario.Enabled := False;
   end;
 end;
 
 procedure TFrmMenu.BtnCadUsuariosClick(Sender: TObject);
 begin
-  FrmCadUsuario.AltOUCad:='C';
+  FrmCadUsuario.AltOUCad := 'C';
   FrmCadUsuario.Parent := PnChama;
   FrmCadUsuario.Align := alClient;
   FrmCadUsuario.Show;
@@ -209,7 +209,7 @@ procedure TFrmMenu.BtnConsBancoClick(Sender: TObject);
 begin
   FrmConsContas.parent := PnChama;
   FrmConsContas.Align := alClient;
-  FrmConsContas.show;
+  FrmConsContas.Show;
 end;
 
 procedure TFrmMenu.BtnConsCentroClick(Sender: TObject);
@@ -247,33 +247,33 @@ begin
   FrmConsCentro.BtnSair.Click;
   FrmTranfContas.BtnCancela.Click;
   FrmConsContas.BtnSair.Click;
-  BtnCadUsuarios.Enabled:=True;
-  BtnConsUsuario.Enabled:=true;
+  BtnCadUsuarios.Enabled := True;
+  BtnConsUsuario.Enabled := True;
   FrmMenu.hide;
-  FrmEntrarUsuario.EdtUsuario.Text:='';
-  FrmEntrarUsuario.EdtSenha.Text:='';
+  FrmEntrarUsuario.EdtUsuario.Text := '';
+  FrmEntrarUsuario.EdtSenha.Text := '';
   FrmEntrarUsuario.Show;
 
 end;
 
 procedure TFrmMenu.BtnMudarSenhaClick(Sender: TObject);
 begin
-  if (PnTrocaSenha.visible = true) then
+  if (PnTrocaSenha.Visible = True) then
   begin
-    PnTrocaSenha.Visible:= False;
-    DM.ZQConsUsuario.Active:=False;
+    PnTrocaSenha.Visible := False;
+    DM.ZQConsUsuario.Active := False;
   end
   else
-  if (PnTrocaSenha.visible= false) then
+  if (PnTrocaSenha.Visible = False) then
   begin
-    DM.ZQConsUsuario.Active:=True;
-    EdtConfirmaSenha.Enabled:=False;
-    EdtSenhaNova.Enabled:=False;
-    EdtSenhaAtual.Text:='';
-    EdtSenhaNova.Text:='';
-    EdtConfirmaSenha.Text:='';
-     EdtSenhaAtual.Enabled:=true;
-    PnTrocaSenha.visible := true;
+    DM.ZQConsUsuario.Active := True;
+    EdtConfirmaSenha.Enabled := False;
+    EdtSenhaNova.Enabled := False;
+    EdtSenhaAtual.Text := '';
+    EdtSenhaNova.Text := '';
+    EdtConfirmaSenha.Text := '';
+    EdtSenhaAtual.Enabled := True;
+    PnTrocaSenha.Visible := True;
     EdtSenhaAtual.SetFocus;
   end;
 end;
@@ -285,8 +285,8 @@ end;
 
 procedure TFrmMenu.BtnCadBancoClick(Sender: TObject);
 begin
-  FrmCadContasBancarias.OpeCadOuAltConta:='i';
-  FrmCadContasBancarias.OpecadOuAltTransf:='I';
+  FrmCadContasBancarias.OpeCadOuAltConta := 'i';
+  FrmCadContasBancarias.OpecadOuAltTransf := 'I';
   FrmCadContasBancarias.Parent := PnChama;
   FrmCadContasBancarias.Align := alClient;
   FrmCadContasBancarias.Show;
@@ -297,64 +297,70 @@ var
   verificar: integer;
 begin
   verificar := Length(EdtSenhaNova.Text);
-  if ((EdtSenhaNova.Enabled = false) and ( EdtConfirmaSenha.enabled = false)) then
+  if ((EdtSenhaNova.Enabled = False) and (EdtConfirmaSenha.Enabled = False)) then
+  begin
+    if ((EdtSenhaAtual.Text = DM.ZQConsUsuarioUSUSENHA.Value) and
+      (FrmEntrarUsuario.indentidade = DM.ZQConsUsuarioUSUCODIGO.Value)) then
     begin
-        if ((EdtSenhaAtual.Text = DM.ZQConsUsuarioUSUSENHA.Value) and (FrmEntrarUsuario.indentidade = DM.ZQConsUsuarioUSUCODIGO.Value)) then
-        begin
-          EdtSenhaNova.Enabled:= True;
-          EdtConfirmaSenha.enabled := True;
-          EdtSenhaAtual.Enabled:=False;
-          EdtSenhaNova.SetFocus;
-        end
-        else
-        begin
-            ShowMessage('FAVOR VERIFIQUE SE SUA SENHA ESTA ERRADA');
-        end
+      EdtSenhaNova.Enabled := True;
+      EdtConfirmaSenha.Enabled := True;
+      EdtSenhaAtual.Enabled := False;
+      EdtSenhaNova.SetFocus;
     end
     else
-  if ((EdtSenhaNova.Enabled = true) and ( EdtConfirmaSenha.enabled = true)) then
-     begin
-         if ((EdtSenhaNova.Text = '')or(EdtConfirmaSenha.Text = '')) then
-            begin
-              ShowMessage('CAMPOS FALTANDO');
-            end
-         else
-         if (EdtSenhaNova.Text<>EdtConfirmaSenha.Text)then
-          begin
-            ShowMessage('SENHAS NAO CONFEREM, FAVOR CONFERIR NOVAMENTE');
-          end
-        else
-        if (verificar < 8) then
-          begin
-            ShowMessage('A SENHA DEVE TER NO MINIMO 8 DIGITOS');
-          end
-        else
-        begin
-          DM.ZQAltUsuario.Params.ParamByName('pusunome').Value:=DM.ZQConsUsuarioUSUNOME.Value;
-          DM.ZQAltUsuario.Params.ParamByName('pusulogin').Value:=DM.ZQConsUsuarioUSULOGIN.value;
-          DM.ZQAltUsuario.Params.ParamByName('pususenha').Value:=EdtSenhaNova.Text;
-          DM.ZQAltUsuario.Params.ParamByName('pcodigoniv').Value:= DM.ZQConsUsuarioCODIGONIV.value;
-          DM.ZQAltUsuario.Params.ParamByName('pusustatus').Value:= DM.ZQConsUsuarioUSUSTATUS.Value;
-          DM.ZQAltUsuario.Params.ParamByName('pusucodigo').Value:=FrmEntrarUsuario.indentidade;
-          DM.ZQAltUsuario.ExecSQL;
+    begin
+      ShowMessage('FAVOR VERIFIQUE SE SUA SENHA ESTA ERRADA');
+    end;
+  end
+  else
+  if ((EdtSenhaNova.Enabled = True) and (EdtConfirmaSenha.Enabled = True)) then
+  begin
+    if ((EdtSenhaNova.Text = '') or (EdtConfirmaSenha.Text = '')) then
+    begin
+      ShowMessage('CAMPOS FALTANDO');
+    end
+    else
+    if (EdtSenhaNova.Text <> EdtConfirmaSenha.Text) then
+    begin
+      ShowMessage('SENHAS NAO CONFEREM, FAVOR CONFERIR NOVAMENTE');
+    end
+    else
+    if (verificar < 8) then
+    begin
+      ShowMessage('A SENHA DEVE TER NO MINIMO 8 DIGITOS');
+    end
+    else
+    begin
+      DM.ZQAltUsuario.Params.ParamByName('pusunome').Value :=
+        DM.ZQConsUsuarioUSUNOME.Value;
+      DM.ZQAltUsuario.Params.ParamByName('pusulogin').Value :=
+        DM.ZQConsUsuarioUSULOGIN.Value;
+      DM.ZQAltUsuario.Params.ParamByName('pususenha').Value := EdtSenhaNova.Text;
+      DM.ZQAltUsuario.Params.ParamByName('pcodigoniv').Value :=
+        DM.ZQConsUsuarioCODIGONIV.Value;
+      DM.ZQAltUsuario.Params.ParamByName('pusustatus').Value :=
+        DM.ZQConsUsuarioUSUSTATUS.Value;
+      DM.ZQAltUsuario.Params.ParamByName('pusucodigo').Value :=
+        FrmEntrarUsuario.indentidade;
+      DM.ZQAltUsuario.ExecSQL;
 
-          DM.ZQBuscaUsuario.Close;
-          DM.ZQBuscaUsuario.Open;
+      DM.ZQBuscaUsuario.Close;
+      DM.ZQBuscaUsuario.Open;
 
-          ShowMessage('SENHA ALTERADA COM SUCESSO');
-          EdtSenhaAtual.Text:='';
-          EdtSenhaNova.Text:= '';
-          EdtConfirmaSenha.Text := '';
-          EdtSenhaNova.Enabled:= false;
-          EdtConfirmaSenha.enabled := false;
-          PnTrocaSenha.Visible:= False;
-        end;
-     end;
+      ShowMessage('SENHA ALTERADA COM SUCESSO');
+      EdtSenhaAtual.Text := '';
+      EdtSenhaNova.Text := '';
+      EdtConfirmaSenha.Text := '';
+      EdtSenhaNova.Enabled := False;
+      EdtConfirmaSenha.Enabled := False;
+      PnTrocaSenha.Visible := False;
+    end;
+  end;
 end;
 
 procedure TFrmMenu.BtnCadCentroClick(Sender: TObject);
 begin
-  FrmCadCentroCusto.CadOUAlt:='C';
+  FrmCadCentroCusto.CadOUAlt := 'C';
   FrmCadCentroCusto.Parent := PnChama;
   FrmCadCentroCusto.Align := alClient;
   FrmCadCentroCusto.Show;
@@ -362,16 +368,16 @@ end;
 
 procedure TFrmMenu.BtnCadFornecedorClick(Sender: TObject);
 begin
-  FrmCadFornecedor.OpForn:='I';
+  FrmCadFornecedor.OpForn := 'I';
   FrmCadFornecedor.Parent := PnChama;
   FrmCadFornecedor.Align := alClient;
-  FrmCadFornecedor.BtnAlterar.Visible:=false;
+  FrmCadFornecedor.BtnAlterar.Visible := False;
   FrmCadFornecedor.Show;
 end;
 
 procedure TFrmMenu.BtnCadLancamentoClick(Sender: TObject);
 begin
-  FrmCadLancamento.CadOuAltLanDatValor:='i';
+  FrmCadLancamento.CadOuAltLanDatValor := 'i';
   FrmCadLancamento.Parent := PnChama;
   FrmCadLancamento.Align := alClient;
   FrmCadLancamento.Show;
