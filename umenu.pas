@@ -200,6 +200,11 @@ end;
 procedure TFrmMenu.BtnCadUsuariosClick(Sender: TObject);
 begin
   FrmCadUsuario.AltOUCad := 'C';
+  FrmCadUsuario.EdtSenha.Enabled := True;
+  FrmCadUsuario.EdtConfSenha.Enabled := True;
+  FrmCadUsuario.Label5.Enabled := True;
+  FrmCadUsuario.Label6.Enabled := True;
+  FrmCadUsuario.ChkMostrar.Enabled := True;
   FrmCadUsuario.Parent := PnChama;
   FrmCadUsuario.Align := alClient;
   FrmCadUsuario.Show;
