@@ -543,7 +543,7 @@ end;
 
 procedure TFrmCadFornecedor.FormShow(Sender: TObject);
 begin
-  //BtnInativo.Enabled := False;
+  BtnInativo.Enabled := False;
 end;
 
 end.
