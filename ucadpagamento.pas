@@ -112,8 +112,8 @@ begin
             ELSE
             begin
                   restante:=restante-valor;
-                  LblValorRestante.Caption:=FormatFloat('R$ 0.00',restante);
-
+                  LblValorRestante.Caption:=FormatFloat('0.00',restante);
+                  restante:=StrToFloat(LblValorRestante.Caption);
 
                   dm.ZQCadLanData.Params.ParamByName('pCODIGOLAN').Value:=FrmCadLancamento.codigoDoLanc;
                   dm.ZQCadLanData.Params.ParamByName('pBAIDATAVEN').AsString:=FormatDateTime('yyyy-mm-dd',DtDataParcela.Date);
@@ -155,8 +155,8 @@ begin
             ELSE
             begin
                   restante:=restante-valor;
-                  LblValorRestante.Caption:=FormatFloat('R$ 0.00',restante);
-
+                  LblValorRestante.Caption:=FormatFloat('0.00',restante);
+                  restante:=StrToFloat(LblValorRestante.Caption);
 
                   dm.ZQCadLanData.Params.ParamByName('pCODIGOLAN').Value:=FrmConsBaixa.codigoDoLancamento;
                   dm.ZQCadLanData.Params.ParamByName('pBAIDATAVEN').AsString:=FormatDateTime('yyyy-mm-dd',DtDataParcela.Date);
