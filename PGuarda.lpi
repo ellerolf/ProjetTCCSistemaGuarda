@@ -47,7 +47,7 @@
         <PackageName Value="LCL"/>
       </Item6>
     </RequiredPackages>
-    <Units Count="28">
+    <Units Count="27">
       <Unit0>
         <Filename Value="PGuarda.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -251,13 +251,6 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit26>
-      <Unit27>
-        <Filename Value="ufrmpg.pas"/>
-        <IsPartOfProject Value="True"/>
-        <ComponentName Value="FrmPagamento"/>
-        <ResourceBaseClass Value="Form"/>
-        <UnitName Value="UFrmPg"/>
-      </Unit27>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

@@ -13,7 +13,7 @@ uses
   UTranfContas, UConsUsuario, uConsCentro, UBuscaDoc, UCadPagamento, 
 Ferramentas, UConsParcelas, UbaixaParcela, uRlContasBanc, urlcontascaixa, 
 urlcontasapagarpen, urlcontasareceberpen, urlcontasareceberefet, 
-urlcontasapagarefet, UFrmPg;
+urlcontasapagarefet;
 
 {$R *.res}
 
@@ -46,7 +46,6 @@ begin
   Application.CreateForm(TFrmRlContasAReceberPen, FrmRlContasAReceberPen);
   Application.CreateForm(TFrmRlContasAReceberEfet, FrmRlContasAReceberEfet);
   Application.CreateForm(TFrmRlContasAPagarEfet, FrmRlContasAPagarEfet);
-  Application.CreateForm(TFrmPagamento, FrmPagamento);
   Application.Run;
 end.
 
