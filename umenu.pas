@@ -459,7 +459,7 @@ begin
   FrmCadFornecedor.close;
 
   FrmCadLancamento.close;
-  FrmCadCentroCusto.close;
+
   FrmCadContasBancarias.close;
   FrmConsUsuario.close;
   FrmConsFornecedores.close;

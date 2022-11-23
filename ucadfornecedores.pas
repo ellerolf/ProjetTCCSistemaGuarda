@@ -384,7 +384,6 @@ begin
       begin
         ShowMessage('Esta faltando o numero na Cep');
       end
-
       else
       begin
         dm.ZQCadPessoas.Params.ParamByName('pesnome').Value := EdtNome.Text;
@@ -427,88 +426,134 @@ begin
     //altera CPF-----------------------------------------------------------------------
     if (BtnCpf.Checked = True) then
     begin
-
-      dm.ZQAltPessoas.Params.ParamByName('pesnome').Value := EdtNome.Text;
-      dm.ZQAltPessoas.Params.ParamByName('codigotip').Value := 1;
-      dm.ZQAltPessoas.Params.ParamByName('pescpf').Value := EdtCpfCnpj.Text;
-      dm.ZQAltPessoas.Params.ParamByName('pesdata_nascimento').AsString :=
-        FormatDateTime('yyyy-mm-dd', DTNasc.Date);
-      dm.ZQAltPessoas.Params.ParamByName('pescnpj').Value := null;
-      dm.ZQCadPessoas.Params.ParamByName('pesnome_fantasia').Value := null;
-      dm.ZQAltPessoas.Params.ParamByName('pesinscricao_estadual').Value := null;
-      dm.ZQAltPessoas.params.ParamByName('pesinscricao_municipal').Value :=
-        null;
-      dm.ZQAltPessoas.params.ParamByName('pescep').Value := EdtCep.Text;
-      dm.ZQAltPessoas.params.ParamByName('pesendereco').Value := EdtEndereco.Text;
-      dm.ZQAltPessoas.params.ParamByName('pesnumero').Value := EdtNumero.Text;
-      dm.ZQAltPessoas.params.ParamByName('pescomplemento').Value := EdtComplemento.Text;
-      dm.ZQAltPessoas.params.ParamByName('pesestado').Value := CboUf.Text;
-      dm.ZQAltPessoas.params.ParamByName('pescidade').Value := EdtCidade.Text;
-      dm.ZQAltPessoas.params.ParamByName('pesbairro').Value := EdtBairro.Text;
-      dm.ZQAltPessoas.params.ParamByName('pesemail').Value := EdtEmail.Text;
-      dm.ZQAltPessoas.params.ParamByName('pestelefone').Value := EdtTel.Text;
-      dm.ZQAltPessoas.params.ParamByName('pescelular').Value := EdtCel.Text;
-      dm.ZQAltPessoas.params.ParamByName('pesobservacao').Value := MemObs.Text;
-      //condicao ativo ou inativo
-      if (BtnAtivo.Checked = True) then
+      if (EdtCpfCnpj.Text = dm.ZQConsPessoasCPF.AsString) and
+        (EdtNome.Text = dm.ZQConsPessoasNOME.AsString) and
+        (EdtEndereco.Text = dm.ZQConsPessoasENDEREO.AsString) and
+        (EdtNumero.Text = dm.ZQConsPessoasNMERO.AsString) and
+        (EdtBairro.Text = dm.ZQConsPessoasBAIRRO.AsString) and
+        (EdtCep.Text = dm.ZQConsPessoasCEP.AsString) and (EdtCidade.Text = '') and
+        (CboUf.Caption = dm.ZQConsPessoasESTADO.AsString) and
+        (EdtCel.Text = dm.ZQConsPessoasCELULAR.AsString) then
       begin
-        dm.ZQAltPessoas.params.ParamByName('pesstatus').Value := 1;
-      end;
-      if (BtnInativo.Checked = True) then
+        ShowMessage('Alteração não realizado: Campos são iguais');
+      end
+      else if Length(Trim(EdtCpfCnpj.Text)) < 14 then
       begin
-        dm.ZQAltPessoas.params.ParamByName('pesstatus').Value := 0;
+        ShowMessage('Esta faltando o numero no CNPJ');
+      end
+      else if Length(Trim(EdtCel.Text)) < 14 then
+      begin
+        ShowMessage('Esta faltando o numero no Celular');
+      end
+      else if Length(Trim(EdtCep.Text)) < 9 then
+      begin
+        ShowMessage('Esta faltando o numero na Cep');
+      end
+      else
+      begin
+        dm.ZQAltPessoas.Params.ParamByName('pesnome').Value := EdtNome.Text;
+        dm.ZQAltPessoas.Params.ParamByName('codigotip').Value := 1;
+        dm.ZQAltPessoas.Params.ParamByName('pescpf').Value := EdtCpfCnpj.Text;
+        dm.ZQAltPessoas.Params.ParamByName('pesdata_nascimento').AsString :=
+          FormatDateTime('yyyy-mm-dd', DTNasc.Date);
+        dm.ZQAltPessoas.Params.ParamByName('pescnpj').Value := null;
+        dm.ZQCadPessoas.Params.ParamByName('pesnome_fantasia').Value := null;
+        dm.ZQAltPessoas.Params.ParamByName('pesinscricao_estadual').Value := null;
+        dm.ZQAltPessoas.params.ParamByName('pesinscricao_municipal').Value :=
+          null;
+        dm.ZQAltPessoas.params.ParamByName('pescep').Value := EdtCep.Text;
+        dm.ZQAltPessoas.params.ParamByName('pesendereco').Value := EdtEndereco.Text;
+        dm.ZQAltPessoas.params.ParamByName('pesnumero').Value := EdtNumero.Text;
+        dm.ZQAltPessoas.params.ParamByName('pescomplemento').Value :=
+          EdtComplemento.Text;
+        dm.ZQAltPessoas.params.ParamByName('pesestado').Value := CboUf.Text;
+        dm.ZQAltPessoas.params.ParamByName('pescidade').Value := EdtCidade.Text;
+        dm.ZQAltPessoas.params.ParamByName('pesbairro').Value := EdtBairro.Text;
+        dm.ZQAltPessoas.params.ParamByName('pesemail').Value := EdtEmail.Text;
+        dm.ZQAltPessoas.params.ParamByName('pestelefone').Value := EdtTel.Text;
+        dm.ZQAltPessoas.params.ParamByName('pescelular').Value := EdtCel.Text;
+        dm.ZQAltPessoas.params.ParamByName('pesobservacao').Value := MemObs.Text;
+        //condicao ativo ou inativo
+        if (BtnAtivo.Checked = True) then
+        begin
+          dm.ZQAltPessoas.params.ParamByName('pesstatus').Value := 1;
+        end;
+        if (BtnInativo.Checked = True) then
+        begin
+          dm.ZQAltPessoas.params.ParamByName('pesstatus').Value := 0;
+        end;
+        dm.ZQAltPessoas.params.ParamByName('pescodigo').Value :=
+          dm.ZQConsPessoasCODIGO.AsInteger;
+
+        dm.ZQAltPessoas.ExecSQL;
+
+        dm.ZQConsPessoas.Close;
+        dm.ZQConsPessoas.Open;
+
+        ShowMessage('Dados Alterados com sucesso!');
       end;
-      dm.ZQAltPessoas.params.ParamByName('pescodigo').Value :=
-        dm.ZQConsPessoasCODIGO.AsInteger;
 
-      dm.ZQAltPessoas.ExecSQL;
-
-      dm.ZQConsPessoas.Close;
-      dm.ZQConsPessoas.Open;
-
-      ShowMessage('Dados Alterados com sucesso!');
     end;
     //altera CNPJ-----------------------------------------------------------------------
     if (BtnCnpj.Checked = True) then
     begin
-      dm.ZQAltPessoas.Params.ParamByName('pesnome').Value := EdtNome.Text;
-      dm.ZQAltPessoas.Params.ParamByName('codigotip').Value := 2;
-      dm.ZQAltPessoas.Params.ParamByName('pescpf').Value := null;
-      dm.ZQAltPessoas.Params.ParamByName('pesdata_nascimento').Value := null;
-      dm.ZQAltPessoas.Params.ParamByName('pescnpj').Value := EdtCpfCnpj.Text;
-      dm.ZQAltPessoas.Params.ParamByName('pesnome_fantasia').Value := EdtFantasia.Text;
-      dm.ZQAltPessoas.Params.ParamByName('pesinscricao_estadual').Value :=
-        EdtInsEstadual.Text;
-      dm.ZQAltPessoas.params.ParamByName('pesinscricao_municipal').Value :=
-        EdtInsMun.Text;
-      dm.ZQAltPessoas.params.ParamByName('pescep').Value := EdtCep.Text;
-      dm.ZQAltPessoas.params.ParamByName('pesendereco').Value := EdtEndereco.Text;
-      dm.ZQAltPessoas.params.ParamByName('pesnumero').Value := EdtNumero.Text;
-      dm.ZQAltPessoas.params.ParamByName('pescomplemento').Value := EdtComplemento.Text;
-      dm.ZQAltPessoas.params.ParamByName('pesestado').Value := CboUf.Text;
-      dm.ZQAltPessoas.params.ParamByName('pescidade').Value := EdtCidade.Text;
-      dm.ZQAltPessoas.params.ParamByName('pesbairro').Value := EdtBairro.Text;
-      dm.ZQAltPessoas.params.ParamByName('pesemail').Value := EdtEmail.Text;
-      dm.ZQAltPessoas.params.ParamByName('pestelefone').Value := EdtTel.Text;
-      dm.ZQAltPessoas.params.ParamByName('pescelular').Value := EdtCel.Text;
-      dm.ZQAltPessoas.params.ParamByName('pesobservacao').Value := MemObs.Text;
-
-      if (BtnAtivo.Checked = True) then
+      if (EdtCpfCnpj.Text = dm.ZQConsPessoasCNPJ.AsString) and
+        (EdtNome.Text = dm.ZQConsPessoasNOME.AsString) and
+        (EdtFantasia.Text = dm.ZQConsPessoasNOMEFANTASIA.AsString) and
+        (EdtInsEstadual.Text = dm.ZQConsPessoasINSCRIOESTADUAL.AsString) and
+        (EdtInsMun.Text = dm.ZQConsPessoasINSCRIOMUNICIPAL.AsString) and
+        (EdtEndereco.Text = dm.ZQConsPessoasENDEREO.AsString) and
+        (EdtNumero.Text = '') or (EdtBairro.Text = dm.ZQConsPessoasBAIRRO.AsString) and
+        (EdtCep.Text = dm.ZQConsPessoasCEP.AsString) and
+        (EdtCidade.Text = dm.ZQConsPessoasCIDADE.AsString) and
+        (CboUf.Caption = dm.ZQConsPessoasESTADO.AsString) and
+        (EdtCel.Text = dm.ZQConsPessoasCELULAR.AsString) then
       begin
-        dm.ZQAltPessoas.params.ParamByName('pesstatus').Value := 1;
-      end;
-      if (BtnInativo.Checked = True) then
+        ShowMessage('Alteração não realizado: Campos são iguais');
+      end
+      else
       begin
-        dm.ZQAltPessoas.params.ParamByName('pesstatus').Value := 0;
+        dm.ZQAltPessoas.Params.ParamByName('pesnome').Value := EdtNome.Text;
+        dm.ZQAltPessoas.Params.ParamByName('codigotip').Value := 2;
+        dm.ZQAltPessoas.Params.ParamByName('pescpf').Value := null;
+        dm.ZQAltPessoas.Params.ParamByName('pesdata_nascimento').Value := null;
+        dm.ZQAltPessoas.Params.ParamByName('pescnpj').Value := EdtCpfCnpj.Text;
+        dm.ZQAltPessoas.Params.ParamByName('pesnome_fantasia').Value := EdtFantasia.Text;
+        dm.ZQAltPessoas.Params.ParamByName('pesinscricao_estadual').Value :=
+          EdtInsEstadual.Text;
+        dm.ZQAltPessoas.params.ParamByName('pesinscricao_municipal').Value :=
+          EdtInsMun.Text;
+        dm.ZQAltPessoas.params.ParamByName('pescep').Value := EdtCep.Text;
+        dm.ZQAltPessoas.params.ParamByName('pesendereco').Value := EdtEndereco.Text;
+        dm.ZQAltPessoas.params.ParamByName('pesnumero').Value := EdtNumero.Text;
+        dm.ZQAltPessoas.params.ParamByName('pescomplemento').Value :=
+          EdtComplemento.Text;
+        dm.ZQAltPessoas.params.ParamByName('pesestado').Value := CboUf.Text;
+        dm.ZQAltPessoas.params.ParamByName('pescidade').Value := EdtCidade.Text;
+        dm.ZQAltPessoas.params.ParamByName('pesbairro').Value := EdtBairro.Text;
+        dm.ZQAltPessoas.params.ParamByName('pesemail').Value := EdtEmail.Text;
+        dm.ZQAltPessoas.params.ParamByName('pestelefone').Value := EdtTel.Text;
+        dm.ZQAltPessoas.params.ParamByName('pescelular').Value := EdtCel.Text;
+        dm.ZQAltPessoas.params.ParamByName('pesobservacao').Value := MemObs.Text;
+
+        if (BtnAtivo.Checked = True) then
+        begin
+          dm.ZQAltPessoas.params.ParamByName('pesstatus').Value := 1;
+        end;
+        if (BtnInativo.Checked = True) then
+        begin
+          dm.ZQAltPessoas.params.ParamByName('pesstatus').Value := 0;
+        end;
+
+        dm.ZQAltPessoas.params.ParamByName('pescodigo').Value :=
+          dm.ZQConsPessoasCODIGO.AsInteger;
+
+        dm.ZQAltPessoas.ExecSQL;
+
+        dm.ZQConsPessoas.Close;
+        dm.ZQConsPessoas.Open;
       end;
 
-      dm.ZQAltPessoas.params.ParamByName('pescodigo').Value :=
-        dm.ZQConsPessoasCODIGO.AsInteger;
-
-      dm.ZQAltPessoas.ExecSQL;
-
-      dm.ZQConsPessoas.Close;
-      dm.ZQConsPessoas.Open;
     end;
 
   end;
