@@ -1,12 +1,12 @@
 object FrmTranfContas: TFrmTranfContas
   Left = -8
-  Height = 773
+  Height = 788
   Top = -8
-  Width = 942
+  Width = 958
   BorderStyle = bsNone
   Caption = 'FrmTranfContas'
   ClientHeight = 749
-  ClientWidth = 942
+  ClientWidth = 958
   Color = 16577259
   OnClose = FormClose
   OnResize = FormResize
@@ -17,20 +17,20 @@ object FrmTranfContas: TFrmTranfContas
     Left = 0
     Height = 749
     Top = 0
-    Width = 942
+    Width = 958
     Align = alClient
     ClientHeight = 749
-    ClientWidth = 942
+    ClientWidth = 958
     TabOrder = 0
     object Panel2: TPanel
       Left = 1
       Height = 715
       Top = 33
-      Width = 940
+      Width = 956
       Align = alClient
       BevelOuter = bvNone
       ClientHeight = 715
-      ClientWidth = 940
+      ClientWidth = 956
       TabOrder = 0
       OnResize = Panel1Resize
       object BtnCancela: TSpeedButton
@@ -1099,10 +1099,10 @@ object FrmTranfContas: TFrmTranfContas
         OnClick = SpeedButton3Click
       end
       object DBGrid1: TDBGrid
-        Left = 168
+        Left = 56
         Height = 380
         Top = 80
-        Width = 560
+        Width = 672
         Color = clWindow
         Columns = <        
           item
@@ -1165,7 +1165,7 @@ object FrmTranfContas: TFrmTranfContas
         OnCellClick = DBGrid1CellClick
       end
       object Label1: TLabel
-        Left = 168
+        Left = 56
         Height = 17
         Top = 24
         Width = 86
@@ -1179,7 +1179,7 @@ object FrmTranfContas: TFrmTranfContas
         ParentFont = False
       end
       object CboStatus: TComboBox
-        Left = 168
+        Left = 56
         Height = 23
         Top = 48
         Width = 128
@@ -1240,12 +1240,20 @@ object FrmTranfContas: TFrmTranfContas
         Caption = 'Á'
         ParentColor = False
       end
+      object BtnImprimir: TSpeedButton
+        Left = 352
+        Height = 34
+        Top = 480
+        Width = 112
+        Caption = 'IMPRIMIR'
+        OnClick = BtnImprimirClick
+      end
     end
     object Label7: TLabel
       Left = 1
       Height = 32
       Top = 1
-      Width = 940
+      Width = 956
       Align = alTop
       Alignment = taCenter
       Caption = 'Transferências Bancarias'

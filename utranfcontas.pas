@@ -25,8 +25,10 @@ type
     Label7: TLabel;
     Panel1: TPanel;
     Panel2: TPanel;
+    BtnImprimir: TSpeedButton;
     SpeedButton3: TSpeedButton;
     procedure BtnCancelaClick(Sender: TObject);
+    procedure BtnImprimirClick(Sender: TObject);
     procedure BtnSelecionaClick(Sender: TObject);
     procedure BtnSelecioneClick(Sender: TObject);
     procedure DBGrid1CellClick(Column: TColumn);
@@ -50,6 +52,8 @@ var
 implementation
 
 {$R *.lfm}
+
+uses urltransferencia;
 
 { TFrmTranfContas }
 
@@ -114,6 +118,17 @@ begin
   CboStatus.ItemIndex:=0;
   CodigoDaTransf:=0;
   Close;
+end;
+
+procedure TFrmTranfContas.BtnImprimirClick(Sender: TObject);
+begin
+     if (CboStatus.ItemIndex>=0) then
+     Begin
+          if (dm.ZQConsTransferencia.RecordCount>0) then
+          begin
+              FrmRlTransferencia.RLTransferencia.Preview();
+          end;
+     end;
 end;
 
 procedure TFrmTranfContas.FormClose(Sender: TObject;

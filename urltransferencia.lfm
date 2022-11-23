@@ -1,0 +1,251 @@
+object FrmRlTransferencia: TFrmRlTransferencia
+  Left = 242
+  Height = 403
+  Top = 31
+  Width = 1135
+  Caption = 'FrmRlTransferencia'
+  ClientHeight = 403
+  ClientWidth = 1135
+  object RLTransferencia: TRLReport
+    Left = 0
+    Height = 794
+    Top = 0
+    Width = 1123
+    DataSource = DM.DSConsTransferencia
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Arial'
+    PageSetup.Orientation = poLandscape
+    BeforePrint = RLTransferenciaBeforePrint
+    object RLBand1: TRLBand
+      Left = 38
+      Height = 64
+      Top = 38
+      Width = 1047
+      BandType = btHeader
+      object RLLabel1: TRLLabel
+        Left = 0
+        Height = 20
+        Top = 0
+        Width = 1047
+        Align = faTop
+        Alignment = taCenter
+        Borders.Sides = sdCustom
+        Borders.DrawLeft = False
+        Borders.DrawTop = True
+        Borders.DrawRight = False
+        Borders.DrawBottom = True
+        Borders.FixedTop = True
+        Borders.FixedBottom = True
+        Caption = 'RELATÓRIO DE TRANSFERÊNCIAS '
+      end
+      object RLLabel2: TRLLabel
+        Left = 0
+        Height = 16
+        Top = 20
+        Width = 1047
+        Align = faTop
+        Alignment = taCenter
+        Caption = 'Período: '
+      end
+    end
+    object RLGroup1: TRLGroup
+      Left = 38
+      Height = 208
+      Top = 102
+      Width = 1047
+      DataFields = 'TRADATA'
+      object RLBand2: TRLBand
+        Left = 0
+        Height = 32
+        Top = 0
+        Width = 1047
+        BandType = btColumnHeader
+        Borders.Sides = sdCustom
+        Borders.DrawLeft = False
+        Borders.DrawTop = True
+        Borders.DrawRight = False
+        Borders.DrawBottom = True
+        Borders.Width = 2
+        Borders.FixedTop = True
+        Borders.FixedBottom = True
+        object RLLabel3: TRLLabel
+          Left = 0
+          Height = 16
+          Top = 8
+          Width = 80
+          Caption = 'DATA'
+        end
+        object RLLabel4: TRLLabel
+          Left = 88
+          Height = 16
+          Top = 8
+          Width = 182
+          Caption = 'CONTA DE ORIGEM'
+        end
+        object RLLabel5: TRLLabel
+          Left = 344
+          Height = 16
+          Top = 8
+          Width = 88
+          Caption = 'N° DA CONTA'
+        end
+        object RLLabel6: TRLLabel
+          Left = 440
+          Height = 16
+          Top = 8
+          Width = 234
+          Caption = 'CONTA DE DESTINO'
+        end
+        object RLLabel7: TRLLabel
+          Left = 696
+          Height = 16
+          Top = 8
+          Width = 96
+          Caption = 'N° DA CONTA'
+        end
+        object RLLabel8: TRLLabel
+          Left = 800
+          Height = 16
+          Top = 8
+          Width = 105
+          Caption = 'N° DOCUMENTO'
+        end
+        object RLLabel9: TRLLabel
+          Left = 912
+          Height = 16
+          Top = 8
+          Width = 48
+          Caption = 'VALOR'
+        end
+        object RLLabel10: TRLLabel
+          Left = 992
+          Height = 16
+          Top = 8
+          Width = 54
+          Caption = 'STATUS'
+        end
+      end
+      object RLBand3: TRLBand
+        Left = 0
+        Height = 40
+        Top = 32
+        Width = 1047
+        object RLDBText1: TRLDBText
+          Left = 0
+          Height = 16
+          Top = 8
+          Width = 80
+          AutoSize = False
+          DataField = 'TRADATA'
+          DataSource = DM.DSConsTransferencia
+        end
+        object RLDBText2: TRLDBText
+          Left = 88
+          Height = 16
+          Top = 8
+          Width = 250
+          AutoSize = False
+          DataField = 'NOME DA CONTA DE ORIGEM'
+          DataSource = DM.DSConsTransferencia
+        end
+        object RLDBText3: TRLDBText
+          Left = 344
+          Height = 16
+          Top = 8
+          Width = 88
+          AutoSize = False
+          DataField = 'N° CONTA DE ORIGEM'
+          DataSource = DM.DSConsTransferencia
+        end
+        object RLDBText4: TRLDBText
+          Left = 440
+          Height = 16
+          Top = 8
+          Width = 250
+          AutoSize = False
+          DataField = 'NOME DA CONTA DE DESTINO'
+          DataSource = DM.DSConsTransferencia
+        end
+        object RLDBText5: TRLDBText
+          Left = 696
+          Height = 16
+          Top = 8
+          Width = 96
+          AutoSize = False
+          DataField = 'N° CONTA DE DESTINO'
+          DataSource = DM.DSConsTransferencia
+        end
+        object RLDBText6: TRLDBText
+          Left = 800
+          Height = 16
+          Top = 8
+          Width = 105
+          AutoSize = False
+          DataField = 'TRANUMERO_DOCUMENTO'
+          DataSource = DM.DSConsTransferencia
+        end
+        object RLDBText7: TRLDBText
+          Left = 912
+          Height = 16
+          Top = 8
+          Width = 73
+          DataField = 'TRAVALOR'
+          DataSource = DM.DSConsTransferencia
+        end
+        object RLDBText8: TRLDBText
+          Left = 992
+          Height = 16
+          Top = 8
+          Width = 70
+          AutoSize = False
+          DataField = 'STATUS'
+          DataSource = DM.DSConsTransferencia
+        end
+      end
+    end
+    object RLBand4: TRLBand
+      Left = 38
+      Height = 40
+      Top = 310
+      Width = 1047
+      BandType = btFooter
+      Borders.Sides = sdCustom
+      Borders.DrawLeft = False
+      Borders.DrawTop = True
+      Borders.DrawRight = False
+      Borders.DrawBottom = False
+      Borders.Width = 3
+      Borders.FixedTop = True
+      object RLSystemInfo1: TRLSystemInfo
+        Left = 896
+        Height = 16
+        Top = 8
+        Width = 147
+        Info = itPageNumber
+        Text = 'Página n°:'
+      end
+      object RLSystemInfo2: TRLSystemInfo
+        Left = 760
+        Height = 16
+        Top = 8
+        Width = 70
+        Info = itHour
+        Text = 'Hora:'
+      end
+      object RLSystemInfo3: TRLSystemInfo
+        Left = 600
+        Height = 16
+        Top = 8
+        Width = 70
+        Text = 'Data:'
+      end
+      object RLLabel11: TRLLabel
+        Left = 112
+        Height = 16
+        Top = 8
+        Width = 65
+      end
+    end
+  end
+end
