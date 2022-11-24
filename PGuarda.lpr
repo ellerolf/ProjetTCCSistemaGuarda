@@ -13,7 +13,7 @@ uses
   UTranfContas, UConsUsuario, uConsCentro, UBuscaDoc, UCadPagamento, 
 Ferramentas, UConsParcelas, UbaixaParcela, uRlContasBanc, urlcontascaixa, 
 urlcontasapagarpen, urlcontasareceberpen, urlcontasareceberefet, 
-urlcontasapagarefet, urltransferencia;
+urlcontasapagarefet, urltransferencia, ValidaCPF, ValidaCNPJ;
 
 {$R *.res}
 

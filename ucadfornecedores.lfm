@@ -2,42 +2,41 @@ object FrmCadFornecedor: TFrmCadFornecedor
   Left = -8
   Height = 788
   Top = -8
-  Width = 958
+  Width = 974
   BorderStyle = bsNone
   Caption = 'Cadastro Fornecedores'
-  ClientHeight = 788
-  ClientWidth = 958
+  ClientHeight = 749
+  ClientWidth = 974
   Color = 16577259
   OnCreate = FormCreate
   OnResize = FormResize
   OnShow = FormShow
   Position = poDesktopCenter
-  LCLVersion = '2.2.2.0'
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
     Height = 749
     Top = 0
-    Width = 958
+    Width = 974
     Align = alClient
     ClientHeight = 749
-    ClientWidth = 958
+    ClientWidth = 974
     TabOrder = 0
     object Panel2: TPanel
       Left = 1
       Height = 747
       Top = 1
-      Width = 956
+      Width = 972
       Align = alClient
       BevelOuter = bvNone
       ClientHeight = 747
-      ClientWidth = 956
+      ClientWidth = 972
       TabOrder = 0
       object LblTitulo: TLabel
         Left = 0
         Height = 32
         Top = 0
-        Width = 956
+        Width = 972
         Align = alTop
         Alignment = taCenter
         Caption = 'Cadastro Fornecedores'
@@ -1458,6 +1457,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
           MaxLength = 50
           TabOrder = 2
           OnChange = EdtCpfCnpjChange
+          OnExit = EdtCpfCnpjExit
           SpaceChar = '_'
         end
         object BtnAlterar: TSpeedButton

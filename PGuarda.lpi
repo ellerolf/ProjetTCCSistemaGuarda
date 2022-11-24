@@ -47,7 +47,7 @@
         <PackageName Value="LCL"/>
       </Item6>
     </RequiredPackages>
-    <Units Count="28">
+    <Units Count="30">
       <Unit0>
         <Filename Value="PGuarda.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -257,6 +257,16 @@
         <ComponentName Value="FrmRlTransferencia"/>
         <ResourceBaseClass Value="Form"/>
       </Unit27>
+      <Unit28>
+        <Filename Value="validacpf.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ValidaCPF"/>
+      </Unit28>
+      <Unit29>
+        <Filename Value="validacnpj.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ValidaCNPJ"/>
+      </Unit29>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

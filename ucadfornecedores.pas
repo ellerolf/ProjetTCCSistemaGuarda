@@ -69,11 +69,14 @@ type
     procedure BtnSairClick(Sender: TObject);
     procedure BtnSalvarClick(Sender: TObject);
     procedure EdtCpfCnpjChange(Sender: TObject);
+    procedure EdtCpfCnpjExit(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
+    cpf, cnpj: string;
     procedure mascaras();
+
 
   public
     pescodigo, fim: integer;
@@ -92,6 +95,8 @@ var
 
 
 implementation
+
+uses ValidaCPF,ValidaCNPJ;
 
 {$R *.lfm}
 
@@ -565,6 +570,23 @@ end;//fim procedure
 procedure TFrmCadFornecedor.EdtCpfCnpjChange(Sender: TObject);
 begin
 
+end;
+
+procedure TFrmCadFornecedor.EdtCpfCnpjExit(Sender: TObject);
+begin
+  cpf := StringReplace(EdtCpfCnpj.Text, '.', '', [rfReplaceAll]);
+  cpf := StringReplace(cpf, '-', '', [rfReplaceAll]);
+  cpf := StringReplace(cpf, '/', '', [rfReplaceAll]);
+  if (isCPF(cpf) or isCNPJ(cpf)) then
+  begin
+    ShowMessage(imprimeCPF(cpf));
+  end
+  else
+  begin
+    ShowMessage('Erro: CPF inválido !!!');
+    EdtCpfCnpj.Clear;
+    //EdtCpfCnpj.SetFocus;
+  end;
 end;
 
 procedure TFrmCadFornecedor.FormCreate(Sender: TObject);
