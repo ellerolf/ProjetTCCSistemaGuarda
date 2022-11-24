@@ -149,6 +149,7 @@ begin
   //ao sair da tela de cad de lançamento zera a variável que identifica se é alteração ou insert
   CadOuAltLanDatValor := '';
   Close;
+
 end;
 
 procedure TFrmCadLancamento.BtnConsTipoContaClick(Sender: TObject);
@@ -179,12 +180,6 @@ end;
 
 procedure TFrmCadLancamento.BtnConsCentroClick(Sender: TObject);
 begin
-  //ajuste da visão do cad dento dos cons
-  PnChama.Visible := True;
-  FrmConsFornecedores.Parent := PnChama;
-  FrmConsFornecedores.Align := alClient;
-  FrmConsFornecedores.Show;
-
   if (ChkReceita.Checked = False) and (ChkDespesa.Checked = False) then
   begin
     ShowMessage('Selecione o tipo de lançamento para escolher o centro de custo');
@@ -208,6 +203,12 @@ begin
       FrmConsCentro.CboStatus.Enabled := False;
       FrmConsCentro.CboStatus.ItemIndex := 1;
       FrmConsCentro.Show;
+      //ajuste da visão do cad dento dos cons
+      PnChama.Visible := True;
+      FrmConsCentro.Parent := PnChama;
+      FrmConsCentro.Align := alClient;
+      FrmConsCentro.Show;
+      FrmConsFornecedores.Close;
     end;
 
     if (ChkDespesa.Checked = True) then
@@ -224,14 +225,16 @@ begin
       FrmConsCentro.CboStatus.Enabled := False;
       FrmConsCentro.CboStatus.ItemIndex := 1;
       FrmConsCentro.Show;
+      //ajuste da visão do cad dento dos cons
+      PnChama.Visible := True;
+      FrmConsCentro.Parent := PnChama;
+      FrmConsCentro.Align := alClient;
+      FrmConsCentro.Show;
+      FrmConsFornecedores.Close;
     end;
 
   end;
-  //ajuste da visão do cad dento dos cons
-  PnChama.Visible := True;
-  FrmConsCentro.Parent := PnChama;
-  FrmConsCentro.Align := alClient;
-  FrmConsCentro.Show;
+
 end;
 
 procedure TFrmCadLancamento.BtnConsCentro1Click(Sender: TObject);
@@ -254,6 +257,8 @@ begin
       FrmConsFornecedores.Parent := PnChama;
       FrmConsFornecedores.Align := alClient;
       FrmConsFornecedores.Show;
+      FrmConsCentro.Close;
+
     end;
 
   end;

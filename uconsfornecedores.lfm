@@ -1,12 +1,12 @@
 object FrmConsFornecedores: TFrmConsFornecedores
   Left = -8
-  Height = 773
+  Height = 788
   Top = -8
-  Width = 942
+  Width = 958
   BorderStyle = bsNone
   Caption = 'FrmConsFornecedores'
   ClientHeight = 749
-  ClientWidth = 942
+  ClientWidth = 958
   Color = 16577259
   OnClose = FormClose
   OnResize = FormResize
@@ -17,10 +17,10 @@ object FrmConsFornecedores: TFrmConsFornecedores
     Left = 0
     Height = 749
     Top = 0
-    Width = 942
+    Width = 958
     Align = alClient
     ClientHeight = 749
-    ClientWidth = 942
+    ClientWidth = 958
     TabOrder = 0
     object Panel2: TPanel
       Left = 0

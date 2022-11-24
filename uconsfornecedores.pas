@@ -222,7 +222,9 @@ begin
    end;
    //Gabi tive que deixar abaixo do meu código, pq se deixar em cima, ele vai executar o close primeiro e não vai pegar minha condição.
    //Se o usuario estiver direto na tela de consfornecedor e clicar em sair, minha condição será false, e ele vai fechar o consforn.
-  Close;
+   FrmCadLancamento.PnChama.Visible := False;
+   Close;
+
 end;
 
 procedure TFrmConsFornecedores.CboStatusChange(Sender: TObject);
@@ -430,7 +432,7 @@ begin
   FrmCadFornecedor.Align := alClient;
   FrmCadFornecedor.Show;
   FrmCadFornecedor.DesativaCampoForn();
-  FrmCadLancamento.PnChama.Visible := False;;
+  FrmCadLancamento.PnChama.Visible := False;
 
 
 

@@ -103,6 +103,7 @@ begin
     cencodigo:=0;
     FrmConsCentro.Close;
   end;
+  FrmCadLancamento.PnChama.Visible := False;
   Close;
 end;
 
@@ -126,6 +127,7 @@ begin
             dm.ZQBuscaCentro.Close;
             cencodigo:=0;
             FrmConsCentro.Close;
+            FrmCadLancamento.PnChama.Visible := False;
        end;
 
     //após pegar o valor do centro de custo, os códigos abaixo foi feito para limpar essa tela, e o último para fechar o form
@@ -142,6 +144,7 @@ begin
     DM.ZQBuscaCentro.Open;
     dm.ZQBuscaCentro.Close;
     FrmConsCentro.Close;
+    FrmCadLancamento.PnChama.Visible := False;
   end;
 
   //codigo abaixo é para quando ele selecione o centro de custo para tela de consbaixa
@@ -164,6 +167,7 @@ begin
             dm.ZQBuscaCentro.Close;
             cencodigo:=0;
             FrmConsCentro.Close;
+            FrmCadLancamento.PnChama.Visible := False;
        end;
 
     //após pegar o valor do centro de custo, os códigos abaixo foi feito para limpar essa tela, e o último para fechar o form
@@ -180,6 +184,7 @@ begin
     DM.ZQBuscaCentro.Open;
     dm.ZQBuscaCentro.Close;
     FrmConsCentro.Close;
+    FrmCadLancamento.PnChama.Visible := False;
   end;
 end;
 
