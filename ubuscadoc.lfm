@@ -347,7 +347,7 @@ object FrmBuscaDoc: TFrmBuscaDoc
       OnClick = BtnCancelarClick
     end
     object BtnSelecionar: TSpeedButton
-      Left = 180
+      Left = 181
       Height = 34
       Top = 520
       Width = 124

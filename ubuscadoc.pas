@@ -47,6 +47,7 @@ uses uCadLancamento,UConsBaixa;
 
 procedure TFrmBuscaDoc.BtnCancelarClick(Sender: TObject);
 begin
+  FrmCadLancamento.NdoDocSelecionado:=0;
   BuscaDocTela:='';
   EdtBuscaTipoDoc.Clear;
   close;

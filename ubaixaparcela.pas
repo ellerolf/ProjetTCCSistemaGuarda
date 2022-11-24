@@ -47,6 +47,7 @@ type
     procedure BtnCancelaClick(Sender: TObject);
     procedure BtnConfirmaClick(Sender: TObject);
     procedure BtnConsContaClick(Sender: TObject);
+    procedure BtnConsFormPgClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
     procedure DtDataVencimentoChange(Sender: TObject);
     procedure EdtContaBancariaChange(Sender: TObject);
@@ -73,6 +74,8 @@ type
        acionaConsConta:string;
        //Essa variável recebe o codigo da conta bancária selecionada na dbgrid
        codigoDaContaSelecionada:Integer;
+       //Essa variável recebe o código da forma de pgto selecionado
+       codigoFormPgto:Integer;
   end;
 
 var
@@ -83,7 +86,7 @@ implementation
 {$R *.lfm}
 
 { TFRMBaixaParcela }
-uses UConsBaixa, UEntrarUsuario, UBuscaConta;
+uses UConsBaixa, UEntrarUsuario, UBuscaConta, UForPg;
 
 
 procedure TFRMBaixaParcela.Panel2Click(Sender: TObject);
@@ -337,6 +340,11 @@ procedure TFRMBaixaParcela.BtnConsContaClick(Sender: TObject);
 begin
      acionaConsConta:='aciona';
      FrmBuscaConta.ShowModal;
+end;
+
+procedure TFRMBaixaParcela.BtnConsFormPgClick(Sender: TObject);
+begin
+     FrmForPg.ShowModal;
 end;
 
 procedure TFRMBaixaParcela.BtnCancelaClick(Sender: TObject);

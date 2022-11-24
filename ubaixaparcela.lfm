@@ -263,6 +263,7 @@ object FRMBaixaParcela: TFRMBaixaParcela
             00FFC10000FFC10000FFC10000FFC10000FFC10000FFC10000FFC10000FFC100
             00FFC10000FFC10000FFC10000FFC10000FFC10000EFC1000090C1000010
           }
+          OnClick = BtnConsFormPgClick
         end
       end
       object Panel6: TPanel

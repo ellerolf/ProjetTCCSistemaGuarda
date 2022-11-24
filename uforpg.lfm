@@ -7,6 +7,9 @@ object FrmForPg: TFrmForPg
   ClientHeight = 506
   ClientWidth = 313
   Color = 16577259
+  OnClose = FormClose
+  OnShow = FormShow
+  Position = poDesktopCenter
   object Panel1: TPanel
     Left = 0
     Height = 474
@@ -17,15 +20,14 @@ object FrmForPg: TFrmForPg
     ClientWidth = 313
     TabOrder = 0
     OnClick = Panel1Click
-    object Edit1: TEdit
+    object EdtPesquisar: TEdit
       Left = 16
       Height = 23
-      Top = 10
+      Top = 8
       Width = 224
       TabOrder = 0
-      Text = 'Edit1'
     end
-    object SpeedButton1: TSpeedButton
+    object BtnPesquisar: TSpeedButton
       Left = 248
       Height = 27
       Top = 8
@@ -165,6 +167,7 @@ object FrmForPg: TFrmForPg
         00FFC10000FFC10000FFC10000FFC10000FFC10000FFC10000C0C1000090C100
         0020FFFFFF00
       }
+      OnClick = BtnPesquisarClick
     end
     object DBGrid1: TDBGrid
       Left = 16
@@ -172,10 +175,23 @@ object FrmForPg: TFrmForPg
       Top = 48
       Width = 281
       Color = clWindow
-      Columns = <>
+      Columns = <      
+        item
+          Title.Caption = 'CÓD'
+          Width = 40
+          FieldName = 'FORCODIGO'
+        end      
+        item
+          Title.Caption = 'NOME'
+          Width = 208
+          FieldName = 'FORNOME'
+        end>
+      DataSource = DM.DSFormaPagto
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
       TabOrder = 1
+      OnCellClick = DBGrid1CellClick
     end
-    object SpeedButton2: TSpeedButton
+    object BtnSair: TSpeedButton
       Left = 16
       Height = 34
       Top = 432
@@ -330,8 +346,9 @@ object FrmForPg: TFrmForPg
         0202020202020202020202020202020202020202020202020202020202020202
         02020202020202056A2C
       }
+      OnClick = BtnSairClick
     end
-    object SpeedButton3: TSpeedButton
+    object BtnSeleciona: TSpeedButton
       Left = 173
       Height = 34
       Top = 432
@@ -791,6 +808,7 @@ object FrmForPg: TFrmForPg
         00FFC10000FFC10000FFC10000FFC10000FFC10000FFC10000FFC10000FFC100
         00FFC10000FFC10000FFC10000FFCD3030FFECAFAFFFFFFFFFFF
       }
+      OnClick = BtnSelecionaClick
     end
   end
   object Label10: TLabel

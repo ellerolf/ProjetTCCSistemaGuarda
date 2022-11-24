@@ -12,6 +12,7 @@ type
   { TDM }
 
   TDM = class(TDataModule)
+    DSFormaPagto: TDataSource;
     DSValidCadContaBanc: TDataSource;
     DSConsVerParc: TDataSource;
     DSConsSomaParcBaixada: TDataSource;
@@ -274,6 +275,9 @@ type
     ZQDelParcPen: TZQuery;
     ZQConsVerParc: TZQuery;
     ZQAltBaixaDeParcela: TZQuery;
+    ZQFormaPagto: TZQuery;
+    ZQFormaPagtoFORCODIGO: TLongintField;
+    ZQFormaPagtoFORNOME: TStringField;
     ZQValidCadContaBanc: TZQuery;
     procedure DSBuscaTipoDocDataChange(Sender: TObject; Field: TField);
     procedure DSConsPessoasDataChange(Sender: TObject; Field: TField);

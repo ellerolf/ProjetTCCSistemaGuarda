@@ -3427,4 +3427,37 @@ object DM: TDM
     Left = 528
     Top = 544
   end
+  object ZQFormaPagto: TZQuery
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'SELECT * FROM FORMA_PAGAMENTO'
+    )
+    Params = <>
+    Left = 1096
+    Top = 176
+    object ZQFormaPagtoFORCODIGO: TLongintField
+      FieldKind = fkData
+      FieldName = 'FORCODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object ZQFormaPagtoFORNOME: TStringField
+      FieldKind = fkData
+      FieldName = 'FORNOME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+  end
+  object DSFormaPagto: TDataSource
+    DataSet = ZQFormaPagto
+    Left = 1096
+    Top = 120
+  end
 end
