@@ -9,7 +9,7 @@ uses
   Buttons, ActnList, StdCtrls, uCadUsuario, uCadContasBancarias,
   uCadCentroCusto, UModulo, uCadFornecedores, uCadLancamento, UConsFornecedores,
   UConsBaixa, UConsContas, UEntrarUsuario, UTranfContas, UConsUsuario,
-  uConsCentro, Ferramentas;
+  uConsCentro, Ferramentas, UMovBanco;
 
 type
 
@@ -532,7 +532,9 @@ end;
 
 procedure TFrmMenu.BtnRelaMoviClick(Sender: TObject);
 begin
-
+  FrmMovBanco.parent := PnChama;
+  FrmMovBanco.Align := alClient;
+  FrmMovBanco.show;
 end;
 
 procedure TFrmMenu.PnChamaClick(Sender: TObject);

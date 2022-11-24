@@ -327,6 +327,7 @@ begin
     GrTodos.Visible := True;
     dm.ZQConsPessoas.Close;
     FrmConsFornecedores.Close;
+
    end;
 
    //código do Rafael, Codigo abaixo é para levar o cod do fornecedor para consbaixa, quando o usuario altera o fornecedor
@@ -429,6 +430,7 @@ begin
   FrmCadFornecedor.Align := alClient;
   FrmCadFornecedor.Show;
   FrmCadFornecedor.DesativaCampoForn();
+  FrmCadLancamento.PnChama.Visible := False;;
 
 
 

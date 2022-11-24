@@ -2,36 +2,37 @@ object FrmCadLancamento: TFrmCadLancamento
   Left = -8
   Height = 788
   Top = -8
-  Width = 1022
+  Width = 1038
   BorderStyle = bsNone
   Caption = 'Lançamento'
   ClientHeight = 749
-  ClientWidth = 1022
+  ClientWidth = 1038
   Color = 16577259
   OnCreate = FormCreate
   OnResize = FormResize
+  OnShow = FormShow
   Position = poScreenCenter
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
     Height = 749
     Top = 0
-    Width = 1022
+    Width = 1038
     Align = alClient
     ClientHeight = 749
-    ClientWidth = 1022
+    ClientWidth = 1038
     Color = 16577259
     ParentColor = False
     TabOrder = 0
     object Panel2: TPanel
       Left = 1
-      Height = 715
-      Top = 33
-      Width = 1020
+      Height = 747
+      Top = 1
+      Width = 1036
       Align = alClient
       BevelOuter = bvNone
-      ClientHeight = 715
-      ClientWidth = 1020
+      ClientHeight = 747
+      ClientWidth = 1036
       TabOrder = 0
       OnClick = Panel2Click
       object Panel3: TPanel
@@ -1548,25 +1549,33 @@ object FrmCadLancamento: TFrmCadLancamento
           }
           OnClick = BtnConsTipoContaClick
         end
+        object Label7: TLabel
+          Left = 0
+          Height = 32
+          Top = 0
+          Width = 674
+          Align = alTop
+          Alignment = taCenter
+          Caption = 'Lançamento'
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = 10420224
+          Font.Height = -24
+          Font.Name = 'Segoe UI'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
       end
     end
-    object Label7: TLabel
+    object PnChama: TPanel
       Left = 1
-      Height = 32
+      Height = 747
       Top = 1
-      Width = 1020
-      Align = alTop
-      Alignment = taCenter
-      Caption = 'Lançamento'
-      Font.CharSet = ANSI_CHARSET
-      Font.Color = 10420224
-      Font.Height = -24
-      Font.Name = 'Segoe UI'
-      Font.Pitch = fpVariable
-      Font.Quality = fqDraft
-      Font.Style = [fsBold]
-      ParentColor = False
-      ParentFont = False
+      Width = 1036
+      Align = alClient
+      TabOrder = 1
     end
   end
 end

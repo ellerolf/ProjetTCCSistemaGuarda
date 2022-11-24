@@ -13,7 +13,7 @@ uses
   UTranfContas, UConsUsuario, uConsCentro, UBuscaDoc, UCadPagamento, 
 Ferramentas, UConsParcelas, UbaixaParcela, uRlContasBanc, urlcontascaixa, 
 urlcontasapagarpen, urlcontasareceberpen, urlcontasareceberefet, 
-urlcontasapagarefet, urltransferencia, ValidaCPF, ValidaCNPJ, UForPg;
+urlcontasapagarefet, urltransferencia, ValidaCPF, ValidaCNPJ, UForPg, UMovBanco;
 
 {$R *.res}
 
@@ -48,6 +48,7 @@ begin
   Application.CreateForm(TFrmRlContasAPagarEfet, FrmRlContasAPagarEfet);
   Application.CreateForm(TFrmRlTransferencia, FrmRlTransferencia);
   Application.CreateForm(TFrmForPg, FrmForPg);
+  Application.CreateForm(TFrmMovBanco, FrmMovBanco);
   Application.Run;
 end.
 
