@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, Buttons,
-  StdCtrls, DBGrids;
+  StdCtrls, DBGrids, uConsCentro;
 
 type
 
@@ -58,6 +58,7 @@ uses UModulo;
 procedure TFrmCadCentroCusto.BtnSairClick(Sender: TObject);
 begin
   Close;
+  FrmConsCentro.PnChamaCentro.Visible := False;
 end;
 
 procedure TFrmCadCentroCusto.BtnAlterarClick(Sender: TObject);
