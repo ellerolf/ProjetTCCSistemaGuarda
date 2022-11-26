@@ -196,8 +196,9 @@ type
     ZQConsPessoasEMAIL: TStringField;
     ZQConsPessoasENDEREO: TStringField;
     ZQConsPessoasESTADO: TStringField;
-    ZQConsPessoasINSCRIOESTADUAL: TLongintField;
-    ZQConsPessoasINSCRIOMUNICIPAL: TLongintField;
+    ZQConsPessoasINSCRIOESTADUAL: TStringField;
+    ZQConsPessoasINSCRIOMUNICIPAL: TStringField;
+    ZQConsPessoasLGPD: TSmallintField;
     ZQConsPessoasNMERO: TLongintField;
     ZQConsPessoasNOME: TStringField;
     ZQConsPessoasNOMEFANTASIA: TStringField;
@@ -286,6 +287,7 @@ type
     ZQFormaPagtoFORCODIGO: TLongintField;
     ZQFormaPagtoFORNOME: TStringField;
     ZQConsExtrato: TZQuery;
+    ZQLgpd: TZQuery;
     ZQValidCadContaBanc: TZQuery;
     procedure DSBuscaTipoDocDataChange(Sender: TObject; Field: TField);
     procedure DSConsPessoasDataChange(Sender: TObject; Field: TField);

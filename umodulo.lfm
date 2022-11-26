@@ -4,7 +4,7 @@ object DM: TDM
   Height = 573
   HorizontalOffset = 0
   VerticalOffset = 0
-  Width = 1316
+  Width = 837
   object ZFinanceiro: TZConnection
     ControlsCodePage = cCP_UTF8
     AutoEncodeStrings = True
@@ -1228,7 +1228,7 @@ object DM: TDM
       Required = False
       Size = 50
     end
-    object ZQConsPessoasINSCRIOESTADUAL: TLongintField
+    object ZQConsPessoasINSCRIOESTADUAL: TStringField
       FieldKind = fkData
       FieldName = 'INSCRIÇÃO ESTADUAL'
       Index = 8
@@ -1237,7 +1237,7 @@ object DM: TDM
       ReadOnly = False
       Required = False
     end
-    object ZQConsPessoasINSCRIOMUNICIPAL: TLongintField
+    object ZQConsPessoasINSCRIOMUNICIPAL: TStringField
       FieldKind = fkData
       FieldName = 'INSCRIÇÃO MUNICIPAL'
       Index = 9
@@ -1355,10 +1355,19 @@ object DM: TDM
       Required = False
       Size = 200
     end
+    object ZQConsPessoasLGPD: TSmallintField
+      FieldKind = fkData
+      FieldName = 'LGPD'
+      Index = 21
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
     object ZQConsPessoasATIVO: TSmallintField
       FieldKind = fkData
       FieldName = 'ATIVO'
-      Index = 21
+      Index = 22
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -1367,7 +1376,7 @@ object DM: TDM
     object ZQConsPessoasSTATUS: TStringField
       FieldKind = fkData
       FieldName = 'STATUS'
-      Index = 22
+      Index = 23
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -3531,5 +3540,41 @@ object DM: TDM
     DataSet = ZQConsExtrato
     Left = 1168
     Top = 104
+  end
+  object ZQLgpd: TZQuery
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'update pessoa set '
+      'PESNOME=:PESNOME,'
+      'PESCPF='''',PESDATA_NASCIMENTO='''',PESCNPJ='''',PESNOME_FANTASIA='''','
+      'PESINSCRICAO_ESTADUAL='''',PESINSCRICAO_MUNICIPAL='''',PESCEP='''','
+      'PESENDERECO='''',PESNUMERO='''',PESESTADO='''',PESCIDADE='''','
+      'PESBAIRRO='''',PESEMAIL='''',PESTELEFONE='''',PESCELULAR='''','
+      'PESLGPD=1, PESSTATUS=0 where PESCODIGO=:PESCODIGO'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'PESNOME'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'PESCODIGO'
+        ParamType = ptUnknown
+      end>
+    Left = 112
+    Top = 490
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'PESNOME'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'PESCODIGO'
+        ParamType = ptUnknown
+      end>
   end
 end

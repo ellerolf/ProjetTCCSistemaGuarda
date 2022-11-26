@@ -2,12 +2,13 @@ object FrmCadFornecedor: TFrmCadFornecedor
   Left = -8
   Height = 788
   Top = -8
-  Width = 974
+  Width = 990
   BorderStyle = bsNone
   Caption = 'Cadastro Fornecedores'
   ClientHeight = 749
-  ClientWidth = 974
+  ClientWidth = 990
   Color = 16577259
+  OnClose = FormClose
   OnCreate = FormCreate
   OnResize = FormResize
   OnShow = FormShow
@@ -17,26 +18,26 @@ object FrmCadFornecedor: TFrmCadFornecedor
     Left = 0
     Height = 749
     Top = 0
-    Width = 974
+    Width = 990
     Align = alClient
     ClientHeight = 749
-    ClientWidth = 974
+    ClientWidth = 990
     TabOrder = 0
     object Panel2: TPanel
       Left = 1
       Height = 747
       Top = 1
-      Width = 972
+      Width = 988
       Align = alClient
       BevelOuter = bvNone
       ClientHeight = 747
-      ClientWidth = 972
+      ClientWidth = 988
       TabOrder = 0
       object LblTitulo: TLabel
         Left = 0
         Height = 32
         Top = 0
-        Width = 972
+        Width = 988
         Align = alTop
         Alignment = taCenter
         Caption = 'Cadastro Fornecedores'
@@ -60,9 +61,9 @@ object FrmCadFornecedor: TFrmCadFornecedor
         ClientWidth = 696
         TabOrder = 0
         object GrpCnpjCpf: TGroupBox
-          Left = 17
+          Left = 25
           Height = 41
-          Top = 34
+          Top = 66
           Width = 120
           Caption = 'CNPJ/CPF'
           ClientHeight = 19
@@ -104,9 +105,9 @@ object FrmCadFornecedor: TFrmCadFornecedor
           end
         end
         object LblCpfCnpj: TLabel
-          Left = 344
+          Left = 352
           Height = 17
-          Top = 32
+          Top = 64
           Width = 64
           Caption = 'CPF/CNPJ:'
           Font.CharSet = ANSI_CHARSET
@@ -118,9 +119,9 @@ object FrmCadFornecedor: TFrmCadFornecedor
           ParentFont = False
         end
         object LblNomeRazao: TLabel
-          Left = 16
+          Left = 24
           Height = 17
-          Top = 88
+          Top = 120
           Width = 123
           Caption = 'Nome/Razão Social:'
           Font.CharSet = ANSI_CHARSET
@@ -132,27 +133,27 @@ object FrmCadFornecedor: TFrmCadFornecedor
           ParentFont = False
         end
         object EdtNome: TEdit
-          Left = 16
+          Left = 24
           Height = 23
-          Top = 112
+          Top = 144
           Width = 312
           CharCase = ecUppercase
           MaxLength = 50
           TabOrder = 3
         end
         object EdtFantasia: TEdit
-          Left = 344
+          Left = 352
           Height = 23
-          Top = 112
+          Top = 144
           Width = 345
           CharCase = ecUppercase
           MaxLength = 50
           TabOrder = 4
         end
         object LblFantasia: TLabel
-          Left = 344
+          Left = 352
           Height = 17
-          Top = 88
+          Top = 120
           Width = 96
           Caption = 'Nome Fantasia:'
           Font.CharSet = ANSI_CHARSET
@@ -164,9 +165,9 @@ object FrmCadFornecedor: TFrmCadFornecedor
           ParentFont = False
         end
         object LblEstadual: TLabel
-          Left = 16
+          Left = 24
           Height = 17
-          Top = 145
+          Top = 177
           Width = 114
           Caption = 'Inscrição Estadual:'
           Font.CharSet = ANSI_CHARSET
@@ -178,9 +179,9 @@ object FrmCadFornecedor: TFrmCadFornecedor
           ParentFont = False
         end
         object LblMunicipal: TLabel
-          Left = 288
+          Left = 296
           Height = 17
-          Top = 145
+          Top = 177
           Width = 123
           Caption = 'Inscrição Municipal:'
           Font.CharSet = ANSI_CHARSET
@@ -192,9 +193,9 @@ object FrmCadFornecedor: TFrmCadFornecedor
           ParentFont = False
         end
         object LblDta: TLabel
-          Left = 560
+          Left = 568
           Height = 17
-          Top = 144
+          Top = 176
           Width = 129
           Caption = 'Data de Nascimento:'
           Font.CharSet = ANSI_CHARSET
@@ -206,9 +207,9 @@ object FrmCadFornecedor: TFrmCadFornecedor
           ParentFont = False
         end
         object LblCep: TLabel
-          Left = 17
+          Left = 25
           Height = 17
-          Top = 256
+          Top = 288
           Width = 27
           Caption = 'CEP:'
           Font.CharSet = ANSI_CHARSET
@@ -220,9 +221,9 @@ object FrmCadFornecedor: TFrmCadFornecedor
           ParentFont = False
         end
         object LblCidade: TLabel
-          Left = 105
+          Left = 113
           Height = 17
-          Top = 256
+          Top = 288
           Width = 46
           Caption = 'Cidade:'
           Font.CharSet = ANSI_CHARSET
@@ -234,27 +235,27 @@ object FrmCadFornecedor: TFrmCadFornecedor
           ParentFont = False
         end
         object EdtCidade: TEdit
-          Left = 105
+          Left = 113
           Height = 23
-          Top = 280
+          Top = 312
           Width = 104
           CharCase = ecUppercase
           MaxLength = 50
           TabOrder = 13
         end
         object EdtEndereco: TEdit
-          Left = 16
+          Left = 24
           Height = 23
-          Top = 224
+          Top = 256
           Width = 344
           CharCase = ecUppercase
           MaxLength = 50
           TabOrder = 8
         end
         object LblEndereco: TLabel
-          Left = 16
+          Left = 24
           Height = 17
-          Top = 200
+          Top = 232
           Width = 60
           Caption = 'Endereço:'
           Font.CharSet = ANSI_CHARSET
@@ -266,9 +267,9 @@ object FrmCadFornecedor: TFrmCadFornecedor
           ParentFont = False
         end
         object EdtNumero: TEdit
-          Left = 376
+          Left = 384
           Height = 23
-          Top = 224
+          Top = 256
           Width = 56
           CharCase = ecUppercase
           MaxLength = 50
@@ -276,9 +277,9 @@ object FrmCadFornecedor: TFrmCadFornecedor
           TabOrder = 9
         end
         object LblNum: TLabel
-          Left = 377
+          Left = 385
           Height = 17
-          Top = 200
+          Top = 232
           Width = 20
           Caption = 'Nº:'
           Font.CharSet = ANSI_CHARSET
@@ -290,18 +291,18 @@ object FrmCadFornecedor: TFrmCadFornecedor
           ParentFont = False
         end
         object EdtComplemento: TEdit
-          Left = 441
+          Left = 449
           Height = 23
-          Top = 224
+          Top = 256
           Width = 112
           CharCase = ecUppercase
           MaxLength = 50
           TabOrder = 10
         end
         object Label12: TLabel
-          Left = 441
+          Left = 449
           Height = 17
-          Top = 200
+          Top = 232
           Width = 91
           Caption = 'Complemento:'
           Font.CharSet = ANSI_CHARSET
@@ -313,18 +314,18 @@ object FrmCadFornecedor: TFrmCadFornecedor
           ParentFont = False
         end
         object EdtBairro: TEdit
-          Left = 560
+          Left = 568
           Height = 23
-          Top = 224
+          Top = 256
           Width = 128
           CharCase = ecUppercase
           MaxLength = 50
           TabOrder = 11
         end
         object LblBairro: TLabel
-          Left = 560
+          Left = 568
           Height = 17
-          Top = 200
+          Top = 232
           Width = 41
           Caption = 'Bairro:'
           Font.CharSet = ANSI_CHARSET
@@ -336,9 +337,9 @@ object FrmCadFornecedor: TFrmCadFornecedor
           ParentFont = False
         end
         object CboUf: TComboBox
-          Left = 216
+          Left = 224
           Height = 23
-          Top = 280
+          Top = 312
           Width = 48
           CharCase = ecUppercase
           ItemHeight = 15
@@ -375,9 +376,9 @@ object FrmCadFornecedor: TFrmCadFornecedor
           TabOrder = 14
         end
         object LblUf: TLabel
-          Left = 216
+          Left = 224
           Height = 17
-          Top = 256
+          Top = 288
           Width = 20
           Caption = 'UF:'
           Font.CharSet = ANSI_CHARSET
@@ -389,9 +390,9 @@ object FrmCadFornecedor: TFrmCadFornecedor
           ParentFont = False
         end
         object Label16: TLabel
-          Left = 528
+          Left = 536
           Height = 17
-          Top = 256
+          Top = 288
           Width = 43
           Caption = 'E-Mail:'
           Font.CharSet = ANSI_CHARSET
@@ -403,9 +404,9 @@ object FrmCadFornecedor: TFrmCadFornecedor
           ParentFont = False
         end
         object lblCel: TLabel
-          Left = 400
+          Left = 408
           Height = 17
-          Top = 258
+          Top = 290
           Width = 48
           Caption = 'Celular:'
           Font.CharSet = ANSI_CHARSET
@@ -417,9 +418,9 @@ object FrmCadFornecedor: TFrmCadFornecedor
           ParentFont = False
         end
         object Label18: TLabel
-          Left = 272
+          Left = 280
           Height = 17
-          Top = 258
+          Top = 290
           Width = 57
           Caption = 'Telefone:'
           Font.CharSet = ANSI_CHARSET
@@ -431,9 +432,9 @@ object FrmCadFornecedor: TFrmCadFornecedor
           ParentFont = False
         end
         object Label20: TLabel
-          Left = 16
+          Left = 24
           Height = 17
-          Top = 328
+          Top = 360
           Width = 82
           Caption = 'Observações:'
           Font.CharSet = ANSI_CHARSET
@@ -445,9 +446,9 @@ object FrmCadFornecedor: TFrmCadFornecedor
           ParentFont = False
         end
         object MemObs: TMemo
-          Left = 16
+          Left = 24
           Height = 96
-          Top = 352
+          Top = 384
           Width = 672
           CharCase = ecUppercase
           Lines.Strings = (
@@ -457,9 +458,9 @@ object FrmCadFornecedor: TFrmCadFornecedor
           TabOrder = 18
         end
         object LblMensagem: TLabel
-          Left = 17
+          Left = 25
           Height = 15
-          Top = 456
+          Top = 488
           Width = 118
           Caption = '*Campos Obrigatorios'
           Font.Color = clRed
@@ -467,9 +468,9 @@ object FrmCadFornecedor: TFrmCadFornecedor
           ParentFont = False
         end
         object BtnSalvar: TSpeedButton
-          Left = 441
+          Left = 449
           Height = 34
-          Top = 472
+          Top = 504
           Width = 124
           AutoSize = True
           Glyph.Data = {
@@ -929,9 +930,9 @@ object FrmCadFornecedor: TFrmCadFornecedor
           OnClick = BtnSalvarClick
         end
         object BtnSair: TSpeedButton
-          Left = 568
+          Left = 576
           Height = 34
-          Top = 472
+          Top = 504
           Width = 124
           AutoSize = True
           Glyph.Data = {
@@ -1391,9 +1392,9 @@ object FrmCadFornecedor: TFrmCadFornecedor
           OnClick = BtnSairClick
         end
         object GrpStatus: TGroupBox
-          Left = 168
+          Left = 176
           Height = 41
-          Top = 34
+          Top = 66
           Width = 128
           Caption = 'Status:'
           ClientHeight = 19
@@ -1436,9 +1437,9 @@ object FrmCadFornecedor: TFrmCadFornecedor
           end
         end
         object DTNasc: TDateEdit
-          Left = 560
+          Left = 568
           Height = 23
-          Top = 167
+          Top = 199
           Width = 131
           CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
           DateOrder = doNone
@@ -1449,9 +1450,9 @@ object FrmCadFornecedor: TFrmCadFornecedor
           TabOrder = 7
         end
         object EdtCpfCnpj: TMaskEdit
-          Left = 344
+          Left = 352
           Height = 23
-          Top = 52
+          Top = 84
           Width = 344
           CharCase = ecUppercase
           MaxLength = 50
@@ -1461,9 +1462,9 @@ object FrmCadFornecedor: TFrmCadFornecedor
           SpaceChar = '_'
         end
         object BtnAlterar: TSpeedButton
-          Left = 308
+          Left = 316
           Height = 34
-          Top = 472
+          Top = 504
           Width = 124
           AutoSize = True
           Glyph.Data = {
@@ -1923,9 +1924,9 @@ object FrmCadFornecedor: TFrmCadFornecedor
           OnClick = BtnAlterarClick
         end
         object EdtCep: TMaskEdit
-          Left = 16
+          Left = 24
           Height = 23
-          Top = 280
+          Top = 312
           Width = 80
           CharCase = ecUppercase
           MaxLength = 50
@@ -1933,9 +1934,9 @@ object FrmCadFornecedor: TFrmCadFornecedor
           SpaceChar = '_'
         end
         object EdtTel: TMaskEdit
-          Left = 272
+          Left = 280
           Height = 23
-          Top = 280
+          Top = 312
           Width = 120
           CharCase = ecUppercase
           MaxLength = 50
@@ -1943,9 +1944,9 @@ object FrmCadFornecedor: TFrmCadFornecedor
           SpaceChar = '_'
         end
         object EdtCel: TMaskEdit
-          Left = 400
+          Left = 408
           Height = 23
-          Top = 280
+          Top = 312
           Width = 120
           CharCase = ecUppercase
           MaxLength = 50
@@ -1953,9 +1954,9 @@ object FrmCadFornecedor: TFrmCadFornecedor
           SpaceChar = '_'
         end
         object EdtEmail: TMaskEdit
-          Left = 528
+          Left = 536
           Height = 23
-          Top = 280
+          Top = 312
           Width = 160
           CharCase = ecUppercase
           MaxLength = 50
@@ -1963,22 +1964,52 @@ object FrmCadFornecedor: TFrmCadFornecedor
           SpaceChar = '_'
         end
         object EdtInsMun: TMaskEdit
-          Left = 288
+          Left = 296
           Height = 23
-          Top = 167
+          Top = 199
           Width = 264
           MaxLength = 20
           TabOrder = 6
           SpaceChar = '_'
         end
         object EdtInsEstadual: TMaskEdit
-          Left = 16
+          Left = 24
           Height = 23
-          Top = 167
+          Top = 199
           Width = 256
           MaxLength = 20
           TabOrder = 5
           SpaceChar = '_'
+        end
+        object PnLGPD: TPanel
+          Left = 8
+          Height = 34
+          Top = 8
+          Width = 706
+          BevelColor = clNone
+          ClientHeight = 34
+          ClientWidth = 706
+          Color = clRed
+          ParentColor = False
+          TabOrder = 19
+          Visible = False
+          object Label1: TLabel
+            Left = 1
+            Height = 32
+            Top = 1
+            Width = 704
+            Align = alClient
+            Alignment = taCenter
+            Caption = 'PROTEÇÃO LGPD'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clYellow
+            Font.Height = -24
+            Font.Pitch = fpVariable
+            Font.Quality = fqDraft
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
         end
       end
     end

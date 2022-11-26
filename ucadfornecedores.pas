@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, Buttons,
-  StdCtrls, MaskEdit, EditBtn, DateTimePicker, UModulo, UConsFornecedores;
+  StdCtrls, MaskEdit, EditBtn, DateTimePicker ;
 
 type
 
@@ -31,6 +31,7 @@ type
     EdtNumero: TEdit;
     GrpCnpjCpf: TGroupBox;
     GrpStatus: TGroupBox;
+    Label1: TLabel;
     LblNomeRazao: TLabel;
     LblNum: TLabel;
     LblCep: TLabel;
@@ -61,6 +62,7 @@ type
     Panel1: TPanel;
     Panel2: TPanel;
     Panel3: TPanel;
+    PnLGPD: TPanel;
     procedure BtnAlterarClick(Sender: TObject);
     procedure BtnAtivoChange(Sender: TObject);
     procedure BtnCnpjChange(Sender: TObject);
@@ -70,6 +72,7 @@ type
     procedure BtnSalvarClick(Sender: TObject);
     procedure EdtCpfCnpjChange(Sender: TObject);
     procedure EdtCpfCnpjExit(Sender: TObject);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -96,7 +99,7 @@ var
 
 implementation
 
-uses ValidaCPF,ValidaCNPJ;
+uses ValidaCPF,ValidaCNPJ,UModulo, UConsFornecedores;
 
 {$R *.lfm}
 
@@ -589,6 +592,12 @@ begin
   end;
 end;
 
+procedure TFrmCadFornecedor.FormClose(Sender: TObject;
+  var CloseAction: TCloseAction);
+begin
+  FrmCadFornecedor.PnLGPD.Visible:=false;
+end;
+
 procedure TFrmCadFornecedor.FormCreate(Sender: TObject);
 begin
   if (BtnCnpj.Checked = True) or (BtnCpf.Checked = True) then
@@ -611,6 +620,7 @@ end;
 procedure TFrmCadFornecedor.FormShow(Sender: TObject);
 begin
   BtnInativo.Enabled := False;
+
 end;
 
 end.
