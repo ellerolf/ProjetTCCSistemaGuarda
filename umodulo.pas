@@ -12,6 +12,7 @@ type
   { TDM }
 
   TDM = class(TDataModule)
+    DSConsSaldoAnt: TDataSource;
     DSConsExtrato: TDataSource;
     DSFormaPagto: TDataSource;
     DSValidCadContaBanc: TDataSource;
@@ -206,6 +207,7 @@ type
     ZQConsPessoasSTATUS: TStringField;
     ZQConsPessoasTELEFONE: TStringField;
     ZQConsPessoasTIPO: TStringField;
+    ZQConsSaldoAntsumVALOR: TFloatField;
     ZQConsSomaParcBaixadasumBAIVALOR: TFloatField;
     ZQConsTipoContaTIPCODIGO: TLongintField;
     ZQConsTipoContaTIPNOME: TStringField;
@@ -288,6 +290,7 @@ type
     ZQFormaPagtoFORNOME: TStringField;
     ZQConsExtrato: TZQuery;
     ZQLgpd: TZQuery;
+    ZQConsSaldoAnt: TZQuery;
     ZQValidCadContaBanc: TZQuery;
     procedure DSBuscaTipoDocDataChange(Sender: TObject; Field: TField);
     procedure DSConsPessoasDataChange(Sender: TObject; Field: TField);

@@ -57,6 +57,7 @@ begin
 
      FrmMovBanco.CodDaConta:=0;
      FrmMovBanco.NomeDaConta:='';
+     FrmMovBanco.saldoInicial:=0;
 
      EdtConsulta.Clear;
      RGBTipoConta.ItemIndex:=-1;
@@ -185,6 +186,7 @@ begin
      begin
           FrmMovBanco.CodDaConta:=dm.ZQBuscaContaCONCODIGO.AsInteger;
           FrmMovBanco.NomeDaConta:=dm.ZQBuscaContaCONNOME.AsString;
+          FrmMovBanco.saldoInicial:=dm.ZQBuscaContaCONSALDO_INICIAL.AsFloat;
      end;
 end;
 
@@ -204,6 +206,7 @@ begin
      begin
           FrmMovBanco.CodDaConta:=dm.ZQBuscaContaCONCODIGO.AsInteger;
           FrmMovBanco.NomeDaConta:=dm.ZQBuscaContaCONNOME.AsString;
+          FrmMovBanco.saldoInicial:=dm.ZQBuscaContaCONSALDO_INICIAL.AsFloat;
      end;
 end;
 

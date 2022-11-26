@@ -1,13 +1,13 @@
 object FrmMovBanco: TFrmMovBanco
   Left = -8
-  Height = 787
+  Height = 788
   Top = -8
-  Width = 988
+  Width = 1020
   BorderIcons = []
   BorderStyle = bsNone
   Caption = 'Movimentação Bancária'
   ClientHeight = 749
-  ClientWidth = 988
+  ClientWidth = 1020
   Color = 16577259
   OnClose = FormClose
   OnResize = FormResize
@@ -18,16 +18,16 @@ object FrmMovBanco: TFrmMovBanco
     Left = 0
     Height = 749
     Top = 0
-    Width = 988
+    Width = 1020
     Align = alClient
     ClientHeight = 749
-    ClientWidth = 988
+    ClientWidth = 1020
     TabOrder = 0
     object Label7: TLabel
       Left = 1
       Height = 32
       Top = 1
-      Width = 986
+      Width = 1018
       Align = alTop
       Alignment = taCenter
       Caption = 'Movimentação Bancária'
@@ -45,29 +45,32 @@ object FrmMovBanco: TFrmMovBanco
       Left = 1
       Height = 715
       Top = 33
-      Width = 986
+      Width = 1018
       Align = alClient
       BevelOuter = bvNone
       ClientHeight = 715
-      ClientWidth = 986
+      ClientWidth = 1018
       TabOrder = 0
+      OnClick = Panel2Click
       object EdtNConta: TEdit
-        Left = 104
+        Left = 96
         Height = 23
         Top = 48
         Width = 40
+        Enabled = False
         OnChange = EdtNContaChange
         TabOrder = 0
       end
       object EdtNomeDaConta: TEdit
-        Left = 152
+        Left = 144
         Height = 23
         Top = 48
         Width = 200
+        Enabled = False
         TabOrder = 1
       end
       object BtnPesqConta: TSpeedButton
-        Left = 360
+        Left = 408
         Height = 27
         Top = 44
         Width = 49
@@ -209,7 +212,7 @@ object FrmMovBanco: TFrmMovBanco
         OnClick = BtnPesqContaClick
       end
       object DTInicial: TDateEdit
-        Left = 448
+        Left = 464
         Height = 23
         Top = 48
         Width = 144
@@ -375,10 +378,10 @@ object FrmMovBanco: TFrmMovBanco
         OnClick = BtnPesquisarClick
       end
       object DBGridExtrato: TDBGrid
-        Left = 104
+        Left = 96
         Height = 456
-        Top = 80
-        Width = 729
+        Top = 104
+        Width = 737
         Color = clWindow
         Columns = <        
           item
@@ -417,7 +420,7 @@ object FrmMovBanco: TFrmMovBanco
       object BtnImprimir: TSpeedButton
         Left = 440
         Height = 34
-        Top = 552
+        Top = 600
         Width = 124
         AutoSize = True
         Glyph.Data = {
@@ -878,7 +881,7 @@ object FrmMovBanco: TFrmMovBanco
       object SpeedButton4: TSpeedButton
         Left = 576
         Height = 34
-        Top = 552
+        Top = 600
         Width = 124
         AutoSize = True
         Glyph.Data = {
@@ -1339,7 +1342,7 @@ object FrmMovBanco: TFrmMovBanco
       object BtnSair: TSpeedButton
         Left = 709
         Height = 34
-        Top = 552
+        Top = 600
         Width = 124
         AutoSize = True
         Glyph.Data = {
@@ -1799,7 +1802,7 @@ object FrmMovBanco: TFrmMovBanco
         OnClick = BtnSairClick
       end
       object Label1: TLabel
-        Left = 104
+        Left = 96
         Height = 17
         Top = 24
         Width = 111
@@ -1813,7 +1816,7 @@ object FrmMovBanco: TFrmMovBanco
         ParentFont = False
       end
       object Label2: TLabel
-        Left = 448
+        Left = 464
         Height = 17
         Top = 24
         Width = 129
@@ -1827,7 +1830,7 @@ object FrmMovBanco: TFrmMovBanco
         ParentFont = False
       end
       object Label3: TLabel
-        Left = 608
+        Left = 616
         Height = 17
         Top = 54
         Width = 7
@@ -1839,6 +1842,47 @@ object FrmMovBanco: TFrmMovBanco
         Font.Style = [fsBold]
         ParentColor = False
         ParentFont = False
+      end
+      object LblValorTotal: TLabel
+        Left = 808
+        Height = 15
+        Top = 568
+        Width = 21
+        Caption = '0.00'
+        ParentColor = False
+      end
+      object BtnLimpar: TSpeedButton
+        Left = 352
+        Height = 27
+        Top = 44
+        Width = 48
+        Caption = 'Limpar'
+        OnClick = BtnLimparClick
+      end
+      object LblSaldoAnt: TLabel
+        Left = 782
+        Height = 15
+        Top = 80
+        Width = 21
+        Caption = '0.00'
+        ParentColor = False
+        OnClick = LblSaldoAntClick
+      end
+      object Label4: TLabel
+        Left = 709
+        Height = 15
+        Top = 568
+        Width = 83
+        Caption = 'Saldo da Conta:'
+        ParentColor = False
+      end
+      object Label5: TLabel
+        Left = 688
+        Height = 15
+        Top = 80
+        Width = 78
+        Caption = 'Saldo Anterior:'
+        ParentColor = False
       end
     end
   end

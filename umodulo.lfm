@@ -1,10 +1,10 @@
 object DM: TDM
   OnCreate = DataModuleCreate
   OldCreateOrder = False
-  Height = 573
+  Height = 691
   HorizontalOffset = 0
   VerticalOffset = 0
-  Width = 837
+  Width = 897
   object ZFinanceiro: TZConnection
     ControlsCodePage = cCP_UTF8
     AutoEncodeStrings = True
@@ -3576,5 +3576,29 @@ object DM: TDM
         Name = 'PESCODIGO'
         ParamType = ptUnknown
       end>
+  end
+  object ZQConsSaldoAnt: TZQuery
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'SELECT sum(VALOR) from vwextrato '
+    )
+    Params = <>
+    Left = 768
+    Top = 624
+    object ZQConsSaldoAntsumVALOR: TFloatField
+      FieldKind = fkData
+      FieldName = 'sum(VALOR)'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = True
+      Required = False
+      Precision = 23
+    end
+  end
+  object DSConsSaldoAnt: TDataSource
+    DataSet = ZQConsSaldoAnt
+    Left = 768
+    Top = 568
   end
 end
