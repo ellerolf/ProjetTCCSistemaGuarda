@@ -3433,8 +3433,8 @@ object DM: TDM
       'SELECT * FROM FORMA_PAGAMENTO'
     )
     Params = <>
-    Left = 1096
-    Top = 176
+    Left = 1080
+    Top = 168
     object ZQFormaPagtoFORCODIGO: TLongintField
       FieldKind = fkData
       FieldName = 'FORCODIGO'
@@ -3457,7 +3457,79 @@ object DM: TDM
   end
   object DSFormaPagto: TDataSource
     DataSet = ZQFormaPagto
-    Left = 1096
-    Top = 120
+    Left = 1080
+    Top = 104
+  end
+  object ZQConsExtrato: TZQuery
+    Connection = ZFinanceiro
+    SQL.Strings = (
+      'select * from vwextrato'
+    )
+    Params = <>
+    Left = 1168
+    Top = 168
+    object ZQConsExtratooperacao: TStringField
+      FieldKind = fkData
+      FieldName = 'operacao'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = True
+      Required = False
+      Size = 7
+    end
+    object ZQConsExtratoconta: TLongintField
+      FieldKind = fkData
+      FieldName = 'conta'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = True
+      Required = False
+    end
+    object ZQConsExtratodata: TDateField
+      FieldKind = fkData
+      FieldName = 'data'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = True
+      Required = False
+    end
+    object ZQConsExtratodescricao: TStringField
+      FieldKind = fkData
+      FieldName = 'descricao'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = True
+      Required = False
+      Size = 123
+    end
+    object ZQConsExtratodocumento: TStringField
+      FieldKind = fkData
+      FieldName = 'documento'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = True
+      Required = False
+      Size = 50
+    end
+    object ZQConsExtratovalor: TFloatField
+      FieldKind = fkData
+      FieldName = 'valor'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = True
+      Required = False
+      Precision = 22
+    end
+  end
+  object DSConsExtrato: TDataSource
+    DataSet = ZQConsExtrato
+    Left = 1168
+    Top = 104
   end
 end

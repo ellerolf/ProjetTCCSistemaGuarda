@@ -1,31 +1,33 @@
 object FrmMovBanco: TFrmMovBanco
   Left = -8
-  Height = 670
+  Height = 787
   Top = -8
-  Width = 940
+  Width = 988
   BorderIcons = []
   BorderStyle = bsNone
   Caption = 'Movimentação Bancária'
-  ClientHeight = 670
-  ClientWidth = 940
+  ClientHeight = 749
+  ClientWidth = 988
   Color = 16577259
+  OnClose = FormClose
   OnResize = FormResize
+  OnShow = FormShow
   Position = poScreenCenter
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 670
+    Height = 749
     Top = 0
-    Width = 940
+    Width = 988
     Align = alClient
-    ClientHeight = 670
-    ClientWidth = 940
+    ClientHeight = 749
+    ClientWidth = 988
     TabOrder = 0
     object Label7: TLabel
       Left = 1
       Height = 32
       Top = 1
-      Width = 938
+      Width = 986
       Align = alTop
       Alignment = taCenter
       Caption = 'Movimentação Bancária'
@@ -41,31 +43,30 @@ object FrmMovBanco: TFrmMovBanco
     end
     object Panel2: TPanel
       Left = 1
-      Height = 636
+      Height = 715
       Top = 33
-      Width = 938
+      Width = 986
       Align = alClient
       BevelOuter = bvNone
-      ClientHeight = 636
-      ClientWidth = 938
+      ClientHeight = 715
+      ClientWidth = 986
       TabOrder = 0
-      object Edit1: TEdit
+      object EdtNConta: TEdit
         Left = 104
         Height = 23
         Top = 48
         Width = 40
+        OnChange = EdtNContaChange
         TabOrder = 0
-        Text = 'Edit1'
       end
-      object Edit2: TEdit
+      object EdtNomeDaConta: TEdit
         Left = 152
         Height = 23
         Top = 48
         Width = 200
         TabOrder = 1
-        Text = 'Edit2'
       end
-      object SpeedButton1: TSpeedButton
+      object BtnPesqConta: TSpeedButton
         Left = 360
         Height = 27
         Top = 44
@@ -205,8 +206,9 @@ object FrmMovBanco: TFrmMovBanco
           00FFC10000FFC10000FFC10000FFC10000FFC10000FFC10000C0C1000090C100
           0020FFFFFF00
         }
+        OnClick = BtnPesqContaClick
       end
-      object DateEdit1: TDateEdit
+      object DTInicial: TDateEdit
         Left = 448
         Height = 23
         Top = 48
@@ -217,9 +219,8 @@ object FrmMovBanco: TFrmMovBanco
         NumGlyphs = 1
         MaxLength = 0
         TabOrder = 2
-        Text = 'DateEdit1'
       end
-      object DateEdit2: TDateEdit
+      object DtFinal: TDateEdit
         Left = 632
         Height = 23
         Top = 48
@@ -230,9 +231,8 @@ object FrmMovBanco: TFrmMovBanco
         NumGlyphs = 1
         MaxLength = 0
         TabOrder = 3
-        Text = 'DateEdit2'
       end
-      object SpeedButton2: TSpeedButton
+      object BtnPesquisar: TSpeedButton
         Left = 784
         Height = 27
         Top = 44
@@ -372,17 +372,49 @@ object FrmMovBanco: TFrmMovBanco
           00FFC10000FFC10000FFC10000FFC10000FFC10000FFC10000C0C1000090C100
           0020FFFFFF00
         }
+        OnClick = BtnPesquisarClick
       end
-      object DBGrid1: TDBGrid
+      object DBGridExtrato: TDBGrid
         Left = 104
         Height = 456
         Top = 80
         Width = 729
         Color = clWindow
-        Columns = <>
+        Columns = <        
+          item
+            Title.Caption = 'OPERAÇÃO'
+            Width = 70
+            FieldName = 'operacao'
+          end        
+          item
+            Title.Caption = 'NOME DA CONTA'
+            Width = 100
+            FieldName = 'conta'
+          end        
+          item
+            Title.Caption = 'DATA'
+            FieldName = 'data'
+          end        
+          item
+            Title.Caption = 'DESCRIÇÃO'
+            Width = 200
+            FieldName = 'descricao'
+          end        
+          item
+            Title.Caption = 'N° DO DOCUMENTO'
+            Width = 120
+            FieldName = 'documento'
+          end        
+          item
+            Title.Caption = 'VALOR'
+            Width = 100
+            FieldName = 'valor'
+          end>
+        DataSource = DM.DSConsExtrato
         TabOrder = 4
+        Visible = False
       end
-      object SpeedButton3: TSpeedButton
+      object BtnImprimir: TSpeedButton
         Left = 440
         Height = 34
         Top = 552
@@ -1304,7 +1336,7 @@ object FrmMovBanco: TFrmMovBanco
           00FFFF3300FFFF3300FFFF3300FFFF5930FFFFBFAFFFFFFFFFFF
         }
       end
-      object SpeedButton5: TSpeedButton
+      object BtnSair: TSpeedButton
         Left = 709
         Height = 34
         Top = 552
@@ -1764,6 +1796,7 @@ object FrmMovBanco: TFrmMovBanco
           FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000
           FFFF0000FFFF0000FFFF0000FFFF3030FFFFAFAFFFFFFFFFFFFF
         }
+        OnClick = BtnSairClick
       end
       object Label1: TLabel
         Left = 104

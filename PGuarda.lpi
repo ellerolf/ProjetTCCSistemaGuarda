@@ -279,6 +279,7 @@
         <Filename Value="umovbanco.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FrmMovBanco"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="UMovBanco"/>
       </Unit31>

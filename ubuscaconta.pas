@@ -46,13 +46,18 @@ implementation
 {$R *.lfm}
 
 { TFrmBuscaConta }
-uses uCadContasBancarias, UbaixaParcela;
+uses uCadContasBancarias, UbaixaParcela, UMovBanco;
 
 procedure TFrmBuscaConta.BtnSelecione1Click(Sender: TObject);
 begin
      FrmCadContasBancarias.AcionaBtnD:='';
      FrmCadContasBancarias.AcionaBtnO:='';
      FRMBaixaParcela.acionaConsConta:='';
+     FrmMovBanco.MovBanc:='';
+
+     FrmMovBanco.CodDaConta:=0;
+     FrmMovBanco.NomeDaConta:='';
+
      EdtConsulta.Clear;
      RGBTipoConta.ItemIndex:=-1;
      DBGCaixa.Visible:=False;
@@ -140,6 +145,28 @@ begin
        DBGContasBanc.Visible:=False;
        FrmBuscaConta.close;
   end;
+   if (FrmMovBanco.MovBanc='Aberto') then
+   begin
+        if (FrmMovBanco.CodDaConta>0) then
+        begin
+             FrmMovBanco.EdtNConta.Text:=IntToStr(FrmMovBanco.CodDaConta);
+             FrmMovBanco.EdtNomeDaConta.Text:=FrmMovBanco.NomeDaConta;
+             RGBTipoConta.ItemIndex:=-1;
+             DBGCaixa.Visible:=False;
+             DBGContasBanc.Visible:=False;
+             FrmMovBanco.CodDaConta:=0;
+             FrmMovBanco.NomeDaConta:='';
+             EdtConsulta.Clear;
+             FrmBuscaConta.close;
+        end;
+        FrmMovBanco.MovBanc:='';
+        RGBTipoConta.ItemIndex:=-1;
+        EdtConsulta.Clear;
+        DBGCaixa.Visible:=False;
+        DBGContasBanc.Visible:=False;
+        FrmBuscaConta.close;
+
+   end;
 end;
 
 procedure TFrmBuscaConta.DBGCaixaCellClick(Column: TColumn);
@@ -153,6 +180,12 @@ begin
      begin
           FrmCadContasBancarias.ContaSelecionada:=dm.ZQBuscaContaCONCODIGO.AsInteger;
      end;
+
+     if (FrmMovBanco.MovBanc='Aberto') then
+     begin
+          FrmMovBanco.CodDaConta:=dm.ZQBuscaContaCONCODIGO.AsInteger;
+          FrmMovBanco.NomeDaConta:=dm.ZQBuscaContaCONNOME.AsString;
+     end;
 end;
 
 procedure TFrmBuscaConta.DBGContasBancCellClick(Column: TColumn);
@@ -165,6 +198,12 @@ begin
      if (FrmCadContasBancarias.AcionaBtnO='o') or (FrmCadContasBancarias.AcionaBtnD='d') then
      begin
           FrmCadContasBancarias.ContaSelecionada:=dm.ZQBuscaContaCONCODIGO.AsInteger;
+     end;
+
+     if (FrmMovBanco.MovBanc='Aberto') then
+     begin
+          FrmMovBanco.CodDaConta:=dm.ZQBuscaContaCONCODIGO.AsInteger;
+          FrmMovBanco.NomeDaConta:=dm.ZQBuscaContaCONNOME.AsString;
      end;
 end;
 

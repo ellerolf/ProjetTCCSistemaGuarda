@@ -12,6 +12,7 @@ type
   { TDM }
 
   TDM = class(TDataModule)
+    DSConsExtrato: TDataSource;
     DSFormaPagto: TDataSource;
     DSValidCadContaBanc: TDataSource;
     DSConsVerParc: TDataSource;
@@ -123,6 +124,12 @@ type
     ZQConsCentroCENNOME: TStringField;
     ZQConsCentroCENSTATUS: TSmallintField;
     ZQConsCentroCODIGOTIP: TLongintField;
+    ZQConsExtratoconta: TLongintField;
+    ZQConsExtratodata: TDateField;
+    ZQConsExtratodescricao: TStringField;
+    ZQConsExtratodocumento: TStringField;
+    ZQConsExtratooperacao: TStringField;
+    ZQConsExtratovalor: TFloatField;
     ZQConsFornCPFCODIGOTIP: TLongintField;
     ZQConsFornCPFPESBAIRRO: TStringField;
     ZQConsFornCPFPESCELULAR: TStringField;
@@ -278,6 +285,7 @@ type
     ZQFormaPagto: TZQuery;
     ZQFormaPagtoFORCODIGO: TLongintField;
     ZQFormaPagtoFORNOME: TStringField;
+    ZQConsExtrato: TZQuery;
     ZQValidCadContaBanc: TZQuery;
     procedure DSBuscaTipoDocDataChange(Sender: TObject; Field: TField);
     procedure DSConsPessoasDataChange(Sender: TObject; Field: TField);
