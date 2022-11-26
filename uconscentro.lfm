@@ -2,11 +2,11 @@ object FrmConsCentro: TFrmConsCentro
   Left = -8
   Height = 788
   Top = -8
-  Width = 958
+  Width = 974
   BorderStyle = bsNone
   Caption = 'FrmConsCentro'
-  ClientHeight = 749
-  ClientWidth = 958
+  ClientHeight = 750
+  ClientWidth = 974
   Color = 16577259
   OnClose = FormClose
   OnResize = FormResize
@@ -14,29 +14,29 @@ object FrmConsCentro: TFrmConsCentro
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 749
+    Height = 750
     Top = 0
-    Width = 958
+    Width = 974
     Align = alClient
     Caption = 'Panel1'
-    ClientHeight = 749
-    ClientWidth = 958
+    ClientHeight = 750
+    ClientWidth = 974
     TabOrder = 0
     object Panel2: TPanel
       Left = 1
-      Height = 747
+      Height = 748
       Top = 1
-      Width = 956
+      Width = 972
       Align = alClient
       BevelOuter = bvNone
-      ClientHeight = 747
-      ClientWidth = 956
+      ClientHeight = 748
+      ClientWidth = 972
       TabOrder = 0
       object Label7: TLabel
         Left = 0
         Height = 32
         Top = 0
-        Width = 956
+        Width = 972
         Align = alTop
         Alignment = taCenter
         Caption = 'Consulta de Centro de Custos'
@@ -1862,11 +1862,10 @@ object FrmConsCentro: TFrmConsCentro
       end
     end
     object PnChamaCentro: TPanel
-      Left = 1
-      Height = 747
-      Top = 1
-      Width = 956
-      Align = alClient
+      Left = 48
+      Height = 504
+      Top = 56
+      Width = 776
       TabOrder = 1
       OnClick = PnChamaCentroClick
     end

@@ -454,6 +454,7 @@ begin
   FrmCadCentroCusto.CadOUAlt := 'C';
   FrmCadCentroCusto.Parent := PnChama;
   FrmCadCentroCusto.Align := alClient;
+  FrmCadCentroCusto.LblFormNome.Caption:='Cadastro de Centro de Custo';
   FrmCadCentroCusto.Show;
   FrmCadUsuario.close;
   FrmCadFornecedor.close;
