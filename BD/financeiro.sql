@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 20/11/2022 às 00:29
+-- Tempo de geração: 26/11/2022 às 01:59
 -- Versão do servidor: 10.1.35-MariaDB
 -- Versão do PHP: 7.2.9
 
@@ -74,7 +74,34 @@ INSERT INTO `baixa` (`BAICODIGO`, `CODIGOLAN`, `BAISTATUS`, `CODIGOFOR`, `CODIGO
 (211, 147, 0, NULL, NULL, '2022-10-12', 50, NULL, NULL, 15, NULL, NULL),
 (214, 148, 0, NULL, NULL, '2022-10-15', 100, NULL, NULL, 15, NULL, NULL),
 (215, 36, 0, NULL, NULL, '2022-10-18', 100, NULL, NULL, 15, NULL, NULL),
-(218, 144, 0, NULL, NULL, '2022-10-20', 55, NULL, NULL, 15, NULL, NULL);
+(218, 144, 0, NULL, NULL, '2022-10-20', 55, NULL, NULL, 15, NULL, NULL),
+(219, 150, 0, NULL, NULL, '2022-11-12', 1523.52, NULL, NULL, 15, NULL, NULL),
+(220, 150, 0, NULL, NULL, '2022-11-17', 8569.52, NULL, NULL, 15, NULL, NULL),
+(221, 150, 0, NULL, NULL, '2022-11-25', 5685.65, NULL, NULL, 15, NULL, NULL),
+(222, 150, 0, NULL, NULL, '2022-11-18', 236548.52, NULL, NULL, 15, NULL, NULL),
+(223, 150, 0, NULL, NULL, '2022-11-16', 604658.32, NULL, NULL, 15, NULL, NULL),
+(245, 158, 0, NULL, NULL, '2022-11-03', 8569.65, NULL, NULL, 15, NULL, NULL),
+(246, 158, 0, NULL, NULL, '2022-11-02', 123.36, NULL, NULL, 15, NULL, NULL),
+(247, 158, 0, NULL, NULL, '2022-11-17', 156686.5, NULL, NULL, 15, NULL, NULL),
+(248, 158, 0, NULL, NULL, '2022-11-10', 152365.56, NULL, NULL, 15, NULL, NULL),
+(249, 158, 0, NULL, NULL, '2022-11-13', 23654.57, NULL, NULL, 15, NULL, NULL),
+(250, 158, 0, NULL, NULL, '2022-11-17', 123659.85, NULL, NULL, 15, NULL, NULL),
+(251, 158, 0, NULL, NULL, '2022-11-17', 431490.16, NULL, NULL, 15, NULL, NULL),
+(257, 160, 0, NULL, NULL, '2022-11-01', 100023.7, NULL, NULL, 15, NULL, NULL),
+(258, 160, 0, NULL, NULL, '2022-11-10', 123658.69, NULL, NULL, 15, NULL, NULL),
+(259, 160, 0, NULL, NULL, '2022-11-19', 100256.7, NULL, NULL, 15, NULL, NULL),
+(260, 160, 0, NULL, NULL, '2022-11-03', 102365.51, NULL, NULL, 15, NULL, NULL),
+(261, 160, 0, NULL, NULL, '2022-11-02', 2000225.36, NULL, NULL, 15, NULL, NULL),
+(262, 160, 0, NULL, NULL, '2022-11-10', 8065236.19, NULL, NULL, 15, NULL, NULL),
+(263, 160, 0, NULL, NULL, '2022-11-18', 72802.5, NULL, NULL, 15, NULL, NULL),
+(264, 159, 0, NULL, NULL, '2022-11-03', 123556.65, NULL, NULL, 15, NULL, NULL),
+(265, 159, 0, NULL, NULL, '2022-11-02', 456893.62, NULL, NULL, 15, NULL, NULL),
+(266, 159, 0, NULL, NULL, '2022-11-02', 12365.65, NULL, NULL, 15, NULL, NULL),
+(267, 159, 0, NULL, NULL, '2022-11-16', 2365698.65, NULL, NULL, 15, NULL, NULL),
+(268, 159, 0, NULL, NULL, '2022-11-10', 3659746, NULL, NULL, 15, NULL, NULL),
+(269, 159, 0, NULL, NULL, '2022-11-25', 41278323.08, NULL, NULL, 15, NULL, NULL),
+(270, 161, 0, NULL, NULL, '2022-11-11', 500, NULL, NULL, 15, NULL, NULL),
+(271, 161, 1, 1, 1, '2022-11-25', 500, 1, 1, 15, '2022-11-25', 500);
 
 -- --------------------------------------------------------
 
@@ -237,7 +264,15 @@ INSERT INTO `lancamento` (`LANCODIGO`, `LANDOCUMENTO`, `CODIGODOC`, `LANNUMERO_D
 (144, '2022-10-06', 2, '1', 100, 1, 1, '', 1, 15),
 (147, '2022-10-13', 1, '1', 50, 1, 1, '', 1, 15),
 (148, '2022-09-28', 1, '2', 100, 3, 5, '', 0, 15),
-(149, '2022-10-07', 3, '21', 8485, 3, 5, '', 0, 15);
+(149, '2022-10-07', 3, '21', 8485, 3, 5, '', 0, 15),
+(150, '2022-11-21', 3, '111', 856985.53, 3, 5, '', 0, 15),
+(151, '2022-11-09', 1, '55', 435658.65, 2, 1, '', 0, 15),
+(155, '2022-11-02', 3, 'ewwe', 8569856.55, 3, 5, '', 0, 15),
+(157, '2022-11-09', 3, '11', 45896598.56, 3, 5, '', 0, 15),
+(158, '2022-11-09', 3, '434', 896549.65, 3, 1, '', 0, 15),
+(159, '2022-11-09', 3, '15665', 47896583.65, 3, 5, '', 0, 15),
+(160, '2022-11-03', 2, 'rrw', 10564568.65, 1, 7, '', 1, 15),
+(161, '2022-11-18', 1, '45', 1000, 1, 1, '', 0, 15);
 
 -- --------------------------------------------------------
 
@@ -285,17 +320,18 @@ CREATE TABLE `pessoa` (
   `PESTELEFONE` varchar(50) DEFAULT NULL COMMENT 'Telefone da pessoa ou empresa a ser cadastrada',
   `PESCELULAR` varchar(50) DEFAULT NULL COMMENT 'Celular da pessoa ou empresa a ser cadastrada',
   `PESOBSERVACAO` varchar(200) DEFAULT NULL COMMENT 'Observação para empresa ou pessoa a ser cadastrada',
-  `PESSTATUS` tinyint(1) DEFAULT '1' COMMENT 'Status da pessoa quando for 1 ele será ativo, e quando for 0 significa que ele está inativo'
+  `PESSTATUS` tinyint(1) DEFAULT '1' COMMENT 'Status da pessoa quando for 1 ele será ativo, e quando for 0 significa que ele está inativo',
+  `PESLGPD` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Fazendo dump de dados para tabela `pessoa`
 --
 
-INSERT INTO `pessoa` (`PESCODIGO`, `PESNOME`, `CODIGOTIP`, `PESCPF`, `PESDATA_NASCIMENTO`, `PESCNPJ`, `PESNOME_FANTASIA`, `PESINSCRICAO_ESTADUAL`, `PESINSCRICAO_MUNICIPAL`, `PESCEP`, `PESENDERECO`, `PESNUMERO`, `PESCOMPLEMENTO`, `PESESTADO`, `PESCIDADE`, `PESBAIRRO`, `PESEMAIL`, `PESTELEFONE`, `PESCELULAR`, `PESOBSERVACAO`, `PESSTATUS`) VALUES
-(1, 'GABRIELLE ROBERTA FERREIRA', 1, '123.456.789-X', '1998-04-29', NULL, NULL, NULL, NULL, '18800-000', 'RUA DAS FLORES', 2, 'APARTAMENTO', 'SP', 'PIRAJU', 'BAIRRO DAS CAPIVARA', 'GR@GMAIL.COM', '14-3351-0000', '14-99838-9911', 'devedora', 1),
-(2, NULL, 2, NULL, NULL, '14.041.086/0001-05', 'ESCRITORIO CONTABIL PADRAO', NULL, '8547', '18810-009', 'RUA MAJOR MARIANO', 1009, 'DE FRENTE A CASA DOS COLCHÃO', 'SP', 'PIRAJU', 'CENTRO', 'RH@HOTMAIL.COM', '14-3351-3500', '14-99838-1234', NULL, 1),
-(3, 'JOAO', 1, '123.456.847.-  ', '2022-02-25', NULL, NULL, NULL, NULL, '18800-000', 'RUA ANTONIO BASTIAO NETO', 50, 'AO LADO DA BIQUEIRA', 'SP', 'PIRAJU', 'CENTRO', 'GABRIUEL@HOTMAIL.COM', '(  )    -    ', '(  )     -    ', 'FILHO DO PRESIDENTE DA GUARDA', 1);
+INSERT INTO `pessoa` (`PESCODIGO`, `PESNOME`, `CODIGOTIP`, `PESCPF`, `PESDATA_NASCIMENTO`, `PESCNPJ`, `PESNOME_FANTASIA`, `PESINSCRICAO_ESTADUAL`, `PESINSCRICAO_MUNICIPAL`, `PESCEP`, `PESENDERECO`, `PESNUMERO`, `PESCOMPLEMENTO`, `PESESTADO`, `PESCIDADE`, `PESBAIRRO`, `PESEMAIL`, `PESTELEFONE`, `PESCELULAR`, `PESOBSERVACAO`, `PESSTATUS`, `PESLGPD`) VALUES
+(1, 'GABRIELLE ROBERTA FERREIRA', 1, '123.456.789-X', '1998-04-29', NULL, NULL, NULL, NULL, '18800-000', 'RUA DAS FLORES', 2, 'APARTAMENTO', 'SP', 'PIRAJU', 'BAIRRO DAS CAPIVARA', 'GR@GMAIL.COM', '14-3351-0000', '14-99838-9911', 'devedora', 1, 0),
+(2, NULL, 2, NULL, NULL, '14.041.086/0001-05', 'ESCRITORIO CONTABIL PADRAO', NULL, '8547', '18810-009', 'RUA MAJOR MARIANO', 1009, 'DE FRENTE A CASA DOS COLCHÃO', 'SP', 'PIRAJU', 'CENTRO', 'RH@HOTMAIL.COM', '14-3351-3500', '14-99838-1234', NULL, 1, 0),
+(3, 'JOAO', 1, '123.456.847.-  ', '2022-02-25', NULL, NULL, NULL, NULL, '18800-000', 'RUA ANTONIO BASTIAO NETO', 50, 'AO LADO DA BIQUEIRA', 'SP', 'PIRAJU', 'CENTRO', 'GABRIUEL@HOTMAIL.COM', '(  )    -    ', '(  )     -    ', 'FILHO DO PRESIDENTE DA GUARDA', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -459,6 +495,21 @@ CREATE TABLE `vwcontas` (
 ,`CONSALDO_INICIAL` double
 ,`CONSTATUS` tinyint(1)
 ,`STATUS` varchar(7)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura stand-in para view `vwextrato`
+-- (Veja abaixo para a visão atual)
+--
+CREATE TABLE `vwextrato` (
+`operacao` varchar(7)
+,`conta` int(11)
+,`data` date
+,`descricao` varchar(123)
+,`documento` varchar(50)
+,`valor` double
 );
 
 -- --------------------------------------------------------
@@ -652,6 +703,15 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
+-- Estrutura para view `vwextrato`
+--
+DROP TABLE IF EXISTS `vwextrato`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vwextrato`  AS  select 'CREDITO' AS `operacao`,`transferencia`.`TRACODIGO_CONDES` AS `conta`,`transferencia`.`TRADATA` AS `data`,concat(concat('Transferência de ',`origem`.`CONNOME`),concat(' para ',`destino`.`CONNOME`)) AS `descricao`,`transferencia`.`TRANUMERO_DOCUMENTO` AS `documento`,`transferencia`.`TRAVALOR` AS `valor` from ((`transferencia` join `contas` `origem` on((`origem`.`CONCODIGO` = `transferencia`.`TRACODIGO_CONORI`))) join `contas` `destino` on((`destino`.`CONCODIGO` = `transferencia`.`TRACODIGO_CONDES`))) where (`transferencia`.`TRASTATUS` = 1) union all select 'DEBITO' AS `operacao`,`transferencia`.`TRACODIGO_CONORI` AS `conta`,`transferencia`.`TRADATA` AS `data`,concat(concat('Transferência de ',`origem`.`CONNOME`),concat(' para ',`destino`.`CONNOME`)) AS `descricao`,`transferencia`.`TRANUMERO_DOCUMENTO` AS `documento`,(`transferencia`.`TRAVALOR` * -(1)) AS `valor` from ((`transferencia` join `contas` `origem` on((`origem`.`CONCODIGO` = `transferencia`.`TRACODIGO_CONORI`))) join `contas` `destino` on((`destino`.`CONCODIGO` = `transferencia`.`TRACODIGO_CONDES`))) where (`transferencia`.`TRASTATUS` = 1) union all select (case when (`vwmostrabaixaefet`.`LANTIPO` = 0) then 'DEBITO' when (`vwmostrabaixaefet`.`LANTIPO` = 1) then 'CREDITO' else NULL end) AS `operacao`,`vwmostrabaixaefet`.`CODIGOCON` AS `conta`,`vwmostrabaixaefet`.`BAIDATAPGTO` AS `data`,`vwmostrabaixaefet`.`PESNOME` AS `descricao`,`vwmostrabaixaefet`.`LANNUMERO_DOCUMENTO` AS `documento`,(case when (`vwmostrabaixaefet`.`LANTIPO` = 0) then (`vwmostrabaixaefet`.`BAIVALORPAGO` * -(1)) when (`vwmostrabaixaefet`.`LANTIPO` = 1) then `vwmostrabaixaefet`.`BAIVALORPAGO` else NULL end) AS `valor` from `vwmostrabaixaefet` order by `data` ;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura para view `vwmostrabaixaefet`
 --
 DROP TABLE IF EXISTS `vwmostrabaixaefet`;
@@ -819,7 +879,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de tabela `baixa`
 --
 ALTER TABLE `baixa`
-  MODIFY `BAICODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=219;
+  MODIFY `BAICODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=272;
 
 --
 -- AUTO_INCREMENT de tabela `centro_custo`
@@ -843,7 +903,7 @@ ALTER TABLE `forma_pagamento`
 -- AUTO_INCREMENT de tabela `lancamento`
 --
 ALTER TABLE `lancamento`
-  MODIFY `LANCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=150;
+  MODIFY `LANCODIGO` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Geração automática do código', AUTO_INCREMENT=162;
 
 --
 -- AUTO_INCREMENT de tabela `nivel_acesso`
