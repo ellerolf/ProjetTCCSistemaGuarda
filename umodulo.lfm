@@ -12,7 +12,6 @@ object DM: TDM
       'AutoEncodeStrings=True'
       'controls_cp=CP_UTF8'
     )
-    Connected = True
     HostName = 'localhost'
     Port = 3306
     Database = 'financeiro'
@@ -3546,7 +3545,7 @@ object DM: TDM
     SQL.Strings = (
       'update pessoa set '
       'PESNOME=:PESNOME,'
-      'PESCPF='''',PESDATA_NASCIMENTO='''',PESCNPJ='''',PESNOME_FANTASIA='''','
+      'PESCPF=NULL,PESDATA_NASCIMENTO='''',PESCNPJ=NULL,PESNOME_FANTASIA='''','
       'PESINSCRICAO_ESTADUAL='''',PESINSCRICAO_MUNICIPAL='''',PESCEP='''','
       'PESENDERECO='''',PESNUMERO='''',PESESTADO='''',PESCIDADE='''','
       'PESBAIRRO='''',PESEMAIL='''',PESTELEFONE='''',PESCELULAR='''','

@@ -267,6 +267,7 @@ begin
     GrpCnpjCpf.Enabled := True;
     GrpStatus.Enabled := True;
     BtnInativo.Enabled := True;
+    EdtCpfCnpj.Enabled:=false;;
   end;
 end;
 
@@ -431,23 +432,19 @@ begin
   //INICIO DO UP
   if (OpForn = 'U') then
   begin
+
     //altera CPF-----------------------------------------------------------------------
     if (BtnCpf.Checked = True) then
     begin
-      if (EdtCpfCnpj.Text = dm.ZQConsPessoasCPF.AsString) and
-        (EdtNome.Text = dm.ZQConsPessoasNOME.AsString) and
+      if ((EdtNome.Text = dm.ZQConsPessoasNOME.AsString) and
         (EdtEndereco.Text = dm.ZQConsPessoasENDEREO.AsString) and
         (EdtNumero.Text = dm.ZQConsPessoasNMERO.AsString) and
         (EdtBairro.Text = dm.ZQConsPessoasBAIRRO.AsString) and
         (EdtCep.Text = dm.ZQConsPessoasCEP.AsString) and (EdtCidade.Text = '') and
         (CboUf.Caption = dm.ZQConsPessoasESTADO.AsString) and
-        (EdtCel.Text = dm.ZQConsPessoasCELULAR.AsString) then
+        (EdtCel.Text = dm.ZQConsPessoasCELULAR.AsString)) then
       begin
         ShowMessage('Alteração não realizado: Campos são iguais');
-      end
-      else if Length(Trim(EdtCpfCnpj.Text)) < 14 then
-      begin
-        ShowMessage('Esta faltando o numero no CNPJ');
       end
       else if Length(Trim(EdtCel.Text)) < 14 then
       begin

@@ -293,6 +293,7 @@ end;
 procedure TFrmConsFornecedores.BtnSelecionarClick(Sender: TObject);
 
 begin
+
   // validação abaixo é do Rafael, foi feito, para levar o código do cliente para o lançamento
   //tive que colocar por primeiro, pq essa minha condição estava sendo executada por ultimo, ai se o usuário sair da tela de lançamento
   // e ir cadastrar um fornecedor ele aparece os dados de fornecedor que foi selecionado na tela de lancamento.
@@ -428,12 +429,14 @@ begin
     FrmCadFornecedor.GrpStatus.Enabled := False;
   end;
 
-  //verificar o porque a mesagem esta aparecendo
+  //PROTEÇÃO DE DADOS LGPD
   if dm.ZQConsPessoasLGPD.AsBoolean then
   begin
-    FrmCadFornecedor.PnLGPD.Visible:=true;
-    FrmCadFornecedor.BtnInativo.Checked:=true;
-    FrmCadFornecedor.BtnAlterar.Enabled:=false;
+    FrmCadFornecedor.PnLGPD.Visible := True;
+    FrmCadFornecedor.BtnInativo.Checked := True;
+    FrmCadFornecedor.BtnAlterar.Enabled := False;
+    FrmCadFornecedor.MemObs.Text := 'FORNECEDOR SOBRE A LEI GERAL DE PROTEÇÃO DE DODOS';
+
   end;
 
   //ajuste da visão do cad dento dos cons
@@ -481,18 +484,19 @@ end;
 
 procedure TFrmConsFornecedores.MenuItem1Click(Sender: TObject);
 var
-  PNome: string;
+  PNome, LGPD: string;
 begin
+
   PNome := '';
   if pos(' ', dm.ZQConsPessoasNOME.AsString) <> 0 then
     PNome := copy(dm.ZQConsPessoasNOME.AsString, 1,
       pos(' ', dm.ZQConsPessoasNOME.AsString) - 1);
- dm.ZQLgpd.ParamByName('pesnome').value:=PNome;
- dm.ZQLgpd.ParamByName('pescodigo').value:=dm.ZQConsPessoasCODIGO.AsInteger;
- dm.ZQLgpd.ExecSQL;
+  dm.ZQLgpd.ParamByName('pesnome').Value := PNome;
+  dm.ZQLgpd.ParamByName('pescodigo').Value := dm.ZQConsPessoasCODIGO.AsInteger;
+  dm.ZQLgpd.ExecSQL;
 
- dm.ZQConsPessoas.close;
- dm.ZQConsPessoas.open;
+  dm.ZQConsPessoas.Close;
+  dm.ZQConsPessoas.Open;
 end;
 
 procedure TFrmConsFornecedores.PnChamaClick(Sender: TObject);
