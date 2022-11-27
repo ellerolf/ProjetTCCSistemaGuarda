@@ -192,9 +192,9 @@ end;
 
 procedure TFrmMovBanco.EdtNContaChange(Sender: TObject);
 begin
-     If(EdtNConta.Text='') then
+     If(EdtNConta.Text<>EdtNConta.Text) then
      begin
-          EdtNomeDaConta.Clear;
+          CodDaConta:=0;
      end;
 end;
 
