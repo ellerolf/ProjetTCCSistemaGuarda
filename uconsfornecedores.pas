@@ -379,7 +379,8 @@ begin
 
   FrmCadFornecedor.OpForn := 'U';
   //PESSOA FÍSICA
-  if (dm.ZQConsPessoasCODIGOTIP.AsInteger = 1) then
+  if (dm.ZQConsPessoasCODIGOTIP.AsInteger = 1) and
+    (dm.ZQConsPessoasLGPD.AsBoolean = False) then
   begin
     FrmCadFornecedor.LblTitulo.Caption := 'Altera Fornecedores';
     FrmCadFornecedor.BtnCpf.Checked := True;
@@ -399,11 +400,13 @@ begin
     FrmCadFornecedor.EdtEmail.Text := dm.ZQConsPessoasEMAIL.AsString;
     FrmCadFornecedor.MemObs.Text := dm.ZQConsPessoasOBSERVAO.AsString;
     FrmCadFornecedor.BtnAlterar.Visible := True;
+    FrmCadFornecedor.BtnAlterar.Enabled := True;
     FrmCadFornecedor.GrpCnpjCpf.Enabled := False;
     FrmCadFornecedor.GrpStatus.Enabled := False;
   end
   //  PESSOA JURÍDICA
-  else if (dm.ZQConsPessoasCODIGOTIP.AsInteger = 2) then
+  else if (dm.ZQConsPessoasCODIGOTIP.AsInteger = 2) and
+    (dm.ZQConsPessoasLGPD.AsBoolean = False) then
   begin
     FrmCadFornecedor.BtnCnpj.Checked := True;
     FrmCadFornecedor.pescodigo := seleciona;
@@ -425,6 +428,7 @@ begin
     FrmCadFornecedor.EdtInsEstadual.Text := dm.ZQConsPessoasINSCRIOESTADUAL.AsString;
     FrmCadFornecedor.EdtInsMun.Text := dm.ZQConsPessoasINSCRIOMUNICIPAL.AsString;
     FrmCadFornecedor.BtnAlterar.Visible := True;
+    FrmCadFornecedor.BtnAlterar.Enabled := True;
     FrmCadFornecedor.GrpCnpjCpf.Enabled := False;
     FrmCadFornecedor.GrpStatus.Enabled := False;
   end;

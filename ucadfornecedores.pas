@@ -79,6 +79,8 @@ type
   private
     cpf, cnpj: string;
     procedure mascaras();
+    procedure mudaCor();
+    procedure verCampo();
 
 
   public
@@ -110,6 +112,28 @@ begin
   EdtCep.EditMask := '99999-999;1;_';
   EdtTel.EditMask := '(99)9999-9999;1;_';
   EdtCel.EditMask := '(99)99999-9999;1;_';
+end;
+
+procedure TFrmCadFornecedor.mudaCor;
+begin
+  LblCpfCnpj.font.color := clblack;
+  LblNomeRazao.font.color := clblack;
+  LblFantasia.font.color := clblack;
+  LblEstadual.font.color := clblack;
+  LblMunicipal.font.color := clblack;
+  LblEndereco.font.color := clblack;
+  LblNum.font.color := clblack;
+  LblCep.font.color := clblack;
+  LblCidade.font.color := clblack;
+  LblUf.font.color := clblack;
+  lblCel.font.color := clblack;
+  LblBairro.font.color := clblack;
+  LblDta.font.color := clblack;
+end;
+
+procedure TFrmCadFornecedor.verCampo;
+begin
+
 end;
 
 procedure TFrmCadFornecedor.AtivaCampoForn;
@@ -268,7 +292,6 @@ begin
     GrpStatus.Enabled := True;
     BtnInativo.Enabled := True;
     EdtCpfCnpj.Enabled := False;
-    ;
   end;
 end;
 
@@ -314,14 +337,12 @@ begin
         lblCel.font.color := clred;
         LblBairro.font.color := clred;
       end
-      else if Length(Trim(EdtCpfCnpj.Text)) < 18 then
-      begin
-        ShowMessage('Esta faltando o numero no CNPJ');
-      end
+      //verifica celular e cep
       else if Length(Trim(EdtCel.Text)) < 14 then
       begin
         ShowMessage('Esta faltando o numero no Celular');
       end
+
       else if Length(Trim(EdtCep.Text)) < 9 then
       begin
         ShowMessage('Esta faltando o numero na Cep');
@@ -359,12 +380,13 @@ begin
 
         ShowMessage('Dados Gravados com sucesso!');
         limpacampo();
-        EdtCpfCnpj.SetFocus;
+        mudaCor();
       end;
     end; //fim cnpj
     //CPF
     if (BtnCpf.Checked = True) then
     begin
+
       if (EdtCpfCnpj.Text = '') or (EdtNome.Text = '') or
         (EdtEndereco.Text = '') or (EdtNumero.Text = '') or
         (EdtBairro.Text = '') or (EdtCep.Text = '') or (EdtCidade.Text = '') or
@@ -381,15 +403,14 @@ begin
         LblUf.font.color := clred;
         lblCel.font.color := clred;
         LblBairro.font.color := clred;
+
       end
-      else if Length(Trim(EdtCpfCnpj.Text)) < 14 then
-      begin
-        ShowMessage('Esta faltando o numero no CNPJ');
-      end
+      //verifica celular e cep
       else if Length(Trim(EdtCel.Text)) < 14 then
       begin
         ShowMessage('Esta faltando o numero no Celular');
       end
+
       else if Length(Trim(EdtCep.Text)) < 9 then
       begin
         ShowMessage('Esta faltando o numero na Cep');
@@ -425,7 +446,7 @@ begin
 
         ShowMessage('Dados Gravados com sucesso!');
         limpacampo();
-        EdtCpfCnpj.SetFocus;
+        mudaCor();
       end;
     end;//fim cpf
   end;//fim insert
@@ -447,10 +468,12 @@ begin
       begin
         ShowMessage('Alteração não realizado: Campos são iguais');
       end
+      //verifica celular e cep
       else if Length(Trim(EdtCel.Text)) < 14 then
       begin
         ShowMessage('Esta faltando o numero no Celular');
       end
+
       else if Length(Trim(EdtCep.Text)) < 9 then
       begin
         ShowMessage('Esta faltando o numero na Cep');
@@ -459,7 +482,7 @@ begin
       begin
         dm.ZQAltPessoas.Params.ParamByName('pesnome').Value := EdtNome.Text;
         dm.ZQAltPessoas.Params.ParamByName('codigotip').Value := 1;
-        dm.ZQAltPessoas.Params.ParamByName('pescpf').Value := EdtCpfCnpj.Text;
+        dm.ZQAltPessoas.Params.ParamByName('pescpf').Value := DM.ZQConsPessoasCPF.AsString;
         dm.ZQAltPessoas.Params.ParamByName('pesdata_nascimento').AsString :=
           FormatDateTime('yyyy-mm-dd', DTNasc.Date);
         dm.ZQAltPessoas.Params.ParamByName('pescnpj').Value := null;
@@ -516,23 +539,23 @@ begin
       begin
         ShowMessage('Alteração não realizado: Campos são iguais');
       end
-
+      //verifica celular e cep
       else if Length(Trim(EdtCel.Text)) < 14 then
       begin
         ShowMessage('Esta faltando o numero no Celular');
       end
+
       else if Length(Trim(EdtCep.Text)) < 9 then
       begin
         ShowMessage('Esta faltando o numero na Cep');
       end
-
       else
       begin
         dm.ZQAltPessoas.Params.ParamByName('pesnome').Value := EdtNome.Text;
         dm.ZQAltPessoas.Params.ParamByName('codigotip').Value := 2;
         dm.ZQAltPessoas.Params.ParamByName('pescpf').Value := null;
         dm.ZQAltPessoas.Params.ParamByName('pesdata_nascimento').Value := null;
-        dm.ZQAltPessoas.Params.ParamByName('pescnpj').Value := EdtCpfCnpj.Text;
+        dm.ZQAltPessoas.Params.ParamByName('pescnpj').Value := DM.ZQConsPessoasCNPJ.AsString;
         dm.ZQAltPessoas.Params.ParamByName('pesnome_fantasia').Value := EdtFantasia.Text;
         dm.ZQAltPessoas.Params.ParamByName('pesinscricao_estadual').Value :=
           EdtInsEstadual.Text;
