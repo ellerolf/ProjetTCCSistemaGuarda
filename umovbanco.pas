@@ -133,16 +133,21 @@ begin
      begin
           DM.ZQConsSaldoAnt.Close;
           DM.ZQConsSaldoAnt.SQL.Clear;
-          DM.ZQConsSaldoAnt.SQL.Add('SELECT sum(VALOR) from vwextrato where conta='+IntToStr(FrmMovBanco.CodDaConta)+' and data<'+FormatDateTime('yyyy-mm-dd',DTInicial.Date));
+          DM.ZQConsSaldoAnt.SQL.Add('SELECT sum(VALOR) from vwextrato where conta = '+IntToStr(FrmMovBanco.CodDaConta)+' and data < ''' + FormatDateTime('yyyy-mm-dd',DTInicial.Date) + '''');
           DM.ZQConsSaldoAnt.Open;
 
           saldoAnterior:=DM.ZQConsSaldoAntsumVALOR.AsFloat;
 
 
+           //ShowMessage(dm.ZQConsSaldoAnt.SQL.Text);
+
+
+
+
           saldoTotal:=saldoAnterior+saldoInicial;
 
           LblSaldoAnt.Caption:=FormatCurr('0.00',saldoTotal);
-          //teste acima
+
           if (strtoint(EdtNConta.Text)>1) then
           begin
                with dm.ZQConsExtrato do
@@ -163,7 +168,7 @@ begin
                     valortotal:=valortotal+dm.ZQConsExtratovalor.AsFloat;
                     dm.ZQConsExtrato.Next;
                end;
-               LblValorTotal.Caption:=FormatCurr('0.00',valortotal);
+               LblValorTotal.Caption:=FormatCurr('0.00',valortotal+saldoTotal);
           end;
 
      end;

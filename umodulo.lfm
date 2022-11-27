@@ -1,7 +1,7 @@
 object DM: TDM
   OnCreate = DataModuleCreate
   OldCreateOrder = False
-  Height = 691
+  Height = 859
   HorizontalOffset = 0
   VerticalOffset = 0
   Width = 897
@@ -12,6 +12,7 @@ object DM: TDM
       'AutoEncodeStrings=True'
       'controls_cp=CP_UTF8'
     )
+    Connected = True
     HostName = 'localhost'
     Port = 3306
     Database = 'financeiro'
