@@ -2,12 +2,12 @@ object FrmMovBanco: TFrmMovBanco
   Left = -8
   Height = 788
   Top = -8
-  Width = 1068
+  Width = 1084
   BorderIcons = []
   BorderStyle = bsNone
   Caption = 'Movimentação Bancária'
   ClientHeight = 749
-  ClientWidth = 1068
+  ClientWidth = 1084
   Color = 16577259
   OnClose = FormClose
   OnResize = FormResize
@@ -18,16 +18,16 @@ object FrmMovBanco: TFrmMovBanco
     Left = 0
     Height = 749
     Top = 0
-    Width = 1068
+    Width = 1084
     Align = alClient
     ClientHeight = 749
-    ClientWidth = 1068
+    ClientWidth = 1084
     TabOrder = 0
     object Label7: TLabel
       Left = 1
       Height = 32
       Top = 1
-      Width = 1066
+      Width = 1082
       Align = alTop
       Alignment = taCenter
       Caption = 'Movimentação Bancária'
@@ -45,11 +45,11 @@ object FrmMovBanco: TFrmMovBanco
       Left = 1
       Height = 715
       Top = 33
-      Width = 1066
+      Width = 1082
       Align = alClient
       BevelOuter = bvNone
       ClientHeight = 715
-      ClientWidth = 1066
+      ClientWidth = 1082
       TabOrder = 0
       OnClick = Panel2Click
       object EdtNConta: TEdit
@@ -1853,6 +1853,7 @@ object FrmMovBanco: TFrmMovBanco
         Height = 21
         Top = 512
         Width = 31
+        Alignment = taRightJustify
         Caption = '0.00'
         Font.CharSet = ANSI_CHARSET
         Font.Height = -16
@@ -2010,6 +2011,7 @@ object FrmMovBanco: TFrmMovBanco
         Height = 21
         Top = 80
         Width = 31
+        Alignment = taRightJustify
         Caption = '0.00'
         Font.CharSet = ANSI_CHARSET
         Font.Height = -16
