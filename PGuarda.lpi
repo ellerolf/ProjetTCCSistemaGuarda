@@ -47,7 +47,7 @@
         <PackageName Value="LCL"/>
       </Item6>
     </RequiredPackages>
-    <Units Count="32">
+    <Units Count="33">
       <Unit0>
         <Filename Value="PGuarda.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -283,6 +283,12 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="UMovBanco"/>
       </Unit31>
+      <Unit32>
+        <Filename Value="urlmovimbanc.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmRlMovimBanc"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit32>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

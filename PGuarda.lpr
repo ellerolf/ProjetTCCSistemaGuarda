@@ -10,10 +10,11 @@ uses
   Forms, datetimectrls, zcomponent, UEntrarUsuario, umenu, uCadUsuario,
   uCadContasBancarias, uCadCentroCusto, uCadFornecedores, uCadLancamento,
   UConsFornecedores, UConsBaixa, UConsContas, UModulo, UBuscaConta,
-  UTranfContas, UConsUsuario, uConsCentro, UBuscaDoc, UCadPagamento, 
-Ferramentas, UConsParcelas, UbaixaParcela, uRlContasBanc, urlcontascaixa, 
-urlcontasapagarpen, urlcontasareceberpen, urlcontasareceberefet, 
-urlcontasapagarefet, urltransferencia, ValidaCPF, ValidaCNPJ, UForPg, UMovBanco;
+  UTranfContas, UConsUsuario, uConsCentro, UBuscaDoc, UCadPagamento,
+  Ferramentas, UConsParcelas, UbaixaParcela, uRlContasBanc, urlcontascaixa,
+  urlcontasapagarpen, urlcontasareceberpen, urlcontasareceberefet,
+  urlcontasapagarefet, urltransferencia, ValidaCPF, ValidaCNPJ, UForPg,
+  UMovBanco, urlmovimbanc;
 
 {$R *.res}
 
@@ -49,6 +50,7 @@ begin
   Application.CreateForm(TFrmRlTransferencia, FrmRlTransferencia);
   Application.CreateForm(TFrmForPg, FrmForPg);
   Application.CreateForm(TFrmMovBanco, FrmMovBanco);
+  Application.CreateForm(TFrmRlMovimBanc, FrmRlMovimBanc);
   Application.Run;
 end.
 

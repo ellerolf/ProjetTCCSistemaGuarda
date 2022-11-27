@@ -34,6 +34,7 @@ type
     BtnLimpar: TSpeedButton;
     SpeedButton4: TSpeedButton;
     BtnSair: TSpeedButton;
+    procedure BtnImprimirClick(Sender: TObject);
     procedure BtnLimparClick(Sender: TObject);
     procedure BtnPesqContaClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
@@ -46,11 +47,11 @@ type
     procedure Panel2Click(Sender: TObject);
   private
          //Variável que recebe o valor total (saldo inicial+saldo anterior+ saldo da dbgrid)
-         valortotal:Double;
+         //valortotal:Double;
          //Variável que recebe o valor do saldo anterior da dbgrid.
-         saldoAnterior:Double;
+         //saldoAnterior:Double;
          //variavel que recebe o valor do saldo anterior a data digitada+ saldo inicial
-         saldoTotal:Double;
+         //saldoTotal:Double;
 
   public
         CodDaConta:Integer;
@@ -60,6 +61,14 @@ type
         MovBanc:String;
         //Variável que recebe o valor do saldo inicial ao selecionar a conta bancária
         saldoInicial:Double;
+        //variavel que recebe o valor do saldo anterior a data digitada+ saldo inicial
+        saldoTotal:Double;
+        //Variável que recebe o valor total (saldo inicial+saldo anterior+ saldo da dbgrid)
+         valortotal:Double;
+         //Variável que recebe o valor do saldo anterior da dbgrid.
+         saldoAnterior:Double;
+         //variavel que recebe o valor do saldo anterior a data digitada+ saldo inicial
+         //saldoTotal:Double;
   end;
 
 var
@@ -71,7 +80,7 @@ implementation
 
 { TFrmMovBanco }
 
-uses UBuscaConta,UModulo;
+uses UBuscaConta,UModulo, urlmovimbanc;
 
 procedure TFrmMovBanco.FormResize(Sender: TObject);
 begin
@@ -105,6 +114,31 @@ procedure TFrmMovBanco.BtnLimparClick(Sender: TObject);
 begin
      EdtNConta.Clear;
      EdtNomeDaConta.Clear;
+end;
+
+procedure TFrmMovBanco.BtnImprimirClick(Sender: TObject);
+begin
+     if  (EdtNConta.Text='') then
+     begin
+          ShowMessage('Selecione a conta que deseja exibir o relatório!');
+     end
+     else if (DTInicial.Date=NullDate) or (DtFinal.Date=NullDate) then
+     begin
+          ShowMessage('É necessário preencher a data inicial e final do período para efetuar a pesquisa!');
+     end
+     else if (DtFinal.Date<DTInicial.Date) then
+     begin
+          ShowMessage('Período pesquisado não é válido, digite novamente');
+     end
+     else
+     begin
+          if (dm.ZQConsExtrato.RecordCount>0) then
+          begin
+               FrmRlMovimBanc.RLMovimBanc.Preview();
+          end;
+
+
+     end;
 end;
 
 procedure TFrmMovBanco.BtnPesquisarClick(Sender: TObject);

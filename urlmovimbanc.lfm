@@ -1,0 +1,233 @@
+object FrmRlMovimBanc: TFrmRlMovimBanc
+  Left = 339
+  Height = 543
+  Top = 31
+  Width = 1130
+  Caption = 'Relatório de Movimentação bancária'
+  ClientHeight = 543
+  ClientWidth = 1130
+  object RLMovimBanc: TRLReport
+    Left = 0
+    Height = 794
+    Top = 0
+    Width = 1123
+    DataSource = DM.DSConsExtrato
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Arial'
+    PageSetup.Orientation = poLandscape
+    ExpressionParser = RLExpressionParser1
+    BeforePrint = RLMovimBancBeforePrint
+    object RLBand1: TRLBand
+      Left = 38
+      Height = 72
+      Top = 38
+      Width = 1047
+      BandType = btHeader
+      object RLLabel1: TRLLabel
+        Left = 0
+        Height = 20
+        Top = 0
+        Width = 1047
+        Align = faTop
+        Alignment = taCenter
+        Borders.Sides = sdCustom
+        Borders.DrawLeft = False
+        Borders.DrawTop = True
+        Borders.DrawRight = False
+        Borders.DrawBottom = True
+        Borders.FixedTop = True
+        Borders.FixedBottom = True
+        Caption = 'RELATÓRIO DE MOVIMENTAÇÃO BANCÁRIA'
+      end
+      object RLLabel2: TRLLabel
+        Left = 0
+        Height = 16
+        Top = 20
+        Width = 1047
+        Align = faTop
+        Alignment = taCenter
+        Caption = 'Período: '
+      end
+      object RLLSaldoAnterior: TRLLabel
+        Left = 1029
+        Height = 16
+        Top = 56
+        Width = 18
+        Align = faRightBottom
+        Alignment = taRightJustify
+        Caption = '10'
+      end
+      object RLLabel8: TRLLabel
+        Left = 943
+        Height = 16
+        Top = 56
+        Width = 86
+        Align = faRightBottom
+        Alignment = taRightJustify
+        Caption = 'Saldo Anterior'
+      end
+    end
+    object RLBand2: TRLBand
+      Left = 38
+      Height = 32
+      Top = 110
+      Width = 1047
+      BandType = btHeader
+      object RLLabel3: TRLLabel
+        Left = 8
+        Height = 16
+        Top = 8
+        Width = 38
+        Caption = 'DATA'
+      end
+      object RLLabel4: TRLLabel
+        Left = 96
+        Height = 16
+        Top = 8
+        Width = 80
+        Caption = 'DESCRIÇÃO'
+      end
+      object RLLabel5: TRLLabel
+        Left = 752
+        Height = 16
+        Top = 8
+        Width = 105
+        Caption = 'N° DOCUMENTO'
+      end
+      object RLLabel6: TRLLabel
+        Left = 960
+        Height = 16
+        Top = 8
+        Width = 48
+        Caption = 'VALOR'
+      end
+    end
+    object RLGroup1: TRLGroup
+      Left = 38
+      Height = 136
+      Top = 142
+      Width = 1047
+      DataFields = 'data'
+      object RLBand3: TRLBand
+        Left = 0
+        Height = 40
+        Top = 0
+        Width = 1047
+        object RLDBText1: TRLDBText
+          Left = 0
+          Height = 16
+          Top = 14
+          Width = 32
+          DataField = 'data'
+          DataSource = DM.DSConsExtrato
+        end
+        object RLDBText2: TRLDBText
+          Left = 96
+          Height = 16
+          Top = 14
+          Width = 60
+          DataField = 'descricao'
+          DataSource = DM.DSConsExtrato
+        end
+        object RLDBText3: TRLDBText
+          Left = 752
+          Height = 16
+          Top = 14
+          Width = 68
+          DataField = 'documento'
+          DataSource = DM.DSConsExtrato
+        end
+        object RLDBText4: TRLDBText
+          Left = 960
+          Height = 16
+          Top = 14
+          Width = 30
+          DataField = 'valor'
+          DataSource = DM.DSConsExtrato
+        end
+      end
+      object RLBand4: TRLBand
+        Left = 0
+        Height = 48
+        Top = 40
+        Width = 1047
+        BandType = btFooter
+        object RLDBResult1: TRLDBResult
+          Left = 960
+          Height = 16
+          Top = 16
+          Width = 69
+          DataField = 'valor'
+          DataSource = DM.DSConsExtrato
+          Info = riSum
+        end
+      end
+    end
+    object RLBand5: TRLBand
+      Left = 38
+      Height = 56
+      Top = 310
+      Width = 1047
+      BandType = btFooter
+      object RLSystemInfo1: TRLSystemInfo
+        Left = 896
+        Height = 16
+        Top = 8
+        Width = 147
+        Info = itPageNumber
+        Text = 'Página n°:'
+      end
+      object RLSystemInfo2: TRLSystemInfo
+        Left = 760
+        Height = 16
+        Top = 8
+        Width = 70
+        Info = itHour
+        Text = 'Hora:'
+      end
+      object RLSystemInfo3: TRLSystemInfo
+        Left = 600
+        Height = 16
+        Top = 8
+        Width = 70
+        Text = 'Data:'
+      end
+      object RLLabel7: TRLLabel
+        Left = 112
+        Height = 16
+        Top = 8
+        Width = 58
+      end
+    end
+    object RLBand6: TRLBand
+      Left = 38
+      Height = 32
+      Top = 278
+      Width = 1047
+      BandType = btSummary
+      object RLLSaldoDaConta: TRLLabel
+        Left = 1029
+        Height = 16
+        Top = 0
+        Width = 18
+        Align = faRightTop
+        Alignment = taRightJustify
+        Caption = '10'
+      end
+      object RLLabel9: TRLLabel
+        Left = 928
+        Height = 16
+        Top = 0
+        Width = 101
+        Align = faRightTop
+        Alignment = taRightJustify
+        Caption = 'Saldo da Conta: '
+      end
+    end
+  end
+  object RLExpressionParser1: TRLExpressionParser
+    Left = 456
+    Top = 168
+  end
+end

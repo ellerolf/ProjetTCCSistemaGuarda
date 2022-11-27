@@ -1,13 +1,13 @@
 object FrmMovBanco: TFrmMovBanco
   Left = -8
-  Height = 866
+  Height = 905
   Top = -8
-  Width = 1116
+  Width = 1132
   BorderIcons = []
   BorderStyle = bsNone
   Caption = 'Movimentação Bancária'
-  ClientHeight = 843
-  ClientWidth = 1116
+  ClientHeight = 882
+  ClientWidth = 1132
   Color = 16577259
   OnClose = FormClose
   OnResize = FormResize
@@ -16,18 +16,18 @@ object FrmMovBanco: TFrmMovBanco
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 843
+    Height = 882
     Top = 0
-    Width = 1116
+    Width = 1132
     Align = alClient
-    ClientHeight = 843
-    ClientWidth = 1116
+    ClientHeight = 882
+    ClientWidth = 1132
     TabOrder = 0
     object Label7: TLabel
       Left = 1
       Height = 32
       Top = 1
-      Width = 1114
+      Width = 1130
       Align = alTop
       Alignment = taCenter
       Caption = 'Movimentação Bancária'
@@ -43,13 +43,13 @@ object FrmMovBanco: TFrmMovBanco
     end
     object Panel2: TPanel
       Left = 1
-      Height = 809
+      Height = 848
       Top = 33
-      Width = 1114
+      Width = 1130
       Align = alClient
       BevelOuter = bvNone
-      ClientHeight = 809
-      ClientWidth = 1114
+      ClientHeight = 848
+      ClientWidth = 1130
       TabOrder = 0
       OnClick = Panel2Click
       object EdtNConta: TEdit
@@ -876,6 +876,7 @@ object FrmMovBanco: TFrmMovBanco
           8EFF8E8E8EFF8E8E8EFF8E8E8EFF8E8E8EFF8E8E8EFF8E8E8EFF8E8E8EFF8E8E
           8EFF8E8E8EFF8E8E8EFF8A8A8AFF666666FF575757FFD7D7D7FF
         }
+        OnClick = BtnImprimirClick
       end
       object SpeedButton4: TSpeedButton
         Left = 576
