@@ -3,6 +3,7 @@ object FRMBaixaParcela: TFRMBaixaParcela
   Height = 487
   Top = 31
   Width = 741
+  BorderIcons = []
   Caption = 'Baixa de parcelas'
   ClientHeight = 487
   ClientWidth = 741
