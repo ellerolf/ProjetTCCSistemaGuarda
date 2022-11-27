@@ -148,7 +148,7 @@ begin
 
           LblSaldoAnt.Caption:=FormatCurr('0.00',saldoTotal);
 
-          if (strtoint(EdtNConta.Text)>1) then
+          if (strtoint(EdtNConta.Text)>0) then
           begin
                with dm.ZQConsExtrato do
                begin
