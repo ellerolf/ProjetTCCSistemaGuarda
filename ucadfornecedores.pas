@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, Buttons,
-  StdCtrls, MaskEdit, EditBtn, DateTimePicker ;
+  StdCtrls, MaskEdit, EditBtn, DateTimePicker;
 
 type
 
@@ -99,7 +99,7 @@ var
 
 implementation
 
-uses ValidaCPF,ValidaCNPJ,UModulo, UConsFornecedores;
+uses ValidaCPF, ValidaCNPJ, UModulo, UConsFornecedores;
 
 {$R *.lfm}
 
@@ -267,7 +267,8 @@ begin
     GrpCnpjCpf.Enabled := True;
     GrpStatus.Enabled := True;
     BtnInativo.Enabled := True;
-    EdtCpfCnpj.Enabled:=false;;
+    EdtCpfCnpj.Enabled := False;
+    ;
   end;
 end;
 
@@ -502,8 +503,7 @@ begin
     //altera CNPJ-----------------------------------------------------------------------
     if (BtnCnpj.Checked = True) then
     begin
-      if (EdtCpfCnpj.Text = dm.ZQConsPessoasCNPJ.AsString) and
-        (EdtNome.Text = dm.ZQConsPessoasNOME.AsString) and
+      if (EdtNome.Text = dm.ZQConsPessoasNOME.AsString) and
         (EdtFantasia.Text = dm.ZQConsPessoasNOMEFANTASIA.AsString) and
         (EdtInsEstadual.Text = dm.ZQConsPessoasINSCRIOESTADUAL.AsString) and
         (EdtInsMun.Text = dm.ZQConsPessoasINSCRIOMUNICIPAL.AsString) and
@@ -516,6 +516,16 @@ begin
       begin
         ShowMessage('Alteração não realizado: Campos são iguais');
       end
+
+      else if Length(Trim(EdtCel.Text)) < 14 then
+      begin
+        ShowMessage('Esta faltando o numero no Celular');
+      end
+      else if Length(Trim(EdtCep.Text)) < 9 then
+      begin
+        ShowMessage('Esta faltando o numero na Cep');
+      end
+
       else
       begin
         dm.ZQAltPessoas.Params.ParamByName('pesnome').Value := EdtNome.Text;
@@ -541,6 +551,7 @@ begin
         dm.ZQAltPessoas.params.ParamByName('pescelular').Value := EdtCel.Text;
         dm.ZQAltPessoas.params.ParamByName('pesobservacao').Value := MemObs.Text;
 
+        //para subir ativo
         if (BtnAtivo.Checked = True) then
         begin
           dm.ZQAltPessoas.params.ParamByName('pesstatus').Value := 1;
@@ -574,25 +585,31 @@ end;
 
 procedure TFrmCadFornecedor.EdtCpfCnpjExit(Sender: TObject);
 begin
+  //Validação de CPF/CNPJ
   cpf := StringReplace(EdtCpfCnpj.Text, '.', '', [rfReplaceAll]);
   cpf := StringReplace(cpf, '-', '', [rfReplaceAll]);
   cpf := StringReplace(cpf, '/', '', [rfReplaceAll]);
   if (isCPF(cpf) or isCNPJ(cpf)) then
   begin
-    ShowMessage(imprimeCPF(cpf));
+    //entrou
   end
   else
   begin
-    ShowMessage('Erro: CPF inválido !!!');
-    EdtCpfCnpj.Clear;
-    //EdtCpfCnpj.SetFocus;
+    if (BtnCpf.Checked = True) then
+    begin
+      ShowMessage('CPF inválido, verifique novamente!');
+    end
+    else
+    begin
+      ShowMessage('CNPJ inválido, verifique novamente!');
+    end;
   end;
+
 end;
 
-procedure TFrmCadFornecedor.FormClose(Sender: TObject;
-  var CloseAction: TCloseAction);
+procedure TFrmCadFornecedor.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
-  FrmCadFornecedor.PnLGPD.Visible:=false;
+  FrmCadFornecedor.PnLGPD.Visible := False;
 end;
 
 procedure TFrmCadFornecedor.FormCreate(Sender: TObject);

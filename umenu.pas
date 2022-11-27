@@ -48,7 +48,6 @@ type
     BtnConsFornecedores: TSpeedButton;
     BtnConsReceitaDespesas: TSpeedButton;
     BtnRelaMovi: TSpeedButton;
-    BtnRelaPresta: TSpeedButton;
     BtnCadBanco: TSpeedButton;
     BtnCadCentro: TSpeedButton;
     BtnCadFornecedor: TSpeedButton;

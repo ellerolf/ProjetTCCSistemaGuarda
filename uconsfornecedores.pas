@@ -435,7 +435,8 @@ begin
     FrmCadFornecedor.PnLGPD.Visible := True;
     FrmCadFornecedor.BtnInativo.Checked := True;
     FrmCadFornecedor.BtnAlterar.Enabled := False;
-    FrmCadFornecedor.MemObs.Text := 'FORNECEDOR SOBRE A LEI GERAL DE PROTEÇÃO DE DODOS';
+    FrmCadFornecedor.MemObs.Text :=
+      'FORNECEDOR SOBRE A LEI GERAL DE PROTEÇÃO DE DODOS';
 
   end;
 
@@ -484,19 +485,27 @@ end;
 
 procedure TFrmConsFornecedores.MenuItem1Click(Sender: TObject);
 var
-  PNome, LGPD: string;
+  PNome: string;
 begin
+  if MessageDlg(
+    'ATENÇÃO LGPD: Esta função permite APAGAR TODOS OS DADOS deste Fornecedor DEFINITIVAMENTE de modo IRREVERSÍVEL. Deseja continuar com o procedimento? ', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+  begin
+    PNome := '';
+    if pos(' ', dm.ZQConsPessoasNOME.AsString) <> 0 then
+      PNome := copy(dm.ZQConsPessoasNOME.AsString, 1,
+        pos(' ', dm.ZQConsPessoasNOME.AsString) - 1);
+    dm.ZQLgpd.ParamByName('pesnome').Value := PNome;
+    dm.ZQLgpd.ParamByName('pescodigo').Value := dm.ZQConsPessoasCODIGO.AsInteger;
+    dm.ZQLgpd.ExecSQL;
 
-  PNome := '';
-  if pos(' ', dm.ZQConsPessoasNOME.AsString) <> 0 then
-    PNome := copy(dm.ZQConsPessoasNOME.AsString, 1,
-      pos(' ', dm.ZQConsPessoasNOME.AsString) - 1);
-  dm.ZQLgpd.ParamByName('pesnome').Value := PNome;
-  dm.ZQLgpd.ParamByName('pescodigo').Value := dm.ZQConsPessoasCODIGO.AsInteger;
-  dm.ZQLgpd.ExecSQL;
+    dm.ZQConsPessoas.Close;
+    dm.ZQConsPessoas.Open;
+  end
+  else;
+  begin
+    //acontece nada
+  end;
 
-  dm.ZQConsPessoas.Close;
-  dm.ZQConsPessoas.Open;
 end;
 
 procedure TFrmConsFornecedores.PnChamaClick(Sender: TObject);
