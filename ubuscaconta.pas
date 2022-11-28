@@ -151,13 +151,14 @@ begin
         if (FrmMovBanco.CodDaConta>0) then
         begin
              FrmMovBanco.EdtNConta.Text:=IntToStr(FrmMovBanco.CodDaConta);
-             FrmMovBanco.EdtNomeDaConta.Text:=FrmMovBanco.NomeDaConta;
+             FrmMovBanco.EdtNomeDaConta.Text:=FrmMovBanco.NomeDaConta+' '+FrmMovBanco.Ndaconta;
              RGBTipoConta.ItemIndex:=-1;
              DBGCaixa.Visible:=False;
              DBGContasBanc.Visible:=False;
              FrmMovBanco.CodDaConta:=0;
              FrmMovBanco.NomeDaConta:='';
              EdtConsulta.Clear;
+             FrmMovBanco.Ndaconta:='';
              FrmBuscaConta.close;
         end;
         FrmMovBanco.MovBanc:='';
@@ -187,6 +188,7 @@ begin
           FrmMovBanco.CodDaConta:=dm.ZQBuscaContaCONCODIGO.AsInteger;
           FrmMovBanco.NomeDaConta:=dm.ZQBuscaContaCONNOME.AsString;
           FrmMovBanco.saldoInicial:=dm.ZQBuscaContaCONSALDO_INICIAL.AsFloat;
+          FrmMovBanco.Ndaconta:=dm.ZQBuscaContaCONNUMERO_CONTA.AsString;
      end;
 end;
 
@@ -207,6 +209,7 @@ begin
           FrmMovBanco.CodDaConta:=dm.ZQBuscaContaCONCODIGO.AsInteger;
           FrmMovBanco.NomeDaConta:=dm.ZQBuscaContaCONNOME.AsString;
           FrmMovBanco.saldoInicial:=dm.ZQBuscaContaCONSALDO_INICIAL.AsFloat;
+          FrmMovBanco.Ndaconta:=dm.ZQBuscaContaCONNUMERO_CONTA.AsString;
      end;
 end;
 

@@ -64,6 +64,8 @@ type
          saldoAnterior:Double;
          //Variável ativa o botão imprimir
          ativabtnImprimir:String;
+         // variável que recebe o n° da conta
+         Ndaconta:String;
   end;
 
 var

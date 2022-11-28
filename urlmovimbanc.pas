@@ -32,6 +32,7 @@ type
     RLLabel10: TRLLabel;
     RLLabel11: TRLLabel;
     RLLabel12: TRLLabel;
+    RLLNomeDaConta: TRLLabel;
     RLLabel2: TRLLabel;
     RLLabel3: TRLLabel;
     RLLabel4: TRLLabel;
@@ -72,6 +73,7 @@ begin
      FrmRlMovimBanc.RLLabel7.Caption:='Impresso por : '+FrmEntrarUsuario.usuarios;
      FrmRlMovimBanc.RLLSaldoAnterior.Caption:=FormatCurr('0.00',FrmMovBanco.saldoTotal);
      FrmRlMovimBanc.RLLSaldoDaConta.Caption:=FrmMovBanco.LblValorTotal.Caption;
+     FrmRlMovimBanc.RLLNomeDaConta.Caption:='Conta : '+FrmMovBanco.EdtNomeDaConta.Text;
 end;
 
 procedure TFrmRlMovimBanc.RLMovimBancAfterPrint(Sender: TObject);

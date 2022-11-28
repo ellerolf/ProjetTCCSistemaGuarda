@@ -68,6 +68,13 @@ object FrmRlMovimBanc: TFrmRlMovimBanc
         Alignment = taRightJustify
         Caption = 'Saldo Anterior'
       end
+      object RLLNomeDaConta: TRLLabel
+        Left = 0
+        Height = 16
+        Top = 56
+        Width = 111
+        Align = faLeftBottom
+      end
     end
     object RLBand2: TRLBand
       Left = 38

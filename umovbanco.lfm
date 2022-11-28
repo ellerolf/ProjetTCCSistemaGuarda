@@ -6,13 +6,14 @@ object FrmMovBanco: TFrmMovBanco
   BorderIcons = []
   BorderStyle = bsNone
   Caption = 'Movimentação Bancária'
-  ClientHeight = 804
+  ClientHeight = 827
   ClientWidth = 1164
   Color = 16577259
   OnClose = FormClose
   OnResize = FormResize
   OnShow = FormShow
   Position = poScreenCenter
+  LCLVersion = '2.2.2.0'
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
