@@ -1,0 +1,209 @@
+object FrmRICentroCusto: TFrmRICentroCusto
+  Left = 339
+  Height = 612
+  Top = 31
+  Width = 805
+  Caption = 'Relatório de Centro de Custo'
+  ClientHeight = 612
+  ClientWidth = 805
+  object RLSystemInfo1: TRLSystemInfo
+    Left = 440
+    Height = 16
+    Top = 8
+    Width = 147
+    Info = itPageNumber
+    Text = 'Página n°:'
+  end
+  object RLcentrocusto: TRLReport
+    Left = 0
+    Height = 1123
+    Top = 0
+    Width = 794
+    DataSource = DM.DSBuscaCentro
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Arial'
+    BeforePrint = RLcentrocustoBeforePrint
+    object RLBand1: TRLBand
+      Left = 38
+      Height = 48
+      Top = 38
+      Width = 718
+      BandType = btHeader
+      object RLLabel1: TRLLabel
+        Left = 0
+        Height = 20
+        Top = 0
+        Width = 718
+        Align = faTop
+        Alignment = taCenter
+        Borders.Sides = sdCustom
+        Borders.DrawLeft = False
+        Borders.DrawTop = True
+        Borders.DrawRight = False
+        Borders.DrawBottom = True
+        Borders.FixedTop = True
+        Borders.FixedBottom = True
+        Caption = 'RELATÓRIO DE CENTRO DE CUSTO'
+      end
+    end
+    object RLGroup1: TRLGroup
+      Left = 38
+      Height = 160
+      Top = 86
+      Width = 718
+      object RLBand2: TRLBand
+        Left = 0
+        Height = 32
+        Top = 0
+        Width = 718
+        BandType = btColumnHeader
+        Borders.Sides = sdCustom
+        Borders.DrawLeft = False
+        Borders.DrawTop = True
+        Borders.DrawRight = False
+        Borders.DrawBottom = True
+        Borders.Width = 2
+        Borders.FixedTop = True
+        Borders.FixedBottom = True
+        object RLLabel2: TRLLabel
+          Left = 0
+          Height = 16
+          Top = 8
+          Width = 55
+          Caption = 'CÓDIGO'
+        end
+        object RLLabel3: TRLLabel
+          Left = 64
+          Height = 16
+          Top = 8
+          Width = 43
+          Caption = 'NOME'
+        end
+        object RLLabel4: TRLLabel
+          Left = 496
+          Height = 16
+          Top = 8
+          Width = 33
+          Caption = 'TIPO'
+        end
+        object RLLabel5: TRLLabel
+          Left = 656
+          Height = 16
+          Top = 8
+          Width = 54
+          Caption = 'STATUS'
+        end
+      end
+      object RLBand3: TRLBand
+        Left = 0
+        Height = 32
+        Top = 32
+        Width = 718
+        object RLDBText1: TRLDBText
+          Left = 0
+          Height = 16
+          Top = 8
+          Width = 82
+          DataField = 'CENCODIGO'
+          DataSource = DM.DSBuscaCentro
+        end
+        object RLDBText2: TRLDBText
+          Left = 66
+          Height = 16
+          Top = 8
+          Width = 70
+          DataField = 'CENNOME'
+          DataSource = DM.DSBuscaCentro
+        end
+        object RLDBText3: TRLDBText
+          Left = 496
+          Height = 16
+          Top = 8
+          Width = 60
+          DataField = 'TIPOCEN'
+          DataSource = DM.DSBuscaCentro
+        end
+        object RLDBText4: TRLDBText
+          Left = 656
+          Height = 16
+          Top = 8
+          Width = 54
+          DataField = 'STATUS'
+          DataSource = DM.DSBuscaCentro
+        end
+      end
+      object RLBand4: TRLBand
+        Left = 0
+        Height = 40
+        Top = 64
+        Width = 718
+        BandType = btSummary
+        Borders.Sides = sdCustom
+        Borders.DrawLeft = False
+        Borders.DrawTop = True
+        Borders.DrawRight = False
+        Borders.DrawBottom = False
+        Borders.FixedTop = True
+        object RLDBResult1: TRLDBResult
+          Left = 168
+          Height = 16
+          Top = 8
+          Width = 46
+          DataField = 'CENNOME'
+          DataSource = DM.DSBuscaCentro
+          Info = riCount
+        end
+        object RLLabel6: TRLLabel
+          Left = 40
+          Height = 16
+          Top = 8
+          Width = 106
+          Caption = 'Total de Registro:'
+        end
+      end
+    end
+    object RLBand5: TRLBand
+      Left = 38
+      Height = 40
+      Top = 246
+      Width = 718
+      BandType = btFooter
+      Borders.Sides = sdCustom
+      Borders.DrawLeft = False
+      Borders.DrawTop = True
+      Borders.DrawRight = False
+      Borders.DrawBottom = False
+      Borders.Width = 3
+      object RLSystemInfo3: TRLSystemInfo
+        Left = 568
+        Height = 16
+        Top = 8
+        Width = 147
+        Info = itPageNumber
+        Text = 'Página n°:'
+      end
+      object RLSystemInfo2: TRLSystemInfo
+        Left = 456
+        Height = 16
+        Top = 8
+        Width = 74
+        Info = itHour
+        Text = 'Hora: '
+      end
+      object RLSystemInfo4: TRLSystemInfo
+        Left = 336
+        Height = 16
+        Top = 8
+        Width = 74
+        Text = 'Data: '
+      end
+      object RLLabel7: TRLLabel
+        Left = 112
+        Height = 16
+        Top = 8
+        Width = 58
+      end
+    end
+  end
+end

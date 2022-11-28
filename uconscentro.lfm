@@ -1,12 +1,12 @@
 object FrmConsCentro: TFrmConsCentro
   Left = -8
-  Height = 788
+  Height = 827
   Top = -8
-  Width = 974
+  Width = 990
   BorderStyle = bsNone
   Caption = 'FrmConsCentro'
-  ClientHeight = 750
-  ClientWidth = 974
+  ClientHeight = 804
+  ClientWidth = 990
   Color = 16577259
   OnClose = FormClose
   OnResize = FormResize
@@ -14,29 +14,29 @@ object FrmConsCentro: TFrmConsCentro
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 750
+    Height = 804
     Top = 0
-    Width = 974
+    Width = 990
     Align = alClient
     Caption = 'Panel1'
-    ClientHeight = 750
-    ClientWidth = 974
+    ClientHeight = 804
+    ClientWidth = 990
     TabOrder = 0
     object Panel2: TPanel
       Left = 1
-      Height = 748
+      Height = 802
       Top = 1
-      Width = 972
+      Width = 988
       Align = alClient
       BevelOuter = bvNone
-      ClientHeight = 748
-      ClientWidth = 972
+      ClientHeight = 802
+      ClientWidth = 988
       TabOrder = 0
       object Label7: TLabel
         Left = 0
         Height = 32
         Top = 0
-        Width = 972
+        Width = 988
         Align = alTop
         Alignment = taCenter
         Caption = 'Consulta de Centro de Custos'
@@ -1398,7 +1398,7 @@ object FrmConsCentro: TFrmConsCentro
         Visible = False
         OnClick = BtnSelecioneClick
       end
-      object SpeedButton1: TSpeedButton
+      object BtnImprimir: TSpeedButton
         Left = 360
         Height = 34
         Top = 416
@@ -1859,12 +1859,13 @@ object FrmConsCentro: TFrmConsCentro
           8EFF8E8E8EFF8E8E8EFF8E8E8EFF8E8E8EFF8E8E8EFF8E8E8EFF8E8E8EFF8E8E
           8EFF8E8E8EFF8E8E8EFF8A8A8AFF666666FF575757FFD7D7D7FF
         }
+        OnClick = BtnImprimirClick
       end
     end
     object PnChamaCentro: TPanel
-      Left = 48
+      Left = 88
       Height = 504
-      Top = 56
+      Top = 1
       Width = 776
       TabOrder = 1
       OnClick = PnChamaCentroClick

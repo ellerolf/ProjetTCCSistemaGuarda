@@ -14,7 +14,7 @@ uses
   Ferramentas, UConsParcelas, UbaixaParcela, uRlContasBanc, urlcontascaixa,
   urlcontasapagarpen, urlcontasareceberpen, urlcontasareceberefet,
   urlcontasapagarefet, urltransferencia, ValidaCPF, ValidaCNPJ, UForPg,
-  UMovBanco, urlmovimbanc;
+  UMovBanco, urlmovimbanc, urlcentrocusto;
 
 {$R *.res}
 
@@ -51,6 +51,7 @@ begin
   Application.CreateForm(TFrmForPg, FrmForPg);
   Application.CreateForm(TFrmMovBanco, FrmMovBanco);
   Application.CreateForm(TFrmRlMovimBanc, FrmRlMovimBanc);
+  Application.CreateForm(TFrmRICentroCusto, FrmRICentroCusto);
   Application.Run;
 end.
 

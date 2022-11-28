@@ -47,7 +47,7 @@
         <PackageName Value="LCL"/>
       </Item6>
     </RequiredPackages>
-    <Units Count="33">
+    <Units Count="34">
       <Unit0>
         <Filename Value="PGuarda.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -290,6 +290,12 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit32>
+      <Unit33>
+        <Filename Value="urlcentrocusto.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmRICentroCusto"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit33>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

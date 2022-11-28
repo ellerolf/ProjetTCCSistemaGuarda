@@ -1,12 +1,12 @@
 object FrmConsContas: TFrmConsContas
   Left = -8
-  Height = 983
+  Height = 1022
   Top = -8
-  Width = 1102
+  Width = 1118
   BorderStyle = bsNone
   Caption = 'FrmConsContas'
-  ClientHeight = 960
-  ClientWidth = 1102
+  ClientHeight = 999
+  ClientWidth = 1118
   Color = 16577259
   OnClose = FormClose
   OnResize = FormResize
@@ -15,28 +15,28 @@ object FrmConsContas: TFrmConsContas
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 960
+    Height = 999
     Top = 0
-    Width = 1102
+    Width = 1118
     Align = alClient
-    ClientHeight = 960
-    ClientWidth = 1102
+    ClientHeight = 999
+    ClientWidth = 1118
     TabOrder = 0
     object Panel2: TPanel
       Left = 1
-      Height = 958
+      Height = 997
       Top = 1
-      Width = 1100
+      Width = 1116
       Align = alClient
       BevelOuter = bvNone
-      ClientHeight = 958
-      ClientWidth = 1100
+      ClientHeight = 997
+      ClientWidth = 1116
       TabOrder = 0
       object Label7: TLabel
         Left = 0
         Height = 32
         Top = 0
-        Width = 1100
+        Width = 1116
         Align = alTop
         Alignment = taCenter
         Caption = 'Contas Bancarias'

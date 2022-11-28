@@ -31,6 +31,7 @@ type
     SpeedButton1: TSpeedButton;
     procedure BtnAlterarClick(Sender: TObject);
     procedure BtnConsultaClick(Sender: TObject);
+    procedure BtnImprimirClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
     procedure BtnSelecioneClick(Sender: TObject);
     procedure DBGrid1CellClick(Column: TColumn);
@@ -53,7 +54,7 @@ implementation
 {$R *.lfm}
 
 { TFrmConsCentro }
-uses uCadCentroCusto, UModulo, uCadLancamento, UConsBaixa;
+uses uCadCentroCusto, UModulo, uCadLancamento, UConsBaixa, urlcentrocusto;
 
 procedure TFrmConsCentro.FormResize(Sender: TObject);
 begin
@@ -350,6 +351,18 @@ begin
     DM.ZQBuscaCentro.Open;
   end;
 
+end;
+
+procedure TFrmConsCentro.BtnImprimirClick(Sender: TObject);
+begin
+     if (dm.ZQBuscaCentro.RecordCount>0) then
+       begin
+            FrmRICentroCusto.RLcentrocusto.Preview();
+       end
+       else
+       begin
+            ShowMessage('Não existe centro de custo para impressão!');
+       end;
 end;
 
 end.
