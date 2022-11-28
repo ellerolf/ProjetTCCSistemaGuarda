@@ -74,6 +74,14 @@ object FrmRlMovimBanc: TFrmRlMovimBanc
       Top = 110
       Width = 1047
       BandType = btHeader
+      Borders.Sides = sdCustom
+      Borders.DrawLeft = False
+      Borders.DrawTop = True
+      Borders.DrawRight = False
+      Borders.DrawBottom = True
+      Borders.Width = 2
+      Borders.FixedTop = True
+      Borders.FixedBottom = True
       object RLLabel3: TRLLabel
         Left = 8
         Height = 16
@@ -82,10 +90,10 @@ object FrmRlMovimBanc: TFrmRlMovimBanc
         Caption = 'DATA'
       end
       object RLLabel4: TRLLabel
-        Left = 96
+        Left = 90
         Height = 16
         Top = 8
-        Width = 80
+        Width = 656
         Caption = 'DESCRIÇÃO'
       end
       object RLLabel5: TRLLabel
@@ -99,7 +107,7 @@ object FrmRlMovimBanc: TFrmRlMovimBanc
         Left = 960
         Height = 16
         Top = 8
-        Width = 48
+        Width = 87
         Caption = 'VALOR'
       end
     end
@@ -118,15 +126,16 @@ object FrmRlMovimBanc: TFrmRlMovimBanc
           Left = 0
           Height = 16
           Top = 14
-          Width = 32
+          Width = 29
           DataField = 'data'
           DataSource = DM.DSConsExtrato
         end
         object RLDBText2: TRLDBText
-          Left = 96
+          Left = 88
           Height = 16
           Top = 14
-          Width = 60
+          Width = 660
+          AutoSize = False
           DataField = 'descricao'
           DataSource = DM.DSConsExtrato
         end
@@ -142,7 +151,7 @@ object FrmRlMovimBanc: TFrmRlMovimBanc
           Left = 960
           Height = 16
           Top = 14
-          Width = 30
+          Width = 88
           DataField = 'valor'
           DataSource = DM.DSConsExtrato
         end
@@ -153,6 +162,11 @@ object FrmRlMovimBanc: TFrmRlMovimBanc
         Top = 40
         Width = 1047
         BandType = btFooter
+        Borders.Sides = sdCustom
+        Borders.DrawLeft = False
+        Borders.DrawTop = False
+        Borders.DrawRight = False
+        Borders.DrawBottom = False
         object RLDBResult1: TRLDBResult
           Left = 960
           Height = 16
@@ -160,7 +174,30 @@ object FrmRlMovimBanc: TFrmRlMovimBanc
           Width = 69
           DataField = 'valor'
           DataSource = DM.DSConsExtrato
+          DisplayMask = 'R$ #,##,0.00'
           Info = riSum
+        end
+        object RLDBResult2: TRLDBResult
+          Left = 96
+          Height = 16
+          Top = 16
+          Width = 46
+          DataSource = DM.DSConsExtrato
+          Info = riCount
+        end
+        object RLLabel10: TRLLabel
+          Left = 16
+          Height = 16
+          Top = 16
+          Width = 56
+          Caption = 'Registro:'
+        end
+        object RLLabel12: TRLLabel
+          Left = 872
+          Height = 16
+          Top = 16
+          Width = 75
+          Caption = 'Total do dia:'
         end
       end
     end
@@ -170,6 +207,13 @@ object FrmRlMovimBanc: TFrmRlMovimBanc
       Top = 310
       Width = 1047
       BandType = btFooter
+      Borders.Sides = sdCustom
+      Borders.DrawLeft = False
+      Borders.DrawTop = True
+      Borders.DrawRight = False
+      Borders.DrawBottom = False
+      Borders.Width = 3
+      Borders.FixedTop = True
       object RLSystemInfo1: TRLSystemInfo
         Left = 896
         Height = 16
@@ -206,10 +250,16 @@ object FrmRlMovimBanc: TFrmRlMovimBanc
       Top = 278
       Width = 1047
       BandType = btSummary
+      Borders.Sides = sdCustom
+      Borders.DrawLeft = False
+      Borders.DrawTop = True
+      Borders.DrawRight = False
+      Borders.DrawBottom = False
+      Borders.FixedTop = True
       object RLLSaldoDaConta: TRLLabel
         Left = 1029
         Height = 16
-        Top = 0
+        Top = 1
         Width = 18
         Align = faRightTop
         Alignment = taRightJustify
@@ -218,11 +268,26 @@ object FrmRlMovimBanc: TFrmRlMovimBanc
       object RLLabel9: TRLLabel
         Left = 928
         Height = 16
-        Top = 0
+        Top = 1
         Width = 101
         Align = faRightTop
         Alignment = taRightJustify
         Caption = 'Saldo da Conta: '
+      end
+      object RLLabel11: TRLLabel
+        Left = 16
+        Height = 16
+        Top = 9
+        Width = 140
+        Caption = 'TOTAL DE REGISTRO:'
+      end
+      object RLDBResult3: TRLDBResult
+        Left = 168
+        Height = 16
+        Top = 8
+        Width = 46
+        DataSource = DM.DSConsExtrato
+        Info = riCount
       end
     end
   end

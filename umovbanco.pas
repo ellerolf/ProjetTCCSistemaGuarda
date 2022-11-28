@@ -153,7 +153,7 @@ begin
 
      if (EdtNConta.Text='')then
      begin
-          ShowMessage('Digite o número da conta para efetuar a pesquisa');
+          ShowMessage('Selecione o número da conta para efetuar a pesquisa');
      end
      else if (DTInicial.Date=NullDate) or (DtFinal.Date=NullDate) then
      begin

@@ -1,13 +1,13 @@
 object FrmMovBanco: TFrmMovBanco
   Left = -8
-  Height = 905
+  Height = 788
   Top = -8
-  Width = 1132
+  Width = 1148
   BorderIcons = []
   BorderStyle = bsNone
   Caption = 'Movimentação Bancária'
-  ClientHeight = 882
-  ClientWidth = 1132
+  ClientHeight = 749
+  ClientWidth = 1148
   Color = 16577259
   OnClose = FormClose
   OnResize = FormResize
@@ -16,18 +16,18 @@ object FrmMovBanco: TFrmMovBanco
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 882
+    Height = 749
     Top = 0
-    Width = 1132
+    Width = 1148
     Align = alClient
-    ClientHeight = 882
-    ClientWidth = 1132
+    ClientHeight = 749
+    ClientWidth = 1148
     TabOrder = 0
     object Label7: TLabel
       Left = 1
       Height = 32
       Top = 1
-      Width = 1130
+      Width = 1146
       Align = alTop
       Alignment = taCenter
       Caption = 'Movimentação Bancária'
@@ -43,13 +43,13 @@ object FrmMovBanco: TFrmMovBanco
     end
     object Panel2: TPanel
       Left = 1
-      Height = 848
+      Height = 715
       Top = 33
-      Width = 1130
+      Width = 1146
       Align = alClient
       BevelOuter = bvNone
-      ClientHeight = 848
-      ClientWidth = 1130
+      ClientHeight = 715
+      ClientWidth = 1146
       TabOrder = 0
       OnClick = Panel2Click
       object EdtNConta: TEdit
@@ -2020,10 +2020,11 @@ object FrmMovBanco: TFrmMovBanco
         OnClick = LblSaldoAntClick
       end
       object Label4: TLabel
-        Left = 648
+        Left = 600
         Height = 21
         Top = 512
         Width = 119
+        Alignment = taRightJustify
         Caption = 'Saldo da Conta:'
         Font.CharSet = ANSI_CHARSET
         Font.Height = -16
@@ -2034,7 +2035,7 @@ object FrmMovBanco: TFrmMovBanco
         ParentFont = False
       end
       object Label5: TLabel
-        Left = 648
+        Left = 608
         Height = 21
         Top = 80
         Width = 115

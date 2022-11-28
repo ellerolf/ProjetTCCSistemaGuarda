@@ -1,10 +1,10 @@
 object DM: TDM
   OnCreate = DataModuleCreate
   OldCreateOrder = False
-  Height = 859
+  Height = 402
   HorizontalOffset = 0
   VerticalOffset = 0
-  Width = 897
+  Width = 1243
   object ZFinanceiro: TZConnection
     ControlsCodePage = cCP_UTF8
     AutoEncodeStrings = True
@@ -3533,6 +3533,7 @@ object DM: TDM
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = True
       Required = False
+      Currency = True
       Precision = 22
     end
   end
