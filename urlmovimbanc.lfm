@@ -17,6 +17,7 @@ object FrmRlMovimBanc: TFrmRlMovimBanc
     Font.Name = 'Arial'
     PageSetup.Orientation = poLandscape
     ExpressionParser = RLExpressionParser1
+    AfterPrint = RLMovimBancAfterPrint
     BeforePrint = RLMovimBancBeforePrint
     object RLBand1: TRLBand
       Left = 38
@@ -93,7 +94,7 @@ object FrmRlMovimBanc: TFrmRlMovimBanc
         Left = 90
         Height = 16
         Top = 8
-        Width = 656
+        Width = 80
         Caption = 'DESCRIÇÃO'
       end
       object RLLabel5: TRLLabel
@@ -107,7 +108,7 @@ object FrmRlMovimBanc: TFrmRlMovimBanc
         Left = 960
         Height = 16
         Top = 8
-        Width = 87
+        Width = 48
         Caption = 'VALOR'
       end
     end
@@ -151,7 +152,7 @@ object FrmRlMovimBanc: TFrmRlMovimBanc
           Left = 960
           Height = 16
           Top = 14
-          Width = 88
+          Width = 30
           DataField = 'valor'
           DataSource = DM.DSConsExtrato
         end

@@ -46,6 +46,7 @@ type
     RLSystemInfo1: TRLSystemInfo;
     RLSystemInfo2: TRLSystemInfo;
     RLSystemInfo3: TRLSystemInfo;
+    procedure RLMovimBancAfterPrint(Sender: TObject);
     procedure RLMovimBancBeforePrint(Sender: TObject; var PrintIt: Boolean);
   private
 
@@ -71,6 +72,14 @@ begin
      FrmRlMovimBanc.RLLabel7.Caption:='Impresso por : '+FrmEntrarUsuario.usuarios;
      FrmRlMovimBanc.RLLSaldoAnterior.Caption:=FormatCurr('0.00',FrmMovBanco.saldoTotal);
      FrmRlMovimBanc.RLLSaldoDaConta.Caption:=FrmMovBanco.LblValorTotal.Caption;
+end;
+
+procedure TFrmRlMovimBanc.RLMovimBancAfterPrint(Sender: TObject);
+begin
+     FrmMovBanco.ativabtnImprimir:='';
+     FrmMovBanco.DTInicial.Clear;
+     FrmMovBanco.DtFinal.Clear;
+     FrmMovBanco.BtnImprimir.Enabled:=False;
 end;
 
 end.

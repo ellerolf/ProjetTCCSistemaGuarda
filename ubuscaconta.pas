@@ -155,7 +155,7 @@ begin
              RGBTipoConta.ItemIndex:=-1;
              DBGCaixa.Visible:=False;
              DBGContasBanc.Visible:=False;
-             //FrmMovBanco.CodDaConta:=0;
+             FrmMovBanco.CodDaConta:=0;
              FrmMovBanco.NomeDaConta:='';
              EdtConsulta.Clear;
              FrmBuscaConta.close;

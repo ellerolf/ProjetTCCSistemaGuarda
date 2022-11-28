@@ -46,12 +46,7 @@ type
     procedure LblSaldoAntClick(Sender: TObject);
     procedure Panel2Click(Sender: TObject);
   private
-         //Variável que recebe o valor total (saldo inicial+saldo anterior+ saldo da dbgrid)
-         //valortotal:Double;
-         //Variável que recebe o valor do saldo anterior da dbgrid.
-         //saldoAnterior:Double;
-         //variavel que recebe o valor do saldo anterior a data digitada+ saldo inicial
-         //saldoTotal:Double;
+
 
   public
         CodDaConta:Integer;
@@ -67,8 +62,8 @@ type
          valortotal:Double;
          //Variável que recebe o valor do saldo anterior da dbgrid.
          saldoAnterior:Double;
-         //variavel que recebe o valor do saldo anterior a data digitada+ saldo inicial
-         //saldoTotal:Double;
+         //Variável ativa o botão imprimir
+         ativabtnImprimir:String;
   end;
 
 var
@@ -114,6 +109,7 @@ procedure TFrmMovBanco.BtnLimparClick(Sender: TObject);
 begin
      EdtNConta.Clear;
      EdtNomeDaConta.Clear;
+     CodDaConta:=0;
 end;
 
 procedure TFrmMovBanco.BtnImprimirClick(Sender: TObject);
@@ -132,7 +128,7 @@ begin
      end
      else
      begin
-          if (dm.ZQConsExtrato.RecordCount>0) then
+          if (dm.ZQConsExtrato.RecordCount>=0) then
           begin
                FrmRlMovimBanc.RLMovimBanc.Preview();
           end;
@@ -165,6 +161,10 @@ begin
      end
      else
      begin
+          ativabtnImprimir:='ativa';
+          if (ativabtnImprimir='ativa') then
+          begin
+           BtnImprimir.Enabled:=True;
           DM.ZQConsSaldoAnt.Close;
           DM.ZQConsSaldoAnt.SQL.Clear;
           DM.ZQConsSaldoAnt.SQL.Add('SELECT sum(VALOR) from vwextrato where conta = '+IntToStr(FrmMovBanco.CodDaConta)+' and data < ''' + FormatDateTime('yyyy-mm-dd',DTInicial.Date) + '''');
@@ -205,6 +205,7 @@ begin
                LblValorTotal.Caption:=FormatCurr('0.00',valortotal+saldoTotal);
           end;
 
+          end;
      end;
 end;
 
@@ -221,6 +222,7 @@ begin
      saldoInicial:=0;
      saldoAnterior:=0;
      saldoTotal:=0;
+     CodDaConta:=0;
      close;
 end;
 
