@@ -12,7 +12,6 @@ object FrmEntrarUsuario: TFrmEntrarUsuario
   OnCreate = FormCreate
   OnResize = FormResize
   Position = poScreenCenter
-  LCLVersion = '2.2.2.0'
   object Panel1: TPanel
     Left = 0
     Height = 600
@@ -64,22 +63,6 @@ object FrmEntrarUsuario: TFrmEntrarUsuario
           OnChange = ChkMostrarChange
           ParentFont = False
           TabOrder = 2
-        end
-        object LblMensagem: TLabel
-          Left = 128
-          Height = 17
-          Top = 264
-          Width = 137
-          Caption = '*Campos Obrigatorios'
-          Font.CharSet = ANSI_CHARSET
-          Font.Color = clRed
-          Font.Height = -13
-          Font.Pitch = fpVariable
-          Font.Quality = fqDraft
-          Font.Style = [fsBold]
-          ParentColor = False
-          ParentFont = False
-          OnClick = LblMensagemClick
         end
         object BtnEntrar: TSpeedButton
           Left = 200
