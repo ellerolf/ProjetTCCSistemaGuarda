@@ -256,6 +256,7 @@ procedure TFrmMenu.BtnConsCentroClick(Sender: TObject);
 begin
   FrmConsCentro.Parent := PnChama;
   FrmConsCentro.Align := alClient;
+  DM.ZQBuscaCentro.Open;
   FrmConsCentro.Show;
   FrmCadUsuario.close;
   FrmCadFornecedor.close;
@@ -266,7 +267,6 @@ begin
   FrmConsUsuario.close;
   FrmConsFornecedores.close;
   FrmConsBaixa.close;
-
   FrmTranfContas.close;
   FrmConsContas.close;
 end;

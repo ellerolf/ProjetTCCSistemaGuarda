@@ -147,6 +147,8 @@ procedure TFrmConsUsuario.FormClose(Sender: TObject;
   var CloseAction: TCloseAction);
 begin
    PnAlterausu.Visible:=False;
+   CboStatus.ItemIndex:=0;
+   BtnConsulta.Click;
    DM.ZQBuscaUsuario.Close;
 end;
 
