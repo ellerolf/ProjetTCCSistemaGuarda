@@ -19,7 +19,6 @@ type
     Image1: TImage;
     Label1: TLabel;
     Label2: TLabel;
-    LblMensagem: TLabel;
     pncentro: TPanel;
     BtnEntrar: TSpeedButton;
     Panel2: TPanel;
@@ -74,7 +73,7 @@ procedure TFrmEntrarUsuario.BtnEntrarClick(Sender: TObject);
 begin
   if (EdtUsuario.Text = '') or (EdtSenha.Text = '') then
   begin
-    LblMensagem.Caption := '*CAMPOS FALTANDO*';
+    ShowMessage('*CAMPOS FALTANDO*');
   end
   else
   begin
@@ -94,7 +93,6 @@ begin
     else
     if (DM.ZQConsUsuario.RecordCount = 1) then
     begin
-      LblMensagem.Caption := '*Campos Obrigatorios!';
       //aqui ao logar o nome do usuari aparecera no menu de entrada
       usuarios := DM.ZQConsUsuarioUSUNOME.AsString;
       //aqui esta atribuindo o codigo do usuario para como "indentidade" para uso de outros frorms
