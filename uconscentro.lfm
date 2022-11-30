@@ -5,7 +5,7 @@ object FrmConsCentro: TFrmConsCentro
   Width = 1038
   BorderStyle = bsNone
   Caption = 'FrmConsCentro'
-  ClientHeight = 742
+  ClientHeight = 780
   ClientWidth = 1038
   Color = 16577259
   OnActivate = FormActivate
@@ -13,6 +13,7 @@ object FrmConsCentro: TFrmConsCentro
   OnCreate = FormCreate
   OnResize = FormResize
   OnShow = FormShow
+  LCLVersion = '2.2.2.0'
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0

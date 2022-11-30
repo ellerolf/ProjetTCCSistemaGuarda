@@ -57,7 +57,9 @@ implementation
 {$R *.lfm}
 
 { TFrmConsCentro }
-uses uCadCentroCusto, UModulo, uCadLancamento, UConsBaixa, urlcentrocusto;
+uses uCadCentroCusto, UModulo, uCadLancamento, UConsBaixa, urlcentrocusto,
+  uCadUsuario, uCadFornecedores, UCadContasBancarias, UConsUsuario,
+  UConsFornecedores, UTranfContas, UConsContas, UMovBanco;
 
 procedure TFrmConsCentro.FormResize(Sender: TObject);
 begin
@@ -69,7 +71,7 @@ procedure TFrmConsCentro.FormShow(Sender: TObject);
 begin
   DM.ZQBuscaCentro.Open;
   BtnConsulta.Click;
-  PnChamaCentro.Visible:=false;
+  PnChamaCentro.Visible := False;
 end;
 
 procedure TFrmConsCentro.PnChamaCentroClick(Sender: TObject);
@@ -91,8 +93,8 @@ begin
     //Foi necessário colocar o código abaixo, pq quando a pessoa entrava em lançamento e saia, e depois abria conscentro,
     //Os campos aparecia habilitado mas a dbgrid estava com os dados da tela de lançamento. Com o ajuste abaixo isso foi resolvido
     DM.ZQBuscaCentro.SQL.Clear;
-    DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where cennome like'
-      + QuotedStr('%' + EdtNome1.Text + '%'));
+    DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where cennome like' +
+      QuotedStr('%' + EdtNome1.Text + '%'));
     DM.ZQBuscaCentro.Open;
     dm.ZQBuscaCentro.Close;
     cencodigo := 0;
@@ -111,15 +113,26 @@ begin
     //Foi necessário colocar o código abaixo, pq quando a pessoa entrava em lançamento e saia, e depois abria conscentro,
     //Os campos aparecia habilitado mas a dbgrid estava com os dados da tela de lançamento. Com o ajuste abaixo isso foi resolvido
     DM.ZQBuscaCentro.SQL.Clear;
-    DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where cennome like'
-      + QuotedStr('%' + EdtNome1.Text + '%'));
+    DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where cennome like' +
+      QuotedStr('%' + EdtNome1.Text + '%'));
     DM.ZQBuscaCentro.Open;
     dm.ZQBuscaCentro.Close;
     cencodigo := 0;
     FrmConsCentro.Close;
   end;
   FrmCadLancamento.PnChama.Visible := False;
-  close;
+  FrmCadUsuario.Close;
+  FrmCadFornecedor.Close;
+  FrmCadLancamento.Close;
+  FrmCadCentroCusto.Close;
+  FrmCadContasBancarias.Close;
+  FrmConsUsuario.Close;
+  FrmConsFornecedores.Close;
+  FrmConsBaixa.Close;
+  FrmTranfContas.Close;
+  FrmConsContas.Close;
+  FrmMovBanco.Close;
+  Close;
 end;
 
 procedure TFrmConsCentro.BtnSelecioneClick(Sender: TObject);
@@ -138,7 +151,8 @@ begin
 
       DM.ZQBuscaCentro.SQL.Clear;
       DM.ZQBuscaCentro.SQL.Add(
-        'select * from vwmostracentro where cennome like' + QuotedStr('%' + EdtNome1.Text + '%'));
+        'select * from vwmostracentro where cennome like' +
+        QuotedStr('%' + EdtNome1.Text + '%'));
       DM.ZQBuscaCentro.Open;
       dm.ZQBuscaCentro.Close;
       cencodigo := 0;
@@ -156,8 +170,8 @@ begin
     //Foi necessário colocar o código abaixo, pq quando a pessoa entrava em lançamento e saia, e depois abria conscentro,
     //Os campos aparecia habilitado mas a dbgrid estava com os dados da tela de lançamento. Com o ajuste abaixo isso foi resolvido
     DM.ZQBuscaCentro.SQL.Clear;
-    DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where cennome like'
-      + QuotedStr('%' + EdtNome1.Text + '%'));
+    DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where cennome like' +
+      QuotedStr('%' + EdtNome1.Text + '%'));
     DM.ZQBuscaCentro.Open;
     dm.ZQBuscaCentro.Close;
     FrmConsCentro.Close;
@@ -180,7 +194,8 @@ begin
 
       DM.ZQBuscaCentro.SQL.Clear;
       DM.ZQBuscaCentro.SQL.Add(
-        'select * from vwmostracentro where cennome like' + QuotedStr('%' + EdtNome1.Text + '%'));
+        'select * from vwmostracentro where cennome like' +
+        QuotedStr('%' + EdtNome1.Text + '%'));
       DM.ZQBuscaCentro.Open;
       dm.ZQBuscaCentro.Close;
       cencodigo := 0;
@@ -198,8 +213,8 @@ begin
     //Foi necessário colocar o código abaixo, pq quando a pessoa entrava atraves do consbaixa e saia, e depois abria conscentro,
     //Os campos aparecia habilitado mas a dbgrid estava com os dados da tela de lançamento. Com o ajuste abaixo isso foi resolvido
     DM.ZQBuscaCentro.SQL.Clear;
-    DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where cennome like'
-      + QuotedStr('%' + EdtNome1.Text + '%'));
+    DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where cennome like' +
+      QuotedStr('%' + EdtNome1.Text + '%'));
     DM.ZQBuscaCentro.Open;
     dm.ZQBuscaCentro.Close;
     FrmConsCentro.Close;
@@ -224,8 +239,8 @@ end;
 
 procedure TFrmConsCentro.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
-  CboStatus.ItemIndex:=0;
-  CboTipo.ItemIndex:=0;
+  CboStatus.ItemIndex := 0;
+  CboTipo.ItemIndex := 0;
   BtnConsulta.Click;
   DM.ZQBuscaCentro.Close;
 end;
@@ -278,8 +293,8 @@ begin
   begin
     DM.ZQBuscaCentro.Close;
     DM.ZQBuscaCentro.SQL.Clear;
-    DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where cennome like'
-      + QuotedStr('%' + EdtNome1.Text + '%'));
+    DM.ZQBuscaCentro.SQL.Add('select * from vwmostracentro where cennome like' +
+      QuotedStr('%' + EdtNome1.Text + '%'));
     DM.ZQBuscaCentro.Open;
   end
   else
@@ -322,7 +337,8 @@ begin
     DM.ZQBuscaCentro.Close;
     DM.ZQBuscaCentro.SQL.Clear;
     DM.ZQBuscaCentro.SQL.Add(
-      'select * from vwmostracentro where codigotip=1 and censtatus=1 and cennome like' + QuotedStr('%' + EdtNome1.Text + '%'));
+      'select * from vwmostracentro where codigotip=1 and censtatus=1 and cennome like' +
+      QuotedStr('%' + EdtNome1.Text + '%'));
     DM.ZQBuscaCentro.Open;
   end
   else
@@ -332,7 +348,8 @@ begin
     DM.ZQBuscaCentro.Close;
     DM.ZQBuscaCentro.SQL.Clear;
     DM.ZQBuscaCentro.SQL.Add(
-      'select * from vwmostracentro where codigotip=1 and censtatus=0 and cennome like' + QuotedStr('%' + EdtNome1.Text + '%'));
+      'select * from vwmostracentro where codigotip=1 and censtatus=0 and cennome like' +
+      QuotedStr('%' + EdtNome1.Text + '%'));
     DM.ZQBuscaCentro.Open;
   end
   else
@@ -354,7 +371,8 @@ begin
     DM.ZQBuscaCentro.Close;
     DM.ZQBuscaCentro.SQL.Clear;
     DM.ZQBuscaCentro.SQL.Add(
-      'select * from vwmostracentro where codigotip=2 and censtatus=1 and cennome like' + QuotedStr('%' + EdtNome1.Text + '%'));
+      'select * from vwmostracentro where codigotip=2 and censtatus=1 and cennome like' +
+      QuotedStr('%' + EdtNome1.Text + '%'));
     DM.ZQBuscaCentro.Open;
   end
   else
@@ -364,7 +382,8 @@ begin
     DM.ZQBuscaCentro.Close;
     DM.ZQBuscaCentro.SQL.Clear;
     DM.ZQBuscaCentro.SQL.Add(
-      'select * from vwmostracentro where codigotip=2 and censtatus=0 and cennome like' + QuotedStr('%' + EdtNome1.Text + '%'));
+      'select * from vwmostracentro where codigotip=2 and censtatus=0 and cennome like' +
+      QuotedStr('%' + EdtNome1.Text + '%'));
     DM.ZQBuscaCentro.Open;
   end;
 
@@ -372,14 +391,14 @@ end;
 
 procedure TFrmConsCentro.BtnImprimirClick(Sender: TObject);
 begin
-     if (dm.ZQBuscaCentro.RecordCount>0) then
-       begin
-            FrmRICentroCusto.RLcentrocusto.Preview();
-       end
-       else
-       begin
-            ShowMessage('Não existe centro de custo para impressão!');
-       end;
+  if (dm.ZQBuscaCentro.RecordCount > 0) then
+  begin
+    FrmRICentroCusto.RLcentrocusto.Preview();
+  end
+  else
+  begin
+    ShowMessage('Não existe centro de custo para impressão!');
+  end;
 end;
 
 end.
