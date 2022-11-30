@@ -126,7 +126,7 @@ end;
 
 procedure TFrmCadUsuario.EdtSenhaKeyPress(Sender: TObject; var Key: char);
 begin
-  i;
+
 end;
 
 procedure TFrmCadUsuario.FormClose(Sender: TObject; var CloseAction: TCloseAction);
