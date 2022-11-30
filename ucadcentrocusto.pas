@@ -36,13 +36,14 @@ type
     procedure Label4Click(Sender: TObject);
     procedure LblFormNomeClick(Sender: TObject);
     procedure Panel2Click(Sender: TObject);
+    procedure RgbStatusClick(Sender: TObject);
     procedure RgbTipoClick(Sender: TObject);
     procedure ToggleBox1Change(Sender: TObject);
   private
 
   public
     codigo: integer;
-    CadOUAlt, ReceDesp: string;
+    CadOUAlt, ReceDesp, status: string;
   end;
 
 var
@@ -121,9 +122,9 @@ begin
     begin
       DM.ZQConsCentro.Close;
       DM.ZQConsCentro.SQL.Clear;
-      DM.ZQConsCentro.SQL.Add('select * from centro_custo where cennome = ' +
-        QuotedStr(EdtNome.Text));
+      DM.ZQConsCentro.SQL.Add('select * from centro_custo where cennome = ' +QuotedStr(EdtNome.Text));
       DM.ZQConsCentro.SQL.Add(' and codigotip = ' + QuotedStr(ReceDesp));
+      DM.ZQConsCentro.SQL.Add(' and censtatus = ' + QuotedStr(status));
       DM.ZQConsCentro.Open;
       if (DM.ZQConsCentro.RecordCount <> 0) then
       begin
@@ -164,6 +165,7 @@ begin
         RgbTipo.ItemIndex := -1;
         RgbStatus.ItemIndex := -1;
         RgbStatus.Visible := False;
+        FrmConsCentro.PnChamaCentro.Visible:=false;
         Close;
       end;
 
@@ -237,6 +239,19 @@ end;
 procedure TFrmCadCentroCusto.Panel2Click(Sender: TObject);
 begin
 
+end;
+
+procedure TFrmCadCentroCusto.RgbStatusClick(Sender: TObject);
+begin
+   if (RgbStatus.ItemIndex = 0) then
+  begin
+    status := '1';
+  end
+  else
+  if (RgbStatus.ItemIndex = 1) then
+  begin
+    status := '0';
+  end;
 end;
 
 procedure TFrmCadCentroCusto.RgbTipoClick(Sender: TObject);

@@ -36,7 +36,9 @@ type
     procedure BtnSelecioneClick(Sender: TObject);
     procedure DBGrid1CellClick(Column: TColumn);
     procedure EdtNome1Change(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
+    procedure FormCreate(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure PnChamaCentroClick(Sender: TObject);
@@ -44,6 +46,7 @@ type
 
   public
     cencodigo: integer;
+
   end;
 
 var
@@ -65,7 +68,7 @@ end;
 procedure TFrmConsCentro.FormShow(Sender: TObject);
 begin
   DM.ZQBuscaCentro.Open;
-  BtnAlterar.Click;
+  BtnConsulta.Click;
   PnChamaCentro.Visible:=false;
 end;
 
@@ -116,7 +119,7 @@ begin
     FrmConsCentro.Close;
   end;
   FrmCadLancamento.PnChama.Visible := False;
-  Close;
+  close;
 end;
 
 procedure TFrmConsCentro.BtnSelecioneClick(Sender: TObject);
@@ -214,13 +217,22 @@ begin
 
 end;
 
+procedure TFrmConsCentro.FormActivate(Sender: TObject);
+begin
+
+end;
+
 procedure TFrmConsCentro.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
   CboStatus.ItemIndex:=0;
   CboTipo.ItemIndex:=0;
-  EdtNome1.Text:='';
   BtnConsulta.Click;
   DM.ZQBuscaCentro.Close;
+end;
+
+procedure TFrmConsCentro.FormCreate(Sender: TObject);
+begin
+
 end;
 
 procedure TFrmConsCentro.BtnAlterarClick(Sender: TObject);

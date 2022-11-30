@@ -12,7 +12,6 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
   OnResize = FormResize
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.2.2.0'
   object Panel1: TPanel
     Left = 0
     Height = 656
@@ -1025,7 +1024,7 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
           TabOrder = 1
         end
         object RgbStatus: TRadioGroup
-          Left = 207
+          Left = 208
           Height = 51
           Top = 64
           Width = 161
@@ -1045,6 +1044,7 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
             'ATIVO'
             'INATIVO'
           )
+          OnClick = RgbStatusClick
           TabOrder = 2
         end
       end
