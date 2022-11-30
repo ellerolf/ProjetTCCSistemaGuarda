@@ -280,59 +280,63 @@ begin
       ShowMessage('A SENHA DEVE TER 8 CARACTERS NO MINIMO');
     end
     else
-{o try serve para caso o nome de usuario ja for existente,
-ele não vai consequi para que a execução não trave ele vai mostrar um mensagem que servira como alerta}
-      try
+    begin
+      DM.ZQConsUsuario.Close;
+      DM.ZQConsUsuario.SQL.Clear;
+      DM.ZQConsUsuario.SQL.Add('select * from usuario where usulogin=' +
+        QuotedStr(EdtNomeUsuario.Text));
+      DM.ZQConsUsuario.Open;
+      //validação no cadastr para ver se o nome de usuario ja existe e não trarvar a execução do programa
+      if (DM.ZQConsUsuario.RecordCount = 1) then
+      begin
+        ShowMessage('NOME DE USUARIO JÁ EXISTE, FAVOR ESCOLHER OUTRO');
+      end
+      else
+      begin
+        DM.ZQAltUsuario.Params.ParamByName('pusunome').Value := EdtNome.Text;
+        DM.ZQAltUsuario.Params.ParamByName('pusulogin').Value := EdtNomeUsuario.Text;
+        DM.ZQAltUsuario.Params.ParamByName('pususenha').Value := EdtSenha.Text;
+        // DM.ZQAltUsuario.Params.ParamByName('pususenha').Value:=EdtConfSenha.Text;
+
+        if (RgbNivel.ItemIndex = 0) then
         begin
-          DM.ZQAltUsuario.Params.ParamByName('pusunome').Value := EdtNome.Text;
-          DM.ZQAltUsuario.Params.ParamByName('pusulogin').Value := EdtNomeUsuario.Text;
-          DM.ZQAltUsuario.Params.ParamByName('pususenha').Value := EdtSenha.Text;
-          // DM.ZQAltUsuario.Params.ParamByName('pususenha').Value:=EdtConfSenha.Text;
-
-          if (RgbNivel.ItemIndex = 0) then
-          begin
-            DM.ZQAltUsuario.Params.ParamByName('pcodigoniv').Value := 1;
-          end
-          else if (RgbNivel.ItemIndex = 1) then
-          begin
-            DM.ZQAltUsuario.Params.ParamByName('pcodigoniv').Value := 2;
-          end;
-
-          if (RgbAltStatus.ItemIndex = 0) then
-          begin
-            DM.ZQAltUsuario.Params.ParamByName('pusustatus').Value := 1;
-          end
-          else
-          if (RgbAltStatus.ItemIndex = 1) then
-          begin
-            DM.ZQAltUsuario.Params.ParamByName('pusustatus').Value := 0;
-          end;
-          DM.ZQAltUsuario.Params.ParamByName('pusucodigo').Value := codigo;
-          DM.ZQAltUsuario.ExecSQL;
-
-          DM.ZQBuscaUsuario.Close;
-          DM.ZQBuscaUsuario.Open;
-
-          ShowMessage('ALTERAÇÃO DE USUARIO FEITO COM SUCESSO!');
-          EdtNome.Clear;
-          EdtNomeUsuario.Clear;
-          EdtSenha.Enabled := True;
-          EdtConfSenha.Enabled := True;
-          Label5.Enabled := True;
-          Label6.Enabled := True;
-          ChkMostrar.Enabled := True;
-          RgbNivel.ItemIndex := -1;
-          RgbAltStatus.ItemIndex := -1;
-          RgbAltStatus.Visible := False;
-          FrmConsUsuario.PnAlterausu.Visible := False;
-          Close;
-        end;
-      except
+          DM.ZQAltUsuario.Params.ParamByName('pcodigoniv').Value := 1;
+        end
+        else if (RgbNivel.ItemIndex = 1) then
         begin
-         ShowMessage('NOME DE USUARIO JA ESTA SENDO UTILIZADO!!');
+          DM.ZQAltUsuario.Params.ParamByName('pcodigoniv').Value := 2;
         end;
+
+        if (RgbAltStatus.ItemIndex = 0) then
+        begin
+          DM.ZQAltUsuario.Params.ParamByName('pusustatus').Value := 1;
+        end
+        else
+        if (RgbAltStatus.ItemIndex = 1) then
+        begin
+          DM.ZQAltUsuario.Params.ParamByName('pusustatus').Value := 0;
+        end;
+        DM.ZQAltUsuario.Params.ParamByName('pusucodigo').Value := codigo;
+        DM.ZQAltUsuario.ExecSQL;
+
+        DM.ZQBuscaUsuario.Close;
+        DM.ZQBuscaUsuario.Open;
+
+        ShowMessage('ALTERAÇÃO DE USUARIO FEITO COM SUCESSO!');
+        EdtNome.Clear;
+        EdtNomeUsuario.Clear;
+        EdtSenha.Enabled := True;
+        EdtConfSenha.Enabled := True;
+        Label5.Enabled := True;
+        Label6.Enabled := True;
+        ChkMostrar.Enabled := True;
+        RgbNivel.ItemIndex := -1;
+        RgbAltStatus.ItemIndex := -1;
+        RgbAltStatus.Visible := False;
+        FrmConsUsuario.PnAlterausu.Visible := False;
+        Close;
       end;
-
+    end;
   end;
 end;
 
