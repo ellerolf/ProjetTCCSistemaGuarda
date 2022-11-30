@@ -20,12 +20,12 @@ type
     EdtNome: TEdit;
     EdtNomeUsuario: TEdit;
     EdtSenha: TEdit;
+    LblMensagem: TLabel;
     LblNomedeform: TLabel;
     LblNome: TLabel;
     LblNomUsuario: TLabel;
     Label5: TLabel;
     Label6: TLabel;
-    LblMensagem: TLabel;
     Panel1: TPanel;
     Panel2: TPanel;
     Panel3: TPanel;

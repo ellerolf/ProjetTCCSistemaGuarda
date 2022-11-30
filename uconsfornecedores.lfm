@@ -5,13 +5,14 @@ object FrmConsFornecedores: TFrmConsFornecedores
   Width = 1038
   BorderStyle = bsNone
   Caption = 'FrmConsFornecedores'
-  ClientHeight = 749
+  ClientHeight = 788
   ClientWidth = 1038
   Color = 16577259
   OnClose = FormClose
   OnResize = FormResize
   OnShow = FormShow
   Position = poScreenCenter
+  LCLVersion = '2.2.2.0'
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0

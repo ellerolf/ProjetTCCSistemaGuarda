@@ -382,6 +382,16 @@ begin
   if (dm.ZQConsPessoasCODIGOTIP.AsInteger = 1) and
     (dm.ZQConsPessoasLGPD.AsBoolean = False) then
   begin
+
+    if (dm.ZQConsPessoasATIVO.AsInteger = 1) then
+    begin
+     FrmCadFornecedor.BtnAtivo.Checked := True;
+    end;
+    if (dm.ZQConsPessoasATIVO.AsInteger = 0) then
+    begin
+      FrmCadFornecedor.BtnInativo.Checked := True;
+    end;
+
     FrmCadFornecedor.LblTitulo.Caption := 'Altera Fornecedores';
     FrmCadFornecedor.BtnCpf.Checked := True;
     FrmCadFornecedor.pescodigo := seleciona;
@@ -408,6 +418,16 @@ begin
   else if (dm.ZQConsPessoasCODIGOTIP.AsInteger = 2) and
     (dm.ZQConsPessoasLGPD.AsBoolean = False) then
   begin
+
+    if (dm.ZQConsPessoasATIVO.AsInteger = 1) then
+    begin
+     FrmCadFornecedor.BtnAtivo.Checked := True;
+    end;
+    if (dm.ZQConsPessoasATIVO.AsInteger = 0) then
+    begin
+      FrmCadFornecedor.BtnInativo.Checked := True;
+    end;
+
     FrmCadFornecedor.BtnCnpj.Checked := True;
     FrmCadFornecedor.pescodigo := seleciona;
     FrmCadFornecedor.EdtCpfCnpj.Text := dm.ZQConsPessoasCNPJ.AsString;
@@ -431,6 +451,7 @@ begin
     FrmCadFornecedor.BtnAlterar.Enabled := True;
     FrmCadFornecedor.GrpCnpjCpf.Enabled := False;
     FrmCadFornecedor.GrpStatus.Enabled := False;
+
   end;
 
   //PROTEÇÃO DE DADOS LGPD

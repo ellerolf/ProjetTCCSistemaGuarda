@@ -248,8 +248,8 @@ begin
   EdtCel.Clear;
   EdtEmail.Clear;
   MemObs.Clear;
-  BtnCnpj.Checked:=false;
-  BtnCpf.Checked:=false;
+  BtnCnpj.Checked := False;
+  BtnCpf.Checked := False;
 end;
 
 procedure TFrmCadFornecedor.sobeBanco;
@@ -267,6 +267,7 @@ begin
   Close;
   FrmConsFornecedores.PnChama.Visible := False;
   limpacampo();
+
 end;
 
 procedure TFrmCadFornecedor.BtnCnpjChange(Sender: TObject);
@@ -462,23 +463,10 @@ begin
     //altera CPF-----------------------------------------------------------------------
     if (BtnCpf.Checked = True) then
     begin
-      if ((EdtNome.Text = dm.ZQConsPessoasNOME.AsString) and
-        (EdtEndereco.Text = dm.ZQConsPessoasENDEREO.AsString) and
-        (EdtNumero.Text = dm.ZQConsPessoasNMERO.AsString) and
-        (EdtBairro.Text = dm.ZQConsPessoasBAIRRO.AsString) and
-        (EdtCep.Text = dm.ZQConsPessoasCEP.AsString) and
-        (EdtCidade.Text = dm.ZQConsPessoasCIDADE.AsString) and
-        (CboUf.Caption = dm.ZQConsPessoasESTADO.AsString) and
-        (EdtCel.Text = dm.ZQConsPessoasCELULAR.AsString)) then
-      begin
-        ShowMessage('Alteração não realizada: Campos são iguais');
-      end
-      //verifica celular e cep
-      else if Length(Trim(EdtCel.Text)) < 14 then
+      if Length(Trim(EdtCel.Text)) < 14 then
       begin
         ShowMessage('Esta faltando o numero no Celular');
       end
-
       else if Length(Trim(EdtCep.Text)) < 9 then
       begin
         ShowMessage('Esta faltando o numero na Cep');
@@ -533,21 +521,7 @@ begin
     //altera CNPJ-----------------------------------------------------------------------
     if (BtnCnpj.Checked = True) then
     begin
-      if (EdtNome.Text = dm.ZQConsPessoasNOME.AsString) and
-        (EdtFantasia.Text = dm.ZQConsPessoasNOMEFANTASIA.AsString) and
-        (EdtInsEstadual.Text = dm.ZQConsPessoasINSCRIOESTADUAL.AsString) and
-        (EdtInsMun.Text = dm.ZQConsPessoasINSCRIOMUNICIPAL.AsString) and
-        (EdtEndereco.Text = dm.ZQConsPessoasENDEREO.AsString) and
-        (EdtNumero.Text = '') or (EdtBairro.Text = dm.ZQConsPessoasBAIRRO.AsString) and
-        (EdtCep.Text = dm.ZQConsPessoasCEP.AsString) and
-        (EdtCidade.Text = dm.ZQConsPessoasCIDADE.AsString) and
-        (CboUf.Caption = dm.ZQConsPessoasESTADO.AsString) and
-        (EdtCel.Text = dm.ZQConsPessoasCELULAR.AsString) then
-      begin
-        ShowMessage('Alteração não realizado: Campos são iguais');
-      end
-      //verifica celular e cep
-      else if Length(Trim(EdtCel.Text)) < 14 then
+      if Length(Trim(EdtCel.Text)) < 14 then
       begin
         ShowMessage('Esta faltando o numero no Celular');
       end
