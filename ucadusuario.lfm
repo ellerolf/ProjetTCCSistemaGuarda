@@ -155,21 +155,13 @@ object FrmCadUsuario: TFrmCadUsuario
           OnChange = ChkMostrarChange
           TabOrder = 4
         end
-        object LblMensagem: TLabel
-          Left = 214
-          Height = 15
-          Top = 279
-          Width = 118
-          Caption = '*Campos Obrigatorios'
-          Font.Color = clRed
-          ParentColor = False
-          ParentFont = False
-        end
         object BtnSalvar: TSpeedButton
-          Left = 304
+          Left = 288
           Height = 34
           Top = 392
-          Width = 107
+          Width = 124
+          AutoSize = True
+          Flat = True
           Glyph.Data = {
             76380000424D76380000000000003600000028000000780000001E0000000100
             2000000000004038000064000000640000000000000000000000FFFFFFFFECB0
@@ -630,7 +622,9 @@ object FrmCadUsuario: TFrmCadUsuario
           Left = 417
           Height = 34
           Top = 392
-          Width = 107
+          Width = 124
+          AutoSize = True
+          Flat = True
           Glyph.Data = {
             76380000424D76380000000000003600000028000000780000001E0000000100
             2000000000004038000064000000640000000000000000000000FFFFFFFFB0B0
@@ -1145,6 +1139,21 @@ object FrmCadUsuario: TFrmCadUsuario
           )
           ParentFont = False
           TabOrder = 6
+        end
+        object LblMensagem: TLabel
+          Left = 216
+          Height = 21
+          Top = 272
+          Width = 168
+          Caption = '*Campos Obrigatorios'
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clRed
+          Font.Height = -16
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
         end
       end
       object LblNomedeform: TLabel
