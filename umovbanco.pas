@@ -182,7 +182,7 @@ begin
 
           saldoTotal:=saldoAnterior+saldoInicial;
 
-          LblSaldoAnt.Caption:=FormatCurr('0.00',saldoTotal);
+          LblSaldoAnt.Caption:=FormatCurr('###,###,##0.00',saldoTotal);
 
           if (strtoint(EdtNConta.Text)>0) then
           begin
@@ -204,7 +204,7 @@ begin
                     valortotal:=valortotal+dm.ZQConsExtratovalor.AsFloat;
                     dm.ZQConsExtrato.Next;
                end;
-               LblValorTotal.Caption:=FormatCurr('0.00',valortotal+saldoTotal);
+               LblValorTotal.Caption:=FormatCurr('###,###,##0.00',valortotal+saldoTotal);
           end;
 
           end;

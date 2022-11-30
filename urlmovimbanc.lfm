@@ -60,13 +60,13 @@ object FrmRlMovimBanc: TFrmRlMovimBanc
         Caption = '10'
       end
       object RLLabel8: TRLLabel
-        Left = 943
+        Left = 939
         Height = 16
         Top = 56
-        Width = 86
+        Width = 90
         Align = faRightBottom
         Alignment = taRightJustify
-        Caption = 'Saldo Anterior'
+        Caption = 'Saldo Anterior:'
       end
       object RLLNomeDaConta: TRLLabel
         Left = 0
