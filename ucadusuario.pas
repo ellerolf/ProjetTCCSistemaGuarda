@@ -106,10 +106,7 @@ end;
 
 procedure TFrmCadUsuario.EdtConfSenhaKeyPress(Sender: TObject; var Key: char);
 begin
-  if key = #13 then
-  begin
-    BtnSalvar.Click;
-  end;
+
 end;
 
 procedure TFrmCadUsuario.EdtNomeChange(Sender: TObject);
@@ -119,33 +116,17 @@ end;
 
 procedure TFrmCadUsuario.EdtNomeKeyPress(Sender: TObject; var Key: char);
 begin
-  if key = #13 then
-  begin
-    EdtNomeUsuario.SetFocus;
-  end;
+
 end;
 
 procedure TFrmCadUsuario.EdtNomeUsuarioKeyPress(Sender: TObject; var Key: char);
 begin
-  if (AltOUCad = 'C') then
-  begin
-    if key = #13 then
-    begin
-      EdtSenha.SetFocus;
-    end;
-  end
-  else
-  begin
-    BtnSalvar.Click;
-  end;
+
 end;
 
 procedure TFrmCadUsuario.EdtSenhaKeyPress(Sender: TObject; var Key: char);
 begin
-  if key = #13 then
-  begin
-    EdtConfSenha.SetFocus;
-  end;
+  i;
 end;
 
 procedure TFrmCadUsuario.FormClose(Sender: TObject; var CloseAction: TCloseAction);
