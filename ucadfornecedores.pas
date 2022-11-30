@@ -248,6 +248,8 @@ begin
   EdtCel.Clear;
   EdtEmail.Clear;
   MemObs.Clear;
+  BtnCnpj.Checked:=false;
+  BtnCpf.Checked:=false;
 end;
 
 procedure TFrmCadFornecedor.sobeBanco;
@@ -381,6 +383,7 @@ begin
         ShowMessage('Dados Gravados com sucesso!');
         limpacampo();
         mudaCor();
+        DesativaCampoForn();
       end;
     end; //fim cnpj
     //CPF
@@ -447,6 +450,7 @@ begin
         ShowMessage('Dados Gravados com sucesso!');
         limpacampo();
         mudaCor();
+        DesativaCampoForn();
       end;
     end;//fim cpf
   end;//fim insert
@@ -462,11 +466,12 @@ begin
         (EdtEndereco.Text = dm.ZQConsPessoasENDEREO.AsString) and
         (EdtNumero.Text = dm.ZQConsPessoasNMERO.AsString) and
         (EdtBairro.Text = dm.ZQConsPessoasBAIRRO.AsString) and
-        (EdtCep.Text = dm.ZQConsPessoasCEP.AsString) and (EdtCidade.Text = '') and
+        (EdtCep.Text = dm.ZQConsPessoasCEP.AsString) and
+        (EdtCidade.Text = dm.ZQConsPessoasCIDADE.AsString) and
         (CboUf.Caption = dm.ZQConsPessoasESTADO.AsString) and
         (EdtCel.Text = dm.ZQConsPessoasCELULAR.AsString)) then
       begin
-        ShowMessage('Alteração não realizado: Campos são iguais');
+        ShowMessage('Alteração não realizada: Campos são iguais');
       end
       //verifica celular e cep
       else if Length(Trim(EdtCel.Text)) < 14 then
@@ -482,7 +487,8 @@ begin
       begin
         dm.ZQAltPessoas.Params.ParamByName('pesnome').Value := EdtNome.Text;
         dm.ZQAltPessoas.Params.ParamByName('codigotip').Value := 1;
-        dm.ZQAltPessoas.Params.ParamByName('pescpf').Value := DM.ZQConsPessoasCPF.AsString;
+        dm.ZQAltPessoas.Params.ParamByName('pescpf').Value :=
+          DM.ZQConsPessoasCPF.AsString;
         dm.ZQAltPessoas.Params.ParamByName('pesdata_nascimento').AsString :=
           FormatDateTime('yyyy-mm-dd', DTNasc.Date);
         dm.ZQAltPessoas.Params.ParamByName('pescnpj').Value := null;
@@ -520,6 +526,7 @@ begin
         dm.ZQConsPessoas.Open;
 
         ShowMessage('Dados Alterados com sucesso!');
+        DesativaCampoForn();
       end;
 
     end;
@@ -555,7 +562,8 @@ begin
         dm.ZQAltPessoas.Params.ParamByName('codigotip').Value := 2;
         dm.ZQAltPessoas.Params.ParamByName('pescpf').Value := null;
         dm.ZQAltPessoas.Params.ParamByName('pesdata_nascimento').Value := null;
-        dm.ZQAltPessoas.Params.ParamByName('pescnpj').Value := DM.ZQConsPessoasCNPJ.AsString;
+        dm.ZQAltPessoas.Params.ParamByName('pescnpj').Value :=
+          DM.ZQConsPessoasCNPJ.AsString;
         dm.ZQAltPessoas.Params.ParamByName('pesnome_fantasia').Value := EdtFantasia.Text;
         dm.ZQAltPessoas.Params.ParamByName('pesinscricao_estadual').Value :=
           EdtInsEstadual.Text;
@@ -591,6 +599,7 @@ begin
 
         dm.ZQConsPessoas.Close;
         dm.ZQConsPessoas.Open;
+        DesativaCampoForn();
       end;
 
     end;

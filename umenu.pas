@@ -142,18 +142,18 @@ begin
   FrmTranfContas.Parent := PnChama;
   FrmTranfContas.Align := alClient;
   FrmTranfContas.Show;
-  FrmCadUsuario.close;
-  FrmCadFornecedor.close;
-  FrmCadCentroCusto.close;
-  FrmCadLancamento.close;
+
+  FrmCadUsuario.Close;
+  FrmCadFornecedor.Close;
+  FrmCadLancamento.Close;
   FrmCadCentroCusto.close;
   FrmCadContasBancarias.close;
-  FrmConsUsuario.close;
-  FrmConsFornecedores.close;
-  FrmConsBaixa.close;
-  FrmConsCentro.close;
-
-  FrmConsContas.close;
+  FrmConsUsuario.Close;
+  FrmConsFornecedores.Close;
+  FrmConsBaixa.Close;
+  FrmConsCentro.Close;
+  FrmConsContas.Close;
+  FrmMovBanco.Close;
 end;
 
 procedure TFrmMenu.EdtConfirmaSenhaKeyPress(Sender: TObject; var Key: char);
@@ -220,17 +220,19 @@ begin
   FrmCadUsuario.Parent := PnChama;
   FrmCadUsuario.Align := alClient;
   FrmCadUsuario.Show;
-  FrmCadFornecedor.close;
-  FrmCadCentroCusto.close;
-  FrmCadLancamento.close;
+
+
+  FrmCadFornecedor.Close;
+  FrmCadLancamento.Close;
   FrmCadCentroCusto.close;
   FrmCadContasBancarias.close;
-  FrmConsUsuario.close;
-  FrmConsFornecedores.close;
-  FrmConsBaixa.close;
-  FrmConsCentro.close;
-  FrmTranfContas.close;
-  FrmConsContas.close;
+  FrmConsUsuario.Close;
+  FrmConsFornecedores.Close;
+  FrmConsBaixa.Close;
+  FrmConsCentro.Close;
+  FrmTranfContas.Close;
+  FrmConsContas.Close;
+  FrmMovBanco.Close;
 end;
 
 procedure TFrmMenu.BtnConsBancoClick(Sender: TObject);
@@ -238,58 +240,57 @@ begin
   FrmConsContas.parent := PnChama;
   FrmConsContas.Align := alClient;
   FrmConsContas.Show;
-  FrmCadUsuario.close;
-  FrmCadFornecedor.close;
-  FrmCadCentroCusto.close;
-  FrmCadLancamento.close;
+
+  FrmCadUsuario.Close;
+  FrmCadFornecedor.Close;
+  FrmCadLancamento.Close;
   FrmCadCentroCusto.close;
   FrmCadContasBancarias.close;
-  FrmConsUsuario.close;
-  FrmConsFornecedores.close;
-  FrmConsBaixa.close;
-  FrmConsCentro.close;
-  FrmTranfContas.close;
-
+  FrmConsUsuario.Close;
+  FrmConsFornecedores.Close;
+  FrmConsBaixa.Close;
+  FrmConsCentro.Close;
+  FrmTranfContas.Close;
+  FrmMovBanco.Close;
 end;
 
 procedure TFrmMenu.BtnConsCentroClick(Sender: TObject);
 begin
   FrmConsCentro.Parent := PnChama;
   FrmConsCentro.Align := alClient;
-  DM.ZQBuscaCentro.Open;
   FrmConsCentro.Show;
-  FrmCadUsuario.close;
-  FrmCadFornecedor.close;
-  FrmCadCentroCusto.close;
-  FrmCadLancamento.close;
+
+  FrmCadUsuario.Close;
+  FrmCadFornecedor.Close;
+  FrmCadLancamento.Close;
   FrmCadCentroCusto.close;
   FrmCadContasBancarias.close;
-  FrmConsUsuario.close;
-  FrmConsFornecedores.close;
-  FrmConsBaixa.close;
-  FrmTranfContas.close;
-  FrmConsContas.close;
+  FrmConsUsuario.Close;
+  FrmConsFornecedores.Close;
+  FrmConsBaixa.Close;
+  FrmTranfContas.Close;
+  FrmConsContas.Close;
+  FrmMovBanco.Close;
 end;
 
 procedure TFrmMenu.BtnConsFornecedoresClick(Sender: TObject);
 begin
-
   FrmConsFornecedores.parent := PnChama;
   FrmConsFornecedores.Align := alClient;
   FrmConsFornecedores.show;
   FrmCadUsuario.close;
-  FrmCadFornecedor.close;
-  FrmCadCentroCusto.close;
-  FrmCadLancamento.close;
+
+  FrmCadUsuario.Close;
+  FrmCadFornecedor.Close;
+  FrmCadLancamento.Close;
   FrmCadCentroCusto.close;
   FrmCadContasBancarias.close;
-  FrmConsUsuario.close;
-
-  FrmConsBaixa.close;
-  FrmConsCentro.close;
-  FrmTranfContas.close;
-  FrmConsContas.close;
-
+  FrmConsUsuario.Close;
+  FrmConsBaixa.Close;
+  FrmConsCentro.Close;
+  FrmTranfContas.Close;
+  FrmConsContas.Close;
+  FrmMovBanco.Close;
 end;
 
 procedure TFrmMenu.BtnConsReceitaDespesasClick(Sender: TObject);
@@ -297,23 +298,22 @@ begin
   FrmConsBaixa.parent := PnChama;
   FrmConsBaixa.Align := alClient;
   FrmConsBaixa.Show;
-  FrmCadUsuario.close;
-  FrmCadFornecedor.close;
-  FrmCadCentroCusto.close;
-  FrmCadLancamento.close;
+
+  FrmCadUsuario.Close;
+  FrmCadFornecedor.Close;
+  FrmCadLancamento.Close;
   FrmCadCentroCusto.close;
   FrmCadContasBancarias.close;
-  FrmConsUsuario.close;
-  FrmConsFornecedores.close;
-
-  FrmConsCentro.close;
-  FrmTranfContas.close;
-  FrmConsContas.close;
+  FrmConsUsuario.Close;
+  FrmConsFornecedores.Close;
+  FrmConsCentro.Close;
+  FrmTranfContas.Close;
+  FrmConsContas.Close;
+  FrmMovBanco.Close;
 end;
 
 procedure TFrmMenu.BtnLogoffClick(Sender: TObject);
 begin
-
   FrmCadUsuario.BtnSair.Click;
   FrmCadFornecedor.BtnSair.Click;
   FrmCadLancamento.BtnSair.Click;
@@ -368,18 +368,18 @@ begin
   FrmCadContasBancarias.Parent := PnChama;
   FrmCadContasBancarias.Align := alClient;
   FrmCadContasBancarias.Show;
-  FrmCadUsuario.close;
-  FrmCadFornecedor.close;
-  FrmCadCentroCusto.close;
-  FrmCadLancamento.close;
-  FrmCadCentroCusto.close;
 
-  FrmConsUsuario.close;
-  FrmConsFornecedores.close;
-  FrmConsBaixa.close;
-  FrmConsCentro.close;
-  FrmTranfContas.close;
-  FrmConsContas.close;
+  FrmCadUsuario.Close;
+  FrmCadFornecedor.Close;
+  FrmCadLancamento.Close;
+  FrmCadCentroCusto.close;
+  FrmConsUsuario.Close;
+  FrmConsFornecedores.Close;
+  FrmConsBaixa.Close;
+  FrmConsCentro.Close;
+  FrmTranfContas.Close;
+  FrmConsContas.Close;
+  FrmMovBanco.Close;
 end;
 
 procedure TFrmMenu.BtnAlteraSenhaClick(Sender: TObject);
@@ -455,18 +455,18 @@ begin
   FrmCadCentroCusto.Align := alClient;
   FrmCadCentroCusto.LblFormNome.Caption:='Cadastro de Centro de Custo';
   FrmCadCentroCusto.Show;
-  FrmCadUsuario.close;
-  FrmCadFornecedor.close;
 
-  FrmCadLancamento.close;
-
+  FrmCadUsuario.Close;
+  FrmCadFornecedor.Close;
+  FrmCadLancamento.Close;
   FrmCadContasBancarias.close;
-  FrmConsUsuario.close;
-  FrmConsFornecedores.close;
-  FrmConsBaixa.close;
-  FrmConsCentro.close;
-  FrmTranfContas.close;
-  FrmConsContas.close;
+  FrmConsUsuario.Close;
+  FrmConsFornecedores.Close;
+  FrmConsBaixa.Close;
+  FrmConsCentro.Close;
+  FrmTranfContas.Close;
+  FrmConsContas.Close;
+  FrmMovBanco.Close;
 end;
 
 procedure TFrmMenu.BtnCadFornecedorClick(Sender: TObject);
@@ -481,18 +481,19 @@ begin
   FrmCadFornecedor.BtnAlterar.Visible := False;
   FrmCadFornecedor.Show;
   FrmCadFornecedor.limpacampo();
-  FrmCadUsuario.close;
 
-  FrmCadCentroCusto.close;
-  FrmCadLancamento.close;
+  FrmCadUsuario.Close;
+  FrmCadLancamento.Close;
   FrmCadCentroCusto.close;
   FrmCadContasBancarias.close;
-  FrmConsUsuario.close;
-  FrmConsFornecedores.close;
-  FrmConsBaixa.close;
-  FrmConsCentro.close;
-  FrmTranfContas.close;
-  FrmConsContas.close;
+  FrmConsUsuario.Close;
+  FrmConsFornecedores.Close;
+  FrmConsBaixa.Close;
+  FrmConsCentro.Close;
+  FrmTranfContas.Close;
+  FrmConsContas.Close;
+  FrmMovBanco.Close;
+
 end;
 
 procedure TFrmMenu.BtnCadLancamentoClick(Sender: TObject);
@@ -501,18 +502,19 @@ begin
   FrmCadLancamento.Parent := PnChama;
   FrmCadLancamento.Align := alClient;
   FrmCadLancamento.Show;
-  FrmCadUsuario.close;
-  FrmCadFornecedor.close;
-  FrmCadCentroCusto.close;
 
+  FrmCadUsuario.Close;
+  FrmCadFornecedor.Close;
   FrmCadCentroCusto.close;
   FrmCadContasBancarias.close;
-  FrmConsUsuario.close;
-  FrmConsFornecedores.close;
-  FrmConsBaixa.close;
-  FrmConsCentro.close;
-  FrmTranfContas.close;
-  FrmConsContas.close;
+  FrmConsUsuario.Close;
+  FrmConsFornecedores.Close;
+  FrmConsBaixa.Close;
+  FrmConsCentro.Close;
+  FrmTranfContas.Close;
+  FrmConsContas.Close;
+  FrmMovBanco.Close;
+
 end;
 
 procedure TFrmMenu.LblUsuarioClick(Sender: TObject);
@@ -535,6 +537,18 @@ begin
   FrmMovBanco.parent := PnChama;
   FrmMovBanco.Align := alClient;
   FrmMovBanco.show;
+
+  FrmCadUsuario.Close;
+  FrmCadFornecedor.Close;
+  FrmCadLancamento.Close;
+  FrmCadCentroCusto.close;
+  FrmCadContasBancarias.close;
+  FrmConsUsuario.Close;
+  FrmConsFornecedores.Close;
+  FrmConsBaixa.Close;
+  FrmConsCentro.Close;
+  FrmTranfContas.Close;
+  FrmConsContas.Close;
 end;
 
 procedure TFrmMenu.PnChamaClick(Sender: TObject);
@@ -552,18 +566,18 @@ begin
   FrmConsUsuario.Parent := PnChama;
   FrmConsUsuario.Align := alClient;
   FrmConsUsuario.Show;
-  FrmCadUsuario.close;
-  FrmCadFornecedor.close;
-  FrmCadCentroCusto.close;
-  FrmCadLancamento.close;
+
+  FrmCadUsuario.Close;
+  FrmCadFornecedor.Close;
+  FrmCadLancamento.Close;
   FrmCadCentroCusto.close;
   FrmCadContasBancarias.close;
-
-  FrmConsFornecedores.close;
-  FrmConsBaixa.close;
-  FrmConsCentro.close;
-  FrmTranfContas.close;
-  FrmConsContas.close;
+  FrmConsFornecedores.Close;
+  FrmConsBaixa.Close;
+  FrmConsCentro.Close;
+  FrmTranfContas.Close;
+  FrmConsContas.Close;
+  FrmMovBanco.Close;
 end;
 
 procedure TFrmMenu.fechaTudo;
