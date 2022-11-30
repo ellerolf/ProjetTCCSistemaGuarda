@@ -1090,7 +1090,7 @@ object FrmCadUsuario: TFrmCadUsuario
           Left = 342
           Height = 53
           Top = 61
-          Width = 185
+          Width = 210
           AutoFill = True
           Caption = 'Nível de Acesso:'
           ChildSizing.LeftRightSpacing = 6
@@ -1101,7 +1101,7 @@ object FrmCadUsuario: TFrmCadUsuario
           ChildSizing.Layout = cclLeftToRightThenTopToBottom
           ChildSizing.ControlsPerLine = 2
           ClientHeight = 33
-          ClientWidth = 181
+          ClientWidth = 206
           Columns = 2
           Font.CharSet = ANSI_CHARSET
           Font.Name = 'Segoe UI Semibold'

@@ -155,7 +155,7 @@ begin
   EdtNomeUsuario.Clear;
   EdtSenha.Clear;
   EdtConfSenha.Clear;
-  LblMensagem.Caption := '*Campos Obrigatorios';
+  LblMensagem.Caption := 'Todos os campos são Obrigatorios';
 end;
 
 procedure TFrmCadUsuario.BtnAlterarClick(Sender: TObject);
@@ -200,7 +200,7 @@ begin
     EdtSenha.Clear;
     EdtConfSenha.Clear;
     RgbNivel.ItemIndex := -1;
-    LblMensagem.Caption := '*Campos Obrigatorios';
+    LblMensagem.Caption := 'Todos os campos são Obrigatorios';
   end;
 
 end;
@@ -218,19 +218,19 @@ begin
     if (EdtNome.Text = '') or (EdtNomeUsuario.Text = '') or
       (EdtSenha.Text = '') or (EdtConfSenha.Text = '') or (RgbNivel.ItemIndex = -1) then
     begin
-      LblMensagem.Caption := 'CAMPOS FALTANDO, FAVOR CONFERIR';
+      ShowMessage('CAMPOS FALTANDO, FAVOR CONFERIR');
     end
     else
     //validação para ver se as senhas sao iguais
     if (EdtSenha.Text <> EdtConfSenha.Text) then
     begin
-      LblMensagem.Caption := 'SENHAS NAO CONFEREM, FAVOR CONFERIR NOVAMENTE';
+      ShowMessage('SENHAS NAO CONFEREM, FAVOR CONFERIR NOVAMENTE');
     end
     else
     //validação para ver se tem menos de 8 caracters a senha
     if (verifica < 8) then
     begin
-      LblMensagem.Caption := 'A SENHA DEVE TER 8 CARACTERS NO MINIMO';
+      ShowMessage('A SENHA DEVE TER 8 CARACTERS NO MINIMO');
     end
     else
     begin
@@ -273,7 +273,6 @@ begin
         EdtSenha.Clear;
         EdtConfSenha.Clear;
         RgbNivel.ItemIndex := -1;
-        LblMensagem.Caption := '*Campos Obrigatorios';
       end;
     end;
   end
@@ -287,17 +286,17 @@ begin
     if (EdtNome.Text = '') or (EdtNomeUsuario.Text = '') or
       (EdtSenha.Text = '') or (EdtConfSenha.Text = '') or (RgbNivel.ItemIndex = -1) then
     begin
-      LblMensagem.Caption := 'POR FAVOR PREENCHE TODOS OS CAMPOS';
+      ShowMessage('POR FAVOR PREENCHE TODOS OS CAMPOS');
     end
     else
     if (EdtSenha.Text <> EdtConfSenha.Text) then
     begin
-      LblMensagem.Caption := 'SENHAS NAO CONFEREM, FAVOR CONFERIR NOVAMENTE';
+      ShowMessage('SENHAS NAO CONFEREM, FAVOR CONFERIR NOVAMENTE');
     end
     else
     if (verifica2 < 8) then
     begin
-      LblMensagem.Caption := 'A SENHA DEVE TER 8 CARACTERS NO MINIMO';
+      ShowMessage('A SENHA DEVE TER 8 CARACTERS NO MINIMO');
     end
     else
 {o try serve para caso o nome de usuario ja for existente,
@@ -345,12 +344,11 @@ ele não vai consequi para que a execução não trave ele vai mostrar um mensag
           RgbAltStatus.ItemIndex := -1;
           RgbAltStatus.Visible := False;
           FrmConsUsuario.PnAlterausu.Visible := False;
-          LblMensagem.Caption := '*Campos Obrigatorios';
           Close;
         end;
       except
         begin
-          LblMensagem.Caption := 'NOME DE USUARIO JA ESTA SENDO UTILIZADO!!';
+         ShowMessage('NOME DE USUARIO JA ESTA SENDO UTILIZADO!!');
         end;
       end;
 

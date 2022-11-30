@@ -64,7 +64,8 @@ end;
 
 procedure TFrmConsCentro.FormShow(Sender: TObject);
 begin
-
+  DM.ZQBuscaCentro.Open;
+  BtnAlterar.Click;
   PnChamaCentro.Visible:=false;
 end;
 

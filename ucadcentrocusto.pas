@@ -72,7 +72,7 @@ begin
   begin
     if ((EdtNome.Text = '') or (RgbTipo.ItemIndex = -1)) then
     begin
-      ShowMessage('Campos Faltando favor conferir');
+      ShowMessage('CAMPOS FALTANDO, FAVOR CONFERIR');
     end
     else
     begin
@@ -115,7 +115,7 @@ begin
   begin
     if (EdtNome.Text = '') or (RgbTipo.ItemIndex = -1) or (RgbStatus.ItemIndex = -1) then
     begin
-      LblMensagem.Caption := 'CAMPOS FALTANDO';
+     ShowMessage('CAMPOS FALTANDO');
     end
     else
     begin
@@ -127,7 +127,7 @@ begin
       DM.ZQConsCentro.Open;
       if (DM.ZQConsCentro.RecordCount <> 0) then
       begin
-        ShowMessage('Centro de Custo já cadastrado no sistema, Favor verificar');
+        ShowMessage('CENTRO DE CUSTO JÁ CADASTRADO NO SISTEMA, FAVOR CONFERIR');
       end
       else
       begin
