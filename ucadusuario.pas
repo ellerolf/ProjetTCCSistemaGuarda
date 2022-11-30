@@ -49,12 +49,13 @@ type
     procedure BtnSalvarClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
     procedure Panel2Click(Sender: TObject);
+    procedure RgbAltStatusClick(Sender: TObject);
     procedure RgbNivelClick(Sender: TObject);
   private
 
   public
     codigo: integer;
-    AltOUCad, BAlterar: string;
+    AltOUCad, BAlterar, usstatus, nivel: string;
   end;
 
 var
@@ -283,11 +284,12 @@ begin
     begin
       DM.ZQConsUsuario.Close;
       DM.ZQConsUsuario.SQL.Clear;
-      DM.ZQConsUsuario.SQL.Add('select * from usuario where usulogin=' +
-        QuotedStr(EdtNomeUsuario.Text));
+      DM.ZQConsUsuario.SQL.Add('select * from usuario where usulogin=' +QuotedStr(EdtNomeUsuario.Text));
+      DM.ZQConsUsuario.SQL.Add(' and codigoniv = ' + QuotedStr(nivel));
+      DM.ZQConsUsuario.SQL.Add(' and usustatus = ' + QuotedStr(usstatus));
       DM.ZQConsUsuario.Open;
       //validação no cadastr para ver se o nome de usuario ja existe e não trarvar a execução do programa
-      if (DM.ZQConsUsuario.RecordCount = 1) then
+      if (DM.ZQConsUsuario.RecordCount <> 0) then
       begin
         ShowMessage('NOME DE USUARIO JÁ EXISTE, FAVOR ESCOLHER OUTRO');
       end
@@ -296,7 +298,6 @@ begin
         DM.ZQAltUsuario.Params.ParamByName('pusunome').Value := EdtNome.Text;
         DM.ZQAltUsuario.Params.ParamByName('pusulogin').Value := EdtNomeUsuario.Text;
         DM.ZQAltUsuario.Params.ParamByName('pususenha').Value := EdtSenha.Text;
-        // DM.ZQAltUsuario.Params.ParamByName('pususenha').Value:=EdtConfSenha.Text;
 
         if (RgbNivel.ItemIndex = 0) then
         begin
@@ -356,9 +357,30 @@ begin
 
 end;
 
+procedure TFrmCadUsuario.RgbAltStatusClick(Sender: TObject);
+begin
+   if (RgbAltStatus.ItemIndex = 0) then
+  begin
+    usstatus := '1';
+  end
+  else
+  if (RgbAltStatus.ItemIndex = 1) then
+  begin
+    usstatus := '0';
+  end;
+end;
+
 procedure TFrmCadUsuario.RgbNivelClick(Sender: TObject);
 begin
-
+   if (RgbNivel.ItemIndex = 0) then
+  begin
+    nivel := '1';
+  end
+  else
+  if (RgbNivel.ItemIndex = 1) then
+  begin
+    nivel := '2';
+  end;
 end;
 
 end.
