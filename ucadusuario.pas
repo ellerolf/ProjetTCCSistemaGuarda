@@ -66,7 +66,7 @@ implementation
 {$R *.lfm}
 
 { TFrmCadUsuario }
-uses UModulo, UConsUsuario, umenu;
+uses UModulo, UConsUsuario, umenu, UEntrarUsuario;
 
 procedure TFrmCadUsuario.GrpNivel1Click(Sender: TObject);
 begin
@@ -284,7 +284,8 @@ begin
     begin
       DM.ZQConsUsuario.Close;
       DM.ZQConsUsuario.SQL.Clear;
-      DM.ZQConsUsuario.SQL.Add('select * from usuario where usulogin=' +QuotedStr(EdtNomeUsuario.Text));
+      DM.ZQConsUsuario.SQL.Add('select * from usuario where usulogin='
+        + QuotedStr(EdtNomeUsuario.Text));
       DM.ZQConsUsuario.SQL.Add(' and codigoniv = ' + QuotedStr(nivel));
       DM.ZQConsUsuario.SQL.Add(' and usustatus = ' + QuotedStr(usstatus));
       DM.ZQConsUsuario.Open;
@@ -315,7 +316,7 @@ begin
         else
         if (RgbAltStatus.ItemIndex = 1) then
         begin
-          DM.ZQAltUsuario.Params.ParamByName('pusustatus').Value := 0;
+            DM.ZQAltUsuario.Params.ParamByName('pusustatus').Value := 0;
         end;
         DM.ZQAltUsuario.Params.ParamByName('pusucodigo').Value := codigo;
         DM.ZQAltUsuario.ExecSQL;
@@ -359,7 +360,7 @@ end;
 
 procedure TFrmCadUsuario.RgbAltStatusClick(Sender: TObject);
 begin
-   if (RgbAltStatus.ItemIndex = 0) then
+  if (RgbAltStatus.ItemIndex = 0) then
   begin
     usstatus := '1';
   end
@@ -372,7 +373,7 @@ end;
 
 procedure TFrmCadUsuario.RgbNivelClick(Sender: TObject);
 begin
-   if (RgbNivel.ItemIndex = 0) then
+  if (RgbNivel.ItemIndex = 0) then
   begin
     nivel := '1';
   end
