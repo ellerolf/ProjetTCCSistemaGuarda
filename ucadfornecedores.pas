@@ -314,9 +314,11 @@ end;
 
 procedure TFrmCadFornecedor.BtnSalvarClick(Sender: TObject);
 begin
+
   //INSERT----------------------------------------------------------------------
   if (OpForn = 'I') then
   begin
+    try
     //CNPJ-----------------------------------------------------------------------
     if (BtnCnpj.Checked = True) then
     begin
@@ -454,7 +456,18 @@ begin
         DesativaCampoForn();
       end;
     end;//fim cpf
+    Except
+      if (BtnCpf.Checked=true) then
+      begin
+       ShowMessage('CPF ja cadastrado, verifique o campo em Consulta de Fornecedore.');
+      end;
+      if (BtnCnpj.Checked=true) then
+      begin
+       ShowMessage('CNPJ ja cadastrado, verifique o campo em Consulta de Fornecedore.');
+      end;
+    end;
   end;//fim insert
+
 
   //INICIO DO UP
   if (OpForn = 'U') then
