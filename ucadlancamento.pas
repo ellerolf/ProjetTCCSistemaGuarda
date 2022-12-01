@@ -311,7 +311,7 @@ begin
       valorDoDocumento := StrToFloat(EdtValor.Text);
       FrmCadParcela.LblValor.Caption := FormatFloat('R$ 0.00', valorDoDocumento);
       FrmCadParcela.restante := valorDoDocumento;
-      FrmCadParcela.LblValorRestante.Caption := FormatFloat('R$ 0.00', valorDoDocumento);
+      FrmCadParcela.LblValorRestante.Caption := FormatFloat('0.00', valorDoDocumento);
       FrmCadParcela.EdtValorLanc.Text := formatFloat('0.00', valorDoDocumento);
 
       if (ChkReceita.Checked = True) then

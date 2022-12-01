@@ -240,7 +240,7 @@ begin
               dm.ZQDelLancamentos.Params.ParamByName('PLANCODIGO').Value:=FrmCadLancamento.codigoDoLanc;
               DM.ZQDelLancamentos.ExecSQL;
               restante:=0;
-              LblValorRestante.Caption:=FormatFloat('R$ 0.00',restante);
+              LblValorRestante.Caption:=FormatFloat('0.00',restante);
               FrmCadLancamento.codigoDoLanc:=0;
               dm.ZQConsLanData.Open;
               dm.ZQConsLanData.Close;
@@ -302,7 +302,7 @@ begin
     if (restante<>FrmCadLancamento.valorDoDocumento) then
         begin
                restante:=restante+valParcelaDel;
-               LblValorRestante.Caption:=FormatFloat('R$ 0.00',restante);
+               LblValorRestante.Caption:=FormatFloat('0.00',restante);
                dm.ZQDelParcEspecif.Params.ParamByName('PBAICODIGO').Value:=delparcela;
                dm.ZQDelParcEspecif.ExecSQL;
                //LIMPANDO AS VARIÁVEIS
@@ -343,7 +343,7 @@ begin
     if (restante<>recebValorLan) then
         begin
                restante:=restante+valParcelaDel;
-               LblValorRestante.Caption:=FormatFloat('R$ 0.00',restante);
+               LblValorRestante.Caption:=FormatFloat('0.00',restante);
                dm.ZQDelParcEspecif.Params.ParamByName('PBAICODIGO').Value:=delparcela;
                dm.ZQDelParcEspecif.ExecSQL;
                //LIMPANDO AS VARIÁVEIS
@@ -574,7 +574,7 @@ begin
                  if MessageDlg('DESEJA ALTERAR VALOR DO LANÇAMENTO?','Ao confirmar essa operação faça o cadastro das parcelas novamente',mtInformation,[mbOk,mbCancel],0)=mrOk then
                     begin
                          restante:=AlteraValorLancamento;
-                         LblValorRestante.Caption:=FormatFloat('R$ 0.00',restante);
+                         LblValorRestante.Caption:=FormatFloat('0.00',restante);
                          LblValor.Caption:=FormatFloat('R$ 0.00',AlteraValorLancamento);
                          DM.ZQDelDataLan.Params.ParamByName('PCODIGOLAN').Value:=FrmCadLancamento.codigoDoLanc;
                          dm.ZQDelDataLan.ExecSQL;
@@ -667,7 +667,7 @@ begin
                          restante:=AlteraValorLancamento;
                          //TESTE LINHA DE BAIXO
                          restante:=restante-ValorParcBaixada;
-                         LblValorRestante.Caption:=FormatFloat('R$ 0.00',restante);
+                         LblValorRestante.Caption:=FormatFloat('0.00',restante);
                          LblValor.Caption:=FormatFloat('R$ 0.00',AlteraValorLancamento);
                          DM.ZQDelParcPen.Params.ParamByName('PCODIGOLAN').Value:=FrmConsBaixa.codigoDoLancamento;
                          dm.ZQDelParcPen.ExecSQL;

@@ -117,6 +117,7 @@ begin
   DBGrid1.Visible:=False;
   CboStatus.ItemIndex:=0;
   CodigoDaTransf:=0;
+  SpeedButton3.Click;
   Close;
 end;
 
