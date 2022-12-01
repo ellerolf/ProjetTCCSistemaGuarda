@@ -66,10 +66,12 @@ begin
   if (FrmEntrarUsuario.indentidade = dm.ZQBuscaUsuarioUSUCODIGO.Value) then
   begin
        FrmCadUsuario.RgbAltStatus.Enabled:=False;
+       FrmCadUsuario.RgbNivel.Enabled:=False;
   end
   else
   begin
        FrmCadUsuario.RgbAltStatus.Enabled:=True;
+       FrmCadUsuario.RgbNivel.Enabled:=True;
   end;
   FrmCadUsuario.AltOUCad:='A';
   FrmCadUsuario.ChkMostrar.Checked:=False;
