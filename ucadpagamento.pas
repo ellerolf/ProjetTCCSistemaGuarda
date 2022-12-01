@@ -656,7 +656,7 @@ begin
             begin
                  ShowMessage('Valor digitado é igual o valor atual do lançamento');
             end
-         Else if(AlteraValorLancamento<=ValorParcBaixada) then
+         Else if(AlteraValorLancamento<ValorParcBaixada) then
             begin
                  ShowMessage('Não é possível alterar o lançamento para o valor desejado, pois já existe parcelas baixadas no valor de '+FormatFloat('R$ 0.00',ValorParcBaixada));
             end
