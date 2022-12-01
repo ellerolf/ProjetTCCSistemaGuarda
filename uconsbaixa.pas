@@ -164,8 +164,8 @@ end;
 
 procedure TFrmConsBaixa.FormShow(Sender: TObject);
 begin
-  dm.ZQConsBaixaPen.Active:=True;
-  dm.ZQConsBaixaEfet.Active:=True;
+  //dm.ZQConsBaixaPen.Active:=True;
+  //dm.ZQConsBaixaEfet.Active:=True;
 end;
 
 procedure TFrmConsBaixa.ListBox1Click(Sender: TObject);
@@ -1223,7 +1223,7 @@ begin
      //DESPESA+ PENDENTE
      if (CboRecOuDes.ItemIndex=1) and (CboStatus.ItemIndex=0) then
      begin
-         if (dm.ZQConsBaixaPen.RecordCount>0) then
+         if (dm.ZQConsBaixaPen.Active=True) and (dm.ZQConsBaixaPen.RecordCount>0) then
          begin
               FrmRlContasAPagarPen.RLContasAPagarPen.Preview();
          end;
@@ -1231,7 +1231,7 @@ begin
      //RECEITA+ PENDENTE
      else if (CboRecOuDes.ItemIndex=0) and (CboStatus.ItemIndex=0) then
      begin
-          if (dm.ZQConsBaixaPen.RecordCount>0) then
+          if (dm.ZQConsBaixaPen.Active=True) and (dm.ZQConsBaixaPen.RecordCount>0) then
           begin
                FrmRlContasAReceberPen.RLContasAReceberPen.Preview();
           end;
@@ -1239,7 +1239,7 @@ begin
      //receita efetivado
      else if (CboRecOuDes.ItemIndex=0) and (CboStatus.ItemIndex=1) then
      begin
-          if (dm.ZQConsBaixaEfet.RecordCount>0) then
+          if (dm.ZQConsBaixaEfet.Active=True) and (dm.ZQConsBaixaEfet.RecordCount>0) then
           begin
                FrmRlContasAReceberEfet.RLContasAReceberEfet.Preview();
           end;
@@ -1247,7 +1247,7 @@ begin
      //Despesa + efetivado
      Else if (CboRecOuDes.ItemIndex=1) and (CboStatus.ItemIndex=1) then
      begin
-          if (dm.ZQConsBaixaEfet.RecordCount>0) then
+          if (dm.ZQConsBaixaEfet.Active=True) and (dm.ZQConsBaixaEfet.RecordCount>0) then
           begin
                FrmRlContasAPagarEfet.RLContasAPagarEfet.Preview();
           end;
