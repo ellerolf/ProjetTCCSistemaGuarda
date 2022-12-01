@@ -12,7 +12,6 @@ object FrmConsUsuario: TFrmConsUsuario
   OnResize = FormResize
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.2.2.0'
   object Panel1: TPanel
     Left = 0
     Height = 656
@@ -1223,9 +1222,9 @@ object FrmConsUsuario: TFrmConsUsuario
     end
   end
   object PnAlterausu: TPanel
-    Left = 16
+    Left = 0
     Height = 520
-    Top = 48
+    Top = 32
     Width = 744
     BevelOuter = bvNone
     TabOrder = 1

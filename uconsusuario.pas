@@ -48,7 +48,7 @@ implementation
 {$R *.lfm}
 
 { TFrmConsUsuario }
-  uses uCadUsuario,UModulo;
+  uses uCadUsuario,UModulo, UEntrarUsuario;
 procedure TFrmConsUsuario.FormResize(Sender: TObject);
 begin
   Panel2.Left := (Panel1.ClientWidth div 2) - (Panel2.Width div 2);
@@ -63,6 +63,14 @@ end;
 
 procedure TFrmConsUsuario.BtnAlterarClick(Sender: TObject);
 begin
+  if (FrmEntrarUsuario.indentidade = dm.ZQBuscaUsuarioUSUCODIGO.Value) then
+  begin
+       FrmCadUsuario.RgbAltStatus.Enabled:=False;
+  end
+  else
+  begin
+       FrmCadUsuario.RgbAltStatus.Enabled:=True;
+  end;
   FrmCadUsuario.AltOUCad:='A';
   FrmCadUsuario.ChkMostrar.Checked:=False;
   PnAlterausu.Visible:=True;
