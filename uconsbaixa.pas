@@ -431,7 +431,7 @@ procedure TFrmConsBaixa.BtnPagarClick(Sender: TObject);
 begin
    if (codigoDaParcela=0) then
   begin
-       ShowMessage('Clique em uma parcela para efetuar o pagamento');
+       ShowMessage('Clique em uma parcela para efetuar a baixa!');
   end
   else
   begin
@@ -579,6 +579,9 @@ begin
   EdtConsulta.Enabled:=True;
   BtnExcluir.Enabled:=True;
   BtnPagar.Enabled:=True;
+  //Retorna a cbo para o padrão após clicar em sair.
+  CboStatus.ItemIndex:=0;
+  CboRecOuDes.ItemIndex:=0;
   Close;
 end;
 

@@ -32,7 +32,6 @@ type
     BtnPesquisar: TSpeedButton;
     BtnImprimir: TSpeedButton;
     BtnLimpar: TSpeedButton;
-    SpeedButton4: TSpeedButton;
     BtnSair: TSpeedButton;
     procedure BtnImprimirClick(Sender: TObject);
     procedure BtnLimparClick(Sender: TObject);
