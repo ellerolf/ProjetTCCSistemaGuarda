@@ -73,14 +73,14 @@ object FrmRlTransferencia: TFrmRlTransferencia
           Left = 0
           Height = 16
           Top = 8
-          Width = 80
+          Width = 38
           Caption = 'DATA'
         end
         object RLLabel4: TRLLabel
           Left = 88
           Height = 16
           Top = 8
-          Width = 182
+          Width = 126
           Caption = 'CONTA DE ORIGEM'
         end
         object RLLabel5: TRLLabel
@@ -94,28 +94,28 @@ object FrmRlTransferencia: TFrmRlTransferencia
           Left = 440
           Height = 16
           Top = 8
-          Width = 234
+          Width = 130
           Caption = 'CONTA DE DESTINO'
         end
         object RLLabel7: TRLLabel
           Left = 696
           Height = 16
           Top = 8
-          Width = 96
+          Width = 88
           Caption = 'N° DA CONTA'
         end
         object RLLabel8: TRLLabel
-          Left = 800
+          Left = 784
           Height = 16
           Top = 8
-          Width = 105
+          Width = 104
           Caption = 'N° DOCUMENTO'
         end
         object RLLabel9: TRLLabel
-          Left = 912
+          Left = 896
           Height = 16
           Top = 8
-          Width = 48
+          Width = 81
           Caption = 'VALOR'
         end
         object RLLabel10: TRLLabel
@@ -171,25 +171,25 @@ object FrmRlTransferencia: TFrmRlTransferencia
           Left = 696
           Height = 16
           Top = 8
-          Width = 96
+          Width = 88
           AutoSize = False
           DataField = 'N° CONTA DE DESTINO'
           DataSource = DM.DSConsTransferencia
         end
         object RLDBText6: TRLDBText
-          Left = 800
+          Left = 784
           Height = 16
           Top = 8
-          Width = 105
+          Width = 81
           AutoSize = False
           DataField = 'TRANUMERO_DOCUMENTO'
           DataSource = DM.DSConsTransferencia
         end
         object RLDBText7: TRLDBText
-          Left = 912
+          Left = 896
           Height = 16
           Top = 8
-          Width = 73
+          Width = 89
           DataField = 'TRAVALOR'
           DataSource = DM.DSConsTransferencia
         end
@@ -197,7 +197,7 @@ object FrmRlTransferencia: TFrmRlTransferencia
           Left = 992
           Height = 16
           Top = 8
-          Width = 70
+          Width = 54
           AutoSize = False
           DataField = 'STATUS'
           DataSource = DM.DSConsTransferencia

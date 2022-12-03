@@ -29,6 +29,7 @@ type
     RLDBText4: TRLDBText;
     RLDBText5: TRLDBText;
     RLDBText6: TRLDBText;
+    RLDBText7: TRLDBText;
     RLExpressionParser1: TRLExpressionParser;
     RLGroup1: TRLGroup;
     RLLabel1: TRLLabel;
@@ -36,6 +37,7 @@ type
     RLLabel11: TRLLabel;
     RLLabel12: TRLLabel;
     RLLabel13: TRLLabel;
+    RLLabel14: TRLLabel;
     RLLabel2: TRLLabel;
     RLLabel3: TRLLabel;
     RLLabel4: TRLLabel;

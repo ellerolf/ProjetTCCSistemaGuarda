@@ -81,17 +81,17 @@ object FrmRICentroCusto: TFrmRICentroCusto
           Caption = 'NOME'
         end
         object RLLabel4: TRLLabel
-          Left = 496
+          Left = 480
           Height = 16
           Top = 8
           Width = 33
           Caption = 'TIPO'
         end
         object RLLabel5: TRLLabel
-          Left = 656
+          Left = 640
           Height = 16
           Top = 8
-          Width = 54
+          Width = 72
           Caption = 'STATUS'
         end
       end
@@ -112,23 +112,24 @@ object FrmRICentroCusto: TFrmRICentroCusto
           Left = 66
           Height = 16
           Top = 8
-          Width = 70
+          Width = 382
+          AutoSize = False
           DataField = 'CENNOME'
           DataSource = DM.DSBuscaCentro
         end
         object RLDBText3: TRLDBText
-          Left = 496
+          Left = 480
           Height = 16
           Top = 8
-          Width = 60
+          Width = 144
           DataField = 'TIPOCEN'
           DataSource = DM.DSBuscaCentro
         end
         object RLDBText4: TRLDBText
-          Left = 656
+          Left = 640
           Height = 16
           Top = 8
-          Width = 54
+          Width = 74
           DataField = 'STATUS'
           DataSource = DM.DSBuscaCentro
         end

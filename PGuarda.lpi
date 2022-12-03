@@ -255,6 +255,7 @@
         <Filename Value="urltransferencia.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FrmRlTransferencia"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit27>
       <Unit28>
@@ -294,6 +295,7 @@
         <Filename Value="urlcentrocusto.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FrmRICentroCusto"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit33>
     </Units>

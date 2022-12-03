@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, RLReport,
-  RLParser;
+  RLParser, RLPDFFilter;
 
 type
 
@@ -44,6 +44,7 @@ type
     RLLSaldoDaConta: TRLLabel;
     RLLSaldoAnterior: TRLLabel;
     RLMovimBanc: TRLReport;
+    RLPDFFilter1: TRLPDFFilter;
     RLSystemInfo1: TRLSystemInfo;
     RLSystemInfo2: TRLSystemInfo;
     RLSystemInfo3: TRLSystemInfo;

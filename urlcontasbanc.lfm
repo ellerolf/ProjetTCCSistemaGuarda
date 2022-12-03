@@ -66,7 +66,7 @@ object FrmRlContasBanc: TFrmRlContasBanc
           Left = 312
           Height = 16
           Top = 8
-          Width = 144
+          Width = 62
           DataField = 'TIPNOME'
           DataSource = DM.DSConsBancarias
         end
@@ -80,16 +80,16 @@ object FrmRlContasBanc: TFrmRlContasBanc
           AfterPrint = RLDBText1AfterPrint
         end
         object RLDBText4: TRLDBText
-          Left = 464
+          Left = 463
           Height = 16
           Top = 8
-          Width = 88
+          Width = 90
           Alignment = taCenter
           DataField = 'CONAGENCIA'
           DataSource = DM.DSConsBancarias
         end
         object RLDBText5: TRLDBText
-          Left = 560
+          Left = 552
           Height = 16
           Top = 8
           Width = 104
@@ -98,10 +98,10 @@ object FrmRlContasBanc: TFrmRlContasBanc
           DataSource = DM.DSConsBancarias
         end
         object RLDBText6: TRLDBText
-          Left = 664
+          Left = 656
           Height = 16
           Top = 8
-          Width = 54
+          Width = 62
           DataField = 'STATUS'
           DataSource = DM.DSConsBancarias
         end
@@ -121,38 +121,38 @@ object FrmRlContasBanc: TFrmRlContasBanc
         Borders.FixedTop = True
         Borders.FixedBottom = True
         object RLLabel7: TRLLabel
-          Left = 664
+          Left = 656
           Height = 16
           Top = 11
-          Width = 54
+          Width = 62
           Caption = 'STATUS'
         end
         object RLLabel6: TRLLabel
-          Left = 560
+          Left = 552
           Height = 16
           Top = 11
-          Width = 88
+          Width = 104
           Caption = 'N° DA CONTA'
         end
         object RLLabel5: TRLLabel
           Left = 464
           Height = 16
           Top = 11
-          Width = 88
+          Width = 62
           Caption = 'AGÊNCIA'
         end
         object RLLabel4: TRLLabel
           Left = 312
           Height = 16
           Top = 11
-          Width = 144
+          Width = 33
           Caption = 'TIPO'
         end
         object RLLabel3: TRLLabel
           Left = 64
           Height = 16
           Top = 11
-          Width = 240
+          Width = 183
           Borders.Sides = sdCustom
           Borders.DrawLeft = False
           Borders.DrawTop = False

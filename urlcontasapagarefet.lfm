@@ -86,32 +86,39 @@ object FrmRlContasAPagarEfet: TFrmRlContasAPagarEfet
           Caption = 'FORNECEDOR'
         end
         object RLLabel5: TRLLabel
-          Left = 400
+          Left = 592
           Height = 16
           Top = 8
           Width = 78
           Caption = 'DATA PGTO'
         end
         object RLLabel6: TRLLabel
-          Left = 488
+          Left = 680
           Height = 16
           Top = 8
           Width = 107
           Caption = 'MULTA E JUROS'
         end
         object RLLabel7: TRLLabel
-          Left = 600
+          Left = 792
           Height = 16
           Top = 8
           Width = 76
           Caption = 'DESCONTO'
         end
         object RLLabel8: TRLLabel
-          Left = 680
+          Left = 904
           Height = 16
           Top = 8
           Width = 90
           Caption = 'VALOR PAGO'
+        end
+        object RLLabel14: TRLLabel
+          Left = 480
+          Height = 16
+          Top = 8
+          Width = 105
+          Caption = 'N° DOCUMENTO'
         end
       end
       object RLBand3: TRLBand
@@ -131,12 +138,13 @@ object FrmRlContasAPagarEfet: TFrmRlContasAPagarEfet
           Left = 96
           Height = 16
           Top = 8
-          Width = 70
+          Width = 374
+          AutoSize = False
           DataField = 'PESNOME'
           DataSource = DM.DSConsBaixaEfet
         end
         object RLDBText3: TRLDBText
-          Left = 400
+          Left = 592
           Height = 16
           Top = 8
           Width = 95
@@ -144,7 +152,7 @@ object FrmRlContasAPagarEfet: TFrmRlContasAPagarEfet
           DataSource = DM.DSConsBaixaEfet
         end
         object RLDBText4: TRLDBText
-          Left = 490
+          Left = 682
           Height = 16
           Top = 8
           Width = 118
@@ -152,7 +160,7 @@ object FrmRlContasAPagarEfet: TFrmRlContasAPagarEfet
           DataSource = DM.DSConsBaixaEfet
         end
         object RLDBText5: TRLDBText
-          Left = 600
+          Left = 792
           Height = 16
           Top = 8
           Width = 97
@@ -160,11 +168,20 @@ object FrmRlContasAPagarEfet: TFrmRlContasAPagarEfet
           DataSource = DM.DSConsBaixaEfet
         end
         object RLDBText6: TRLDBText
-          Left = 680
+          Left = 904
           Height = 16
           Top = 8
           Width = 107
           DataField = 'BAIVALORPAGO'
+          DataSource = DM.DSConsBaixaEfet
+        end
+        object RLDBText7: TRLDBText
+          Left = 480
+          Height = 16
+          Top = 8
+          Width = 105
+          AutoSize = False
+          DataField = 'LANNUMERO_DOCUMENTO'
           DataSource = DM.DSConsBaixaEfet
         end
       end
@@ -182,14 +199,14 @@ object FrmRlContasAPagarEfet: TFrmRlContasAPagarEfet
           Caption = 'Registro:'
         end
         object RLLabel10: TRLLabel
-          Left = 632
+          Left = 849
           Height = 16
           Top = 8
           Width = 40
           Caption = 'Total: '
         end
         object RLDBResult1: TRLDBResult
-          Left = 680
+          Left = 904
           Height = 16
           Top = 8
           Width = 146
@@ -229,14 +246,14 @@ object FrmRlContasAPagarEfet: TFrmRlContasAPagarEfet
         Caption = 'TOTAL DE REGISTRO:'
       end
       object RLLabel12: TRLLabel
-        Left = 576
+        Left = 793
         Height = 16
         Top = 16
-        Width = 94
-        Caption = 'TOTAL PAGO: '
+        Width = 100
+        Caption = 'TOTAL GERAL: '
       end
       object RLDBResult3: TRLDBResult
-        Left = 680
+        Left = 897
         Height = 16
         Top = 16
         Width = 146
