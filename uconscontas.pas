@@ -24,6 +24,7 @@ type
     Label7: TLabel;
     Panel1: TPanel;
     Panel2: TPanel;
+    PnChamaConta: TPanel;
     RGBConsTipoConta: TRadioGroup;
     BtnPesquisar: TSpeedButton;
     BtnImprimir: TSpeedButton;
@@ -47,9 +48,9 @@ type
         {Professor zanata disse que é importante quando tem duas grids armazenar o valor
         em uma variável durante o clique. Por isso foi criado uma variável chamada
         'ctipo' para receber o codigo de onde o usuário está clicando. }
-        ctipo:integer;
-        //Essa variável recebe o status da conta
-        StatusDaConta:Integer;
+    ctipo: integer;
+    //Essa variável recebe o status da conta
+    StatusDaConta: integer;
   end;
 
 var
@@ -60,136 +61,166 @@ implementation
 {$R *.lfm}
 
 { TFrmConsContas }
-uses uCadContasBancarias,uRlContasBanc,urlcontascaixa;
+uses uCadContasBancarias, uRlContasBanc, urlcontascaixa;
 
 procedure TFrmConsContas.BtnSairClick(Sender: TObject);
 begin
-  ctipo:=0;
+  ctipo := 0;
   RGBConsTipoConta.ItemIndex := -1;
   CboStatus.ItemIndex := -1;
   DBGConsContasBancarias.Visible := False;
   DBGConsCaixa.Visible := False;
-  EdtConsulta.Text:='';
+  EdtConsulta.Text := '';
   Close;
 end;
 
 procedure TFrmConsContas.BtnAlterarClick(Sender: TObject);
 begin
   FrmCadContasBancarias.OpeCadOuAltConta := 'u';
-   //se for do tipo caixa e status ativo
-  if (ctipo = 3) and (dm.ZQConsBancariasCONSTATUS.value=1) then
+  //se for do tipo caixa e status ativo
+  if (ctipo = 3) and (dm.ZQConsBancariasCONSTATUS.Value = 1) then
   begin
-    FrmCadContasBancarias.RdbCadTrans.Enabled:=False;
-    FrmCadContasBancarias.RdbCadConta.Checked:=true;
-    FrmCadContasBancarias.RdbCadConta.Caption:='Alteração de Conta';
-    FrmCadContasBancarias.RGBStatusConta.Visible:=True;
-    FrmCadContasBancarias.RGBStatusConta.ItemIndex:=1;
+    FrmCadContasBancarias.RdbCadTrans.Enabled := False;
+    FrmCadContasBancarias.RdbCadConta.Checked := True;
+    FrmCadContasBancarias.RdbCadConta.Caption := 'Alteração de Conta';
+    FrmCadContasBancarias.RGBStatusConta.Visible := True;
+    FrmCadContasBancarias.RGBStatusConta.ItemIndex := 1;
     dm.ZQConsTipoConta.Open;
-    FrmCadContasBancarias.CboTipo.KeyValue:=3;
-    FrmCadContasBancarias.EdtNomeConta.Enabled:=True;
-    FrmCadContasBancarias.EdtNomeConta.Text:=dm.ZQConsBancariasCONNOME.AsString;
-    FrmCadContasBancarias.EdtSaldoInicial.Enabled:=True;
-    FrmCadContasBancarias.EdtSaldoInicial.Text:=FormatCurr('0.00',dm.ZQConsBancariasCONSALDO_INICIAL.AsCurrency);
-    FrmCadContasBancarias.show;
+    FrmCadContasBancarias.CboTipo.KeyValue := 3;
+    FrmCadContasBancarias.EdtNomeConta.Enabled := True;
+    FrmCadContasBancarias.EdtNomeConta.Text := dm.ZQConsBancariasCONNOME.AsString;
+    FrmCadContasBancarias.EdtSaldoInicial.Enabled := True;
+    FrmCadContasBancarias.EdtSaldoInicial.Text :=
+      FormatCurr('0.00', dm.ZQConsBancariasCONSALDO_INICIAL.AsCurrency);
+    //ajuste da visão do cad dento dos cons
+    PnChamaConta.Visible := True;
+    FrmCadContasBancarias.Parent := PnChamaConta;
+    FrmCadContasBancarias.Align := alClient;
+    FrmCadContasBancarias.Show;
   end;
   //se for do tipo caixa e status inativo
-  if (ctipo = 3) and (dm.ZQConsBancariasCONSTATUS.value=0) then
+  if (ctipo = 3) and (dm.ZQConsBancariasCONSTATUS.Value = 0) then
   begin
-    FrmCadContasBancarias.RdbCadTrans.Enabled:=False;
-    FrmCadContasBancarias.RdbCadConta.Checked:=true;
-    FrmCadContasBancarias.RdbCadConta.Caption:='Alteração de Conta';
-    FrmCadContasBancarias.RGBStatusConta.Visible:=True;
-    FrmCadContasBancarias.RGBStatusConta.ItemIndex:=0;
+    FrmCadContasBancarias.RdbCadTrans.Enabled := False;
+    FrmCadContasBancarias.RdbCadConta.Checked := True;
+    FrmCadContasBancarias.RdbCadConta.Caption := 'Alteração de Conta';
+    FrmCadContasBancarias.RGBStatusConta.Visible := True;
+    FrmCadContasBancarias.RGBStatusConta.ItemIndex := 0;
     dm.ZQConsTipoConta.Open;
-    FrmCadContasBancarias.CboTipo.KeyValue:=3;
-    FrmCadContasBancarias.EdtNomeConta.Enabled:=True;
-    FrmCadContasBancarias.EdtNomeConta.Text:=dm.ZQConsBancariasCONNOME.AsString;
-    FrmCadContasBancarias.EdtSaldoInicial.Enabled:=True;
-    FrmCadContasBancarias.EdtSaldoInicial.Text:=FormatCurr('0.00',dm.ZQConsBancariasCONSALDO_INICIAL.AsCurrency);
-    FrmCadContasBancarias.show;
+    FrmCadContasBancarias.CboTipo.KeyValue := 3;
+    FrmCadContasBancarias.EdtNomeConta.Enabled := True;
+    FrmCadContasBancarias.EdtNomeConta.Text := dm.ZQConsBancariasCONNOME.AsString;
+    FrmCadContasBancarias.EdtSaldoInicial.Enabled := True;
+    FrmCadContasBancarias.EdtSaldoInicial.Text :=
+      FormatCurr('0.00', dm.ZQConsBancariasCONSALDO_INICIAL.AsCurrency);
+    //ajuste da visão do cad dento dos cons
+    PnChamaConta.Visible := True;
+    FrmCadContasBancarias.Parent := PnChamaConta;
+    FrmCadContasBancarias.Align := alClient;
+    FrmCadContasBancarias.Show;
   end;
   //se for do tipo conta corrente e status ativo
 
-  if (ctipo = 1) and (dm.ZQConsBancariasCONSTATUS.value=1) then
+  if (ctipo = 1) and (dm.ZQConsBancariasCONSTATUS.Value = 1) then
   begin
-    FrmCadContasBancarias.RdbCadTrans.Enabled:=False;
-    FrmCadContasBancarias.RdbCadConta.Checked:=true;
-    FrmCadContasBancarias.RdbCadConta.Caption:='Alteração de Conta';
-    FrmCadContasBancarias.RGBStatusConta.Visible:=True;
-    FrmCadContasBancarias.RGBStatusConta.ItemIndex:=1;
+    FrmCadContasBancarias.RdbCadTrans.Enabled := False;
+    FrmCadContasBancarias.RdbCadConta.Checked := True;
+    FrmCadContasBancarias.RdbCadConta.Caption := 'Alteração de Conta';
+    FrmCadContasBancarias.RGBStatusConta.Visible := True;
+    FrmCadContasBancarias.RGBStatusConta.ItemIndex := 1;
     dm.ZQConsTipoConta.Open;
-    FrmCadContasBancarias.CboTipo.KeyValue:=1;
-    FrmCadContasBancarias.CboBanco.Enabled:=True;
-    FrmCadContasBancarias.CboBanco.Text:=DM.ZQConsBancariasCONNOME.AsString;
-    FrmCadContasBancarias.EdtAgencia.Enabled:=True;
-    FrmCadContasBancarias.EdtAgencia.Text:=dm.ZQConsBancariasCONAGENCIA.AsString;
-    FrmCadContasBancarias.EdtNConta.Enabled:=True;
-    FrmCadContasBancarias.EdtNConta.Text:=dm.ZQConsBancariasCONNUMERO_CONTA.AsString;
-    FrmCadContasBancarias.EdtSaldoInicial.Enabled:=True;
-    FrmCadContasBancarias.EdtSaldoInicial.Text:=FormatCurr('0.00',dm.ZQConsBancariasCONSALDO_INICIAL.AsCurrency);
-    FrmCadContasBancarias.show;
+    FrmCadContasBancarias.CboTipo.KeyValue := 1;
+    FrmCadContasBancarias.CboBanco.Enabled := True;
+    FrmCadContasBancarias.CboBanco.Text := DM.ZQConsBancariasCONNOME.AsString;
+    FrmCadContasBancarias.EdtAgencia.Enabled := True;
+    FrmCadContasBancarias.EdtAgencia.Text := dm.ZQConsBancariasCONAGENCIA.AsString;
+    FrmCadContasBancarias.EdtNConta.Enabled := True;
+    FrmCadContasBancarias.EdtNConta.Text := dm.ZQConsBancariasCONNUMERO_CONTA.AsString;
+    FrmCadContasBancarias.EdtSaldoInicial.Enabled := True;
+    FrmCadContasBancarias.EdtSaldoInicial.Text :=
+      FormatCurr('0.00', dm.ZQConsBancariasCONSALDO_INICIAL.AsCurrency);
+    //ajuste da visão do cad dento dos cons
+    PnChamaConta.Visible := True;
+    FrmCadContasBancarias.Parent := PnChamaConta;
+    FrmCadContasBancarias.Align := alClient;
+    FrmCadContasBancarias.Show;
   end;
   //se for do tipo conta corrente e status inativo
 
-   if (ctipo = 1) and (dm.ZQConsBancariasCONSTATUS.value=0) then
+  if (ctipo = 1) and (dm.ZQConsBancariasCONSTATUS.Value = 0) then
   begin
-    FrmCadContasBancarias.RdbCadTrans.Enabled:=False;
-    FrmCadContasBancarias.RdbCadConta.Checked:=true;
-    FrmCadContasBancarias.RdbCadConta.Caption:='Alteração de Conta';
-    FrmCadContasBancarias.RGBStatusConta.Visible:=True;
-    FrmCadContasBancarias.RGBStatusConta.ItemIndex:=0;
+    FrmCadContasBancarias.RdbCadTrans.Enabled := False;
+    FrmCadContasBancarias.RdbCadConta.Checked := True;
+    FrmCadContasBancarias.RdbCadConta.Caption := 'Alteração de Conta';
+    FrmCadContasBancarias.RGBStatusConta.Visible := True;
+    FrmCadContasBancarias.RGBStatusConta.ItemIndex := 0;
     dm.ZQConsTipoConta.Open;
-    FrmCadContasBancarias.CboTipo.KeyValue:=1;
-    FrmCadContasBancarias.CboBanco.Enabled:=True;
-    FrmCadContasBancarias.CboBanco.Text:=DM.ZQConsBancariasCONNOME.AsString;
-    FrmCadContasBancarias.EdtAgencia.Enabled:=True;
-    FrmCadContasBancarias.EdtAgencia.Text:=dm.ZQConsBancariasCONAGENCIA.AsString;
-    FrmCadContasBancarias.EdtNConta.Enabled:=True;
-    FrmCadContasBancarias.EdtNConta.Text:=dm.ZQConsBancariasCONNUMERO_CONTA.AsString;
-    FrmCadContasBancarias.EdtSaldoInicial.Enabled:=True;
-    FrmCadContasBancarias.EdtSaldoInicial.Text:=FormatCurr('0.00',dm.ZQConsBancariasCONSALDO_INICIAL.AsCurrency);
-    FrmCadContasBancarias.show;
+    FrmCadContasBancarias.CboTipo.KeyValue := 1;
+    FrmCadContasBancarias.CboBanco.Enabled := True;
+    FrmCadContasBancarias.CboBanco.Text := DM.ZQConsBancariasCONNOME.AsString;
+    FrmCadContasBancarias.EdtAgencia.Enabled := True;
+    FrmCadContasBancarias.EdtAgencia.Text := dm.ZQConsBancariasCONAGENCIA.AsString;
+    FrmCadContasBancarias.EdtNConta.Enabled := True;
+    FrmCadContasBancarias.EdtNConta.Text := dm.ZQConsBancariasCONNUMERO_CONTA.AsString;
+    FrmCadContasBancarias.EdtSaldoInicial.Enabled := True;
+    FrmCadContasBancarias.EdtSaldoInicial.Text :=
+      FormatCurr('0.00', dm.ZQConsBancariasCONSALDO_INICIAL.AsCurrency);
+    //ajuste da visão do cad dento dos cons
+    PnChamaConta.Visible := True;
+    FrmCadContasBancarias.Parent := PnChamaConta;
+    FrmCadContasBancarias.Align := alClient;
+    FrmCadContasBancarias.Show;
   end;
-    //se for do tipo conta de aplicação e status ativo
+  //se for do tipo conta de aplicação e status ativo
 
-    if (ctipo = 2) and (dm.ZQConsBancariasCONSTATUS.value=1) then
+  if (ctipo = 2) and (dm.ZQConsBancariasCONSTATUS.Value = 1) then
   begin
-    FrmCadContasBancarias.RdbCadTrans.Enabled:=False;
-    FrmCadContasBancarias.RdbCadConta.Checked:=true;
-    FrmCadContasBancarias.RdbCadConta.Caption:='Alteração de Conta';
-    FrmCadContasBancarias.RGBStatusConta.Visible:=True;
-    FrmCadContasBancarias.RGBStatusConta.ItemIndex:=1;
+    FrmCadContasBancarias.RdbCadTrans.Enabled := False;
+    FrmCadContasBancarias.RdbCadConta.Checked := True;
+    FrmCadContasBancarias.RdbCadConta.Caption := 'Alteração de Conta';
+    FrmCadContasBancarias.RGBStatusConta.Visible := True;
+    FrmCadContasBancarias.RGBStatusConta.ItemIndex := 1;
     dm.ZQConsTipoConta.Open;
-    FrmCadContasBancarias.CboTipo.KeyValue:=2;
-    FrmCadContasBancarias.CboBanco.Enabled:=True;
-    FrmCadContasBancarias.CboBanco.Text:=DM.ZQConsBancariasCONNOME.AsString;
-    FrmCadContasBancarias.EdtAgencia.Enabled:=True;
-    FrmCadContasBancarias.EdtAgencia.Text:=dm.ZQConsBancariasCONAGENCIA.AsString;
-    FrmCadContasBancarias.EdtNConta.Enabled:=True;
-    FrmCadContasBancarias.EdtNConta.Text:=dm.ZQConsBancariasCONNUMERO_CONTA.AsString;
-    FrmCadContasBancarias.EdtSaldoInicial.Enabled:=True;
-    FrmCadContasBancarias.EdtSaldoInicial.Text:=FormatCurr('0.00',dm.ZQConsBancariasCONSALDO_INICIAL.AsCurrency);
-    FrmCadContasBancarias.show;
+    FrmCadContasBancarias.CboTipo.KeyValue := 2;
+    FrmCadContasBancarias.CboBanco.Enabled := True;
+    FrmCadContasBancarias.CboBanco.Text := DM.ZQConsBancariasCONNOME.AsString;
+    FrmCadContasBancarias.EdtAgencia.Enabled := True;
+    FrmCadContasBancarias.EdtAgencia.Text := dm.ZQConsBancariasCONAGENCIA.AsString;
+    FrmCadContasBancarias.EdtNConta.Enabled := True;
+    FrmCadContasBancarias.EdtNConta.Text := dm.ZQConsBancariasCONNUMERO_CONTA.AsString;
+    FrmCadContasBancarias.EdtSaldoInicial.Enabled := True;
+    FrmCadContasBancarias.EdtSaldoInicial.Text :=
+      FormatCurr('0.00', dm.ZQConsBancariasCONSALDO_INICIAL.AsCurrency);
+    //ajuste da visão do cad dento dos cons
+    PnChamaConta.Visible := True;
+    FrmCadContasBancarias.Parent := PnChamaConta;
+    FrmCadContasBancarias.Align := alClient;
+    FrmCadContasBancarias.Show;
   end;
-   //se for do tipo conta de aplicação e status inativo
-     if (ctipo = 2) and (dm.ZQConsBancariasCONSTATUS.value=0) then
+  //se for do tipo conta de aplicação e status inativo
+  if (ctipo = 2) and (dm.ZQConsBancariasCONSTATUS.Value = 0) then
   begin
-    FrmCadContasBancarias.RdbCadTrans.Enabled:=False;
-    FrmCadContasBancarias.RdbCadConta.Checked:=true;
-    FrmCadContasBancarias.RdbCadConta.Caption:='Alteração de Conta';
-    FrmCadContasBancarias.RGBStatusConta.Visible:=True;
-    FrmCadContasBancarias.RGBStatusConta.ItemIndex:=0;
+    FrmCadContasBancarias.RdbCadTrans.Enabled := False;
+    FrmCadContasBancarias.RdbCadConta.Checked := True;
+    FrmCadContasBancarias.RdbCadConta.Caption := 'Alteração de Conta';
+    FrmCadContasBancarias.RGBStatusConta.Visible := True;
+    FrmCadContasBancarias.RGBStatusConta.ItemIndex := 0;
     dm.ZQConsTipoConta.Open;
-    FrmCadContasBancarias.CboTipo.KeyValue:=2;
-    FrmCadContasBancarias.CboBanco.Enabled:=True;
-    FrmCadContasBancarias.CboBanco.Text:=DM.ZQConsBancariasCONNOME.AsString;
-    FrmCadContasBancarias.EdtAgencia.Enabled:=True;
-    FrmCadContasBancarias.EdtAgencia.Text:=dm.ZQConsBancariasCONAGENCIA.AsString;
-    FrmCadContasBancarias.EdtNConta.Enabled:=True;
-    FrmCadContasBancarias.EdtNConta.Text:=dm.ZQConsBancariasCONNUMERO_CONTA.AsString;
-    FrmCadContasBancarias.EdtSaldoInicial.Enabled:=True;
-    FrmCadContasBancarias.EdtSaldoInicial.Text:=FormatCurr('0.00',dm.ZQConsBancariasCONSALDO_INICIAL.AsCurrency);
-    FrmCadContasBancarias.show;
+    FrmCadContasBancarias.CboTipo.KeyValue := 2;
+    FrmCadContasBancarias.CboBanco.Enabled := True;
+    FrmCadContasBancarias.CboBanco.Text := DM.ZQConsBancariasCONNOME.AsString;
+    FrmCadContasBancarias.EdtAgencia.Enabled := True;
+    FrmCadContasBancarias.EdtAgencia.Text := dm.ZQConsBancariasCONAGENCIA.AsString;
+    FrmCadContasBancarias.EdtNConta.Enabled := True;
+    FrmCadContasBancarias.EdtNConta.Text := dm.ZQConsBancariasCONNUMERO_CONTA.AsString;
+    FrmCadContasBancarias.EdtSaldoInicial.Enabled := True;
+    FrmCadContasBancarias.EdtSaldoInicial.Text :=
+      FormatCurr('0.00', dm.ZQConsBancariasCONSALDO_INICIAL.AsCurrency);
+    //ajuste da visão do cad dento dos cons
+    PnChamaConta.Visible := True;
+    FrmCadContasBancarias.Parent := PnChamaConta;
+    FrmCadContasBancarias.Align := alClient;
+    FrmCadContasBancarias.Show;
   end;
 
 end;
@@ -197,68 +228,80 @@ end;
 procedure TFrmConsContas.BtnPesquisarClick(Sender: TObject);
 begin
   // caixa, ativo e inativo
-  if (RGBConsTipoConta.ItemIndex=0) and (CboStatus.ItemIndex=0) then
+  if (RGBConsTipoConta.ItemIndex = 0) and (CboStatus.ItemIndex = 0) then
   begin
-    dm.ZQConsBancarias.close;
+    dm.ZQConsBancarias.Close;
     dm.ZQConsBancarias.SQL.Clear;
-    dm.ZQConsBancarias.SQL.Add('SELECT * from vwcontas WHERE CODIGOTIP=3 AND CONNOME like'+QuotedStr('%'+EdtConsulta.Text+'%'));
-    dm.ZQConsBancarias.close;
-    dm.ZQConsBancarias.open;
+    dm.ZQConsBancarias.SQL.Add(
+      'SELECT * from vwcontas WHERE CODIGOTIP=3 AND CONNOME like' + QuotedStr(
+      '%' + EdtConsulta.Text + '%'));
+    dm.ZQConsBancarias.Close;
+    dm.ZQConsBancarias.Open;
     EdtConsulta.Clear;
   end
-  Else
+  else
   // caixa, somente ativo
-  if (RGBConsTipoConta.ItemIndex=0) and (CboStatus.ItemIndex=1) then
+  if (RGBConsTipoConta.ItemIndex = 0) and (CboStatus.ItemIndex = 1) then
   begin
-    dm.ZQConsBancarias.close;
+    dm.ZQConsBancarias.Close;
     dm.ZQConsBancarias.SQL.Clear;
-    dm.ZQConsBancarias.SQL.Add('SELECT * from vwcontas WHERE CODIGOTIP=3 AND CONSTATUS=1 AND CONNOME like'+QuotedStr('%'+EdtConsulta.Text+'%'));
-    dm.ZQConsBancarias.close;
-    dm.ZQConsBancarias.open;
+    dm.ZQConsBancarias.SQL.Add(
+      'SELECT * from vwcontas WHERE CODIGOTIP=3 AND CONSTATUS=1 AND CONNOME like' +
+      QuotedStr('%' + EdtConsulta.Text + '%'));
+    dm.ZQConsBancarias.Close;
+    dm.ZQConsBancarias.Open;
     EdtConsulta.Clear;
   end
-  Else
+  else
   //caixa, somente inativo
-  if (RGBConsTipoConta.ItemIndex=0) and (CboStatus.ItemIndex=2) then
+  if (RGBConsTipoConta.ItemIndex = 0) and (CboStatus.ItemIndex = 2) then
   begin
-    dm.ZQConsBancarias.close;
+    dm.ZQConsBancarias.Close;
     dm.ZQConsBancarias.SQL.Clear;
-    dm.ZQConsBancarias.SQL.Add('SELECT * from vwcontas WHERE CODIGOTIP=3 AND CONSTATUS=0 AND CONNOME like'+QuotedStr('%'+EdtConsulta.Text+'%'));
-    dm.ZQConsBancarias.close;
-    dm.ZQConsBancarias.open;
+    dm.ZQConsBancarias.SQL.Add(
+      'SELECT * from vwcontas WHERE CODIGOTIP=3 AND CONSTATUS=0 AND CONNOME like' +
+      QuotedStr('%' + EdtConsulta.Text + '%'));
+    dm.ZQConsBancarias.Close;
+    dm.ZQConsBancarias.Open;
     EdtConsulta.Clear;
   end
-  Else
+  else
   //Contas bancárias ativo e inativo
-  if (RGBConsTipoConta.ItemIndex=1) and (CboStatus.ItemIndex=0) then
+  if (RGBConsTipoConta.ItemIndex = 1) and (CboStatus.ItemIndex = 0) then
   begin
-    dm.ZQConsBancarias.close;
+    dm.ZQConsBancarias.Close;
     dm.ZQConsBancarias.SQL.Clear;
-    dm.ZQConsBancarias.SQL.Add('SELECT * from vwcontas WHERE CODIGOTIP<3 AND CONNOME like'+QuotedStr('%'+EdtConsulta.Text+'%'));
-    dm.ZQConsBancarias.close;
-    dm.ZQConsBancarias.open;
+    dm.ZQConsBancarias.SQL.Add(
+      'SELECT * from vwcontas WHERE CODIGOTIP<3 AND CONNOME like' + QuotedStr(
+      '%' + EdtConsulta.Text + '%'));
+    dm.ZQConsBancarias.Close;
+    dm.ZQConsBancarias.Open;
     EdtConsulta.Clear;
   end
-  Else
+  else
   //Contas bancárias somente ativo
-  if (RGBConsTipoConta.ItemIndex=1) and (CboStatus.ItemIndex=1) then
+  if (RGBConsTipoConta.ItemIndex = 1) and (CboStatus.ItemIndex = 1) then
   begin
-    dm.ZQConsBancarias.close;
+    dm.ZQConsBancarias.Close;
     dm.ZQConsBancarias.SQL.Clear;
-    dm.ZQConsBancarias.SQL.Add('SELECT * from vwcontas WHERE CODIGOTIP<3 AND CONSTATUS=1 AND CONNOME like'+QuotedStr('%'+EdtConsulta.Text+'%'));
-    dm.ZQConsBancarias.close;
-    dm.ZQConsBancarias.open;
+    dm.ZQConsBancarias.SQL.Add(
+      'SELECT * from vwcontas WHERE CODIGOTIP<3 AND CONSTATUS=1 AND CONNOME like' +
+      QuotedStr('%' + EdtConsulta.Text + '%'));
+    dm.ZQConsBancarias.Close;
+    dm.ZQConsBancarias.Open;
     EdtConsulta.Clear;
   end
-  Else
-    //Contas bancárias somente inativa
-  if (RGBConsTipoConta.ItemIndex=1) and (CboStatus.ItemIndex=2) then
+  else
+  //Contas bancárias somente inativa
+  if (RGBConsTipoConta.ItemIndex = 1) and (CboStatus.ItemIndex = 2) then
   begin
-    dm.ZQConsBancarias.close;
+    dm.ZQConsBancarias.Close;
     dm.ZQConsBancarias.SQL.Clear;
-    dm.ZQConsBancarias.SQL.Add('SELECT * from vwcontas WHERE CODIGOTIP<3 AND CONSTATUS=0 AND CONNOME like'+QuotedStr('%'+EdtConsulta.Text+'%'));
-    dm.ZQConsBancarias.close;
-    dm.ZQConsBancarias.open;
+    dm.ZQConsBancarias.SQL.Add(
+      'SELECT * from vwcontas WHERE CODIGOTIP<3 AND CONSTATUS=0 AND CONNOME like' +
+      QuotedStr('%' + EdtConsulta.Text + '%'));
+    dm.ZQConsBancarias.Close;
+    dm.ZQConsBancarias.Open;
     EdtConsulta.Clear;
   end;
 end;
@@ -271,13 +314,13 @@ end;
 procedure TFrmConsContas.DBGConsCaixaCellClick(Column: TColumn);
 begin
   ctipo := dm.ZQConsBancariasCODIGOTIP.AsInteger;
-  StatusDaConta:=dm.ZQConsBancariasCONSTATUS.AsInteger;
+  StatusDaConta := dm.ZQConsBancariasCONSTATUS.AsInteger;
 end;
 
 procedure TFrmConsContas.DBGConsContasBancariasCellClick(Column: TColumn);
 begin
   ctipo := dm.ZQConsBancariasCODIGOTIP.AsInteger;
-  StatusDaConta:=dm.ZQConsBancariasCONSTATUS.AsInteger;
+  StatusDaConta := dm.ZQConsBancariasCONSTATUS.AsInteger;
 end;
 
 procedure TFrmConsContas.EdtConsultaChange(Sender: TObject);
@@ -298,6 +341,7 @@ end;
 
 procedure TFrmConsContas.FormShow(Sender: TObject);
 begin
+  PnChamaConta.Visible := False;
   DM.ZQConsBancarias.Active := True;
 end;
 
@@ -380,91 +424,91 @@ end;
 
 procedure TFrmConsContas.BtnImprimirClick(Sender: TObject);
 begin
-         // caixa, ativo e inativo
-     if (RGBConsTipoConta.ItemIndex=0) and (CboStatus.ItemIndex=0) then
-     begin
+  // caixa, ativo e inativo
+  if (RGBConsTipoConta.ItemIndex = 0) and (CboStatus.ItemIndex = 0) then
+  begin
         {dm.ZQConsBancarias.close;
         dm.ZQConsBancarias.SQL.Clear;
         dm.ZQConsBancarias.SQL.Add('SELECT * from vwcontas WHERE CODIGOTIP=3 AND CONNOME like'+QuotedStr('%'+EdtConsulta.Text+'%'));
         dm.ZQConsBancarias.close;
         dm.ZQConsBancarias.open;}
-        if (dm.ZQConsBancarias.RecordCount>0) then
-       begin
-            FrmRlContasCaixa.RLContasCaixa.Preview();
-       end;
-     end
-     Else
-      // caixa, somente ativo
-     if (RGBConsTipoConta.ItemIndex=0) and (CboStatus.ItemIndex=1) then
-     begin
+    if (dm.ZQConsBancarias.RecordCount > 0) then
+    begin
+      FrmRlContasCaixa.RLContasCaixa.Preview();
+    end;
+  end
+  else
+  // caixa, somente ativo
+  if (RGBConsTipoConta.ItemIndex = 0) and (CboStatus.ItemIndex = 1) then
+  begin
         {dm.ZQConsBancarias.close;
         dm.ZQConsBancarias.SQL.Clear;
         dm.ZQConsBancarias.SQL.Add('SELECT * from vwcontas WHERE CODIGOTIP=3 AND CONSTATUS=1 AND CONNOME like'+QuotedStr('%'+EdtConsulta.Text+'%'));
         dm.ZQConsBancarias.close;
         dm.ZQConsBancarias.open;
         EdtConsulta.Clear}
-        if (dm.ZQConsBancarias.RecordCount>0) then
-       begin
-            FrmRlContasCaixa.RLContasCaixa.Preview();
-       end;
-     end
-     Else
-      //caixa, somente inativo
-     if (RGBConsTipoConta.ItemIndex=0) and (CboStatus.ItemIndex=2) then
-     begin
+    if (dm.ZQConsBancarias.RecordCount > 0) then
+    begin
+      FrmRlContasCaixa.RLContasCaixa.Preview();
+    end;
+  end
+  else
+  //caixa, somente inativo
+  if (RGBConsTipoConta.ItemIndex = 0) and (CboStatus.ItemIndex = 2) then
+  begin
         {dm.ZQConsBancarias.close;
         dm.ZQConsBancarias.SQL.Clear;
         dm.ZQConsBancarias.SQL.Add('SELECT * from vwcontas WHERE CODIGOTIP=3 AND CONSTATUS=0 AND CONNOME like'+QuotedStr('%'+EdtConsulta.Text+'%'));
         dm.ZQConsBancarias.close;
         dm.ZQConsBancarias.open;
         EdtConsulta.Clear; }
-       if (dm.ZQConsBancarias.RecordCount>0) then
-       begin
-            FrmRlContasCaixa.RLContasCaixa.Preview();
-       end;
-     end
-     else
-   //Contas bancárias ativo e inativo
-     if (RGBConsTipoConta.ItemIndex=1) and (CboStatus.ItemIndex=0) then
-     begin
+    if (dm.ZQConsBancarias.RecordCount > 0) then
+    begin
+      FrmRlContasCaixa.RLContasCaixa.Preview();
+    end;
+  end
+  else
+  //Contas bancárias ativo e inativo
+  if (RGBConsTipoConta.ItemIndex = 1) and (CboStatus.ItemIndex = 0) then
+  begin
      { dm.ZQConsBancarias.close;
       dm.ZQConsBancarias.SQL.Clear;
       dm.ZQConsBancarias.SQL.Add('SELECT * from vwcontas WHERE CODIGOTIP<3 AND CONNOME like'+QuotedStr('%'+EdtConsulta.Text+'%'));
       dm.ZQConsBancarias.close;
       dm.ZQConsBancarias.open; }
-      if (dm.ZQConsBancarias.RecordCount>0) then
-       begin
-            FrmRlContasBanc.RLContasbancarias.Preview();
-       end;
-     end
-     Else
-    //Contas bancárias somente ativo
-     if (RGBConsTipoConta.ItemIndex=1) and (CboStatus.ItemIndex=1) then
-     begin
+    if (dm.ZQConsBancarias.RecordCount > 0) then
+    begin
+      FrmRlContasBanc.RLContasbancarias.Preview();
+    end;
+  end
+  else
+  //Contas bancárias somente ativo
+  if (RGBConsTipoConta.ItemIndex = 1) and (CboStatus.ItemIndex = 1) then
+  begin
      { dm.ZQConsBancarias.close;
       dm.ZQConsBancarias.SQL.Clear;
       dm.ZQConsBancarias.SQL.Add('SELECT * from vwcontas WHERE CODIGOTIP<3 AND CONSTATUS=1 AND CONNOME like'+QuotedStr('%'+EdtConsulta.Text+'%'));
       dm.ZQConsBancarias.close;
       dm.ZQConsBancarias.open; }
-      if (dm.ZQConsBancarias.RecordCount>0) then
-       begin
-            FrmRlContasBanc.RLContasbancarias.Preview();
-       end;
-     end
-     Else
-      //Contas bancárias somente inativa
-     if (RGBConsTipoConta.ItemIndex=1) and (CboStatus.ItemIndex=2) then
-     begin
+    if (dm.ZQConsBancarias.RecordCount > 0) then
+    begin
+      FrmRlContasBanc.RLContasbancarias.Preview();
+    end;
+  end
+  else
+  //Contas bancárias somente inativa
+  if (RGBConsTipoConta.ItemIndex = 1) and (CboStatus.ItemIndex = 2) then
+  begin
       {dm.ZQConsBancarias.close;
       dm.ZQConsBancarias.SQL.Clear;
       dm.ZQConsBancarias.SQL.Add('SELECT * from vwcontas WHERE CODIGOTIP<3 AND CONSTATUS=0 AND CONNOME like'+QuotedStr('%'+EdtConsulta.Text+'%'));
       dm.ZQConsBancarias.close;
       dm.ZQConsBancarias.open; }
-       if (dm.ZQConsBancarias.RecordCount>0) then
-       begin
-            FrmRlContasBanc.RLContasbancarias.Preview();
-       end;
-     end;
+    if (dm.ZQConsBancarias.RecordCount > 0) then
+    begin
+      FrmRlContasBanc.RLContasbancarias.Preview();
+    end;
+  end;
 
 end;
 

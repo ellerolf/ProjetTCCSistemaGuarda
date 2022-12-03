@@ -121,6 +121,8 @@ begin
      RdbCadTrans.Caption:='Cadastro de Transferência';
      FrmTranfContas.CodigoDaTransf:=0;
      FrmConsContas.ctipo:=0;
+     FrmTranfContas.PnChamaTrans.Visible:=false;
+     FrmConsContas.PnChamaConta.Visible := False;
      Close;
 end;
 
@@ -300,6 +302,8 @@ begin
             RdbCadConta.Caption:='Cadastro de Contas';
             OpeCadOuAltConta:='';
             FrmConsContas.ctipo:=0;
+            FrmTranfContas.PnChamaTrans.Visible:=false;
+            FrmConsContas.PnChamaConta.Visible := False;
             FrmCadContasBancarias.Close;
 
             {CboTipo.ClearSelection;
@@ -356,6 +360,8 @@ begin
             RdbCadConta.Caption:='Cadastro de Contas';
             OpeCadOuAltConta:='';
             FrmConsContas.ctipo:=0;
+            FrmTranfContas.PnChamaTrans.Visible:=false;
+            FrmConsContas.PnChamaConta.Visible := False;
             FrmCadContasBancarias.Close;
 
             {CboTipo.ClearSelection;
@@ -515,6 +521,8 @@ begin
               OpecadOuAltTransf:='';
               ValorDaTransferenc:=0;
               FrmTranfContas.CodigoDaTransf:=0;
+              FrmTranfContas.PnChamaTrans.Visible:=false;
+              FrmConsContas.PnChamaConta.Visible := False;
               FrmCadContasBancarias.Close;
 
               {EdtNDoc.Clear;

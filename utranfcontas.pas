@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, Buttons,
-  StdCtrls, DBGrids, EditBtn, DateTimePicker, UModulo,uCadContasBancarias;
+  StdCtrls, DBGrids, EditBtn, DateTimePicker, UModulo, uCadContasBancarias;
 
 type
 
@@ -26,6 +26,7 @@ type
     Panel1: TPanel;
     Panel2: TPanel;
     BtnImprimir: TSpeedButton;
+    PnChamaTrans: TPanel;
     SpeedButton3: TSpeedButton;
     procedure BtnCancelaClick(Sender: TObject);
     procedure BtnImprimirClick(Sender: TObject);
@@ -40,10 +41,10 @@ type
   private
 
   public
-        //Essa variável recebe o código da transferencia ao clicar na dbgrid.
-        CodigoDaTransf:Integer;
-        //Essa variável recebe o status da transferencia.
-        StatusDaTransf:Integer;
+    //Essa variável recebe o código da transferencia ao clicar na dbgrid.
+    CodigoDaTransf: integer;
+    //Essa variável recebe o status da transferencia.
+    StatusDaTransf: integer;
   end;
 
 var
@@ -64,49 +65,66 @@ end;
 
 procedure TFrmTranfContas.DBGrid1CellClick(Column: TColumn);
 begin
-     CodigoDaTransf:=dm.ZQConsTransferenciaTRACODIGO.AsInteger;
-     StatusDaTransf:=dm.ZQConsTransferenciaTRASTATUS.AsInteger;
+  CodigoDaTransf := dm.ZQConsTransferenciaTRACODIGO.AsInteger;
+  StatusDaTransf := dm.ZQConsTransferenciaTRASTATUS.AsInteger;
 end;
 
 procedure TFrmTranfContas.BtnSelecionaClick(Sender: TObject);
 begin
-  FrmCadContasBancarias.OpecadOuAltTransf:='U';
-  if (CodigoDaTransf>0) then
+  FrmCadContasBancarias.OpecadOuAltTransf := 'U';
+  if (CodigoDaTransf > 0) then
   begin
 
-       //se o status da transferência for 0(inativo)
-       if (dm.ZQConsTransferenciaTRASTATUS.AsInteger=0) then
-       begin
-            FrmCadContasBancarias.RdbCadConta.Enabled:=False;
-            FrmCadContasBancarias.RdbCadTrans.Checked:=true;
-            FrmCadContasBancarias.RdbCadTrans.Caption:='Alteração da Transferência';
-            FrmCadContasBancarias.RGBStatusTransf.Visible:=True;
-            FrmCadContasBancarias.RGBStatusTransf.ItemIndex:=0;
-            FrmCadContasBancarias.DtDataTransf.Date:=DM.ZQConsTransferenciaTRADATA.AsDateTime;
-            FrmCadContasBancarias.EdtNDoc.Text:=DM.ZQConsTransferenciaTRANUMERO_DOCUMENTO.Text;
-            FrmCadContasBancarias.EdtVlrTras.Text:=FormatFloat('0.00',dm.ZQConsTransferenciaTRAVALOR.AsFloat);
-            FrmCadContasBancarias.EdtCodContaO.Text:=dm.ZQConsTransferenciaCODIGODACONTADEORIGEM.Text;
-            FrmCadContasBancarias.EdtCodContaDes.Text:=dm.ZQConsTransferenciaCODIGODACONTADEDESTINO.Text;
-            FrmCadContasBancarias.Show;
-       end;
+    //se o status da transferência for 0(inativo)
+    if (dm.ZQConsTransferenciaTRASTATUS.AsInteger = 0) then
+    begin
+      FrmCadContasBancarias.RdbCadConta.Enabled := False;
+      FrmCadContasBancarias.RdbCadTrans.Checked := True;
+      FrmCadContasBancarias.RdbCadTrans.Caption := 'Alteração da Transferência';
+      FrmCadContasBancarias.RGBStatusTransf.Visible := True;
+      FrmCadContasBancarias.RGBStatusTransf.ItemIndex := 0;
+      FrmCadContasBancarias.DtDataTransf.Date :=
+        DM.ZQConsTransferenciaTRADATA.AsDateTime;
+      FrmCadContasBancarias.EdtNDoc.Text :=
+        DM.ZQConsTransferenciaTRANUMERO_DOCUMENTO.Text;
+      FrmCadContasBancarias.EdtVlrTras.Text :=
+        FormatFloat('0.00', dm.ZQConsTransferenciaTRAVALOR.AsFloat);
+      FrmCadContasBancarias.EdtCodContaO.Text :=
+        dm.ZQConsTransferenciaCODIGODACONTADEORIGEM.Text;
+      FrmCadContasBancarias.EdtCodContaDes.Text :=
+        dm.ZQConsTransferenciaCODIGODACONTADEDESTINO.Text;
+      //ajuste da visão do cad dento dos cons
+      PnChamaTrans.Visible := True;
+      FrmCadContasBancarias.Parent := PnChamaTrans;
+      FrmCadContasBancarias.Align := alClient;
+      FrmCadContasBancarias.Show;
+    end;
 
-       // se o status da transferência for 1(ativo)
-       if (dm.ZQConsTransferenciaTRASTATUS.AsInteger=1) then
-       begin
-            FrmCadContasBancarias.RdbCadConta.Enabled:=False;
-            FrmCadContasBancarias.RdbCadTrans.Checked:=true;
-            FrmCadContasBancarias.RdbCadTrans.Caption:='Alteração da Transferência';
-            FrmCadContasBancarias.RGBStatusTransf.Visible:=True;
-            FrmCadContasBancarias.RGBStatusTransf.ItemIndex:=1;
-            FrmCadContasBancarias.DtDataTransf.Date:=DM.ZQConsTransferenciaTRADATA.AsDateTime;
-            FrmCadContasBancarias.EdtNDoc.Text:=DM.ZQConsTransferenciaTRANUMERO_DOCUMENTO.Text;
-            FrmCadContasBancarias.EdtVlrTras.Text:=FormatFloat('0.00',dm.ZQConsTransferenciaTRAVALOR.AsFloat);
-            FrmCadContasBancarias.EdtCodContaO.Text:=dm.ZQConsTransferenciaCODIGODACONTADEORIGEM.Text;
-            FrmCadContasBancarias.EdtCodContaDes.Text:=dm.ZQConsTransferenciaCODIGODACONTADEDESTINO.Text;
-            FrmCadContasBancarias.Show;
-       end;
+    // se o status da transferência for 1(ativo)
+    if (dm.ZQConsTransferenciaTRASTATUS.AsInteger = 1) then
+    begin
+      FrmCadContasBancarias.RdbCadConta.Enabled := False;
+      FrmCadContasBancarias.RdbCadTrans.Checked := True;
+      FrmCadContasBancarias.RdbCadTrans.Caption := 'Alteração da Transferência';
+      FrmCadContasBancarias.RGBStatusTransf.Visible := True;
+      FrmCadContasBancarias.RGBStatusTransf.ItemIndex := 1;
+      FrmCadContasBancarias.DtDataTransf.Date :=
+        DM.ZQConsTransferenciaTRADATA.AsDateTime;
+      FrmCadContasBancarias.EdtNDoc.Text :=
+        DM.ZQConsTransferenciaTRANUMERO_DOCUMENTO.Text;
+      FrmCadContasBancarias.EdtVlrTras.Text :=
+        FormatFloat('0.00', dm.ZQConsTransferenciaTRAVALOR.AsFloat);
+      FrmCadContasBancarias.EdtCodContaO.Text :=
+        dm.ZQConsTransferenciaCODIGODACONTADEORIGEM.Text;
+      FrmCadContasBancarias.EdtCodContaDes.Text :=
+        dm.ZQConsTransferenciaCODIGODACONTADEDESTINO.Text;
+      //ajuste da visão do cad dento dos cons
+      PnChamaTrans.Visible := True;
+      FrmCadContasBancarias.Parent := PnChamaTrans;
+      FrmCadContasBancarias.Align := alClient;
+      FrmCadContasBancarias.Show;
+    end;
   end;
-
 
 end;
 
@@ -114,28 +132,27 @@ procedure TFrmTranfContas.BtnCancelaClick(Sender: TObject);
 begin
   DTFinal.Clear;
   DTInicial.Clear;
-  DBGrid1.Visible:=False;
-  CboStatus.ItemIndex:=0;
-  CodigoDaTransf:=0;
+  DBGrid1.Visible := False;
+  CboStatus.ItemIndex := 0;
+  CodigoDaTransf := 0;
   SpeedButton3.Click;
   Close;
 end;
 
 procedure TFrmTranfContas.BtnImprimirClick(Sender: TObject);
 begin
-     if (CboStatus.ItemIndex>=0) then
-     Begin
-          if (dm.ZQConsTransferencia.RecordCount>0) then
-          begin
-              FrmRlTransferencia.RLTransferencia.Preview();
-          end;
-     end;
+  if (CboStatus.ItemIndex >= 0) then
+  begin
+    if (dm.ZQConsTransferencia.RecordCount > 0) then
+    begin
+      FrmRlTransferencia.RLTransferencia.Preview();
+    end;
+  end;
 end;
 
-procedure TFrmTranfContas.FormClose(Sender: TObject;
-  var CloseAction: TCloseAction);
+procedure TFrmTranfContas.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
-  dm.ZQConsTransferencia.Active:=False;
+  dm.ZQConsTransferencia.Active := False;
 end;
 
 procedure TFrmTranfContas.FormResize(Sender: TObject);
@@ -146,7 +163,8 @@ end;
 
 procedure TFrmTranfContas.FormShow(Sender: TObject);
 begin
-  dm.ZQConsTransferencia.Active:=True;
+  PnChamaTrans.Visible:=false;
+  dm.ZQConsTransferencia.Active := True;
 end;
 
 procedure TFrmTranfContas.Panel1Resize(Sender: TObject);
@@ -156,61 +174,70 @@ end;
 
 procedure TFrmTranfContas.SpeedButton3Click(Sender: TObject);
 begin
-     if (DTInicial.Date=NullDate) or (DTFinal.date=NullDate) then
-     begin
-          ShowMessage('Digite as data inicial e final para efetuar a pesquisa');
-     end
-     else if (DTFinal.Date<DTInicial.Date) then
-     begin
-          ShowMessage('Período pesquisado não é valido, digite novamente');
-          DBGrid1.Visible:=False;
-          DTFinal.Clear;
-          DTInicial.Clear;
-     end
-     Else
-         begin
-               if (CboStatus.ItemIndex=0) then
-               begin
-                with dm.ZQConsTransferencia do
-                begin
-                     Close ;
-                     sql.Clear;
-                     SQL.Add('SELECT * FROM vwtransferencia WHERE TRADATA between :dtini and :dtfin');
-                     ParamByName('dtini').Value:=FormatDateTime('yyyy-mm-dd',DTInicial.Date);
-                     ParamByName('dtfin').Value:=FormatDateTime('yyyy-mm-dd',DTFinal.Date);
-                     Open;
-                     DBGrid1.Visible:=True;
-                end;
-               end;
+  if (DTInicial.Date = NullDate) or (DTFinal.date = NullDate) then
+  begin
+    ShowMessage('Digite as data inicial e final para efetuar a pesquisa');
+  end
+  else if (DTFinal.Date < DTInicial.Date) then
+  begin
+    ShowMessage('Período pesquisado não é valido, digite novamente');
+    DBGrid1.Visible := False;
+    DTFinal.Clear;
+    DTInicial.Clear;
+  end
+  else
+  begin
+    if (CboStatus.ItemIndex = 0) then
+    begin
+      with dm.ZQConsTransferencia do
+      begin
+        Close;
+        sql.Clear;
+        SQL.Add(
+          'SELECT * FROM vwtransferencia WHERE TRADATA between :dtini and :dtfin');
+        ParamByName('dtini').Value :=
+          FormatDateTime('yyyy-mm-dd', DTInicial.Date);
+        ParamByName('dtfin').Value :=
+          FormatDateTime('yyyy-mm-dd', DTFinal.Date);
+        Open;
+        DBGrid1.Visible := True;
+      end;
+    end;
 
-               if (CboStatus.ItemIndex=1) then
-               begin
-                with dm.ZQConsTransferencia do
-                begin
-                     Close;
-                     sql.Clear;
-                     SQL.Add('SELECT * FROM vwtransferencia WHERE TRASTATUS=1 and TRADATA between :dtini and :dtfin');
-                     ParamByName('dtini').Value:=FormatDateTime('yyyy-mm-dd',DTInicial.Date);
-                     ParamByName('dtfin').Value:=FormatDateTime('yyyy-mm-dd',DTFinal.Date);
-                     Open;
-                     DBGrid1.Visible:=True;
-                end;
-               end;
+    if (CboStatus.ItemIndex = 1) then
+    begin
+      with dm.ZQConsTransferencia do
+      begin
+        Close;
+        sql.Clear;
+        SQL.Add(
+          'SELECT * FROM vwtransferencia WHERE TRASTATUS=1 and TRADATA between :dtini and :dtfin');
+        ParamByName('dtini').Value :=
+          FormatDateTime('yyyy-mm-dd', DTInicial.Date);
+        ParamByName('dtfin').Value :=
+          FormatDateTime('yyyy-mm-dd', DTFinal.Date);
+        Open;
+        DBGrid1.Visible := True;
+      end;
+    end;
 
-                if (CboStatus.ItemIndex=2) then
-               begin
-                with dm.ZQConsTransferencia do
-                begin
-                     Close ;
-                     sql.Clear;
-                     SQL.Add('SELECT * FROM vwtransferencia WHERE TRASTATUS=0 and TRADATA between :dtini and :dtfin');
-                     ParamByName('dtini').Value:=FormatDateTime('yyyy-mm-dd',DTInicial.Date);
-                     ParamByName('dtfin').Value:=FormatDateTime('yyyy-mm-dd',DTFinal.Date);
-                     Open;
-                     DBGrid1.Visible:=True;
-                end;
-               end;
-         end;
+    if (CboStatus.ItemIndex = 2) then
+    begin
+      with dm.ZQConsTransferencia do
+      begin
+        Close;
+        sql.Clear;
+        SQL.Add(
+          'SELECT * FROM vwtransferencia WHERE TRASTATUS=0 and TRADATA between :dtini and :dtfin');
+        ParamByName('dtini').Value :=
+          FormatDateTime('yyyy-mm-dd', DTInicial.Date);
+        ParamByName('dtfin').Value :=
+          FormatDateTime('yyyy-mm-dd', DTFinal.Date);
+        Open;
+        DBGrid1.Visible := True;
+      end;
+    end;
+  end;
 end;
 
   {//todas trasnferência
@@ -244,4 +271,3 @@ end;
 end; }
 
 end.
-
