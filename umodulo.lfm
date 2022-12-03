@@ -2357,6 +2357,7 @@ object DM: TDM
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
+      Currency = True
       Precision = 22
     end
     object ZQConsLanDataBAIMULTA_JUROS: TFloatField
@@ -2952,6 +2953,7 @@ object DM: TDM
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
+      Currency = True
       Precision = 22
     end
     object ZQConsBaixaEfetBAIVALORPAGO: TFloatField
@@ -3009,6 +3011,7 @@ object DM: TDM
   end
   object DSConsBaixaEfet: TDataSource
     DataSet = ZQConsBaixaEfet
+    OnDataChange = DSConsBaixaEfetDataChange
     Left = 1176
     Top = 256
   end
@@ -3229,6 +3232,7 @@ object DM: TDM
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
+      Currency = True
       Precision = 22
     end
     object ZQConsVerParcBAIDATAVEN: TDateField

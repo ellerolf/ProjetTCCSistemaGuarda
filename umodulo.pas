@@ -293,6 +293,7 @@ type
     ZQConsSaldoAnt: TZQuery;
     ZQValidCadContaBanc: TZQuery;
     procedure DSBuscaTipoDocDataChange(Sender: TObject; Field: TField);
+    procedure DSConsBaixaEfetDataChange(Sender: TObject; Field: TField);
     procedure DSConsPessoasDataChange(Sender: TObject; Field: TField);
 
 
@@ -319,6 +320,11 @@ begin
 end;
 
 procedure TDM.DSBuscaTipoDocDataChange(Sender: TObject; Field: TField);
+begin
+
+end;
+
+procedure TDM.DSConsBaixaEfetDataChange(Sender: TObject; Field: TField);
 begin
 
 end;

@@ -113,8 +113,8 @@ object FrmCadParcela: TFrmCadParcela
           Left = 64
           Height = 17
           Top = 5
-          Width = 44
-          Caption = 'R$ 0,00'
+          Width = 29
+          Caption = ' 0,00'
           Font.CharSet = ANSI_CHARSET
           Font.Height = -13
           Font.Pitch = fpVariable

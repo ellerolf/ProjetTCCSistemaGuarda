@@ -2116,7 +2116,7 @@ object FRMBaixaParcela: TFRMBaixaParcela
       OnClick = BtnCancelaClick
     end
     object LblTotPg: TLabel
-      Left = 424
+      Left = 416
       Height = 21
       Top = 296
       Width = 185
@@ -2130,7 +2130,7 @@ object FRMBaixaParcela: TFRMBaixaParcela
       ParentFont = False
     end
     object Panel7: TPanel
-      Left = 626
+      Left = 618
       Height = 21
       Top = 297
       Width = 80

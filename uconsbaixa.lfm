@@ -4551,7 +4551,7 @@ object FrmConsBaixa: TFrmConsBaixa
           end        
           item
             Title.Caption = 'VALOR '
-            Width = 60
+            Width = 85
             FieldName = 'BAIVALOR'
           end        
           item
@@ -4642,6 +4642,7 @@ object FrmConsBaixa: TFrmConsBaixa
           end        
           item
             Title.Caption = 'VALOR'
+            Width = 85
             FieldName = 'BAIVALOR'
           end        
           item
@@ -4651,17 +4652,17 @@ object FrmConsBaixa: TFrmConsBaixa
           end        
           item
             Title.Caption = 'VALOR PAGO'
-            Width = 75
+            Width = 85
             FieldName = 'BAIVALORPAGO'
           end        
           item
             Title.Caption = 'MULTA E JUROS'
-            Width = 90
+            Width = 85
             FieldName = 'BAIMULTA_JUROS'
           end        
           item
             Title.Caption = 'DESCONTO'
-            Width = 70
+            Width = 85
             FieldName = 'BAIDESCONTO'
           end        
           item
