@@ -764,7 +764,7 @@ object FrmConsBaixa: TFrmConsBaixa
         object BtnConsFor: TSpeedButton
           Left = 456
           Height = 27
-          Top = 116
+          Top = 118
           Width = 49
           AutoSize = True
           Enabled = False
@@ -6216,5 +6216,13 @@ object FrmConsBaixa: TFrmConsBaixa
         OnClick = BtnImprimirClick
       end
     end
+  end
+  object PnChamaBaixa: TPanel
+    Left = 0
+    Height = 670
+    Top = 0
+    Width = 940
+    Align = alClient
+    TabOrder = 1
   end
 end

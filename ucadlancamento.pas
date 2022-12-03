@@ -58,6 +58,7 @@ type
     procedure FormResize(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Panel2Click(Sender: TObject);
+    procedure PnChamaClick(Sender: TObject);
   private
 
   public
@@ -130,6 +131,11 @@ begin
 end;
 
 procedure TFrmCadLancamento.Panel2Click(Sender: TObject);
+begin
+
+end;
+
+procedure TFrmCadLancamento.PnChamaClick(Sender: TObject);
 begin
 
 end;

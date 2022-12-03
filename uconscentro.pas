@@ -121,7 +121,10 @@ begin
     FrmConsCentro.Close;
   end;
   FrmCadLancamento.PnChama.Visible := False;
-  FrmCadUsuario.Close;
+  FrmConsBaixa.PnChamaBaixa.Visible:=false;
+  //procedimento usado somente na tela de menu, interfere diretamente a execução da tela cad/cons lancamento.
+  //precisa encontrar outra forma :(
+  {FrmCadUsuario.Close;
   FrmCadFornecedor.Close;
   FrmCadLancamento.Close;
   FrmCadCentroCusto.Close;
@@ -131,7 +134,7 @@ begin
   FrmConsBaixa.Close;
   FrmTranfContas.Close;
   FrmConsContas.Close;
-  FrmMovBanco.Close;
+  FrmMovBanco.Close;}
   Close;
 end;
 
@@ -219,6 +222,7 @@ begin
     dm.ZQBuscaCentro.Close;
     FrmConsCentro.Close;
     FrmCadLancamento.PnChama.Visible := False;
+    FrmConsBaixa.PnChamaBaixa.Visible:=false;
   end;
 end;
 

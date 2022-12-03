@@ -226,6 +226,7 @@ begin
   //Gabi tive que deixar abaixo do meu código, pq se deixar em cima, ele vai executar o close primeiro e não vai pegar minha condição.
   //Se o usuario estiver direto na tela de consfornecedor e clicar em sair, minha condição será false, e ele vai fechar o consforn.
   FrmCadLancamento.PnChama.Visible := False;
+  FrmConsBaixa.PnChamaBaixa.Visible:=false;
   Close;
 
 end;
@@ -372,6 +373,7 @@ begin
     dm.ZQConsPessoas.Open;
     GrTodos.Visible := True;
     dm.ZQConsPessoas.Close;
+    FrmConsBaixa.PnChamaBaixa.Visible:=false;
     FrmConsFornecedores.Close;
   end;
 
