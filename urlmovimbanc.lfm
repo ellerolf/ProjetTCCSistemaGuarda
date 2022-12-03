@@ -3,7 +3,7 @@ object FrmRlMovimBanc: TFrmRlMovimBanc
   Height = 543
   Top = 31
   Width = 1130
-  Caption = 'Relatório de Movimentação bancária'
+  Caption = 'RelatÃ³rio de MovimentaÃ§Ã£o bancÃ¡ria'
   ClientHeight = 543
   ClientWidth = 1130
   object RLMovimBanc: TRLReport
@@ -27,7 +27,7 @@ object FrmRlMovimBanc: TFrmRlMovimBanc
       BandType = btHeader
       object RLLabel1: TRLLabel
         Left = 0
-        Height = 20
+        Height = 36
         Top = 0
         Width = 1047
         Align = faTop
@@ -40,15 +40,29 @@ object FrmRlMovimBanc: TFrmRlMovimBanc
         Borders.FixedTop = True
         Borders.FixedBottom = True
         Caption = 'RELATÓRIO DE MOVIMENTAÇÃO BANCÁRIA'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -27
+        Font.Name = 'Arial'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ParentFont = False
       end
       object RLLabel2: TRLLabel
         Left = 0
-        Height = 16
-        Top = 20
+        Height = 18
+        Top = 36
         Width = 1047
         Align = faTop
         Alignment = taCenter
         Caption = 'Período: '
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'Arial'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ParentFont = False
       end
       object RLLSaldoAnterior: TRLLabel
         Left = 1029
@@ -101,15 +115,15 @@ object FrmRlMovimBanc: TFrmRlMovimBanc
         Left = 90
         Height = 16
         Top = 8
-        Width = 80
-        Caption = 'DESCRIÇÃO'
+        Width = 94
+        Caption = 'DESCRIÃ‡ÃƒO'
       end
       object RLLabel5: TRLLabel
         Left = 752
         Height = 16
         Top = 8
-        Width = 105
-        Caption = 'N° DOCUMENTO'
+        Width = 114
+        Caption = 'NÂ° DOCUMENTO'
       end
       object RLLabel6: TRLLabel
         Left = 960
@@ -226,9 +240,9 @@ object FrmRlMovimBanc: TFrmRlMovimBanc
         Left = 896
         Height = 16
         Top = 8
-        Width = 147
+        Width = 161
         Info = itPageNumber
-        Text = 'Página n°:'
+        Text = 'PÃ¡gina nÂ°:'
       end
       object RLSystemInfo2: TRLSystemInfo
         Left = 760
@@ -304,7 +318,7 @@ object FrmRlMovimBanc: TFrmRlMovimBanc
     Top = 168
   end
   object RLPDFFilter1: TRLPDFFilter
-    DocumentInfo.Creator = 'FortesReport Community Edition v4.0.0.1 \251 Copyright � 1999-2021 Fortes Inform�tica'
+    DocumentInfo.Creator = 'FortesReport Community Edition v4.0.0.1 \251 Copyright © 1999-2021 Fortes Informática'
     DisplayName = 'Documento PDF'
     Left = 615
     Top = 204

@@ -23,7 +23,7 @@ object FrmRlContasBanc: TFrmRlContasBanc
       Width = 718
       object RLBand1: TRLBand
         Left = 0
-        Height = 40
+        Height = 48
         Top = 0
         Width = 718
         BandType = btHeader
@@ -34,7 +34,7 @@ object FrmRlContasBanc: TFrmRlContasBanc
         Borders.DrawBottom = False
         object RLLabel1: TRLLabel
           Left = 0
-          Height = 20
+          Height = 36
           Top = 0
           Width = 718
           Align = faTop
@@ -46,12 +46,19 @@ object FrmRlContasBanc: TFrmRlContasBanc
           Borders.DrawBottom = True
           Borders.FixedBottom = True
           Caption = 'RELATÓRIO DE CONTAS BANCÁRIAS'
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -27
+          Font.Name = 'Arial'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          ParentFont = False
         end
       end
       object RLBand2: TRLBand
         Left = 0
         Height = 32
-        Top = 72
+        Top = 80
         Width = 718
         object RLDBText2: TRLDBText
           Left = 64
@@ -89,10 +96,10 @@ object FrmRlContasBanc: TFrmRlContasBanc
           DataSource = DM.DSConsBancarias
         end
         object RLDBText5: TRLDBText
-          Left = 552
+          Left = 534
           Height = 16
           Top = 8
-          Width = 104
+          Width = 140
           Alignment = taCenter
           DataField = 'CONNUMERO_CONTA'
           DataSource = DM.DSConsBancarias
@@ -101,7 +108,7 @@ object FrmRlContasBanc: TFrmRlContasBanc
           Left = 656
           Height = 16
           Top = 8
-          Width = 62
+          Width = 54
           DataField = 'STATUS'
           DataSource = DM.DSConsBancarias
         end
@@ -109,7 +116,7 @@ object FrmRlContasBanc: TFrmRlContasBanc
       object RLBand4: TRLBand
         Left = 0
         Height = 32
-        Top = 40
+        Top = 48
         Width = 718
         BandType = btHeader
         Borders.Sides = sdCustom
@@ -124,14 +131,14 @@ object FrmRlContasBanc: TFrmRlContasBanc
           Left = 656
           Height = 16
           Top = 11
-          Width = 62
+          Width = 54
           Caption = 'STATUS'
         end
         object RLLabel6: TRLLabel
           Left = 552
           Height = 16
           Top = 11
-          Width = 104
+          Width = 88
           Caption = 'N° DA CONTA'
         end
         object RLLabel5: TRLLabel

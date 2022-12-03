@@ -32,7 +32,7 @@ object FrmRICentroCusto: TFrmRICentroCusto
       BandType = btHeader
       object RLLabel1: TRLLabel
         Left = 0
-        Height = 20
+        Height = 36
         Top = 0
         Width = 718
         Align = faTop
@@ -45,6 +45,13 @@ object FrmRICentroCusto: TFrmRICentroCusto
         Borders.FixedTop = True
         Borders.FixedBottom = True
         Caption = 'RELATÓRIO DE CENTRO DE CUSTO'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -27
+        Font.Name = 'Arial'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ParentFont = False
       end
     end
     object RLGroup1: TRLGroup
@@ -91,7 +98,7 @@ object FrmRICentroCusto: TFrmRICentroCusto
           Left = 640
           Height = 16
           Top = 8
-          Width = 72
+          Width = 54
           Caption = 'STATUS'
         end
       end
@@ -121,7 +128,7 @@ object FrmRICentroCusto: TFrmRICentroCusto
           Left = 480
           Height = 16
           Top = 8
-          Width = 144
+          Width = 60
           DataField = 'TIPOCEN'
           DataSource = DM.DSBuscaCentro
         end
@@ -129,7 +136,7 @@ object FrmRICentroCusto: TFrmRICentroCusto
           Left = 640
           Height = 16
           Top = 8
-          Width = 74
+          Width = 54
           DataField = 'STATUS'
           DataSource = DM.DSBuscaCentro
         end

@@ -25,7 +25,7 @@ object FrmRlTransferencia: TFrmRlTransferencia
       BandType = btHeader
       object RLLabel1: TRLLabel
         Left = 0
-        Height = 20
+        Height = 36
         Top = 0
         Width = 1047
         Align = faTop
@@ -38,15 +38,29 @@ object FrmRlTransferencia: TFrmRlTransferencia
         Borders.FixedTop = True
         Borders.FixedBottom = True
         Caption = 'RELATÓRIO DE TRANSFERÊNCIAS '
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -27
+        Font.Name = 'Arial'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ParentFont = False
       end
       object RLLabel2: TRLLabel
         Left = 0
-        Height = 16
-        Top = 20
+        Height = 18
+        Top = 36
         Width = 1047
         Align = faTop
         Alignment = taCenter
         Caption = 'Período: '
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'Arial'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ParentFont = False
       end
     end
     object RLGroup1: TRLGroup
@@ -108,14 +122,14 @@ object FrmRlTransferencia: TFrmRlTransferencia
           Left = 784
           Height = 16
           Top = 8
-          Width = 104
+          Width = 105
           Caption = 'N° DOCUMENTO'
         end
         object RLLabel9: TRLLabel
           Left = 896
           Height = 16
           Top = 8
-          Width = 81
+          Width = 48
           Caption = 'VALOR'
         end
         object RLLabel10: TRLLabel
@@ -189,7 +203,7 @@ object FrmRlTransferencia: TFrmRlTransferencia
           Left = 896
           Height = 16
           Top = 8
-          Width = 89
+          Width = 73
           DataField = 'TRAVALOR'
           DataSource = DM.DSConsTransferencia
         end

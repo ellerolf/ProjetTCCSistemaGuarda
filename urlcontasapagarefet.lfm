@@ -27,7 +27,7 @@ object FrmRlContasAPagarEfet: TFrmRlContasAPagarEfet
       AfterPrint = RLBand1AfterPrint
       object RLLabel1: TRLLabel
         Left = 0
-        Height = 20
+        Height = 36
         Top = 0
         Width = 1047
         Align = faTop
@@ -40,15 +40,29 @@ object FrmRlContasAPagarEfet: TFrmRlContasAPagarEfet
         Borders.FixedTop = True
         Borders.FixedBottom = True
         Caption = 'RELATÓRIO DE CONTA A PAGAR (PAGO)'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -27
+        Font.Name = 'Arial'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ParentFont = False
       end
       object RLLabel2: TRLLabel
         Left = 0
-        Height = 16
-        Top = 20
+        Height = 18
+        Top = 36
         Width = 1047
         Align = faTop
         Alignment = taCenter
         Caption = 'Período: '
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'Arial'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ParentFont = False
       end
     end
     object RLGroup1: TRLGroup

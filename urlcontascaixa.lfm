@@ -23,13 +23,13 @@ object FrmRlContasCaixa: TFrmRlContasCaixa
       Width = 718
       object RLBand1: TRLBand
         Left = 0
-        Height = 40
+        Height = 48
         Top = 0
         Width = 718
         BandType = btHeader
         object RLLabel1: TRLLabel
           Left = 0
-          Height = 20
+          Height = 36
           Top = 0
           Width = 718
           Align = faTop
@@ -41,12 +41,19 @@ object FrmRlContasCaixa: TFrmRlContasCaixa
           Borders.DrawBottom = True
           Borders.FixedBottom = True
           Caption = 'RELATÓRIO DE CONTAS CAIXA '
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -27
+          Font.Name = 'Arial'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          ParentFont = False
         end
       end
       object RLBand2: TRLBand
         Left = 0
         Height = 32
-        Top = 40
+        Top = 48
         Width = 718
         BandType = btHeader
         Borders.Sides = sdCustom
@@ -109,7 +116,7 @@ object FrmRlContasCaixa: TFrmRlContasCaixa
       object RLBand3: TRLBand
         Left = 0
         Height = 40
-        Top = 72
+        Top = 80
         Width = 718
         object RLDBText1: TRLDBText
           Left = 8

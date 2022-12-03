@@ -26,7 +26,7 @@ object FrmRlContasAReceberEfet: TFrmRlContasAReceberEfet
       BandType = btColumnHeader
       object RLLabel1: TRLLabel
         Left = 0
-        Height = 20
+        Height = 36
         Top = 0
         Width = 1047
         Align = faTop
@@ -39,15 +39,29 @@ object FrmRlContasAReceberEfet: TFrmRlContasAReceberEfet
         Borders.FixedTop = True
         Borders.FixedBottom = True
         Caption = 'RELATÓRIO DE CONTA A RECEBER (RECEBIDO)'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -27
+        Font.Name = 'Arial'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ParentFont = False
       end
       object RLLabel2: TRLLabel
         Left = 0
-        Height = 16
-        Top = 20
+        Height = 18
+        Top = 36
         Width = 1047
         Align = faTop
         Alignment = taCenter
         Caption = 'Período: '
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'Arial'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ParentFont = False
       end
     end
     object RLGroup1: TRLGroup
@@ -103,14 +117,14 @@ object FrmRlContasAReceberEfet: TFrmRlContasAReceberEfet
           Left = 792
           Height = 16
           Top = 10
-          Width = 104
+          Width = 76
           Caption = 'DESCONTO'
         end
         object RLLabel8: TRLLabel
           Left = 904
           Height = 16
           Top = 8
-          Width = 122
+          Width = 90
           Caption = 'VALOR PAGO'
         end
         object RLLabel14: TRLLabel
@@ -147,7 +161,7 @@ object FrmRlContasAReceberEfet: TFrmRlContasAReceberEfet
           Left = 792
           Height = 16
           Top = 8
-          Width = 104
+          Width = 97
           DataField = 'BAIDESCONTO'
           DataSource = DM.DSConsBaixaEfet
         end
@@ -171,7 +185,7 @@ object FrmRlContasAReceberEfet: TFrmRlContasAReceberEfet
           Left = 904
           Height = 16
           Top = 8
-          Width = 120
+          Width = 107
           DataField = 'BAIVALORPAGO'
           DataSource = DM.DSConsBaixaEfet
         end
