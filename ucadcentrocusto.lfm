@@ -43,9 +43,9 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
         ClientWidth = 554
         TabOrder = 0
         object Label1: TLabel
-          Left = 28
+          Left = 24
           Height = 17
-          Top = 139
+          Top = 211
           Width = 41
           Caption = 'Nome:'
           Font.CharSet = ANSI_CHARSET
@@ -58,17 +58,17 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
           OnClick = Label1Click
         end
         object EdtNome: TEdit
-          Left = 28
+          Left = 24
           Height = 23
-          Top = 165
+          Top = 237
           Width = 496
           CharCase = ecUppercase
           TabOrder = 0
         end
         object LblMensagem: TLabel
-          Left = 28
+          Left = 24
           Height = 15
-          Top = 190
+          Top = 262
           Width = 118
           Caption = '*Campos Obrigatorios'
           Font.Color = clRed
@@ -76,9 +76,9 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
           ParentFont = False
         end
         object BtnSair: TSpeedButton
-          Left = 400
+          Left = 396
           Height = 34
-          Top = 450
+          Top = 312
           Width = 124
           AutoSize = True
           Glyph.Data = {
@@ -538,9 +538,9 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
           OnClick = BtnSairClick
         end
         object BtnSalvar: TSpeedButton
-          Left = 264
+          Left = 260
           Height = 34
-          Top = 450
+          Top = 312
           Width = 124
           AutoSize = True
           Glyph.Data = {
@@ -1000,9 +1000,9 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
           OnClick = BtnSalvarClick
         end
         object RgbTipo: TRadioGroup
-          Left = 28
-          Height = 51
-          Top = 64
+          Left = 24
+          Height = 48
+          Top = 136
           Width = 161
           AutoFill = True
           Caption = 'Tipo'
@@ -1013,20 +1013,26 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
           ChildSizing.ShrinkVertical = crsScaleChilds
           ChildSizing.Layout = cclLeftToRightThenTopToBottom
           ChildSizing.ControlsPerLine = 2
-          ClientHeight = 31
+          ClientHeight = 26
           ClientWidth = 157
           Columns = 2
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -13
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
           Items.Strings = (
             'RECEITA'
             'DESPESA'
           )
           OnClick = RgbTipoClick
+          ParentFont = False
           TabOrder = 1
         end
         object RgbStatus: TRadioGroup
-          Left = 208
-          Height = 51
-          Top = 64
+          Left = 204
+          Height = 48
+          Top = 136
           Width = 161
           AutoFill = True
           Caption = 'Status'
@@ -1037,14 +1043,20 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
           ChildSizing.ShrinkVertical = crsScaleChilds
           ChildSizing.Layout = cclLeftToRightThenTopToBottom
           ChildSizing.ControlsPerLine = 2
-          ClientHeight = 31
+          ClientHeight = 26
           ClientWidth = 157
           Columns = 2
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -13
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
           Items.Strings = (
             'ATIVO'
             'INATIVO'
           )
           OnClick = RgbStatusClick
+          ParentFont = False
           TabOrder = 2
         end
       end

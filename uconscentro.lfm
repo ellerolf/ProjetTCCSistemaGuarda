@@ -1,12 +1,12 @@
 object FrmConsCentro: TFrmConsCentro
   Left = -8
-  Height = 788
+  Height = 648
   Top = -8
-  Width = 1070
+  Width = 938
   BorderStyle = bsNone
   Caption = 'FrmConsCentro'
-  ClientHeight = 749
-  ClientWidth = 1070
+  ClientHeight = 648
+  ClientWidth = 938
   Color = 16577259
   OnActivate = FormActivate
   OnClose = FormClose
@@ -16,46 +16,32 @@ object FrmConsCentro: TFrmConsCentro
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 749
+    Height = 648
     Top = 0
-    Width = 1070
+    Width = 938
     Align = alClient
     Caption = 'Panel1'
-    ClientHeight = 749
-    ClientWidth = 1070
+    ClientHeight = 648
+    ClientWidth = 938
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -13
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
     TabOrder = 0
     object Panel2: TPanel
-      Left = 1
-      Height = 747
-      Top = 1
-      Width = 1068
-      Align = alClient
+      Left = 128
+      Height = 649
+      Top = 0
+      Width = 680
       BevelOuter = bvNone
-      ClientHeight = 747
-      ClientWidth = 1068
+      ClientHeight = 649
+      ClientWidth = 680
       TabOrder = 0
-      object Label7: TLabel
-        Left = 0
-        Height = 32
-        Top = 0
-        Width = 1068
-        Align = alTop
-        Alignment = taCenter
-        Caption = 'Consulta de Centro de Custos'
-        Font.CharSet = ANSI_CHARSET
-        Font.Color = 10420224
-        Font.Height = -24
-        Font.Name = 'Segoe UI'
-        Font.Pitch = fpVariable
-        Font.Quality = fqDraft
-        Font.Style = [fsBold]
-        ParentColor = False
-        ParentFont = False
-      end
       object Label5: TLabel
-        Left = 161
+        Left = 49
         Height = 17
-        Top = 60
+        Top = 48
         Width = 28
         Caption = 'Tipo'
         Font.CharSet = ANSI_CHARSET
@@ -67,11 +53,11 @@ object FrmConsCentro: TFrmConsCentro
         ParentFont = False
       end
       object CboTipo: TComboBox
-        Left = 161
-        Height = 23
-        Top = 81
+        Left = 49
+        Height = 25
+        Top = 69
         Width = 135
-        ItemHeight = 15
+        ItemHeight = 17
         ItemIndex = 0
         Items.Strings = (
           'SELECIONE OPÇÃO'
@@ -83,25 +69,30 @@ object FrmConsCentro: TFrmConsCentro
         Text = 'SELECIONE OPÇÃO'
       end
       object CboStatus: TComboBox
-        Left = 313
-        Height = 23
-        Top = 81
+        Left = 201
+        Height = 25
+        Top = 69
         Width = 135
-        ItemHeight = 15
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -13
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ItemHeight = 17
         ItemIndex = 0
         Items.Strings = (
           'SELECIONE OPÇÃO'
           'ATIVO'
           'INATIVO'
         )
+        ParentFont = False
         Style = csDropDownList
         TabOrder = 1
         Text = 'SELECIONE OPÇÃO'
       end
       object Label6: TLabel
-        Left = 456
+        Left = 344
         Height = 17
-        Top = 60
+        Top = 48
         Width = 66
         Caption = 'Por Nome:'
         Font.CharSet = ANSI_CHARSET
@@ -113,18 +104,23 @@ object FrmConsCentro: TFrmConsCentro
         ParentFont = False
       end
       object EdtNome1: TEdit
-        Left = 456
-        Height = 23
-        Top = 81
+        Left = 344
+        Height = 25
+        Top = 69
         Width = 228
         CharCase = ecUppercase
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -13
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
         OnChange = EdtNome1Change
+        ParentFont = False
         TabOrder = 2
       end
       object Label8: TLabel
-        Left = 313
+        Left = 201
         Height = 17
-        Top = 60
+        Top = 48
         Width = 38
         Caption = 'Status'
         Font.CharSet = ANSI_CHARSET
@@ -136,9 +132,9 @@ object FrmConsCentro: TFrmConsCentro
         ParentFont = False
       end
       object DBGrid1: TDBGrid
-        Left = 161
+        Left = 49
         Height = 290
-        Top = 117
+        Top = 105
         Width = 579
         Color = 16577259
         Columns = <        
@@ -175,9 +171,9 @@ object FrmConsCentro: TFrmConsCentro
         OnCellClick = DBGrid1CellClick
       end
       object BtnConsulta: TSpeedButton
-        Left = 693
+        Left = 581
         Height = 21
-        Top = 81
+        Top = 69
         Width = 47
         Glyph.Data = {
           62100000424D621000000000000036000000280000002D000000170000000100
@@ -316,9 +312,9 @@ object FrmConsCentro: TFrmConsCentro
         OnClick = BtnConsultaClick
       end
       object BtnSair: TSpeedButton
-        Left = 616
+        Left = 504
         Height = 34
-        Top = 416
+        Top = 404
         Width = 124
         AutoSize = True
         Flat = True
@@ -779,9 +775,9 @@ object FrmConsCentro: TFrmConsCentro
         OnClick = BtnSairClick
       end
       object BtnAlterar: TSpeedButton
-        Left = 488
+        Left = 376
         Height = 34
-        Top = 416
+        Top = 404
         Width = 124
         AutoSize = True
         Flat = True
@@ -1242,9 +1238,9 @@ object FrmConsCentro: TFrmConsCentro
         OnClick = BtnAlterarClick
       end
       object BtnSelecione: TSpeedButton
-        Left = 160
+        Left = 48
         Height = 34
-        Top = 416
+        Top = 404
         Width = 124
         AutoSize = True
         Flat = True
@@ -1401,9 +1397,9 @@ object FrmConsCentro: TFrmConsCentro
         OnClick = BtnSelecioneClick
       end
       object BtnImprimir: TSpeedButton
-        Left = 360
+        Left = 248
         Height = 34
-        Top = 416
+        Top = 404
         Width = 124
         AutoSize = True
         Flat = True
@@ -1863,12 +1859,30 @@ object FrmConsCentro: TFrmConsCentro
         }
         OnClick = BtnImprimirClick
       end
+      object Label7: TLabel
+        Left = 0
+        Height = 32
+        Top = 0
+        Width = 680
+        Align = alTop
+        Alignment = taCenter
+        Caption = 'Consulta de Centro de Custos'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = 10420224
+        Font.Height = -24
+        Font.Name = 'Segoe UI'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
     end
     object PnChamaCentro: TPanel
       Left = 1
-      Height = 747
+      Height = 646
       Top = 1
-      Width = 1068
+      Width = 936
       Align = alClient
       TabOrder = 1
       OnClick = PnChamaCentroClick

@@ -1,12 +1,12 @@
 object FrmCadLancamento: TFrmCadLancamento
   Left = -8
-  Height = 788
+  Height = 726
   Top = -8
-  Width = 1086
+  Width = 970
   BorderStyle = bsNone
   Caption = 'Lançamento'
-  ClientHeight = 749
-  ClientWidth = 1086
+  ClientHeight = 703
+  ClientWidth = 970
   Color = 16577259
   OnCreate = FormCreate
   OnResize = FormResize
@@ -15,124 +15,176 @@ object FrmCadLancamento: TFrmCadLancamento
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 749
+    Height = 703
     Top = 0
-    Width = 1086
+    Width = 970
     Align = alClient
-    ClientHeight = 749
-    ClientWidth = 1086
+    ClientHeight = 703
+    ClientWidth = 970
     Color = 16577259
     ParentColor = False
     TabOrder = 0
     object Panel2: TPanel
       Left = 1
-      Height = 747
+      Height = 701
       Top = 1
-      Width = 1084
+      Width = 968
       Align = alClient
       BevelOuter = bvNone
-      ClientHeight = 747
-      ClientWidth = 1084
+      ClientHeight = 701
+      ClientWidth = 968
       TabOrder = 0
       OnClick = Panel2Click
       object Panel3: TPanel
-        Left = 112
-        Height = 656
-        Top = 0
+        Left = 128
+        Height = 615
+        Top = 32
         Width = 674
         BevelOuter = bvNone
-        ClientHeight = 656
+        ClientHeight = 615
         ClientWidth = 674
         TabOrder = 0
         object Label1: TLabel
-          Left = 177
-          Height = 15
-          Top = 40
-          Width = 109
+          Left = 193
+          Height = 17
+          Top = 56
+          Width = 128
           Caption = 'Data de lançamento:'
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -13
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
           ParentColor = False
+          ParentFont = False
         end
         object Label2: TLabel
-          Left = 337
-          Height = 15
-          Top = 40
-          Width = 107
+          Left = 353
+          Height = 17
+          Top = 56
+          Width = 125
           Caption = 'Tipo de documento:'
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -13
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
           ParentColor = False
+          ParentFont = False
         end
         object Label3: TLabel
-          Left = 529
-          Height = 15
-          Top = 40
-          Width = 99
+          Left = 545
+          Height = 17
+          Top = 56
+          Width = 115
           Caption = 'Nº de Documento:'
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -13
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
           ParentColor = False
+          ParentFont = False
         end
         object Label4: TLabel
-          Left = 473
-          Height = 15
-          Top = 102
-          Width = 112
+          Left = 489
+          Height = 17
+          Top = 118
+          Width = 132
           Caption = 'Valor do Documento:'
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -13
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
           ParentColor = False
+          ParentFont = False
         end
         object EdtValor: TEdit
-          Left = 473
-          Height = 23
-          Top = 125
+          Left = 489
+          Height = 25
+          Top = 141
           Width = 120
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -13
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
           OnChange = EdtValorChange
           OnExit = EdtValorExit
           OnKeyPress = EdtValorKeyPress
+          ParentFont = False
           TabOrder = 0
         end
         object EdtNDoc: TEdit
-          Left = 529
-          Height = 23
-          Top = 63
+          Left = 545
+          Height = 25
+          Top = 79
           Width = 120
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -13
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          ParentFont = False
           TabOrder = 1
         end
         object Label5: TLabel
-          Left = 16
-          Height = 15
-          Top = 102
-          Width = 63
+          Left = 32
+          Height = 17
+          Top = 118
+          Width = 74
           Caption = 'Fornecedor:'
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -13
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
           ParentColor = False
+          ParentFont = False
         end
         object Label6: TLabel
-          Left = 240
-          Height = 15
-          Top = 100
-          Width = 89
+          Left = 256
+          Height = 17
+          Top = 118
+          Width = 103
           Caption = 'Centro de Custo:'
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -13
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
           ParentColor = False
+          ParentFont = False
         end
         object GrpTipo: TGroupBox
-          Left = 16
+          Left = 32
           Height = 48
-          Top = 40
+          Top = 56
           Width = 144
           Caption = 'Tipo:'
-          ClientHeight = 28
+          ClientHeight = 26
           ClientWidth = 140
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -13
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
+          ParentFont = False
           TabOrder = 2
           object ChkReceita: TRadioButton
             Left = 0
-            Height = 28
+            Height = 26
             Top = 0
-            Width = 58
+            Width = 64
             Align = alLeft
             Caption = 'Receita'
             OnChange = ChkReceitaChange
             TabOrder = 0
           end
           object ChkDespesa: TRadioButton
-            Left = 77
-            Height = 28
+            Left = 69
+            Height = 26
             Top = 0
-            Width = 63
+            Width = 71
             Align = alRight
             Caption = 'Despesa'
             OnChange = ChkDespesaChange
@@ -140,19 +192,26 @@ object FrmCadLancamento: TFrmCadLancamento
           end
         end
         object EdtConsCentro: TEdit
-          Left = 240
-          Height = 23
-          Top = 126
+          Left = 256
+          Height = 25
+          Top = 142
           Width = 145
           Enabled = False
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -13
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
           NumbersOnly = True
+          ParentFont = False
           TabOrder = 3
         end
         object BtnConsCentro: TSpeedButton
-          Left = 392
-          Height = 22
-          Top = 126
+          Left = 408
+          Height = 27
+          Top = 141
           Width = 49
+          AutoSize = True
+          Flat = True
           Glyph.Data = {
             62100000424D621000000000000036000000280000002D000000170000000100
             2000000000002C10000064000000640000000000000000000000FFFFFF00C100
@@ -290,43 +349,63 @@ object FrmCadLancamento: TFrmCadLancamento
           OnClick = BtnConsCentroClick
         end
         object EdtConsFornecedor: TEdit
-          Left = 16
-          Height = 23
-          Top = 126
+          Left = 32
+          Height = 25
+          Top = 142
           Width = 145
           Enabled = False
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -13
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
           NumbersOnly = True
+          ParentFont = False
           TabOrder = 4
         end
         object Label9: TLabel
-          Left = 16
-          Height = 15
-          Top = 173
-          Width = 65
+          Left = 32
+          Height = 17
+          Top = 189
+          Width = 76
           Caption = 'Observação:'
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -13
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
           ParentColor = False
+          ParentFont = False
         end
         object MemObservacao: TMemo
-          Left = 16
+          Left = 32
           Height = 101
-          Top = 196
-          Width = 616
+          Top = 212
+          Width = 633
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -13
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          ParentFont = False
           TabOrder = 5
         end
         object LblMensagem: TLabel
-          Left = 16
-          Height = 15
-          Top = 305
-          Width = 118
+          Left = 32
+          Height = 17
+          Top = 320
+          Width = 137
           Caption = '*Campos Obrigatorios'
-          Font.Color = clRed
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -13
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
           ParentColor = False
           ParentFont = False
         end
         object BtnSalvar: TSpeedButton
-          Left = 381
+          Left = 413
           Height = 34
-          Top = 400
+          Top = 344
           Width = 124
           AutoSize = True
           Glyph.Data = {
@@ -786,10 +865,12 @@ object FrmCadLancamento: TFrmCadLancamento
           OnClick = BtnSalvarClick
         end
         object BtnConsCentro1: TSpeedButton
-          Left = 169
-          Height = 22
-          Top = 128
+          Left = 184
+          Height = 27
+          Top = 141
           Width = 49
+          AutoSize = True
+          Flat = True
           Glyph.Data = {
             62100000424D621000000000000036000000280000002D000000170000000100
             2000000000002C10000064000000640000000000000000000000FFFFFF00C100
@@ -927,9 +1008,9 @@ object FrmCadLancamento: TFrmCadLancamento
           OnClick = BtnConsCentro1Click
         end
         object BtnSair: TSpeedButton
-          Left = 508
+          Left = 541
           Height = 34
-          Top = 400
+          Top = 344
           Width = 124
           AutoSize = True
           Glyph.Data = {
@@ -1389,32 +1470,44 @@ object FrmCadLancamento: TFrmCadLancamento
           OnClick = BtnSairClick
         end
         object DTLancamento: TDateEdit
-          Left = 177
-          Height = 23
-          Top = 63
+          Left = 193
+          Height = 25
+          Top = 79
           Width = 145
           CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
           DateOrder = doNone
           ButtonWidth = 23
           NumGlyphs = 1
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -13
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
           MaxLength = 0
           OnChange = DTLancamentoChange
+          ParentFont = False
           TabOrder = 6
         end
         object EdtTipoDocumento: TEdit
-          Left = 337
-          Height = 23
-          Top = 63
+          Left = 353
+          Height = 25
+          Top = 79
           Width = 120
           Enabled = False
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -13
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
           NumbersOnly = True
+          ParentFont = False
           TabOrder = 7
         end
         object BtnConsTipoConta: TSpeedButton
-          Left = 465
-          Height = 22
-          Top = 63
+          Left = 480
+          Height = 27
+          Top = 77
           Width = 49
+          AutoSize = True
+          Flat = True
           Glyph.Data = {
             62100000424D621000000000000036000000280000002D000000170000000100
             2000000000002C10000064000000640000000000000000000000FFFFFF00C100
@@ -1551,31 +1644,31 @@ object FrmCadLancamento: TFrmCadLancamento
           }
           OnClick = BtnConsTipoContaClick
         end
-        object Label7: TLabel
-          Left = 0
-          Height = 32
-          Top = 0
-          Width = 674
-          Align = alTop
-          Alignment = taCenter
-          Caption = 'Lançamento'
-          Font.CharSet = ANSI_CHARSET
-          Font.Color = 10420224
-          Font.Height = -24
-          Font.Name = 'Segoe UI'
-          Font.Pitch = fpVariable
-          Font.Quality = fqDraft
-          Font.Style = [fsBold]
-          ParentColor = False
-          ParentFont = False
-        end
+      end
+      object Label7: TLabel
+        Left = 0
+        Height = 32
+        Top = 0
+        Width = 968
+        Align = alTop
+        Alignment = taCenter
+        Caption = 'Lançamento'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = 10420224
+        Font.Height = -24
+        Font.Name = 'Segoe UI'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
       end
     end
     object PnChama: TPanel
       Left = 1
-      Height = 747
+      Height = 701
       Top = 1
-      Width = 1084
+      Width = 968
       Align = alClient
       TabOrder = 1
       OnClick = PnChamaClick

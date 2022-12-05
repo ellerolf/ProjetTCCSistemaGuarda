@@ -9,7 +9,7 @@ object FrmBuscaConta: TFrmBuscaConta
   ClientWidth = 590
   OnClose = FormClose
   OnShow = FormShow
-  Position = poDesktopCenter
+  Position = poScreenCenter
   object Panel1: TPanel
     Left = 0
     Height = 540
@@ -23,16 +23,22 @@ object FrmBuscaConta: TFrmBuscaConta
     TabOrder = 0
     object EdtConsulta: TEdit
       Left = 16
-      Height = 23
+      Height = 25
       Top = 60
       Width = 224
+      Font.CharSet = ANSI_CHARSET
+      Font.Height = -13
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
       OnChange = EdtConsultaChange
+      ParentFont = False
       TabOrder = 0
     end
     object BtnConsulta: TSpeedButton
       Left = 248
       Height = 27
-      Top = 56
+      Top = 60
       Width = 49
       AutoSize = True
       Glyph.Data = {
@@ -176,7 +182,6 @@ object FrmBuscaConta: TFrmBuscaConta
       Height = 376
       Top = 104
       Width = 285
-      Color = clWindow
       Columns = <      
         item
           Title.Caption = 'CÓDIGO'
@@ -189,13 +194,21 @@ object FrmBuscaConta: TFrmBuscaConta
           FieldName = 'CONNOME'
         end>
       DataSource = DM.DSBuscaConta
+      FixedColor = clHighlight
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+      ParentColor = True
       TabOrder = 1
+      TitleFont.CharSet = ANSI_CHARSET
+      TitleFont.Color = clWhite
+      TitleFont.Height = -13
+      TitleFont.Pitch = fpVariable
+      TitleFont.Quality = fqDraft
+      TitleFont.Style = [fsBold]
       Visible = False
       OnCellClick = DBGCaixaCellClick
     end
     object BtnSelecione: TSpeedButton
-      Left = 456
+      Left = 452
       Height = 34
       Top = 496
       Width = 124
@@ -352,7 +365,7 @@ object FrmBuscaConta: TFrmBuscaConta
       OnClick = BtnSelecioneClick
     end
     object BtnSelecione1: TSpeedButton
-      Left = 328
+      Left = 320
       Height = 34
       Top = 496
       Width = 124
@@ -509,10 +522,10 @@ object FrmBuscaConta: TFrmBuscaConta
       OnClick = BtnSelecione1Click
     end
     object RGBTipoConta: TRadioGroup
-      Left = 356
-      Height = 33
-      Top = 56
-      Width = 216
+      Left = 328
+      Height = 44
+      Top = 41
+      Width = 244
       AutoFill = True
       Caption = 'TIPOS DE CONTA'
       ChildSizing.LeftRightSpacing = 6
@@ -522,11 +535,11 @@ object FrmBuscaConta: TFrmBuscaConta
       ChildSizing.ShrinkVertical = crsScaleChilds
       ChildSizing.Layout = cclLeftToRightThenTopToBottom
       ChildSizing.ControlsPerLine = 2
-      ClientHeight = 15
-      ClientWidth = 212
+      ClientHeight = 22
+      ClientWidth = 240
       Columns = 2
       Font.CharSet = ANSI_CHARSET
-      Font.Height = -11
+      Font.Height = -13
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
       Font.Style = [fsBold]
@@ -544,7 +557,6 @@ object FrmBuscaConta: TFrmBuscaConta
       Height = 380
       Top = 104
       Width = 560
-      Color = clWindow
       Columns = <      
         item
           Title.Caption = 'CÓDIGO'
@@ -572,8 +584,16 @@ object FrmBuscaConta: TFrmBuscaConta
           FieldName = 'CONNUMERO_CONTA'
         end>
       DataSource = DM.DSBuscaConta
+      FixedColor = clHighlight
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+      ParentColor = True
       TabOrder = 3
+      TitleFont.CharSet = ANSI_CHARSET
+      TitleFont.Color = clWhite
+      TitleFont.Height = -13
+      TitleFont.Pitch = fpVariable
+      TitleFont.Quality = fqDraft
+      TitleFont.Style = [fsBold]
       Visible = False
       OnCellClick = DBGContasBancCellClick
     end

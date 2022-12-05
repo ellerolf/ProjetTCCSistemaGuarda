@@ -2,25 +2,35 @@ object FrmConsFornecedores: TFrmConsFornecedores
   Left = -8
   Height = 788
   Top = -8
-  Width = 1054
+  Width = 1086
   BorderStyle = bsNone
   Caption = 'FrmConsFornecedores'
   ClientHeight = 749
-  ClientWidth = 1054
+  ClientWidth = 1086
   Color = 16577259
   OnClose = FormClose
   OnResize = FormResize
   OnShow = FormShow
   Position = poScreenCenter
   WindowState = wsFullScreen
+  object PnChama: TPanel
+    Left = 0
+    Height = 749
+    Top = 0
+    Width = 1086
+    Align = alClient
+    BevelOuter = bvNone
+    TabOrder = 1
+    OnClick = PnChamaClick
+  end
   object Panel1: TPanel
     Left = 0
     Height = 749
     Top = 0
-    Width = 1054
+    Width = 1086
     Align = alClient
     ClientHeight = 749
-    ClientWidth = 1054
+    ClientWidth = 1086
     TabOrder = 0
     object Panel2: TPanel
       Left = 0
@@ -52,18 +62,27 @@ object FrmConsFornecedores: TFrmConsFornecedores
       end
       object EdtConsulta: TEdit
         Left = 440
-        Height = 23
+        Height = 25
         Top = 75
         Width = 328
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -13
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
         OnChange = EdtConsultaChange
+        ParentFont = False
         TabOrder = 1
       end
       object CboStatus: TComboBox
         Left = 168
-        Height = 23
+        Height = 25
         Top = 75
         Width = 128
-        ItemHeight = 15
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -13
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ItemHeight = 17
         ItemIndex = 0
         Items.Strings = (
           'Selecione à opção'
@@ -71,6 +90,7 @@ object FrmConsFornecedores: TFrmConsFornecedores
           'INATIVO'
         )
         OnChange = CboStatusChange
+        ParentFont = False
         TabOrder = 2
         Text = 'Selecione à opção'
       end
@@ -140,8 +160,13 @@ object FrmConsFornecedores: TFrmConsFornecedores
           end>
         DataSource = DM.DSConsPessoas
         FixedColor = clHotLight
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -13
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
         ParentColor = True
+        ParentFont = False
         TabOrder = 3
         TitleFont.CharSet = ANSI_CHARSET
         TitleFont.Color = clWhite
@@ -153,10 +178,14 @@ object FrmConsFornecedores: TFrmConsFornecedores
       end
       object CboTipoPessoa: TComboBox
         Left = 304
-        Height = 23
+        Height = 25
         Top = 75
         Width = 128
-        ItemHeight = 15
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -13
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ItemHeight = 17
         ItemIndex = 0
         Items.Strings = (
           'Selecione à opção'
@@ -164,6 +193,7 @@ object FrmConsFornecedores: TFrmConsFornecedores
           'CNPJ'
         )
         OnChange = CboTipoPessoaChange
+        ParentFont = False
         TabOrder = 4
         Text = 'Selecione à opção'
       end
@@ -1143,8 +1173,13 @@ object FrmConsFornecedores: TFrmConsFornecedores
           end>
         DataSource = DM.DSConsPessoas
         FixedColor = clHotLight
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -13
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
         ParentColor = True
+        ParentFont = False
         TabOrder = 5
         TitleFont.CharSet = ANSI_CHARSET
         TitleFont.Color = clWhite
@@ -1187,8 +1222,13 @@ object FrmConsFornecedores: TFrmConsFornecedores
           end>
         DataSource = DM.DSConsPessoas
         FixedColor = clHighlight
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -13
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
         ParentColor = True
+        ParentFont = False
         PopupMenu = PopupMenu1
         TabOrder = 0
         TitleFont.CharSet = ANSI_CHARSET
@@ -1200,16 +1240,6 @@ object FrmConsFornecedores: TFrmConsFornecedores
         OnCellClick = GrTodosCellClick
       end
     end
-  end
-  object PnChama: TPanel
-    Left = 0
-    Height = 749
-    Top = 0
-    Width = 1054
-    Align = alClient
-    BevelOuter = bvNone
-    TabOrder = 1
-    OnClick = PnChamaClick
   end
   object PopupMenu1: TPopupMenu
     Left = 415

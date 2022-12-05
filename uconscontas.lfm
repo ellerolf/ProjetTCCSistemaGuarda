@@ -1,42 +1,43 @@
 object FrmConsContas: TFrmConsContas
   Left = -8
-  Height = 788
+  Height = 648
   Top = -8
-  Width = 1134
+  Width = 938
   BorderStyle = bsNone
   Caption = 'FrmConsContas'
-  ClientHeight = 749
-  ClientWidth = 1134
+  ClientHeight = 648
+  ClientWidth = 938
   Color = 16577259
   OnClose = FormClose
   OnResize = FormResize
   OnShow = FormShow
   Position = poScreenCenter
+  LCLVersion = '2.2.2.0'
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 749
+    Height = 648
     Top = 0
-    Width = 1134
+    Width = 938
     Align = alClient
-    ClientHeight = 749
-    ClientWidth = 1134
+    ClientHeight = 648
+    ClientWidth = 938
     TabOrder = 0
     object Panel2: TPanel
       Left = 1
-      Height = 747
+      Height = 646
       Top = 1
-      Width = 1132
+      Width = 936
       Align = alClient
       BevelOuter = bvNone
-      ClientHeight = 747
-      ClientWidth = 1132
+      ClientHeight = 646
+      ClientWidth = 936
       TabOrder = 0
       object Label7: TLabel
         Left = 0
         Height = 32
         Top = 0
-        Width = 1132
+        Width = 936
         Align = alTop
         Alignment = taCenter
         Caption = 'Contas Bancarias'
@@ -51,9 +52,9 @@ object FrmConsContas: TFrmConsContas
         ParentFont = False
       end
       object Label1: TLabel
-        Left = 345
+        Left = 392
         Height = 17
-        Top = 51
+        Top = 48
         Width = 86
         Caption = 'Ativo/Inativo:'
         Font.CharSet = ANSI_CHARSET
@@ -65,9 +66,9 @@ object FrmConsContas: TFrmConsContas
         ParentFont = False
       end
       object Label2: TLabel
-        Left = 481
+        Left = 513
         Height = 17
-        Top = 51
+        Top = 48
         Width = 66
         Caption = 'Por Nome:'
         Font.CharSet = ANSI_CHARSET
@@ -79,10 +80,10 @@ object FrmConsContas: TFrmConsContas
         ParentFont = False
       end
       object CboStatus: TComboBox
-        Left = 345
+        Left = 392
         Height = 23
         Top = 68
-        Width = 128
+        Width = 104
         ItemHeight = 15
         Items.Strings = (
           'TODOS'
@@ -94,15 +95,20 @@ object FrmConsContas: TFrmConsContas
         TabOrder = 0
       end
       object EdtConsulta: TEdit
-        Left = 481
-        Height = 23
+        Left = 513
+        Height = 25
         Top = 68
         Width = 192
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -13
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
         OnChange = EdtConsultaChange
+        ParentFont = False
         TabOrder = 1
       end
       object BtnAlterar: TSpeedButton
-        Left = 481
+        Left = 532
         Height = 34
         Top = 512
         Width = 124
@@ -565,7 +571,7 @@ object FrmConsContas: TFrmConsContas
         OnClick = BtnAlterarClick
       end
       object BtnSair: TSpeedButton
-        Left = 609
+        Left = 658
         Height = 34
         Top = 512
         Width = 124
@@ -1028,11 +1034,10 @@ object FrmConsContas: TFrmConsContas
         OnClick = BtnSairClick
       end
       object DBGConsCaixa: TDBGrid
-        Left = 129
+        Left = 136
         Height = 397
         Top = 107
-        Width = 600
-        Color = clWindow
+        Width = 645
         Columns = <        
           item
             Title.Caption = 'CÓDIGO'
@@ -1040,12 +1045,12 @@ object FrmConsContas: TFrmConsContas
           end        
           item
             Title.Caption = 'NOME DA CONTA CAIXA'
-            Width = 250
+            Width = 285
             FieldName = 'CONNOME'
           end        
           item
             Title.Caption = 'TIPO DA CONTA'
-            Width = 173
+            Width = 180
             FieldName = 'TIPNOME'
           end        
           item
@@ -1054,16 +1059,29 @@ object FrmConsContas: TFrmConsContas
             FieldName = 'STATUS'
           end>
         DataSource = DM.DSConsBancarias
+        FixedColor = clHighlight
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -13
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+        ParentColor = True
+        ParentFont = False
         TabOrder = 2
+        TitleFont.CharSet = ANSI_CHARSET
+        TitleFont.Color = clWhite
+        TitleFont.Height = -13
+        TitleFont.Pitch = fpVariable
+        TitleFont.Quality = fqDraft
+        TitleFont.Style = [fsBold]
         Visible = False
         OnCellClick = DBGConsCaixaCellClick
       end
       object RGBConsTipoConta: TRadioGroup
-        Left = 129
+        Left = 160
         Height = 43
         Top = 51
-        Width = 208
+        Width = 218
         AutoFill = True
         Caption = 'Tipo de Conta'
         ChildSizing.LeftRightSpacing = 6
@@ -1073,26 +1091,31 @@ object FrmConsContas: TFrmConsContas
         ChildSizing.ShrinkVertical = crsScaleChilds
         ChildSizing.Layout = cclLeftToRightThenTopToBottom
         ChildSizing.ControlsPerLine = 2
-        ClientHeight = 23
-        ClientWidth = 204
+        ClientHeight = 21
+        ClientWidth = 214
         Columns = 2
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -13
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
         Items.Strings = (
           'CAIXA'
           'CONTAS BANCÁRIAS'
         )
         OnClick = RGBConsTipoContaClick
+        ParentFont = False
         TabOrder = 3
       end
       object DBGConsContasBancarias: TDBGrid
-        Left = 129
+        Left = 136
         Height = 397
         Top = 107
-        Width = 600
-        Color = clWindow
+        Width = 646
         Columns = <        
           item
             Title.Caption = 'CÓDIGO'
-            Width = 50
+            Width = 80
             FieldName = 'CONCODIGO'
           end        
           item
@@ -1112,7 +1135,7 @@ object FrmConsContas: TFrmConsContas
           end        
           item
             Title.Caption = 'N° DA CONTA'
-            Width = 85
+            Width = 100
             FieldName = 'CONNUMERO_CONTA'
           end        
           item
@@ -1121,17 +1144,31 @@ object FrmConsContas: TFrmConsContas
             FieldName = 'STATUS'
           end>
         DataSource = DM.DSConsBancarias
+        FixedColor = clHighlight
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -13
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+        ParentColor = True
+        ParentFont = False
         TabOrder = 4
+        TitleFont.CharSet = ANSI_CHARSET
+        TitleFont.Color = clWhite
+        TitleFont.Height = -13
+        TitleFont.Pitch = fpVariable
+        TitleFont.Quality = fqDraft
+        TitleFont.Style = [fsBold]
         Visible = False
         OnCellClick = DBGConsContasBancariasCellClick
       end
       object BtnPesquisar: TSpeedButton
-        Left = 680
+        Left = 712
         Height = 27
-        Top = 65
+        Top = 67
         Width = 49
         AutoSize = True
+        Flat = True
         Glyph.Data = {
           62100000424D621000000000000036000000280000002D000000170000000100
           2000000000002C10000064000000640000000000000000000000FFFFFF00C100
@@ -1269,7 +1306,7 @@ object FrmConsContas: TFrmConsContas
         OnClick = BtnPesquisarClick
       end
       object BtnImprimir: TSpeedButton
-        Left = 352
+        Left = 406
         Height = 34
         Top = 512
         Width = 124
@@ -1735,9 +1772,9 @@ object FrmConsContas: TFrmConsContas
   end
   object PnChamaConta: TPanel
     Left = 0
-    Height = 749
+    Height = 648
     Top = 0
-    Width = 1134
+    Width = 938
     Align = alClient
     TabOrder = 1
   end

@@ -22,16 +22,22 @@ object FrmBuscaDoc: TFrmBuscaDoc
     TabOrder = 0
     object EdtBuscaTipoDoc: TEdit
       Left = 16
-      Height = 23
+      Height = 25
       Top = 56
       Width = 232
+      Font.CharSet = ANSI_CHARSET
+      Font.Height = -13
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentFont = False
       TabOrder = 0
     end
     object BtnBuscaTipoDoc: TSpeedButton
       Left = 256
       Height = 27
-      Top = 56
+      Top = 54
       Width = 49
+      Flat = True
       Glyph.Data = {
         62100000424D621000000000000036000000280000002D000000170000000100
         2000000000002C10000064000000640000000000000000000000FFFFFF00C100
@@ -173,21 +179,29 @@ object FrmBuscaDoc: TFrmBuscaDoc
       Height = 412
       Top = 96
       Width = 288
-      Color = clWindow
       Columns = <      
         item
           Title.Caption = 'CÓDIGO'
-          Width = 50
+          Width = 80
           FieldName = 'DOCCODIGO'
         end      
         item
           Title.Caption = 'NOME'
-          Width = 205
+          Width = 175
           FieldName = 'DOCNOME'
         end>
       DataSource = DM.DSBuscaTipoDoc
+      FixedColor = clHighlight
+      FixedHotColor = clInactiveBorder
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+      ParentColor = True
       TabOrder = 1
+      TitleFont.CharSet = ANSI_CHARSET
+      TitleFont.Color = clWhite
+      TitleFont.Height = -13
+      TitleFont.Pitch = fpVariable
+      TitleFont.Quality = fqDraft
+      TitleFont.Style = [fsBold]
       OnCellClick = DBGrid1CellClick
     end
     object BtnCancelar: TSpeedButton
@@ -195,6 +209,7 @@ object FrmBuscaDoc: TFrmBuscaDoc
       Height = 34
       Top = 520
       Width = 124
+      Flat = True
       Glyph.Data = {
         46120000424D46120000000000003604000028000000780000001E0000000100
         080000000000100E00000E2700000E2700000001000099000000000000008080
@@ -351,6 +366,7 @@ object FrmBuscaDoc: TFrmBuscaDoc
       Height = 34
       Top = 520
       Width = 124
+      Flat = True
       Glyph.Data = {
         46120000424D46120000000000003604000028000000780000001E0000000100
         080000000000100E00000E2700000E270000000100009E000000000000007C7C

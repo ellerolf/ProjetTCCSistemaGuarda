@@ -1,12 +1,12 @@
 object FrmMenu: TFrmMenu
   Left = -8
-  Height = 714
+  Height = 692
   Top = -8
-  Width = 1126
+  Width = 1124
   BorderIcons = []
   Caption = 'Menu'
-  ClientHeight = 714
-  ClientWidth = 1126
+  ClientHeight = 692
+  ClientWidth = 1124
   Color = 16510433
   OnClose = FormClose
   OnCreate = FormCreate
@@ -14,14 +14,13 @@ object FrmMenu: TFrmMenu
   OnResize = FormResize
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.2.2.0'
   object Panel1: TPanel
     Left = 0
-    Height = 672
+    Height = 650
     Top = 42
     Width = 184
     Align = alLeft
-    ClientHeight = 672
+    ClientHeight = 650
     ClientWidth = 184
     Color = 16242363
     Font.CharSet = ANSI_CHARSET
@@ -10417,10 +10416,10 @@ object FrmMenu: TFrmMenu
     Left = 0
     Height = 42
     Top = 0
-    Width = 1126
+    Width = 1124
     Align = alTop
     ClientHeight = 42
-    ClientWidth = 1126
+    ClientWidth = 1124
     Color = 13238272
     ParentColor = False
     TabOrder = 1
@@ -11309,7 +11308,7 @@ object FrmMenu: TFrmMenu
       }
     end
     object BtnLogoff: TSpeedButton
-      Left = 1077
+      Left = 1075
       Height = 40
       Top = 1
       Width = 42
@@ -11506,7 +11505,7 @@ object FrmMenu: TFrmMenu
       OnClick = BtnLogoffClick
     end
     object BtnMudarSenha: TSpeedButton
-      Left = 1033
+      Left = 1031
       Height = 40
       Top = 1
       Width = 38
@@ -11702,7 +11701,7 @@ object FrmMenu: TFrmMenu
       OnClick = BtnMudarSenhaClick
     end
     object Panel3: TPanel
-      Left = 875
+      Left = 873
       Height = 40
       Top = 1
       Width = 152
@@ -13112,7 +13111,7 @@ object FrmMenu: TFrmMenu
       end
     end
     object espaca: TLabel
-      Left = 1071
+      Left = 1069
       Height = 40
       Top = 1
       Width = 6
@@ -13121,7 +13120,7 @@ object FrmMenu: TFrmMenu
       ParentColor = False
     end
     object espaca1: TLabel
-      Left = 1027
+      Left = 1025
       Height = 40
       Top = 1
       Width = 6
@@ -13130,7 +13129,7 @@ object FrmMenu: TFrmMenu
       ParentColor = False
     end
     object espaca2: TLabel
-      Left = 1119
+      Left = 1117
       Height = 40
       Top = 1
       Width = 6
@@ -13141,12 +13140,12 @@ object FrmMenu: TFrmMenu
   end
   object PnChama: TPanel
     Left = 184
-    Height = 672
+    Height = 650
     Top = 42
-    Width = 942
+    Width = 940
     Align = alClient
-    ClientHeight = 672
-    ClientWidth = 942
+    ClientHeight = 650
+    ClientWidth = 940
     Color = 16577259
     ParentColor = False
     TabOrder = 2
@@ -13154,9 +13153,9 @@ object FrmMenu: TFrmMenu
     OnClick = PnChamaClick
     object Image1: TImage
       Left = 1
-      Height = 670
+      Height = 648
       Top = 1
-      Width = 940
+      Width = 938
       Align = alClient
       Center = True
       Picture.Data = {

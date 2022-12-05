@@ -1,13 +1,13 @@
 object FrmCadUsuario: TFrmCadUsuario
   Left = -8
-  Height = 656
+  Height = 648
   Top = -8
-  Width = 894
+  Width = 938
   BorderIcons = [biSystemMenu]
   BorderStyle = bsNone
   Caption = 'Cadastro Usuario'
-  ClientHeight = 656
-  ClientWidth = 894
+  ClientHeight = 648
+  ClientWidth = 938
   Color = 16577259
   OnClose = FormClose
   OnResize = FormResize
@@ -15,31 +15,39 @@ object FrmCadUsuario: TFrmCadUsuario
   Position = poScreenCenter
   object Panel1: TPanel
     Left = 0
-    Height = 656
+    Height = 648
     Top = 0
-    Width = 894
+    Width = 938
     Align = alClient
-    ClientHeight = 656
-    ClientWidth = 894
+    ClientHeight = 648
+    ClientWidth = 938
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 0
     object Panel2: TPanel
       Left = 1
-      Height = 654
+      Height = 646
       Top = 1
-      Width = 892
+      Width = 936
       Align = alClient
       BevelOuter = bvNone
-      ClientHeight = 654
-      ClientWidth = 892
+      ClientHeight = 646
+      ClientWidth = 936
       TabOrder = 0
       OnClick = Panel2Click
       object Panel3: TPanel
-        Left = 168
-        Height = 656
-        Top = 32
+        Left = 184
+        Height = 655
+        Top = 33
         Width = 570
         BevelOuter = bvNone
-        ClientHeight = 656
+        ClientHeight = 655
         ClientWidth = 570
         TabOrder = 0
         object LblNome: TLabel
@@ -76,7 +84,7 @@ object FrmCadUsuario: TFrmCadUsuario
         end
         object EdtNome: TEdit
           Left = 22
-          Height = 23
+          Height = 25
           Top = 80
           Width = 270
           CharCase = ecUppercase
@@ -86,7 +94,7 @@ object FrmCadUsuario: TFrmCadUsuario
         end
         object EdtNomeUsuario: TEdit
           Left = 22
-          Height = 23
+          Height = 25
           Top = 143
           Width = 270
           CharCase = ecUppercase
@@ -95,7 +103,7 @@ object FrmCadUsuario: TFrmCadUsuario
         end
         object EdtSenha: TEdit
           Left = 22
-          Height = 23
+          Height = 25
           Top = 243
           Width = 171
           EchoMode = emPassword
@@ -137,7 +145,7 @@ object FrmCadUsuario: TFrmCadUsuario
         end
         object EdtConfSenha: TEdit
           Left = 214
-          Height = 23
+          Height = 25
           Top = 243
           Width = 171
           EchoMode = emPassword
@@ -147,9 +155,9 @@ object FrmCadUsuario: TFrmCadUsuario
         end
         object ChkMostrar: TCheckBox
           Left = 22
-          Height = 19
+          Height = 21
           Top = 270
-          Width = 96
+          Width = 109
           Caption = 'Mostrar Senha'
           OnChange = ChkMostrarChange
           TabOrder = 4
@@ -1094,11 +1102,13 @@ object FrmCadUsuario: TFrmCadUsuario
           ChildSizing.ShrinkVertical = crsScaleChilds
           ChildSizing.Layout = cclLeftToRightThenTopToBottom
           ChildSizing.ControlsPerLine = 2
-          ClientHeight = 33
+          ClientHeight = 31
           ClientWidth = 206
           Columns = 2
           Font.CharSet = ANSI_CHARSET
-          Font.Name = 'Segoe UI Semibold'
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
           Font.Pitch = fpVariable
           Font.Quality = fqDraft
           Font.Style = [fsBold]
@@ -1124,11 +1134,13 @@ object FrmCadUsuario: TFrmCadUsuario
           ChildSizing.ShrinkVertical = crsScaleChilds
           ChildSizing.Layout = cclLeftToRightThenTopToBottom
           ChildSizing.ControlsPerLine = 2
-          ClientHeight = 33
+          ClientHeight = 31
           ClientWidth = 181
           Columns = 2
           Font.CharSet = ANSI_CHARSET
-          Font.Name = 'Segoe UI Semibold'
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
           Font.Pitch = fpVariable
           Font.Quality = fqDraft
           Font.Style = [fsBold]
@@ -1160,7 +1172,7 @@ object FrmCadUsuario: TFrmCadUsuario
         Left = 0
         Height = 32
         Top = 0
-        Width = 892
+        Width = 936
         Align = alTop
         Alignment = taCenter
         Caption = 'Cadastro de Usuários'

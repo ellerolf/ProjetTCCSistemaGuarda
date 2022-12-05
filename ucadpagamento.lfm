@@ -141,11 +141,16 @@ object FrmCadParcela: TFrmCadParcela
     end
     object EdtValor: TEdit
       Left = 240
-      Height = 23
+      Height = 25
       Top = 200
-      Width = 112
+      Width = 120
+      Font.CharSet = ANSI_CHARSET
+      Font.Height = -13
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
       OnExit = EdtValorExit
       OnKeyPress = EdtValorKeyPress
+      ParentFont = False
       TabOrder = 2
     end
     object SpeedButton1: TSpeedButton
@@ -502,12 +507,12 @@ object FrmCadParcela: TFrmCadParcela
       Left = 40
       Height = 240
       Top = 240
-      Width = 312
-      Color = clWindow
+      Width = 320
+      Color = 16577259
       Columns = <      
         item
           Title.Caption = 'CÓD PARCELA'
-          Width = 83
+          Width = 90
           FieldName = 'BAICODIGO'
         end      
         item
@@ -521,8 +526,20 @@ object FrmCadParcela: TFrmCadParcela
           FieldName = 'BAIVALOR'
         end>
       DataSource = DM.DSConsLanData
+      FixedColor = clHighlight
+      Font.CharSet = ANSI_CHARSET
+      Font.Height = -13
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+      ParentFont = False
       TabOrder = 3
+      TitleFont.CharSet = ANSI_CHARSET
+      TitleFont.Color = clWhite
+      TitleFont.Height = -13
+      TitleFont.Pitch = fpVariable
+      TitleFont.Quality = fqDraft
+      TitleFont.Style = [fsBold]
       OnCellClick = DBGrid1CellClick
     end
     object SpeedButton5: TSpeedButton
@@ -1830,12 +1847,17 @@ object FrmCadParcela: TFrmCadParcela
     end
     object EdtValorLanc: TEdit
       Left = 384
-      Height = 23
+      Height = 25
       Top = 312
       Width = 80
       Enabled = False
+      Font.CharSet = ANSI_CHARSET
+      Font.Height = -13
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
       OnExit = EdtValorLancExit
       OnKeyPress = EdtValorLancKeyPress
+      ParentFont = False
       TabOrder = 4
     end
     object BtnSalvar: TSpeedButton
@@ -2235,14 +2257,19 @@ object FrmCadParcela: TFrmCadParcela
   end
   object DtDataParcela: TDateEdit
     Left = 40
-    Height = 23
+    Height = 25
     Top = 200
     Width = 167
     CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
     DateOrder = doNone
     ButtonWidth = 23
     NumGlyphs = 1
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -13
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
     MaxLength = 0
+    ParentFont = False
     TabOrder = 1
   end
 end

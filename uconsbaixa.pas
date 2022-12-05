@@ -53,8 +53,8 @@ type
     MemObservacao: TMemo;
     Panel1: TPanel;
     Panel2: TPanel;
+    Panel3: TPanel;
     PnChamaBaixa: TPanel;
-    Panel4: TPanel;
     PnChamaLanca: TPanel;
     BtnPesquisa1: TSpeedButton;
     BtnPesquisa2: TSpeedButton;
@@ -87,6 +87,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure ListBox1Click(Sender: TObject);
     procedure Panel2Click(Sender: TObject);
+    procedure Panel4Click(Sender: TObject);
     procedure PnChamaLancaClick(Sender: TObject);
     procedure BtnPesquisa1Click(Sender: TObject);
     procedure BtnPesquisa2Click(Sender: TObject);
@@ -179,6 +180,11 @@ end;
 
 
 procedure TFrmConsBaixa.Panel2Click(Sender: TObject);
+begin
+
+end;
+
+procedure TFrmConsBaixa.Panel4Click(Sender: TObject);
 begin
 
 end;

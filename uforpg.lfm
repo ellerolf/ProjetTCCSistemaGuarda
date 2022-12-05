@@ -9,7 +9,7 @@ object FrmForPg: TFrmForPg
   Color = 16577259
   OnClose = FormClose
   OnShow = FormShow
-  Position = poDesktopCenter
+  Position = poScreenCenter
   object Panel1: TPanel
     Left = 0
     Height = 474
@@ -171,10 +171,9 @@ object FrmForPg: TFrmForPg
     end
     object DBGrid1: TDBGrid
       Left = 16
-      Height = 372
-      Top = 48
+      Height = 380
+      Top = 40
       Width = 281
-      Color = clWindow
       Columns = <      
         item
           Title.Caption = 'CÓD'
@@ -187,8 +186,16 @@ object FrmForPg: TFrmForPg
           FieldName = 'FORNOME'
         end>
       DataSource = DM.DSFormaPagto
+      FixedColor = clHighlight
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+      ParentColor = True
       TabOrder = 1
+      TitleFont.CharSet = ANSI_CHARSET
+      TitleFont.Color = clWhite
+      TitleFont.Height = -13
+      TitleFont.Pitch = fpVariable
+      TitleFont.Quality = fqDraft
+      TitleFont.Style = [fsBold]
       OnCellClick = DBGrid1CellClick
     end
     object BtnSair: TSpeedButton

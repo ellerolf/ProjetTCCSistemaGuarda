@@ -1,12 +1,12 @@
 object FrmConsParcelas: TFrmConsParcelas
   Left = 1616
-  Height = 269
+  Height = 267
   Top = 31
-  Width = 727
+  Width = 712
   BorderIcons = []
   Caption = 'Ver Parcelas'
-  ClientHeight = 269
-  ClientWidth = 727
+  ClientHeight = 267
+  ClientWidth = 712
   Color = 16577259
   OnActivate = FormActivate
   OnClose = FormClose
@@ -15,8 +15,7 @@ object FrmConsParcelas: TFrmConsParcelas
     Left = 16
     Height = 168
     Top = 48
-    Width = 696
-    Color = clWindow
+    Width = 680
     Columns = <    
       item
         Title.Caption = 'COD'
@@ -34,7 +33,7 @@ object FrmConsParcelas: TFrmConsParcelas
       end    
       item
         Title.Caption = 'DATA VENCIMENTO'
-        Width = 110
+        Width = 130
         FieldName = 'BAIDATAVEN'
       end    
       item
@@ -46,14 +45,22 @@ object FrmConsParcelas: TFrmConsParcelas
         FieldName = 'STATUS'
       end>
     DataSource = DM.DSConsVerParc
+    FixedColor = clHighlight
     Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+    ParentColor = True
     TabOrder = 0
+    TitleFont.CharSet = ANSI_CHARSET
+    TitleFont.Color = clWhite
+    TitleFont.Height = -13
+    TitleFont.Pitch = fpVariable
+    TitleFont.Quality = fqDraft
+    TitleFont.Style = [fsBold]
   end
   object Label7: TLabel
     Left = 0
     Height = 32
     Top = 0
-    Width = 727
+    Width = 712
     Align = alTop
     Alignment = taCenter
     Caption = 'Ver Parcelas'
@@ -69,9 +76,9 @@ object FrmConsParcelas: TFrmConsParcelas
     OnClick = Label7Click
   end
   object BtnSair: TSpeedButton
-    Left = 592
+    Left = 576
     Height = 30
-    Top = 232
+    Top = 224
     Width = 120
     Glyph.Data = {
       76380000424D76380000000000003600000028000000780000001E0000000100

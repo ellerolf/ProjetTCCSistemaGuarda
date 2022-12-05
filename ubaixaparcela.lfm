@@ -2116,9 +2116,9 @@ object FRMBaixaParcela: TFRMBaixaParcela
       OnClick = BtnCancelaClick
     end
     object LblTotPg: TLabel
-      Left = 416
+      Left = 368
       Height = 21
-      Top = 296
+      Top = 297
       Width = 185
       Caption = 'TOTAL DO PAGAMENTO:'
       Font.CharSet = ANSI_CHARSET
@@ -2130,22 +2130,21 @@ object FRMBaixaParcela: TFRMBaixaParcela
       ParentFont = False
     end
     object Panel7: TPanel
-      Left = 618
+      Left = 560
       Height = 21
-      Top = 297
-      Width = 80
-      AutoSize = True
+      Top = 296
+      Width = 150
       BevelColor = clBackground
       BevelOuter = bvNone
       ClientHeight = 21
-      ClientWidth = 80
+      ClientWidth = 150
       Enabled = False
       TabOrder = 2
       object EdtValorTot: TEdit
         Left = 0
         Height = 21
         Top = 0
-        Width = 80
+        Width = 150
         Align = alClient
         Alignment = taRightJustify
         BorderStyle = bsNone

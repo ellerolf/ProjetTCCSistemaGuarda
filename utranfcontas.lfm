@@ -1,35 +1,36 @@
 object FrmTranfContas: TFrmTranfContas
   Left = -8
-  Height = 708
+  Height = 648
   Top = -8
-  Width = 948
+  Width = 938
   BorderStyle = bsNone
   Caption = 'FrmTranfContas'
-  ClientHeight = 708
-  ClientWidth = 948
+  ClientHeight = 648
+  ClientWidth = 938
   Color = 16577259
   OnClose = FormClose
   OnResize = FormResize
   OnShow = FormShow
   Position = poScreenCenter
+  LCLVersion = '2.2.2.0'
   object Panel1: TPanel
     Left = 0
-    Height = 708
+    Height = 648
     Top = 0
-    Width = 948
+    Width = 938
     Align = alClient
-    ClientHeight = 708
-    ClientWidth = 948
+    ClientHeight = 648
+    ClientWidth = 938
     TabOrder = 0
     object Panel2: TPanel
       Left = 1
-      Height = 674
+      Height = 614
       Top = 33
-      Width = 946
+      Width = 936
       Align = alClient
       BevelOuter = bvNone
-      ClientHeight = 674
-      ClientWidth = 946
+      ClientHeight = 614
+      ClientWidth = 936
       TabOrder = 0
       OnResize = Panel1Resize
       object BtnCancela: TSpeedButton
@@ -959,7 +960,7 @@ object FrmTranfContas: TFrmTranfContas
       object SpeedButton3: TSpeedButton
         Left = 767
         Height = 27
-        Top = 44
+        Top = 46
         Width = 49
         AutoSize = True
         Flat = True
@@ -1104,7 +1105,6 @@ object FrmTranfContas: TFrmTranfContas
         Height = 380
         Top = 80
         Width = 672
-        Color = clWindow
         Columns = <        
           item
             Title.Caption = 'CODIGO'
@@ -1160,8 +1160,16 @@ object FrmTranfContas: TFrmTranfContas
             FieldName = 'STATUS'
           end>
         DataSource = DM.DSConsTransferencia
+        FixedColor = clHighlight
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+        ParentColor = True
         TabOrder = 0
+        TitleFont.CharSet = ANSI_CHARSET
+        TitleFont.Color = clWhite
+        TitleFont.Height = -13
+        TitleFont.Pitch = fpVariable
+        TitleFont.Quality = fqDraft
+        TitleFont.Style = [fsBold]
         Visible = False
         OnCellClick = DBGrid1CellClick
       end
@@ -1181,42 +1189,57 @@ object FrmTranfContas: TFrmTranfContas
       end
       object CboStatus: TComboBox
         Left = 144
-        Height = 23
+        Height = 25
         Top = 48
         Width = 128
-        ItemHeight = 15
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -13
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ItemHeight = 17
         ItemIndex = 0
         Items.Strings = (
           'TODOS'
           'ATIVO'
           'INATIVO'
         )
+        ParentFont = False
         Style = csDropDownList
         TabOrder = 1
         Text = 'TODOS'
       end
       object DTInicial: TDateEdit
         Left = 456
-        Height = 23
+        Height = 25
         Top = 48
         Width = 128
         CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
         DateOrder = doNone
         ButtonWidth = 23
         NumGlyphs = 1
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -13
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
         MaxLength = 0
+        ParentFont = False
         TabOrder = 2
       end
       object DTFinal: TDateEdit
         Left = 624
-        Height = 23
+        Height = 25
         Top = 48
         Width = 128
         CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
         DateOrder = doNone
         ButtonWidth = 23
         NumGlyphs = 1
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -13
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
         MaxLength = 0
+        ParentFont = False
         TabOrder = 3
       end
       object Label2: TLabel
@@ -1709,7 +1732,7 @@ object FrmTranfContas: TFrmTranfContas
       Left = 1
       Height = 32
       Top = 1
-      Width = 946
+      Width = 936
       Align = alTop
       Alignment = taCenter
       Caption = 'Transferências Bancarias'
@@ -1726,9 +1749,9 @@ object FrmTranfContas: TFrmTranfContas
   end
   object PnChamaTrans: TPanel
     Left = 0
-    Height = 708
+    Height = 648
     Top = 0
-    Width = 948
+    Width = 938
     Align = alClient
     TabOrder = 1
   end

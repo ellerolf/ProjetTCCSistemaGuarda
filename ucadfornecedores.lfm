@@ -2,12 +2,17 @@ object FrmCadFornecedor: TFrmCadFornecedor
   Left = -8
   Height = 788
   Top = -8
-  Width = 1070
+  Width = 1102
   BorderStyle = bsNone
   Caption = 'Cadastro Fornecedores'
   ClientHeight = 749
-  ClientWidth = 1070
+  ClientWidth = 1102
   Color = 16577259
+  Font.CharSet = ANSI_CHARSET
+  Font.Height = -13
+  Font.Pitch = fpVariable
+  Font.Quality = fqDraft
+  Font.Style = [fsBold]
   OnClose = FormClose
   OnCreate = FormCreate
   OnResize = FormResize
@@ -18,26 +23,26 @@ object FrmCadFornecedor: TFrmCadFornecedor
     Left = 0
     Height = 749
     Top = 0
-    Width = 1070
+    Width = 1102
     Align = alClient
     ClientHeight = 749
-    ClientWidth = 1070
+    ClientWidth = 1102
     TabOrder = 0
     object Panel2: TPanel
       Left = 1
       Height = 747
       Top = 1
-      Width = 1068
+      Width = 1100
       Align = alClient
       BevelOuter = bvNone
       ClientHeight = 747
-      ClientWidth = 1068
+      ClientWidth = 1100
       TabOrder = 0
       object LblTitulo: TLabel
         Left = 0
         Height = 32
         Top = 0
-        Width = 1068
+        Width = 1100
         Align = alTop
         Alignment = taCenter
         Caption = 'Cadastro Fornecedores'
@@ -59,6 +64,11 @@ object FrmCadFornecedor: TFrmCadFornecedor
         BevelOuter = bvNone
         ClientHeight = 656
         ClientWidth = 720
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -13
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ParentFont = False
         TabOrder = 0
         object GrpCnpjCpf: TGroupBox
           Left = 25
@@ -134,7 +144,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         end
         object EdtNome: TEdit
           Left = 24
-          Height = 23
+          Height = 25
           Top = 144
           Width = 312
           CharCase = ecUppercase
@@ -143,7 +153,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         end
         object EdtFantasia: TEdit
           Left = 352
-          Height = 23
+          Height = 25
           Top = 144
           Width = 345
           CharCase = ecUppercase
@@ -236,7 +246,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         end
         object EdtCidade: TEdit
           Left = 113
-          Height = 23
+          Height = 25
           Top = 312
           Width = 104
           CharCase = ecUppercase
@@ -245,7 +255,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         end
         object EdtEndereco: TEdit
           Left = 24
-          Height = 23
+          Height = 25
           Top = 256
           Width = 344
           CharCase = ecUppercase
@@ -268,7 +278,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         end
         object EdtNumero: TEdit
           Left = 384
-          Height = 23
+          Height = 25
           Top = 256
           Width = 56
           CharCase = ecUppercase
@@ -292,7 +302,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         end
         object EdtComplemento: TEdit
           Left = 449
-          Height = 23
+          Height = 25
           Top = 256
           Width = 112
           CharCase = ecUppercase
@@ -315,7 +325,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         end
         object EdtBairro: TEdit
           Left = 568
-          Height = 23
+          Height = 25
           Top = 256
           Width = 128
           CharCase = ecUppercase
@@ -338,11 +348,11 @@ object FrmCadFornecedor: TFrmCadFornecedor
         end
         object CboUf: TComboBox
           Left = 224
-          Height = 23
+          Height = 25
           Top = 312
           Width = 48
           CharCase = ecUppercase
-          ItemHeight = 15
+          ItemHeight = 17
           Items.Strings = (
             'AC'
             'AL'
@@ -1440,7 +1450,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         end
         object DTNasc: TDateEdit
           Left = 568
-          Height = 23
+          Height = 25
           Top = 199
           Width = 131
           CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
@@ -1453,7 +1463,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         end
         object EdtCpfCnpj: TMaskEdit
           Left = 352
-          Height = 23
+          Height = 25
           Top = 84
           Width = 344
           CharCase = ecUppercase
@@ -1927,7 +1937,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         end
         object EdtCep: TMaskEdit
           Left = 24
-          Height = 23
+          Height = 25
           Top = 312
           Width = 80
           CharCase = ecUppercase
@@ -1937,7 +1947,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         end
         object EdtTel: TMaskEdit
           Left = 280
-          Height = 23
+          Height = 25
           Top = 312
           Width = 120
           CharCase = ecUppercase
@@ -1947,7 +1957,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         end
         object EdtCel: TMaskEdit
           Left = 408
-          Height = 23
+          Height = 25
           Top = 312
           Width = 120
           CharCase = ecUppercase
@@ -1957,7 +1967,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         end
         object EdtEmail: TMaskEdit
           Left = 536
-          Height = 23
+          Height = 25
           Top = 312
           Width = 160
           CharCase = ecUppercase
@@ -1967,7 +1977,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         end
         object EdtInsMun: TMaskEdit
           Left = 296
-          Height = 23
+          Height = 25
           Top = 199
           Width = 264
           MaxLength = 15
@@ -1976,7 +1986,7 @@ object FrmCadFornecedor: TFrmCadFornecedor
         end
         object EdtInsEstadual: TMaskEdit
           Left = 24
-          Height = 23
+          Height = 25
           Top = 199
           Width = 256
           MaxLength = 15

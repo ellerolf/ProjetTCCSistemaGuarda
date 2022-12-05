@@ -13,6 +13,14 @@ object FrmConsBaixa: TFrmConsBaixa
   OnResize = FormResize
   OnShow = FormShow
   Position = poScreenCenter
+  object PnChamaBaixa: TPanel
+    Left = 0
+    Height = 670
+    Top = 0
+    Width = 940
+    Align = alClient
+    TabOrder = 1
+  end
   object Panel1: TPanel
     Left = 0
     Height = 670
@@ -34,9 +42,9 @@ object FrmConsBaixa: TFrmConsBaixa
       TabOrder = 0
       OnClick = Panel2Click
       object PnChamaLanca: TPanel
-        Left = 24
+        Left = 22
         Height = 304
-        Top = 312
+        Top = 296
         Width = 889
         ClientHeight = 304
         ClientWidth = 889
@@ -46,51 +54,96 @@ object FrmConsBaixa: TFrmConsBaixa
         OnClick = PnChamaLancaClick
         object Label6: TLabel
           Left = 328
-          Height = 15
+          Height = 17
           Top = 40
-          Width = 109
+          Width = 128
           Caption = 'Data de lançamento:'
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
           ParentColor = False
+          ParentFont = False
         end
         object Label11: TLabel
           Left = 504
-          Height = 15
+          Height = 17
           Top = 40
-          Width = 107
+          Width = 125
           Caption = 'Tipo de documento:'
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
           ParentColor = False
+          ParentFont = False
         end
         object Label12: TLabel
           Left = 155
-          Height = 15
+          Height = 17
           Top = 98
-          Width = 99
+          Width = 115
           Caption = 'Nº de Documento:'
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
           ParentColor = False
+          ParentFont = False
         end
         object EdtNDoc: TEdit
           Left = 152
-          Height = 23
+          Height = 25
           Top = 119
           Width = 120
           Enabled = False
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -13
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          ParentFont = False
           TabOrder = 0
         end
         object Label14: TLabel
-          Left = 307
-          Height = 15
+          Left = 304
+          Height = 17
           Top = 98
-          Width = 63
+          Width = 74
           Caption = 'Fornecedor:'
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
           ParentColor = False
+          ParentFont = False
         end
         object Label15: TLabel
-          Left = 535
-          Height = 15
-          Top = 104
-          Width = 89
+          Left = 532
+          Height = 17
+          Top = 98
+          Width = 103
           Caption = 'Centro de Custo:'
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
           ParentColor = False
+          ParentFont = False
         end
         object GrpTipo: TGroupBox
           Left = 152
@@ -98,15 +151,23 @@ object FrmConsBaixa: TFrmConsBaixa
           Top = 47
           Width = 144
           Caption = 'Tipo:'
-          ClientHeight = 20
+          ClientHeight = 18
           ClientWidth = 140
           Enabled = False
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
+          ParentFont = False
           TabOrder = 1
           object ChkDespesa: TRadioButton
-            Left = 77
-            Height = 20
+            Left = 69
+            Height = 18
             Top = 0
-            Width = 63
+            Width = 71
             Align = alRight
             Caption = 'Despesa'
             Enabled = False
@@ -114,9 +175,9 @@ object FrmConsBaixa: TFrmConsBaixa
           end
           object ChkReceita: TRadioButton
             Left = 0
-            Height = 20
+            Height = 18
             Top = 0
-            Width = 58
+            Width = 64
             Align = alLeft
             Caption = 'Receita'
             Enabled = False
@@ -125,11 +186,16 @@ object FrmConsBaixa: TFrmConsBaixa
         end
         object EdtConsCentro: TEdit
           Left = 532
-          Height = 23
+          Height = 25
           Top = 118
           Width = 145
           Enabled = False
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -13
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
           NumbersOnly = True
+          ParentFont = False
           TabOrder = 2
         end
         object BtnConsCentro: TSpeedButton
@@ -278,20 +344,33 @@ object FrmConsBaixa: TFrmConsBaixa
         end
         object EdtConsFornecedor: TEdit
           Left = 304
-          Height = 23
+          Height = 25
           Top = 120
           Width = 145
           Enabled = False
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -13
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
           NumbersOnly = True
+          ParentFont = False
           TabOrder = 3
         end
         object Label16: TLabel
           Left = 152
-          Height = 15
+          Height = 17
           Top = 152
-          Width = 65
+          Width = 76
           Caption = 'Observação:'
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
           ParentColor = False
+          ParentFont = False
         end
         object MemObservacao: TMemo
           Left = 152
@@ -299,6 +378,11 @@ object FrmConsBaixa: TFrmConsBaixa
           Top = 176
           Width = 583
           Enabled = False
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -13
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          ParentFont = False
           TabOrder = 4
         end
         object BtnSalvar: TSpeedButton
@@ -1368,7 +1452,7 @@ object FrmConsBaixa: TFrmConsBaixa
         end
         object DTLancamento: TDateEdit
           Left = 328
-          Height = 23
+          Height = 25
           Top = 64
           Width = 145
           CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
@@ -1376,16 +1460,26 @@ object FrmConsBaixa: TFrmConsBaixa
           ButtonWidth = 23
           NumGlyphs = 1
           Enabled = False
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -13
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
           MaxLength = 0
+          ParentFont = False
           TabOrder = 5
         end
         object EdtTipoDocumento: TEdit
           Left = 504
-          Height = 23
+          Height = 25
           Top = 63
           Width = 120
           Enabled = False
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -13
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
           NumbersOnly = True
+          ParentFont = False
           TabOrder = 6
         end
         object BtnConsTipoConta: TSpeedButton
@@ -1996,13 +2090,13 @@ object FrmConsBaixa: TFrmConsBaixa
         end
         object Label9: TLabel
           Left = 16
-          Height = 17
-          Top = 16
-          Width = 217
+          Height = 21
+          Top = 8
+          Width = 268
           Caption = 'Alteração de dados do Lançamento'
           Font.CharSet = ANSI_CHARSET
           Font.Color = clBlack
-          Font.Height = -13
+          Font.Height = -16
           Font.Name = 'Segoe UI'
           Font.Pitch = fpVariable
           Font.Quality = fqDraft
@@ -2635,9 +2729,9 @@ object FrmConsBaixa: TFrmConsBaixa
         end
       end
       object BtnVerParcelas: TSpeedButton
-        Left = 23
+        Left = 21
         Height = 34
-        Top = 272
+        Top = 260
         Width = 134
         AutoSize = True
         Flat = True
@@ -3136,9 +3230,9 @@ object FrmConsBaixa: TFrmConsBaixa
         OnClick = BtnVerParcelasClick
       end
       object BtnAlterar: TSpeedButton
-        Left = 580
+        Left = 578
         Height = 34
-        Top = 272
+        Top = 260
         Width = 149
         AutoSize = True
         Flat = True
@@ -3693,9 +3787,9 @@ object FrmConsBaixa: TFrmConsBaixa
         OnClick = BtnAlterarClick
       end
       object BtnPesquisa2: TSpeedButton
-        Left = 880
+        Left = 879
         Height = 25
-        Top = 85
+        Top = 77
         Width = 25
         Glyph.Data = {
           FA090000424DFA09000000000000360000002800000019000000190000000100
@@ -3782,9 +3876,9 @@ object FrmConsBaixa: TFrmConsBaixa
         OnClick = BtnPesquisa2Click
       end
       object BtnPesquisa1: TSpeedButton
-        Left = 544
+        Left = 543
         Height = 25
-        Top = 87
+        Top = 79
         Width = 25
         Glyph.Data = {
           FA090000424DFA09000000000000360000002800000019000000190000000100
@@ -3871,33 +3965,43 @@ object FrmConsBaixa: TFrmConsBaixa
         OnClick = BtnPesquisa1Click
       end
       object DTDataFinal: TDateEdit
-        Left = 160
-        Height = 23
-        Top = 88
+        Left = 159
+        Height = 25
+        Top = 80
         Width = 103
         CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
         DateOrder = doNone
         ButtonWidth = 23
         NumGlyphs = 1
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -13
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
         MaxLength = 0
+        ParentFont = False
         TabOrder = 1
       end
       object DTDataInicial: TDateEdit
-        Left = 24
-        Height = 23
-        Top = 88
+        Left = 23
+        Height = 25
+        Top = 80
         Width = 103
         CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
         DateOrder = doNone
         ButtonWidth = 23
         NumGlyphs = 1
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -13
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
         MaxLength = 0
+        ParentFont = False
         TabOrder = 2
       end
       object CboRecOuDes: TComboBox
-        Left = 272
+        Left = 271
         Height = 23
-        Top = 87
+        Top = 79
         Width = 128
         ItemHeight = 15
         ItemIndex = 0
@@ -3910,80 +4014,11 @@ object FrmConsBaixa: TFrmConsBaixa
         Text = 'RECEITA'
       end
       object Label5: TLabel
-        Left = 272
+        Left = 271
         Height = 17
-        Top = 64
+        Top = 56
         Width = 32
         Caption = 'Tipo:'
-        Font.CharSet = ANSI_CHARSET
-        Font.Height = -13
-        Font.Pitch = fpVariable
-        Font.Quality = fqDraft
-        Font.Style = [fsBold]
-        ParentColor = False
-        ParentFont = False
-      end
-      object Label4: TLabel
-        Left = 136
-        Height = 17
-        Top = 94
-        Width = 7
-        Caption = 'à'
-        Font.CharSet = ANSI_CHARSET
-        Font.Height = -13
-        Font.Pitch = fpVariable
-        Font.Quality = fqDraft
-        ParentColor = False
-        ParentFont = False
-      end
-      object Label3: TLabel
-        Left = 24
-        Height = 17
-        Top = 64
-        Width = 52
-        Caption = 'Periodo:'
-        Font.CharSet = ANSI_CHARSET
-        Font.Height = -13
-        Font.Pitch = fpVariable
-        Font.Quality = fqDraft
-        Font.Style = [fsBold]
-        ParentColor = False
-        ParentFont = False
-      end
-      object Label2: TLabel
-        Left = 576
-        Height = 17
-        Top = 64
-        Width = 66
-        Caption = 'Por Nome:'
-        Font.CharSet = ANSI_CHARSET
-        Font.Height = -13
-        Font.Pitch = fpVariable
-        Font.Quality = fqDraft
-        Font.Style = [fsBold]
-        ParentColor = False
-        ParentFont = False
-      end
-      object Label1: TLabel
-        Left = 408
-        Height = 17
-        Top = 64
-        Width = 126
-        Caption = 'Efetivado/Pendente:'
-        Font.CharSet = ANSI_CHARSET
-        Font.Height = -13
-        Font.Pitch = fpVariable
-        Font.Quality = fqDraft
-        Font.Style = [fsBold]
-        ParentColor = False
-        ParentFont = False
-      end
-      object Label8: TLabel
-        Left = 24
-        Height = 17
-        Top = 40
-        Width = 39
-        Caption = 'Busca:'
         Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
@@ -3994,10 +4029,87 @@ object FrmConsBaixa: TFrmConsBaixa
         ParentColor = False
         ParentFont = False
       end
+      object Label4: TLabel
+        Left = 135
+        Height = 17
+        Top = 86
+        Width = 7
+        Caption = 'à'
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -13
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ParentColor = False
+        ParentFont = False
+      end
+      object Label3: TLabel
+        Left = 23
+        Height = 17
+        Top = 56
+        Width = 52
+        Caption = 'Periodo:'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Segoe UI'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object Label2: TLabel
+        Left = 575
+        Height = 17
+        Top = 56
+        Width = 66
+        Caption = 'Por Nome:'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Segoe UI'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object Label1: TLabel
+        Left = 407
+        Height = 17
+        Top = 56
+        Width = 126
+        Caption = 'Efetivado/Pendente:'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Segoe UI'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object Label8: TLabel
+        Left = 22
+        Height = 21
+        Top = 32
+        Width = 48
+        Caption = 'Busca:'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'Segoe UI'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
       object BtnSair: TSpeedButton
-        Left = 792
+        Left = 793
         Height = 30
-        Top = 624
+        Top = 608
         Width = 120
         Glyph.Data = {
           76380000424D76380000000000003600000028000000780000001E0000000100
@@ -4456,9 +4568,9 @@ object FrmConsBaixa: TFrmConsBaixa
         OnClick = BtnSairClick
       end
       object CboStatus: TComboBox
-        Left = 408
+        Left = 407
         Height = 23
-        Top = 87
+        Top = 79
         Width = 128
         ItemHeight = 15
         ItemIndex = 0
@@ -4471,10 +4583,15 @@ object FrmConsBaixa: TFrmConsBaixa
         Text = 'PENDENTE'
       end
       object EdtConsulta: TEdit
-        Left = 576
-        Height = 23
-        Top = 87
+        Left = 575
+        Height = 25
+        Top = 79
         Width = 296
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -13
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ParentFont = False
         TabOrder = 5
       end
       object Label7: TLabel
@@ -4495,21 +4612,20 @@ object FrmConsBaixa: TFrmConsBaixa
         ParentColor = False
         ParentFont = False
       end
-      object Panel4: TPanel
-        Left = 24
-        Height = 140
-        Top = 124
-        Width = 888
-        Color = clSkyBlue
+      object Panel3: TPanel
+        Left = 22
+        Height = 142
+        Top = 112
+        Width = 891
+        Color = 16244940
         ParentColor = False
-        TabOrder = 6
+        TabOrder = 8
       end
       object DBGPendente: TDBGrid
-        Left = 23
+        Left = 22
         Height = 138
-        Top = 124
+        Top = 114
         Width = 889
-        Color = clWindow
         Columns = <        
           item
             Title.Caption = 'CÓD'
@@ -4523,7 +4639,7 @@ object FrmConsBaixa: TFrmConsBaixa
           end        
           item
             Title.Caption = 'NOME DO FORNECEDOR/CLIENTE'
-            Width = 200
+            Width = 250
             FieldName = 'PESNOME'
           end        
           item
@@ -4533,7 +4649,7 @@ object FrmConsBaixa: TFrmConsBaixa
           end        
           item
             Title.Caption = 'N° DOCUMENTO'
-            Width = 95
+            Width = 125
             FieldName = 'LANNUMERO_DOCUMENTO'
           end        
           item
@@ -4546,7 +4662,7 @@ object FrmConsBaixa: TFrmConsBaixa
           end        
           item
             Title.Caption = ' VENCIMENTO'
-            Width = 82
+            Width = 125
             FieldName = 'BAIDATAVEN'
           end        
           item
@@ -4560,17 +4676,29 @@ object FrmConsBaixa: TFrmConsBaixa
             FieldName = 'USUNOME'
           end>
         DataSource = DM.DSConsBaixaPen
+        FixedColor = clHighlight
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -13
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
-        TabOrder = 7
+        ParentColor = True
+        ParentFont = False
+        TabOrder = 6
+        TitleFont.CharSet = ANSI_CHARSET
+        TitleFont.Color = clWhite
+        TitleFont.Height = -13
+        TitleFont.Pitch = fpVariable
+        TitleFont.Quality = fqDraft
+        TitleFont.Style = [fsBold]
         Visible = False
         OnCellClick = DBGPendenteCellClick
       end
       object DBGEfetivado: TDBGrid
-        Left = 24
+        Left = 23
         Height = 140
-        Top = 124
+        Top = 112
         Width = 889
-        Color = clWindow
         Columns = <        
           item
             Title.Caption = 'CÓD'
@@ -4584,7 +4712,7 @@ object FrmConsBaixa: TFrmConsBaixa
           end        
           item
             Title.Caption = 'NOME DO FORNECEDOR/CLIENTE'
-            Width = 200
+            Width = 250
             FieldName = 'PESNOME'
           end        
           item
@@ -4594,7 +4722,7 @@ object FrmConsBaixa: TFrmConsBaixa
           end        
           item
             Title.Caption = 'N° DOCUMENTO'
-            Width = 95
+            Width = 125
             FieldName = 'LANNUMERO_DOCUMENTO'
           end        
           item
@@ -4637,7 +4765,7 @@ object FrmConsBaixa: TFrmConsBaixa
           end        
           item
             Title.Caption = 'DATA VENCIMENTO'
-            Width = 110
+            Width = 125
             FieldName = 'BAIDATAVEN'
           end        
           item
@@ -4671,15 +4799,28 @@ object FrmConsBaixa: TFrmConsBaixa
             FieldName = 'USUNOME'
           end>
         DataSource = DM.DSConsBaixaEfet
+        FixedColor = clHighlight
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -13
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
-        TabOrder = 8
+        ParentColor = True
+        ParentFont = False
+        TabOrder = 7
+        TitleFont.CharSet = ANSI_CHARSET
+        TitleFont.Color = clWhite
+        TitleFont.Height = -13
+        TitleFont.Pitch = fpVariable
+        TitleFont.Quality = fqDraft
+        TitleFont.Style = [fsBold]
         Visible = False
         OnCellClick = DBGEfetivadoCellClick
       end
       object BtnExcluir: TSpeedButton
-        Left = 729
+        Left = 727
         Height = 34
-        Top = 272
+        Top = 260
         Width = 184
         AutoSize = True
         Flat = True
@@ -5365,9 +5506,9 @@ object FrmConsBaixa: TFrmConsBaixa
         OnClick = BtnExcluirClick
       end
       object BtnPagar: TSpeedButton
-        Left = 474
+        Left = 472
         Height = 34
-        Top = 272
+        Top = 260
         Width = 104
         AutoSize = True
         Flat = True
@@ -5753,9 +5894,9 @@ object FrmConsBaixa: TFrmConsBaixa
         OnClick = BtnPagarClick
       end
       object BtnImprimir: TSpeedButton
-        Left = 348
+        Left = 346
         Height = 34
-        Top = 272
+        Top = 260
         Width = 124
         AutoSize = True
         Flat = True
@@ -6216,13 +6357,5 @@ object FrmConsBaixa: TFrmConsBaixa
         OnClick = BtnImprimirClick
       end
     end
-  end
-  object PnChamaBaixa: TPanel
-    Left = 0
-    Height = 670
-    Top = 0
-    Width = 940
-    Align = alClient
-    TabOrder = 1
   end
 end
