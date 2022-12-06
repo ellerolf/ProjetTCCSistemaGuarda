@@ -157,18 +157,12 @@ end;
 
 procedure TFrmMenu.EdtConfirmaSenhaKeyPress(Sender: TObject; var Key: char);
 begin
-  if key = #13 then
-  begin
-    BtnAlteraSenha.Click;
-  end;
+
 end;
 
 procedure TFrmMenu.EdtSenhaAtualKeyPress(Sender: TObject; var Key: char);
 begin
-  if key = #13 then
-  begin
-    BtnAlteraSenha.Click;
-  end;
+
 end;
 
 procedure TFrmMenu.EdtSenhaNovaChange(Sender: TObject);
@@ -178,10 +172,7 @@ end;
 
 procedure TFrmMenu.EdtSenhaNovaKeyPress(Sender: TObject; var Key: char);
 begin
-  if key = #13 then
-  begin
-    EdtConfirmaSenha.SetFocus;
-  end;
+
 end;
 
 procedure TFrmMenu.FormClose(Sender: TObject);
@@ -263,17 +254,6 @@ begin
 
   FrmCadLancamento.Close;
   FrmConsBaixa.Close;
-  { FrmCadUsuario.Close;
-  FrmCadFornecedor.Close;
-
-  FrmCadCentroCusto.Close;
-  FrmCadContasBancarias.Close;
-  FrmConsUsuario.Close;
-  FrmConsFornecedores.Close;
-
-  FrmTranfContas.Close;
-  FrmConsContas.Close;
-  FrmMovBanco.Close;}
 end;
 
 procedure TFrmMenu.BtnConsFornecedoresClick(Sender: TObject);
@@ -402,7 +382,7 @@ begin
     end
     else
     begin
-      ShowMessage('FAVOR VERIFIQUE SE SUA SENHA ESTA ERRADA');
+      ShowMessage('Favor verifique se sua senha está errada');
     end;
   end
   else
@@ -410,17 +390,17 @@ begin
   begin
     if ((EdtSenhaNova.Text = '') or (EdtConfirmaSenha.Text = '')) then
     begin
-      ShowMessage('CAMPOS FALTANDO');
+      ShowMessage('Campos faltando');
     end
     else
     if (EdtSenhaNova.Text <> EdtConfirmaSenha.Text) then
     begin
-      ShowMessage('SENHAS NAO CONFEREM, FAVOR CONFERIR NOVAMENTE');
+      ShowMessage('Senhas não conferem, favor verificar.');
     end
     else
     if (verificar < 8) then
     begin
-      ShowMessage('A SENHA DEVE TER NO MINIMO 8 DIGITOS');
+      ShowMessage('A senha deve ter no mínimo 8 digitos.');
     end
     else
     begin
@@ -440,7 +420,7 @@ begin
       DM.ZQBuscaUsuario.Close;
       DM.ZQBuscaUsuario.Open;
 
-      ShowMessage('SENHA ALTERADA COM SUCESSO');
+      ShowMessage('Senha alterada com sucesso!');
       EdtSenhaAtual.Text := '';
       EdtSenhaNova.Text := '';
       EdtConfirmaSenha.Text := '';

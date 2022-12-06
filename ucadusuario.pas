@@ -199,19 +199,19 @@ begin
     if (EdtNome.Text = '') or (EdtNomeUsuario.Text = '') or
       (EdtSenha.Text = '') or (EdtConfSenha.Text = '') or (RgbNivel.ItemIndex = -1) then
     begin
-      ShowMessage('CAMPOS FALTANDO, FAVOR CONFERIR');
+      ShowMessage('Campos faltando favor conferir');
     end
     else
     //validação para ver se as senhas sao iguais
     if (EdtSenha.Text <> EdtConfSenha.Text) then
     begin
-      ShowMessage('SENHAS NAO CONFEREM, FAVOR CONFERIR NOVAMENTE');
+      ShowMessage('Senhas não conferem, favor verificar.');
     end
     else
     //validação para ver se tem menos de 8 caracters a senha
     if (verifica < 8) then
     begin
-      ShowMessage('A SENHA DEVE TER 8 CARACTERS NO MINIMO');
+      ShowMessage('A senha deve ter no mínimo 8 digitos.');
     end
     else
     begin
@@ -224,7 +224,7 @@ begin
       //validação no cadastr para ver se o nome de usuario ja existe e não trarvar a execução do programa
       if (DM.ZQConsUsuario.RecordCount = 1) then
       begin
-        ShowMessage('NOME DE USUARIO JÁ EXISTE, FAVOR ESCOLHER OUTRO');
+        ShowMessage('Nome de usuario já existe, favor escolher outro');
       end
       else
       begin
@@ -248,7 +248,7 @@ begin
         DM.ZQConsUsuario.Open;
 
         //finalização terminar os campos e limpa-los
-        ShowMessage('CADASTRO DE USUARIO FEITO COM SUCESSO!');
+        ShowMessage('Cadastro de usuário feito com sucesso!');
         EdtNome.Clear;
         EdtNomeUsuario.Clear;
         EdtSenha.Clear;
@@ -267,17 +267,17 @@ begin
     if (EdtNome.Text = '') or (EdtNomeUsuario.Text = '') or
       (EdtSenha.Text = '') or (EdtConfSenha.Text = '') or (RgbNivel.ItemIndex = -1) then
     begin
-      ShowMessage('POR FAVOR PREENCHE TODOS OS CAMPOS');
+      ShowMessage('Por favor preencher todos os campos');
     end
     else
     if (EdtSenha.Text <> EdtConfSenha.Text) then
     begin
-      ShowMessage('SENHAS NAO CONFEREM, FAVOR CONFERIR NOVAMENTE');
+      ShowMessage('Senhas não conferem, favor verificar');
     end
     else
     if (verifica2 < 8) then
     begin
-      ShowMessage('A SENHA DEVE TER 8 CARACTERS NO MINIMO');
+      ShowMessage('A senha deve ter no mínimo 8 digitos.');
     end
     else
     begin
@@ -291,7 +291,7 @@ begin
       //validação no cadastr para ver se o nome de usuario ja existe e não trarvar a execução do programa
       if (DM.ZQConsUsuario.RecordCount <> 0) then
       begin
-        ShowMessage('NOME DE USUARIO JÁ EXISTE, FAVOR ESCOLHER OUTRO');
+        ShowMessage('Nome de usuário já existe, favor escolher outro');
       end
       else
       begin
@@ -323,7 +323,7 @@ begin
         DM.ZQBuscaUsuario.Close;
         DM.ZQBuscaUsuario.Open;
 
-        ShowMessage('ALTERAÇÃO DE USUARIO FEITO COM SUCESSO!');
+        ShowMessage('Alteração de usuário feita com sucesso!');
         EdtNome.Clear;
         EdtNomeUsuario.Clear;
         EdtSenha.Enabled := True;

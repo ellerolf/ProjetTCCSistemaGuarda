@@ -72,7 +72,7 @@ begin
   begin
     if ((EdtNome.Text = '') or (RgbTipo.ItemIndex = -1)) then
     begin
-      ShowMessage('CAMPOS FALTANDO, FAVOR CONFERIR');
+      ShowMessage('Campos faltando favor conferir');
     end
     else
     begin
@@ -103,7 +103,7 @@ begin
         DM.ZQConsCentro.Close;
         DM.ZQConsCentro.Open;
 
-        ShowMessage('CADASTRO FEITO COM SUCESSO!!');
+        ShowMessage('Cadastro feito com sucesso!');
         EdtNome.Clear;
         RgbTipo.ItemIndex := -1;
       end;
@@ -126,7 +126,7 @@ begin
       DM.ZQConsCentro.Open;
       if (DM.ZQConsCentro.RecordCount <> 0) then
       begin
-        ShowMessage('CENTRO DE CUSTO JÁ CADASTRADO NO SISTEMA, FAVOR CONFERIR');
+        ShowMessage('CEntro de custa já cadastrado no sistema favor verificar');
       end
       else
       begin
@@ -158,7 +158,7 @@ begin
         DM.ZQBuscaCentro.Close;
         DM.ZQBuscaCentro.Open;
 
-        ShowMessage('ALTERAÇÃO FEITA COM SUCESSO!!');
+        ShowMessage('Alteração feita com sucesso!');
         EdtNome.Clear;
         RgbTipo.ItemIndex := -1;
         RgbStatus.ItemIndex := -1;
