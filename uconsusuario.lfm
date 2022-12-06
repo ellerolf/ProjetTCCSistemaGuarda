@@ -1236,13 +1236,12 @@ object FrmConsUsuario: TFrmConsUsuario
       ParentFont = False
     end
   end
-  object PnAlterausu: TPanel
+  object PnChama: TPanel
     Left = 0
     Height = 648
     Top = 0
     Width = 938
     Align = alClient
-    BevelOuter = bvNone
     TabOrder = 1
   end
 end

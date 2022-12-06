@@ -334,7 +334,7 @@ begin
         RgbNivel.ItemIndex := -1;
         RgbAltStatus.ItemIndex := -1;
         RgbAltStatus.Visible := False;
-        FrmConsUsuario.PnAlterausu.Visible := False;
+        FrmConsUsuario.PnChama.Visible := False;
         Close;
       end;
     end;
@@ -343,7 +343,7 @@ end;
 
 procedure TFrmCadUsuario.BtnSairClick(Sender: TObject);
 begin
-  FrmConsUsuario.PnAlterausu.Visible := False;
+  FrmConsUsuario.PnChama.Visible := False;
   EdtSenha.Enabled := True;
   EdtConfSenha.Enabled := True;
   ChkMostrar.Enabled := True;
