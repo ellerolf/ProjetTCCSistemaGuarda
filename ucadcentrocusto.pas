@@ -106,7 +106,6 @@ begin
         ShowMessage('CADASTRO FEITO COM SUCESSO!!');
         EdtNome.Clear;
         RgbTipo.ItemIndex := -1;
-        LblMensagem.Caption := '*Campos Obrigatorios';
       end;
     end;
   end
@@ -190,7 +189,7 @@ begin
   EdtNome.Text := '';
   RgbTipo.ItemIndex := 0;
   RgbStatus.ItemIndex := 0;
-  LblMensagem.Caption := '*Campos Obrigatorios';
+
 end;
 
 procedure TFrmCadCentroCusto.FormResize(Sender: TObject);
@@ -205,7 +204,7 @@ begin
   begin
     LblFormNome.Caption := 'Alteração de Centro de Custo';
     DM.ZQConsCentro.Active := True;
-    LblMensagem.Caption := '*Campos Obrigatorios';
+
     EdtNome.SetFocus;
   end
   else
@@ -216,7 +215,7 @@ begin
     EdtNome.SetFocus;
     RgbTipo.ItemIndex := -1;
     RgbStatus.ItemIndex := -1;
-    LblMensagem.Caption := '*Campos Obrigatorios';
+
   end;
 end;
 

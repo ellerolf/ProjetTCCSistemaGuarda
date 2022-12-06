@@ -136,7 +136,7 @@ begin
   EdtNomeUsuario.Clear;
   EdtSenha.Clear;
   EdtConfSenha.Clear;
-  LblMensagem.Caption := 'Todos os campos são Obrigatorios';
+
 end;
 
 procedure TFrmCadUsuario.BtnAlterarClick(Sender: TObject);
@@ -181,7 +181,7 @@ begin
     EdtSenha.Clear;
     EdtConfSenha.Clear;
     RgbNivel.ItemIndex := -1;
-    LblMensagem.Caption := 'Todos os campos são Obrigatorios';
+
   end;
 
 end;
