@@ -1,29 +1,28 @@
 object FrmConsCentro: TFrmConsCentro
   Left = -8
-  Height = 648
+  Height = 686
   Top = -8
-  Width = 938
+  Width = 954
   BorderStyle = bsNone
   Caption = 'FrmConsCentro'
-  ClientHeight = 648
-  ClientWidth = 938
+  ClientHeight = 664
+  ClientWidth = 954
   Color = 16577259
   OnActivate = FormActivate
   OnClose = FormClose
   OnCreate = FormCreate
   OnResize = FormResize
   OnShow = FormShow
-  LCLVersion = '2.2.2.0'
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
-    Height = 648
+    Height = 664
     Top = 0
-    Width = 938
+    Width = 954
     Align = alClient
     Caption = 'Panel1'
-    ClientHeight = 648
-    ClientWidth = 938
+    ClientHeight = 664
+    ClientWidth = 954
     Font.CharSet = ANSI_CHARSET
     Font.Height = -13
     Font.Pitch = fpVariable
@@ -1881,9 +1880,9 @@ object FrmConsCentro: TFrmConsCentro
     end
     object PnChamaCentro: TPanel
       Left = 1
-      Height = 646
+      Height = 662
       Top = 1
-      Width = 936
+      Width = 952
       Align = alClient
       TabOrder = 1
       OnClick = PnChamaCentroClick

@@ -1092,7 +1092,7 @@ object FrmCadUsuario: TFrmCadUsuario
           Left = 342
           Height = 53
           Top = 61
-          Width = 210
+          Width = 234
           AutoFill = True
           Caption = 'Nível de Acesso:'
           ChildSizing.LeftRightSpacing = 6
@@ -1103,7 +1103,7 @@ object FrmCadUsuario: TFrmCadUsuario
           ChildSizing.Layout = cclLeftToRightThenTopToBottom
           ChildSizing.ControlsPerLine = 2
           ClientHeight = 31
-          ClientWidth = 206
+          ClientWidth = 230
           Columns = 2
           Font.CharSet = ANSI_CHARSET
           Font.Color = clBlack
@@ -1151,21 +1151,6 @@ object FrmCadUsuario: TFrmCadUsuario
           OnClick = RgbAltStatusClick
           ParentFont = False
           TabOrder = 6
-        end
-        object LblMensagem: TLabel
-          Left = 216
-          Height = 21
-          Top = 272
-          Width = 168
-          Caption = '*Campos Obrigatorios'
-          Font.CharSet = ANSI_CHARSET
-          Font.Color = clRed
-          Font.Height = -16
-          Font.Pitch = fpVariable
-          Font.Quality = fqDraft
-          Font.Style = [fsBold]
-          ParentColor = False
-          ParentFont = False
         end
       end
       object LblNomedeform: TLabel

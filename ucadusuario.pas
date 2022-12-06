@@ -20,7 +20,6 @@ type
     EdtNome: TEdit;
     EdtNomeUsuario: TEdit;
     EdtSenha: TEdit;
-    LblMensagem: TLabel;
     LblNomedeform: TLabel;
     LblNome: TLabel;
     LblNomUsuario: TLabel;

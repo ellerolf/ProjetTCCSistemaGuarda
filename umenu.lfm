@@ -14,7 +14,6 @@ object FrmMenu: TFrmMenu
   OnResize = FormResize
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.2.2.0'
   object Panel1: TPanel
     Left = 0
     Height = 650
@@ -15674,21 +15673,6 @@ object FrmMenu: TFrmMenu
           00FFFF3300FFFF3300FFFF3300FFFF5930FFFFBFAFFFFFFFFFFF
         }
         OnClick = BtnAlteraSenhaClick
-      end
-      object LblRetorno: TLabel
-        Left = 82
-        Height = 17
-        Top = 344
-        Width = 137
-        Caption = '*Campos Obrigatórios'
-        Font.CharSet = ANSI_CHARSET
-        Font.Color = clRed
-        Font.Height = -13
-        Font.Pitch = fpVariable
-        Font.Quality = fqDraft
-        Font.Style = [fsBold]
-        ParentColor = False
-        ParentFont = False
       end
       object EdtConfirmaSenha: TEdit
         Left = 56

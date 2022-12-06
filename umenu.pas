@@ -32,7 +32,6 @@ type
     LblNomeUsu: TLabel;
     Label2: TLabel;
     Label3: TLabel;
-    LblRetorno: TLabel;
     LblUsuario: TLabel;
     Panel1: TPanel;
     Panel2: TPanel;

@@ -18,7 +18,6 @@ type
     EdtNome: TEdit;
     Label1: TLabel;
     LblFormNome: TLabel;
-    LblMensagem: TLabel;
     Panel1: TPanel;
     Panel2: TPanel;
     Panel3: TPanel;

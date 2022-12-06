@@ -65,16 +65,6 @@ object FrmCadCentroCusto: TFrmCadCentroCusto
           CharCase = ecUppercase
           TabOrder = 0
         end
-        object LblMensagem: TLabel
-          Left = 24
-          Height = 15
-          Top = 262
-          Width = 118
-          Caption = '*Campos Obrigatorios'
-          Font.Color = clRed
-          ParentColor = False
-          ParentFont = False
-        end
         object BtnSair: TSpeedButton
           Left = 396
           Height = 34
