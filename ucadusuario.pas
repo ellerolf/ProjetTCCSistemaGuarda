@@ -287,6 +287,7 @@ begin
         + QuotedStr(EdtNomeUsuario.Text));
       DM.ZQConsUsuario.SQL.Add(' and codigoniv = ' + QuotedStr(nivel));
       DM.ZQConsUsuario.SQL.Add(' and usustatus = ' + QuotedStr(usstatus));
+      DM.ZQConsUsuario.SQL.Add(' and usunome = ' + QuotedStr(EdtNome.Text));
       DM.ZQConsUsuario.Open;
       //validação no cadastr para ver se o nome de usuario ja existe e não trarvar a execução do programa
       if (DM.ZQConsUsuario.RecordCount <> 0) then

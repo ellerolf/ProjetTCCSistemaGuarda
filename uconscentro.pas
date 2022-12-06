@@ -71,6 +71,7 @@ procedure TFrmConsCentro.FormShow(Sender: TObject);
 begin
   DM.ZQBuscaCentro.Open;
   BtnConsulta.Click;
+  EdtNome1.Text:='';
   PnChamaCentro.Visible := False;
 end;
 
@@ -245,6 +246,7 @@ procedure TFrmConsCentro.FormClose(Sender: TObject; var CloseAction: TCloseActio
 begin
   CboStatus.ItemIndex := 0;
   CboTipo.ItemIndex := 0;
+  EdtNome1.Text:='';
   BtnConsulta.Click;
   DM.ZQBuscaCentro.Close;
 end;
