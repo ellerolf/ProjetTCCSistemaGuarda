@@ -262,7 +262,19 @@ begin
   DM.ZQBuscaCentro.Open;
   FrmConsCentro.Show;
 
+  FrmCadLancamento.Close;
+  FrmConsBaixa.Close;
+  { FrmCadUsuario.Close;
+  FrmCadFornecedor.Close;
 
+  FrmCadCentroCusto.Close;
+  FrmCadContasBancarias.Close;
+  FrmConsUsuario.Close;
+  FrmConsFornecedores.Close;
+
+  FrmTranfContas.Close;
+  FrmConsContas.Close;
+  FrmMovBanco.Close;}
 end;
 
 procedure TFrmMenu.BtnConsFornecedoresClick(Sender: TObject);

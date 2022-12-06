@@ -124,17 +124,17 @@ begin
   FrmConsBaixa.PnChamaBaixa.Visible:=false;
   //procedimento usado somente na tela de menu, interfere diretamente a execução da tela cad/cons lancamento.
   //precisa encontrar outra forma :(
-  {FrmCadUsuario.Close;
+  FrmCadUsuario.Close;
   FrmCadFornecedor.Close;
-  FrmCadLancamento.Close;
+ // FrmCadLancamento.Close;
   FrmCadCentroCusto.Close;
   FrmCadContasBancarias.Close;
   FrmConsUsuario.Close;
   FrmConsFornecedores.Close;
-  FrmConsBaixa.Close;
+  //FrmConsBaixa.Close;
   FrmTranfContas.Close;
   FrmConsContas.Close;
-  FrmMovBanco.Close;}
+  FrmMovBanco.Close;
   Close;
 end;
 

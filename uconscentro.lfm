@@ -13,6 +13,7 @@ object FrmConsCentro: TFrmConsCentro
   OnCreate = FormCreate
   OnResize = FormResize
   OnShow = FormShow
+  LCLVersion = '2.2.2.0'
   WindowState = wsFullScreen
   object Panel1: TPanel
     Left = 0
