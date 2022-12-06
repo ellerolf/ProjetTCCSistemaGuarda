@@ -2,35 +2,25 @@ object FrmConsFornecedores: TFrmConsFornecedores
   Left = -8
   Height = 788
   Top = -8
-  Width = 1086
+  Width = 1102
   BorderStyle = bsNone
   Caption = 'FrmConsFornecedores'
   ClientHeight = 749
-  ClientWidth = 1086
+  ClientWidth = 1102
   Color = 16577259
   OnClose = FormClose
   OnResize = FormResize
   OnShow = FormShow
   Position = poScreenCenter
   WindowState = wsFullScreen
-  object PnChama: TPanel
-    Left = 0
-    Height = 749
-    Top = 0
-    Width = 1086
-    Align = alClient
-    BevelOuter = bvNone
-    TabOrder = 1
-    OnClick = PnChamaClick
-  end
   object Panel1: TPanel
     Left = 0
     Height = 749
     Top = 0
-    Width = 1086
+    Width = 1102
     Align = alClient
     ClientHeight = 749
-    ClientWidth = 1086
+    ClientWidth = 1102
     TabOrder = 0
     object Panel2: TPanel
       Left = 0
@@ -1240,6 +1230,16 @@ object FrmConsFornecedores: TFrmConsFornecedores
         OnCellClick = GrTodosCellClick
       end
     end
+  end
+  object PnChama: TPanel
+    Left = 0
+    Height = 749
+    Top = 0
+    Width = 1102
+    Align = alClient
+    BevelOuter = bvNone
+    TabOrder = 1
+    OnClick = PnChamaClick
   end
   object PopupMenu1: TPopupMenu
     Left = 415
