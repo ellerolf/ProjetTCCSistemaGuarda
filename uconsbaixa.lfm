@@ -13,14 +13,6 @@ object FrmConsBaixa: TFrmConsBaixa
   OnResize = FormResize
   OnShow = FormShow
   Position = poScreenCenter
-  object PnChamaBaixa: TPanel
-    Left = 0
-    Height = 670
-    Top = 0
-    Width = 940
-    Align = alClient
-    TabOrder = 1
-  end
   object Panel1: TPanel
     Left = 0
     Height = 670
@@ -4697,17 +4689,17 @@ object FrmConsBaixa: TFrmConsBaixa
       object DBGEfetivado: TDBGrid
         Left = 23
         Height = 140
-        Top = 112
-        Width = 889
+        Top = 114
+        Width = 888
         Columns = <        
           item
             Title.Caption = 'CÓD'
-            Width = 31
+            Width = 40
             FieldName = 'BAICODIGO'
           end        
           item
             Title.Caption = 'CÓD FOR/CLI'
-            Width = 78
+            Width = 88
             FieldName = 'CODIGOPES'
           end        
           item
@@ -6357,5 +6349,13 @@ object FrmConsBaixa: TFrmConsBaixa
         OnClick = BtnImprimirClick
       end
     end
+  end
+  object PnChamaBaixa: TPanel
+    Left = 0
+    Height = 670
+    Top = 0
+    Width = 940
+    Align = alClient
+    TabOrder = 1
   end
 end

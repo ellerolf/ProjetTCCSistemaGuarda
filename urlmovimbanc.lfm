@@ -115,15 +115,15 @@ object FrmRlMovimBanc: TFrmRlMovimBanc
         Left = 90
         Height = 16
         Top = 8
-        Width = 94
-        Caption = 'DESCRIÃ‡ÃƒO'
+        Width = 80
+        Caption = 'DESCRIÇÃO'
       end
       object RLLabel5: TRLLabel
         Left = 752
         Height = 16
         Top = 8
-        Width = 114
-        Caption = 'NÂ° DOCUMENTO'
+        Width = 105
+        Caption = 'N° DOCUMENTO'
       end
       object RLLabel6: TRLLabel
         Left = 960
@@ -240,9 +240,9 @@ object FrmRlMovimBanc: TFrmRlMovimBanc
         Left = 896
         Height = 16
         Top = 8
-        Width = 161
+        Width = 147
         Info = itPageNumber
-        Text = 'PÃ¡gina nÂ°:'
+        Text = 'Página n°:'
       end
       object RLSystemInfo2: TRLSystemInfo
         Left = 760

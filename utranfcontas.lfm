@@ -12,7 +12,6 @@ object FrmTranfContas: TFrmTranfContas
   OnResize = FormResize
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.2.2.0'
   object Panel1: TPanel
     Left = 0
     Height = 648
@@ -1123,12 +1122,12 @@ object FrmTranfContas: TFrmTranfContas
           end        
           item
             Title.Caption = 'N° CONTA DE ORIGEM'
-            Width = 127
+            Width = 160
             FieldName = 'N° CONTA DE ORIGEM'
           end        
           item
             Title.Caption = 'TIPO DA CONTA DE ORIGEM'
-            Width = 160
+            Width = 185
             FieldName = 'TIPO DA CONTA DE ORIGEM'
           end        
           item
@@ -1138,17 +1137,17 @@ object FrmTranfContas: TFrmTranfContas
           end        
           item
             Title.Caption = 'N° CONTA DE DESTINO'
-            Width = 130
+            Width = 160
             FieldName = 'N° CONTA DE DESTINO'
           end        
           item
             Title.Caption = 'TIPO DA CONTA DE DESTINO'
-            Width = 160
+            Width = 190
             FieldName = 'TIPO DA CONTA DE DESTINO'
           end        
           item
             Title.Caption = 'N° DO DOCUMENTO'
-            Width = 116
+            Width = 135
             FieldName = 'TRANUMERO_DOCUMENTO'
           end        
           item

@@ -34,7 +34,6 @@ type
     Label6: TLabel;
     Label7: TLabel;
     Label9: TLabel;
-    LblMensagem: TLabel;
     MemObservacao: TMemo;
     Panel1: TPanel;
     Panel2: TPanel;

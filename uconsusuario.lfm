@@ -12,15 +12,6 @@ object FrmConsUsuario: TFrmConsUsuario
   OnResize = FormResize
   OnShow = FormShow
   Position = poScreenCenter
-  object PnAlterausu: TPanel
-    Left = 0
-    Height = 648
-    Top = 0
-    Width = 938
-    Align = alClient
-    BevelOuter = bvNone
-    TabOrder = 1
-  end
   object Panel1: TPanel
     Left = 0
     Height = 648
@@ -1244,5 +1235,14 @@ object FrmConsUsuario: TFrmConsUsuario
       ParentColor = False
       ParentFont = False
     end
+  end
+  object PnAlterausu: TPanel
+    Left = 0
+    Height = 648
+    Top = 0
+    Width = 938
+    Align = alClient
+    BevelOuter = bvNone
+    TabOrder = 1
   end
 end
