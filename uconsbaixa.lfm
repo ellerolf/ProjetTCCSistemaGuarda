@@ -4621,12 +4621,12 @@ object FrmConsBaixa: TFrmConsBaixa
         Columns = <        
           item
             Title.Caption = 'CÓD'
-            Width = 31
+            Width = 34
             FieldName = 'BAICODIGO'
           end        
           item
             Title.Caption = 'CÓD FOR/CLI'
-            Width = 78
+            Width = 90
             FieldName = 'CODIGOPES'
           end        
           item
@@ -4636,7 +4636,7 @@ object FrmConsBaixa: TFrmConsBaixa
           end        
           item
             Title.Caption = 'DOCUMENTO'
-            Width = 100
+            Width = 130
             FieldName = 'DOCNOME'
           end        
           item
@@ -4690,7 +4690,7 @@ object FrmConsBaixa: TFrmConsBaixa
         Left = 23
         Height = 140
         Top = 114
-        Width = 888
+        Width = 889
         Columns = <        
           item
             Title.Caption = 'CÓD'
@@ -4709,7 +4709,7 @@ object FrmConsBaixa: TFrmConsBaixa
           end        
           item
             Title.Caption = 'DOCUMENTO'
-            Width = 100
+            Width = 130
             FieldName = 'DOCNOME'
           end        
           item
@@ -4727,57 +4727,57 @@ object FrmConsBaixa: TFrmConsBaixa
           end        
           item
             Title.Caption = 'FORMA PGTO'
-            Width = 90
+            Width = 92
             FieldName = 'FORNOME'
           end        
           item
             Title.Caption = 'CÓD CONTA'
-            Width = 75
+            Width = 82
             FieldName = 'CODIGOCON'
           end        
           item
             Title.Caption = 'NOME DA CONTA'
-            Width = 110
+            Width = 200
             FieldName = 'CONNOME'
           end        
           item
             Title.Caption = 'AGÊNCIA'
-            Width = 57
+            Width = 65
             FieldName = 'CONAGENCIA'
           end        
           item
             Title.Caption = 'N° DA C/C '
-            Width = 67
+            Width = 80
             FieldName = 'CONNUMERO_CONTA'
           end        
           item
             Title.Caption = 'TIPO CONTA'
-            Width = 80
+            Width = 120
             FieldName = 'TIPNOME'
           end        
           item
             Title.Caption = 'DATA VENCIMENTO'
-            Width = 125
+            Width = 135
             FieldName = 'BAIDATAVEN'
           end        
           item
             Title.Caption = 'VALOR'
-            Width = 85
+            Width = 100
             FieldName = 'BAIVALOR'
           end        
           item
             Title.Caption = 'DATA DO PGTO'
-            Width = 85
+            Width = 110
             FieldName = 'BAIDATAPGTO'
           end        
           item
             Title.Caption = 'VALOR PAGO'
-            Width = 85
+            Width = 90
             FieldName = 'BAIVALORPAGO'
           end        
           item
             Title.Caption = 'MULTA E JUROS'
-            Width = 85
+            Width = 105
             FieldName = 'BAIMULTA_JUROS'
           end        
           item

@@ -512,7 +512,7 @@ object FrmCadParcela: TFrmCadParcela
       Columns = <      
         item
           Title.Caption = 'CÓD PARCELA'
-          Width = 90
+          Width = 95
           FieldName = 'BAICODIGO'
         end      
         item
