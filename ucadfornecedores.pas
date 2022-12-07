@@ -50,7 +50,6 @@ type
     LblMunicipal: TLabel;
     LblTitulo: TLabel;
     LblEndereco: TLabel;
-    LblMensagem: TLabel;
     EdtCpfCnpj: TMaskEdit;
     EdtCep: TMaskEdit;
     EdtTel: TMaskEdit;
@@ -584,6 +583,7 @@ begin
 
         dm.ZQAltPessoas.ExecSQL;
 
+        ShowMessage('Dados Alterados com sucesso!');
         dm.ZQConsPessoas.Close;
         dm.ZQConsPessoas.Open;
         DesativaCampoForn();

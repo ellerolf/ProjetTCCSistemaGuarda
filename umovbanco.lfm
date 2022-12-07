@@ -2,12 +2,12 @@ object FrmMovBanco: TFrmMovBanco
   Left = -8
   Height = 788
   Top = -8
-  Width = 1260
+  Width = 1276
   BorderIcons = []
   BorderStyle = bsNone
   Caption = 'Movimentação Bancária'
   ClientHeight = 749
-  ClientWidth = 1260
+  ClientWidth = 1276
   Color = 16577259
   OnClose = FormClose
   OnResize = FormResize
@@ -18,16 +18,16 @@ object FrmMovBanco: TFrmMovBanco
     Left = 0
     Height = 749
     Top = 0
-    Width = 1260
+    Width = 1276
     Align = alClient
     ClientHeight = 749
-    ClientWidth = 1260
+    ClientWidth = 1276
     TabOrder = 0
     object Label7: TLabel
       Left = 1
       Height = 32
       Top = 1
-      Width = 1258
+      Width = 1274
       Align = alTop
       Alignment = taCenter
       Caption = 'Movimentação Bancária'
@@ -45,11 +45,11 @@ object FrmMovBanco: TFrmMovBanco
       Left = 1
       Height = 715
       Top = 33
-      Width = 1258
+      Width = 1274
       Align = alClient
       BevelOuter = bvNone
       ClientHeight = 715
-      ClientWidth = 1258
+      ClientWidth = 1274
       TabOrder = 0
       OnClick = Panel2Click
       object EdtNConta: TEdit
@@ -412,12 +412,12 @@ object FrmMovBanco: TFrmMovBanco
           end        
           item
             Title.Caption = 'DESCRIÇÃO'
-            Width = 345
+            Width = 320
             FieldName = 'descricao'
           end        
           item
             Title.Caption = 'N° DO DOCUMENTO'
-            Width = 120
+            Width = 135
             FieldName = 'documento'
           end        
           item
@@ -427,7 +427,7 @@ object FrmMovBanco: TFrmMovBanco
           end        
           item
             Title.Caption = 'OPERAÇÃO'
-            Width = 70
+            Width = 81
             FieldName = 'operacao'
           end>
         DataSource = DM.DSConsExtrato

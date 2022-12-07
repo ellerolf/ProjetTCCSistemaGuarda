@@ -14,7 +14,6 @@ object FrmMenu: TFrmMenu
   OnResize = FormResize
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.2.2.0'
   object Panel1: TPanel
     Left = 0
     Height = 650
@@ -11702,33 +11701,15 @@ object FrmMenu: TFrmMenu
       OnClick = BtnMudarSenhaClick
     end
     object Panel3: TPanel
-      Left = 873
+      Left = 824
       Height = 40
       Top = 1
-      Width = 152
+      Width = 201
       Align = alRight
       BevelOuter = bvNone
       ClientHeight = 40
-      ClientWidth = 152
+      ClientWidth = 201
       TabOrder = 0
-      object LblUsuario: TLabel
-        Left = 48
-        Height = 25
-        Top = 8
-        Width = 84
-        Alignment = taCenter
-        Caption = '  Usuario '
-        Font.CharSet = ANSI_CHARSET
-        Font.Color = clWhite
-        Font.Height = -19
-        Font.Name = 'Segoe UI'
-        Font.Pitch = fpVariable
-        Font.Quality = fqDraft
-        Font.Style = [fsBold]
-        ParentColor = False
-        ParentFont = False
-        OnClick = LblUsuarioClick
-      end
       object Image2: TImage
         Left = 0
         Height = 40
@@ -13109,6 +13090,66 @@ object FrmMenu: TFrmMenu
           DC9C660136B7640000000049454E44AE426082
         }
         Stretch = True
+      end
+      object Panel7: TPanel
+        Left = 37
+        Height = 40
+        Top = 0
+        Width = 164
+        Align = alClient
+        BevelOuter = bvNone
+        ClientHeight = 40
+        ClientWidth = 164
+        TabOrder = 0
+        object LblUsuario: TLabel
+          Left = 0
+          Height = 28
+          Top = 6
+          Width = 164
+          Align = alClient
+          Alignment = taRightJustify
+          Caption = '  Usuario '
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -19
+          Font.Name = 'Segoe UI'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+          OnClick = LblUsuarioClick
+        end
+        object Label1: TLabel
+          Left = 0
+          Height = 6
+          Top = 0
+          Width = 164
+          Align = alTop
+          Caption = '1'
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clBlue
+          Font.Height = -5
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label4: TLabel
+          Left = 0
+          Height = 6
+          Top = 34
+          Width = 164
+          Align = alBottom
+          Caption = '2'
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clBlue
+          Font.Height = -5
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          ParentColor = False
+          ParentFont = False
+        end
       end
     end
     object espaca: TLabel

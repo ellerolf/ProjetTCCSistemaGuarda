@@ -28,6 +28,8 @@ type
     Image5: TImage;
     espaca: TLabel;
     Image6: TImage;
+    Label1: TLabel;
+    Label4: TLabel;
     Label5: TLabel;
     LblNomeUsu: TLabel;
     Label2: TLabel;
@@ -36,6 +38,7 @@ type
     Panel1: TPanel;
     Panel2: TPanel;
     Panel3: TPanel;
+    Panel7: TPanel;
     PnTrocaSenha: TPanel;
     Panel8: TPanel;
     PnChama: TPanel;
