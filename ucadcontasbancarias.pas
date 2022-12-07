@@ -695,8 +695,8 @@ begin
     DtDataTransf.Enabled:=true;
     EdtNDoc.Enabled:=true;
     EdtVlrTras.Enabled:=true;
-    EdtCodContaO.Enabled:=true;
-    EdtCodContaDes.Enabled:=true;
+    //EdtCodContaO.Enabled:=true;
+    //EdtCodContaDes.Enabled:=true;
     BtnConsultaO.Enabled:=true;
     BtnConsultaD.Enabled:=true;
     //Se cadastro de transf. for true, cad. de conta tem que ser false
@@ -707,8 +707,8 @@ begin
     DtDataTransf.Enabled:=false;
     EdtNDoc.Enabled:=false;
     EdtVlrTras.Enabled:=false;
-    EdtCodContaO.Enabled:=false;
-    EdtCodContaDes.Enabled:=false;
+    //EdtCodContaO.Enabled:=false;
+    //EdtCodContaDes.Enabled:=false;
     BtnConsultaO.Enabled:=false;
     BtnConsultaD.Enabled:=false;
     //para limpar a tela caso tenha algo digitado e o usuario aperte cad. conta
