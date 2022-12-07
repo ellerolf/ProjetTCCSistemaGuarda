@@ -94,7 +94,7 @@ begin
           DM.ZQCadCentro.Params.ParamByName('pcodigotip').Value := 1;
         end
         else
-        if (RgbTipo.ItemIndex = 0) then
+        if (RgbTipo.ItemIndex = 1) then
         begin
           DM.ZQCadCentro.Params.ParamByName('pcodigotip').Value := 2;
         end;
@@ -126,7 +126,7 @@ begin
       DM.ZQConsCentro.Open;
       if (DM.ZQConsCentro.RecordCount <> 0) then
       begin
-        ShowMessage('CEntro de custa já cadastrado no sistema favor verificar');
+        ShowMessage('Centro de custa já cadastrado no sistema favor verificar');
       end
       else
       begin
